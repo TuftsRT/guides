@@ -151,6 +151,8 @@ Tags can be defined using the `tags` field in the file-wide metadata. The field 
 
 ### Markdown/Rmd
 
+Tags can be defined in the YAML metadata header of the file as follows.
+
 ```yml
 ---
 tags: tag tag2 another-tag
@@ -159,11 +161,15 @@ tags: tag tag2 another-tag
 
 ### reStructuredText
 
+Tags can be specified in the metadata field list at the top of the file as follows.
+
 ```rst
 :tags: tag tag2 another-tag
 ```
 
 ### Jupyter Notebook
+
+Tags can be added to the notebook metadata JSON as follows. The metadata JSON can be accessed via the Property Inspector in the top-right of the JupyterLab interface (gear icon) or by opening the notebook as text document and locating the `"metadata"` field (located after the `"cells"` field) in the notebook JSON.
 
 ```json
 {
