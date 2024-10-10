@@ -1,0 +1,5 @@
+
+/*Prevent left menu scroll bar from always showing*/
+.sidebar-primary-items__end{
+    margin-top: 1em !important;
+ }

@@ -51,7 +51,8 @@ html_baseurl = os.environ.get(key="BASEURL", default="/")
 html_favicon = "_static/favicon.ico"
 html_last_updated_fmt = ""
 html_logo = "_static/jumbo.png"
-html_static_path = ["_static"]
+html_static_path = ['_static']
+html_css_files = ["custom.css"]
 html_theme = "pydata_sphinx_theme"
 html_title = project
 
