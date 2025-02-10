@@ -57,19 +57,17 @@ html_title = project
 html_context = {
     "github_user": github_user,
     "github_repo": github_repo,
-    "github_version": "main",
+    "github_version": repo.head.shorthand,
     "doc_path": "source",
 }
-
-if release == "pub":
-    tags_url = urljoin(html_baseurl, "tags/index.html")
-else:
-    tags_url = urljoin(html_baseurl, "dev/tags/index.html")
 
 icon_links = [
     {
         "name": "Tags",
-        "url": tags_url,
+        "url": urljoin(
+            html_baseurl,
+            f"{'dev/' if release == 'dev' else ''}tags/index.html",
+        ),
         "icon": "fa-solid fa-tags",
         "attributes": {"target": "_self"},
     },
