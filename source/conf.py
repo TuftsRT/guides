@@ -37,17 +37,13 @@ switcher_file = "switcher.json"
 
 extensions = [
     "myst_nb",
+    "gallery_directive",
     "sphinx_copybutton",
     "sphinx_design",
     "sphinx_external_toc",
-    "sphinx.ext.autosectionlabel",
-    "sphinx.ext.extlinks",
     "sphinx.ext.graphviz",
-    "sphinx.ext.intersphinx",
     "tags",
 ]
-
-autosectionlabel_prefix_document = True
 
 html_baseurl = os.environ.get(key="BASEURL", default="./")
 html_css_files = ["custom.css"]
@@ -65,7 +61,7 @@ html_context = {
     "doc_path": "source",
 }
 
-if release == "published":
+if release == "pub":
     tags_url = urljoin(html_baseurl, "tags/index.html")
 else:
     tags_url = urljoin(html_baseurl, "dev/tags/index.html")
@@ -123,14 +119,22 @@ html_theme_options = {
 }
 
 myst_enable_extensions = [
+    "amsmath",
+    "attrs_block",
+    "attrs_inline",
     "colon_fence",
     "deflist",
     "dollarmath",
     "fieldlist",
     "linkify",
     "replacements",
+    "strikethrough",
     "substitution",
+    "tasklist",
 ]
+
+myst_linkify_fuzzy_links = False
+myst_heading_anchors = 3
 
 nb_custom_formats = {
     ".Rmd": "rmd.convert",
