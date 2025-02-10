@@ -1,0 +1,13 @@
+[
+  {
+    "name": "published",
+    "version": "pub",
+    "url": "https://tuftsrt.github.io/rcguides/",
+    "preferred": true
+  },
+  {
+    "name": "development",
+    "version": "dev",
+    "url": "https://tuftsrt.github.io/rcguides/dev/"
+  }
+]
