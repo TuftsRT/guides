@@ -7,7 +7,7 @@ dependencies:
   - linkify-it-py=2.0.3
   - myst-nb=1.2.0
   - nb-clean=4.0.1
-  - pydata-sphinx-theme=0.16.1
+  - pydata-sphinx-theme=0.16.0
   - pygit2=1.17.0
   - python=3.13.1
   - python-frontmatter=1.1.0
