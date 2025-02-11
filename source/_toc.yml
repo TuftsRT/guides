@@ -1,1 +1,18 @@
 root: index
+subtrees:
+  - entries:
+      - file: python/index
+        title: Python
+        subtrees:
+          - entries:
+              - glob: python/*
+      - file: r/index
+        title: R (Statistical Computing)
+        subtrees:
+          - entries:
+              - glob: r/*
+      - file: hpc/index
+        title: High-Performance Computing
+        subtrees:
+          - entries:
+              - glob: hpc/*

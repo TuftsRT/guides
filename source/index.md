@@ -4,6 +4,25 @@ html_theme.sidebar_secondary.remove: False
 
 # Tufts University Research Computing Guides
 
+Collection of resources, documentation, and asynchronous tutorials to advance computational research across disciplines.
+Compiled and maintained by the Research Technology (RT) team within Tufts Technology Services (TTS) at Tufts University.
+
+```{gallery-grid}
+:grid-columns: 1 1 2 3
+
+- header: "{fab}`python` Programming with Python"
+  content: "Utilize the Python programming language for automation and computational research."
+  link: "python/index.html"
+
+- header: "{fab}`r-project` Statistical Computing using R"
+  content: "Analyze data and parallelize processes using the statistical programming language R."
+  link: "r/index.html"
+
+- header: "{fas}`server` High-Performance Computing"
+  content: "Tufts University High-Performance Compute (HPC) Cluster user guide and technical documentation."
+  link: "hpc/index.html"
+```
+
 ```{admonition} Other Useful Resources
 :class: seealso
 
