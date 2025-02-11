@@ -46,7 +46,12 @@ extensions = [
 ]
 
 html_baseurl = os.environ.get(key="BASEURL", default="./")
-html_css_files = ["css/bugfix.css", "css/navbar.css", "css/switcher.css"]
+html_css_files = [
+    "css/bugfix.css",
+    "css/gallery.css",
+    "css/navbar.css",
+    "css/switcher.css",
+]
 html_favicon = "_static/favicon.ico"
 html_last_updated_fmt = ""
 html_logo = "_static/jumbo.png"
