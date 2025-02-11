@@ -46,7 +46,7 @@ extensions = [
 ]
 
 html_baseurl = os.environ.get(key="BASEURL", default="./")
-html_css_files = ["css/bugfix.css", "css/switcher.css"]
+html_css_files = ["css/bugfix.css", "css/navbar.css", "css/switcher.css"]
 html_favicon = "_static/favicon.ico"
 html_last_updated_fmt = ""
 html_logo = "_static/jumbo.png"
@@ -92,10 +92,9 @@ html_theme_options = {
     "footer_center": ["last-updated"],
     "footer_end": ["switcher-label", "version-switcher"],
     "footer_start": ["copyright"],
-    "header_links_before_dropdown": 4,
+    "header_links_before_dropdown": 6,
     "icon_links": icon_links,
     "logo": {"text": project},
-    "navbar_align": "right",
     "navigation_depth": 1,
     "navigation_with_keys": False,
     "search_bar_text": "",
