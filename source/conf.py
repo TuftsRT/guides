@@ -110,6 +110,7 @@ html_theme_options = {
         "tags",
         "edit-this-page",
         "sourcelink",
+        "report-error",
     ],
     "show_version_warning_banner": True,
     "switcher": {
