@@ -13,6 +13,8 @@ project = "TTS Research Computing Guides"
 author = "Tufts University"
 email = "tts-research@tufts.edu"
 
+language = "en"
+
 try:
     repo = Repository(".")
     repo_url: str = repo.remotes["origin"].url
