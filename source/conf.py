@@ -138,6 +138,12 @@ myst_enable_extensions = [
 myst_linkify_fuzzy_links = False
 myst_heading_anchors = 3
 
+myst_substitutions = {
+    "email": f"<{email}>",
+    "issues": f"https://github.com/{github_user}/{github_repo}/issues",
+    "mailto:": f"mailto:{email}",
+}
+
 nb_custom_formats = {
     ".Rmd": "rmd.convert",
 }
