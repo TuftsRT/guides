@@ -117,8 +117,8 @@ def write_files(tags: dict[str, list[str]], root: str) -> None:
             f.write("\n".join(lines) + "\n")
     if labels:
         with open(file=os.path.join(root, "index.md"), mode="w") as f:
-            conent = header + ["# Tags"] + sorted(labels)
-            f.write("\n".join(conent) + "\n")
+            content = header + ["# Tags"] + sorted(labels)
+            f.write("\n".join(content) + "\n")
     return None
 
 
