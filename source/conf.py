@@ -142,7 +142,6 @@ myst_heading_anchors = 3
 
 myst_substitutions = {
     "email": f"<{email}>",
-    "issues": f"https://github.com/{github_user}/{github_repo}/issues",
     "mailto:": f"mailto:{email}",
 }
 
