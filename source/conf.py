@@ -9,7 +9,7 @@ from sphinx.errors import ConfigError
 # needed for Sphinx to load extensions properly
 sys.path.append(os.path.abspath("_ext"))
 
-project = "TTS Research Computing Guides"
+project = "TTS Research Technology Guides"
 author = "Tufts University"
 email = "tts-research@tufts.edu"
 

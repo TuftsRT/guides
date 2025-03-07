@@ -2,7 +2,7 @@
 html_theme.sidebar_secondary.remove: False
 ---
 
-# Tufts University Research Computing Guides
+# Tufts University Research Technology Guides
 
 Collection of resources, documentation, and asynchronous tutorials to advance computational research across disciplines.
 Developed and maintained by the Research Technology (RT) team within Tufts Technology Services (TTS) at Tufts University.

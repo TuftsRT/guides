@@ -1,3 +1,3 @@
-# TTS Research Computing Guides
+# Tufts University Research Technology Guides
 
 WIP
