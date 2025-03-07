@@ -10,6 +10,10 @@ Developed and maintained by the Research Technology (RT) team within Tufts Techn
 ```{gallery-grid}
 :grid-columns: 1 1 2 3
 
+- header: "{fas}`server` High-Performance Computing"
+  content: "Tufts University High-Performance Compute (HPC) Cluster user guide and technical documentation."
+  link: "hpc/index.html"
+
 - header: "{fab}`python` Programming with Python"
   content: "Utilize the Python programming language for automation and computational research."
   link: "python/index.html"
@@ -18,9 +22,17 @@ Developed and maintained by the Research Technology (RT) team within Tufts Techn
   content: "Analyze data and parallelize processes using the statistical programming language R."
   link: "r/index.html"
 
-- header: "{fas}`server` High-Performance Computing"
-  content: "Tufts University High-Performance Compute (HPC) Cluster user guide and technical documentation."
-  link: "hpc/index.html"
+- header: "{fas}`dna` Bioinformatics"
+  content: "Explore biological data using cutting-edge computational methods and techniques."
+  link: "bio/index.html"
+
+- header: "{fas}`globe` Geospatial Analysis"
+  content: "Curated collection of geospatial learning resources for various backgrounds and applications."
+  link: "https://go.tufts.edu/geospatial"
+
+- header: "{fas}`envelope` Consultations and Support"
+  content: "Receive technical support, schedule a consultation with a specialist, and inquire about available services."
+  link: "mailto:tts-research@tufts.edu"
 ```
 
 ```{admonition} Other Useful Resources
