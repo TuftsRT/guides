@@ -2,12 +2,12 @@
   {
     "name": "published",
     "version": "pub",
-    "url": "https://tuftsrt.github.io/rcguides/",
+    "url": "https://rtguides.it.tufts.edu/",
     "preferred": true
   },
   {
     "name": "development",
     "version": "dev",
-    "url": "https://tuftsrt.github.io/rcguides/dev/"
+    "url": "https://rtguides.it.tufts.edu/dev/"
   }
 ]
