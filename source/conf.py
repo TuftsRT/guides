@@ -47,6 +47,8 @@ extensions = [
     "tags",
 ]
 
+external_toc_path = "_toc.yaml"
+
 html_baseurl = os.environ.get(key="BASEURL", default="./")
 html_css_files = [
     "css/bugfix.css",
