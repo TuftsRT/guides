@@ -1,5 +1,5 @@
 ---
-html_theme.sidebar_secondary.remove: False
+html_theme.sidebar_secondary.remove: false
 ---
 
 # Tufts University Research Technology Guides
@@ -8,8 +8,9 @@ Collection of resources, documentation, and asynchronous tutorials to advance co
 Developed and maintained by the Research Technology (RT) team within Tufts Technology Services (TTS) at Tufts University.
 
 ```{gallery-grid}
-:grid-columns: 1 1 2 3
-
+---
+grid-columns: 1 1 2 3
+---
 - header: "{fas}`server` High-Performance Computing"
   content: "Tufts University High-Performance Compute (HPC) Cluster user guide and technical documentation."
   link: "hpc/index.html"
@@ -36,8 +37,9 @@ Developed and maintained by the Research Technology (RT) team within Tufts Techn
 ```
 
 ```{admonition} Other Useful Resources
-:class: seealso
-
+---
+class: seealso
+---
 [Data Lab](https://sites.tufts.edu/datalab/)
 :  Interdisciplinary methodological and technological support for a wide range of data science applications.
 
