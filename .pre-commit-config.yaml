@@ -25,6 +25,7 @@ repos:
           - mdformat-black
           - mdformat-config
           - mdformat-myst
+          - mdformat-simple-breaks
   - repo: https://github.com/dzhu/rstfmt
     rev: v0.0.14
     hooks:
