@@ -2,7 +2,10 @@
   "cSpell.words": [
     "amsmath",
     "autobuild",
+    "autoslug",
+    "autoupdate",
     "Bioinformatics",
+    "codespell",
     "copybutton",
     "deflist",
     "dollarmath",
@@ -13,6 +16,8 @@
     "jupytext",
     "kernelspec",
     "linkify",
+    "mdformat",
+    "nitpicky",
     "nodefaults",
     "nosearch",
     "pycache",
@@ -20,6 +25,8 @@
     "pygit",
     "seealso",
     "sourcelink",
-    "tasklist"
+    "tasklist",
+    "tidyverse",
+    "tuftsrt"
   ]
 }
