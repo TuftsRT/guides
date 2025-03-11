@@ -9,6 +9,7 @@
     "copybutton",
     "deflist",
     "dollarmath",
+    "ERRORLEVEL",
     "fieldlist",
     "frontmatter",
     "geospatial",
@@ -24,10 +25,12 @@
     "pydata",
     "pygit",
     "seealso",
+    "SETLOCAL",
     "sourcelink",
     "tableofcontents",
     "tasklist",
     "tidyverse",
+    "toplevel",
     "tuftsrt"
   ]
 }
