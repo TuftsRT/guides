@@ -40,8 +40,8 @@ switcher_branch = "switcher"
 switcher_file = "switcher.json"
 
 extensions = [
-    "myst_nb",
     "gallery_directive",
+    "myst_nb",
     "sphinx_copybutton",
     "sphinx_design",
     "sphinx_external_toc",
@@ -106,7 +106,6 @@ html_theme_options = {
     "header_links_before_dropdown": 6,
     "icon_links": icon_links,
     "logo": {"text": project},
-    "navigation_depth": 1,
     "navigation_with_keys": False,
     "search_bar_text": "",
     "secondary_sidebar_items": [
