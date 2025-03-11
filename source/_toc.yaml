@@ -5,20 +5,10 @@ defaults:
 subtrees:
   - entries:
       - file: hpc/index
-        title: HPC
+        title: High-Performance Computing
         subtrees:
           - entries:
               - glob: hpc/*
-      - file: python/index
-        title: Python
-        subtrees:
-          - entries:
-              - glob: python/*
-      - file: r/index
-        title: R
-        subtrees:
-          - entries:
-              - glob: r/*
       - file: bio/index
         title: Bioinformatics
         subtrees:
