@@ -1,6 +1,7 @@
 root: index
 defaults:
   hidden: true
+  maxdepth: 1
 subtrees:
   - entries:
       - file: hpc/index
