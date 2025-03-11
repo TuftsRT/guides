@@ -22,9 +22,9 @@ try:
     match = re.match(r"(?:https://|git@)([^/:]+)[/:]([^/]+)/(.+?)(?:\.git)?$", repo_url)
     github_user, github_repo = match.group(2), match.group(3)
     if repo.head.shorthand == "main":
-        release = "pub"
+        release = "1.0.0"
     else:
-        release = "dev"
+        release = "1.0.0-dev"
 except (AttributeError, GitError, IndexError):
     raise ConfigError(
         "Unable to automatically derive repository information.\n"
