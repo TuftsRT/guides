@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 from datetime import date
 from urllib.parse import ParseResult, urljoin, urlparse
@@ -18,16 +19,17 @@ language = "en"
 try:
     repo = Repository(".")
     repo_url: str = repo.remotes["origin"].url
-    github_user, github_repo = repo_url.split(":")[1].split(".")[0].split("/")
+    match = re.match(r"(?:https://|git@)([^/:]+)[/:]([^/]+)/(.+?)(?:\.git)?$", repo_url)
+    github_user, github_repo = match.group(2), match.group(3)
     if repo.head.shorthand == "main":
         release = "pub"
     else:
         release = "dev"
-except (GitError, IndexError):
+except (AttributeError, GitError, IndexError):
     raise ConfigError(
         "Unable to automatically derive repository information.\n"
         'Please set "github_user", "github_repo", and "release" manually.'
-    )
+    ) from None
 
 version = date.today().strftime("%Y%m%d")
 copyright = f"{date.today().year}, {author}"
