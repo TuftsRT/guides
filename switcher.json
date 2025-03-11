@@ -1,13 +1,13 @@
 [
   {
     "name": "published",
-    "version": "pub",
+    "version": "1.0.0",
     "url": "https://rtguides.it.tufts.edu/",
     "preferred": true
   },
   {
     "name": "development",
-    "version": "dev",
+    "version": "1.0.0-dev",
     "url": "https://rtguides.it.tufts.edu/dev/"
   }
 ]
