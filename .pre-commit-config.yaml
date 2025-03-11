@@ -66,4 +66,9 @@ repos:
     hooks:
       - id: autoslug
         name: convert file and directory names to url slugs
-        args: ["--num-digits=2", "--ignore-globs=**/build"]
+        args:
+          - "--error-limit=256"
+          - "--ignore-globs=**/build"
+          - "--max-length=32"
+          - "--num-digits=2"
+          - "--warn-limit=128"
