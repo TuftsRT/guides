@@ -41,6 +41,18 @@ subtrees:
         title: Bioinformatics
         subtrees:
           - entries:
-              - glob: bio/*
+              - file: bio/tutorials/index
+                subtrees:
+                  - entries:
+                      - glob: bio/tutorials/*
+              - file: bio/databases/index
+                subtrees:
+                  - entries:
+                      - glob: bio/databases/*
+              - file: bio/apps/index
+                subtrees:
+                  - entries:
+                      - glob: bio/apps/*
+              - file: bio/resources/index
       - url: https://go.tufts.edu/geospatial
         title: Geospatial
