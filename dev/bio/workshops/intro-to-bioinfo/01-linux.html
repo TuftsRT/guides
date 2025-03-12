@@ -1,0 +1,1548 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>What is Linux? &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/bugfix.css?v=e4cc360a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/navbar.css?v=3ee3464b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/switcher.css?v=7c802369" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bio/workshops/intro-to-bioinfo/01-linux';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/bio/workshops/intro-to-bioinfo/01-linux.html" />
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Introduction to Bioinformatics on Tufts HPC" href="02-bioinfo.html" />
+    <link rel="prev" title="HPC Terminology" href="00-hpc.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250312" />
+    <meta name="docbuild:last-update" content="Mar 12, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/jumbo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../_static/jumbo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">TTS Research Technology Guides</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Bioinformatics 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Bioinformatics Tutorials</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Bioinformatics Workshops</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Beginner’s guide for conducting bioinformatics analysis on Tufts HPC</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="00-hpc.html">HPC Terminology</a></li>
+
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">What is Linux?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02-bioinfo.html">Introduction to Bioinformatics on Tufts HPC</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro-to-singularity/index.html">Introduction to Singularity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro-to-git-github.html">Introduction to Git &amp; GitHub</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../databases/index.html">Bioinformatics Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/index.html">Bioinformatics Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/index.html">Bioinformatics Lectures and Trainings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/index.html">Additional Resources</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../index.html" class="nav-link"
+        >Bioinformatics</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Bioinformatics Workshops</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Beginner’s guide for...</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      What is Linux?
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-linux">
+<h1>What is Linux?<a class="headerlink" href="#what-is-linux" title="Link to this heading">#</a></h1>
+<p>Linux is a free, open-source, and Unix-like operating system kernel that was originally created by <strong>Linus Torvalds</strong> in 1991. Over time, Linux has grown into a full-fledged operating system used worldwide across various types of devices, from servers and desktop computers to smartphones and embedded systems.</p>
+<p><strong>Popular Linux Distributions:</strong></p>
+<p>​ • <strong>Ubuntu:</strong> A user-friendly distribution popular for desktop and server use, based on Debian.</p>
+<p>​ • <strong>Fedora:</strong> A cutting-edge distribution often used by developers and those who want the latest features.</p>
+<p>​ • <strong>Debian:</strong> Known for its stability and extensive software repositories, often used in server environments.</p>
+<p>​ • <strong>CentOS/AlmaLinux/Rocky Linux:</strong> Enterprise-grade distributions derived from Red Hat Enterprise Linux (RHEL).</p>
+<p>​ • <strong>Arch Linux:</strong> A rolling release distribution known for its simplicity and customization, aimed at advanced users.</p>
+<p>​ • <strong>Kali Linux:</strong> A distribution designed for penetration testing and security research.</p>
+<img src="https://nixwindows.wordpress.com/wp-content/uploads/2015/02/linux-distro-stickers.png" width="600">
+<section id="files-and-file-system">
+<h2>Files and File System<a class="headerlink" href="#files-and-file-system" title="Link to this heading">#</a></h2>
+<section id="everything-is-a-file">
+<h3>Everything is a file<a class="headerlink" href="#everything-is-a-file" title="Link to this heading">#</a></h3>
+<p><strong>A file is an addressable location that contains some data which can take many forms.</strong></p>
+<ul class="simple">
+<li><p>Text data</p></li>
+<li><p>Binary/Image data</p></li>
+</ul>
+<p><strong>Files have associated meta-data</strong></p>
+<ul class="simple">
+<li><p>Owner</p></li>
+<li><p>Group</p></li>
+<li><p>Timestamps</p></li>
+<li><p>Permission:</p>
+<ol class="arabic simple">
+<li><p>Read r</p></li>
+<li><p>Write w</p></li>
+<li><p>Execute x</p></li>
+<li><p>no permission -</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="file-permissions">
+<h3>File permissions<a class="headerlink" href="#file-permissions" title="Link to this heading">#</a></h3>
+<img src="https://i.imgur.com/yxNrpKJ.png" width="600">
+</section>
+<section id="file-organization">
+<h3>File organization<a class="headerlink" href="#file-organization" title="Link to this heading">#</a></h3>
+<p>Everything is mounted to the root directory</p>
+<p>Files are referred to by their location called <strong>path</strong></p>
+<ul class="simple">
+<li><p>Absolute Path (From the root): <strong>/cluster/tufts/mylab/user01</strong></p></li>
+<li><p>Relative Path (From my current location)：<strong>user01</strong></p></li>
+</ul>
+</section>
+</section>
+<section id="must-known-linux-unix-tools">
+<h2>Must-known Linux/Unix Tools<a class="headerlink" href="#must-known-linux-unix-tools" title="Link to this heading">#</a></h2>
+<section id="file-and-directory-management">
+<h3>File and Directory Management<a class="headerlink" href="#file-and-directory-management" title="Link to this heading">#</a></h3>
+<p>Linux provides powerful tools for managing files and file systems. Here we will introduce a few essential commands.</p>
+<section id="pwd-print-the-current-working-directory">
+<h4>pwd: print the current working directory<a class="headerlink" href="#pwd-print-the-current-working-directory" title="Link to this heading">#</a></h4>
+<section id="usage">
+<h5>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
+/cluster/home/yzhang85
+$ cd /cluster/tufts/rt/yzhang85/
+$ pwd
+/cluster/tufts/rt/yzhang85
+</pre></div>
+</div>
+</section>
+</section>
+<section id="cd-change-directory">
+<h4>cd: change directory<a class="headerlink" href="#cd-change-directory" title="Link to this heading">#</a></h4>
+<section id="id1">
+<h5>Usage<a class="headerlink" href="#id1" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="p">[</span><span class="n">directory</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If a directory is not supplied as an argument, it will default to your <strong>home</strong> directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
+/cluster/tufts/rt/yzhang85
+$ cd ..
+$ pwd
+/cluster/tufts/rt
+$ cd
+$ pwd
+/cluster/home/yzhang85
+</pre></div>
+</div>
+</section>
+<section id="shortcuts">
+<h5>Shortcuts<a class="headerlink" href="#shortcuts" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>…</strong>: cd to the parent directory. <strong>cd …</strong></p></li>
+<li><p><strong>~</strong>: cd to the home directory. <strong>cd ~</strong></p></li>
+<li><p><strong>-</strong>: cd to the previous directory. <strong>cd -</strong></p></li>
+</ul>
+</section>
+</section>
+<section id="ls-list-all-the-files-in-the-given-directory">
+<h4>ls: list all the files in the given directory<a class="headerlink" href="#ls-list-all-the-files-in-the-given-directory" title="Link to this heading">#</a></h4>
+<section id="id2">
+<h5>Usage<a class="headerlink" href="#id2" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="p">[</span><span class="n">directory</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="common-options">
+<h5>Common options:<a class="headerlink" href="#common-options" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>-1</strong>: list each file/directory on a separate line</p></li>
+<li><p><strong>-l</strong>: lists files/directories with their most common metadata</p></li>
+<li><p><strong>-a</strong>: include hidden files /directories (files’ name begins with a dot <strong>.</strong>)</p></li>
+<li><p><strong>-h</strong>: print size of files/directories in human readable format</p></li>
+</ul>
+</section>
+</section>
+<section id="chmod-manage-file-permissions">
+<h4>chmod: manage file permissions<a class="headerlink" href="#chmod-manage-file-permissions" title="Link to this heading">#</a></h4>
+<section id="symbolic-notation">
+<h5>Symbolic Notation<a class="headerlink" href="#symbolic-notation" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>u</strong>: user (owner)</p></li>
+<li><p><strong>g</strong>: group</p></li>
+<li><p><strong>o</strong>: others</p></li>
+<li><p><strong>a</strong>: all (user, group, others)</p></li>
+<li><p><strong>+</strong>: add permission</p></li>
+<li><p><strong>-</strong>: remove permission</p></li>
+<li><p><strong>=</strong>: set exact permission</p></li>
+</ul>
+</section>
+<section id="examples">
+<h5>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ chmod g+w filename ## Give the group write permission
+$ chmod u+x filename ## Give user execute permission
+$ chmod a+r filename ## Give all users read access
+$ chmod u=rw,g=r,o=r filename ## Give user read and write permission, group and other only read permission.
+</pre></div>
+</div>
+</section>
+<section id="recursive-updating-permissions-with-r">
+<h5>Recursive updating permissions with -R<a class="headerlink" href="#recursive-updating-permissions-with-r" title="Link to this heading">#</a></h5>
+<p>To apply permissions recursively to all files and subdirectories within a directory, use the <strong>-R</strong> option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ chmod -R g+rx /path/to/directory
+</pre></div>
+</div>
+</section>
+</section>
+<section id="touch-create-new-files-or-update-timestamps">
+<h4>touch: create new files or update timestamps<a class="headerlink" href="#touch-create-new-files-or-update-timestamps" title="Link to this heading">#</a></h4>
+<p>touch is used to create new files or to update the timestamps (access and modification times) of existing files.</p>
+<section id="create-new-file">
+<h5>Create new file<a class="headerlink" href="#create-new-file" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">newfile</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="update-timestamps-of-existing-files">
+<h5>Update timestamps of existing files<a class="headerlink" href="#update-timestamps-of-existing-files" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">existingfile</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="mkdir-create-new-directory">
+<h4>mkdir: create new directory<a class="headerlink" href="#mkdir-create-new-directory" title="Link to this heading">#</a></h4>
+<section id="id3">
+<h5>Usage<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">dir_name</span>
+</pre></div>
+</div>
+</section>
+<section id="common-option">
+<h5>Common option<a class="headerlink" href="#common-option" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>-p</strong>: Creates parent directories if they don’t exist.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir -p rnaseq/output
+</pre></div>
+</div>
+<p>This will create <code class="docutils literal notranslate"><span class="pre">output</span></code> folder as well as its parent folder <code class="docutils literal notranslate"><span class="pre">rnaseq</span></code> if it doesn’t exist.</p>
+</section>
+</section>
+<section id="mv-move-a-file-directory-to-a-new-location-or-rename-it">
+<h4>mv: move a file/directory to a new location or rename it<a class="headerlink" href="#mv-move-a-file-directory-to-a-new-location-or-rename-it" title="Link to this heading">#</a></h4>
+<section id="id4">
+<h5>Usage<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">source</span> <span class="n">destination</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h5>Common option<a class="headerlink" href="#id5" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>-i</strong>: Prompts for confirmation before overwriting an existing file. Useful to avoid accidental data loss.</p></li>
+<li><p><strong>-f</strong>: Forces the operation without prompting, even if an existing file would be overwritten. <strong>Use with caution</strong>!</p></li>
+</ul>
+</section>
+</section>
+<section id="cp-copy-a-file-directory">
+<h4>cp: copy a file/directory<a class="headerlink" href="#cp-copy-a-file-directory" title="Link to this heading">#</a></h4>
+<section id="id6">
+<h5>Usage<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">source</span> <span class="n">destination</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h5>Common option<a class="headerlink" href="#id7" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>-r</strong>: To copy directory</p></li>
+</ul>
+</section>
+</section>
+<section id="rm-remove-files-directories">
+<h4>rm: remove files/directories<a class="headerlink" href="#rm-remove-files-directories" title="Link to this heading">#</a></h4>
+<section id="id8">
+<h5>Usage<a class="headerlink" href="#id8" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">file</span><span class="o">/</span><span class="n">directory</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h5>Common option<a class="headerlink" href="#id9" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>-r:</strong> Deletes recursively any file and subdirectories contained within the given directory.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="text-processing">
+<h3>Text processing<a class="headerlink" href="#text-processing" title="Link to this heading">#</a></h3>
+<p>Linux command-line tools are invaluable for bioinformatics text processing due to their efficiency and flexibility. They allow for rapid manipulation and analysis of large biological datasets, such as DNA sequences, protein structures, and gene expression data. Commands like <code class="docutils literal notranslate"><span class="pre">grep</span></code>, <code class="docutils literal notranslate"><span class="pre">sed</span></code>, <code class="docutils literal notranslate"><span class="pre">awk</span></code>, and <code class="docutils literal notranslate"><span class="pre">cut</span></code> are essential for filtering, extracting, and reformatting text-based biological information.</p>
+<section id="cat-catenate-files-joins-their-contents">
+<h4>cat: catenate files(joins their contents)<a class="headerlink" href="#cat-catenate-files-joins-their-contents" title="Link to this heading">#</a></h4>
+<section id="id10">
+<h5>Usage<a class="headerlink" href="#id10" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat [options] file1 file2 …
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h5>Common option<a class="headerlink" href="#id11" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>-n:</strong> tells cat to <strong>number each line of the output</strong>. This is helpful for debugging scripts.</p></li>
+</ul>
+</section>
+</section>
+<section id="head-tail-display-the-beginning-end-of-a-file">
+<h4>head/tail: display the beginning/end of a file<a class="headerlink" href="#head-tail-display-the-beginning-end-of-a-file" title="Link to this heading">#</a></h4>
+<section id="id12">
+<h5>Usage<a class="headerlink" href="#id12" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">head</span><span class="o">/</span><span class="n">tail</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">file</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h5>Common option<a class="headerlink" href="#id13" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>-n</strong> [number]: Specifies the number of lines to display (default: 10).</p></li>
+</ul>
+</section>
+</section>
+<section id="less-more-view-the-content-of-a-file-page-by-page">
+<h4>less/more: view the content of a file page by page<a class="headerlink" href="#less-more-view-the-content-of-a-file-page-by-page" title="Link to this heading">#</a></h4>
+<section id="id14">
+<h5>Usage<a class="headerlink" href="#id14" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">less</span> <span class="n">largefile</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">more</span> <span class="n">largefile</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="navigation-with-less">
+<h5>Navigation with less<a class="headerlink" href="#navigation-with-less" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>Arrow Keys</strong>: Use the up and down arrow keys to scroll line by line.</p></li>
+<li><p><strong>Spacebar</strong>: Move forward one page.</p></li>
+<li><p><strong>b</strong>: Move backward one page.</p></li>
+<li><p><strong>q</strong>: Quit and exit less.</p></li>
+<li><p><strong>/search_term</strong>: Search for search_term within the file. Press n to go to the next occurrence.</p></li>
+<li><p><strong>g</strong>: Go to the beginning of the file.</p></li>
+<li><p><strong>G</strong>: Go to the end of the file.</p></li>
+</ul>
+</section>
+<section id="navigation-with-more">
+<h5>Navigation with more<a class="headerlink" href="#navigation-with-more" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>Spacebar</strong>: Move forward one page.</p></li>
+<li><p><strong>Enter</strong>: Move forward one line.</p></li>
+<li><p><strong>q</strong>: Quit and exit more.</p></li>
+<li><p><strong>/search_term</strong>: Search for search_term within the file (forward only).</p></li>
+</ul>
+</section>
+</section>
+<section id="cut-extract-sections-from-each-line-of-files">
+<h4>cut: Extract sections from each line of files<a class="headerlink" href="#cut-extract-sections-from-each-line-of-files" title="Link to this heading">#</a></h4>
+<p>cut is a text-processing utility used to extract specific sections of lines from a file or standard input. It is commonly used to split lines of text based on delimiters, extract columns of data, and work with fixed-width fields. The cut command is helpful for manipulating text files like <strong>TSVs</strong> and <strong>CSVs</strong>.</p>
+<section id="id15">
+<h5>Usage<a class="headerlink" href="#id15" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cut</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span> <span class="p">[</span><span class="n">FILE</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h5>Common options<a class="headerlink" href="#id16" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>-d</strong>: Specifies the delimiter for field extraction. Default is TAB. Example: <strong>-d,</strong> (use a comma as the delimiter).</p></li>
+<li><p><strong>-f</strong>: Selects specific fields, used with a delimiter (default is TAB). Example: <strong>-f 1,3</strong> (extract fields 1 and 3).</p></li>
+</ul>
+</section>
+<section id="example">
+<h5>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cut</span> <span class="o">-</span><span class="n">f1</span><span class="p">,</span><span class="mi">3</span> <span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="n">file</span><span class="o">.</span><span class="n">csv</span> <span class="c1">##(Extract columns 1 and 3 from a comma-separated file)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sort-sort-lines-of-text-files">
+<h4>sort: Sort lines of text files<a class="headerlink" href="#sort-sort-lines-of-text-files" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">sort</span></code> is designed to sort plain-text data with columns. Running <strong>sort</strong> without any arguments simply sorts a file alphabetically.
+By default, sort treats <strong>blank characters</strong> (like tab or spaces) as field delimiters. If your file uses another delimiter (such as a comma for CSV files), you can specify the field separator with <strong>-t</strong> (e.g., <strong>-t “,”</strong>).</p>
+<section id="id17">
+<h5>Usage<a class="headerlink" href="#id17" title="Link to this heading">#</a></h5>
+<section id="sort-lines-alphabetically">
+<h6>Sort lines alphabetically<a class="headerlink" href="#sort-lines-alphabetically" title="Link to this heading">#</a></h6>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sort</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="sort-lines-numerically">
+<h6>Sort lines numerically<a class="headerlink" href="#sort-lines-numerically" title="Link to this heading">#</a></h6>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sort</span> <span class="o">-</span><span class="n">n</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="sort-by-a-specific-column">
+<h6>Sort by a specific column<a class="headerlink" href="#sort-by-a-specific-column" title="Link to this heading">#</a></h6>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sort</span> <span class="o">-</span><span class="n">k</span> <span class="mi">2</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>  <span class="c1"># Sort by the second column</span>
+</pre></div>
+</div>
+</section>
+<section id="sort-by-multiple-columns">
+<h6>Sort by multiple columns<a class="headerlink" href="#sort-by-multiple-columns" title="Link to this heading">#</a></h6>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sort</span> <span class="o">-</span><span class="n">k</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>  <span class="c1"># Sort by the first column, then the second</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="uniq-report-or-filter-out-repeated-lines-in-a-file">
+<h4>uniq: Report or filter out repeated lines in a file.<a class="headerlink" href="#uniq-report-or-filter-out-repeated-lines-in-a-file" title="Link to this heading">#</a></h4>
+<p>uniq is used to filter out or identify duplicate lines in a sorted file. It removes adjacent duplicate lines, so it’s often combined with the <code class="docutils literal notranslate"><span class="pre">sort</span></code> command to find unique lines in a file effectively.</p>
+<section id="id18">
+<h5>Usage<a class="headerlink" href="#id18" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sort</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">uniq</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="grep-extracting-lines-matching-not-matching-a-pattern">
+<h4>grep:Extracting lines matching (not matching) a pattern<a class="headerlink" href="#grep-extracting-lines-matching-not-matching-a-pattern" title="Link to this heading">#</a></h4>
+<section id="id19">
+<h5>Usage<a class="headerlink" href="#id19" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">PATTERN</span> <span class="n">file</span>
+</pre></div>
+</div>
+</section>
+<section id="id20">
+<h5>Common option<a class="headerlink" href="#id20" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>-i</strong>: ignore cases</p></li>
+<li><p><strong>-v</strong>: select non-matching lines.</p></li>
+<li><p><strong>-A NUM:</strong> Print <strong>NUM</strong> lines of trailing context after matching lines.</p></li>
+<li><p><strong>-B NUM:</strong> Print <strong>NUM</strong> lines of leading context before matching lines.</p></li>
+</ul>
+</section>
+</section>
+<section id="sed-stream-editor-for-modifying-file-content">
+<h4>sed: Stream editor for modifying file content<a class="headerlink" href="#sed-stream-editor-for-modifying-file-content" title="Link to this heading">#</a></h4>
+<p>sed (short for stream editor) is a powerful text-processing tool in Bash that allows you to parse and transform text in files or streams. It is commonly used to perform basic text manipulations like search and replace, insert and delete lines, and apply regular expressions on text data.</p>
+<section id="substitution-search-and-replace">
+<h5>Substitution (Search and Replace)<a class="headerlink" href="#substitution-search-and-replace" title="Link to this heading">#</a></h5>
+<p>Replace the first occurrence of <strong>old</strong> with <strong>new</strong> in each line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sed</span> <span class="s1">&#39;s/old/new/&#39;</span> <span class="n">filename</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Replace <strong>all</strong> occurrences of <strong>old</strong> with <strong>new</strong> in each line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sed</span> <span class="s1">&#39;s/old/new/g&#39;</span> <span class="n">filename</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="in-place-substitution">
+<h5>In-place substitution<a class="headerlink" href="#in-place-substitution" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s/old/new/g&#39;</span> <span class="n">filename</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Warning: Use this command with caution as it directly modifies the original file. To create a backup, use <code class="docutils literal notranslate"><span class="pre">-i.bak</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sed</span> <span class="o">-</span><span class="n">i</span><span class="o">.</span><span class="n">bak</span> <span class="s1">&#39;s/old/new/g&#39;</span> <span class="n">filename</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="delete-lines">
+<h5>Delete lines<a class="headerlink" href="#delete-lines" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sed</span> <span class="s1">&#39;/pattern/d&#39;</span> <span class="n">filename</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sed</span></code> and <code class="docutils literal notranslate"><span class="pre">awk</span></code> that we will introduce later are very powerful bash commands. If you have interest in learning more about their usage, below is a very good book.
+<img src="https://m.media-amazon.com/images/I/916OGXYyYVL._SL1500_.jpg" width="400"></p>
+</section>
+</section>
+</section>
+<section id="data-compression-and-archiving">
+<h3>Data Compression and Archiving<a class="headerlink" href="#data-compression-and-archiving" title="Link to this heading">#</a></h3>
+<p>When working with files on Linux, compressing them to save space and bundling multiple files into a single archive is a common practice. The commands gzip, gunzip, and tar are essential tools for file compression and archiving in Bash.</p>
+<section id="gzip-compress-files">
+<h4>gzip: Compress files<a class="headerlink" href="#gzip-compress-files" title="Link to this heading">#</a></h4>
+<p>gzip is used to compress files in Linux. It reduces file sizes using the <strong>DEFLATE</strong> algorithm, resulting in files with the <code class="docutils literal notranslate"><span class="pre">.gz</span></code> extension.</p>
+<section id="id21">
+<h5>Usage<a class="headerlink" href="#id21" title="Link to this heading">#</a></h5>
+<section id="compress-file-files">
+<h6>Compress file/files<a class="headerlink" href="#compress-file-files" title="Link to this heading">#</a></h6>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gzip</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span> <span class="c1">## Compress file.txt and replace it with file.txt.gz.</span>
+<span class="n">gzip</span> <span class="n">file1</span><span class="o">.</span><span class="n">txt</span> <span class="n">file2</span><span class="o">.</span><span class="n">txt</span> <span class="n">file3</span><span class="o">.</span><span class="n">txt</span> <span class="c1">## Each file will be compressed and replaced with a .gz version.</span>
+</pre></div>
+</div>
+</section>
+<section id="keep-the-original-file">
+<h6>Keep the Original File<a class="headerlink" href="#keep-the-original-file" title="Link to this heading">#</a></h6>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gzip</span> <span class="o">-</span><span class="n">k</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span> <span class="c1">## Create file.txt.gz while preserving the original file.txt.</span>
+</pre></div>
+</div>
+</section>
+<section id="compress-the-folder">
+<h6>Compress the folder<a class="headerlink" href="#compress-the-folder" title="Link to this heading">#</a></h6>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gzip</span> <span class="o">-</span><span class="n">r</span> <span class="n">directory_name</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="gunzip-decompress-gz-files">
+<h4>gunzip: decompress .gz files<a class="headerlink" href="#gunzip-decompress-gz-files" title="Link to this heading">#</a></h4>
+<section id="decompress-files">
+<h5>Decompress files<a class="headerlink" href="#decompress-files" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gunzip</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">gunzip</span> <span class="n">file1</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">gz</span> <span class="n">file2</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</section>
+<section id="keep-the-compressed-file">
+<h5>Keep the Compressed File<a class="headerlink" href="#keep-the-compressed-file" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gunzip</span> <span class="o">-</span><span class="n">k</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tar-archive-multiple-files-into-one-or-extract-them">
+<h4>tar: Archive multiple files into one or extract them.<a class="headerlink" href="#tar-archive-multiple-files-into-one-or-extract-them" title="Link to this heading">#</a></h4>
+<p>tar is used to create, extract, and manipulate archive files. However, tar itself does not compress files; it only archives them by combining multiple files and directories into a single file. This file usually has a <code class="docutils literal notranslate"><span class="pre">.tar</span></code> extension. However, tar can be used in combination with other compression utilities (like <code class="docutils literal notranslate"><span class="pre">gzip</span></code> or <code class="docutils literal notranslate"><span class="pre">bzip2</span></code>) to compress the archive.</p>
+<section id="create-a-tar-archive-without-compression">
+<h5>Create a .tar archive without compression<a class="headerlink" href="#create-a-tar-archive-without-compression" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">cvf</span> <span class="n">archive</span><span class="o">.</span><span class="n">tar</span> <span class="n">my_folder</span>
+</pre></div>
+</div>
+</section>
+<section id="extract-a-tar-file">
+<h5>Extract a tar file<a class="headerlink" href="#extract-a-tar-file" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">archive</span><span class="o">.</span><span class="n">tar</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-a-compressed-archive-tar-gz">
+<h5>Creating a compressed archive(.tar.gz)<a class="headerlink" href="#creating-a-compressed-archive-tar-gz" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">cvzf</span> <span class="n">archive</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="n">my_folder</span>
+</pre></div>
+</div>
+</section>
+<section id="extracting-a-compressed-archive-tar-gz">
+<h5>Extracting a compressed archive(.tar.gz)<a class="headerlink" href="#extracting-a-compressed-archive-tar-gz" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xvzf</span> <span class="n">archive</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="other-useful-tools">
+<h3>Other useful tools<a class="headerlink" href="#other-useful-tools" title="Link to this heading">#</a></h3>
+<section id="environment-variables">
+<h4>Environment variables<a class="headerlink" href="#environment-variables" title="Link to this heading">#</a></h4>
+<section id="define-variables">
+<h5>Define variables<a class="headerlink" href="#define-variables" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VARIABLE</span><span class="o">=</span><span class="n">value</span>    <span class="c1">## No space around =</span>
+</pre></div>
+</div>
+</section>
+<section id="variable-reference">
+<h5>Variable reference<a class="headerlink" href="#variable-reference" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$VARIABLE     ## echo $VARIABLE
+</pre></div>
+</div>
+</section>
+<section id="commonly-used-environment-variables">
+<h5>Commonly used environment variables<a class="headerlink" href="#commonly-used-environment-variables" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>$USER</strong>: the login user</p></li>
+<li><p><strong>$HOME</strong>: the home directory</p></li>
+<li><p><strong>$PWD</strong>: the current directory</p></li>
+<li><p><strong>$PATH</strong>: A list of directories which will be checked for executable files</p></li>
+</ul>
+</section>
+</section>
+<section id="redirection">
+<h4>Redirection: &gt;, &gt;&gt;, &lt;<a class="headerlink" href="#redirection" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code>: Overwrites the contents of a file with the command’s output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>`cat file1 file2 &gt; files`
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>: Appends the output to the end of an existing file</p></li>
+</ul>
+<p>​ <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">file3</span> <span class="pre">&gt;&gt;</span> <span class="pre">files</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code>: Uses the contents of a file as input to a command</p></li>
+</ul>
+<p>​ <code class="docutils literal notranslate"><span class="pre">sort</span> <span class="pre">&lt;</span> <span class="pre">names.txt</span></code></p>
+</section>
+<section id="pipe">
+<h4>Pipe: |<a class="headerlink" href="#pipe" title="Link to this heading">#</a></h4>
+<p>Pipes in Linux are a powerful feature that allows you to connect the output of one command directly as the input to another command. This is a key concept in Unix/Linux philosophy, which promotes the use of small, modular tools that can be combined to perform complex tasks.</p>
+<p>A pipe is represented by the <code class="docutils literal notranslate"><span class="pre">|</span></code> symbol. When you place a pipe between two commands, the standard output (<code class="docutils literal notranslate"><span class="pre">stdout</span></code>) of the command on the left of the pipe becomes the standard input (<code class="docutils literal notranslate"><span class="pre">stdin</span></code>) for the command on the right.</p>
+<section id="id22">
+<h5>Usage<a class="headerlink" href="#id22" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">command1</span> <span class="o">|</span> <span class="n">command2</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sort</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">uniq</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>sort file.txt</strong>: Sorts the lines in file.txt.</p></li>
+<li><p><strong>uniq</strong>: Removes duplicate lines from the sorted output.</p></li>
+</ul>
+</section>
+</section>
+<section id="wildcards-selecting-multiple-files-directories-based-on-patterns">
+<h4>Wildcards: selecting multiple files/directories based on patterns<a class="headerlink" href="#wildcards-selecting-multiple-files-directories-based-on-patterns" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>*</strong>: Represents zero or more characters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">-</span> <span class="o">**</span>\<span class="o">*.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span><span class="o">**</span>  <span class="n">matches</span> <span class="nb">all</span> <span class="n">fastq</span><span class="o">.</span><span class="n">gz</span> <span class="n">files</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>?</strong>: Represents a single character:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> - **file?.txt** matches &quot;file1.txt&quot;, &quot;fileA.txt&quot;, but not &quot;file12.txt&quot;.
+</pre></div>
+</div>
+</li>
+<li><p><strong>[]</strong>: Represents a single character within a specified range or set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">-</span> <span class="o">**</span><span class="p">[</span><span class="n">abc</span><span class="p">]</span><span class="n">at</span><span class="o">**</span> <span class="n">matches</span> <span class="s2">&quot;bat&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="ow">or</span> <span class="s2">&quot;aat&quot;</span><span class="o">.</span>
+ <span class="o">-</span> <span class="o">**</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">**</span> <span class="n">matches</span> <span class="nb">any</span> <span class="n">single</span> <span class="n">digit</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="alias">
+<h4>Alias<a class="headerlink" href="#alias" title="Link to this heading">#</a></h4>
+<p>An alias in Linux is a custom shortcut or abbreviation for a command or a series of commands. Once defined, you can use the alias in place of the original command.</p>
+<section id="creating-an-alias">
+<h5>Creating an alias<a class="headerlink" href="#creating-an-alias" title="Link to this heading">#</a></h5>
+<p>To create an alias, use the alias command followed by the name you want to give the alias and the command it should execute.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">alias_name</span><span class="o">=</span><span class="s1">&#39;command&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id23">
+<h5>Example<a class="headerlink" href="#id23" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">ll</span><span class="o">=</span><span class="s1">&#39;ls -l&#39;</span>
+<span class="n">alias</span> <span class="n">la</span><span class="o">=</span><span class="s1">&#39;ls -a&#39;</span>
+<span class="n">alias</span> <span class="n">mav</span><span class="o">=</span><span class="s1">&#39;module avail&#39;</span>
+<span class="n">alias</span> <span class="n">ml</span><span class="o">=</span><span class="s1">&#39;module load&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-alias">
+<h5>Using alias<a class="headerlink" href="#using-alias" title="Link to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[yzhang85@login-prod-03 MPI]$ ll
+total 31
+-rwxrwx--- 1 yzhang85 yzhang85 16256 May 16 07:57 hello_mpi*
+-rw-rw---- 1 yzhang85 yzhang85   731 May 16 07:56 hello_mpi.c
+-rwxrwxr-x 1 yzhang85 yzhang85  8392 Dec 23  2023 hello_world*
+-rwxrwxr-x 1 yzhang85 yzhang85   731 Oct 31  2023 hello_world.c*
+-rwxrwxr-x 1 yzhang85 yzhang85  4053 Oct 31  2023 mpi_hello_world.c*
+
+[yzhang85@login-prod-03 MPI]$ mav blast
+-------------------------------- /opt/shared/Modules/modulefiles-rhel6 --------------------------
+   blast/2.2.24    blast/2.2.31    blast/2.3.0    blast/2.8.1
+
+------------------------------- /cluster/tufts/hpc/tools/module ---------------------------------
+   blast-plus/2.11.0    ncbi-magicblast/1.5.0
+
+------------------------------- /cluster/tufts/biocontainers/modules -----------------------------
+   blast/2.15.0 (D)
+
+  Where:
+   D:  Default Module
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ln-s-softlink">
+<h4>ln -s: softlink<a class="headerlink" href="#ln-s-softlink" title="Link to this heading">#</a></h4>
+<p>A <strong>soft link</strong> (also known as a symbolic link or symlink) is a type of file in Linux that points to another file or directory. It’s essentially a shortcut that references the location of another file, allowing you to access it from a different location in the filesystem.</p>
+<section id="id24">
+<h5>Usage<a class="headerlink" href="#id24" title="Link to this heading">#</a></h5>
+<p>To create a soft link, you use the <code class="docutils literal notranslate"><span class="pre">ln</span></code> command with the <code class="docutils literal notranslate"><span class="pre">-s</span></code> option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">target_file</span> <span class="n">link_name</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>target_file: The file or directory you want to link to.</p></li>
+<li><p>link_name: The name of the symlink that will point to the target.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<section id="conditional-statements-and-loops">
+<h2>Conditional Statements and Loops<a class="headerlink" href="#conditional-statements-and-loops" title="Link to this heading">#</a></h2>
+<section id="for">
+<h3>for<a class="headerlink" href="#for" title="Link to this heading">#</a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, we can execute a set of commands for a finite number of times for every item in a list.</p>
+<section id="syntax">
+<h4>Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">VARIABLE</span> <span class="ow">in</span> <span class="n">LIST</span>
+<span class="n">do</span>
+  <span class="n">command1</span>
+  <span class="n">command2</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+</section>
+<section id="id25">
+<h4>Example<a class="headerlink" href="#id25" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for query in /cluster/tufts/Yourlab/input/*.fasta
+do
+    echo &quot;Running BLAST for $query&quot;
+    blastn -query $query -db /path/to/database -out ${query%.fasta}_blast_results.txt -outfmt 6
+done
+</pre></div>
+</div>
+</section>
+</section>
+<section id="while">
+<h3>while<a class="headerlink" href="#while" title="Link to this heading">#</a></h3>
+<p>The command next to <code class="docutils literal notranslate"><span class="pre">while</span></code> is evaluated. If it is evaluated to be true, then the commands between <code class="docutils literal notranslate"><span class="pre">do</span></code> and <code class="docutils literal notranslate"><span class="pre">done</span></code> are executed.</p>
+<section id="id26">
+<h4>Syntax<a class="headerlink" href="#id26" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">[</span> <span class="n">condition</span> <span class="p">]</span>
+<span class="n">do</span>
+   <span class="n">command1</span>
+   <span class="n">command2</span>
+   <span class="n">command3</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+</section>
+<section id="id27">
+<h4>Example<a class="headerlink" href="#id27" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># File containing the list of sequence files</span>
+<span class="n">file_list</span><span class="o">=</span><span class="s2">&quot;sequence_files.txt&quot;</span>
+<span class="c1"># Path to the BLAST database</span>
+<span class="n">blast_db</span><span class="o">=</span><span class="s2">&quot;/path/to/blast_database&quot;</span>
+
+<span class="c1"># Read the list of files line by line</span>
+<span class="k">while</span> <span class="n">IFS</span><span class="o">=</span> <span class="n">read</span> <span class="o">-</span><span class="n">r</span> <span class="n">sequence_file</span>
+<span class="n">do</span>
+    <span class="c1"># Check if the file exists</span>
+    <span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;$sequence_file&quot;</span> <span class="p">];</span> <span class="n">then</span>
+        <span class="n">echo</span> <span class="s2">&quot;Processing $sequence_file&quot;</span>
+        <span class="c1"># Run BLAST on the current sequence file</span>
+        <span class="n">blastn</span> <span class="o">-</span><span class="n">query</span> <span class="s2">&quot;$sequence_file&quot;</span> <span class="o">-</span><span class="n">db</span> <span class="s2">&quot;$blast_db&quot;</span> <span class="o">-</span><span class="n">out</span> <span class="s2">&quot;${sequence_file%.fasta}_blast_results.txt&quot;</span> <span class="o">-</span><span class="n">outfmt</span> <span class="mi">6</span>
+        <span class="n">echo</span> <span class="s2">&quot;Finished processing $sequence_file&quot;</span>
+    <span class="k">else</span>
+        <span class="n">echo</span> <span class="s2">&quot;File $sequence_file not found&quot;</span>
+    <span class="n">fi</span>
+<span class="n">done</span> <span class="o">&lt;</span> <span class="s2">&quot;$file_list&quot;</span>
+
+<span class="n">echo</span> <span class="s2">&quot;All files have been processed.&quot;</span>
+</pre></div>
+</div>
+<p>The content of <code class="docutils literal notranslate"><span class="pre">sequence_files.txt</span></code> is the name of all of the query fasta files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sequence1</span><span class="o">.</span><span class="n">fasta</span>
+<span class="n">sequence2</span><span class="o">.</span><span class="n">fasta</span>
+<span class="n">sequence3</span><span class="o">.</span><span class="n">fasta</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="if-conditionals-in-a-bash-script">
+<h3>if: conditionals in a bash script<a class="headerlink" href="#if-conditionals-in-a-bash-script" title="Link to this heading">#</a></h3>
+<p>In bioinformatics, if statements are used to make conditional decisions in scripts, such as checking whether a file or result already exists before performing data analysis or processing tasks, thus optimizing workflows and avoiding redundant computations.</p>
+<section id="id28">
+<h4>Syntax<a class="headerlink" href="#id28" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">[</span> <span class="n">commands</span> <span class="p">]</span>
+<span class="n">then</span>
+  <span class="p">[</span> <span class="k">if</span><span class="o">-</span><span class="n">statements</span> <span class="p">]</span>
+<span class="k">elif</span> <span class="p">[</span><span class="n">commands</span><span class="p">]</span>
+  <span class="p">[</span> <span class="k">elif</span><span class="o">-</span><span class="n">statements</span> <span class="p">]</span>
+<span class="k">else</span>
+  <span class="p">[</span> <span class="k">else</span><span class="o">-</span><span class="n">statements</span> <span class="p">]</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+</section>
+<section id="id29">
+<h4>Example<a class="headerlink" href="#id29" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Define the paths for input files and output file</span>
+<span class="n">input_bam</span><span class="o">=</span><span class="s2">&quot;/path/to/genomic_data.bam&quot;</span>
+<span class="n">output_vcf</span><span class="o">=</span><span class="s2">&quot;/path/to/output_directory/variants.vcf&quot;</span>
+
+<span class="c1"># Check if the output VCF file already exists</span>
+<span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;$output_vcf&quot;</span> <span class="p">];</span> <span class="n">then</span>
+    <span class="n">echo</span> <span class="s2">&quot;Output file $output_vcf already exists. Skipping the variant calling step.&quot;</span>
+<span class="k">else</span>
+    <span class="n">echo</span> <span class="s2">&quot;Output file $output_vcf does not exist. Running variant calling.&quot;</span>
+
+    <span class="c1"># Run the variant calling tool (e.g., bcftools)</span>
+    <span class="n">bcftools</span> <span class="n">mpileup</span> <span class="o">-</span><span class="n">Ou</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">reference_genome</span><span class="o">.</span><span class="n">fasta</span> <span class="s2">&quot;$input_bam&quot;</span> <span class="o">|</span> \
+    <span class="n">bcftools</span> <span class="n">call</span> <span class="o">-</span><span class="n">mv</span> <span class="o">-</span><span class="n">Ov</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;$output_vcf&quot;</span>
+
+    <span class="n">echo</span> <span class="s2">&quot;Variant calling complete. Results saved to $output_vcf&quot;</span>
+<span class="n">fi</span>
+</pre></div>
+</div>
+<p>This if statement ensures that the variant calling process is skipped if the output file already exists, preventing unnecessary computations and saving processing time. This approach is useful in bioinformatics workflows where redundant analyses can be avoided by checking for existing results.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="00-hpc.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">HPC Terminology</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-bioinfo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Bioinformatics on Tufts HPC</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> What is Linux?
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files-and-file-system">Files and File System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#everything-is-a-file">Everything is a file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-permissions">File permissions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-organization">File organization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#must-known-linux-unix-tools">Must-known Linux/Unix Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-and-directory-management">File and Directory Management</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pwd-print-the-current-working-directory">pwd: print the current working directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cd-change-directory">cd: change directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Usage</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#shortcuts">Shortcuts</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ls-list-all-the-files-in-the-given-directory">ls: list all the files in the given directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Usage</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#common-options">Common options:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chmod-manage-file-permissions">chmod: manage file permissions</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#symbolic-notation">Symbolic Notation</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-updating-permissions-with-r">Recursive updating permissions with -R</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#touch-create-new-files-or-update-timestamps">touch: create new files or update timestamps</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#create-new-file">Create new file</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#update-timestamps-of-existing-files">Update timestamps of existing files</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mkdir-create-new-directory">mkdir: create new directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Usage</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#common-option">Common option</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mv-move-a-file-directory-to-a-new-location-or-rename-it">mv: move a file/directory to a new location or rename it</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Usage</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Common option</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cp-copy-a-file-directory">cp: copy a file/directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Usage</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Common option</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rm-remove-files-directories">rm: remove files/directories</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Usage</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Common option</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-processing">Text processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cat-catenate-files-joins-their-contents">cat: catenate files(joins their contents)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Usage</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Common option</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#head-tail-display-the-beginning-end-of-a-file">head/tail: display the beginning/end of a file</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Usage</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Common option</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#less-more-view-the-content-of-a-file-page-by-page">less/more: view the content of a file page by page</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Usage</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation-with-less">Navigation with less</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation-with-more">Navigation with more</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cut-extract-sections-from-each-line-of-files">cut: Extract sections from each line of files</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Usage</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Common options</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-sort-lines-of-text-files">sort: Sort lines of text files</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-lines-alphabetically">Sort lines alphabetically</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-lines-numerically">Sort lines numerically</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-by-a-specific-column">Sort by a specific column</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-by-multiple-columns">Sort by multiple columns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uniq-report-or-filter-out-repeated-lines-in-a-file">uniq: Report or filter out repeated lines in a file.</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Usage</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#grep-extracting-lines-matching-not-matching-a-pattern">grep:Extracting lines matching (not matching) a pattern</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Usage</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Common option</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sed-stream-editor-for-modifying-file-content">sed: Stream editor for modifying file content</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#substitution-search-and-replace">Substitution (Search and Replace)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#in-place-substitution">In-place substitution</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#delete-lines">Delete lines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-compression-and-archiving">Data Compression and Archiving</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gzip-compress-files">gzip: Compress files</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#compress-file-files">Compress file/files</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-the-original-file">Keep the Original File</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#compress-the-folder">Compress the folder</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gunzip-decompress-gz-files">gunzip: decompress .gz files</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#decompress-files">Decompress files</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-the-compressed-file">Keep the Compressed File</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tar-archive-multiple-files-into-one-or-extract-them">tar: Archive multiple files into one or extract them.</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-tar-archive-without-compression">Create a .tar archive without compression</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-a-tar-file">Extract a tar file</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-compressed-archive-tar-gz">Creating a compressed archive(.tar.gz)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-a-compressed-archive-tar-gz">Extracting a compressed archive(.tar.gz)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-tools">Other useful tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-variables">Environment variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#define-variables">Define variables</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-reference">Variable reference</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#commonly-used-environment-variables">Commonly used environment variables</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#redirection">Redirection: &gt;, &gt;&gt;, &lt;</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pipe">Pipe: |</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Usage</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wildcards-selecting-multiple-files-directories-based-on-patterns">Wildcards: selecting multiple files/directories based on patterns</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alias">Alias</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-an-alias">Creating an alias</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Example</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#using-alias">Using alias</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ln-s-softlink">ln -s: softlink</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-statements-and-loops">Conditional Statements and Loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for">for</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Example</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#while">while</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Syntax</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">Example</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-conditionals-in-a-bash-script">if: conditionals in a bash script</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">Syntax</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/bio/workshops/intro-to-bioinfo/01-linux.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/bio/workshops/intro-to-bioinfo/01-linux.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: bio/workshops/intro-to-bioinfo/01-linux"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Mar 12, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="switcher-label">Version:</p></div>
+      
+        <div class="footer-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

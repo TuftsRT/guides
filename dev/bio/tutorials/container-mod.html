@@ -1,0 +1,834 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Package installation and module generation with container-mod &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/bugfix.css?v=e4cc360a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/navbar.css?v=3ee3464b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/switcher.css?v=7c802369" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bio/tutorials/container-mod';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/bio/tutorials/container-mod.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand" href="de-seq2-in-r-ood.html" />
+    <link rel="prev" title="Getting started with bioinformatics tools" href="bioinformatics-tools-guide.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250312" />
+    <meta name="docbuild:last-update" content="Mar 12, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/jumbo.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/jumbo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">TTS Research Technology Guides</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Bioinformatics 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Bioinformatics Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bioinformatics-tools-guide.html">Getting started with bioinformatics tools</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Package installation and module generation with container-mod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="de-seq2-in-r-ood.html">A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exploring-python-bioinformatics.html">Exploring Python Bioinformatics Packages with Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-computing-in-r.html">Parallel Computing in R for Bioinformatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-read-alignment.html">Parallel read alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running-nfcore-pipelines.html">Running nfcore pipelines on Tufts HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sc-rna-seq-analysis-with-r.html">scRNA-seq analysis with RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set-up-conda-environment.html">Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-singularity.html">Using containers with Singularity to ensure reproducible research</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../workshops/index.html">Bioinformatics Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databases/index.html">Bioinformatics Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/index.html">Bioinformatics Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Bioinformatics Lectures and Trainings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/index.html">Additional Resources</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Bioinformatics</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Bioinformatics Tutorials</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Package installation...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="package-installation-and-module-generation-with-container-mod">
+<h1>Package installation and module generation with container-mod<a class="headerlink" href="#package-installation-and-module-generation-with-container-mod" title="Link to this heading">#</a></h1>
+<p>Yucheng Zhang, Bioinformatics Engineer, TTS Research Technology
+Yucheng.Zhang&#64;tufts.edu</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>High-Performance Computing (HPC) environments are designed to handle computationally intensive tasks by leveraging powerful hardware, distributed systems, and parallel processing. However, these same features can make package installation more challenging compared to standard desktop or cloud-based computing environments. Users typically lack administrative rights (root access) on HPC systems. This means they cannot use system-wide package managers like apt, yum, or brew to install dependencies.</p>
+<p>Tools like Singularity and Apptainer allow users to package their software and dependencies in a container, ensuring portability across HPC systems. However, many users are intimidated by the container syntax.</p>
+<p>To simplify the usage of using containers on Tufts HPC, we developed <a class="reference external" href="https://github.com/TuftsRT/container-mod">container-mod</a>. <code class="docutils literal notranslate"><span class="pre">container-mod</span></code> can serve four purposes:</p>
+<ul class="simple">
+<li><p>pull the singularity container image from a public container registry, such as <a class="reference external" href="https://hub.docker.com/">Docker Hub</a>.</p></li>
+<li><p>generate the modulefile in lmod format, allowing to use <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">xx</span></code> command to use the application.</p></li>
+<li><p>generate the wrapper executables for the programs provided by the application.</p></li>
+<li><p>[Optional] generate the jupyter kernel for containers (e.g., pytorch and tensorflow) that are able to run on Jupyter Lab/Notebook.</p></li>
+</ul>
+</section>
+<section id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">container</span><span class="o">-</span><span class="n">mod</span> <span class="n">pull</span><span class="o">|</span><span class="n">module</span><span class="o">|</span><span class="n">exec</span><span class="o">|</span><span class="n">pipe</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">URIs</span>
+</pre></div>
+</div>
+</section>
+<section id="subcommands">
+<h2>Subcommands<a class="headerlink" href="#subcommands" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>pull <URI>: Pulls a container image from the provided URI.</p></li>
+<li><p>module <URI>: Generates a module file for the container.</p></li>
+<li><p>exec <URI>: Creates a wrapper bash script for the container’s programs.</p></li>
+<li><p>pipe <URI>: Executes a pipeline that pulls the image, generates a module file, and creates the executable in one step.</p></li>
+</ul>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>-d|–dir DIR: Specify the output directory for images, module files, and executables. Defaults to the current directory.</p></li>
+<li><p>-f|–force: Force overwrite of existing module files, or executables. Default is to skip existing files.</p></li>
+<li><p>-m|–moduledir DIR: Specify the directory that stores module files that can be used as template. Defaults to modulefiles.</p></li>
+<li><p>-u|–update: If set, the repository app file will be updated with new version information.</p></li>
+<li><p>-p|–personal: Create personal module files in the privatemodules directory (default is no).</p></li>
+<li><p>-h|–help: Display this help message and exit.</p></li>
+</ul>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<p>For users, the recommended subcommand is <code class="docutils literal notranslate"><span class="pre">pipe</span></code>, this will run all three subcommands (<code class="docutils literal notranslate"><span class="pre">pull</span></code>, <code class="docutils literal notranslate"><span class="pre">module</span></code>, and <code class="docutils literal notranslate"><span class="pre">exec</span></code>). For options, users need to use <code class="docutils literal notranslate"><span class="pre">-p</span></code> or <code class="docutils literal notranslate"><span class="pre">--personal</span></code>. This will generate the modulefile into users’ <code class="docutils literal notranslate"><span class="pre">$HOME/privatemodules</span></code>.
+Another commonly used option is <code class="docutils literal notranslate"><span class="pre">-j</span></code> or <code class="docutils literal notranslate"><span class="pre">--jupyter</span></code>. Many users prefer to run python codes within Jupyter lab/notebook on <a class="reference external" href="http://ondemand.pax.tufts.edu">Tufts Open OnDemand platform</a>. However, to enable python codes to run Jupyter lab/notebook, users need to write a jupyter kernel first. These steps are too complex for beginner users. Adding <code class="docutils literal notranslate"><span class="pre">-j</span></code> or <code class="docutils literal notranslate"><span class="pre">--jupyter</span></code>, the jupyter kernel will be created for users. When users start Jupyter lab/notebook, the newly created kernel is ready to use.</p>
+</section>
+<section id="load-the-module">
+<h2>Load the module<a class="headerlink" href="#load-the-module" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">container</span><span class="o">-</span><span class="n">mod</span>
+<span class="n">container</span><span class="o">-</span><span class="n">mod</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<section id="vcftools">
+<h3>vcftools<a class="headerlink" href="#vcftools" title="Link to this heading">#</a></h3>
+<section id="create-the-app">
+<h4>Create the app<a class="headerlink" href="#create-the-app" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">container</span><span class="o">-</span><span class="n">mod</span> <span class="n">pipe</span> <span class="o">-</span><span class="n">p</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">quay</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">biocontainers</span><span class="o">/</span><span class="n">vcftools</span><span class="p">:</span><span class="mf">0.1.16</span><span class="o">--</span><span class="n">h9a82719_5</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Generating</span> <span class="n">executable</span> <span class="k">for</span> <span class="n">vcftools</span>
+<span class="o">+-------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">To</span> <span class="n">use</span> <span class="n">this</span> <span class="n">module</span><span class="p">,</span> <span class="n">load</span> <span class="n">the</span> <span class="n">following</span> <span class="n">modules</span><span class="p">:</span> <span class="o">|</span>
+<span class="o">|</span>                                                 <span class="o">|</span>
+<span class="o">|</span>     <span class="n">module</span> <span class="n">load</span> <span class="n">use</span><span class="o">.</span><span class="n">own</span>                         <span class="o">|</span>
+<span class="o">|</span>     <span class="n">module</span> <span class="n">load</span> <span class="n">vcftools</span><span class="o">/</span><span class="mf">0.1.16</span>                 <span class="o">|</span>
+<span class="o">|</span>                                                 <span class="o">|</span>
+<span class="o">+-------------------------------------------------+</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="use-vcftools">
+<h3>Use vcftools<a class="headerlink" href="#use-vcftools" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">use</span><span class="o">.</span><span class="n">own</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">vcftools</span><span class="o">/</span><span class="mf">0.1.16</span>
+</pre></div>
+</div>
+</section>
+<section id="pytorch-with-jupyter-support">
+<h3>pytorch with jupyter support<a class="headerlink" href="#pytorch-with-jupyter-support" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">container</span><span class="o">-</span><span class="n">mod</span> <span class="n">pipe</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">j</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">tuftsttsrt</span><span class="o">/</span><span class="n">pytorch</span><span class="p">:</span><span class="mf">2.5.1</span><span class="o">-</span><span class="n">cuda12</span><span class="mf">.1</span><span class="o">-</span><span class="n">cudnn9</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">jupyter</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+---------------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">To</span> <span class="n">use</span> <span class="n">this</span> <span class="n">module</span><span class="p">,</span> <span class="n">load</span> <span class="n">the</span> <span class="n">following</span> <span class="n">modules</span><span class="p">:</span>               <span class="o">|</span>
+<span class="o">|</span>                                                               <span class="o">|</span>
+<span class="o">|</span>     <span class="n">module</span> <span class="n">load</span> <span class="n">use</span><span class="o">.</span><span class="n">own</span>                                       <span class="o">|</span>
+<span class="o">|</span>     <span class="n">module</span> <span class="n">load</span> <span class="n">pytorch</span><span class="o">/</span><span class="mf">2.5.1</span><span class="o">-</span><span class="n">cuda12</span><span class="mf">.1</span><span class="o">-</span><span class="n">cudnn9</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">jupyter</span> <span class="o">|</span>
+<span class="o">|</span>                                                               <span class="o">|</span>
+<span class="o">+---------------------------------------------------------------+</span>
+<span class="n">Generating</span> <span class="n">Jupyter</span> <span class="n">kernel</span> <span class="k">for</span> <span class="n">pytorch</span> <span class="n">version</span> <span class="mf">2.5.1</span><span class="o">-</span><span class="n">cuda12</span><span class="mf">.1</span><span class="o">-</span><span class="n">cudnn9</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">jupyter</span>
+<span class="n">Jupyter</span> <span class="n">kernel</span> <span class="n">created</span><span class="p">:</span> <span class="n">pytorch</span><span class="o">-</span><span class="mf">2.5.1</span><span class="o">-</span><span class="n">cuda12</span><span class="mf">.1</span><span class="o">-</span><span class="n">cudnn9</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">jupyter</span>
+<span class="n">You</span> <span class="n">can</span> <span class="n">now</span> <span class="n">launch</span> <span class="n">Jupyter</span> <span class="n">Notebook</span> <span class="ow">and</span> <span class="n">select</span> <span class="n">the</span> <span class="n">kernel</span> <span class="s1">&#39;pytorch 2.5.1-cuda12.1-cudnn9-runtime-jupyter&#39;</span>
+<span class="n">If</span> <span class="n">you</span><span class="s1">&#39;d like to edit the kernel, you can find it at: /cluster/home/tutln02/.local/share/jupyter/kernels/pytorch-2.5.1-cuda12.1-cudnn9-runtime-jupyter</span>
+</pre></div>
+</div>
+</section>
+<section id="use-pytorch-in-a-jobscript">
+<h3>Use pytorch in a jobscript<a class="headerlink" href="#use-pytorch-in-a-jobscript" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">use</span><span class="o">.</span><span class="n">own</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">pytorch</span><span class="o">/</span><span class="mf">2.5.1</span><span class="o">-</span><span class="n">cuda12</span><span class="mf">.1</span><span class="o">-</span><span class="n">cudnn9</span><span class="o">-</span><span class="n">runtime</span><span class="o">-</span><span class="n">jupyter</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="profile-mode-for-the-lab-group">
+<h2>Profile mode for the lab/group<a class="headerlink" href="#profile-mode-for-the-lab-group" title="Link to this heading">#</a></h2>
+<p><strong>container-mod</strong> allows users to create containerized modules for shared use within their group. The PI or lab/group manager can create a group profile, which can then be used by specifying the <code class="docutils literal notranslate"><span class="pre">--profile</span></code> option on the command line.</p>
+<section id="generate-a-lab-group-profile">
+<h3>Generate a lab/group profile<a class="headerlink" href="#generate-a-lab-group-profile" title="Link to this heading">#</a></h3>
+<p>Users need to store the profile in <code class="docutils literal notranslate"><span class="pre">$HOME/container-apps/profiles</span></code>.</p>
+<p>The following profile <code class="docutils literal notranslate"><span class="pre">$HOME/container-apps/profiles/rt</span></code> for my <code class="docutils literal notranslate"><span class="pre">rt</span></code> group will illustrate the required environment variables.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MOD_EXISTING_DIR_DEF=&quot;/cluster/tufts/biocontainers/modules&quot;
+PUBLIC_IMAGEDIR=&quot;/cluster/tufts/rt/shared/container-modules/images&quot;
+PUBLIC_EXECUTABLE_DIR=&quot;/cluster/tufts/rt/shared/container-modules/tools&quot;
+IMG_OUTDIR=$PUBLIC_IMAGEDIR
+MOD_OUTDIR=&quot;/cluster/tufts/rt/shared/container-modules/modules&quot;
+EXEC_OUTDIR=$PUBLIC_EXECUTABLE_DIR
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>MOD_EXISTING_DIR_DEF</strong>: container-mod can reuse existing modulefiles. This variable defines the directory where those modulefiles are located. This can be left blank.</p></li>
+<li><p><strong>PUBLIC_IMAGEDIR</strong>: The path to the directory containing singularity images.</p></li>
+<li><p><strong>PUBLIC_EXECUTABLE_DIR</strong>: Directory containing bash wrappers for the target program’s commands.</p></li>
+<li><p><strong>IMG_OUTDIR</strong>: This path specifies the directory where singularity images are downloaded. In most cases, this is the same as the directory specified by the <strong>$PUBLIC_IMAGEDIR</strong> environment variable.</p></li>
+<li><p><strong>MOD_OUTDIR</strong>: The directory in which modulefiles will be stored.</p></li>
+<li><p><strong>EXEC_OUTDIR</strong>: Bash wrappers for the target program’s commands are stored here, usually same with <strong>$PUBLIC_EXECUTABLE_DIR</strong>.</p></li>
+</ul>
+</section>
+<section id="list-available-profiles">
+<h3>List available profiles<a class="headerlink" href="#list-available-profiles" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ container-mod -l   # or container-mod --list
+rt  (Personal Profile)
+biocontainers
+ngc
+</pre></div>
+</div>
+</section>
+<section id="run-container-mod-with-lab-group-profile">
+<h3>Run container-mod with lab/group profile<a class="headerlink" href="#run-container-mod-with-lab-group-profile" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ container-mod pipe --profile rt docker://staphb/samtools:1.21
+</pre></div>
+</div>
+<p>After the workflow is completed, you can see the following message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+----------------------------------------------------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">To</span> <span class="n">use</span> <span class="n">this</span> <span class="n">module</span><span class="p">,</span> <span class="n">load</span> <span class="n">the</span> <span class="n">following</span> <span class="n">modules</span><span class="p">:</span>                                                    <span class="o">|</span>
+<span class="o">|</span>                                                                                                    <span class="o">|</span>
+<span class="o">|</span>     <span class="n">module</span> <span class="n">use</span> <span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">rt</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">container</span><span class="o">-</span><span class="n">modules</span><span class="o">/</span><span class="n">modules</span>                                  <span class="o">|</span>
+<span class="o">|</span>     <span class="n">module</span> <span class="n">load</span> <span class="n">samtools</span><span class="o">/</span><span class="mf">1.21</span>                                                                      <span class="o">|</span>
+<span class="o">|</span>                                                                                                    <span class="o">|</span>
+<span class="o">|</span> <span class="n">The</span> <span class="n">modulefile</span> <span class="ow">is</span> <span class="n">located</span> <span class="n">at</span><span class="p">:</span> <span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">rt</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">container</span><span class="o">-</span><span class="n">modules</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">samtools</span><span class="o">/</span><span class="mf">1.21</span><span class="o">.</span><span class="n">lua</span> <span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+</section>
+<section id="run-the-lab-group-shared-module">
+<h3>Run the lab/group shared module<a class="headerlink" href="#run-the-lab-group-shared-module" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module use /cluster/tufts/rt/shared/container-modules/modules
+$ module load samtools/1.21
+$ samtools view -S -b input.sam &gt; output.bam
+$ samtools sort output.bam -o output.sorted.bam
+$ samtools index output.sorted.bam
+$ samtools flagstat output.sorted.bam
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="bioinformatics-tools-guide.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Getting started with bioinformatics tools</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="de-seq2-in-r-ood.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Package installation and module generation with container-mod
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subcommands">Subcommands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options">Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-module">Load the module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vcftools">vcftools</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-app">Create the app</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-vcftools">Use vcftools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-with-jupyter-support">pytorch with jupyter support</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-pytorch-in-a-jobscript">Use pytorch in a jobscript</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-mode-for-the-lab-group">Profile mode for the lab/group</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-lab-group-profile">Generate a lab/group profile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-available-profiles">List available profiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-container-mod-with-lab-group-profile">Run container-mod with lab/group profile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-lab-group-shared-module">Run the lab/group shared module</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item"> 
+<div class="tocsection tags-label">
+  <i class="fa-solid fa-tags"></i> Tags
+</div>
+<ul class="tocsection tags-list">
+  <li class="tag-item">
+    <a href="../../tags/bioinformatics.html" class="tag-link">bioinformatics</a>
+  </li>
+</ul>
+ </div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/bio/tutorials/container-mod.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/bio/tutorials/container-mod.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: bio/tutorials/container-mod"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Mar 12, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="switcher-label">Version:</p></div>
+      
+        <div class="footer-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

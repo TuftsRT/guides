@@ -1,0 +1,805 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spaceranger &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/bugfix.css?v=e4cc360a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/navbar.css?v=3ee3464b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/switcher.css?v=7c802369" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bio/apps/spaceranger';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/bio/apps/spaceranger.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Spades" href="spades.html" />
+    <link rel="prev" title="Signalp6" href="signalp6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250312" />
+    <meta name="docbuild:last-update" content="Mar 12, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/jumbo.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/jumbo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">TTS Research Technology Guides</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Bioinformatics 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Bioinformatics Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workshops/index.html">Bioinformatics Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databases/index.html">Bioinformatics Databases</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Bioinformatics Applications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="abcreg.html">Abcreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="abyss.html">Abyss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alphafold.html">Alphafold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="amplify.html">Amplify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="angsd.html">Angsd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bakta.html">Bakta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bbmap.html">Bbmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bbtools.html">Bbtools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcftools.html">Bcftools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beast2.html">Beast2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bedops.html">Bedops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bedtools.html">Bedtools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="biobakery-workflows.html">Biobakery_workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="biopython.html">Biopython</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blast.html">Blast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bowtie2.html">Bowtie2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="breseq.html">Breseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="busco.html">Busco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cactus.html">Cactus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canu.html">Canu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cellprofiler.html">Cellprofiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cellprofiler-analyst.html">Cellprofiler-analyst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cellranger.html">Cellranger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cellranger-atac.html">Cellranger-atac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cellrank.html">Cellrank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cufflinks.html">Cufflinks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cutadapt.html">Cutadapt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diamond.html">Diamond</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dorado.html">Dorado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dragon-ora.html">Dragon_ora</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exonerate.html">Exonerate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fasta3.html">Fasta3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastp.html">Fastp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastqc.html">Fastqc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastspar.html">Fastspar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fasttree.html">Fasttree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtlong.html">Filtlong</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flye.html">Flye</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fqtk.html">Fqtk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gatk4.html">Gatk4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="genomad.html">geNomad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geomx-ngs-pipeline.html">Geomx_ngs_pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guppy.html">Guppy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hap-py.html">Hap.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hisat2.html">Hisat2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmmer.html">Hmmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="homer.html">Homer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="htseq.html">Htseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="humann.html">Humann</a></li>
+<li class="toctree-l2"><a class="reference internal" href="impute2.html">Impute2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iqtree2.html">Iqtree2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kallisto.html">Kallisto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kneaddata.html">Kneaddata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kraken2.html">Kraken2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="krakentools.html">Krakentools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macs2.html">Macs2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macs3.html">Macs3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="masurca.html">Masurca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medaka.html">Medaka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="megahit.html">Megahit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meme.html">Meme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metaphlan.html">Metaphlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="miniasm.html">Miniasm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minimap2.html">Minimap2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minipolish.html">Minipolish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mirdeep2.html">Mirdeep2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mirge3.html">Mirge3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mothur.html">Mothur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiqc.html">Multiqc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-ampliseq.html">Nf-core-ampliseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-atacseq.html">Nf-core-atacseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-bacass.html">Nf-core-bacass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-bamtofastq.html">Nf-core-bamtofastq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-chipseq.html">Nf-core-chipseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-denovotranscript.html">Nf-core-denovotranscript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-detaxizer.html">Nf-core-detaxizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-differentialabundance.html">Nf-core-differentialabundance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-eager.html">Nf-core-eager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-fetchngs.html">Nf-core-fetchngs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-funcscan.html">Nf-core-funcscan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-hic.html">Nf-core-hic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-mag.html">Nf-core-mag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-metatdenovo.html">Nf-core-metatdenovo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-methylseq.html">Nf-core-methylseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-nanoseq.html">Nf-core-nanoseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-nanostring.html">Nf-core-nanostring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-pangenome.html">Nf-core-pangenome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-proteinfold.html">Nf-core-proteinfold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-raredisease.html">Nf-core-raredisease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-rnafusion.html">Nf-core-rnafusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-rnaseq.html">Nf-core-rnaseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-rnasplice.html">Nf-core-rnasplice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-sarek.html">Nf-core-sarek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-scrnaseq.html">Nf-core-scrnaseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-smrnaseq.html">Nf-core-smrnaseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-taxprofiler.html">Nf-core-taxprofiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-viralrecon.html">Nf-core-viralrecon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orthofinder.html">Orthofinder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandaseq.html">Pandaseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parabricks.html">Parabricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pepper-deepvariant.html">Pepper_deepvariant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="petitefinder.html">Petitefinder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="picard.html">Picard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plink.html">Plink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plink2.html">Plink2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polypolish.html">Polypolish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prokka.html">Prokka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime2.html">Qiime2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qualimap.html">Qualimap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r-bioinformatics.html">R-bioinformatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r-scrnaseq.html">R-scrnaseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r-shinyngs.html">R-shinyngs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raven-assembler.html">Raven-assembler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raxml-ng-mpi.html">Raxml-ng-mpi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relion.html">Relion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rmats2sashimiplot.html">Rmats2sashimiplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rnaquast.html">Rnaquast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rosettafold2.html">Rosettafold2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rosettafold2na.html">Rosettafold2na</a></li>
+<li class="toctree-l2"><a class="reference internal" href="salmon.html">Salmon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samtools.html">Samtools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scanpy.html">Scanpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scvelo.html">Scvelo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signalp6.html">Signalp6</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Spaceranger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spades.html">Spades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="squid.html">Squid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="star.html">Star</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subread.html">Subread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tmhmm.html">Tmhmm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transdecoder.html">Transdecoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trgt.html">Trgt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trim-galore.html">Trim-galore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trimmomatic.html">Trimmomatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trinity.html">Trinity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trinotate.html">Trinotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trycycler.html">Trycycler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vcftools.html">Vcftools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viennarna.html">Viennarna</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Bioinformatics Lectures and Trainings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/index.html">Additional Resources</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Bioinformatics</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Bioinformatics Applications</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Spaceranger
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="spaceranger">
+<h1>Spaceranger<a class="headerlink" href="#spaceranger" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Spaceranger is a set of analysis pipelines that process Visium Spatial
+Gene Expression data with brightfield and fluorescence microscope
+images.</p>
+</section>
+<section id="versions">
+<h2>Versions<a class="headerlink" href="#versions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>1.3.1</p></li>
+<li><p>2.0.0</p></li>
+<li><p>3.0.0</p></li>
+</ul>
+</section>
+<section id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>spaceranger</p></li>
+</ul>
+</section>
+<section id="example-job">
+<h2>Example job<a class="headerlink" href="#example-job" title="Link to this heading">#</a></h2>
+<p>Adjust slurm options based on job requirements (<a class="reference external" href="https://slurm.schedmd.com/pdfs/summary.pdf">slurm cheat sheet</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -p partitionName  # batch, gpu, preempt, mpi or your group&#39;s own partition</span>
+<span class="c1">#SBATCH -t 1:00:00  # Runtime limit (D-HH:MM:SS)</span>
+<span class="c1">#SBATCH -N 1   # Number of nodes</span>
+<span class="c1">#SBATCH -n 1   # Number of tasks per node</span>
+<span class="c1">#SBATCH -c 4   # Number of CPU cores per task</span>
+<span class="c1">#SBATCH --mem=8G       # Memory required per node</span>
+<span class="c1">#SBATCH --job-name=spaceranger # Job name</span>
+<span class="c1">#SBATCH --mail-type=FAIL,BEGIN,END     # Send an email when job fails, begins, and finishes</span>
+<span class="c1">#SBATCH --mail-user=your.email@tufts.edu       # Email address for notifications</span>
+<span class="c1">#SBATCH --error=%x-%J-%u.err   # Standard error file: &lt;job_name&gt;-&lt;job_id&gt;-&lt;username&gt;.err</span>
+<span class="c1">#SBATCH --output=%x-%J-%u.out  # Standard output file: &lt;job_name&gt;-&lt;job_id&gt;-&lt;username&gt;.out</span>
+
+<span class="n">module</span> <span class="n">purge</span>   <span class="c1">### Optional, but highly recommended.</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">spaceranger</span><span class="o">/</span><span class="n">XXXX</span>   <span class="c1">### Latest version is recommended.</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="signalp6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Signalp6</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="spades.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spades</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Spaceranger
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versions">Versions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">Commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-job">Example job</a></li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/bio/apps/spaceranger.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/bio/apps/spaceranger.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: bio/apps/spaceranger"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Mar 12, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="switcher-label">Version:</p></div>
+      
+        <div class="footer-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

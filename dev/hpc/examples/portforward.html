@@ -1,0 +1,770 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Port Forwarding on HPC Cluster &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/bugfix.css?v=e4cc360a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/navbar.css?v=3ee3464b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/switcher.css?v=7c802369" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/examples/portforward';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/hpc/examples/portforward.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Private Modules" href="privatemodule.html" />
+    <link rel="prev" title="OnDemand - Debugging" href="ondemand-debugging.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250312" />
+    <meta name="docbuild:last-update" content="Mar 12, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/jumbo.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/jumbo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">TTS Research Technology Guides</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     High-Performance Computing 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../terminology/index.html">HPC Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../access/index.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/index.html">Computing Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/index.html">Slurm Job Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../application/index.html">Software Applications</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples and Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="helloworld.html">HelloWorld HPC Cluster Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Port Forwarding on HPC Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshots.html">File Recovery on Tufts HPC Cluster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../help.html">Help with HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../policy.html">HPC Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage-request.html">HPC Cluster Storage Request</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >High-Performance Computing</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Examples and Tutorials</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Port Forwarding on HPC Cluster
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="port-forwarding-on-hpc-cluster">
+<h1>Port Forwarding on HPC Cluster<a class="headerlink" href="#port-forwarding-on-hpc-cluster" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>In this walkthrough, we’ll see how to run interactive applications from the Cluster on GPUs.
+This is particularly useful for running <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Lab</span></code> and <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code>, but can will work for any applications that run from a port on a Cluster compute node.</p>
+</div></blockquote>
+<section id="login-to-the-cluster-from-terminal-with-ssh">
+<h2>1. Login to the Cluster from terminal with SSH<a class="headerlink" href="#login-to-the-cluster-from-terminal-with-ssh" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh your_username@login.pax.tufts.edu
+</pre></div>
+</div>
+<p>Follow any Two-Factor Authentication directions that are necessary.</p>
+</section>
+<section id="optional-start-a-tmux-session-on-the-login-node">
+<h2>2. (Optional) Start a tmux session on the login node<a class="headerlink" href="#optional-start-a-tmux-session-on-the-login-node" title="Link to this heading">#</a></h2>
+<p>Tmux allows us to run multiple terminals from the same interface. It makes the port forwarding process a bit simpler, but not required.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load tmux
+$ tmux new -s mynewsession
+</pre></div>
+</div>
+<p>Further details on <a class="reference internal" href="../application/30-tmux.html"><span class="doc std std-doc">Tmux</span></a></p>
+</section>
+<section id="start-interactive-session">
+<h2>3. Start interactive session<a class="headerlink" href="#start-interactive-session" title="Link to this heading">#</a></h2>
+<p>More <a class="reference internal" href="../compute/gpu.html"><span class="doc std std-doc">GPU resource</span></a> details</p>
+<p>First, we’ll need to request GPU resources and then load in the required software for working with CUDA and Python.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ srun -p gpu --gres=gpu:a100:1 -n 8 --mem=16g -t 3-0 --pty bash
+$ module load cuda/12.2
+$ module load anaconda/2021.05
+</pre></div>
+</div>
+<p>More instructions on requesting resources can be find in the <a class="reference internal" href="../slurm/index.html"><span class="doc std std-doc">Slurm</span></a> section</p>
+<p>You will need to activate the conda env you are interested in using and create a ipykernel for it. To continue, enter the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source activate
+</pre></div>
+</div>
+<p>To check possible conda environments, use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda env list
+</pre></div>
+</div>
+<p>As an example, we’ll use the <code class="docutils literal notranslate"><span class="pre">cupy</span></code> environment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda activate cupy
+</pre></div>
+</div>
+<p>You should now see the name of your environment in parentheses in front of your command prompt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ (cupy) [your_username@your_compute_node ~]$
+</pre></div>
+</div>
+<section id="before-we-can-run-jupyter-make-sure-to-be-in-the-directory-you-need-to-be-and-know-the-node-name-of-your-compute-node">
+<h3>Before we can run <code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>, make sure to be in the directory you need to be and know the node name of your compute node<a class="headerlink" href="#before-we-can-run-jupyter-make-sure-to-be-in-the-directory-you-need-to-be-and-know-the-node-name-of-your-compute-node" title="Link to this heading">#</a></h3>
+<p>To isolate the name of your compute node, enter the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~
+$ hostname | cut -f 1 -d .
+</pre></div>
+</div>
+</section>
+<section id="start-jupyter-notebook-or-jupyter-lab">
+<h3>4. Start <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> or <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Lab</span></code><a class="headerlink" href="#start-jupyter-notebook-or-jupyter-lab" title="Link to this heading">#</a></h3>
+<p>Make sure that you start it without a browser and you pick a port that is not used. You can expect to see similar output:</p>
+<p><strong>For Jupyter Notebook:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter notebook --no-browser --port=7777
+
+[I 15:41:01.399 NotebookApp] Serving notebooks from local directory: /cluster/home/your_username
+[I 15:41:01.399 NotebookApp] Jupyter Notebook 6.4.12 is running at:
+[I 15:41:01.399 NotebookApp] http://localhost:7777/?token=082b7ce58015a6189458316f4b75aa22d1b8b2108705afb1
+[I 15:41:01.399 NotebookApp]  or http://127.0.0.1:7777/?token=082b7ce58015a6189458316f4b75aa22d1b8b2108705afb1
+[I 15:41:01.399 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 15:41:01.404 NotebookApp]
+
+    To access the notebook, open this file in a browser:
+        file:///cluster/home/your_username/.local/share/jupyter/runtime/nbserver-49351-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:7777/?token=082b7ce58015a6189458316f4b75aa22d1b8b2108705afb1
+     or http://127.0.0.1:7777/?token=082b7ce58015a6189458316f4b75aa22d1b8b2108705afb1
+</pre></div>
+</div>
+<p><strong>For Jupyter Lab:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter lab --no-browser --port=7777
+
+[I 2022-10-05 15:53:26.897 ServerApp] jupyterlab | extension was successfully linked.
+[I 2022-10-05 15:53:27.433 ServerApp] nbclassic | extension was successfully linked.
+[I 2022-10-05 15:53:28.433 LabApp] JupyterLab extension loaded from /cluster/tufts/hpc/tools/anaconda/202105/lib/python3.8/site-packages/jupyterlab
+[I 2022-10-05 15:53:28.433 LabApp] JupyterLab application directory is /cluster/tufts/hpc/tools/anaconda/202105/share/jupyter/lab
+[I 2022-10-05 15:53:28.437 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2022-10-05 15:53:28.467 ServerApp] nbclassic | extension was successfully loaded.
+[I 2022-10-05 15:53:28.468 ServerApp] Serving notebooks from local directory: /cluster/home/your_username
+[I 2022-10-05 15:53:28.468 ServerApp] Jupyter Server 1.4.1 is running at:
+[I 2022-10-05 15:53:28.468 ServerApp] http://localhost:7777/lab?token=07509cd7fb3e7dfcbee37fdd9514b96fe627e78d3178d4aa
+[I 2022-10-05 15:53:28.468 ServerApp]  or http://127.0.0.1:7777/lab?token=07509cd7fb3e7dfcbee37fdd9514b96fe627e78d3178d4aa
+[I 2022-10-05 15:53:28.468 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2022-10-05 15:53:28.477 ServerApp]
+
+    To access the server, open this file in a browser:
+        file:///cluster/home/your_username/.local/share/jupyter/runtime/jpserver-50343-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:7777/lab?token=07509cd7fb3e7dfcbee37fdd9514b96fe627e78d3178d4aa
+     or http://127.0.0.1:7777/lab?token=07509cd7fb3e7dfcbee37fdd9514b96fe627e78d3178d4aa
+</pre></div>
+</div>
+</section>
+</section>
+<section id="port-forwarding-from-the-terminal">
+<h2>5. Port Forwarding from the terminal<a class="headerlink" href="#port-forwarding-from-the-terminal" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>If you are using Tmux:</strong></p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">b</span></code></p></li>
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">c</span></code>
+This will create and open a new terminal window.</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>If you are not using Tmux:</strong>
+Open a NEW terminal.</p></li>
+</ul>
+<p><strong>For both:</strong>
+SSH into your compute node using port forwarding. Follow the model below. In this case, the <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> was started on node “s1cmp002” and port is “7777”, but this may change for your case.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh -tt your_username@login.cluster.tufts.edu -L 7777:localhost:7777 ssh s1cmp002 -L 7777:localhost:7777
+</pre></div>
+</div>
+</section>
+<section id="using-the-application">
+<h2>6. Using the application<a class="headerlink" href="#using-the-application" title="Link to this heading">#</a></h2>
+<p>Now open a browser window, and copy &amp; paste in the URL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:7777/?token=082b7ce58015a6189458316f4b75aa22d1b8b2108705afb1
+</pre></div>
+</div>
+</section>
+<section id="enjoy">
+<h2>Enjoy!<a class="headerlink" href="#enjoy" title="Link to this heading">#</a></h2>
+<p>If you need something to play with, there are example notebooks with notes in <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/hpc/tools/GPU_with_Python</span></code>. Please copy the folder or the notebooks to your personal space (home directory /cluster/home/your_username or research storage space /cluster/tufts/your_lab_name).</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ondemand-debugging.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">OnDemand - Debugging</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="privatemodule.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Private Modules</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Port Forwarding on HPC Cluster
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#login-to-the-cluster-from-terminal-with-ssh">1. Login to the Cluster from terminal with SSH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-start-a-tmux-session-on-the-login-node">2. (Optional) Start a tmux session on the login node</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-interactive-session">3. Start interactive session</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-we-can-run-jupyter-make-sure-to-be-in-the-directory-you-need-to-be-and-know-the-node-name-of-your-compute-node">Before we can run <code class="docutils literal notranslate"><span class="pre">Jupyter</span></code>, make sure to be in the directory you need to be and know the node name of your compute node</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-jupyter-notebook-or-jupyter-lab">4. Start <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> or <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Lab</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#port-forwarding-from-the-terminal">5. Port Forwarding from the terminal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-application">6. Using the application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enjoy">Enjoy!</a></li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/hpc/examples/portforward.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/hpc/examples/portforward.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: hpc/examples/portforward"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Mar 12, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="switcher-label">Version:</p></div>
+      
+        <div class="footer-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

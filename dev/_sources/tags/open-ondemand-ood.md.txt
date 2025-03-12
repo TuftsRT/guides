@@ -1,0 +1,8 @@
+---
+orphan:
+nosearch:
+html_theme.sidebar_secondary.remove: true
+---
+# open-ondemand-ood
+- [](/hpc/examples/index.md)
+- [](/hpc/index.md)

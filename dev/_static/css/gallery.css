@@ -1,0 +1,7 @@
+.gallery-directive path {
+  fill: var(--pst-color-primary);
+}
+
+.gallery-directive svg {
+  margin-right: 0.5em;
+}

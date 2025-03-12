@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>scRNA-seq analysis with RStudio &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/bugfix.css?v=e4cc360a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/navbar.css?v=3ee3464b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/switcher.css?v=7c802369" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bio/tutorials/sc-rna-seq-analysis-with-r';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/bio/tutorials/sc-rna-seq-analysis-with-r.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis" href="set-up-conda-environment.html" />
+    <link rel="prev" title="Running nfcore pipelines on Tufts HPC" href="running-nfcore-pipelines.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250312" />
+    <meta name="docbuild:last-update" content="Mar 12, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/jumbo.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/jumbo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">TTS Research Technology Guides</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Bioinformatics 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Bioinformatics Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bioinformatics-tools-guide.html">Getting started with bioinformatics tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container-mod.html">Package installation and module generation with container-mod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="de-seq2-in-r-ood.html">A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exploring-python-bioinformatics.html">Exploring Python Bioinformatics Packages with Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-computing-in-r.html">Parallel Computing in R for Bioinformatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-read-alignment.html">Parallel read alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running-nfcore-pipelines.html">Running nfcore pipelines on Tufts HPC</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">scRNA-seq analysis with RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set-up-conda-environment.html">Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-singularity.html">Using containers with Singularity to ensure reproducible research</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../workshops/index.html">Bioinformatics Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databases/index.html">Bioinformatics Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/index.html">Bioinformatics Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Bioinformatics Lectures and Trainings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/index.html">Additional Resources</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Bioinformatics</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Bioinformatics Tutorials</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      scRNA-seq analysis...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="scrna-seq-analysis-with-rstudio">
+<h1>scRNA-seq analysis with RStudio<a class="headerlink" href="#scrna-seq-analysis-with-rstudio" title="Link to this heading">#</a></h1>
+<p>Shirley Li, Bioinformatician, TTS Research Technology
+xue.li37&#64;tufts.edu</p>
+<p>Date: 2024-11-01</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>In this tutorial, you will learn how to:</p>
+<ul class="simple">
+<li><p>Set up an R environment for single-cell RNA-seq analysis.</p></li>
+<li><p>Install and configure popular R packages for scRNA-seq, such as <strong>Seurat</strong>, <strong>SingleCellExperiment</strong>, and <strong>scater</strong>.</p></li>
+<li><p>Load, preprocess, and analyze scRNA-seq data in R with Seurat.</p></li>
+</ul>
+</section>
+<section id="set-up-rstudio-on-open-ondemand-for-scrna-seq">
+<h2>Set Up RStudio on Open OnDemand for scRNA-seq<a class="headerlink" href="#set-up-rstudio-on-open-ondemand-for-scrna-seq" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Open OnDemand RStudio App</strong></p>
+<ul class="simple">
+<li><p>Log in to <a class="reference external" href="https://ondemand.pax.tufts.edu/">Open OnDemand</a> with your UTLN</p></li>
+<li><p>You will see <code class="docutils literal notranslate"><span class="pre">RStudio</span> <span class="pre">Pax</span></code> under <code class="docutils literal notranslate"><span class="pre">Interactive</span> <span class="pre">Apps</span></code> and other topic-specific Rstudio apps under <code class="docutils literal notranslate"><span class="pre">Bioinformatics</span> <span class="pre">Apps</span></code></p></li>
+<li><p>Fill in the parameters according to your needs. Start with 64GB and 12 cores.</p></li>
+<li><p>Launch the job.</p></li>
+</ul>
+</li>
+<li><p><strong>Load Packages in R</strong>:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the necessary libraries for scRNA-seq analysis</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">Seurat</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">SeuratData</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">SingleCellExperiment</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">scater</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">scran</span><span class="p">)</span>
+<span class="c1"># code to install scRNAseq</span>
+<span class="c1"># BiocManager::install(&quot;scRNAseq&quot;)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">scRNAseq</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">monocle</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="single-cell-rna-seq-analysis-packages">
+<h2>Single-Cell RNA-seq Analysis Packages<a class="headerlink" href="#single-cell-rna-seq-analysis-packages" title="Link to this heading">#</a></h2>
+<section id="seurat">
+<h3>Seurat<a class="headerlink" href="#seurat" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Summary</strong>: <code class="docutils literal notranslate"><span class="pre">Seurat</span></code> is a widely used R package for single-cell RNA-seq analysis. It supports preprocessing, clustering, dimensionality reduction, differential expression, and visualization of single-cell data.</p></li>
+<li><p><strong>Paper</strong>: Stuart, T., Butler, A., Hoffman, P., Hafemeister, C., Papalexi, E., Mauck III, W. M., et al. (2019). “Comprehensive Integration of Single-Cell Data.” <em>Cell</em>, 177(7), 1888–1902. <a class="reference external" href="https://doi.org/10.1016/j.cell.2019.05.031">https://doi.org/10.1016/j.cell.2019.05.031</a></p></li>
+<li><p><strong>Website</strong>: <a class="reference external" href="https://satijalab.org/seurat/">https://satijalab.org/seurat/</a></p></li>
+</ul>
+</section>
+<section id="singlecellexperiment">
+<h3>SingleCellExperiment<a class="headerlink" href="#singlecellexperiment" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Summary</strong>: <code class="docutils literal notranslate"><span class="pre">SingleCellExperiment</span></code> provides a flexible framework for representing single-cell data in R, including assays, row/column metadata, and reduced dimensions. It serves as a foundational data structure in the Bioconductor ecosystem.</p></li>
+<li><p><strong>Paper</strong>: Lun, A. T. L., &amp; Risso, D. (2023). “SingleCellExperiment: an object class for single-cell analysis in R.” <em>F1000Research</em>, 7, 521. <a class="reference external" href="https://doi.org/10.12688/f1000research.16298.2">https://doi.org/10.12688/f1000research.16298.2</a></p></li>
+<li><p><strong>Website</strong>: <a class="reference external" href="https://bioconductor.org/packages/SingleCellExperiment/">https://bioconductor.org/packages/SingleCellExperiment/</a></p></li>
+</ul>
+</section>
+<section id="scater">
+<h3>scater<a class="headerlink" href="#scater" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Summary</strong>: <code class="docutils literal notranslate"><span class="pre">scater</span></code> is used for pre-processing and quality control of single-cell data. It helps to generate various visualizations and metrics for understanding the quality and variability within scRNA-seq datasets.</p></li>
+<li><p><strong>Paper</strong>: McCarthy, D. J., Campbell, K. R., Lun, A. T. L., &amp; Wills, Q. F. (2017). “Scater: Pre-processing, quality control, normalization and visualization of single-cell RNA-seq data in R.” <em>Bioinformatics</em>, 33(8), 1179–1186. <a class="reference external" href="https://doi.org/10.1093/bioinformatics/btw777">https://doi.org/10.1093/bioinformatics/btw777</a></p></li>
+<li><p><strong>Website</strong>: <a class="reference external" href="https://bioconductor.org/packages/scater/">https://bioconductor.org/packages/scater/</a></p></li>
+</ul>
+</section>
+<section id="scran">
+<h3>scran<a class="headerlink" href="#scran" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Summary</strong>: <code class="docutils literal notranslate"><span class="pre">scran</span></code> provides efficient methods for single-cell RNA-seq data normalization, clustering, and marker detection. It’s optimized for scalability with large datasets and includes several statistical tools for single-cell analysis.</p></li>
+<li><p><strong>Paper</strong>: Lun, A. T. L., &amp; Marioni, J. C. (2017). “Overcoming systematic errors caused by log-transformation of normalized single-cell RNA sequencing data.” <em>Nature Methods</em>, 13, 795–798. <a class="reference external" href="https://doi.org/10.1038/nmeth.3963">https://doi.org/10.1038/nmeth.3963</a></p></li>
+<li><p><strong>Website</strong>: <a class="reference external" href="https://bioconductor.org/packages/scran/">https://bioconductor.org/packages/scran/</a></p></li>
+</ul>
+</section>
+<section id="scrnaseq">
+<h3>scRNAseq<a class="headerlink" href="#scrnaseq" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Summary</strong>: <code class="docutils literal notranslate"><span class="pre">scRNAseq</span></code> is a data package that includes several example scRNA-seq datasets for practice and benchmarking of analytical pipelines.</p></li>
+<li><p><strong>Paper</strong>: Available on Bioconductor.</p></li>
+<li><p><strong>Website</strong>: <a class="reference external" href="https://bioconductor.org/packages/scRNAseq/">https://bioconductor.org/packages/scRNAseq/</a></p></li>
+</ul>
+</section>
+<section id="monocle">
+<h3>Monocle<a class="headerlink" href="#monocle" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Summary</strong>: <code class="docutils literal notranslate"><span class="pre">Monocle</span></code> is a package designed for analyzing single-cell trajectories. It identifies and orders cells based on gene expression dynamics over pseudotime, which can help reveal cell differentiation and developmental processes.</p></li>
+<li><p><strong>Paper</strong>: Trapnell, C., Cacchiarelli, D., Grimsby, J., Pokharel, P., Li, S., Morse, M., et al. (2014). “The dynamics and regulators of cell fate decisions are revealed by pseudotemporal ordering of single cells.” <em>Nature Biotechnology</em>, 32(4), 381–386. https://doi.org/10.1038/nbt.2859</p></li>
+<li><p><strong>Website</strong>: http://cole-trapnell-lab.github.io/monocle-release/</p></li>
+</ul>
+</section>
+</section>
+<section id="example-code-for-data-loading-and-visualization">
+<h2>Example Code for Data Loading and Visualization<a class="headerlink" href="#example-code-for-data-loading-and-visualization" title="Link to this heading">#</a></h2>
+<p>Below is a step-by-step example code for loading, preprocessing, and visualizing single-cell RNA-seq data with Seurat, including comments to explain each step:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load packages</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">Seurat</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">SeuratData</span><span class="p">)</span>
+
+<span class="c1"># Load the pbmc3k dataset (replace with your dataset if needed)</span>
+<span class="n">SeuratData</span><span class="o">::</span><span class="nf">InstallData</span><span class="p">(</span><span class="s">&quot;pbmc3k&quot;</span><span class="p">)</span>
+<span class="nf">data</span><span class="p">(</span><span class="s">&quot;pbmc3k&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Replace with your dataset</span>
+
+<span class="c1"># Create a Seurat object</span>
+<span class="n">pbmc_counts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">pbmc3k</span><span class="o">@</span><span class="n">assays</span><span class="o">$</span><span class="n">RNA</span><span class="o">@</span><span class="n">counts</span><span class="p">)</span>
+<span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">CreateSeuratObject</span><span class="p">(</span><span class="n">counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pbmc_counts</span><span class="p">)</span>
+
+<span class="c1"># Quality control and filtering</span>
+<span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">pbmc</span><span class="p">,</span><span class="w"> </span><span class="n">subset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nFeature_RNA</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">nFeature_RNA</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">2500</span><span class="p">)</span>
+
+<span class="c1"># Normalize the data</span>
+<span class="c1"># This step adjusts for differences in sequencing depth across cells.</span>
+<span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">NormalizeData</span><span class="p">(</span><span class="n">pbmc</span><span class="p">)</span>
+
+<span class="c1"># Identify variable features</span>
+<span class="c1"># Variable features are genes that exhibit high variability across cells.</span>
+<span class="c1"># These features are used in downstream analyses to focus on informative genes.</span>
+<span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">FindVariableFeatures</span><span class="p">(</span><span class="n">pbmc</span><span class="p">)</span>
+
+<span class="c1"># Scale the data</span>
+<span class="c1"># Scaling centers and scales each gene, making them comparable for PCA and clustering.</span>
+<span class="c1"># This is an important step for most dimensionality reduction techniques.</span>
+<span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ScaleData</span><span class="p">(</span><span class="n">pbmc</span><span class="p">)</span>
+
+<span class="c1"># Step 4: Run Principal Component Analysis (PCA)</span>
+<span class="c1"># PCA reduces the dimensionality of the data, allowing us to identify major sources of variation.</span>
+<span class="c1"># Here, we use the variable features identified earlier to perform PCA.</span>
+<span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">RunPCA</span><span class="p">(</span><span class="n">pbmc</span><span class="p">)</span>
+
+<span class="c1"># Step 5: Find Neighbors</span>
+<span class="c1"># This step identifies nearest neighbors for each cell based on their PCA scores.</span>
+<span class="c1"># It is an essential step before clustering the cells.</span>
+<span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">FindNeighbors</span><span class="p">(</span><span class="n">pbmc</span><span class="p">,</span><span class="w"> </span><span class="n">dims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span>
+
+<span class="c1"># Step 6: Cluster the cells</span>
+<span class="c1"># Clustering groups cells with similar expression profiles, aiding in cell-type identification.</span>
+<span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">FindClusters</span><span class="p">(</span><span class="n">pbmc</span><span class="p">,</span><span class="w"> </span><span class="n">resolution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span>
+
+<span class="c1"># Step 7: Run UMAP for visualization</span>
+<span class="c1"># UMAP (Uniform Manifold Approximation and Projection) is a popular method for visualizing high-dimensional data.</span>
+<span class="c1"># This step reduces the data to two dimensions, making it easier to visualize clusters.</span>
+<span class="n">pbmc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">RunUMAP</span><span class="p">(</span><span class="n">pbmc</span><span class="p">,</span><span class="w"> </span><span class="n">dims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span>
+
+<span class="c1"># Step 8: Plot the UMAP results</span>
+<span class="c1"># This visualization shows the clusters identified by Seurat, each in a different color.</span>
+<span class="nf">DimPlot</span><span class="p">(</span><span class="n">pbmc</span><span class="p">,</span><span class="w"> </span><span class="n">reduction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;umap&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This annotated code provides a guide for basic steps of single-cell RNA-seq analysis in Seurat, from data normalization to visualization.</p>
+<p><strong>For a detailed tutorial on using Seurat, please visit <a class="reference external" href="https://satijalab.org/seurat/articles/pbmc3k_tutorial.html">this link</a></strong></p>
+</section>
+<section id="memory-and-core-requirements">
+<h2>Memory and Core Requirements<a class="headerlink" href="#memory-and-core-requirements" title="Link to this heading">#</a></h2>
+<section id="memory-requirements">
+<h3><strong>Memory Requirements</strong><a class="headerlink" href="#memory-requirements" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Small Dataset (up to ~10,000 cells)</strong>: 16–32 GB RAM should suffice for typical preprocessing and clustering tasks.</p></li>
+<li><p><strong>Medium Dataset (up to ~50,000 cells)</strong>: 32–64 GB RAM is recommended to handle most analyses comfortably.</p></li>
+<li><p><strong>Large Dataset (over ~100,000 cells)</strong>: 128 GB or more might be needed, particularly for steps like dimensionality reduction and integration.</p></li>
+</ul>
+</section>
+<section id="core-requirements">
+<h3><strong>Core Requirements</strong><a class="headerlink" href="#core-requirements" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Small Analyses</strong>: For small datasets or exploratory analysis, 2–4 cores are generally sufficient.</p></li>
+<li><p><strong>Medium to Large Analyses</strong>: For larger datasets, 8–16 cores are beneficial, especially for parallelizable steps such as normalization, dimensionality reduction, and clustering.</p></li>
+<li><p><strong>Very Large or High-throughput Analyses</strong>: Using 24 cores or more can help expedite analyses on large datasets, especially when utilizing parallelized workflows with packages like <code class="docutils literal notranslate"><span class="pre">BiocParallel</span></code>.</p></li>
+</ul>
+</section>
+<section id="example-setup-recommendations">
+<h3>Example Setup Recommendations<a class="headerlink" href="#example-setup-recommendations" title="Link to this heading">#</a></h3>
+<p>For a typical medium-sized scRNA-seq analysis in R, a setup with <strong>64 GB of memory and 8–12 cores</strong> is often effective. If you’re working with very large datasets or performing computationally intensive steps like integration across multiple datasets, consider <strong>128 GB of memory and 16 or more cores</strong> to optimize performance and speed.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="running-nfcore-pipelines.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Running nfcore pipelines on Tufts HPC</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="set-up-conda-environment.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> scRNA-seq analysis with RStudio
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-rstudio-on-open-ondemand-for-scrna-seq">Set Up RStudio on Open OnDemand for scRNA-seq</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-cell-rna-seq-analysis-packages">Single-Cell RNA-seq Analysis Packages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seurat">Seurat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singlecellexperiment">SingleCellExperiment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scater">scater</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scran">scran</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scrnaseq">scRNAseq</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monocle">Monocle</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-for-data-loading-and-visualization">Example Code for Data Loading and Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-and-core-requirements">Memory and Core Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-requirements"><strong>Memory Requirements</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-requirements"><strong>Core Requirements</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-setup-recommendations">Example Setup Recommendations</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item"> 
+<div class="tocsection tags-label">
+  <i class="fa-solid fa-tags"></i> Tags
+</div>
+<ul class="tocsection tags-list">
+  <li class="tag-item">
+    <a href="../../tags/bioinformatics.html" class="tag-link">bioinformatics</a>
+  </li>
+</ul>
+ </div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/bio/tutorials/sc-rna-seq-analysis-with-r.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/bio/tutorials/sc-rna-seq-analysis-with-r.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: bio/tutorials/sc-rna-seq-analysis-with-r"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Mar 12, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="switcher-label">Version:</p></div>
+      
+        <div class="footer-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

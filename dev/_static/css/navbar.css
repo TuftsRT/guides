@@ -1,0 +1,13 @@
+/* accommodate overflowing logo text */
+.navbar-header-items__start {
+  width: max-content;
+}
+
+.navbar-header-items__center {
+  justify-content: center;
+  flex: 1;
+}
+
+ul.navbar-nav {
+  flex-direction: row;
+}

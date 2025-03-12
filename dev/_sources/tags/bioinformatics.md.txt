@@ -1,0 +1,22 @@
+---
+orphan:
+nosearch:
+html_theme.sidebar_secondary.remove: true
+---
+# bioinformatics
+- [](/bio/apps/index.md)
+- [](/bio/databases/index.md)
+- [](/bio/index.md)
+- [](/bio/lectures/index.md)
+- [](/bio/resources/index.md)
+- [](/bio/tutorials/bioinformatics-tools-guide.md)
+- [](/bio/tutorials/container-mod.md)
+- [](/bio/tutorials/exploring-python-bioinformatics.md)
+- [](/bio/tutorials/index.md)
+- [](/bio/tutorials/parallel-computing-in-r.md)
+- [](/bio/tutorials/parallel-read-alignment.md)
+- [](/bio/tutorials/running-nfcore-pipelines.md)
+- [](/bio/tutorials/sc-rna-seq-analysis-with-r.md)
+- [](/bio/tutorials/set-up-conda-environment.md)
+- [](/bio/tutorials/using-singularity.md)
+- [](/bio/workshops/index.md)
