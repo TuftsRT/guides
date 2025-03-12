@@ -2,7 +2,7 @@
 tags: bioinformatics
 ---
 
-# Bioinformatics tutorials
+# Bioinformatics Tutorials
 
 Bioinformatics tutorials provided by Tufts Research Technology.
 

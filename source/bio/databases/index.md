@@ -2,7 +2,7 @@
 tags: bioinformatics
 ---
 
-# Bioinformatics databases
+# Bioinformatics Databases
 
 Tufts Research Technology provides a set of centrally-maintained scientific reference databases for HPC users. Below is a list of the datasets available. To request a new dataset or an update, please contact us at {{ email }}.
 

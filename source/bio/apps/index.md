@@ -2,7 +2,7 @@
 tags: bioinformatics
 ---
 
-# Bioinformatics applications
+# Bioinformatics Applications
 
 Below are bioinformatics applications deployed by Tufts Research Technology.
 

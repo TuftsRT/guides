@@ -2,7 +2,7 @@
 tags: bioinformatics
 ---
 
-# Additional resources
+# Additional Resources
 
 Archived resources or workshops provided by TTS or other Tufts institutes.
 Please note that some of the materials could contain outdated information. Always verify the relevance and accuracy of the content before applying the techniques in your research projects.
