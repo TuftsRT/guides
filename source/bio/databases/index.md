@@ -10,35 +10,35 @@ Tufts Research Technology provides a set of centrally-maintained scientific refe
 ---
 grid-columns: 1
 ---
-- header: "{fas}`dna;pst-color-primary` Alphafold"
+- header: "{fas}`dna` Alphafold"
   content: "Sequence databases required for alphafold v2"
   link: "alphafold.html"
 
-- header: "{fas}`dna;pst-color-primary` Biobakery"
+- header: "{fas}`dna` Biobakery"
   content: "Reference database for biobakery workflows"
   link: "biobakery.html"
 
-- header: "{fas}`dna;pst-color-primary` Diamond"
+- header: "{fas}`dna` Diamond"
   content: "NCIB nr database for Diamond"
   link: "diamond.html"
 
-- header: "{fas}`dna;pst-color-primary` Genomad"
+- header: "{fas}`dna` Genomad"
   content: "Genomad databases"
   link: "genomad_db.html"
 
-- header: "{fas}`dna;pst-color-primary` iGenomes"
+- header: "{fas}`dna` iGenomes"
   content: "Ready-to-use reference sequences and annotations from Illumina"
   link: "igenomes.html"
 
-- header: "{fas}`dna;pst-color-primary` Kraken2"
+- header: "{fas}`dna` Kraken2"
   content: "Refseq databases for taxonomic assignment of meta-genomics sequencing reads"
   link: "kraken2.html"
 
-- header: "{fas}`dna;pst-color-primary` Metaphlan"
+- header: "{fas}`dna` Metaphlan"
   content: "Metaphlan database files"
   link: "metaphlan.html"
 
-- header: "{fas}`dna;pst-color-primary` NCBI Blast"
+- header: "{fas}`dna` NCBI Blast"
   content: "NCBI blast databases"
   link: "ncbi.html"
 

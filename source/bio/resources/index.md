@@ -13,19 +13,19 @@ grid-columns: 1
 ---
 
 
-- header: "{fas}`dna;pst-color-primary` TTS Research Technology Bioinformatics Workshops"
+- header: "{fas}`dna` TTS Research Technology Bioinformatics Workshops"
   content: "Archived bioinformatics workshops provided by TTS Research Technology in 2022, 2023, 2024."
   link: "https://tuftsdatalab.github.io/tuftsWorkshops/"
 
-- header: "{fas}`dna;pst-color-primary` TTS Datalab bioinformatics workshops"
+- header: "{fas}`dna` TTS Datalab bioinformatics workshops"
   content: "Archived TTS Datalab bioinformatics workshops."
   link: "https://tuftsdatalab.github.io/Research_Technology_Bioinformatics/"
 
-- header: "{fas}`dna;pst-color-primary` BEST group bioinformatics workshops"
+- header: "{fas}`dna` BEST group bioinformatics workshops"
   content: "Bioinformatics workshops provided by Bioinformatics Education and Services at Tufts."
   link: "https://best-tufts.github.io/bioinformatics_workshops/"
 
-- header: "{fas}`dna;pst-color-primary` TTS Research Technology Bioinformatics Website"
+- header: "{fas}`dna` TTS Research Technology Bioinformatics Website"
   content: "Official website for bioinformatics resources provided by TTS Research Technology at Tufts."
   link: "https://it.tufts.edu/bioinformatics"
 ```
