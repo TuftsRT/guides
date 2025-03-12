@@ -31,7 +31,7 @@
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -465,7 +465,7 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="gpu-resources">
 <h1>GPU Resources<a class="headerlink" href="#gpu-resources" title="Link to this heading">#</a></h1>
-<p>GPUs (Graphics Processing Units) are essential for tasks requiring high parallelism, such as deep learning and simulations. In the context of HPC these devices no longer perform any graphics function, but the “graphics” name has stuck vs the more apt accelerator term. To lean more about accelerated computing visit https://blogs.nvidia.com/blog/what-is-accelerated-computing/.</p>
+<p>GPUs (Graphics Processing Units) are essential for tasks requiring high parallelism, such as deep learning and simulations. In the context of HPC these devices no longer perform any graphics function, but the “graphics” name has stuck vs the more apt accelerator term. To lean more about accelerated computing visit <a class="reference external" href="https://blogs.nvidia.com/blog/what-is-accelerated-computing/">https://blogs.nvidia.com/blog/what-is-accelerated-computing/</a>.</p>
 <p>NVIDIA GPUs are available in <code class="docutils literal notranslate"><span class="pre">gpu</span></code> and <code class="docutils literal notranslate"><span class="pre">preempt</span></code> public partitions as well as some labs private partitions. When scheduling batch or interactive jobs that need GPU you add the <code class="docutils literal notranslate"><span class="pre">--gres</span></code> option to your command. This allows you to select the type and quantity of GPUs needed.</p>
 <ul>
 <li><p>The simplest request is <code class="docutils literal notranslate"><span class="pre">--gres=gpu:1</span></code>, e.g.</p>
