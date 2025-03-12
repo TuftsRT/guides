@@ -1,0 +1,39 @@
+name: publish-page
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  publish-page:
+    runs-on: ubuntu-latest
+    steps:
+      - id: get-url
+        uses: tuftsrt/get-pages-url@v1
+      - id: build-and-deploy
+        uses: tuftsrt/sphinx-to-branch@v1
+        with:
+          source-branch: ${{ github.ref_name }}
+          source-directory: source
+          destination-directory: ${{ github.ref_name == 'main' && '.' || 'dev' }}
+          build-arguments: "--nitpicky --fail-on-warning"
+          use-bot: "true"
+          use-expect: "true"
+          expect-timeout: 300
+          expect-pattern-action: |
+            "trying URL" {
+              puts stderr "EXPECT: intercepted R package installation attempt"
+              exit 1
+            }
+            timeout {
+              puts stderr "EXPECT: build timed out after $EXPECT_TIMEOUT seconds"
+              exit 1
+            }
+        env:
+          BASEURL: ${{ steps.get-url.outputs.url }}

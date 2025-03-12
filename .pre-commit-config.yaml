@@ -1,0 +1,75 @@
+ci:
+  autofix_commit_msg: "[pre-commit.ci] automatic fixes"
+  autofix_prs: true
+  autoupdate_branch: develop
+  autoupdate_commit_msg: "[pre-commit.ci] automatic updates"
+  autoupdate_schedule: weekly
+
+repos:
+  - repo: https://github.com/srstevenson/nb-clean
+    rev: 4.0.1
+    hooks:
+      - id: nb-clean
+        name: clean notebooks
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: text-unicode-replacement-char
+        name: ensure all characters unicode
+  - repo: https://github.com/hukkin/mdformat
+    rev: 0.7.22
+    hooks:
+      - id: mdformat
+        name: format markdown files
+        additional_dependencies:
+          - mdformat-black
+          - mdformat-config
+          - mdformat-myst
+          - mdformat-simple-breaks
+        exclude: ".*/404.md$"
+  - repo: https://github.com/dzhu/rstfmt
+    rev: v0.0.14
+    hooks:
+      - id: rstfmt
+        name: format rst files
+  - repo: https://github.com/PyCQA/isort
+    rev: 6.0.1
+    hooks:
+      - id: isort
+        name: sort python imports
+  - repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+      - id: black-jupyter
+        name: apply black style
+  - repo: https://github.com/lorenzwalthert/precommit
+    rev: v0.4.3
+    hooks:
+      - id: style-files
+        name: apply tidyverse style
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+      - id: codespell
+        name: fix common spelling errors
+        args: ["--write-changes"]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+        name: verify yaml syntax
+      - id: trailing-whitespace
+        name: remove trailing whitespace
+      - id: end-of-file-fixer
+        name: ensure newline at end of file
+  - repo: https://github.com/TuftsRT/autoslug
+    rev: v1.0.4
+    hooks:
+      - id: autoslug
+        name: convert file and directory names to url slugs
+        args:
+          - "--error-limit=256"
+          - "--ignore-globs=**/build"
+          - "--max-length=32"
+          - "--num-digits=2"
+          - "--warn-limit=128"

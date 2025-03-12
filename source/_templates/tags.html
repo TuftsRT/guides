@@ -1,0 +1,12 @@
+{% if meta %} {% if "tags" in meta %}
+<div class="tocsection tags-label">
+  <i class="fa-solid fa-tags"></i> {{ _("Tags") }}
+</div>
+<ul class="tocsection tags-list">
+  {%- for tag in meta["tags"].split()|sort() %}
+  <li class="tag-item">
+    <a href="{{ pathto('tags/' ~ tag) }}" class="tag-link">{{ tag }}</a>
+  </li>
+  {%- endfor %}
+</ul>
+{% endif %} {% endif %}
