@@ -45,6 +45,18 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: bio/tutorials/*
+              - file: bio/workshops/index
+                subtrees:
+                  - entries:
+                      - file: bio/workshops/intro-to-bioinfo/index
+                        subtrees:
+                          - entries:
+                              - glob: bio/workshops/intro-to-bioinfo/*
+                      - file: bio/workshops/intro-to-singularity/index
+                        subtrees:
+                          - entries:
+                              - glob: bio/workshops/intro-to-singularity/*
+                      - glob: bio/workshops/*
               - file: bio/databases/index
                 subtrees:
                   - entries:
