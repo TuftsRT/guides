@@ -53,6 +53,18 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: bio/apps/*
+              - file: bio/lectures/index
+                subtrees:
+                  - entries:
+                      - file: bio/lectures/igdh-1001/index
+                        subtrees:
+                          - entries:
+                              - glob: bio/lectures/igdh-1001/*
+                      - file: bio/lectures/introduction-to-alphafold2/index
+                        subtrees:
+                          - entries:
+                              - glob: bio/lectures/introduction-to-alphafold2/*
+                      - glob: bio/lectures/*
               - file: bio/resources/index
       - url: https://go.tufts.edu/geospatial
         title: Geospatial
