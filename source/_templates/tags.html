@@ -1,4 +1,4 @@
-{% if "tags" in meta %}
+{% if meta %} {% if "tags" in meta %}
 <div class="tocsection tags-label">
   <i class="fa-solid fa-tags"></i> {{ _("Tags") }}
 </div>
@@ -9,4 +9,4 @@
   </li>
   {%- endfor %}
 </ul>
-{% endif %}
+{% endif %} {% endif %}
