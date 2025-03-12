@@ -139,8 +139,7 @@ myst_enable_extensions = [
     "tasklist",
 ]
 
-myst_linkify_fuzzy_links = False
-myst_heading_anchors = 3
+myst_heading_anchors = 2
 
 myst_substitutions = {
     "email": f"<{email}>",
