@@ -20,6 +20,7 @@
     "ipynb",
     "jupytext",
     "kernelspec",
+    "linkify",
     "mdformat",
     "MGHPCC",
     "nitpicky",
