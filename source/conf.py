@@ -39,6 +39,8 @@ announcement_file = "announcement.html"
 switcher_branch = "switcher"
 switcher_file = "switcher.json"
 
+exclude_patterns = ["**/README*"]
+
 extensions = [
     "gallery_directive",
     "myst_nb",
