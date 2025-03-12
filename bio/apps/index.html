@@ -1,0 +1,2148 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bioinformatics Applications &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/bugfix.css?v=e4cc360a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/navbar.css?v=3ee3464b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/switcher.css?v=7c802369" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bio/apps/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/bio/apps/index.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Abcreg" href="abcreg.html" />
+    <link rel="prev" title="Blast Databases" href="../databases/ncbi.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250312" />
+    <meta name="docbuild:last-update" content="Mar 12, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/jumbo.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/jumbo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">TTS Research Technology Guides</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Bioinformatics 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Bioinformatics Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workshops/index.html">Bioinformatics Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databases/index.html">Bioinformatics Databases</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Bioinformatics Applications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="abcreg.html">Abcreg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="abyss.html">Abyss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alphafold.html">Alphafold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="amplify.html">Amplify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="angsd.html">Angsd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bakta.html">Bakta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bbmap.html">Bbmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bbtools.html">Bbtools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bcftools.html">Bcftools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beast2.html">Beast2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bedops.html">Bedops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bedtools.html">Bedtools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="biobakery-workflows.html">Biobakery_workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="biopython.html">Biopython</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blast.html">Blast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bowtie2.html">Bowtie2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="breseq.html">Breseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="busco.html">Busco</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cactus.html">Cactus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canu.html">Canu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cellprofiler.html">Cellprofiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cellprofiler-analyst.html">Cellprofiler-analyst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cellranger.html">Cellranger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cellranger-atac.html">Cellranger-atac</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cellrank.html">Cellrank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cufflinks.html">Cufflinks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cutadapt.html">Cutadapt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diamond.html">Diamond</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dorado.html">Dorado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dragon-ora.html">Dragon_ora</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exonerate.html">Exonerate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fasta3.html">Fasta3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastp.html">Fastp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastqc.html">Fastqc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastspar.html">Fastspar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fasttree.html">Fasttree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filtlong.html">Filtlong</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flye.html">Flye</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fqtk.html">Fqtk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gatk4.html">Gatk4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="genomad.html">geNomad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geomx-ngs-pipeline.html">Geomx_ngs_pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guppy.html">Guppy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hap-py.html">Hap.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hisat2.html">Hisat2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmmer.html">Hmmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="homer.html">Homer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="htseq.html">Htseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="humann.html">Humann</a></li>
+<li class="toctree-l2"><a class="reference internal" href="impute2.html">Impute2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iqtree2.html">Iqtree2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kallisto.html">Kallisto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kneaddata.html">Kneaddata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kraken2.html">Kraken2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="krakentools.html">Krakentools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macs2.html">Macs2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macs3.html">Macs3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="masurca.html">Masurca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medaka.html">Medaka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="megahit.html">Megahit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meme.html">Meme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metaphlan.html">Metaphlan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="miniasm.html">Miniasm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minimap2.html">Minimap2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minipolish.html">Minipolish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mirdeep2.html">Mirdeep2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mirge3.html">Mirge3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mothur.html">Mothur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiqc.html">Multiqc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-ampliseq.html">Nf-core-ampliseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-atacseq.html">Nf-core-atacseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-bacass.html">Nf-core-bacass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-bamtofastq.html">Nf-core-bamtofastq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-chipseq.html">Nf-core-chipseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-denovotranscript.html">Nf-core-denovotranscript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-detaxizer.html">Nf-core-detaxizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-differentialabundance.html">Nf-core-differentialabundance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-eager.html">Nf-core-eager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-fetchngs.html">Nf-core-fetchngs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-funcscan.html">Nf-core-funcscan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-hic.html">Nf-core-hic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-mag.html">Nf-core-mag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-metatdenovo.html">Nf-core-metatdenovo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-methylseq.html">Nf-core-methylseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-nanoseq.html">Nf-core-nanoseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-nanostring.html">Nf-core-nanostring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-pangenome.html">Nf-core-pangenome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-proteinfold.html">Nf-core-proteinfold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-raredisease.html">Nf-core-raredisease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-rnafusion.html">Nf-core-rnafusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-rnaseq.html">Nf-core-rnaseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-rnasplice.html">Nf-core-rnasplice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-sarek.html">Nf-core-sarek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-scrnaseq.html">Nf-core-scrnaseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-smrnaseq.html">Nf-core-smrnaseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-taxprofiler.html">Nf-core-taxprofiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nf-core-viralrecon.html">Nf-core-viralrecon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orthofinder.html">Orthofinder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandaseq.html">Pandaseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parabricks.html">Parabricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pepper-deepvariant.html">Pepper_deepvariant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="petitefinder.html">Petitefinder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="picard.html">Picard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plink.html">Plink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plink2.html">Plink2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polypolish.html">Polypolish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prokka.html">Prokka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qiime2.html">Qiime2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qualimap.html">Qualimap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r-bioinformatics.html">R-bioinformatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r-scrnaseq.html">R-scrnaseq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r-shinyngs.html">R-shinyngs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raven-assembler.html">Raven-assembler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raxml-ng-mpi.html">Raxml-ng-mpi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relion.html">Relion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rmats2sashimiplot.html">Rmats2sashimiplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rnaquast.html">Rnaquast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rosettafold2.html">Rosettafold2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rosettafold2na.html">Rosettafold2na</a></li>
+<li class="toctree-l2"><a class="reference internal" href="salmon.html">Salmon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samtools.html">Samtools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scanpy.html">Scanpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scvelo.html">Scvelo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signalp6.html">Signalp6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spaceranger.html">Spaceranger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spades.html">Spades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="squid.html">Squid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="star.html">Star</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subread.html">Subread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tmhmm.html">Tmhmm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transdecoder.html">Transdecoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trgt.html">Trgt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trim-galore.html">Trim-galore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trimmomatic.html">Trimmomatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trinity.html">Trinity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trinotate.html">Trinotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trycycler.html">Trycycler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vcftools.html">Vcftools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viennarna.html">Viennarna</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Bioinformatics Lectures and Trainings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/index.html">Additional Resources</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Bioinformatics</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Bioinformatics Applications
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bioinformatics-applications">
+<h1>Bioinformatics Applications<a class="headerlink" href="#bioinformatics-applications" title="Link to this heading">#</a></h1>
+<p>Below are bioinformatics applications deployed by Tufts Research Technology.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 gallery-directive docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> abcreg</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">ABCreg is a tool used for automating approximate Bayesian computation by local linear regression.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="abcreg.html"><span>abcreg.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> abyss</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">ABySS is a de novo sequence assembler intended for short paired-end reads and genomes of all sizes.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="abyss.html"><span>abyss.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> alphafold</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Alphafold is an artificial intelligence program developed by Alphabets’s/Google’s DeepMind which performs predictions of protein structure.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="alphafold.html"><span>alphafold.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> amplify</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">AMPlify is an attentive deep learning model for antimicrobial peptide prediction.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="amplify.html"><span>amplify.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> angsd</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Angsd is a software for analyzing next generation sequencing data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="angsd.html"><span>angsd.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> bakta</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Bakta is a tool for the rapid &amp; standardized annotation of bacterial genomes and plasmids from both isolates and MAGs. It provides dbxref-rich, sORF-including and taxon-independent annotations in machine-readable JSON &amp; bioinformatics standard file formats for automated downstream analysis.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="bakta.html"><span>bakta.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> bbmap</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Bbmap is a short read aligner, as well as various other bioinformatic tools.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="bbmap.html"><span>bbmap.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> bbtools</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">BBTools is a suite of fast, multithreaded bioinformatics tools designed for analysis of DNA and RNA sequence data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="bbtools.html"><span>bbtools.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> bcftools</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Bcftools is a program for variant calling and manipulating files in the Variant Call Format (VCF) and its binary counterpart BCF.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="bcftools.html"><span>bcftools.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> beast2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">BEAST 2 is a cross-platform program for Bayesian phylogenetic analysis of molecular sequences.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="beast2.html"><span>beast2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> bedops</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Bedops is a software package for manipulating and analyzing genomic interval data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="bedops.html"><span>bedops.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> bedtools</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Bedtools is an extensive suite of utilities for genome arithmetic and comparing genomic features in BED format.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="bedtools.html"><span>bedtools.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> biobakery_workflows</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">BioBakery workflows is a collection of workflows and tasks for executing common microbial community analyses using standardized, validated tools and parameters.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="biobakery_workflows.html"><span>biobakery_workflows.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> biopython</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Biopython is a set of freely available tools for biological computation written in Python.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="biopython.html"><span>biopython.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> blast</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">BLAST (Basic Local Alignment Search Tool) finds regions of similarity between biological sequences. The program compares nucleotide or protein sequences to sequence databases and calculates the statistical significance.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="blast.html"><span>blast.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> bowtie2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences. It is particularly good at aligning reads of about 50 up to 100s or 1,000s of characters, and particularly good at aligning to relatively long (e.g. mammalian) genomes. Bowtie 2 indexes the genome with an FM Index to keep its memory footprint small: for the human genome, its memory footprint is typically around 3.2 GB. Bowtie 2 supports gapped, local, and paired-end alignment modes.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="bowtie2.html"><span>bowtie2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> breseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Breseq is a computational pipeline for the analysis of short-read re-sequencing data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="breseq.html"><span>breseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> busco</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">BUSCO (Benchmarking sets of Universal Single-Copy Orthologs) provides measures for quantitative assessment of genome assembly, gene set, and transcriptome completeness based on evolutionarily informed expectations of gene content from near-universal single-copy orthologs.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="busco.html"><span>busco.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> cactus</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Cactus is a reference-free whole-genome multiple alignment program.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="cactus.html"><span>cactus.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> canu</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Canu is a fork of the Celera Assembler, designed for high-noise single-molecule sequencing (such as the PacBio RS II/Sequel or Oxford Nanopore MinION).</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="canu.html"><span>canu.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> cellprofiler</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">CellProfiler is a free open-source software designed to enable biologists without training in computer vision or programming to quantitatively measure phenotypes from thousands of images automatically.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="cellprofiler.html"><span>cellprofiler.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> cellprofiler-analyst</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">CellProfiler Analyst allows interactive exploration and analysis of data, particularly from high-throughput, image-based experiments.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="cellprofiler-analyst.html"><span>cellprofiler-analyst.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> cellranger</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Cellranger is a set of analysis pipelines that process Chromium single-cell data to align reads, generate feature-barcode matrices, perform clustering and other secondary analysis, and more.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="cellranger.html"><span>cellranger.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> cellranger-atac</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Cellranger-atac is a set of analysis pipelines that process Chromium Single Cell ATAC data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="cellranger-atac.html"><span>cellranger-atac.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> cellrank</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Cellrank is a toolkit to uncover cellular dynamics based on Markov state modeling of single-cell data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="cellrank.html"><span>cellrank.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> cufflinks</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Cufflinks assembles transcripts, estimates their abundances, and tests for differential expression and regulation in RNA-Seq samples. It accepts aligned RNA-Seq reads and assembles the alignments into a parsimonious set of transcripts. Cufflinks then estimates the relative abundances of these transcripts based on how many reads support each one, taking into account biases in library preparation protocols.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="cufflinks.html"><span>cufflinks.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> cutadapt</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Cutadapt finds and removes adapter sequences, primers, poly-A tails and other types of unwanted sequence from your high-throughput sequencing reads.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="cutadapt.html"><span>cutadapt.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> diamond</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Diamond is sequence aligner for protein and translated DNA searches, designed for high performance analysis of big sequence data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="diamond.html"><span>diamond.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> dorado</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Dorado is a high-performance, easy-to-use, open source basecaller for Oxford Nanopore reads.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="dorado.html"><span>dorado.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> dragon_ora</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">The DRAGEN ORA Helper Suite Software is a suite of software for Linux distributions, designed to integrate in a transparent manner compressed FASTQ.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="dragon_ora.html"><span>dragon_ora.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> exonerate</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Exonerate is a generic tool for pairwise sequence comparison/alignment.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="exonerate.html"><span>exonerate.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> fasta3</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Fasta3 is a suite of programs for searching nucleotide or protein databases with a query sequence.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="fasta3.html"><span>fasta3.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> fastp</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Fastp is an ultra-fast all-in-one FASTQ preprocessor (QC/adapters/trimming/filtering/splitting/merging, etc).</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="fastp.html"><span>fastp.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> fastqc</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">FastQC aims to provide a simple way to do some quality control checks on raw sequence data coming from high throughput sequencing pipelines. It provides a modular set of analyses which you can use to give a quick impression of whether your data has any problems of which you should be aware before doing any further analysis.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="fastqc.html"><span>fastqc.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> fastspar</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">FastSpar is a C++ implementation of the SparCC algorithm which is up to several thousand times faster than the original Python2 release and uses much less memory. The FastSpar implementation provides threading support and a p-value estimator which accounts for the possibility of repetitious data permutations.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="fastspar.html"><span>fastspar.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> fasttree</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">FastTree infers approximately-maximum-likelihood phylogenetic trees from alignments of nucleotide or protein sequences. FastTree can handle alignments with up to a million of sequences in a reasonable amount of time and memory. For large alignments, FastTree is 100-1,000 times faster than PhyML 3.0 or RAxML 7.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="fasttree.html"><span>fasttree.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> filtlong</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Filtlong is a tool for filtering long reads by quality. It can take a set of long reads and produce a smaller, better subset. It uses both read length (longer is better) and read identity (higher is better) when choosing which reads pass the filter.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="filtlong.html"><span>filtlong.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> flye</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Flye: Fast and accurate de novo assembler for single molecule sequencing reads</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="flye.html"><span>flye.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> fqtk</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">fqtk is a toolkit for working with FASTQ files, written in Rust.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="fqtk.html"><span>fqtk.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> gatk4</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">GATK (Genome Analysis Toolkit) is a collection of command-line tools for analyzing high-throughput sequencing data with a primary focus on variant discoverye.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="gatk4.html"><span>gatk4.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> genomad</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">geNomad: Identification of mobile genetic elements.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="genomad.html"><span>genomad.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> geomx_ngs_pipeline</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">The GeoMx NGS Pipeline, developed by NanoString, is an essential part of the GeoMx NGS workflow.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="geomx_ngs_pipeline.html"><span>geomx_ngs_pipeline.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> guppy</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Guppy is a data processing toolkit that contains the Oxford Nanopore Technologies’ basecalling algorithms, and several bioinformatic post-processing features.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="guppy.html"><span>guppy.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> hap.py</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Hap.py is a tool to compare diploid genotypes at haplotype level.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="hap.py.html"><span>hap.py.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> hisat2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads (both DNA and RNA) to a population of human genomes as well as to a single reference genome.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="hisat2.html"><span>hisat2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> hmmer</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Hmmer is used for searching sequence databases for sequence homologs, and for making sequence alignments.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="hmmer.html"><span>hmmer.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> homer</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">HOMER is a suite of tools for Motif Discovery and next-gen sequencing analysis.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="homer.html"><span>homer.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> htseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">HTSeq is a Python library to facilitate processing and analysis of data from high-throughput sequencing (HTS) experiments.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="htseq.html"><span>htseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> humann</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Humann is a pipeline for efficiently and accurately profiling the presence/absence and abundance of microbial pathways in a community from metagenomic or metatranscriptomic sequencing data (typically millions of short DNA/RNA reads).</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="humann.html"><span>humann.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> impute2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Impute2 is a genotype imputation and haplotype phasing program.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="impute2.html"><span>impute2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> iqtree2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">IQ-TREE is an efficient phylogenomic software by maximum likelihood.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="iqtree2.html"><span>iqtree2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> kallisto</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Kallisto is a program for quantifying abundances of transcripts from bulk and single-cell RNA-Seq data, or more generally of target sequences using high-throughput sequencing reads.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="kallisto.html"><span>kallisto.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> kneaddata</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Kneaddata is a tool designed to perform quality control on metagenomic sequencing data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="kneaddata.html"><span>kneaddata.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> kraken2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Kraken2 is a taxonomic sequence classifier that assigns taxonomic labels to DNA sequences.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="kraken2.html"><span>kraken2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> krakentools</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Krakentools is a suite of scripts to be used for post-analysis of Kraken/KrakenUniq/Kraken2/Bracken results.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="krakentools.html"><span>krakentools.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> macs2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">MACS2 is Model-based Analysis of ChIP-Seq for identifying transcript factor binding sites.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="macs2.html"><span>macs2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> macs3</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Macs3 is Model-based Analysis of ChIP-Seq for identifying transcript factor.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="macs3.html"><span>macs3.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> masurca</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">The MaSuRCA (Maryland Super Read Cabog Assembler) genome assembly and analysis toolkit contains of MaSuRCA genome assembler, QuORUM error corrector for Illumina data, POLCA genome polishing software, Chromosome scaffolder, jellyfish mer counter, and MUMmer aligner.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="masurca.html"><span>masurca.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> medaka</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Medaka is a tool to create consensus sequences and variant calls from nanopore sequencing data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="medaka.html"><span>medaka.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> megahit</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Megahit is a ultra-fast single-node solution for large and complex metagenomics assembly via succinct de Bruijn graph.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="megahit.html"><span>megahit.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> meme</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Meme is a collection of tools for the discovery and analysis of sequence motifs. Contents.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="meme.html"><span>meme.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> metaphlan</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Metaphlan is computational tool for profiling the composition of microbial communities (Bacteria, Archaea and Eukaryotes) from metagenomic shotgun sequencing data (i.e. not 16S) with species-level.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="metaphlan.html"><span>metaphlan.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> miniasm</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Miniasm is a very fast OLC-based de novo assembler for noisy long reads.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="miniasm.html"><span>miniasm.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> minimap2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Minimap2 is a versatile pairwise aligner for genomic and spliced nucleotide sequences.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="minimap2.html"><span>minimap2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> minipolish</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Minipolish is a tool for Racon polishing of miniasm assemblies.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="minipolish.html"><span>minipolish.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> mirdeep2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">miRDeep2 discovers active known or novel miRNAs from deep sequencing data (Solexa/Illumina, 454, …).</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="mirdeep2.html"><span>mirdeep2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> mirge3</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Mirge3 is an update to Python package to perform comprehensive analysis of small RNA sequencing data, including miRNA annotation, A-to-I editing, novel miRNA detection, isomiR analysis, visualization through IGV, processing Unique Molecular Identifieres (UMI), tRF detection and producing interactive graphical output.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="mirge3.html"><span>mirge3.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> mothur</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Mothur is an open source software package for bioinformatics data processing.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="mothur.html"><span>mothur.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> multiqc</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Multiqc is a reporting tool that parses summary statistics from results and log files generated by other bioinformatics tools.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="multiqc.html"><span>multiqc.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-ampliseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nfcore/ampliseq is a bioinformatics analysis pipeline used for amplicon sequencing, supporting denoising of any amplicon and supports a variety of taxonomic databases for taxonomic assignment including 16S, ITS, CO1 and 18S. Phylogenetic placement is also possible. Multiple region analysis such as 5R is implemented. Supported is paired-end Illumina or single-end Illumina, PacBio and IonTorrent data. Default is the analysis of 16S rRNA gene amplicons sequenced paired-end with Illumina.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-ampliseq.html"><span>nf-core-ampliseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-atacseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nfcore/atacseq is a bioinformatics analysis pipeline used for ATAC-seq data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-atacseq.html"><span>nf-core-atacseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-bacass</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/bacass is a bioinformatics best-practice analysis pipeline for simple bacterial assembly and annotation. The pipeline is able to assemble short reads, long reads, or a mixture of short and long reads (hybrid assembly).</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-bacass.html"><span>nf-core-bacass.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-bamtofastq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/bamtofastq is a bioinformatics best-practice analysis pipeline that converts (un)mapped .bam or .cram files into fq.gz files.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-bamtofastq.html"><span>nf-core-bamtofastq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-chipseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nfcore/chipseq is a bioinformatics analysis pipeline used for Chromatin ImmunopreciPitation sequencing (ChIP-seq) data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-chipseq.html"><span>nf-core-chipseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-denovotranscript</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/denovotranscript is a bioinformatics pipeline for de novo transcriptome assembly of paired-end short reads from bulk RNA-seq. It takes a samplesheet and FASTQ files as input, performs quality control (QC), trimming, assembly, redundancy reduction, pseudoalignment, and quantification. It outputs a transcriptome assembly FASTA file, a transcript abundance TSV file, and a MultiQC report with assembly quality and read QC metrics.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-denovotranscript.html"><span>nf-core-denovotranscript.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-detaxizer</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/detaxizer is a pipeline to assess raw (meta)genomic data for contaminations and optionally filter reads which were classified as contamination. Default taxa classified as contamination are Homo and Homo sapiens.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-detaxizer.html"><span>nf-core-detaxizer.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-differentialabundance</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/differentialabundance is a bioinformatics pipeline that can be used to analyse data represented as matrices, comparing groups of observations to generate differential statistics and downstream analyses. The pipeline supports RNA-seq data such as that generated by the nf-core rnaseq workflow, and Affymetrix arrays via .CEL files.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-differentialabundance.html"><span>nf-core-differentialabundance.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-eager</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/eager is a scalable and reproducible bioinformatics best-practise processing pipeline for genomic NGS sequencing data, with a focus on ancient DNA (aDNA) data. It is ideal for the (palaeo)genomic analysis of humans, animals, plants, microbes and even microbiomes.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-eager.html"><span>nf-core-eager.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-fetchngs</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/fetchngs is a bioinformatics pipeline to fetch metadata and raw FastQ files from both public databases. At present, the pipeline supports SRA / ENA / DDBJ / GEO ids.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-fetchngs.html"><span>nf-core-fetchngs.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-funcscan</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/funcscan is a bioinformatics best-practice analysis pipeline for the screening of nucleotide sequences such as assembled contigs for functional genes. It currently features mining for antimicrobial peptides, antibiotic resistance genes and biosynthetic gene clusters.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-funcscan.html"><span>nf-core-funcscan.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-hic</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/hic is a bioinformatics best-practice analysis pipeline for Analysis of Chromosome Conformation Capture data (Hi-C).</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-hic.html"><span>nf-core-hic.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-mag</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/mag is a bioinformatics best-practise analysis pipeline for assembly, binning and annotation of metagenomes.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-mag.html"><span>nf-core-mag.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-metatdenovo</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/metatdenovo is a bioinformatics best-practice analysis pipeline for assembly and annotation of metatranscriptomic data, both prokaryotic and eukaryotic.0</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-metatdenovo.html"><span>nf-core-metatdenovo.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-methylseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/methylseq is a bioinformatics analysis pipeline used for Methylation (Bisulfite) sequencing data. It pre-processes raw data from FastQ inputs, aligns the reads and performs extensive quality-control on the results.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-methylseq.html"><span>nf-core-methylseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-nanoseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nfcore/nanoseq is a bioinformatics analysis pipeline for Nanopore DNA/RNA sequencing data that can be used to perform basecalling, demultiplexing, QC, alignment, and downstream analysis.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-nanoseq.html"><span>nf-core-nanoseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-nanostring</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/nanostring is a bioinformatics pipeline that can be used to analyze NanoString data. The performed analysis steps include quality control and data normalization.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-nanostring.html"><span>nf-core-nanostring.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-pangenome</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/pangenome is a bioinformatics best-practice analysis pipeline for pangenome graph construction. The pipeline renders a collection of sequences into a pangenome graph. Its goal is to build a graph that is locally directed and acyclic while preserving large-scale variation. Maintaining local linearity is important for interpretation, visualization, mapping, comparative genomics, and reuse of pangenome graphs.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-pangenome.html"><span>nf-core-pangenome.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-proteinfold</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/proteinfold is a bioinformatics best-practice analysis pipeline for Protein 3D structure prediction.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-proteinfold.html"><span>nf-core-proteinfold.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-raredisease</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/raredisease is a best-practice bioinformatic pipeline for calling and scoring variants from WGS/WES data from rare disease patients.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-raredisease.html"><span>nf-core-raredisease.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-rnafusion</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/rnafusion is a bioinformatics best-practice analysis pipeline for RNA sequencing consisting of several tools designed for detecting and visualizing fusion genes. Results from up to 5 fusion callers tools are created, and are also aggregated, most notably in a pdf visualiation document, a vcf data collection file, and html and tsv reports.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-rnafusion.html"><span>nf-core-rnafusion.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-rnaseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/rnaseq is a bioinformatics pipeline that can be used to analyse RNA sequencing data obtained from organisms with a reference genome and annotation. It takes a samplesheet and FASTQ files as input, performs quality control (QC), trimming and (pseudo-)alignment, and produces a gene expression matrix and extensive QC report.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-rnaseq.html"><span>nf-core-rnaseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-rnasplice</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/rnasplice is a bioinformatics pipeline for alternative splicing analysis of RNA sequencing data obtained from organisms with a reference genome and annotation.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-rnasplice.html"><span>nf-core-rnasplice.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-sarek</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/sarek is a workflow designed to detect variants on whole genome or targeted sequencing data. Initially designed for Human, and Mouse, it can work on any species with a reference genome. Sarek can also handle tumour / normal pairs and could include additional relapses.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-sarek.html"><span>nf-core-sarek.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-scrnaseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/scrnaseq is a bioinformatics best-practice analysis pipeline for processing 10x Genomics single-cell RNA-seq data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-scrnaseq.html"><span>nf-core-scrnaseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-smrnaseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/smrnaseq is a bioinformatics best-practice analysis pipeline for Small RNA-Seq.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-smrnaseq.html"><span>nf-core-smrnaseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-taxprofiler</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/taxprofiler is a bioinformatics best-practice analysis pipeline for taxonomic classification and profiling of shotgun short- and long-read metagenomic data. It allows for in-parallel taxonomic identification of reads or taxonomic abundance estimation with multiple classification and profiling tools against multiple databases, and produces standardised output tables for facilitating results comparison between different tools and databases.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-taxprofiler.html"><span>nf-core-taxprofiler.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> nf-core-viralrecon</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">nf-core/viralrecon is a bioinformatics analysis pipeline used to perform assembly and intra-host/low-frequency variant calling for viral samples. The pipeline supports both Illumina and Nanopore sequencing data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="nf-core-viralrecon.html"><span>nf-core-viralrecon.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> orthofinder</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Orthofinder is a fast, accurate and comprehensive platform for comparative genomics. It finds orthogroups and orthologs, infers rooted gene trees for all orthogroups and identifies all of the gene duplication events in those gene trees. It also infers a rooted species tree for the species being analysed and maps the gene duplication events from the gene trees to branches in the species tree. OrthoFinder also provides comprehensive statistics for comparative genomic analyses.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="orthofinder.html"><span>orthofinder.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> pandaseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Pandaseq is a program to align Illumina reads, optionally with PCR primers embedded in the sequence, and reconstruct an overlapping sequence.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="pandaseq.html"><span>pandaseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> parabricks</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">NVIDIA’s Clara Parabricks brings next generation sequencing to GPUs, accelerating an array of gold-standard tooling such as BWA-MEM, GATK4, Google’s DeepVariant, and many more. Users can achieve a 30-60x acceleration and 99.99% accuracy for variant calling when comparing against CPU-only BWA-GATK4 pipelines, meaning a single server can process up to 60 whole genomes per day. These tools can be easily integrated into current pipelines with drop-in replacement commands to quickly bring speed and data-center scale to a range of applications including germline, somatic and RNA workflows.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="parabricks.html"><span>parabricks.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> pepper_deepvariant</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">PEPPER is a genome inference module based on recurrent neural networks that enables long-read variant calling and nanopore assembly polishing in the PEPPER-Margin-DeepVariant pipeline.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="pepper_deepvariant.html"><span>pepper_deepvariant.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> petitefinder</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">petiteFinder is an automated computer vision tool to compute Petite colony frequencies in baker’s yeast.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="petitefinder.html"><span>petitefinder.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> picard</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Picard is a set of command line tools for manipulating high-throughput sequencing (HTS) data and formats such as SAM/BAM/CRAM and VCF.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="picard.html"><span>picard.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> plink</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Plink is a free, open-source whole genome association analysis toolset, designed to perform a range of basic, large-scale analyses in a computationally efficient manner.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="plink.html"><span>plink.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> plink2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Plink2 is a whole genome association analysis toolset.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="plink2.html"><span>plink2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> polypolish</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Polypolish is a tool for polishing genome assemblies with short reads.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="polypolish.html"><span>polypolish.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> prokka</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Prokka is a software tool to annotate bacterial, archaeal and viral genomes quickly and produce standards-compliant output files.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="prokka.html"><span>prokka.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> qiime2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">QIIME 2 is a powerful, extensible, and decentralized microbiome analysis package with a focus on data and analysis transparency. QIIME 2 enables researchers to start an analysis with raw DNA sequence data and finish with publication-quality figures and statistical results.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="qiime2.html"><span>qiime2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> qualimap</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Qualimap is a platform-independent application written in Java and R that provides both a Graphical User Interface (GUI) and a command-line interface to facilitate the quality control of alignment sequencing data and its derivatives like feature counts.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="qualimap.html"><span>qualimap.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> r-bioinformatics</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">RStudio is an integrated development environment (IDE) for the R statistical computation and graphics system.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="r-bioinformatics.html"><span>r-bioinformatics.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> r-scrnaseq</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">RStudio is an integrated development environment (IDE) for the R statistical computation and graphics system.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="r-scrnaseq.html"><span>r-scrnaseq.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> r-shinyngs</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Shinyngs is an R package designed to facilitate downstream analysis of RNA-seq and similar expression data with various exploratory plots and data mining tools.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="r-shinyngs.html"><span>r-shinyngs.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> raven-assembler</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Raven-assembler is a de novo genome assembler for long uncorrected reads.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="raven-assembler.html"><span>raven-assembler.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> raxml-ng-mpi</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Raxml-ng is a phylogenetic tree inference tool which uses maximum-likelihood (ML) optimality criterion.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="raxml-ng-mpi.html"><span>raxml-ng-mpi.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> relion</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">RELION (for REgularised LIkelihood OptimisatioN) is a stand-alone computer program for Maximum A Posteriori refinement of (multiple) 3D reconstructions or 2D class averages in cryo-electron microscopy. It is developed in the research group of Sjors Scheres at the MRC Laboratory of Molecular Biology.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="relion.html"><span>relion.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> rmats2sashimiplot</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Rmats2sashimiplot produces a sashimiplot visualization of rMATS output.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="rmats2sashimiplot.html"><span>rmats2sashimiplot.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> rnaquast</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Rnaquast is a quality assessment tool for de novo transcriptome assemblies.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="rnaquast.html"><span>rnaquast.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> rosettafold2</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">RoseTTAFold2 extends the original three-track architecture of RoseTTAFold over the full network, incorporating the concepts of Frame-aligned point error, recycling during training, and the use of a distillation set from AlphaFold2.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="rosettafold2.html"><span>rosettafold2.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> rosettafold2na</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">RoseTTAFoldNA rapidly produces three-dimensional structure models with confidence estimates for protein–DNA and protein–RNA complexes.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="rosettafold2na.html"><span>rosettafold2na.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> salmon</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Salmon is a tool for quantifying the expression of transcripts using RNA-seq data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="salmon.html"><span>salmon.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> samtools</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Samtools is a set of utilities for the Sequence Alignment/Map (SAM) format.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="samtools.html"><span>samtools.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> scanpy</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Scanpy is a scalable toolkit for analyzing single-cell gene expression data built jointly with anndata.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="scanpy.html"><span>scanpy.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> scvelo</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Scvelo is a scalable toolkit for RNA velocity analysis in single cells.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="scvelo.html"><span>scvelo.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> signalp6</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">SignalP predicts the presence and location of signal peptide cleavage sites in amino acid sequences from different organisms: Gram-positive prokaryotes, Gram-negative prokaryotes, and eukaryotes</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="signalp6.html"><span>signalp6.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> spaceranger</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Spaceranger is a set of analysis pipelines that process Visium Spatial Gene Expression data with brightfield and fluorescence microscope images.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="spaceranger.html"><span>spaceranger.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> spades</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Spades is an assembly toolkit containing various assembly pipelines.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="spades.html"><span>spades.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> squid</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">SQUID is designed to detect both fusion-gene and non-fusion-gene transcriptomic structural variations from RNA-seq alignment.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="squid.html"><span>squid.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> star</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">STAR (Spliced Transcripts Alignment to a Reference) is an ultrafast universal RNA-seq aligner.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="star.html"><span>star.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> subread</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Subread carries out high-performance read alignment, quantification and mutation discovery. It is a general-purpose read aligner which can be used to map both genomic DNA-seq reads and DNA-seq reads. It uses a new mapping paradigm called seed-and-vote to achieve fast, accurate and scalable read mapping. Subread automatically determines if a read should be globally or locally aligned, therefore particularly powerful in mapping RNA-seq reads. It supports INDEL detection and can map reads with both fixed and variable lengths.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="subread.html"><span>subread.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> tmhmm</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Tmhmm is used for prediction of transmembrane helices in proteins.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="tmhmm.html"><span>tmhmm.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> transdecoder</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Transdecoder identifies candidate coding regions within transcript sequences, such as those generated by de novo RNA-Seq transcript assembly using Trinity, or constructed based on RNA-Seq alignments to the genome using Tophat and Cufflinks.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="transdecoder.html"><span>transdecoder.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> trgt</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">TRGT is a tool for targeted genotyping of tandem repeats from PacBio HiFi data. In addition to the basic size genotyping, TRGT profiles sequence composition, mosaicism, and CpG methylation of each analyzed repeat and visualization of reads overlapping the repeats.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="trgt.html"><span>trgt.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> trim-galore</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Trim-galore is a wrapper tool that automates quality and adapter trimming to FastQ files.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="trim-galore.html"><span>trim-galore.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> trimmomatic</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Trimmomatic is a flexible read trimming tool for Illumina NGS data</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="trimmomatic.html"><span>trimmomatic.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> trinity</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Trinity assembles transcript sequences from Illumina RNA-Seq data.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="trinity.html"><span>trinity.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> trinotate</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Trinotate is a comprehensive annotation suite designed for automatic functional annotation of transcriptomes, particularly de novo assembled transcriptomes, from model or non-model organisms.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="trinotate.html"><span>trinotate.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> trycycler</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Trycycler is a tool for generating consensus long-read assemblies for bacterial genomes.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="trycycler.html"><span>trycycler.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> vcftools</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">VCFtools is a program package designed for working with VCF files, such as those generated by the 1000 Genomes Project. The aim of VCFtools is to provide easily accessible methods for working with complex genetic variation data in the form of VCF files.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="vcftools.html"><span>vcftools.html</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><span class="fas fa-dna"></span> viennarna</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Viennarna is a set of standalone programs and libraries used for prediction and analysis of RNA secondary structures.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="viennarna.html"><span>viennarna.html</span></a></div>
+</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../databases/ncbi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Blast Databases</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="abcreg.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Abcreg</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"> 
+<div class="tocsection tags-label">
+  <i class="fa-solid fa-tags"></i> Tags
+</div>
+<ul class="tocsection tags-list">
+  <li class="tag-item">
+    <a href="../../tags/bioinformatics.html" class="tag-link">bioinformatics</a>
+  </li>
+</ul>
+ </div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/bio/apps/index.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/bio/apps/index.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: bio/apps/index"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Mar 12, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="switcher-label">Version:</p></div>
+      
+        <div class="footer-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

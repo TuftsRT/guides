@@ -1,0 +1,764 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Running Containerized Applications on Tufts HPC: A Guide to Pulling and Executing &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/bugfix.css?v=e4cc360a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/navbar.css?v=3ee3464b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/switcher.css?v=7c802369" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bio/workshops/intro-to-singularity/hands-on';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/bio/workshops/intro-to-singularity/hands-on.html" />
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Introduction to Git &amp; GitHub" href="../intro-to-git-github.html" />
+    <link rel="prev" title="Introduction to Singularity" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250312" />
+    <meta name="docbuild:last-update" content="Mar 12, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/jumbo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../_static/jumbo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">TTS Research Technology Guides</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Bioinformatics 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Bioinformatics Tutorials</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Bioinformatics Workshops</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro-to-bioinfo/index.html">Beginner’s guide for conducting bioinformatics analysis on Tufts HPC</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Introduction to Singularity</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Running Containerized Applications on Tufts HPC: A Guide to Pulling and Executing</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro-to-git-github.html">Introduction to Git &amp; GitHub</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../databases/index.html">Bioinformatics Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/index.html">Bioinformatics Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/index.html">Bioinformatics Lectures and Trainings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/index.html">Additional Resources</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../index.html" class="nav-link"
+        >Bioinformatics</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Bioinformatics Workshops</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Introduction to Singularity</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Running Containerized...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="running-containerized-applications-on-tufts-hpc-a-guide-to-pulling-and-executing">
+<h1>Running Containerized Applications on Tufts HPC: A Guide to Pulling and Executing<a class="headerlink" href="#running-containerized-applications-on-tufts-hpc-a-guide-to-pulling-and-executing" title="Link to this heading">#</a></h1>
+<section id="start-an-interactive-job">
+<h2>Start an interactive job<a class="headerlink" href="#start-an-interactive-job" title="Link to this heading">#</a></h2>
+<p>Users cannot run jobs on login nodes in an HPC system because login nodes are designed for lightweight tasks such as:</p>
+<ul class="simple">
+<li><p>Editing scripts</p></li>
+<li><p>Submitting jobs to the slurm scheduler</p></li>
+<li><p>Managing files/folders</p></li>
+</ul>
+<p>To pull a container or run a container, start an interactive session on a compute node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ srun -N1 -n2 -t1:00:00 -p batch --pty bash ## You will start an interactive session on batch partition with 2 cores and 2-hour walltime.
+</pre></div>
+</div>
+</section>
+<section id="load-modules">
+<h2>Load modules<a class="headerlink" href="#load-modules" title="Link to this heading">#</a></h2>
+<p>It is highly recommended to run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> before loading <code class="docutils literal notranslate"><span class="pre">singularity</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module purge
+$ module load singularity/3.8.4
+$ module list
+
+Currently Loaded Modules:
+  1) squashfs/4.4   2) singularity/3.8.4
+</pre></div>
+</div>
+<p>Sure, here’s an improved version:</p>
+<p><code class="docutils literal notranslate"><span class="pre">squashfs/4.4</span></code> is a necessary dependency for <code class="docutils literal notranslate"><span class="pre">singularity</span></code>. When you load <code class="docutils literal notranslate"><span class="pre">singularity/3.8.4</span></code>, <code class="docutils literal notranslate"><span class="pre">squashfs/4.4</span></code> will be automatically loaded as well.</p>
+</section>
+<section id="singularity-pull">
+<h2>singularity pull<a class="headerlink" href="#singularity-pull" title="Link to this heading">#</a></h2>
+<section id="syntax">
+<h3>Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
+<p>Download or pull a container from a given URI.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ singularity pull [output file] &lt;URI&gt;
+</pre></div>
+</div>
+</section>
+<section id="samtools">
+<h3>Samtools<a class="headerlink" href="#samtools" title="Link to this heading">#</a></h3>
+<p>BioContainers is integrated with bioconda. You can find almost all bioinformatics applications from BioContainer’s <a class="reference external" href="https://bioconda.github.io/conda-package_index.html">Package Index</a></p>
+<p><a class="reference external" href="https://github.com/samtools/samtools">samtools</a> is an bioinformaitcs software for dealing with SAM, BAM and CRAM files. Here I will show how to pull its latest version (1.21.0) from BioContainers.</p>
+<p>Here is the samtools’s <a class="reference external" href="https://bioconda.github.io/recipes/samtools/README.html#package-package%20'samtools'">bioconda page</a>.</p>
+<p>There are different tags for each version and multiple containers/tags even exist for the same application version. It is common practice to select the ones that were last modified.</p>
+<p>To pull the image from BioContainers, we can use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Default
+$ singularity pull docker://quay.io/biocontainers/samtools:1.21--h96c455f_1
+
+## To give a customerized output name
+$ singularity pull samtools_1.21.sif docker://quay.io/biocontainers/samtools:1.21--h96c455f_1
+</pre></div>
+</div>
+</section>
+<section id="pytorch">
+<h3>PyTorch<a class="headerlink" href="#pytorch" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://pytorch.org">PyTorch</a> is a powerful open-source machine learning framework based on the Python programming language and the Torch library. It’s widely used for deep learning, a type of machine learning that builds complex models like artificial neural networks for tasks like image recognition, natural language processing, and more.</p>
+<p>If you want to install PyTorch, it can be complex. You have to ensure different libraries (e.g., CUDA) and dependencies are compatible. If you use container, you can easily an container rom Docker Hub. Here we want to show you how to pull the pytorch container under Tufts Research Technology account <a class="reference external" href="https://hub.docker.com/r/tuftsttsrt/pytorch/tags">tuftsttsrt</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ singularity pull docker://tuftsttsrt/pytorch:2.5.1-cuda12.1-cudnn9-runtime-jupyter
+</pre></div>
+</div>
+</section>
+</section>
+<section id="singularity-exec">
+<h2>singularity exec<a class="headerlink" href="#singularity-exec" title="Link to this heading">#</a></h2>
+<p>Singularity has a <code class="docutils literal notranslate"><span class="pre">run</span></code> subcommand. This can be used to run the user-defined default command within a container. However, it is recommended to use another subcommand <code class="docutils literal notranslate"><span class="pre">exec</span></code> instead of <code class="docutils literal notranslate"><span class="pre">run</span></code>. If you’re interested in <code class="docutils literal notranslate"><span class="pre">run</span></code>, please check the <a class="reference external" href="https://docs.sylabs.io/guides/3.8/user-guide/cli/singularity_run.html#singularity-run">singularity user guide</a>.</p>
+<section id="id1">
+<h3>Syntax<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Download or build a container from a given URI.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">singularity</span> <span class="n">exec</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">image</span> <span class="n">command</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>samtools<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ singularity exec samtools_1.21--h96c455f_1.sif samtools
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>pytorch<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ singularity exec pytorch_2.5.1-cuda12.1-cudnn9-runtime-jupyter.sif python
+Python 3.11.10 | packaged by conda-forge | (main, Oct 16 2024, 01:27:36) [GCC 13.3.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import torch
+&gt;&gt;&gt; print(torch.__version__)
+2.5.1+cu121
+</pre></div>
+</div>
+</section>
+</section>
+<section id="container-mod">
+<h2>container-mod<a class="headerlink" href="#container-mod" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>samtools<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load container-mod
+$ container-mod pipe docker://quay.io/biocontainers/samtools:1.21--h96c455f_1
+$ module load use.own
+$ module load samtools/1.21
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>pytorch<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load container-mod
+$ container-mod pipe -j docker://tuftsttsrt/pytorch:2.5.1-cuda12.1-cudnn9-runtime-jupyter
+$ module load use.own
+$ module load pytorch/2.5.1-cuda12.1-cudnn9-runtime-jupyter
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-j</span></code> is used when the container supports jupyter. With <code class="docutils literal notranslate"><span class="pre">-j</span></code>, the jupyter kernel will be created, allowing you to run <code class="docutils literal notranslate"><span class="pre">pytorch</span></code> on <strong>Jupyter Lab/Notebook</strong> on Tufts <a class="reference external" href="http://ondemand.pax.tufts.edu">Open OnDemand</a>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Singularity</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../intro-to-git-github.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Git &amp; GitHub</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Running Containerized Applications on Tufts HPC: A Guide to Pulling and Executing
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-an-interactive-job">Start an interactive job</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-modules">Load modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singularity-pull">singularity pull</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samtools">Samtools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch">PyTorch</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singularity-exec">singularity exec</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">samtools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">pytorch</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-mod">container-mod</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">samtools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">pytorch</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/bio/workshops/intro-to-singularity/hands-on.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/bio/workshops/intro-to-singularity/hands-on.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: bio/workshops/intro-to-singularity/hands-on"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Mar 12, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="switcher-label">Version:</p></div>
+      
+        <div class="footer-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

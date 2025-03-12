@@ -1,0 +1,8 @@
+---
+orphan:
+nosearch:
+html_theme.sidebar_secondary.remove: true
+---
+# research-storage-cluster
+- [](/hpc/examples/index.md)
+- [](/hpc/index.md)

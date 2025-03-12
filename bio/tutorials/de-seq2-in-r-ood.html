@@ -1,0 +1,868 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/bugfix.css?v=e4cc360a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/navbar.css?v=3ee3464b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/switcher.css?v=7c802369" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bio/tutorials/de-seq2-in-r-ood';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/bio/tutorials/de-seq2-in-r-ood.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Exploring Python Bioinformatics Packages with Jupyter Notebook" href="exploring-python-bioinformatics.html" />
+    <link rel="prev" title="Package installation and module generation with container-mod" href="container-mod.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250312" />
+    <meta name="docbuild:last-update" content="Mar 12, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/jumbo.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/jumbo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">TTS Research Technology Guides</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Bioinformatics 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Bioinformatics Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bioinformatics-tools-guide.html">Getting started with bioinformatics tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container-mod.html">Package installation and module generation with container-mod</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exploring-python-bioinformatics.html">Exploring Python Bioinformatics Packages with Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-computing-in-r.html">Parallel Computing in R for Bioinformatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-read-alignment.html">Parallel read alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running-nfcore-pipelines.html">Running nfcore pipelines on Tufts HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sc-rna-seq-analysis-with-r.html">scRNA-seq analysis with RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set-up-conda-environment.html">Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-singularity.html">Using containers with Singularity to ensure reproducible research</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../workshops/index.html">Bioinformatics Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databases/index.html">Bioinformatics Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/index.html">Bioinformatics Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Bioinformatics Lectures and Trainings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/index.html">Additional Resources</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Bioinformatics</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Bioinformatics Tutorials</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      A Beginner’s Guide to...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="a-beginners-guide-to-differential-expression-analysis-with-deseq2-in-r-on-open-ondemand">
+<h1>A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand<a class="headerlink" href="#a-beginners-guide-to-differential-expression-analysis-with-deseq2-in-r-on-open-ondemand" title="Link to this heading">#</a></h1>
+<section id="prerequisite">
+<h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Access to Tufts HPC</strong>: If you don’t already have an account, you can request one <a class="reference external" href="https://shib-idp.tufts.edu/idp/profile/SAML2/POST/SSO?execution=e1s1">here</a>.</p></li>
+<li><p><strong>Lab Storage Access</strong>: For analysis, we recommend using your lab’s designated storage rather than the <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory. For more details on storage options, refer to <a class="reference external" href="https://it.tufts.edu/research-data-storage">this guide</a>.</p></li>
+</ol>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html"><strong>DESeq2 official website</strong></a>: Comprehensive information on DESeq2, including installation instructions, documentation, and updates.</p></li>
+<li><p><a class="reference external" href="https://tufts.app.box.com/v/Pax-User-Guide">User guide for how to use Tufts HPC</a>: Detailed instructions for accessing and using Tufts High-Performance Computing (HPC) resources.</p></li>
+<li><p>DESeq2 tutorials</p>
+<ul>
+<li><p><a class="reference external" href="https://lashlock.github.io/compbio/R_presentation.html">A beginner-friendly guide to using DESeq2 for differential gene expression analysis. </a></p></li>
+<li><p><a class="reference external" href="https://introtogenomics.readthedocs.io/en/latest/2021.11.11.DeseqTutorial.html">Step-by-step walkthrough for DESeq2 analysis. </a></p></li>
+<li><p><a class="reference external" href="https://genviz.org/module-04-expression/0004/02/01/DifferentialExpression/">Differential expression with DEseq2. </a></p></li>
+<li><p><a class="reference external" href="https://hbctraining.github.io/DGE_workshop/lessons/04_DGE_DESeq2_analysis.html">Harvard Chan Bioinformatics Core Training: Introduction to DGE. </a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://rstudio-education.github.io/hopr/starting.html">How to Download and Install R and RStudio</a></p>
+<ul>
+<li><p>If you are using your own laptop, follow the instructions in this tutorial to install R and RStudio.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.bioconductor.org/install/">Install Bioconductor Packages</a></p>
+<ul>
+<li><p>If you are not using our Open OnDemand RStudio_Pax app, follow the instructions in this tutorial to install <code class="docutils literal notranslate"><span class="pre">DESeq2</span></code> packages.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="step1-access-the-cluster-via-open-ondemand">
+<h2>Step1: Access the Cluster via Open OnDemand<a class="headerlink" href="#step1-access-the-cluster-via-open-ondemand" title="Link to this heading">#</a></h2>
+<p><strong>Log in</strong> to <a class="reference external" href="https://ondemand.pax.tufts.edu">Open OnDemand</a> using your Tufts HPC credentials.</p>
+<p><strong>Start an RStudio Job</strong>:</p>
+<ol class="arabic simple">
+<li><p>Navigate to <strong>Interactive Apps</strong>, then select <strong>RStudio_Pax</strong>.</p></li>
+<li><p>Fill in the required fields:</p>
+<ul class="simple">
+<li><p><strong>Number of hours</strong>: Specify the time needed for your session. (Recommended starting point: 24 hours)</p></li>
+<li><p><strong>Number of CPU cores</strong>: Choose based on your computational needs. (Recommended starting point: 8 cores)</p></li>
+<li><p><strong>Amount of memory</strong>: Allocate sufficient memory for your analysis. (Recommended starting point: 32 GB)</p></li>
+<li><p><strong>R Version</strong>: Select <code class="docutils literal notranslate"><span class="pre">4.4.1</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Click <strong>Launch</strong> to start the job.</p></li>
+</ol>
+<p><strong>Note: guidelines for selecting computational resources (cores and memory) based on dataset size when performing DESeq2 differential expression analysis.</strong></p>
+<ul class="simple">
+<li><p><strong>Cores</strong>:</p>
+<ul>
+<li><p>Small datasets (&lt;10 samples): 1–2 cores.</p></li>
+<li><p>Medium datasets (10–50 samples): 4–8 cores.</p></li>
+<li><p>Large datasets (&gt;50 samples): 8–16 cores, especially if using parallelization (e.g., <code class="docutils literal notranslate"><span class="pre">BiocParallel</span></code>).</p></li>
+</ul>
+</li>
+<li><p><strong>Memory</strong>:</p>
+<ul>
+<li><p>Small datasets: 8 GB.</p></li>
+<li><p>Medium datasets: 16–32 GB.</p></li>
+<li><p>Large datasets: 64 GB or more for large matrices or numerous samples.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="step2-load-the-deseq2-package-and-other-necessary-libraries">
+<h2>Step2: Load the DESeq2 package and other necessary libraries<a class="headerlink" href="#step2-load-the-deseq2-package-and-other-necessary-libraries" title="Link to this heading">#</a></h2>
+<p>The version of DESeq2 currently pre-installed in R is <strong>1.44.0</strong>.</p>
+<p>Verify it using the following commands in R:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">DESeq2</span><span class="p">)</span>
+<span class="n">packageVersion</span><span class="p">(</span><span class="s2">&quot;DESeq2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you need a newer version of DESeq2 (e.g., 1.46.0), you may need to update the package manually or request installation by the system administrator.</p>
+<p>Load other libraries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">DESeq2</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">pheatmap</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step3-begin-the-analysis">
+<h2>Step3: Begin the Analysis<a class="headerlink" href="#step3-begin-the-analysis" title="Link to this heading">#</a></h2>
+<section id="input-data-preparation">
+<h3>3.1 Input Data Preparation<a class="headerlink" href="#input-data-preparation" title="Link to this heading">#</a></h3>
+<section id="requirements">
+<h4>Requirements:<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>A <strong>count matrix</strong> (rows = genes, columns = samples).</p></li>
+<li><p>A <strong>metadata file</strong> with sample information (e.g., condition, treatment).</p></li>
+</ul>
+</section>
+<section id="example">
+<h4>Example:<a class="headerlink" href="#example" title="Link to this heading">#</a></h4>
+<p>Count Matrix (<code class="docutils literal notranslate"><span class="pre">counts_matrix.csv</span></code>):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>GeneID</p></th>
+<th class="head"><p>Sample1</p></th>
+<th class="head"><p>Sample2</p></th>
+<th class="head"><p>Sample3</p></th>
+<th class="head"><p>Sample4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GeneA</p></td>
+<td><p>100</p></td>
+<td><p>120</p></td>
+<td><p>90</p></td>
+<td><p>80</p></td>
+</tr>
+<tr class="row-odd"><td><p>GeneB</p></td>
+<td><p>200</p></td>
+<td><p>190</p></td>
+<td><p>210</p></td>
+<td><p>205</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Metadata (<code class="docutils literal notranslate"><span class="pre">metadata.csv</span></code>):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sample</p></th>
+<th class="head"><p>Condition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Sample1</p></td>
+<td><p>Control</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sample2</p></td>
+<td><p>Control</p></td>
+</tr>
+<tr class="row-even"><td><p>Sample3</p></td>
+<td><p>Treatment</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sample4</p></td>
+<td><p>Treatment</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="load-data">
+<h4>Load Data:<a class="headerlink" href="#load-data" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load count matrix</span>
+<span class="n">counts</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;counts_matrix.csv&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Load metadata</span>
+<span class="n">metadata</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;metadata.csv&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Ensure row names of metadata match column names of counts</span>
+<span class="n">metadata</span> <span class="o">&lt;-</span> <span class="n">metadata</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">colnames</span><span class="p">(</span><span class="n">counts</span><span class="p">),</span> <span class="n">rownames</span><span class="p">(</span><span class="n">metadata</span><span class="p">)),</span> <span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="create-deseq2-dataset">
+<h3>3.2 Create DESeq2 Dataset<a class="headerlink" href="#create-deseq2-dataset" title="Link to this heading">#</a></h3>
+<p>Create the DESeq2 object using <code class="docutils literal notranslate"><span class="pre">DESeqDataSetFromMatrix</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dds</span> <span class="o">&lt;-</span> <span class="n">DESeqDataSetFromMatrix</span><span class="p">(</span>
+  <span class="n">countData</span> <span class="o">=</span> <span class="n">counts</span><span class="p">,</span>
+  <span class="n">colData</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">,</span>
+  <span class="n">design</span> <span class="o">=</span> <span class="o">~</span> <span class="n">Condition</span>
+<span class="p">)</span>
+
+<span class="c1"># Pre-filtering: Remove low count genes</span>
+<span class="n">dds</span> <span class="o">&lt;-</span> <span class="n">dds</span><span class="p">[</span><span class="n">rowSums</span><span class="p">(</span><span class="n">counts</span><span class="p">(</span><span class="n">dds</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">,</span> <span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="differential-expression-analysis">
+<h3>3.3 Differential Expression Analysis<a class="headerlink" href="#differential-expression-analysis" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dds &lt;- DESeq(dds)
+results &lt;- results(dds)
+results &lt;- results[order(results$padj), ]
+head(results)
+</pre></div>
+</div>
+</section>
+<section id="exploratory-data-analysis">
+<h3>3.4 Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># PCA plot</span>
+<span class="n">vsd</span> <span class="o">&lt;-</span> <span class="n">vst</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span> <span class="n">blind</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>  <span class="c1"># Variance-stabilizing transformation</span>
+<span class="n">plotPCA</span><span class="p">(</span><span class="n">vsd</span><span class="p">,</span> <span class="n">intgroup</span> <span class="o">=</span> <span class="s2">&quot;Condition&quot;</span><span class="p">)</span>
+
+<span class="c1"># Heatmap of Sample Distances</span>
+<span class="n">sampleDists</span> <span class="o">&lt;-</span> <span class="n">dist</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">assay</span><span class="p">(</span><span class="n">vsd</span><span class="p">)))</span>
+<span class="n">sampleDistMatrix</span> <span class="o">&lt;-</span> <span class="k">as</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">sampleDists</span><span class="p">)</span>
+<span class="n">pheatmap</span><span class="p">(</span><span class="n">sampleDistMatrix</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">&quot;Sample Distance Heatmap&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="volcano-plot">
+<h3>3.5 Volcano Plot<a class="headerlink" href="#volcano-plot" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Add significance column
+results$significant &lt;- results$padj &lt; 0.05 &amp; abs(results$log2FoldChange) &gt; 1
+
+# Volcano plot
+ggplot(results, aes(x = log2FoldChange, y = -log10(pvalue), color = significant)) +
+  geom_point() +
+  theme_minimal() +
+  labs(x = &quot;Log2 Fold Change&quot;, y = &quot;-Log10 P-value&quot;)
+</pre></div>
+</div>
+</section>
+<section id="annotating-results">
+<h3>3.6 Annotating Results<a class="headerlink" href="#annotating-results" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add gene symbols or annotations to results (if available):</span>
+<span class="n">annotated_results</span> <span class="o">&lt;-</span> <span class="n">merge</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">gene_annotations</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;GeneID&quot;</span><span class="p">,</span> <span class="nb">all</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+
+<span class="c1"># Save results to a CSV file:</span>
+<span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">annotated_results</span><span class="p">,</span> <span class="s2">&quot;DESeq2_results.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="container-mod.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Package installation and module generation with container-mod</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="exploring-python-bioinformatics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exploring Python Bioinformatics Packages with Jupyter Notebook</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step1-access-the-cluster-via-open-ondemand">Step1: Access the Cluster via Open OnDemand</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step2-load-the-deseq2-package-and-other-necessary-libraries">Step2: Load the DESeq2 package and other necessary libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step3-begin-the-analysis">Step3: Begin the Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-data-preparation">3.1 Input Data Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load Data:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-deseq2-dataset">3.2 Create DESeq2 Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-expression-analysis">3.3 Differential Expression Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">3.4 Exploratory Data Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volcano-plot">3.5 Volcano Plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#annotating-results">3.6 Annotating Results</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/bio/tutorials/de-seq2-in-r-ood.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/bio/tutorials/de-seq2-in-r-ood.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: bio/tutorials/de-seq2-in-r-ood"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Mar 12, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="switcher-label">Version:</p></div>
+      
+        <div class="footer-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

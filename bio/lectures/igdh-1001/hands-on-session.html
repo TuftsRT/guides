@@ -1,0 +1,829 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to Metagenomics - Session 2 &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/bugfix.css?v=e4cc360a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/navbar.css?v=3ee3464b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/switcher.css?v=7c802369" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bio/lectures/igdh-1001/hands-on-session';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/bio/lectures/igdh-1001/hands-on-session.html" />
+    <link rel="icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Cas12a Mutant Structural Predictions With AlphaFold2" href="../introduction-to-alphafold2/index.html" />
+    <link rel="prev" title="Introduction to Metagenomics" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250312" />
+    <meta name="docbuild:last-update" content="Mar 12, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/jumbo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../_static/jumbo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">TTS Research Technology Guides</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Bioinformatics 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Bioinformatics Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workshops/index.html">Bioinformatics Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../databases/index.html">Bioinformatics Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/index.html">Bioinformatics Applications</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Bioinformatics Lectures and Trainings</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Introduction to Metagenomics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Introduction to Metagenomics - Session 2</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction-to-alphafold2/index.html">Cas12a Mutant Structural Predictions With AlphaFold2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction-to-git.html">Introduction to Git&amp;GitHub</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/index.html">Additional Resources</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../../index.html" class="nav-link"
+        >Bioinformatics</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Bioinformatics...</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Introduction to Metagenomics</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Introduction to...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>Date: Feb 6, 2024<br />
+Author: Shirley Li, <a class="reference external" href="mailto:xue&#46;li37&#37;&#52;&#48;tufts&#46;edu">xue<span>&#46;</span>li37<span>&#64;</span>tufts<span>&#46;</span>edu</a><br />
+Class ID: Sp24-IDGH-1001-1-Bioinformatics<br />
+Canvas link: <a class="reference external" href="https://canvas.tufts.edu/courses/55751">https://canvas.tufts.edu/courses/55751</a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction-to-metagenomics-session-2">
+<h1>Introduction to Metagenomics - Session 2<a class="headerlink" href="#introduction-to-metagenomics-session-2" title="Link to this heading">#</a></h1>
+<section id="learning-objective">
+<h2>Learning Objective<a class="headerlink" href="#learning-objective" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>NCBI Database Proficiency: Develop skills to efficiently locate and interpret data on the <a class="reference external" href="https://www.ncbi.nlm.nih.gov/">NCBI database</a>, including navigating to specific BioProject and SRA experiment pages.</p></li>
+<li><p>Data Retrieval from Published Papers: Gain the ability to identify and extract relevant raw data and metadata from published scientific papers.</p></li>
+<li><p>Metagenomic Sequencing Platforms: Learn about different sequencing platforms by analyzing their data characteristics, specifically focusing on <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0198885921000628">Illumina</a> and <a class="reference external" href="https://www.nature.com/articles/nbt.3423">Nanopore technologies</a>.</p></li>
+<li><p>Taxonomic Analysis: Acquire practical experience in assigning taxonomic labels to sequencing reads using Kraken2 on <a class="reference external" href="https://galaxy.cluster.tufts.edu/">Tufts Galaxy</a>, and in converting and visualizing these labels with Krona.</p></li>
+<li><p>Data Comparison and Interpretation: Enhance skills in comparing visualized data with NCBI SRA information and drawing conclusions about sample composition.</p></li>
+</ol>
+</section>
+<section id="exercise-1-ncbi-database-navigation">
+<h2>Exercise 1: NCBI Database Navigation<a class="headerlink" href="#exercise-1-ncbi-database-navigation" title="Link to this heading">#</a></h2>
+<section id="objective">
+<h3>Objective:<a class="headerlink" href="#objective" title="Link to this heading">#</a></h3>
+<p>In this section, you will learn to navigate the <a class="reference external" href="https://www.ncbi.nlm.nih.gov/bioproject">NCBI database</a>. Known for its comprehensive nature, the database hosts a variety of sections, each tailored to specific types of datasets. Your focus will be on mastering the ability to identify and navigate through BioProject pages, SRA experiment pages, and SRA Runs linked to published research papers. This proficiency is crucial in the field of bioinformatics, enabling us to effectively leverage previous research as a foundation for new discoveries and advancements in the study of biological data.</p>
+<img src="https://github.com/shirleyxueli41/Tufts_workshops/assets/88347911/32383594-b895-4f0b-9107-882313c69304" width="900" height="300">
+<p><em>A screenshot of NCBI website</em></p>
+</section>
+<section id="instructions">
+<h3>Instructions:<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h3>
+<p>Your task involves exploring the NCBI database to gather specific information:</p>
+<ol class="arabic simple">
+<li><p>Review the research paper <a class="reference external" href="https://peerj.com/articles/10778/">“Evaluation of full-length nanopore 16S sequencing for detection of pathogens in microbial keratitis”</a> . Your goal is to identify the associated BioProject ID within the paper.</p>
+<ul class="simple">
+<li><p>Hint: BioProject ID is <a class="reference external" href="https://www.ncbi.nlm.nih.gov/bioproject/PRJEB37709/">PRJEB37709</a> in the “Data Availability” section of the paper.</p></li>
+</ul>
+</li>
+<li><p>Answer the following queries regarding the BioProject, and keep a record of your findings:<br />
+a. What is the URL for this specific BioProject?<br />
+b. Total number of biosamples included in this BioProject.<br />
+c. Total number of SRA experiments associated with this BioProject.<br />
+d. Determine the sequencing platform used for SRA run <a class="reference external" href="https://www.ncbi.nlm.nih.gov/sra/?term=ERR4836970">ERR4836970</a>.</p></li>
+<li><p>Apply the same procedure as step 2 for a second research paper: <a class="reference external" href="https://www.nature.com/articles/s41597-022-01762-z">“Benchmarking second and third-generation sequencing platforms for microbial metagenomics”</a>.</p>
+<ul class="simple">
+<li><p>Hint: BioProject ID is in the “Data Records” section of the paper.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="exercise-2-ncbi-database-exploration">
+<h2>Exercise 2: NCBI Database Exploration<a class="headerlink" href="#exercise-2-ncbi-database-exploration" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Objective:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Engage in a hands-on exercise to explore the NCBI database using specific SRA run IDs. Your task will involve navigating various sections of the database and applying your understanding of sequencing technologies to hypothetical research scenarios.</p>
+</section>
+<section id="id2">
+<h3>Instructions:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Utilize the SRA run ID to search the NCBI website. Explore the corresponding SRA, BioSample, and BioProject sections related to this SRA run.</p>
+<ol class="arabic simple">
+<li><p>Assignment Completion: Choose one SRA run and document your findings in the provided Google Spreadsheet: <a class="reference external" href="https://docs.google.com/spreadsheets/d/1s_NVSPLABQtTmB-EXwY4gmNOzGJxr2RE7WVnbFz6djw/edit#gid=927665114">Exercise Spreadsheet</a>.</p></li>
+</ol>
+<img src="https://github.com/shirleyxueli41/Tufts_workshops/assets/88347911/de1556b2-f038-451a-b4dc-a4f3d324aeae" width="900" height="300">
+<p><em>A screenshot of the spreadsheet</em></p>
+<ol class="arabic simple" start="2">
+<li><p>Questions for Analysis<br />
+a. <strong>Mars Soil Sample Analysis</strong>: If you obtained a soil sample from Mars for identifying microorganisms and assembling their genomes, which sequencing technology would be optimal? Consider factors like the detection of novel organisms and the precision required for genome assembly. Discuss your choice, focusing on read length, accuracy, and cost implications.<br />
+b. <strong>Gut Microbiome Study</strong>: In researching the impact of dietary changes on the gut microbiome, what type of sample would you collect, and which sequencing technology would be most suitable? Provide your rationale for this choice.</p></li>
+</ol>
+<p>Additional Resources: Hints for these questions can be found <a class="reference external" href="https://github.com/shirleyxueli41/Tufts_workshops/blob/main/IGDH-1001_2024Feb/Exercise%202_hints.pdf">here</a>.</p>
+</section>
+</section>
+<section id="exercise-3-taxonomy-assignment-and-interpretation">
+<h2>Exercise 3 Taxonomy assignment and interpretation.<a class="headerlink" href="#exercise-3-taxonomy-assignment-and-interpretation" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>Objective:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Use Kraken2 for taxonomy assignment and visualize the results with a Krona plot. Interpret and present the result.</p>
+</section>
+<section id="id4">
+<h3>Instructions:<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>[!NOTE]
+The tools we will use for this analysis are:</p>
+<ul class="simple">
+<li><p>Download and Extract Reads in FASTA/Q</p></li>
+<li><p>Kraken2</p></li>
+<li><p>filter</p></li>
+<li><p>sort</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic">
+<li><p>Log in to your <a class="reference external" href="https://galaxy.cluster.tufts.edu/">Galaxy account</a>.</p></li>
+<li><p>Name the history as “Session 2 Metagenomics-ERR12302112” by double clicking the “Unnamed history”.</p></li>
+<li><p>Now let’s start the analysis:</p>
+<ol class="arabic">
+<li><p>Under tools on the far left of the page, search for <strong>Download and Extract Reads in FASTA/Q</strong> format from NCBI SRA, run the tool with the following parameters:<br />
+- <strong>Accession:</strong> ERR12302112<br />
+- Click <strong>Execute</strong><br />
+<img alt="Screenshot 2024-01-25 at 16 09 58" src="https://github.com/shirleyxueli41/Tufts_workshops/assets/88347911/9cafa3e2-78ad-4040-9e7f-a3baae378512" /></p></li>
+<li><p><strong>Kraken2</strong> assign taxonomic labels to sequencing reads with the following parameters:<br />
+- <strong>Single or paired end</strong>: Single<br />
+- <strong>Input Sequences</strong>: the output from last step. Ex: 1.ERR12302112 (fastq-dump)<br />
+- Click Create Report, then set <strong>Print a report with aggregate counts/clade to file</strong> to Yes<br />
+- <strong>Select a Kraken2 database</strong>: Minikraken2 v2<br />
+<img alt="Screenshot 2024-01-25 at 16 17 44" src="https://github.com/shirleyxueli41/Tufts_workshops/assets/88347911/26d7e312-a8a7-49c5-b3d5-39e9ce5893d9" /><br />
+<em>Note this step will create two output files</em><br />
+<img width="296" alt="Screenshot 2024-01-25 at 16 21 42" src="https://github.com/shirleyxueli41/Tufts_workshops/assets/88347911/492691e2-efe6-49da-9368-ab33c1312d21"></p></li>
+<li><p><strong>Filter</strong> data on any column using simple expressions with the following parameters:<br />
+- <strong>Filter</strong>: the <em>report</em> output from last step. Ex: Report: Kraken2 on data 1<br />
+- <strong>With following condition</strong>: c4==”S”<br />
+<em>This will keep the rows whose fourth column has a character S, S stands for species</em></p></li>
+<li><p><strong>Sort</strong> data in ascending or descending order with the following parameters:<br />
+- <strong>Sort Dataset</strong>: the output file from filter. Ex: Filter on data 2<br />
+- <strong>with flavor</strong>: Numerical sort<br />
+- <strong>everything in</strong>: Descending order<br />
+<em>Take a look at the output file, the first few lines should be like this:</em></p>
+<img width="743" alt="Screenshot 2024-01-25 at 16 30 26" src="https://github.com/shirleyxueli41/Tufts_workshops/assets/88347911/d284b4de-d6db-43fb-b14b-5c2452823902">
+</li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="in-class-assignment">
+<h3>In-class assignment:<a class="headerlink" href="#in-class-assignment" title="Link to this heading">#</a></h3>
+<p>Divide into teams (either two or three teams). Each team should select one SRA run from the provided <a class="reference external" href="https://docs.google.com/spreadsheets/d/1s_NVSPLABQtTmB-EXwY4gmNOzGJxr2RE7WVnbFz6djw/edit#gid=941310028">google spreadsheet</a>. Then, replicate the previously outlined steps to identify the top three prevalent species. Research one or two of these species using Google, and compare your findings with the samples to check for coherence. Each team will be given five minutes to showcase their findings. An example report can be found <a class="reference external" href="https://github.com/shirleyxueli41/Tufts_workshops/blob/main/IGDH-1001_2024Feb/Exercise%203_Example%20Report.pdf">here</a>.</p>
+<blockquote>
+<div><p>[!WARNING]<br />
+<em>Warning: Ensure you generate a fresh history and assign a distinct name for the analysis.</em><br />
+Click the “+” button on the top right to create new history session.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="exercise-4-taxonomy-visualization">
+<h2>Exercise 4 Taxonomy visualization.<a class="headerlink" href="#exercise-4-taxonomy-visualization" title="Link to this heading">#</a></h2>
+<section id="objectives">
+<h3>Objectives:<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h3>
+<p>The exercise aims to utilize Krona for creating interactive visualizations of taxonomic data, highlighting the tool’s effectiveness in representing complex hierarchical structures. It also involves a comparison with NCBI Kroa, assessing differences in visualization techniques and data representation.</p>
+</section>
+<section id="id5">
+<h3>Instructions:<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Switch back to the session “Session 2 Metagenomics-ERR12302112”.</p></li>
+<li><p><strong>Krakentools: Convert kraken report file</strong> to krona text file with the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Kraken report file</strong>: The <em>report</em> output from <em>Kraken2</em>. Ex: Report: Kraken2 on data1<br />
+<em>This will generate an output called “Krakentools: Convert kraken report file on data 2”</em></p></li>
+</ul>
+</li>
+<li><p><strong>Visualize with Krona</strong> Visualize any hierarchical data with the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Select input file:</strong> Krakentools: Convert kraken report file on data 2.<br />
+<em>This will generate an output called “Krona on data 5: HTML”</em><br />
+<img width="885" alt="Screenshot 2024-01-25 at 16 42 45" src="https://github.com/shirleyxueli41/Tufts_workshops/assets/88347911/8e1bd1c1-5708-47f7-9e0b-2ba4ac8f7559"></p></li>
+</ul>
+</li>
+<li><p>Compare the Krona plot with it on NCBI SRA. Link is <a class="reference external" href="https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&amp;amp;acc=ERR12302112&amp;amp;display=analysis">here</a>.</p>
+<ul class="simple">
+<li><p>Click Show Krona View<br />
+<em>NCBI uses Sequence Taxonomic Analysis Tool (<a class="reference external" href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02490-0">STAT</a>), a scalable k-mer-based tool for fast assessment of taxonomic diversity intrinsic to submissions, independent of metadata.</em></p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://bisonnet.bucknell.edu/files/2021/05/Kraken2-Help-Sheet.pdf">https://bisonnet.bucknell.edu/files/2021/05/Kraken2-Help-Sheet.pdf</a></p></li>
+<li><p><a class="reference external" href="https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00900-2">https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00900-2</a></p></li>
+<li><p><a class="reference external" href="https://jddtonline.info/index.php/jddt/article/view/5433">https://jddtonline.info/index.php/jddt/article/view/5433</a></p></li>
+<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S094450132200194X?via%3Dihub">https://www.sciencedirect.com/science/article/pii/S094450132200194X?via%3Dihub</a></p></li>
+<li><p><a class="reference external" href="https://benlangmead.github.io/aws-indexes/k2">https://benlangmead.github.io/aws-indexes/k2</a></p></li>
+</ul>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Metagenomics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../introduction-to-alphafold2/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Cas12a Mutant Structural Predictions With AlphaFold2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Introduction to Metagenomics - Session 2
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to Metagenomics - Session 2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objective">Learning Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-ncbi-database-navigation">Exercise 1: NCBI Database Navigation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-ncbi-database-exploration">Exercise 2: NCBI Database Exploration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Objective:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Instructions:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-taxonomy-assignment-and-interpretation">Exercise 3 Taxonomy assignment and interpretation.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Objective:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Instructions:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-assignment">In-class assignment:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-taxonomy-visualization">Exercise 4 Taxonomy visualization.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Instructions:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/bio/lectures/igdh-1001/hands-on-session.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/bio/lectures/igdh-1001/hands-on-session.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: bio/lectures/igdh-1001/hands-on-session"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Mar 12, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="switcher-label">Version:</p></div>
+      
+        <div class="footer-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
