@@ -20,5 +20,5 @@ grid-columns: 1
 
 - header: "{fas}`dna` Introduction to Git&GitHub -- 2024"
   content: "Slides for Tytell Lab Training (2024 Apr): Introduction to Git&GitHub"
-  link: "introduction-to-git/index.html"
+  link: "introduction-to-git.html"
 ```
