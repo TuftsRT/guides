@@ -24,7 +24,7 @@ Further details on [Tmux](../application/30-tmux)
 
 ## 3. Start interactive session
 
-More [GPU resource](../Compute/GPU.md) details
+More [GPU resource](../compute/gpu) details
 
 First, we'll need to request GPU resources and then load in the required software for working with CUDA and Python.
 
