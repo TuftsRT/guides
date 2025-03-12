@@ -52,6 +52,7 @@ repos:
     hooks:
       - id: codespell
         name: fix common spelling errors
+        args: ["--write-changes"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
@@ -62,8 +63,13 @@ repos:
       - id: end-of-file-fixer
         name: ensure newline at end of file
   - repo: https://github.com/TuftsRT/autoslug
-    rev: v1.0.1
+    rev: v1.0.4
     hooks:
       - id: autoslug
         name: convert file and directory names to url slugs
-        args: ["--num-digits=2", "--ignore-globs=**/build"]
+        args:
+          - "--error-limit=256"
+          - "--ignore-globs=**/build"
+          - "--max-length=32"
+          - "--num-digits=2"
+          - "--warn-limit=128"

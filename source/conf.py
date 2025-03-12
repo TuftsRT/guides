@@ -39,9 +39,11 @@ announcement_file = "announcement.html"
 switcher_branch = "switcher"
 switcher_file = "switcher.json"
 
+exclude_patterns = ["**/README*"]
+
 extensions = [
-    "myst_nb",
     "gallery_directive",
+    "myst_nb",
     "sphinx_copybutton",
     "sphinx_design",
     "sphinx_external_toc",
@@ -106,7 +108,6 @@ html_theme_options = {
     "header_links_before_dropdown": 6,
     "icon_links": icon_links,
     "logo": {"text": project},
-    "navigation_depth": 1,
     "navigation_with_keys": False,
     "search_bar_text": "",
     "secondary_sidebar_items": [
@@ -140,8 +141,7 @@ myst_enable_extensions = [
     "tasklist",
 ]
 
-myst_linkify_fuzzy_links = False
-myst_heading_anchors = 3
+myst_heading_anchors = 2
 
 myst_substitutions = {
     "email": f"<{email}>",

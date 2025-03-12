@@ -56,7 +56,7 @@ def ensure_dir(parent: str, name: str) -> str:
 
 def validate_tags(file: str, tags: list[str]) -> None:
     for tag in tags:
-        if not re.match("^[a-z0-9-]+$", tag):
+        if not re.match(r"^[a-z0-9]+(-[a-z0-9]+)*$", tag):
             message = "{}: invalid tag {}".format(file, tag)
             raise ExtensionError(message)
     return None

@@ -1,25 +1,82 @@
 root: index
+defaults:
+  hidden: true
+  maxdepth: 1
 subtrees:
   - entries:
       - file: hpc/index
-        title: HPC
+        title: High-Performance Computing
         subtrees:
           - entries:
+              - file: hpc/terminology/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/terminology/*
+              - file: hpc/access/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/access/*
+                      - file: hpc/access/globus/index
+                        subtrees:
+                          - entries:
+                              - glob: hpc/access/globus/*
+              - file: hpc/compute/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/compute/*
+              - file: hpc/slurm/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/slurm/*
+              - file: hpc/application/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/application/*
+              - file: hpc/examples/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/examples/*
               - glob: hpc/*
-      - file: python/index
-        title: Python
-        subtrees:
-          - entries:
-              - glob: python/*
-      - file: r/index
-        title: R
-        subtrees:
-          - entries:
-              - glob: r/*
       - file: bio/index
         title: Bioinformatics
         subtrees:
           - entries:
-              - glob: bio/*
+              - file: bio/tutorials/index
+                subtrees:
+                  - entries:
+                      - glob: bio/tutorials/*
+              - file: bio/workshops/index
+                subtrees:
+                  - entries:
+                      - file: bio/workshops/intro-to-bioinfo/index
+                        subtrees:
+                          - entries:
+                              - glob: bio/workshops/intro-to-bioinfo/*
+                      - file: bio/workshops/intro-to-singularity/index
+                        subtrees:
+                          - entries:
+                              - glob: bio/workshops/intro-to-singularity/*
+                      - glob: bio/workshops/*
+              - file: bio/databases/index
+                subtrees:
+                  - entries:
+                      - glob: bio/databases/*
+              - file: bio/apps/index
+                subtrees:
+                  - entries:
+                      - glob: bio/apps/*
+              - file: bio/lectures/index
+                subtrees:
+                  - entries:
+                      - file: bio/lectures/igdh-1001/index
+                        subtrees:
+                          - entries:
+                              - glob: bio/lectures/igdh-1001/*
+                      - file: bio/lectures/introduction-to-alphafold2/index
+                        subtrees:
+                          - entries:
+                              - glob: bio/lectures/introduction-to-alphafold2/*
+                      - glob: bio/lectures/*
+              - file: bio/resources/index
       - url: https://go.tufts.edu/geospatial
         title: Geospatial
