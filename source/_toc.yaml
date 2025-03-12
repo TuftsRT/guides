@@ -8,6 +8,34 @@ subtrees:
         title: High-Performance Computing
         subtrees:
           - entries:
+              - file: hpc/terminology/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/terminology/*
+              - file: hpc/access/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/access/*
+                      - file: hpc/access/globus/index
+                        subtrees:
+                          - entries:
+                              - glob: hpc/access/globus/*
+              - file: hpc/compute/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/compute/*
+              - file: hpc/slurm/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/slurm/*
+              - file: hpc/application/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/application/*
+              - file: hpc/examples/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/examples/*
               - glob: hpc/*
       - file: bio/index
         title: Bioinformatics
