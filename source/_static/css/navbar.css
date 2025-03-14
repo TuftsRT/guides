@@ -8,6 +8,8 @@
   flex: 1;
 }
 
-ul.navbar-nav {
-  flex-direction: row;
+@media (min-width: 960px) {
+  ul.navbar-nav {
+    flex-direction: row;
+  }
 }
