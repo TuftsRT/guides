@@ -3,12 +3,12 @@
   justify-content: right !important;
 }
 
-div:has(.switcher-label) {
+div:has(.version-switcher__label) {
   display: flex;
   align-items: stretch;
 }
 
-.switcher-label {
+.version-switcher__label {
   display: flex;
   align-items: center;
 }
