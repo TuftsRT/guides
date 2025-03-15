@@ -12,3 +12,7 @@ div:has(.version-switcher__label) {
   display: flex;
   align-items: center;
 }
+
+.version-switcher__button {
+  margin-bottom: unset !important;
+}
