@@ -57,6 +57,7 @@ html_baseurl = os.environ.get(key="BASEURL", default="./")
 html_css_files = [
     "css/bugfix.css",
     "css/gallery.css",
+    "css/mobile.css",
     "css/navbar.css",
     "css/switcher.css",
 ]
