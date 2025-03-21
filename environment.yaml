@@ -3,6 +3,8 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
+  - jupyterlab-myst=2.4.2
+  - jupyterlab=4.3.6
   - jupytext=1.16.7
   - linkify-it-py=2.0.3
   - myst-nb=1.2.0
