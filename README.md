@@ -35,6 +35,7 @@ Source repository for the [Tufts University Research Technology Guides][guides-u
   - [Preparing for Publishing](#preparing-for-publishing)
   - [Submitting a Pull Request](#submitting-a-pull-request-1)
   - [Merging the Pull Request](#merging-the-pull-request-1)
+- [Structure Configuration](#structure-configuration)
 
 ## Prerequisites
 
