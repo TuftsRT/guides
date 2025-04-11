@@ -1,5 +1,5 @@
 $root = & git rev-parse --show-toplevel
-if (-not $?) { exit 1 }
+if (-not $?) { exit $LASTEXITCODE }
 $ProgressPreference = "SilentlyContinue"
 $ErrorActionPreference = "SilentlyContinue"
 Remove-Item -Path (Join-Path -Path $root -ChildPath "build") -Recurse -Force

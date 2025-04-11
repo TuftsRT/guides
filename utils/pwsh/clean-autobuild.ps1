@@ -1,4 +1,4 @@
 & "$PSScriptRoot/clean.ps1"
-if (-not $?) {exit 1}
+if (-not $?) {exit $LASTEXITCODE}
 & "$PSScriptRoot/autobuild.ps1"
-#exit $?
+exit $LASTEXITCODE
