@@ -359,6 +359,38 @@ subtrees:
 
 File extensions should be omitted when listing source files in the `_toc.yaml` file. This allows for the easy change of source file type without having to modify the structure configuration file. Use file prefixes instead of directories to create subtrees. This avoids the creation of _dead_ URLs where an index file would usually be expected.
 
+## Subject Tags
+
+Tags can be defined using the `tags` field in the file-wide metadata. The field content must be a single string representing a space-delimited list of tags. Tags can only contain lowercase letters, numbers, and hyphens (`-`) with no more than one consecutive hyphen. This is enforced and improperly formatted tags will result in an extension error during the build process.
+
+### Markdown/Rmd
+
+Tags can be defined in the YAML metadata header of the file as follows.
+
+```yml
+---
+tags: tag tag2 another-tag
+---
+```
+
+### reStructuredText
+
+Tags can be specified in the metadata field list at the top of the file as follows.
+
+```rst
+:tags: tag tag2 another-tag
+```
+
+### Jupyter Notebook
+
+Tags can be added to the notebook metadata JSON as follows. The metadata JSON can be accessed via the Property Inspector in the top-right of the JupyterLab interface (gear icon) or by opening the notebook as a text document and locating the `"metadata"` field (located after the `"cells"` field) in the notebook JSON.
+
+```json
+{
+  "tags": "tag tag2 another-tag"
+}
+```
+
 [autoslug-url]: https://github.com/TuftsRT/autoslug
 [gh-cli-url]: https://cli.github.com/
 [guides-dev-url]: https://rtguides.it.tufts.edu/dev/
