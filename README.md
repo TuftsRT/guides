@@ -6,7 +6,35 @@ Source repository for the [Tufts University Research Technology Guides][guides-u
 
 > [!IMPORTANT]
 > **See the [published website][guides-url] for content.** The following is a development guide intended for contributors.
-> Feedback, suggestions, and error reports can be submitted via <tts-research@tufts.edu> or by [creating an issue][issues-url] on GitHub.
+> Feedback, suggestions, and error reports can be submitted via <tts-research@tufts.edu> or by [creating an issue][issues-url].
+
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+  - [Miniforge](#miniforge)
+  - [GitHub CLI](#github-cli)
+  - [Recommended Software](#recommended-software)
+- [Initial Setup](#initial-setup)
+  - [Optional Pre-Commit Configuration](#optional-pre-commit-configuration)
+- [Repository Overview](#repository-overview)
+  - [Feature Branches](#feature-branches)
+  - [Branch Structure](#branch-structure)
+    - [File and Directory Names](#file-and-directory-names)
+    - [Placement of Images](#placement-of-images)
+    - [Build Artifacts](#build-artifacts)
+- [Utility Scripts](#utility-scripts)
+  - [`autobuild`](#autobuild)
+  - [`build`](#build)
+  - [`clean`](#clean)
+- [Contribution Workflow](#contribution-workflow)
+  - [Creating a Feature Branch](#creating-a-feature-branch)
+  - [Committing Changes](#committing-changes)
+  - [Submitting a Pull Request](#submitting-a-pull-request)
+  - [Merging the Pull Request](#merging-the-pull-request)
+- [Publishing Workflow](#publishing-workflow)
+  - [Preparing for Publishing](#preparing-for-publishing)
+  - [Submitting a Pull Request](#submitting-a-pull-request-1)
+  - [Merging the Pull Request](#merging-the-pull-request-1)
 
 ## Prerequisites
 
@@ -270,7 +298,7 @@ git merge origin/develop
 
 Thoroughly review all changes and fix any uncovered issues. Request fixes or explanations from original committers when needed.
 
-### Creating a Pull Request
+### Submitting a Pull Request
 
 Create a pull request (PR) to merge the `staging` branch into the `main` branch.
 
