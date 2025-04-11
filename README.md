@@ -314,6 +314,50 @@ The PR can be merged once it is manually approved by an administrator and all ch
 gh pr merge --auto
 ```
 
+## Structure Configuration
+
+Documentation structure is managed using the [Sphinx External ToC][toc-url] extension with the `_toc.yaml` configuration file written such that the site map mimics the layout of the `source` directory. Content is grouped into primary sections with each section appearing in the top navigation bar and having an index file serving as the section root. Primary sections contain content pages which can be further divided into subtrees. Pages in each subtree are ordered using the [natural sort order](https://en.wikipedia.org/wiki/Natural_sort_order) of the source file names. Content pages could also have child pages, in which case their structure resembles that of a primary section with an index file serving as the parent page.
+
+Content pages can be added to preexisting sections, subtrees, and parent pages without having to modify the site map configuration file. Only when adding a new section, subtree, or parent page does the `_toc.yaml` file need to be updated. See the sample `source` directory tree below along with its corresponding site map configuration file for examples on how to define various structures. Note that the `title` field defines how the name of a primary section is displayed in the top navigation bar and the `caption` field defines how the name of a subtree is displayed in the ToC. Content page display names in the secondary sidebar and the ToC are equivalent to their first heading.
+
+```
+📂source
+ ┣ 📄index
+ ┗ 📂primary-section
+    ┣ 📄index
+    ┣ 📄01-content-page
+    ┣ 📄02-content-page
+    ┣ 📂10-page-with-children
+    ┃  ┣ 📄index
+    ┃  ┣ 📄01-child-page
+    ┃  ┗ 📄02-child-page
+    ┣ 📄21-content-page
+    ┣ 📄22-content-page
+    ┣ 📄31-subtree-page
+    ┗ 📄32-subtree-page
+```
+
+```yaml
+root: index
+subtrees:
+  - caption: Primary Section Display Name in ToC
+    entries:
+      - file: primary-section/index
+        title: Primary Section Display Name in Navigation
+        subtrees:
+          - entries:
+              - glob: primary-section/0*
+              - file: primary-section/10-page-with-children/index
+                entries:
+                  - glob: primary-section/10-page-with-children/*
+              - glob: primary-section/2*
+              - caption: Section Subtree Display Name
+                entries:
+                  - glob: primary-section/3*
+```
+
+File extensions should be omitted when listing source files in the `_toc.yaml` file. This allows for the easy change of source file type without having to modify the structure configuration file. Use file prefixes instead of directories to create subtrees. This avoids the creation of _dead_ URLs where an index file would usually be expected.
+
 [autoslug-url]: https://github.com/TuftsRT/autoslug
 [gh-cli-url]: https://cli.github.com/
 [guides-dev-url]: https://rtguides.it.tufts.edu/dev/
