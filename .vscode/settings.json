@@ -29,6 +29,7 @@
     "nodefaults",
     "nosearch",
     "ondemand",
+    "pwsh",
     "pycache",
     "pydata",
     "pygit",

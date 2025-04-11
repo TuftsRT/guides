@@ -1,11 +1,12 @@
 # Tufts University Research Technology Guides
 
-Collection of resources, documentation, and asynchronous tutorials to advance computational research across disciplines. Developed and maintained by the Research Technology (RT) team within Tufts Technology Services (TTS) at Tufts University.
+Source repository for the [Tufts University Research Technology Guides][guides-url] -- a collection of resources, documentation, and asynchronous tutorials to advance computational research across disciplines. Developed and maintained by the Research Technology (RT) team within Tufts Technology Services (TTS) at Tufts University.
 
 <!-- prettier-ignore -->
 
 > [!IMPORTANT]
-> **See the [published website](https://rtguides.it.tufts.edu) for content.** The following is a development guide intended for staff.
+> **See the [published website][guides-url] for content.** The following is a development guide intended for contributors.
+> Feedback, suggestions, and error reports can be submitted via <tts-research@tufts.edu> or by [creating an issue][issues-url] on GitHub.
 
 ## Prerequisites
 
@@ -113,7 +114,7 @@ All branches that contain source files (`develop`, `hotfix`, `main`, `staging`, 
 - `source/_static/css` -- cascading style sheet (CSS) files used to override default styling
 - `source/_static` -- static HTML content like the website logo and favicon
 - `source/_templates` -- custom [Jinja][jinja-url] templates including new templates and default overrides
-- `source/_toc.yml` -- [Sphinx External ToC][toc-url] site map configuration file
+- `source/_toc.yaml` -- [Sphinx External ToC][toc-url] site map configuration file
 - `source/404.md` -- custom 404 page template
 - `source/conf.py` -- [Sphinx][sphinx-url] configuration file
 - `source/index.md` -- documentation/website root (default landing page)
@@ -121,9 +122,24 @@ All branches that contain source files (`develop`, `hotfix`, `main`, `staging`, 
 
 All other contents of `source` define the documentation structure and content, with the directory tree corresponding to the site map and files serving as content sources. See corresponding sections below for more information.
 
+#### File and Directory Names
+
+All file and directory names should be URL-friendly and hence only consist of lowercase letters, hyphens (`-`), and numbers. No more than one hyphen may be used in a row and file names should not exceed 32 characters (excluding extension). Prefixes consisting of periods (`.`) or underscores (`_`) are allowed to denote special files and any numerical prefixes should be formatted to two digits. Underscores (`_`) should be used instead of hyphens when naming Python (`py`) scripts. These rules are enforced via the [AutoSlug][autoslug-url] pre-commit hook with automatic fixes applied whenever possible. Any files that do not have an extensions recognized by [AutoSlug][autoslug-url] are treated as directories. File extensions are case-sensitive and care should be take to ensure that the extensions of R scripts (`R`) and R Markdown documents (`Rmd`) are properly capitalized. See below for examples of appropriate names.
+
+```
+_special-file.yaml
+.hidden-directory
+01-file-with-numeric-prefix.rst
+python_script.py
+python-notebook.ipynb
+r-markdown-file.Rmd
+this-is-a-directory
+this-is-a-file.md
+```
+
 #### Placement of Images
 
-Any images intended for inclusion in the source files should be placed in an `img` directory within the same directory as the corresponding source file.
+Any images intended for inclusion in the source files should be placed in an `img` directory within the same directory as the corresponding source file. Images should be in PNG or SVG format and resized to the desired dimensions whenever possible. All references to images within source files should be relative.
 
 #### Build Artifacts
 
@@ -143,15 +159,39 @@ Utility scripts are available for various console environments and can be found 
 
 All utility scripts are written such that they can be run from anywhere within the repository without errors. (The script uses git commands to derive the repository root and all paths in the script are relative to the repository root.) The following utility scripts are provided for all platforms.
 
-- `autobuild` -- automatic self-updating preview build of website hosted on local server (_localhost_)
+- `autobuild` -- automatic self-updating preview build of website hosted on a local server
 - `build` -- one-time build of static HTML files
 - `clean-autobuild` -- runs `clean` and then `autobuild`
 - `clean-build` -- runs `clean` and then `build`
 - `clean` -- removal of all build artifacts (needed to ensure a clean build)
 
-New utility scripts should follow the example of existing scripts and be executable without errors from anywhere within the repository. Bash scripts should be developed first and analogous courtesy scripts for Command Prompt and PowerShell users provided when possible.
+New utility scripts should follow the example of existing scripts and be executable without errors from anywhere within the repository. Bash scripts should be developed first and analogous courtesy scripts for Command Prompt and PowerShell users provided when possible. Utility scripts should exit with zero for success and an appropriate positive exit code for failure.
 
-## Contribution
+### `autobuild`
+
+The `autobuild` utility script uses [`sphinx-autobuild`][sphinx-autobuild-url] to display an automatically self-updating preview build of the website by running the following command. (The variable `$root` refers to the repository root.)
+
+```sh
+sphinx-autobuild --nitpicky --ignore "$root/source/tags" -- "$root/source" "$root/build"
+```
+
+The live preview automatically updates whenever chances to source files are detected and can be accessed via [127.0.0.1:8000](http://127.0.0.1:8000) (_localhost_ port number 8000). Note that changes to configuration and template files might not be detected and usually require a clean build to be properly displayed.
+
+### `build`
+
+The `build` utility script uses the standard `sphinx-build` command to build static HTML files that make up the website by running the following command. (The variable `$root` refers to the repository root.)
+
+```sh
+sphinx-build --nitpicky "$root/source" "$root/build"
+```
+
+The generated HTML files can be previewed by directly opening the landing page (`build/index.html`) or any other desired page using a web browser. Note that some functionality that requires a web server might not work properly when previewing static HTML files.
+
+### `clean`
+
+The `clean` utility script attempts to delete all build artifacts. The usual build process first checks for build artifacts and then only rebuilds the pages where a change to the source file is detected. This means that changes that affect several pages like modifications to the configuration, table of contents, style sheets, or templates might not be accurately reflected when preexisting build artifacts are detected. Hence it is strongly recommended to run `clean` before `autobuild` or `build` whenever making modifications that are not confined to specific source files. Note that the `clean-autobuild` and `clean-build` scripts can be used instead of manually running `clean` before the desired build script.
+
+## Contribution Workflow
 
 The following contribution workflow allows various development efforts to take place simultaneously and ensures changes and new content are incorporated into the `develop` branch in a safe and controlled manner that reduces errors and merge conflicts.
 
@@ -167,14 +207,18 @@ git pull
 Create a new feature branch from the latest development state.
 
 ```
-git switch --create [your feature branch name]
+git switch --create <name>
 ```
 
 Push the new branch to the remote repository and set the upstream tracking branch.
 
 ```
-git push --set-upstream origin [your feature branch name]
+git push --set-upstream origin <name>
 ```
+
+### Committing Changes
+
+Frequent commits are encouraged. The subject line of the commit message should be informative and not exceed500 characters. Commit message bodies are not required but encouraged to provide additional detail where needed. Avoid using sentence-style capitalization and punctuation in the commit message subject line. When using pre-commit hooks, avoid passing the commit message directly via the `-m` flag in case checks fail and automatic fixes are applied.
 
 ### Submitting a Pull Request
 
@@ -198,13 +242,15 @@ gh pr view --web
 
 ### Merging the Pull Request
 
-The pull request can be merged when all status checks pass. Run the following to have this automatically happen. Manual intervention is needed when status checks fail. Ask for help if needed.
+The pull request can be merged when all status checks pass. Run the following to have this automatically happen. Manual intervention is needed when status checks fail and automatic fixes are not possible. Ask for help if needed.
 
 ```
 gh pr merge --auto
 ```
 
-## Publishing
+The merging of the PR triggers a build and deployment of the development version of the website. Note that this could take several minutes. Once the updated website has been deployed, make sure to navigate to the [development version of the website][guides-dev-url] and sure all changes are reflected as expected.
+
+## Publishing Workflow
 
 ### Preparing for Publishing
 
@@ -222,6 +268,8 @@ git fetch origin
 git merge origin/develop
 ```
 
+Thoroughly review all changes and fix any uncovered issues. Request fixes or explanations from original committers when needed.
+
 ### Creating a Pull Request
 
 Create a pull request (PR) to merge the `staging` branch into the `main` branch.
@@ -232,17 +280,22 @@ gh pr create --base main
 
 ### Merging the Pull Request
 
-The PR can be merged once all checks pass and it is manually approved by an administrator and all checks pass. Run the following to have this automatically happen. Merging of the PR will trigger the publishing workflow and result in a new build of the public website.
+The PR can be merged once it is manually approved by an administrator and all checks pass. Run the following to have this automatically happen. Merging of the PR will trigger the publishing workflow and result in a new build of the public website.
 
 ```
 gh pr merge --auto
 ```
 
+[autoslug-url]: https://github.com/TuftsRT/autoslug
 [gh-cli-url]: https://cli.github.com/
+[guides-dev-url]: https://rtguides.it.tufts.edu/dev/
+[guides-url]: https://rtguides.it.tufts.edu/
+[issues-url]: https://github.com/TuftsRT/guides/issues
 [jinja-url]: https://jinja.palletsprojects.com
 [miniforge-url]: https://github.com/conda-forge/miniforge
 [myst-md-ext-url]: https://marketplace.visualstudio.com/items?itemName=ExecutableBookProject.myst-highlight
 [pre-commit-url]: https://pre-commit.com/
+[sphinx-autobuild-url]: https://github.com/sphinx-doc/sphinx-autobuild
 [sphinx-url]: https://www.sphinx-doc.org
 [toc-url]: https://sphinx-external-toc.readthedocs.io
 [vs-code-url]: https://code.visualstudio.com/
