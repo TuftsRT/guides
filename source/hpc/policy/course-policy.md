@@ -16,9 +16,9 @@ Starting MM/DD/YYYY:
 **Existing course storage and setup:**
 
 - RT will clean up existing course storage and setup:
-  - Delete all student folders and data
-  - Remove all student access to course storage
-  - Archive course folder to Tier 2 storage (inaccessible from cluster)
+  - Archive course folder to Tier 2 storage (inaccessible from cluster), and delete after 12 months.
+  - Delete all student folders and data from Tier 1 course storage.
+  - Remove all student access to course storage.
 
 **Each semester, instructors are required to submit new requests for HPC resources and setup:**
 
@@ -62,11 +62,12 @@ Starting MM/DD/YYYY:
 - In-class Sessions
 
   - Virtual "Intro to HPC" in-class session is available and request needs to be received by RT 4 weeks prior to the scheduled in-class session.
-  - Other sessions?
+    - When schedule permits, in-person sessions can be scheduled in advance.
+  - Please contact tts-research@tufts.edu about special toptic sessions.
 
 - Support
 
-  - RT offers assistance in: access and storage setup, class environment setup, in-class intro HPC sessions (remote), and this and that
+  - RT offers assistance in: access and storage setup, class environment setup, in-class intro HPC sessions (remote), system debugging, .etc.
   - During course period, instructor and course TAs are responsible to collect and attempt the initial debugging when students' issues arise.
   - Instructors and/or designated TAs should be in contact with RT about large scaled common issues students run into on HPC cluster, and communicate the solutions RT provides to students.
   - HPC course setup is not immune to cluster-wide outage (scheduled or unscheduled).
