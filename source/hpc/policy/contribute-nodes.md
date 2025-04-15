@@ -10,13 +10,13 @@ Contribute nodes are available to purchase 4 times per year.  This helps us achi
 Most current contribute nodes are either **CPU, Large Memory** or **GPU** nodes.
 
 
-| **Name**          | **Specifications**                                                         | **Approximate Cost(\*)** | **Contribute** | **Public** |
-|-------------------|----------------------------------------------------------------------------|-------------------------:|---------------:|-----------:|
-| CPU               | 2x 32 Cores<br/>256GB RAM                                                  |                  $12,000 |             00 |         40 |
-| CPU, Large Memory | 2x 32 Cores<br/>512GB RAM                                                  |                  $18,000 |             00 |         45 |
-| GPU               | 2x 32 Cores<br/>512GB RAM<br/>4x L40S 48GB PCIe                            |                  $60,000 |              9 |          5 |
-| GPU, Medium       | 2x 32 Cores<br/>768GB RAM<br/>4x H200 PCIe 141GB                           |                 $120,000 |              0 |         10 |
-| GPU, Large        | 2x 48 Cores<br/>1.5TB RAM<br/>8x H200 SXM 141GB<br/>24TB Local NVMe Disk   |                 $350,000 |              0 |          4 |
+| **Name**          | **Specifications**                                                         | **Approximate Cost(\*)** |
+|-------------------|----------------------------------------------------------------------------|-------------------------:|
+| CPU               | 2x 32 Cores<br/>256GB RAM                                                  |                  $12,000 |
+| CPU, Large Memory | 2x 32 Cores<br/>512GB RAM                                                  |                  $18,000 |
+| GPU               | 2x 32 Cores<br/>512GB RAM<br/>4x L40S 48GB PCIe                            |                  $60,000 |
+| GPU, Medium       | 2x 32 Cores<br/>768GB RAM<br/>4x H200 PCIe ???GB                           |                 $120,000 |
+| GPU, Large        | 2x 48 Cores<br/>1.5TB RAM<br/>8x H200 SXM 141GB<br/>24TB Local NVMe Disk   |                 $350,000 |
 
 
 * TTS provides all the additional infrastructure including data center space, networking, power/cooling and operations. 
