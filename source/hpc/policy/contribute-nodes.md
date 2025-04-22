@@ -8,6 +8,7 @@ This page lists the nodes types utilized on the cluster available for purchase a
 Contribute nodes are available to purchase 4 times per year.  This helps us achieve the best price for equipment and allows us to manage the cluster growth in a planned fashion. If you are contemplating purchasing equipment, please reach out to RT early in your planning process. 
 
 Most current contribute nodes are either **CPU, Large Memory** or **GPU** nodes.
+
 **CPU Nodes:**
 | **Name**          | **Specifications**                                                         | **Approximate Cost(\*)** |
 |-------------------|----------------------------------------------------------------------------|-------------------------:|
