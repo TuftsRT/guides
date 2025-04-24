@@ -4,7 +4,7 @@ Tufts HPC cluster operates under a hybrid model with both public and contribute 
 
 This page lists the nodes types utilized on the cluster available for purchase as contribute nodes. TTS Research Technology works to create a selection of options that match to faculty needs while maintaining a cluster that has enough commonality that the researcher community can utilize free resources and maximize utilization. If all the nodes are unique it does not create a good HPC environment.
 
-Contribute nodes are available to purchase 4 times per year. This helps us achieve the best price for equipment and allows us to manage the cluster growth in a planned fashion. If you are contemplating purchasing equipment, please reach out to RT early in your planning process. Please review the [access and lifecycle information for faculty purchased nodes](index.html#hpc-researcher-contribution-node) before submitting a purchase request.
+Contribute nodes are available to purchase 4 times per year. This helps us achieve the best price for equipment and allows us to manage the cluster growth in a planned fashion. If you are contemplating purchasing equipment, please reach out to RT early in your planning process. Please review the [access and lifecycle information for faculty purchased nodes](index.md#hpc-researcher-contribution-node) before submitting a purchase request.
 
 Most current faculty contribute nodes are the **CPU, Standard** or **GPU, Standard** nodes.
 
