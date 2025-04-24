@@ -36,6 +36,10 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: hpc/examples/*
+              - file: hpc/policy/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/policy/*
               - glob: hpc/*
       - file: bio/index
         title: Bioinformatics
