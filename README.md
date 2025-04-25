@@ -95,7 +95,7 @@ pre-commit install
 Test the installation by running the pre-commit hooks against all files in the repository.
 
 ```
-pre-commit --run --all-files
+pre-commit run --all-files
 ```
 
 Now the hooks will run before every commit attempt. If any hooks fail or perform automatic fixes, the commit attempt is interrupted and a new commit attempt must be made.
@@ -130,7 +130,7 @@ All other branches in this repository are _feature branches_ forked from the `de
 - development of internal extensions or utility scripts
 - updates to the README or other internal documentation
 
-Note that the list above is not exhaustive. Feature branches should be named descriptively (so that it is immediately clear what kind of active development is taking place in the branch) but concisely (not exceeding a soft limit of roughly 30 characters). All branch names should only contain lowercase letters, hyphens (`-`), and numbers.
+Note that the list above is not exhaustive. Feature branches should be named descriptively (so that it is immediately clear what kind of active development is taking place in the branch) but concisely (not exceeding a soft limit of roughly 30 characters). All branch names should only contain lowercase letters, hyphens (`-`), and numbers. Do not use more than one hyphen in a row.
 
 ### Branch Structure
 
@@ -148,11 +148,11 @@ All branches that contain source files (`develop`, `hotfix`, `main`, `staging`, 
 - `source/index.md` -- documentation/website root (default landing page)
 - `utils` -- various internally-developed utility scripts
 
-All other contents of `source` define the documentation structure and content, with the directory tree corresponding to the site map and files serving as content sources. See corresponding sections below for more information.
+All other contents of `source` define the documentation structure and content, with the directory tree corresponding to the site map and files serving as content sources. See corresponding sections below for more information. Note that all files in `source` that are not listed above are automatically published online even if not linked to from anywhere in the content. Do not place any non-content files like utility scripts or developer-facing documentation within the `source` directory.
 
 #### File and Directory Names
 
-All file and directory names should be URL-friendly and hence only consist of lowercase letters, hyphens (`-`), and numbers. No more than one hyphen may be used in a row and file names should not exceed 32 characters (excluding extension). Prefixes consisting of periods (`.`) or underscores (`_`) are allowed to denote special files and any numerical prefixes should be formatted to two digits. Underscores (`_`) should be used instead of hyphens when naming Python (`py`) scripts. These rules are enforced via the [AutoSlug][autoslug-url] pre-commit hook with automatic fixes applied whenever possible. Any files that do not have an extensions recognized by [AutoSlug][autoslug-url] are treated as directories. File extensions are case-sensitive and care should be take to ensure that the extensions of R scripts (`R`) and R Markdown documents (`Rmd`) are properly capitalized. See below for examples of appropriate names.
+All file and directory names should be URL-friendly and hence only consist of lowercase letters, hyphens (`-`), and numbers. No more than one hyphen may be used in a row and file names should not exceed 32 characters (excluding extension). Prefixes consisting of periods (`.`) or underscores (`_`) are allowed to denote special files and any numerical prefixes should be formatted to two digits. Underscores (`_`) should be used instead of hyphens when naming Python (`py`) scripts. These rules are enforced via the [AutoSlug][autoslug-url] pre-commit hook with automatic fixes applied whenever possible. Any files that do not have an extension recognized by [AutoSlug][autoslug-url] are treated as directories. File extensions are case-sensitive and care should be taken to ensure that the extensions of R scripts (`R`) and R Markdown documents (`Rmd`) are properly capitalized. See below for examples of appropriate names.
 
 ```
 _special-file.yaml
@@ -167,7 +167,7 @@ this-is-a-file.md
 
 #### Placement of Images
 
-Any images intended for inclusion in the source files should be placed in an `img` directory within the same directory as the corresponding source file. Images should be in PNG or SVG format and resized to the desired dimensions whenever possible. All references to images within source files should be relative.
+Any images intended for inclusion in the source files should be placed in an `img` directory within the same directory as the corresponding source file. Images should be in PNG or SVG format and resized to the desired dimensions whenever possible. All references to images within source files should be relative. Do not include references to any externally hosted images
 
 #### Build Artifacts
 
@@ -270,15 +270,17 @@ gh pr view --web
 
 ### Merging the Pull Request
 
-The pull request can be merged when all status checks pass. Run the following to have this automatically happen. Manual intervention is needed when status checks fail and automatic fixes are not possible. Ask for help if needed.
+A manual review is not required when merging to the `develop` branch and the pull request can be merged when all automated status checks pass. Run the following to have this automatically happen. Manual intervention is needed when status checks fail and automatic fixes are not possible. Ask for help if needed.
 
 ```
 gh pr merge --auto
 ```
 
-The merging of the PR triggers a build and deployment of the development version of the website. Note that this could take several minutes. Once the updated website has been deployed, make sure to navigate to the [development version of the website][guides-dev-url] and sure all changes are reflected as expected.
+The merging of the PR triggers a build and deployment of the development version of the website. Note that this could take several minutes. Once the updated website has been deployed, make sure to navigate to the [development version of the website][guides-dev-url] and ensure all changes are reflected as expected.
 
 ## Publishing Workflow
+
+The following workflow incorporates updates from the `develop` branch into the published website. This is automatically triggered every week (if updates are detected) but can be manually triggered as follows anytime when updates to the published site are needed.
 
 ### Preparing for Publishing
 
@@ -289,7 +291,7 @@ git switch staging
 git pull
 ```
 
-Merge the latest version `develop` branch into `staging` to incorporate the changes.
+Merge the latest version of the `develop` branch into `staging` to incorporate the changes.
 
 ```
 git fetch origin
@@ -306,9 +308,21 @@ Create a pull request (PR) to merge the `staging` branch into the `main` branch.
 gh pr create --base main
 ```
 
+Merges to `main` require approval and a manual review. Adding a comment tagging a reviewer to grab their attention is encouraged. Comments can be added via the GitHub CLI as follows.
+
+```
+gh pr comment
+```
+
+Comments can also be added using the web interface which can be easily accessed as follows.
+
+```
+gh pr view --web
+```
+
 ### Merging the Pull Request
 
-The PR can be merged once it is manually approved by an administrator and all checks pass. Run the following to have this automatically happen. Merging of the PR will trigger the publishing workflow and result in a new build of the public website.
+The PR can be merged once it is manually approved and all checks pass. Run the following to have this automatically happen. Merging of the PR will trigger the publishing workflow and result in a new build of the public website.
 
 ```
 gh pr merge --auto
@@ -382,7 +396,7 @@ Tags can be specified in the metadata field list at the top of the file as follo
 
 ### Jupyter Notebook
 
-Tags can be added to the notebook metadata JSON as follows. The metadata JSON can be accessed via the Property Inspector in the top-right of the JupyterLab interface (gear icon) or by opening the notebook as a text document and locating the `"metadata"` field (located after the `"cells"` field) in the notebook JSON.
+Tags can be added to the notebook metadata JSON as follows. The metadata JSON can be accessed via the Property Inspector in the top-right of the JupyterLab interface (gear icon) or by opening the notebook as a text document and locating the `"metadata"` field (usually located after the `"cells"` field) in the notebook JSON.
 
 ```json
 {
