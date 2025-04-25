@@ -24,7 +24,7 @@ Most current faculty contribute nodes are the **CPU, Standard** or **GPU, Standa
 | GPU, Large    | 2x 48 Cores<br/>1.5TB RAM<br/>24TB Local NVMe Disk | 8x H200 SXM 141GB      | \$350,000                |           |
 
 - TTS provides all the additional infrastructure including data center space, networking, power/cooling and operations.
-- We utilize Intel CPUs and NVIDA GPUs across the cluster to maintain code portability between nodes.
+- We utilize Intel CPUs and NVIDIA GPUs across the cluster to maintain code portability between nodes.
 - All nodes are connected at 100 Gbps Ethernet
 - If you have specialized needs such as InfiniBand networking or alternate CPU architecture like ARM please reach out to RT.
 
