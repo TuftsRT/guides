@@ -26,10 +26,18 @@ Source repository for the [Tufts University Research Technology Guides][guides-u
   - [`build`](#build)
   - [`clean`](#clean)
 - [Structure Configuration](#structure-configuration)
+- [Source Files](#source-files)
+  - [Narrative](#narrative)
+    - [MyST Markdown](#myst-markdown)
+    - [reStructuredText](#restructuredtext)
+  - [Executable](#executable)
+    - [Jupyter Notebook](#jupyter-notebook)
+    - [MyST Markdown Notebook](#myst-markdown-notebook)
+    - [R Markdown Notebook](#r-markdown-notebook)
 - [Subject Tags](#subject-tags)
-  - [Markdown/Rmd](#markdownrmd)
-  - [reStructuredText](#restructuredtext)
-  - [Jupyter Notebook](#jupyter-notebook)
+  - [MyST and R Markdown](#myst-and-r-markdown)
+  - [reStructuredText](#restructuredtext-1)
+  - [Jupyter Notebook](#jupyter-notebook-1)
 - [Contribution Workflow](#contribution-workflow)
   - [Creating a Feature Branch](#creating-a-feature-branch)
   - [Committing Changes](#committing-changes)
@@ -267,11 +275,27 @@ subtrees:
 
 File extensions should be omitted when listing source files in the `_toc.yaml` file. This allows for the easy change of source file type without having to modify the structure configuration file. Use file prefixes instead of directories to create subtrees. This avoids the creation of _dead_ URLs where an index file would usually be expected.
 
+## Source Files
+
+### Narrative
+
+#### MyST Markdown
+
+#### reStructuredText
+
+### Executable
+
+#### Jupyter Notebook
+
+#### MyST Markdown Notebook
+
+#### R Markdown Notebook
+
 ## Subject Tags
 
 Tags can be defined using the `tags` field in the file-wide metadata. The field content must be a single string representing a space-delimited list of tags. Tags can only contain lowercase letters, numbers, and hyphens (`-`) with no more than one consecutive hyphen. This is enforced and improperly formatted tags will result in an extension error during the build process.
 
-### Markdown/Rmd
+### MyST and R Markdown
 
 Tags can be defined in the YAML metadata header of the file as follows.
 
