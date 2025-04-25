@@ -26,7 +26,7 @@ Source repository for the [Tufts University Research Technology Guides][guides-u
   - [`build`](#build)
   - [`clean`](#clean)
 - [Structure Configuration](#structure-configuration)
-- [Source Files](#source-files)
+- [Content Types](#content-types)
   - [Narrative](#narrative)
     - [MyST Markdown](#myst-markdown)
     - [reStructuredText](#restructuredtext)
@@ -275,7 +275,14 @@ subtrees:
 
 File extensions should be omitted when listing source files in the `_toc.yaml` file. This allows for the easy change of source file type without having to modify the structure configuration file. Use file prefixes instead of directories to create subtrees. This avoids the creation of _dead_ URLs where an index file would usually be expected.
 
-## Source Files
+## Content Types
+
+Content that is not code-heavy is considered _narrative_ and can be written using either MyST Markdown or reStructuredText. Narrative content can contain code snippets but these are not executed and their output is not intended to be included. Content that is focused on code and intends to include both the code itself and its output is considered _executable_ and can be written using a variety of notebook formats. Code snippets included in executable content are executed during the build and the outputs are automatically included in the built document. Efforts are underway to make the code included in the pages derived from executable content interactive using WebAssembly (WASM).
+
+All content regardless of format must adhere to the following rules.
+
+- **Files must have a single title.** Generally this means that files must begin with a single first-level heading and no other first-level headings should appear. (R Markdown is an exception. There the title is defined in the YAML header and hence multiple first-level headings can be used.)
+- **Headings must increase linearly.** Subsections of sections with a first-level header should have a second-level header, the subsections of which should have a third-level header and so on. Skipping a header level will result in a build error.
 
 ### Narrative
 
