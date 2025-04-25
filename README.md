@@ -3,7 +3,6 @@
 Source repository for the [Tufts University Research Technology Guides][guides-url] -- a collection of resources, documentation, and asynchronous tutorials to advance computational research across disciplines. Developed and maintained by the Research Technology (RT) team within Tufts Technology Services (TTS) at Tufts University.
 
 <!-- prettier-ignore -->
-
 > [!IMPORTANT]
 > **See the [published website][guides-url] for content.** The following is a development guide intended for contributors.
 > Feedback, suggestions, and error reports can be submitted via <tts-research@tufts.edu> or by [creating an issue][issues-url].
@@ -53,7 +52,7 @@ gh auth login
 
 ### Recommended Software
 
-The majority of the content within the guides is written using MyST (Markedly Structured Text) Markdown, which is an extension of the popular CommonMark Markdown specification and heavily inspired by R Markdown. MyST Markdown contains several special directives that most Markdown editors are unable to properly format or preview. Hence the use of [Visual Studio Code][vs-code-url] along with the [MyST-Markdown][myst-md-ext-url] extension is strongly recommended.
+The majority of the content within the guides is written using MyST (Markedly Structured Text) Markdown, which is an extension of the popular CommonMark Markdown specification and heavily inspired by R Markdown. MyST Markdown contains several special directives that most Markdown editors are unable to properly format or preview. Hence the use of [Visual Studio Code][vs-code-url] along with the [MyST-Markdown][myst-md-ext-url] extension is strongly recommended. Alternatively, the JupyterLab distribution included in the project environment is equipped with an extension that adds MyST Markdown support and can be used to edit and preview MyST markdown files instead.
 
 ## Initial Setup
 
