@@ -247,7 +247,7 @@ git push --set-upstream origin <name>
 
 ### Committing Changes
 
-Frequent commits are encouraged. The subject line of the commit message should be informative and not exceed500 characters. Commit message bodies are not required but encouraged to provide additional detail where needed. Avoid using sentence-style capitalization and punctuation in the commit message subject line. When using pre-commit hooks, avoid passing the commit message directly via the `-m` flag in case checks fail and automatic fixes are applied.
+Frequent commits are encouraged. The subject line of the commit message should be informative and not exceed 50 characters. Commit message bodies are not required but encouraged to provide additional detail where needed. Avoid using sentence-style capitalization and punctuation in the commit message subject line. When using pre-commit hooks, avoid passing the commit message directly via the `-m` flag in case checks fail and automatic fixes are applied.
 
 ### Submitting a Pull Request
 
