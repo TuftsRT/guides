@@ -1,4 +1,4 @@
-# HPC Cluster contribute nodes
+# HPC Cluster Contribute Nodes
 
 Tufts HPC cluster operates under a hybrid model with both public and contribute nodes. The university operates a public partition where the Slurm fair share algorithm is used to balance usage amongst all researchers. Additionally, researchers can purchase contribute nodes to which they get priority access.
 
