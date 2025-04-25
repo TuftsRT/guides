@@ -8,6 +8,7 @@ dependencies:
   - jupytext=1.16.7
   - linkify-it-py=2.0.3
   - myst-nb=1.2.0
+  - nodejs=22.13.0
   - pre-commit=4.2.0
   - pydata-sphinx-theme=0.16.0
   - pygit2=1.17.0
