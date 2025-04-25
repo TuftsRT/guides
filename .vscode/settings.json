@@ -18,6 +18,7 @@
     "globus",
     "hpctools",
     "ipynb",
+    "irkernel",
     "jupyterlab",
     "jupytext",
     "kernelspec",
