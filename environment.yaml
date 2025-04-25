@@ -13,6 +13,9 @@ dependencies:
   - pygit2=1.17.0
   - python-frontmatter=1.1.0
   - python=3.13.2
+  - r-base=4.4.3
+  - r-precommit=0.4.3
+  - r-styler=1.10.3
   - sphinx-autobuild=2024.10.3
   - sphinx-copybutton=0.5.2
   - sphinx-design=0.6.1
