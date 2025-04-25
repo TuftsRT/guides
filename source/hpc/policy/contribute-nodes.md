@@ -10,22 +10,22 @@ Most current faculty contribute nodes are the **CPU, Standard** or **GPU, Standa
 
 **CPU Nodes:**
 
-| **Name**      | **System Specifications** | **Approximate Cost(\*)** | **Notes**                     |
-| ------------- | ------------------------- | ------------------------ | ----------------------------- |
-| CPU, Small    | 2x 32 Cores<br/>256GB RAM | \$17,000                 | Price based on buying 4 nodes |
-| CPU, Standard | 2x 32 Cores<br/>512GB RAM | \$21,000                 | Price based on buying 4 nodes |
-| CPU, Large    | 2x 32 Cores<br/>1TB RAM   | \$28,000                 |                               |
+| **Name**      | **System Specifications** | **Approximate Cost [^1]** | **Notes**                     |
+| ------------- | ------------------------- | ------------------------- | ----------------------------- |
+| CPU, Small    | 2x 32 Cores<br/>256GB RAM | \$17,000                  | Price based on buying 4 nodes |
+| CPU, Standard | 2x 32 Cores<br/>512GB RAM | \$21,000                  | Price based on buying 4 nodes |
+| CPU, Large    | 2x 32 Cores<br/>1TB RAM   | \$28,000                  |                               |
 
 **GPU Nodes:**
 
-| **Name**      | **System Specifications**                          | **GPU Specifications** | **Approximate Cost(\*)** | **Notes** |
-| ------------- | -------------------------------------------------- | ---------------------- | ------------------------ | --------- |
-| GPU, Standard | 2x 32 Cores<br/>512GB RAM<br/>                     | 4x L40S 48GB PCIe      | \$60,000                 |           |
-| GPU, Large    | 2x 48 Cores<br/>1.5TB RAM<br/>24TB Local NVMe Disk | 8x H200 SXM 141GB      | \$350,000                |           |
+| **Name**      | **System Specifications**                          | **GPU Specifications** | **Approximate Cost [^1]** | **Notes** |
+| ------------- | -------------------------------------------------- | ---------------------- | ------------------------- | --------- |
+| GPU, Standard | 2x 32 Cores<br/>512GB RAM<br/>                     | 4x L40S 48GB PCIe      | \$60,000                  |           |
+| GPU, Large    | 2x 48 Cores<br/>1.5TB RAM<br/>24TB Local NVMe Disk | 8x H200 SXM 141GB      | \$350,000                 |           |
 
 - TTS provides all the additional infrastructure including data center space, networking, power/cooling and operations.
 - We utilize Intel CPUs and NVIDIA GPUs across the cluster to maintain code portability between nodes.
 - All nodes are connected at 100 Gbps Ethernet
 - If you have specialized needs such as InfiniBand networking or alternate CPU architecture like ARM please reach out to RT.
 
-\*Approximate prices are estimated based on previous orders, server costs are driven by commodity prices and are very volatile. The prices can be expected to remain relatively proportional between the types though.
+[^1]: Approximate prices are estimated based on previous orders, server costs are driven by commodity prices and are very volatile. The prices can be expected to remain relatively proportional between the types though.
