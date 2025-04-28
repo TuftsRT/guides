@@ -30,7 +30,11 @@ grid-columns: 1
 	content: "Wrap your head around common NLP tasks by using these pretrained models."
 	link: "pretrained-models/index.html"
 
-- header: "{fas}`book` 05 Large Language Models"
+- header: "{fas}`book` 05 Deep learning"
+	content: "Build models like BERT and GPT from scratch using `Pytorch`."
+	link: "pretrained-models/index.html"
+
+- header: "{fas}`book` 06 Large Language Models"
 	content: "Learn how to get the most out of both open-source and propritary large language models and artificial intelligence."
 	link: "llms/index.html"
 ```
