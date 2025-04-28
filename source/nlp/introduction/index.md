@@ -8,9 +8,9 @@ grid-columns: 1
 ---
 - header: "{fas}`book` A Gentle Introduction to Natural Language Processing"
   content: "Get glimspe at NLP while investigating Leo Tolstoy's *War and Peace*."
-  link: "./gentleintrotoNLP (1).ipnyb"
+  link: "./gentleintroto-nlp-1.ipnyb"
 
 - header: "{fas}`book` An Invitiation to Regular Expressions"
   content: "Explore the utilities and complexities of Regular Expressions."
-  link: "./RegexIntro.ipynb"
+  link: "./regex-intro.ipynb"
 ```
