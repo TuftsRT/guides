@@ -34,6 +34,10 @@ Source repository for the [Tufts University Research Technology Guides][guides-u
     - [Jupyter Notebook](#jupyter-notebook)
     - [MyST Markdown Notebook](#myst-markdown-notebook)
     - [R Markdown Notebook](#r-markdown-notebook)
+- [Style Guidelines](#style-guidelines)
+  - [Prose](#prose)
+  - [Code](#code)
+- [Accessibility](#accessibility)
 - [Subject Tags](#subject-tags)
   - [MyST and R Markdown](#myst-and-r-markdown)
   - [reStructuredText](#restructuredtext-1)
@@ -382,6 +386,33 @@ R Markdown notebooks are supported with certain limitations. Package installatio
 <!-- prettier-ignore -->
 > [!CAUTION]
 > The properly capitalized `Rmd` extension must be used for R Markdown files to be correctly identified.
+
+## Style Guidelines
+
+### Prose
+
+Style guidelines for prose are in active development and subject to change. The following are current recommendations that are not enforced.
+
+- Use title case for all headings.
+- Do not use "you" or "we" and avoid addressing the reader directly.
+- Use active voice for specific instructions and passive voice otherwise.
+- Define any acronyms the first time they are mentioned.
+- Numbers up to ten should be written using words instead of numerals.
+- Avoid duplication of effort -- link out to existing internal or external materials whenever possible.
+- Take care when linking out to external materials -- prefer official or non-commercial resources whenever possible.
+- Use [substitutions](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#substitutions-with-jinja2) for frequently included text subject to change like emails or URLs.
+
+<!-- prettier-ignore -->
+> [!WARNING]
+> **Do not include any copyrighted material.** Material under copyright protections intended to be used for educational content under _fair use_ and the _TEACH Act_ should be limited to Tufts affiliates only and not be included in any publicly accessible resource.
+
+### Code
+
+Python code should conform to the [Black](https://github.com/psf/black) style and R code should conform to the [Tidyverse](https://style.tidyverse.org/) style. Style guidelines are enforced and automatically applied via pre-commit hooks during commits (if configured) and pull requests. Manual effort to conform to style guidelines is not needed. Style guides for other languages might be added in the future.
+
+## Accessibility
+
+All content should be mindful of screen readers and color contrast guidelines. All images should have alternative text and any decorative elements be marked accordingly to be ignored by screen readers. The colors used by the [PyData Sphinx Theme](https://pydata-sphinx-theme.readthedocs.io/en/latest/user_guide/accessibility.html) have been carefully selected to meet accessibly guidelines and hence should not be manually modified. Further accessibility guidelines are in active development and to be added in the future.
 
 ## Subject Tags
 
