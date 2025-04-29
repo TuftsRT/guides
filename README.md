@@ -83,10 +83,10 @@ cd guides
 Create the required Python environment using the provided YAML configuration file. (The command provided uses the faster `mamba` package manager included in Miniforge, but the traditional `conda` package manager can be used as well.)
 
 ```
-mamba env create --file environment.yaml
+mamba env create --file environment.yaml --yes
 ```
 
-Remember to activate the environment before proceeding. (In certain command line environments, the `mamba` command can also be used for environment activation.)
+Remember to activate the environment before proceeding. (In certain command line interfaces, the `mamba` command can also be used for environment activation.)
 
 ```
 conda activate guides
@@ -353,6 +353,21 @@ Push the new branch to the remote repository and set the upstream tracking branc
 
 ```
 git push --set-upstream origin <name>
+```
+
+### Updating the Environment
+
+If there have been any updates to the `environment.yaml` environment specification file, the environment should be updated as follows.
+
+```
+mamba env update --file environment.yaml
+```
+
+In some cases a full rebuild of the environment is needed. The environment can be removed and recreated as follows.
+
+```
+mamba env remove --name guides --yes
+mamba env create --file environment.yaml --yes
 ```
 
 ### Committing Changes
