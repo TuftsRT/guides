@@ -338,6 +338,10 @@ html_theme.sidebar_secondary.remove: true # remove the right sidebar for the pag
 
 Although possible, the inclusion of raw HTML within Markdown documents is strongly discouraged and should only be done to implement advanced functionality or accessibility improvements that otherwise would not be possible.
 
+<!-- prettier-ignore -->
+> [!NOTE]
+> README documents should be written using [GitHub Flavored Markdown (GFM)](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) instead of MyST Markdown.
+
 #### reStructuredText
 
 reStructuredText (RST) is a plaintext markup language used primarily for technical documentation within the Python community. It is the default markup language in Sphinx and hence also supported by this project. However, the use of reStructuredText is discouraged and any new material should be written using MyST Markdown whenever possible. RST support exists primarily to allow the inclusion of preexisting legacy materials. Here are some resources to assist in understanding RST syntax and converting existing RST documents to MyST Markdown.
