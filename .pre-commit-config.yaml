@@ -43,7 +43,7 @@ repos:
       - id: black-jupyter
         name: apply black style
   - repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3
+    rev: v0.4.3.9009
     hooks:
       - id: style-files
         name: apply tidyverse style
@@ -63,7 +63,7 @@ repos:
       - id: end-of-file-fixer
         name: ensure newline at end of file
   - repo: https://github.com/TuftsRT/autoslug
-    rev: v1.0.4
+    rev: v1.0.5
     hooks:
       - id: autoslug
         name: convert file and directory names to url slugs

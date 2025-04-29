@@ -23,6 +23,8 @@ operated the same as other nodes in the cluster.
 - When not in use, contrib nodes provide compute resources to the general Tufts community via a preempt partition.
 - When node owners require access to their contrib nodes, non-owner jobs are preempted within approx. 30 seconds to ensure owners have timely access to contributed capacity.
 
+Node types currently available for purchase can be found in our [Contribute Node Catalog](contribute-nodes.md).
+
 ### Lifecycle
 
 As with all technology, HPC nodes have a service life. As the compute nodes age, they lose vendor and operating system support, creating maintenance difficulties and security risks. To ensure that Tufts researchers receive sufficient advance notice for the planning of HPC compute node end-of-life, TTS will keep researchers informed of the state of the lifecycle of their contributed nodes, allowing a total service life of the warranty period and a best-effort support period lasting a maximum of 7 years. At purchase, every HPC compute node must be procured with an associated warranty. Nodes that fail without warranty support will be decommissioned; and, to ensure the best value from contributed nodes, TTS recommends a 5-year warranty. This policy is intended to help researchers avoid significant unplanned interruptions to their research caused by system failures. TTS Research Technology will keep researchers informed about the state of their nodes and work with researchers to determine node retirement dates and replacement estimates.

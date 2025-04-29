@@ -1,5 +1,5 @@
 $root = & git rev-parse --show-toplevel
-if (-not $?) { exit 1 }
+if (-not $?) { exit $LASTEXITCODE }
 $options = @{
     FilePath = (Get-Command "sphinx-autobuild" -ErrorAction "Stop")
     ArgumentList =
