@@ -19,7 +19,7 @@ grid-columns: 1
 	link: "./whoosh-search-engine.ipynb"
 
 - header: "{fas}`book` Traditional Topic Modeling in SKLearn"
-	content: "Apply the same principles of TF-IDF to the problem of topic modeling, reorganizing a large corpora into subtopics found in that corpera."
+	content: "Apply the same principles of TF-IDF to the problem of topic modeling, reorganizing a large corpora into subtopics found in that corpora."
 	link: "./traditional-topic-modeling-using.ipynb"
 
 ```
