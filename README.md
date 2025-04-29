@@ -286,9 +286,64 @@ All content regardless of format must adhere to the following rules.
 
 ### Narrative
 
+Narrative content can be written using either MyST Markdown (stored in `md` files) or reStructuredText (stored in `rst` files). The use of MyST Markdown over reStructuredText is strongly encouraged due to its superior functionality and readability. Support for reStructuredText exists primarily to allow the inclusion of preexisting legacy materials.
+
 #### MyST Markdown
 
+MyST (Markedly Structured Text) Markdown is an extension of the popular [CommonMark](https://commonmark.org/) Markdown specification and is heavily inspired by [R Markdown](https://rmarkdown.rstudio.com/). It supports simple formatting, lists, images, tables, mathematical formulas, and code snippets like most other Markdown flavours and adds various roles and directives that allow for extra functionality like admonitions, footnotes, citations, and glossaries. Furthermore, the [PyData Sphinx Theme](https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html) and the [Sphinx Design Extension](https://sphinx-design.readthedocs.io/en/latest/) add additional design elements and functionality like grids, cards, dropdowns, tabs, sidebars, and iconography. See below for relevant resources.
+
+- [CommonMark Markdown Reference](https://commonmark.org/help/)
+- [CommonMark Markdown Tutorial](https://commonmark.org/help/tutorial/)
+- [MyST Markdown Cheat Sheet](https://jupyterbook.org/en/stable/reference/cheatsheet.html)
+- [MyST Markdown Documentation](https://myst-parser.readthedocs.io/en/latest/index.html)
+  - [Typography](https://myst-parser.readthedocs.io/en/latest/syntax/typography.html)
+  - [Admonitions](https://myst-parser.readthedocs.io/en/latest/syntax/admonitions.html)
+  - [Images](https://myst-parser.readthedocs.io/en/latest/syntax/images_and_figures.html)
+  - [Tables](https://myst-parser.readthedocs.io/en/latest/syntax/tables.html)
+  - [Code](https://myst-parser.readthedocs.io/en/latest/syntax/code_and_apis.html)
+  - [Cross-References](https://myst-parser.readthedocs.io/en/latest/syntax/cross-referencing.html)
+  - [Math and Equations](https://myst-parser.readthedocs.io/en/latest/syntax/math.html)
+- [Sphinx Design Extension Documentation](https://sphinx-design.readthedocs.io/en/latest/)
+  - [Grids](https://sphinx-design.readthedocs.io/en/latest/grids.html)
+  - [Cards](https://sphinx-design.readthedocs.io/en/latest/cards.html)
+  - [Dropdowns](https://sphinx-design.readthedocs.io/en/latest/dropdowns.html)
+  - [Tabs](https://sphinx-design.readthedocs.io/en/latest/tabs.html)
+  - [Iconography](https://sphinx-design.readthedocs.io/en/latest/badges_buttons.html)
+- [Elements Specific to the PyData Sphinx Theme](https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/theme-elements.htm)
+- [PyData Sphinx Theme Kitchen Sink (preview of almost all design elements)](https://pydata-sphinx-theme.readthedocs.io/en/stable/examples/kitchen-sink/index.html)
+
+MyST Markdown is extremely configurable and has various syntax extensions. The following have been enabled for this project.
+
+- [Typography](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#typography)
+- [Strikethrough](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#strikethrough)
+- [Math Shortcuts](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#math-shortcuts)
+- [Linkify (with fuzzy matching disabled)](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#linkify)
+- [Substitutions](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#substitutions-with-jinja2)
+- [Auto-Generated Header Anchors](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#auto-generated-header-anchors)
+- [Definition Lists](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists)
+- [Task Lists](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#task-lists)
+- [Field Lists](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#field-lists)
+- [Attributes](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#attributes)
+
+Markdown documents may start with an optional YAML metadata header with any of the following configured.
+
+```yaml
+---
+tocdepth: 2 # maximum depth for the page table of contents on the right sidebar
+orphan: true # must be set if page is not included in the structure configuration
+no-search: true # omit the page from text-based search
+html_theme.sidebar_secondary.remove: true # remove the right sidebar for the page
+---
+```
+
+Although possible, the inclusion of raw HTML within Markdown documents is strongly discouraged and should only be done to implement advanced functionality or accessibility improvements that otherwise would not be possible.
+
 #### reStructuredText
+
+reStructuredText (RST) is a plaintext markup language used primarily for technical documentation within the Python community. It is the default markup language in Sphinx and hence also supported by this project. However, the use of reStructuredText is discouraged and any new material should be written using MyST Markdown whenever possible. RST support exists primarily to allow the inclusion of preexisting legacy materials. Here are some resources to assist in understanding RST syntax and converting existing RST documents to MyST Markdown.
+
+- [Sphinx reStructuredText Guide](https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html)
+- [Migrating from reStructuredText to MyST Markdown](https://docs.readthedocs.com/platform/stable/guides/migrate-rest-myst.html)
 
 ### Executable
 
@@ -306,7 +361,7 @@ Tags can be defined using the `tags` field in the file-wide metadata. The field 
 
 Tags can be defined in the YAML metadata header of the file as follows.
 
-```yml
+```yaml
 ---
 tags: tag tag2 another-tag
 ---
