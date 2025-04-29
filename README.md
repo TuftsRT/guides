@@ -352,11 +352,36 @@ reStructuredText (RST) is a plaintext markup language used primarily for technic
 
 ### Executable
 
+Executable content can be written using a variety of notebook formats described below. Executable code snippets or cells included in the notebooks are executed during the build process and any outputs are automatically included into the built document. Functionality to make the code snippets interactive and executable by the end user within the browser might be included in the future. All executable content regardless of format must adhere to the following guidelines.
+
+- **All dependencies must be included in the `guides` environment.** Code included in the notebooks may not attempt to install any packages and all dependencies must be listed in `environment.yaml` with pinned versions. Ensure the functionality of the environment and the success of the build process after adding or updating any dependencies. Ensure added dependencies are easily removable by adding them in a single descriptive commit or using comments within `environment.yaml` to denote which dependencies are specific to a given notebook.
+- **All data should be pre-downloaded and included within the `source` directory.** Unless specifically demonstrating the downloading of data, any data used within the notebooks should be pre-downloaded and included either within the same directory as the notebook or within a designated `data` directory that is a child of the notebook directory. Direct download links to any included data files should be included in the notebook to allow the end user to manually download and explore the data. Data files should not exceed 50 megabytes.
+- **Computation should be relatively fast and lightweight.** Any notebook run should not exceed two minutes and use no more than two gigabytes of RAM. Note that these are upper limits -- faster and less-intensive computation is strongly encouraged. Remember that all notebooks get executed during every build and the functionality to run the code within the browser is being added. Hence this platform should be used for lightweight examples and demonstrations requiring significant computation should be hosted elsewhere.
+
 #### Jupyter Notebook
+
+Jupyter Notebooks using either the interactive Python kernel (`python3`) or the interactive R kernel (`ir`) are supported. [Cell magic commands](https://ipython.readthedocs.io/en/stable/interactive/magics.html) are allowed but discouraged as any OS-dependent functionality is not guaranteed. Markdown cells can include MyST Markdown syntax and the JupyterLab installation included in the project environment is equipped with an extension that adds MyST Markdown rendering support. Hence it is recommended to use the JupyterLab installation included in the project environment to develop notebooks. JupyterLab can be launched as follows.
+
+```
+jupyter lab
+```
 
 #### MyST Markdown Notebook
 
+MyST Markdown includes the functionality for text-based Jupyter notebooks via the [MyST NB](https://myst-nb.readthedocs.io/en/latest/index.html) extension. These are written entirely in Markdown and include [special YAML metadata](https://myst-nb.readthedocs.io/en/latest/authoring/text-notebooks.html#notebook-level-metadata) that define the computation kernel and [special code cell directives](https://myst-nb.readthedocs.io/en/latest/authoring/text-notebooks.html#syntax-for-code-cells) that specify which code should be executed during runtime. MyST Markdown notebooks are very similar to R Markdown notebooks but support all MyST Markdown syntax. Both the interactive Python kernel (`python3`) and the interactive R kernel (`ir`) can be used. See below for resources.
+
+- [MyST NB Text-Based Notebooks Guide](https://myst-nb.readthedocs.io/en/latest/authoring/text-notebooks.html)
+
 #### R Markdown Notebook
+
+R Markdown notebooks are supported with certain limitations. Package installations via CRAN are not allowed (all dependencies must be installed via `environment.yaml`) and Python is not supported. Syntax specific to R Markdown can be used but note that some functionality might be lost during the build process. R Markdown is not directly supported and thus all R Markdown documents are converted to Jupyter Notebooks using [JupyText](https://jupytext.readthedocs.io/en/latest/) and then executed using the interactive R kernel (`ir`). Hence certain elements might not be rendered as expected. Also note that any functionality specific to RStudio and the `knitr` package is not supported as the R Markdown documents are never actually _knit_. See below for resources.
+
+- [R Markdown Guide](https://bookdown.org/yihui/rmarkdown/)
+- [Example of a Converted R Markdown File](https://myst-nb.readthedocs.io/en/latest/authoring/custom-formats.html)
+
+<!-- prettier-ignore -->
+> [!CAUTION]
+> The properly capitalized `Rmd` extension must be used for R Markdown files to be correctly identified.
 
 ## Subject Tags
 
