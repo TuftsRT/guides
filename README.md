@@ -40,6 +40,7 @@ Source repository for the [Tufts University Research Technology Guides][guides-u
   - [Jupyter Notebook](#jupyter-notebook-1)
 - [Contribution Workflow](#contribution-workflow)
   - [Creating a Feature Branch](#creating-a-feature-branch)
+  - [Updating the Environment](#updating-the-environment)
   - [Committing Changes](#committing-changes)
   - [Submitting a Pull Request](#submitting-a-pull-request)
   - [Merging the Pull Request](#merging-the-pull-request)
