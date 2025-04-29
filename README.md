@@ -3,6 +3,7 @@
 Source repository for the [Tufts University Research Technology Guides][guides-url] -- a collection of resources, documentation, and asynchronous tutorials to advance computational research across disciplines. Developed and maintained by the Research Technology (RT) team within Tufts Technology Services (TTS) at Tufts University.
 
 <!-- prettier-ignore -->
+
 > [!IMPORTANT]
 > **See the [published website][guides-url] for content.** The following is a development guide intended for contributors.
 > Feedback, suggestions, and error reports can be submitted via <tts-research@tufts.edu> or by [creating an issue][issues-url].
@@ -344,6 +345,7 @@ html_theme.sidebar_secondary.remove: true # remove the right sidebar for the pag
 Although possible, the inclusion of raw HTML within Markdown documents is strongly discouraged and should only be done to implement advanced functionality or accessibility improvements that otherwise would not be possible.
 
 <!-- prettier-ignore -->
+
 > [!NOTE]
 > README documents should be written using [GitHub Flavored Markdown (GFM)](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) instead of MyST Markdown.
 
@@ -384,6 +386,7 @@ R Markdown notebooks are supported with certain limitations. Package installatio
 - [Example of a Converted R Markdown File](https://myst-nb.readthedocs.io/en/latest/authoring/custom-formats.html)
 
 <!-- prettier-ignore -->
+
 > [!CAUTION]
 > The properly capitalized `Rmd` extension must be used for R Markdown files to be correctly identified.
 
@@ -403,6 +406,7 @@ Style guidelines for prose are in active development and subject to change. The 
 - Use [substitutions](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#substitutions-with-jinja2) for frequently included text subject to change like emails or URLs.
 
 <!-- prettier-ignore -->
+
 > [!WARNING]
 > **Do not include any copyrighted material.** Material under copyright protections intended to be used for educational content under _fair use_ and the _TEACH Act_ should be limited to Tufts affiliates only and not be included in any publicly accessible resource.
 
