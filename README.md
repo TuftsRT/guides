@@ -58,11 +58,11 @@ Source repository for the [TTS Research Technology Guides][guides-url] -- a coll
 
 ### Miniforge
 
-An installation of a Python distribution that supports virtual environments and can handle Conda environment specification YAML files is required. [Miniforge][miniforge-url] is strongly recommended but other similar distributions like Anaconda are acceptable. It is assumed that a conda-enabled console is used to run all the following commands.
+An installation of a Python distribution that supports virtual environments and can handle Conda environment specification YAML files is required. [Miniforge](https://github.com/conda-forge/miniforge) is strongly recommended but other similar distributions like Anaconda are acceptable. It is assumed that a conda-enabled console is used to run all the following commands.
 
 ### GitHub CLI
 
-The following includes commands from the [GitHub CLI][gh-cli-url] (command-line interface), which can be used as a substitute to some `git` commands and browser-based GitHub workflows like creating or merging pull requests (PRs). Once installed, run the following command for initial setup. Authentication via SSH (secure shell) key is strongly recommended over other alternatives.
+The following includes commands from the [GitHub CLI](https://cli.github.com/) (command-line interface), which can be used as a substitute to some `git` commands and browser-based GitHub workflows like creating or merging pull requests (PRs). Once installed, run the following command for initial setup. Authentication via SSH (secure shell) key is strongly recommended over other alternatives.
 
 ```
 gh auth login
@@ -70,7 +70,7 @@ gh auth login
 
 ### Recommended Software
 
-The majority of the content within the guides is written using MyST (Markedly Structured Text) Markdown, which is an extension of the popular CommonMark Markdown specification and heavily inspired by R Markdown. MyST Markdown contains several special directives that most Markdown editors are unable to properly format or preview. Hence the use of [Visual Studio Code][vs-code-url] along with the [MyST-Markdown][myst-md-ext-url] extension is strongly recommended. Alternatively, the JupyterLab distribution included in the project environment is equipped with an extension that adds MyST Markdown support and can be used to edit and preview MyST Markdown files instead.
+The majority of the content within the guides is written using MyST (Markedly Structured Text) Markdown, which is an extension of the popular CommonMark Markdown specification and heavily inspired by R Markdown. MyST Markdown contains several special directives that most Markdown editors are unable to properly format or preview. Hence the use of [Visual Studio Code](https://code.visualstudio.com/) along with the [MyST-Markdown](https://marketplace.visualstudio.com/items?itemName=ExecutableBookProject.myst-highlight) extension is strongly recommended. Alternatively, the JupyterLab distribution included in the project environment is equipped with an extension that adds MyST Markdown support and can be used to edit and preview MyST Markdown files instead.
 
 ## Initial Setup
 
@@ -102,7 +102,7 @@ It is assumed that all of the following commands are run from within the `guides
 
 ### Optional Pre-Commit Configuration
 
-Select [pre-commit][pre-commit-url] hooks are used to ensure consistent style and formatting across all files, fix simple errors like common misspellings, and filter out content that should not be versioned like Jupyter Notebook cell outputs. These hooks are automatically run on all pull requests (PRs) and merging is not possible until all automated checks pass. The PR pre-commit process is able to automatically fix most minor issues that might prevent merging, and hence the use and configuration of pre-commit hooks in the local repository is not required. However, the local use of pre-commit is strongly recommended as the this ensures feature branches are clean and follow a consistent style, and are are easier to work with. The `pre-commit` library is included in the development environment and can be set up as follows.
+Select [pre-commit](https://pre-commit.com/) hooks are used to ensure consistent style and formatting across all files, fix simple errors like common misspellings, and filter out content that should not be versioned like Jupyter Notebook cell outputs. These hooks are automatically run on all pull requests (PRs) and merging is not possible until all automated checks pass. The PR pre-commit process is able to automatically fix most minor issues that might prevent merging, and hence the use and configuration of pre-commit hooks in the local repository is not required. However, the local use of pre-commit is strongly recommended as the this ensures feature branches are clean and follow a consistent style, and are are easier to work with. The `pre-commit` library is included in the development environment and can be set up as follows.
 
 Set up all the pre-commit hooks specified in the repository configuration. Run this from the repository root.
 
@@ -159,10 +159,10 @@ All branches that contain source files (`develop`, `hotfix`, `main`, `staging`, 
 - `source/_ext` -- internally-developed and other custom Sphinx extensions
 - `source/_static/css` -- cascading style sheet (CSS) files used to override default styling
 - `source/_static` -- static HTML content like the website logo and favicon
-- `source/_templates` -- custom [Jinja][jinja-url] templates including new templates and default overrides
-- `source/_toc.yaml` -- [Sphinx External ToC][toc-url] site map configuration file
+- `source/_templates` -- custom [Jinja](https://jinja.palletsprojects.com) templates including new templates and default overrides
+- `source/_toc.yaml` -- [Sphinx External ToC](https://sphinx-external-toc.readthedocs.io) site map configuration file
 - `source/404.md` -- custom 404 page template
-- `source/conf.py` -- [Sphinx][sphinx-url] configuration file
+- `source/conf.py` -- [Sphinx](https://www.sphinx-doc.org) configuration file
 - `source/index.md` -- documentation/website root (default landing page)
 - `utils` -- various internally-developed utility scripts
 
@@ -220,7 +220,7 @@ New utility scripts should follow the example of existing scripts and be executa
 
 ### `autobuild`
 
-The `autobuild` utility script uses [`sphinx-autobuild`][sphinx-autobuild-url] to display an automatically self-updating preview build of the website by running the following command. (The variable `$root` refers to the repository root.)
+The `autobuild` utility script uses [`sphinx-autobuild`](https://github.com/sphinx-doc/sphinx-autobuild) to display an automatically self-updating preview build of the website by running the following command. (The variable `$root` refers to the repository root.)
 
 ```sh
 sphinx-autobuild --nitpicky --ignore "$root/source/tags" -- "$root/source" "$root/build"
@@ -244,7 +244,7 @@ The `clean` utility script attempts to delete all build artifacts. The usual bui
 
 ## Structure Configuration
 
-Documentation structure is managed using the [Sphinx External ToC][toc-url] (table of contents) extension with the `_toc.yaml` configuration file written such that the site map mimics the layout of the `source` directory. Content is grouped into primary sections with each section appearing in the top navigation bar and having an index file serving as the section root. Primary sections contain content pages which can be further divided into subtrees. Pages in each subtree are ordered using the [natural sort order](https://en.wikipedia.org/wiki/Natural_sort_order) of the source file names. Content pages could also have child pages, in which case their structure resembles that of a primary section with an index file serving as the parent page.
+Documentation structure is managed using the [Sphinx External ToC](https://sphinx-external-toc.readthedocs.io) (table of contents) extension with the `_toc.yaml` configuration file written such that the site map mimics the layout of the `source` directory. Content is grouped into primary sections with each section appearing in the top navigation bar and having an index file serving as the section root. Primary sections contain content pages which can be further divided into subtrees. Pages in each subtree are ordered using the [natural sort order](https://en.wikipedia.org/wiki/Natural_sort_order) of the source file names. Content pages could also have child pages, in which case their structure resembles that of a primary section with an index file serving as the parent page.
 
 Content pages can be added to preexisting sections, subtrees, and parent pages without having to modify the site map configuration file. Only when adding a new section, subtree, or parent page does the `_toc.yaml` file need to be updated. See the sample `source` directory tree below along with its corresponding site map configuration file for examples on how to define various structures. Note that the `title` field defines how the name of a primary section is displayed in the top navigation bar and the `caption` field defines how the name of a subtree is displayed in the ToC. Content page display names in the secondary sidebar and the ToC are equivalent to their first heading.
 
@@ -599,15 +599,6 @@ gh pr merge --auto
 
 [autoslug-url]: https://github.com/TuftsRT/autoslug
 [box-dir-url]: https://tufts.box.com/s/hc34beacdbqsg32gqn7sspixdxwiv9x5
-[gh-cli-url]: https://cli.github.com/
 [guides-dev-url]: https://rtguides.it.tufts.edu/dev/
 [guides-url]: https://rtguides.it.tufts.edu/
 [issues-url]: https://github.com/TuftsRT/guides/issues
-[jinja-url]: https://jinja.palletsprojects.com
-[miniforge-url]: https://github.com/conda-forge/miniforge
-[myst-md-ext-url]: https://marketplace.visualstudio.com/items?itemName=ExecutableBookProject.myst-highlight
-[pre-commit-url]: https://pre-commit.com/
-[sphinx-autobuild-url]: https://github.com/sphinx-doc/sphinx-autobuild
-[sphinx-url]: https://www.sphinx-doc.org
-[toc-url]: https://sphinx-external-toc.readthedocs.io
-[vs-code-url]: https://code.visualstudio.com/
