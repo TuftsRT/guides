@@ -1,6 +1,6 @@
-# Tufts University Research Technology Guides
+# TTS Research Technology Guides
 
-Source repository for the [Tufts University Research Technology Guides][guides-url] -- a collection of resources, documentation, and asynchronous tutorials to advance computational research across disciplines. Developed and maintained by the Research Technology (RT) team within Tufts Technology Services (TTS) at Tufts University.
+Source repository for the [TTS Research Technology Guides][guides-url] -- a collection of resources, documentation, and asynchronous tutorials to advance computational research across disciplines. Developed and maintained by the Research Technology (RT) team within Tufts Technology Services (TTS) at Tufts University.
 
 <!-- prettier-ignore -->
 
@@ -58,11 +58,11 @@ Source repository for the [Tufts University Research Technology Guides][guides-u
 
 ### Miniforge
 
-An installation of a Python distribution that supports virtual environments and can handle Conda environment specification YAML files is required. [Miniforge][miniforge-url] is strongly recommended but other similar distributions like Anaconda are acceptable. It is assumed that a conda-enabled console is used to run the example commands in this walkthrough.
+An installation of a Python distribution that supports virtual environments and can handle Conda environment specification YAML files is required. [Miniforge](https://github.com/conda-forge/miniforge) is strongly recommended but other similar distributions like Anaconda are acceptable. It is assumed that a conda-enabled console is used to run all the following commands.
 
 ### GitHub CLI
 
-The walkthrough also includes commands from the [GitHub CLI][gh-cli-url] (command-line interface), which can be used as a substitute to some `git` commands and browser-based GitHub workflows like creating or merging pull requests (PRs). Once installed, run the following command for initial setup. Authentication via SSH (secure shell) key is strongly recommended over other alternatives.
+The following includes commands from the [GitHub CLI](https://cli.github.com/) (command-line interface), which can be used as a substitute to some `git` commands and browser-based GitHub workflows like creating or merging pull requests (PRs). Once installed, run the following command for initial setup. Authentication via SSH (secure shell) key is strongly recommended over other alternatives.
 
 ```
 gh auth login
@@ -70,7 +70,7 @@ gh auth login
 
 ### Recommended Software
 
-The majority of the content within the guides is written using MyST (Markedly Structured Text) Markdown, which is an extension of the popular CommonMark Markdown specification and heavily inspired by R Markdown. MyST Markdown contains several special directives that most Markdown editors are unable to properly format or preview. Hence the use of [Visual Studio Code][vs-code-url] along with the [MyST-Markdown][myst-md-ext-url] extension is strongly recommended. Alternatively, the JupyterLab distribution included in the project environment is equipped with an extension that adds MyST Markdown support and can be used to edit and preview MyST markdown files instead.
+The majority of the content within the guides is written using MyST (Markedly Structured Text) Markdown, which is an extension of the popular CommonMark Markdown specification and heavily inspired by R Markdown. MyST Markdown contains several special directives that most Markdown editors are unable to properly format or preview. Hence the use of [Visual Studio Code](https://code.visualstudio.com/) along with the [MyST-Markdown](https://marketplace.visualstudio.com/items?itemName=ExecutableBookProject.myst-highlight) extension is strongly recommended. Alternatively, the JupyterLab distribution included in the project environment is equipped with an extension that adds MyST Markdown support and can be used to edit and preview MyST Markdown files instead.
 
 ## Initial Setup
 
@@ -102,7 +102,7 @@ It is assumed that all of the following commands are run from within the `guides
 
 ### Optional Pre-Commit Configuration
 
-Select [pre-commit][pre-commit-url] hooks are used to ensure consistent style and formatting across all files, fix simple errors like common misspellings, and filter out content that should not be versioned like Jupyter Notebook cell outputs. These hooks are automatically run on all pull requests (PRs) and merging is not possible until all automated checks pass. The PR pre-commit process is able to automatically fix most minor issues that might prevent merging, and hence the use and configuration of pre-commit hooks in the local repository is not required. However, the local use of pre-commit is strongly recommended as the this ensures feature branches are clean and follow a consistent style, and thus are easier to work with. The `pre-commit` library is included in the development environment and can be set up as follows.
+Select [pre-commit](https://pre-commit.com/) hooks are used to ensure consistent style and formatting across all files, fix simple errors like common misspellings, and filter out content that should not be versioned like Jupyter Notebook cell outputs. These hooks are automatically run on all pull requests (PRs) and merging is not possible until all automated checks pass. The PR pre-commit process is able to automatically fix most minor issues that might prevent merging, and hence the use and configuration of pre-commit hooks in the local repository is not required. However, the local use of pre-commit is strongly recommended as the this ensures feature branches are clean and follow a consistent style, and are are easier to work with. The `pre-commit` library is included in the development environment and can be set up as follows.
 
 Set up all the pre-commit hooks specified in the repository configuration. Run this from the repository root.
 
@@ -129,7 +129,7 @@ The repository contains the following permanent (non-deletable) branches.
 - `switcher` -- contains a JSON file used to configure the version switcher dropdown
 - `staging` -- staging area for content to be pushed to the `main` branch and published
 
-All pushes to the `gh-pages` branch are automated, and developers should **never** interact with this branch directly. Pushes to the `develop` and `main` branches are only allowed via pull requests (PRs), which automatically trigger a new build of the website. The `announcement` and `switcher` branches accept direct pushes and do not trigger a rebuild of the website. However, the content of these branches are directly incorporated into the published website immediately after push. Therefore, any changes to the `announcement` and `switcher` branches should be made with care and the proper functioning of the website manually verified after every push.
+All pushes to the `gh-pages` branch are automated, and developers should **never** interact with this branch directly. Pushes to the `develop` and `main` branches are only allowed via pull requests (PRs), which automatically trigger a new build of the website. The `announcement` and `switcher` branches accept direct pushes and do not trigger a rebuild of the website. However, the content of these branches directly affect the published website immediately after push. Therefore, any changes to the `announcement` and `switcher` branches should be made with care and the proper functioning of the website manually verified after every push.
 
 The repository may also contain the following non-permanent (deletable) branches.
 
@@ -148,7 +148,7 @@ All other branches in this repository are _feature branches_ forked from the `de
 - development of internal extensions or utility scripts
 - updates to the README or other internal documentation
 
-Note that the list above is not exhaustive. Feature branches should be named descriptively (so that it is immediately clear what kind of active development is taking place in the branch) but concisely (not exceeding a soft limit of roughly 30 characters). All branch names should only contain lowercase letters, hyphens (`-`), and numbers. Do not use more than one hyphen in a row.
+Note that the list above is not exhaustive. Feature branches should be named descriptively (so that it is immediately clear what kind of active development is taking place in the branch) but concisely (not exceeding a soft limit of roughly 32 characters). All branch names should only contain lowercase letters, hyphens (`-`), and numbers. Do not use more than one hyphen in a row. Avoid working on different sections of the website within a single feature branch.
 
 ### Branch Structure
 
@@ -159,14 +159,19 @@ All branches that contain source files (`develop`, `hotfix`, `main`, `staging`, 
 - `source/_ext` -- internally-developed and other custom Sphinx extensions
 - `source/_static/css` -- cascading style sheet (CSS) files used to override default styling
 - `source/_static` -- static HTML content like the website logo and favicon
-- `source/_templates` -- custom [Jinja][jinja-url] templates including new templates and default overrides
-- `source/_toc.yaml` -- [Sphinx External ToC][toc-url] site map configuration file
+- `source/_templates` -- custom [Jinja](https://jinja.palletsprojects.com) templates including new templates and default overrides
+- `source/_toc.yaml` -- [Sphinx External ToC](https://sphinx-external-toc.readthedocs.io) site map configuration file
 - `source/404.md` -- custom 404 page template
-- `source/conf.py` -- [Sphinx][sphinx-url] configuration file
+- `source/conf.py` -- [Sphinx](https://www.sphinx-doc.org) configuration file
 - `source/index.md` -- documentation/website root (default landing page)
 - `utils` -- various internally-developed utility scripts
 
-All other contents of `source` define the documentation structure and content, with the directory tree corresponding to the site map and files serving as content sources. See corresponding sections below for more information. Note that all files in `source` that are not listed above are automatically published online even if not linked to from anywhere in the content. Do not place any non-content files like utility scripts or developer-facing documentation within the `source` directory.
+All other contents of `source` define the website structure and content, with the directory tree corresponding to the site map and files serving as content sources. Note that all files in `source` that are not listed above are automatically published online even if not linked to from anywhere in the content. Do not place any non-content files like utility scripts or developer-facing documentation within the `source` directory.
+
+<!-- prettier-ignore -->
+
+> [!CAUTION]
+> Do not include content unsuitable for version control like PDF documents or other binary files. Any non-plaintext files that are to be made available via the website should be uploaded to [a designated directory on Tufts Box][box-dir-url] and made sharable via URL. Either the viewing or direct download URL for the file should be included on the website as a link. Remember to require a Tufts login and disable the download option for any resources that cannot be shared outside of the Tufts University community.
 
 #### File and Directory Names
 
@@ -185,7 +190,7 @@ this-is-a-file.md
 
 #### Placement of Images
 
-Any images intended for inclusion in the source files should be placed in an `img` directory within the same directory as the corresponding source file. Images should be in PNG or SVG format and resized to the desired dimensions whenever possible. All references to images within source files should be relative. Do not include references to any externally hosted images
+Any images intended for inclusion in the source files should be placed in an `img` directory within the same directory as the corresponding source file. Images should be in PNG or SVG format and resized to the desired dimensions whenever possible. All references to images within source files should be relative. Do not include references to any externally hosted images.
 
 #### Build Artifacts
 
@@ -215,7 +220,7 @@ New utility scripts should follow the example of existing scripts and be executa
 
 ### `autobuild`
 
-The `autobuild` utility script uses [`sphinx-autobuild`][sphinx-autobuild-url] to display an automatically self-updating preview build of the website by running the following command. (The variable `$root` refers to the repository root.)
+The `autobuild` utility script uses [`sphinx-autobuild`](https://github.com/sphinx-doc/sphinx-autobuild) to display an automatically self-updating preview build of the website by running the following command. (The variable `$root` refers to the repository root.)
 
 ```sh
 sphinx-autobuild --nitpicky --ignore "$root/source/tags" -- "$root/source" "$root/build"
@@ -239,7 +244,7 @@ The `clean` utility script attempts to delete all build artifacts. The usual bui
 
 ## Structure Configuration
 
-Documentation structure is managed using the [Sphinx External ToC][toc-url] extension with the `_toc.yaml` configuration file written such that the site map mimics the layout of the `source` directory. Content is grouped into primary sections with each section appearing in the top navigation bar and having an index file serving as the section root. Primary sections contain content pages which can be further divided into subtrees. Pages in each subtree are ordered using the [natural sort order](https://en.wikipedia.org/wiki/Natural_sort_order) of the source file names. Content pages could also have child pages, in which case their structure resembles that of a primary section with an index file serving as the parent page.
+Documentation structure is managed using the [Sphinx External ToC](https://sphinx-external-toc.readthedocs.io) (table of contents) extension with the `_toc.yaml` configuration file written such that the site map mimics the layout of the `source` directory. Content is grouped into primary sections with each section appearing in the top navigation bar and having an index file serving as the section root. Primary sections contain content pages which can be further divided into subtrees. Pages in each subtree are ordered using the [natural sort order](https://en.wikipedia.org/wiki/Natural_sort_order) of the source file names. Content pages could also have child pages, in which case their structure resembles that of a primary section with an index file serving as the parent page.
 
 Content pages can be added to preexisting sections, subtrees, and parent pages without having to modify the site map configuration file. Only when adding a new section, subtree, or parent page does the `_toc.yaml` file need to be updated. See the sample `source` directory tree below along with its corresponding site map configuration file for examples on how to define various structures. Note that the `title` field defines how the name of a primary section is displayed in the top navigation bar and the `caption` field defines how the name of a subtree is displayed in the ToC. Content page display names in the secondary sidebar and the ToC are equivalent to their first heading.
 
@@ -342,7 +347,7 @@ html_theme.sidebar_secondary.remove: true # remove the right sidebar for the pag
 ---
 ```
 
-Although possible, the inclusion of raw HTML within Markdown documents is strongly discouraged and should only be done to implement advanced functionality or accessibility improvements that otherwise would not be possible.
+Although possible, the inclusion of raw HTML within Markdown documents is strongly discouraged and should only be done to implement advanced functionality or accessibility improvements that otherwise would not be possible. All styling should be defined via CSS (cascading style sheets) and HTML should not be used to define any styling within the content file. Use the [attributes](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#attributes) extension to add HTML attributes like _class_ or _id_ values when applicable.
 
 <!-- prettier-ignore -->
 
@@ -366,7 +371,7 @@ Executable content can be written using a variety of notebook formats described 
 
 #### Jupyter Notebook
 
-Jupyter Notebooks using either the interactive Python kernel (`python3`) or the interactive R kernel (`ir`) are supported. [Cell magic commands](https://ipython.readthedocs.io/en/stable/interactive/magics.html) are allowed but discouraged as any OS-dependent functionality is not guaranteed. Markdown cells can include MyST Markdown syntax and the JupyterLab installation included in the project environment is equipped with an extension that adds MyST Markdown rendering support. Hence it is recommended to use the JupyterLab installation included in the project environment to develop notebooks. JupyterLab can be launched as follows.
+Jupyter Notebooks (stored in `ipynb` files) using either the interactive Python kernel (`python3`) or the interactive R kernel (`ir`) are supported. [Cell magic commands](https://ipython.readthedocs.io/en/stable/interactive/magics.html) are allowed but discouraged as functionality is not guaranteed. Markdown cells can include MyST Markdown syntax and the JupyterLab installation included in the project environment is equipped with an extension that adds MyST Markdown rendering support. Hence it is recommended to use the JupyterLab installation included in the project environment to develop notebooks. JupyterLab can be launched as follows.
 
 ```
 jupyter lab
@@ -374,13 +379,13 @@ jupyter lab
 
 #### MyST Markdown Notebook
 
-MyST Markdown includes the functionality for text-based Jupyter notebooks via the [MyST NB](https://myst-nb.readthedocs.io/en/latest/index.html) extension. These are written entirely in Markdown and include [special YAML metadata](https://myst-nb.readthedocs.io/en/latest/authoring/text-notebooks.html#notebook-level-metadata) that define the computation kernel and [special code cell directives](https://myst-nb.readthedocs.io/en/latest/authoring/text-notebooks.html#syntax-for-code-cells) that specify which code should be executed during runtime. MyST Markdown notebooks are very similar to R Markdown notebooks but support all MyST Markdown syntax. Both the interactive Python kernel (`python3`) and the interactive R kernel (`ir`) can be used. See below for resources.
+MyST Markdown includes the functionality for text-based Jupyter notebooks via the [MyST NB](https://myst-nb.readthedocs.io/en/latest/index.html) extension. These are written entirely in Markdown (stored in `md` files) and include [special YAML metadata](https://myst-nb.readthedocs.io/en/latest/authoring/text-notebooks.html#notebook-level-metadata) that define the computation kernel and [special code cell directives](https://myst-nb.readthedocs.io/en/latest/authoring/text-notebooks.html#syntax-for-code-cells) that specify which code should be executed during runtime. MyST Markdown notebooks are very similar to R Markdown notebooks but support all MyST Markdown syntax. Both the interactive Python kernel (`python3`) and the interactive R kernel (`ir`) can be used. See below for resources.
 
 - [MyST NB Text-Based Notebooks Guide](https://myst-nb.readthedocs.io/en/latest/authoring/text-notebooks.html)
 
 #### R Markdown Notebook
 
-R Markdown notebooks are supported with certain limitations. Package installations via CRAN are not allowed (all dependencies must be installed via `environment.yaml`) and Python is not supported. Syntax specific to R Markdown can be used but note that some functionality might be lost during the build process. R Markdown is not directly supported and thus all R Markdown documents are converted to Jupyter Notebooks using [JupyText](https://jupytext.readthedocs.io/en/latest/) and then executed using the interactive R kernel (`ir`). Hence certain elements might not be rendered as expected. Also note that any functionality specific to RStudio and the `knitr` package is not supported as the R Markdown documents are never actually _knit_. See below for resources.
+R Markdown notebooks (stored in `Rmd` files) are supported with certain limitations. Package installations via CRAN are not allowed (all dependencies must be installed via `environment.yaml`) and Python is not supported. Syntax specific to R Markdown can be used but note that some functionality might be lost during the build process. R Markdown is not directly supported and thus all R Markdown documents are converted to Jupyter Notebooks using [JupyText](https://jupytext.readthedocs.io/en/latest/) and then executed using the interactive R kernel (`ir`). Hence certain elements might not be rendered as expected. Also note that any functionality specific to RStudio and the `knitr` package is not supported as the R Markdown documents are never actually _knit_. See below for resources.
 
 - [R Markdown Guide](https://bookdown.org/yihui/rmarkdown/)
 - [Example of a Converted R Markdown File](https://myst-nb.readthedocs.io/en/latest/authoring/custom-formats.html)
@@ -402,17 +407,28 @@ Style guidelines for prose are in active development and subject to change. The 
 - Define any acronyms the first time they are mentioned.
 - Numbers up to ten should be written using words instead of numerals.
 - Avoid duplication of effort -- link out to existing internal or external materials whenever possible.
-- Take care when linking out to external materials -- prefer official or non-commercial resources whenever possible.
-- Use [substitutions](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#substitutions-with-jinja2) for frequently included text subject to change like emails or URLs.
+  - Prefer official resources and only link out to non-commercial publicly accessible content.
+- Use [reference-style links](https://www.markdownguide.org/basic-syntax/#reference-style-links) for URLs that appear multiple times within the same document.
+- Use [substitutions](https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#substitutions-with-jinja2) for frequently included text subject to change like emails.
+  - Use substitutions over reference-style links for URLs that are linked to in several different sections of the website.
 
 <!-- prettier-ignore -->
 
 > [!WARNING]
-> **Do not include any copyrighted material.** Material under copyright protections intended to be used for educational content under _fair use_ and the _TEACH Act_ should be limited to Tufts affiliates only and not be included in any publicly accessible resource.
+> **Do not include any copyrighted material without permission.** Material under copyright protections intended to be used for educational content under _fair use_ should be limited to Tufts affiliates only and not be included in any publicly accessible resource.
 
 ### Code
 
-Python code should conform to the [Black](https://github.com/psf/black) style and R code should conform to the [Tidyverse](https://style.tidyverse.org/) style. Style guidelines are enforced and automatically applied via pre-commit hooks during commits (if configured) and pull requests. Manual effort to conform to style guidelines is not needed. Style guides for other languages might be added in the future.
+Python code should conform to the [Black](https://github.com/psf/black) style and R code should conform to the [Tidyverse](https://style.tidyverse.org/) style. Style guidelines are enforced and automatically applied via pre-commit hooks during commits (if configured) and pull requests. Manual effort to conform to style guidelines is not needed. Style guides for other languages might be added in the future. Bash utility scripts should be committed with execute permissions.
+
+<!-- prettier-ignore -->
+
+> [!NOTE]
+> Execute permissions can be added on Windows systems via Git as follows.
+>
+> ```
+> git add --chmod=+x -- <file>
+> ```
 
 ## Accessibility
 
@@ -524,6 +540,13 @@ gh pr merge --auto
 
 The merging of the PR triggers a build and deployment of the development version of the website. Note that this could take several minutes. Once the updated website has been deployed, make sure to navigate to the [development version of the website][guides-dev-url] and ensure all changes are reflected as expected.
 
+Once the PR has been successfully merged, the branch should be deleted both locally and on GitHub. This can be done as follows.
+
+```
+git push -d origin <name>
+git branch -d <name>
+```
+
 ## Publishing Workflow
 
 The following workflow incorporates updates from the `develop` branch into the published website. This is automatically triggered every week (if updates are detected) but can be manually triggered as follows anytime when updates to the published site are needed.
@@ -575,15 +598,7 @@ gh pr merge --auto
 ```
 
 [autoslug-url]: https://github.com/TuftsRT/autoslug
-[gh-cli-url]: https://cli.github.com/
+[box-dir-url]: https://tufts.box.com/s/hc34beacdbqsg32gqn7sspixdxwiv9x5
 [guides-dev-url]: https://rtguides.it.tufts.edu/dev/
 [guides-url]: https://rtguides.it.tufts.edu/
 [issues-url]: https://github.com/TuftsRT/guides/issues
-[jinja-url]: https://jinja.palletsprojects.com
-[miniforge-url]: https://github.com/conda-forge/miniforge
-[myst-md-ext-url]: https://marketplace.visualstudio.com/items?itemName=ExecutableBookProject.myst-highlight
-[pre-commit-url]: https://pre-commit.com/
-[sphinx-autobuild-url]: https://github.com/sphinx-doc/sphinx-autobuild
-[sphinx-url]: https://www.sphinx-doc.org
-[toc-url]: https://sphinx-external-toc.readthedocs.io
-[vs-code-url]: https://code.visualstudio.com/
