@@ -11,31 +11,31 @@ Most modern NLP are language models. While a language model can be anything that
 grid-columns: 1
 ---
 - header: "{fas}`book` Training Named Entity Recognition models with `spaCy` "
-	content: "In previous notebooks, we've seen how to use `spaCy` for NER, but how did those pretrained models get trained in the first place? This notebook shows you how!"
-	link: "ner-spacy.ipynb"
+  content: "In previous notebooks, we've seen how to use `spaCy` for NER, but how did those pretrained models get trained in the first place? This notebook shows you how!"
+  link: "ner-spacy.ipynb"
 
 - header: "{fas}`book` An Introduction to Word Vectors with `gensim`"
-	content: "Word vectors are the foundation of neual language models. The word2vec algorithm (Mikolov et al., 2013) pioneered this approach and the `gensim` package helps us implement it."
-	link: "w2v-gensim.ipynb"
+  content: "Word vectors are the foundation of neual language models. The word2vec algorithm (Mikolov et al., 2013) pioneered this approach and the `gensim` package helps us implement it."
+  link: "w2v-gensim.ipynb"
 
 - header: "{fas}`book` word2vec from Scratch "
-	content: "Learn how to implement the word2vec algorithm in `numpy`. Start your foundation in training your own neural nets with this very simple architecture."
-	link: "w2v-from-scratch.ipynb"
+  content: "Learn how to implement the word2vec algorithm in `numpy`. Start your foundation in training your own neural nets with this very simple architecture."
+  link: "w2v-from-scratch.ipynb"
 
 - header: "{fas}`book` Building a machine translator with `pytorch` "
-	content: "Get started with using the popluar neural network frameworking `pytorch`. Thisof the other side of the transformer architecture, the encoder, pivotal in BERT-style models for information retrieval and organization. notebook was adapted from [this source](https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html)."
-	link: "rnn-pytorch.ipynb"
+  content: "Get started with using the popluar neural network frameworking `pytorch`. Thisof the other side of the transformer architecture, the encoder, pivotal in BERT-style models for information retrieval and organization. notebook was adapted from [this source](https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html)."
+  link: "rnn-pytorch.ipynb"
 
 - header: "{fas}`book` Decoder-only Transformer Models from Scratch"
-	content: "Understanding the decoder-only transformer, the architecture behind GPTs and LLMs, is vital to navigating the contemporary machine learning and artificial intelligence. Work through this notebook to learn the basics. This notebook was adapted from this [this source](https://www.youtube.com/watch?v=kCc8FmEb1nY&ab_channel=AndrejKarpathy)."
-	link: "decoder-pytorch.ipynb"
+  content: "Understanding the decoder-only transformer, the architecture behind GPTs and LLMs, is vital to navigating the contemporary machine learning and artificial intelligence. Work through this notebook to learn the basics. This notebook was adapted from this [this source](https://www.youtube.com/watch?v=kCc8FmEb1nY&ab_channel=AndrejKarpathy)."
+  link: "decoder-pytorch.ipynb"
 
 - header: "{fas}`book` Encoder-only Transformer Models for Scratch"
-	content: "Develop your knowledge of the other side of the transformer architecture, the encoder, pivotal in BERT-style models for information retrieval and organization."
-	link: "encoder-pytorch.ipynb"
+  content: "Develop your knowledge of the other side of the transformer architecture, the encoder, pivotal in BERT-style models for information retrieval and organization."
+  link: "encoder-pytorch.ipynb"
 
 - header: "{fas}`book` The Byte-Pair Tokenization Algorithm"
-	content: "Alongside model develop is text tokenization. In this notebook, learn modern techniques on how to build a custom tokenizer."
-	link: "tokenizers.ipynb"
+  content: "Alongside model develop is text tokenization. In this notebook, learn modern techniques on how to build a custom tokenizer."
+  link: "tokenizers.ipynb"
 
 ```
