@@ -27,7 +27,7 @@ Starting MM/DD/YYYY:
   - Full student list must be provided at least 1 week prior to the first day of class.
   - Research technology will try our best to accommodate course HPC resource needs. When in high demand, all HPC course resources are on "first come first serve" basis.
   - Up to 10 non-concurrent courses
-  - [Link to HPC Course Request](#)
+  - [Link to HPC Course Request](https://tufts.qualtrics.com/jfe/form/SV_d7o0UZFgK1PFXnv)
 
 - Each course may request a set amount of computing resources for in-class/lab sessions only through out the semester.
 
