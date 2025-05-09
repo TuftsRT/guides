@@ -22,7 +22,7 @@ Here are some examples of useful local extensions:
 
 ## SSH Keyless Access (Optional)
 
-Please follow the instructions here to setup your SSH keyless access. This will make your life much easier in the long run: [SSH Keyless Access](https://rce-docs.hmdc.harvard.edu/using-public-key-authentication)
+Please follow the instructions here to setup your SSH keyless access. This will make your life much easier in the long run: [SSH Keyless Access]([https://rce-docs.hmdc.harvard.edu/using-public-key-authentication](https://www.tecmint.com/ssh-passwordless-login-using-ssh-keygen-in-5-easy-steps/))
 
 Once you are ready, let's get started.
 
