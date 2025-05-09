@@ -27,7 +27,8 @@ This policy starts 7/1/2025, however we will be flexible with existing instructo
 ### Capacity 
   - RT can currently support 10 non-concurrent courses using the cluster
   - Research technology will try our best to accommodate course HPC resource needs. When in high demand, HPC course requests are prioritized based on order of request.
-  - [Link to HPC Course Request](#)
+  - [Link to HPC Course Request](https://tufts.qualtrics.com/jfe/form/SV_d7o0UZFgK1PFXnv)
+
 
 #### Compute
 Each course may request a pool of computing resources be reserved for in-class/lab sessions during the semester.  Public partition HPC computing resources cannot be reserved for use outside of the scheduled class time, or for courses that do not synchronously.
