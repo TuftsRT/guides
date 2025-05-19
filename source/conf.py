@@ -68,10 +68,13 @@ html_theme = "pydata_sphinx_theme"
 html_title = project
 
 html_context = {
-    "github_user": github_user,
-    "github_repo": github_repo,
-    "github_version": repo.head.shorthand,
+    "disclaimer": (
+        f"Linked external resources not affiliated with or endorsed by {author}."
+    ),
     "doc_path": "source",
+    "github_repo": github_repo,
+    "github_user": github_user,
+    "github_version": repo.head.shorthand,
 }
 
 icon_links = [
@@ -102,7 +105,7 @@ html_theme_options = {
         f"refs/heads/{announcement_branch}/{announcement_file}"
     ),
     "collapse_navigation": True,
-    "footer_center": ["last-updated"],
+    "footer_center": ["last-updated", "disclaimer"],
     "footer_end": ["switcher-label", "version-switcher"],
     "footer_start": ["copyright"],
     "header_links_before_dropdown": 6,
