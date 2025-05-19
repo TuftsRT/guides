@@ -2,6 +2,8 @@
   flex-direction: row;
   justify-content: right;
   display: flex;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
 }
 
 .switcher-label {
@@ -11,4 +13,8 @@
 
 .switcher-label p {
   margin-right: 0.5em;
+}
+
+button.btn.version-switcher__button {
+  margin-bottom: unset !important;
 }
