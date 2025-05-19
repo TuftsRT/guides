@@ -56,6 +56,7 @@ external_toc_path = "_toc.yaml"
 html_baseurl = os.environ.get(key="BASEURL", default="./")
 html_css_files = [
     "css/bugfix.css",
+    "css/footer-links.css",
     "css/gallery.css",
     "css/navbar.css",
     "css/switcher.css",
@@ -72,6 +73,11 @@ html_context = {
         f"Linked external resources not affiliated with or endorsed by {author}."
     ),
     "doc_path": "source",
+    "footer_links": {
+        "Accessibility": "https://access.tufts.edu/digital-accessibility-policy",
+        "Non-Discrimination": "https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/",
+        "Privacy": "https://www.tufts.edu/about/privacy",
+    },
     "github_repo": github_repo,
     "github_user": github_user,
     "github_version": repo.head.shorthand,
@@ -105,7 +111,7 @@ html_theme_options = {
         f"refs/heads/{announcement_branch}/{announcement_file}"
     ),
     "collapse_navigation": True,
-    "footer_center": ["last-updated", "disclaimer"],
+    "footer_center": ["last-updated", "disclaimer", "footer-links"],
     "footer_end": ["switcher-label", "version-switcher"],
     "footer_start": ["copyright"],
     "header_links_before_dropdown": 6,
