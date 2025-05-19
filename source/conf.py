@@ -58,6 +58,7 @@ html_css_files = [
     "css/bugfix.css",
     "css/footer-links.css",
     "css/gallery.css",
+    "css/mobile.css",
     "css/navbar.css",
     "css/switcher.css",
 ]

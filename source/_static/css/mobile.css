@@ -1,0 +1,10 @@
+@media (max-width: 960px) {
+  footer > div {
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .footer-item {
+    justify-items: center;
+  }
+}
