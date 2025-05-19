@@ -113,9 +113,9 @@ html_theme_options = {
         f"refs/heads/{announcement_branch}/{announcement_file}"
     ),
     "collapse_navigation": True,
-    "footer_center": ["last-updated", "disclaimer", "footer-links"],
+    "footer_center": ["disclaimer", "footer-links"],
     "footer_end": ["switcher-with-label"],
-    "footer_start": ["copyright"],
+    "footer_start": ["copyright", "last-updated"],
     "header_links_before_dropdown": 6,
     "icon_links": icon_links,
     "logo": {"text": project},
