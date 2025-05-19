@@ -79,7 +79,8 @@ icon_links = [
         "name": "Tags",
         "url": urljoin(
             html_baseurl,
-            f"{'dev/' if release == 'dev' else ''}tags/index.html",
+            f"{'dev/' if 'dev' in release and html_baseurl != './' else ''}"
+            "tags/index.html",
         ),
         "icon": "fa-solid fa-tags",
         "attributes": {"target": "_self"},
