@@ -1,14 +1,14 @@
-.footer-items__end {
-  flex-direction: row !important;
-  justify-content: right !important;
-}
-
-div:has(.switcher-label) {
+.switcher-with-label {
+  flex-direction: row;
+  justify-content: right;
   display: flex;
-  align-items: stretch;
 }
 
 .switcher-label {
   display: flex;
   align-items: center;
+}
+
+.switcher-label p {
+  margin-right: 0.5em;
 }

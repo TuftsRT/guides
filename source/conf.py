@@ -112,7 +112,7 @@ html_theme_options = {
     ),
     "collapse_navigation": True,
     "footer_center": ["last-updated", "disclaimer", "footer-links"],
-    "footer_end": ["switcher-label", "version-switcher"],
+    "footer_end": ["switcher-with-label"],
     "footer_start": ["copyright"],
     "header_links_before_dropdown": 6,
     "icon_links": icon_links,
