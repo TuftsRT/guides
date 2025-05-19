@@ -68,16 +68,18 @@ html_static_path = ["_static"]
 html_theme = "pydata_sphinx_theme"
 html_title = project
 
+disclaimer = f"Linked external resources not affiliated with or endorsed by {author}."
+
+footer_links = {
+    "Accessibility": "https://access.tufts.edu/digital-accessibility-policy",
+    "Non-Discrimination": "https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/",
+    "Privacy": "https://www.tufts.edu/about/privacy",
+}
+
 html_context = {
-    "disclaimer": (
-        f"Linked external resources not affiliated with or endorsed by {author}."
-    ),
+    "disclaimer": disclaimer,
     "doc_path": "source",
-    "footer_links": {
-        "Accessibility": "https://access.tufts.edu/digital-accessibility-policy",
-        "Non-Discrimination": "https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/",
-        "Privacy": "https://www.tufts.edu/about/privacy",
-    },
+    "footer_links": footer_links,
     "github_repo": github_repo,
     "github_user": github_user,
     "github_version": repo.head.shorthand,
