@@ -1,25 +1,26 @@
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
 .footer-links ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.footer-links ul li {
-  display: inline;
-}
+@media (min-width: 540px) {
+  .footer-links ul {
+    flex-direction: row !important;
+  }
+  .footer-links ul li {
+    display: inline;
+  }
 
-.footer-links ul li:not(:last-child)::after {
-  content: "|";
-  margin-left: 0.25em;
-  margin-right: 0.25em;
+  .footer-links ul li:not(:last-child)::after {
+    content: "|";
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+  }
 }
