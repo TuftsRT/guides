@@ -3,17 +3,23 @@
   width: max-content;
 }
 
-.navbar-header-items__center {
-  justify-content: center;
-  flex: 1;
-}
-
-ul.navbar-nav {
-  flex-direction: row;
-}
-
 #short_title {
   display: none;
+}
+
+.sidebar-header-items {
+  gap: 0.5rem;
+}
+
+@media (min-width: 960px) {
+  .navbar-header-items__center {
+    justify-content: center;
+    flex: 1;
+  }
+
+  ul.navbar-nav {
+    flex-direction: row;
+  }
 }
 
 @media (max-width: 540px) {
