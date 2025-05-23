@@ -56,7 +56,9 @@ external_toc_path = "_toc.yaml"
 html_baseurl = os.environ.get(key="BASEURL", default="./")
 html_css_files = [
     "css/bugfix.css",
+    "css/footer-links.css",
     "css/gallery.css",
+    "css/mobile.css",
     "css/navbar.css",
     "css/switcher.css",
 ]
@@ -67,11 +69,21 @@ html_static_path = ["_static"]
 html_theme = "pydata_sphinx_theme"
 html_title = project
 
+disclaimer = f"Linked external resources not affiliated with or endorsed by {author}."
+
+footer_links = {
+    "Accessibility": "https://access.tufts.edu/digital-accessibility-policy",
+    "Non-Discrimination": "https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/",
+    "Privacy": "https://www.tufts.edu/about/privacy",
+}
+
 html_context = {
-    "github_user": github_user,
-    "github_repo": github_repo,
-    "github_version": repo.head.shorthand,
+    "disclaimer": disclaimer,
     "doc_path": "source",
+    "footer_links": footer_links,
+    "github_repo": github_repo,
+    "github_user": github_user,
+    "github_version": repo.head.shorthand,
 }
 
 icon_links = [
@@ -103,9 +115,9 @@ html_theme_options = {
         f"refs/heads/{announcement_branch}/{announcement_file}"
     ),
     "collapse_navigation": True,
-    "footer_center": ["last-updated"],
-    "footer_end": ["switcher-label", "version-switcher"],
-    "footer_start": ["copyright"],
+    "footer_center": ["disclaimer", "footer-links"],
+    "footer_end": ["switcher-with-label"],
+    "footer_start": ["copyright", "last-updated"],
     "header_links_before_dropdown": 6,
     "icon_links": icon_links,
     "logo": {"text": project},
