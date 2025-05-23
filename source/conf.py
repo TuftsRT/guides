@@ -84,6 +84,7 @@ html_context = {
     "github_repo": github_repo,
     "github_user": github_user,
     "github_version": repo.head.shorthand,
+    "short_title": "TTS RT Guides",
 }
 
 icon_links = [

@@ -11,3 +11,16 @@
 ul.navbar-nav {
   flex-direction: row;
 }
+
+#short_title {
+  display: none;
+}
+
+@media (max-width: 540px) {
+  #short_title {
+    display: block !important;
+  }
+  #long_title {
+    display: none;
+  }
+}
