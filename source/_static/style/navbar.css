@@ -1,3 +1,8 @@
+/* shrink nav dropdown to fit content */
+.bd-header ul.navbar-nav .dropdown .dropdown-menu {
+  min-width: unset !important;
+}
+
 /* accommodate overflowing logo text */
 .navbar-header-items__start {
   width: max-content;
