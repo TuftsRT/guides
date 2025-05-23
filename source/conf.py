@@ -110,6 +110,10 @@ icon_links = [
 ]
 
 html_theme_options = {
+    "analytics": {
+        # cSpell:disable-next-line
+        "google_analytics_id": "G-ZJ5LXFRJ2G",
+    },
     "announcement": (
         f"https://raw.githubusercontent.com/{github_user}/{github_repo}/"
         f"refs/heads/{announcement_branch}/{announcement_file}"
