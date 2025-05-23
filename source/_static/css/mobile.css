@@ -6,5 +6,6 @@
   }
   .footer-item {
     justify-items: center;
+    text-align: center;
   }
 }
