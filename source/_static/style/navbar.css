@@ -1,5 +1,5 @@
 /* shrink nav dropdown to fit content */
-.bd-header ul.navbar-nav .dropdown .dropdown-menu {
+nav .dropdown-menu {
   min-width: unset !important;
 }
 
@@ -8,18 +8,30 @@
   width: max-content;
 }
 
-#short_title {
-  display: none;
+/* do not allow nav and icon links to shrink */
+.navbar-nav > .nav-item,
+.navbar-header-items__end {
+  flex-shrink: 0;
 }
 
 .sidebar-header-items {
   gap: 0.5rem;
 }
 
+#short_title {
+  display: none;
+}
+
 @media (min-width: 960px) {
   .navbar-header-items__center {
-    justify-content: center;
     flex: 1;
+    justify-content: center;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+
+  nav .dropdown-menu {
+    position: absolute !important;
   }
 
   ul.navbar-nav {

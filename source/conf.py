@@ -64,6 +64,7 @@ html_css_files = [
 ]
 html_favicon = "_static/favicon.ico"
 html_last_updated_fmt = ""
+html_js_files = ["script/dynamic-nav-dropdown.js"]
 html_logo = "_static/jumbo.png"
 html_static_path = ["_static"]
 html_theme = "pydata_sphinx_theme"
@@ -123,7 +124,6 @@ html_theme_options = {
     "footer_center": ["disclaimer", "footer-links"],
     "footer_end": ["switcher-with-label"],
     "footer_start": ["copyright", "last-updated"],
-    "header_links_before_dropdown": 6,
     "icon_links": icon_links,
     "logo": {"text": project},
     "navigation_with_keys": False,
