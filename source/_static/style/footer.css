@@ -1,3 +1,11 @@
+footer {
+  line-height: 1.5 !important;
+}
+
+footer > div {
+  gap: 1rem;
+}
+
 .footer-links ul {
   list-style: none;
   padding: 0;
@@ -8,6 +16,18 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+@media (max-width: 960px) {
+  footer > div {
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .footer-item {
+    justify-items: center;
+    text-align: center;
+  }
 }
 
 @media (min-width: 540px) {

@@ -55,15 +55,15 @@ external_toc_path = "_toc.yaml"
 
 html_baseurl = os.environ.get(key="BASEURL", default="./")
 html_css_files = [
-    "css/bugfix.css",
-    "css/footer-links.css",
-    "css/gallery.css",
-    "css/mobile.css",
-    "css/navbar.css",
-    "css/switcher.css",
+    "style/footer.css",
+    "style/gallery.css",
+    "style/navbar.css",
+    "style/sidebar.css",
+    "style/switcher.css",
 ]
 html_favicon = "_static/favicon.ico"
 html_last_updated_fmt = ""
+html_js_files = ["script/dynamic-nav-dropdown.js"]
 html_logo = "_static/jumbo.png"
 html_static_path = ["_static"]
 html_theme = "pydata_sphinx_theme"
@@ -84,6 +84,7 @@ html_context = {
     "github_repo": github_repo,
     "github_user": github_user,
     "github_version": repo.head.shorthand,
+    "short_title": "TTS RT Guides",
 }
 
 icon_links = [
@@ -122,7 +123,6 @@ html_theme_options = {
     "footer_center": ["disclaimer", "footer-links"],
     "footer_end": ["switcher-with-label"],
     "footer_start": ["copyright", "last-updated"],
-    "header_links_before_dropdown": 6,
     "icon_links": icon_links,
     "logo": {"text": project},
     "navigation_with_keys": False,
