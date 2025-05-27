@@ -17,7 +17,8 @@ For previous users of the Tufts cluster these are the items that deviate from pr
 
 This policy starts 7/1/2025, however we will be flexible with existing instructor needs as we implement this.  Please contact RT with any concerns.
 
-**Each semester, instructors are required to submit a new request to use HPC resources for their course :**
+**Each semester, instructors are required to submit a new request to use HPC resources for their course using the 
+[HPC Course Request Form](https://tufts.qualtrics.com/jfe/form/SV_d7o0UZFgK1PFXnv):**
 
 ### Timeline
   - HPC course setup request needs to received by RT 4 weeks prior to the first day of class.
@@ -27,12 +28,14 @@ This policy starts 7/1/2025, however we will be flexible with existing instructo
 ### Capacity 
   - RT can currently support 10 non-concurrent courses using the cluster
   - Research technology will try our best to accommodate course HPC resource needs. When in high demand, HPC course requests are prioritized based on order of request.
-  - [Link to HPC Course Request](https://tufts.qualtrics.com/jfe/form/SV_d7o0UZFgK1PFXnv)
+
 
 #### Compute
-Each course may request a pool of computing resources be reserved for in-class/lab sessions during the semester.  Public partition HPC computing resources cannot be reserved for use outside of the scheduled class time, or for courses that do not synchronously.
+Each course may request a pool of computing resources be reserved for in-class/lab sessions during the semester.  
+Public partition HPC computing resources cannot be reserved for use outside of the scheduled class time, or for 
+courses that do not meet synchronously.
   
-Per course reservation maximums:
+Maximum reserved resources per course:
 - 128 CPU cores
 - 1TB CPU memory
 - 20 GPUs (16GB GPU Device VRAM each)
@@ -49,12 +52,13 @@ Each course may request up to 1TB of Tier 1 HPC storage, which will be setup as 
   - Within the course folder, group project folders can be created upon additional request from the instructor.
   - This course storage quota does not count towards the instructors research storage quota for the charge back model.
 - The course project folder will be archived 30 days after the end of semester
-  - Move to Tier 2 - retain one year, then delete - RT
+  - Moved to Tier 2 Research - retain one year, then deleted
 
 ### Software
 
 - The RT team provides its best effort to have requested compatible open-source software or packages installed and set up 2 weeks before first day of class (under the condition the request was received at least **4 weeks** prior to first day of class.)
-- Any changes to course software environment setup must be communicated to RT 2 weeks prior to the day of in-class session.
+- Any changes to a course software environment setup must be communicated to RT 2 weeks prior to the day of in-class 
+  session.
 - Instructor and/or designated TA(s) will be responsible for testing software setup prior to the day of in-class session.
 - New commercial software needs to be purchased by instructor or department at least **4 months** before first day of class.
 - The general practice is to not change or update the versions of software in use for courses during the semester
@@ -66,13 +70,16 @@ Each course may request up to 1TB of Tier 1 HPC storage, which will be setup as 
   - Instructing students on the use of the software
   - Debugging student code or assignment problems
   - Addressing any problems that arise during class period, including initial debugging
-  - Contact RT about any common issues students encounter on the HPC cluster, and communicate the solutions RT provides to students.
+  - Acting as a single point of contact with RT about any common issues students encounter on the HPC cluster, and 
+    communicate the solutions RT provides to students.
 - RT provides assistance with:
   - Setting up student accounts
   - Course HPC environment setup (storage, software installation)
   - The in-class "Intro to HPC" sessions
-  - Troubleshooting HPC system wide problems, typically indicated by multiple students having the same problem
-- For Capstone or Project-Only courses, all support requests should be made by a single designated student or team leader.
+  - Troubleshooting HPC system wide problems as reported by the Instructor, typically indicated by multiple students 
+    having the same problem
+- For Capstone or Project-Only courses, all support requests should be made by a designated student or team leader 
+  who serves as a single point of contact.
 
 - In-class Sessions
   - A Virtual "Intro to HPC" in-class session is available. Requests need to be received by RT 4 weeks prior to the scheduled in-class session.
