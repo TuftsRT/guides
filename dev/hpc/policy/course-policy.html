@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>HelloWorld HPC Cluster Tutorial &#8212; TTS Research Technology Guides</title>
+    <title>HPC Course Policy &#8212; TTS Research Technology Guides</title>
   
   
   
@@ -61,19 +61,19 @@
                 gtag('js', new Date());
                 gtag('config', 'G-ZJ5LXFRJ2G');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/examples/helloworld';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/policy/course-policy';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
-    <link rel="canonical" href="https://rtguides.it.tufts.edu/hpc/examples/helloworld.html" />
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/hpc/policy/course-policy.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="HPC Helper Tool - hpctools" href="hpctools.html" />
-    <link rel="prev" title="Examples and Tutorials" href="index.html" />
+    <link rel="next" title="Help with HPC" href="../help.html" />
+    <link rel="prev" title="HPC Cluster Contribute Nodes" href="contribute-nodes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="20250527" />
@@ -392,16 +392,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../compute/index.html">Computing Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../slurm/index.html">Slurm Job Scheduler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../application/index.html">Software Applications</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples and Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">HelloWorld HPC Cluster Tutorial</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="portforward.html">Port Forwarding on HPC Cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snapshots.html">File Recovery on Tufts HPC Cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples and Tutorials</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">HPC Policy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contribute-nodes.html">HPC Cluster Contribute Nodes</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HPC Course Policy</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../policy/index.html">HPC Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help.html">Help with HPC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../storage-request.html">HPC Cluster Storage Request</a></li>
 </ul>
@@ -452,12 +448,12 @@
      
     <li class="breadcrumb-item">
       <a href="index.html" class="nav-link"
-        >Examples and Tutorials</a
+        >HPC Policy</a
       >
     </li>
      
     <li class="breadcrumb-item active" aria-current="page">
-      HelloWorld HPC...
+      HPC Course Policy
     </li>
   </ul>
 </nav>
@@ -475,23 +471,135 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="helloworld-hpc-cluster-tutorial">
-<h1>HelloWorld HPC Cluster Tutorial<a class="headerlink" href="#helloworld-hpc-cluster-tutorial" title="Link to this heading">#</a></h1>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Fill in steps of this simple tutorial</p>
-</div>
-<p>This simple tutorial will walk you through running your first HPC job using SSH.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="hpc-course-policy">
+<h1>HPC Course Policy<a class="headerlink" href="#hpc-course-policy" title="Link to this heading">#</a></h1>
+<section id="purpose-and-scope">
+<h2>Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Link to this heading">#</a></h2>
+<p>The HPC infrastructure is a critical tool in enhancing educational experiences, providing students and faculty access to advanced computing resources for research, learning, and academic development. The purpose of this policy is to outline the guidelines and standard procedures for the use of High-Performance Computing (HPC) resources and services in support of teaching and learning activities at Tufts University.</p>
+<p>This policy applies to all users of HPC resources, including students, faculty, staff, and other authorized personnel.</p>
+</section>
+<section id="notable-changes">
+<h2>Notable changes<a class="headerlink" href="#notable-changes" title="Link to this heading">#</a></h2>
+<p>For previous users of the Tufts cluster these are the items that deviate from previous practice the most. They are all covered below, but we want to highlight these differences.</p>
 <ul class="simple">
-<li><p>Create helloworld.py file on local computer (provide very simple python code but should pin a CPU and run for long enough we can view in squeue)</p></li>
-<li><p>Upload to cluster using scp or OnDemand</p></li>
-<li><p>SSH to cluster login node</p></li>
-<li><p>Create batch file using nano editor</p></li>
-<li><p>Schedule batch job using slurm sbatch command</p></li>
-<li><p>Check status with squeue</p></li>
-<li><p>Check output log files</p></li>
-<li><p>Check job efficiency using seff</p></li>
+<li><p>Courses will be given a unique, new project folder each semester. At the end of the semester this folder will be archived.</p></li>
+<li><p>Timeline, we are requesting all instructors request access for their course 4 weeks prior to the start of the semester.</p></li>
+<li><p>Course project folders from before 7/1/2025 will be archived on Tier 2 for 12 months. RT will contact each instructor with additional details.</p></li>
 </ul>
+</section>
+<section id="guidelines">
+<h2>Guidelines<a class="headerlink" href="#guidelines" title="Link to this heading">#</a></h2>
+<p>This policy starts 7/1/2025, however we will be flexible with existing instructor needs as we implement this. Please contact RT with any concerns.</p>
+<p><strong>Each semester, instructors are required to submit a new request to use HPC resources for their course using the
+<a class="reference external" href="https://tufts.qualtrics.com/jfe/form/SV_d7o0UZFgK1PFXnv">HPC Course Request Form</a>:</strong></p>
+<section id="timeline">
+<h3>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>HPC course setup request needs to received by RT 4 weeks prior to the first day of class.</p></li>
+<li><p>Full student list must be provided at least 1 week prior to the first day of class.</p></li>
+<li><p>Course project folders will be archived 30 days after the end of the semester.</p></li>
+</ul>
+</section>
+<section id="capacity">
+<h3>Capacity<a class="headerlink" href="#capacity" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>RT can currently support 10 non-concurrent courses using the cluster</p></li>
+<li><p>Research technology will try our best to accommodate course HPC resource needs. When in high demand, HPC course requests are prioritized based on order of request.</p></li>
+</ul>
+<section id="compute">
+<h4>Compute<a class="headerlink" href="#compute" title="Link to this heading">#</a></h4>
+<p>Each course may request a pool of computing resources be reserved for in-class/lab sessions during the semester.<br />
+Public partition HPC computing resources cannot be reserved for use outside of the scheduled class time, or for
+courses that do not meet synchronously.</p>
+<p>Maximum reserved resources per course:</p>
+<ul class="simple">
+<li><p>128 CPU cores</p></li>
+<li><p>1TB CPU memory</p></li>
+<li><p>20 GPUs (16GB GPU Device VRAM each)</p></li>
+<li><p>For any additional computational resource needs:</p>
+<ul>
+<li><p>CPU resources - please reach out to RT for further information on options.</p></li>
+<li><p>GPU resources - hardware purchases supported by school, department, or instructor may be needed.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="storage">
+<h4>Storage<a class="headerlink" href="#storage" title="Link to this heading">#</a></h4>
+<p>Each course may request up to 1TB of Tier 1 HPC storage, which will be setup as follows:</p>
+<ul class="simple">
+<li><p>A clean project folder will be created each semester for each course</p>
+<ul>
+<li><p>Within the course folder, a “shared” subfolder will be created for any files need to be accessed by the entire class (read-only to students)</p></li>
+<li><p>Within the course folder, each student will have their own subfolder which is only accessible by this student, the instructor, and course TA(s).</p></li>
+<li><p>Within the course folder, group project folders can be created upon additional request from the instructor.</p></li>
+<li><p>This course storage quota does not count towards the instructors research storage quota for the charge back model.</p></li>
+</ul>
+</li>
+<li><p>The course project folder will be archived 30 days after the end of semester</p>
+<ul>
+<li><p>Moved to Tier 2 Research - retain one year, then deleted</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="software">
+<h3>Software<a class="headerlink" href="#software" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The RT team provides its best effort to have requested compatible open-source software or packages installed and set up 2 weeks before first day of class (under the condition the request was received at least <strong>4 weeks</strong> prior to first day of class.)</p></li>
+<li><p>Any changes to a course software environment setup must be communicated to RT 2 weeks prior to the day of in-class
+session.</p></li>
+<li><p>Instructor and/or designated TA(s) will be responsible for testing software setup prior to the day of in-class session.</p></li>
+<li><p>New commercial software needs to be purchased by instructor or department at least <strong>4 months</strong> before first day of class.</p></li>
+<li><p>The general practice is to not change or update the versions of software in use for courses during the semester</p></li>
+</ul>
+</section>
+<section id="support">
+<h3>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h3>
+<p>Support for students using the HPC cluster for coursework is provided via a shared model between the course Instructor, TA’s and RT staff.</p>
+<ul class="simple">
+<li><p>Instructors or TA’s provide assistance with:</p>
+<ul>
+<li><p>Instructing students on the use of the software</p></li>
+<li><p>Debugging student code or assignment problems</p></li>
+<li><p>Addressing any problems that arise during class period, including initial debugging</p></li>
+<li><p>Acting as a single point of contact with RT about any common issues students encounter on the HPC cluster, and
+communicate the solutions RT provides to students.</p></li>
+</ul>
+</li>
+<li><p>RT provides assistance with:</p>
+<ul>
+<li><p>Setting up student accounts</p></li>
+<li><p>Course HPC environment setup (storage, software installation)</p></li>
+<li><p>The in-class “Intro to HPC” sessions</p></li>
+<li><p>Troubleshooting HPC system wide problems as reported by the Instructor, typically indicated by multiple students
+having the same problem</p></li>
+</ul>
+</li>
+<li><p>For Capstone or Project-Only courses, all support requests should be made by a designated student or team leader
+who serves as a single point of contact.</p></li>
+<li><p>In-class Sessions</p>
+<ul>
+<li><p>A Virtual “Intro to HPC” in-class session is available. Requests need to be received by RT 4 weeks prior to the scheduled in-class session.</p>
+<ul>
+<li><p>When scheduling permits, in-person sessions may also be available.</p></li>
+</ul>
+</li>
+<li><p>Please contact <a class="reference external" href="mailto:tts-research&#37;&#52;&#48;tufts&#46;edu">tts-research<span>&#64;</span>tufts<span>&#46;</span>edu</a> about special topic sessions.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="availability">
+<h3>Availability<a class="headerlink" href="#availability" title="Link to this heading">#</a></h3>
+<p>RT makes every effort to provide a reliable platform for research and teaching on the Tufts HPC Cluster. However the nature of HPC means that the system experiences failures, or degraded performance at times. End user support and system administration is provided during normal business hours.</p>
+<ul class="simple">
+<li><p>Courses running on the HPC cluster are not immune to scheduled or unscheduled cluster-wide outages.</p></li>
+<li><p>Courses are effected by the regular HPC maintenance period, and annual MGHPCC shutdown.</p></li>
+</ul>
+</section>
+</section>
 </section>
 
 
@@ -505,20 +613,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="contribute-nodes.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Examples and Tutorials</p>
+        <p class="prev-next-title">HPC Cluster Contribute Nodes</p>
       </div>
     </a>
     <a class="right-next"
-       href="hpctools.html"
+       href="../help.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">HPC Helper Tool - hpctools</p>
+        <p class="prev-next-title">Help with HPC</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -533,11 +641,39 @@
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> HPC Course Policy
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-and-scope">Purpose and Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notable-changes">Notable changes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guidelines">Guidelines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capacity">Capacity</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compute">Compute</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#storage">Storage</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#software">Software</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support">Support</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#availability">Availability</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
   <div class="sidebar-secondary-item">
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/TuftsRT/guides/edit/develop/source/hpc/examples/helloworld.md">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/hpc/policy/course-policy.md">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -549,7 +685,7 @@ Suggest Edits
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../_sources/hpc/examples/helloworld.md.txt">
+    <a href="../../_sources/hpc/policy/course-policy.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
@@ -557,7 +693,7 @@ Suggest Edits
 
   <div class="sidebar-secondary-item"><div class="tocsection report-error">
   <a
-    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: hpc/examples/helloworld"
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: hpc/policy/course-policy"
     class="report-error-link"
     ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
   </a>
