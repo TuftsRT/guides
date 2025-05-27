@@ -55,10 +55,10 @@ external_toc_path = "_toc.yaml"
 
 html_baseurl = os.environ.get(key="BASEURL", default="./")
 html_css_files = [
-    "style/bugfix.css",
     "style/footer.css",
     "style/gallery.css",
     "style/navbar.css",
+    "style/sidebar.css",
     "style/switcher.css",
 ]
 html_favicon = "_static/favicon.ico"
