@@ -2,6 +2,10 @@ footer {
   line-height: 1.5 !important;
 }
 
+footer > div {
+  gap: 1rem;
+}
+
 .footer-links ul {
   list-style: none;
   padding: 0;
