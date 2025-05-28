@@ -55,23 +55,37 @@ external_toc_path = "_toc.yaml"
 
 html_baseurl = os.environ.get(key="BASEURL", default="./")
 html_css_files = [
-    "css/bugfix.css",
-    "css/gallery.css",
-    "css/navbar.css",
-    "css/switcher.css",
+    "style/bugfix.css",
+    "style/footer.css",
+    "style/gallery.css",
+    "style/navbar.css",
+    "style/sidebar.css",
+    "style/switcher.css",
 ]
 html_favicon = "_static/favicon.ico"
 html_last_updated_fmt = ""
+html_js_files = ["script/dynamic-nav-dropdown.js"]
 html_logo = "_static/jumbo.png"
 html_static_path = ["_static"]
 html_theme = "pydata_sphinx_theme"
 html_title = project
 
+disclaimer = f"Linked external resources not affiliated with or endorsed by {author}."
+
+footer_links = {
+    "Accessibility": "https://access.tufts.edu/digital-accessibility-policy",
+    "Non-Discrimination": "https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/",
+    "Privacy": "https://www.tufts.edu/about/privacy",
+}
+
 html_context = {
-    "github_user": github_user,
-    "github_repo": github_repo,
-    "github_version": repo.head.shorthand,
+    "disclaimer": disclaimer,
     "doc_path": "source",
+    "footer_links": footer_links,
+    "github_repo": github_repo,
+    "github_user": github_user,
+    "github_version": repo.head.shorthand,
+    "short_title": "TTS RT Guides",
 }
 
 icon_links = [
@@ -79,7 +93,8 @@ icon_links = [
         "name": "Tags",
         "url": urljoin(
             html_baseurl,
-            f"{'dev/' if release == 'dev' else ''}tags/index.html",
+            f"{'dev/' if 'dev' in release and html_baseurl != './' else ''}"
+            "tags/index.html",
         ),
         "icon": "fa-solid fa-tags",
         "attributes": {"target": "_self"},
@@ -97,15 +112,18 @@ icon_links = [
 ]
 
 html_theme_options = {
+    "analytics": {
+        # cSpell:disable-next-line
+        "google_analytics_id": "G-ZJ5LXFRJ2G",
+    },
     "announcement": (
         f"https://raw.githubusercontent.com/{github_user}/{github_repo}/"
         f"refs/heads/{announcement_branch}/{announcement_file}"
     ),
     "collapse_navigation": True,
-    "footer_center": ["last-updated"],
-    "footer_end": ["switcher-label", "version-switcher"],
-    "footer_start": ["copyright"],
-    "header_links_before_dropdown": 6,
+    "footer_center": ["disclaimer", "footer-links"],
+    "footer_end": ["switcher-with-label"],
+    "footer_start": ["copyright", "last-updated"],
     "icon_links": icon_links,
     "logo": {"text": project},
     "navigation_with_keys": False,

@@ -1,0 +1,7 @@
+<div class="footer-links">
+  <ul>
+    {% for label, url in footer_links|dictsort %}
+    <li><a href="{{ url|e }}">{{ label|e }}</a></li>
+    {% endfor %}
+  </ul>
+</div>

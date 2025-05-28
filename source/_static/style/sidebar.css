@@ -1,0 +1,42 @@
+/* prevent left menu scroll bar from always showing */
+.sidebar-primary-items__end {
+  margin-top: 1rem !important;
+}
+
+.bd-links__title {
+  margin-bottom: 0.75rem !important;
+}
+
+.onthispage {
+  margin-bottom: 0.5rem;
+}
+
+.section-nav {
+  gap: 0.25rem !important;
+}
+
+.sidebar-primary-item,
+.sidebar-secondary-item {
+  line-height: 1.25 !important;
+}
+
+.sidebar-primary-item nav li,
+.sidebar-primary-item nav ul {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-primary-item nav details:open {
+  margin-top: 0.5rem;
+}
+
+#pst-primary-sidebar-modal,
+#pst-secondary-sidebar-modal {
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+}
+
+@media (max-width: 960px) {
+  .bd-links__title {
+    margin-top: 0.5rem;
+  }
+}
