@@ -1,0 +1,59 @@
+/* shrink nav dropdown to fit content */
+nav .dropdown-menu {
+  min-width: unset !important;
+}
+
+/* accommodate overflowing logo text */
+.navbar-header-items__start {
+  width: max-content;
+}
+
+/* do not allow nav and icon links to shrink */
+.navbar-nav > .nav-item,
+.navbar-header-items__end {
+  flex-shrink: 0;
+}
+
+.navbar-persistent--mobile {
+  margin-left: 1rem !important;
+}
+
+.sidebar-header-items {
+  gap: 0.5rem;
+}
+
+#short_title {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .navbar-header-items__center {
+    flex: 1;
+    justify-content: center;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+
+  nav .dropdown-menu {
+    position: absolute !important;
+  }
+
+  ul.navbar-nav {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 540px) {
+  #short_title {
+    display: block !important;
+  }
+  #long_title {
+    display: none;
+  }
+  .bd-header button.primary-toggle {
+    margin-right: 0.5rem !important;
+  }
+  .bd-header button.secondary-toggle {
+    margin-left: 0.5rem !important;
+  }
+}

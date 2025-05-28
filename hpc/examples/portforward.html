@@ -35,10 +35,12 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/bugfix.css?v=e4cc360a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/gallery.css?v=c2bd73dd" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/navbar.css?v=3ee3464b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/switcher.css?v=7c802369" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -52,6 +54,13 @@
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/examples/portforward';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
@@ -59,6 +68,7 @@
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
     <link rel="canonical" href="https://rtguides.it.tufts.edu/hpc/examples/portforward.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -67,8 +77,8 @@
     <link rel="prev" title="OnDemand - Debugging" href="ondemand-debugging.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20250501" />
-    <meta name="docbuild:last-update" content="May 01, 2025"/>
+  <meta name="docsearch:version" content="20250528" />
+    <meta name="docbuild:last-update" content="May 28, 2025"/>
   </head>
   
   
@@ -118,29 +128,26 @@
   
   <div class="col-lg-3 navbar-header-items__start">
     
-      <div class="navbar-item">
-
-  
-    
-  
-
+      <div class="navbar-item">     
 <a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
   
-  
-  
-  
-  
-    
-    
-      
-    
-    
-    <img src="../../_static/jumbo.png" class="logo__image only-light" alt=""/>
-    <img src="../../_static/jumbo.png" class="logo__image only-dark pst-js-only" alt=""/>
-  
-  
-    <p class="title logo__title">TTS Research Technology Guides</p>
-  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
 </a></div>
     
   </div>
@@ -724,24 +731,43 @@ Suggest Edits
   </p>
 </div>
       
-    </div>
-  
-  
-    <div class="footer-items__center">
-      
         <div class="footer-item"><p class="last-updated">
-  Last updated on May 01, 2025.
+  Last updated on May 28, 2025.
   <br/>
 </p></div>
       
     </div>
   
   
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
     <div class="footer-items__end">
       
-        <div class="footer-item"><p class="switcher-label">Version:</p></div>
-      
-        <div class="footer-item">
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
 <div class="version-switcher__container dropdown pst-js-only">
   <button id="pst-version-switcher-button-2"
     type="button"
@@ -759,6 +785,7 @@ Suggest Edits
     role="listbox" aria-labelledby="pst-version-switcher-button-2">
     <!-- dropdown will be populated by javascript on page load -->
   </div>
+</div>
 </div></div>
       
     </div>
