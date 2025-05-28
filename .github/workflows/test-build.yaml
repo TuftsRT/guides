@@ -22,6 +22,7 @@ jobs:
           source-branch: ${{ github.head_ref }}
           source-directory: source
           destination-directory: ${{ github.base_ref == 'main' && '.' || 'dev' }}
+          clear-destination: "true"
           build-arguments: "--nitpicky --fail-on-warning"
           dry-run: "true"
           use-expect: "true"
