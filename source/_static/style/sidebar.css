@@ -31,8 +31,8 @@
 
 #pst-primary-sidebar-modal,
 #pst-secondary-sidebar-modal {
-  height: 100dvh !important;
-  max-height: 100dvh !important;
+  height: 100% !important;
+  max-height: 100% !important;
 }
 
 @media (max-width: 960px) {
