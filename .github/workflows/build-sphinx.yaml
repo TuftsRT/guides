@@ -24,7 +24,7 @@ jobs:
       - id: build-and-deploy
         uses: tuftsrt/sphinx-to-branch@v1
         with:
-          source-branch: ${{ github.ref_name }}
+          source-branch: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
           source-directory: source
           destination-directory: ${{ github.ref_name == 'main' && '.' || 'dev' }}
           clear-destination: ${{ github.ref_name == 'main' && 'true' || 'false' }}
