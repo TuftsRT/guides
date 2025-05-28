@@ -1,0 +1,7 @@
+#pst-back-to-top {
+  top: 90dvh !important;
+}
+
+html {
+  --bs-navbar-hover-color: var(--pst-color-text-muted);
+}
