@@ -22,6 +22,11 @@ jobs:
           source-branch: ${{ github.ref_name }}
           source-directory: source
           destination-directory: ${{ github.ref_name == 'main' && '.' || 'dev' }}
+          clear-destination: ${{ github.ref_name == 'main' && 'true' || 'false' }}
+          keep-items: |
+            CNAME
+            dev
+          remove-items: dev
           build-arguments: "--nitpicky --fail-on-warning"
           use-bot: "true"
           use-expect: "true"
