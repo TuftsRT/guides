@@ -29,6 +29,12 @@
   margin-top: 0.5rem;
 }
 
+#pst-primary-sidebar-modal,
+#pst-secondary-sidebar-modal {
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+}
+
 @media (max-width: 960px) {
   .bd-links__title {
     margin-top: 0.5rem;

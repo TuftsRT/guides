@@ -14,6 +14,10 @@ nav .dropdown-menu {
   flex-shrink: 0;
 }
 
+.navbar-persistent--mobile {
+  margin-left: 1rem !important;
+}
+
 .sidebar-header-items {
   gap: 0.5rem;
 }
@@ -45,5 +49,11 @@ nav .dropdown-menu {
   }
   #long_title {
     display: none;
+  }
+  .bd-header button.primary-toggle {
+    margin-right: 0.5rem !important;
+  }
+  .bd-header button.secondary-toggle {
+    margin-left: 0.5rem !important;
   }
 }
