@@ -25,7 +25,8 @@ jobs:
         shell: bash
       - id: create-pr
         run: |
-          gh pr create --base main --head staging --fill --title "automatic publishing of updates"
+          gh pr create --base main --head staging --fill --title "autopublish" --reviewer "kylemonahan,ukukas"
+          gh pr merge staging --auto --merge
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
