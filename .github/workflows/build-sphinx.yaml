@@ -1,17 +1,22 @@
-name: publish-page
+name: build-sphinx
+run-name: ${{ github.event_name == 'pull_request' && 'test' || 'publish' }}
 
 on:
+  pull_request:
+    branches:
+      - develop
+      - main
   push:
     branches:
       - develop
       - main
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref_name }}
+  group: ${{ github.workflow }}-${{ github.ref_name }}-${{ github.event_name }}
   cancel-in-progress: true
 
 jobs:
-  publish-page:
+  build-sphinx:
     runs-on: ubuntu-latest
     steps:
       - id: get-url
@@ -19,11 +24,17 @@ jobs:
       - id: build-and-deploy
         uses: tuftsrt/sphinx-to-branch@v1
         with:
-          source-branch: ${{ github.ref_name }}
+          source-branch: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
           source-directory: source
           destination-directory: ${{ github.ref_name == 'main' && '.' || 'dev' }}
+          clear-destination: ${{ github.ref_name == 'main' && 'true' || 'false' }}
+          keep-items: |
+            CNAME
+            dev
+          remove-items: dev
           build-arguments: "--nitpicky --fail-on-warning"
           use-bot: "true"
+          dry-run: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
           use-expect: "true"
           expect-timeout: 300
           expect-pattern-action: |
