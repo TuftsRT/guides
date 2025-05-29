@@ -1,0 +1,31 @@
+name: auto-pr
+
+on:
+  schedule:
+    - cron: "0 13 * * 1"
+
+jobs:
+  auto-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout-staging
+        uses: actions/checkout@v3
+        with:
+          ref: staging
+      - id: configure-git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        shell: bash
+      - id: sync-changes
+        run: |
+          git fetch origin develop
+          git merge --ff-only origin/develop
+          git push origin staging
+        shell: bash
+      - id: create-pr
+        run: |
+          gh pr create --base main --head staging --fill --title "automatic publishing of updates"
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
