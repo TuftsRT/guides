@@ -173,7 +173,11 @@ nb_custom_formats = {
     ".Rmd": "rmd.convert",
 }
 
-baseurl_obj: ParseResult = urlparse(html_baseurl)
+baseurl_obj: ParseResult = urlparse(
+    urljoin(
+        html_baseurl, f"{'dev/' if 'dev' in release and html_baseurl != './' else ''}"
+    )
+)
 notfound_urls_prefix = baseurl_obj.path.strip(".")
 
 templates_path = ["_templates"]
