@@ -12,7 +12,9 @@ Click in the `Collection` field at the top of the File Manager page and type "Tu
 
 **Tufts proivdes two site collections:**
 
-- Tufts HPC Cluster Storage - Access to Tufts HPC cluster storage `/cluster/tufts/` and `/cluster/home/`
+- Tufts HPC Cluster Storage - Access to Tufts HPC cluster storage `/cluster/tufts/project` and `/cluster/home/username`
+
+- Tufts Tier 2 Storage `/tier2/project`
 
 - Tufts Microsoft Sharepoint
 

@@ -22,6 +22,8 @@ Users can run hpctools on any node (compute or login):
 
   6. Checking Any Directory Storage Usage Information
 
+  7. Checking Home Directory Storage Usage Information
+
   Press q to quit
 
 Your Selection:
@@ -56,3 +58,7 @@ Your Selection:
 
 - Check the detailed usage of user specified directory (provide full path)
 - This may take a while if the directory is large
+
+`Option 7. Checking Home Directory Storage Usage Information`
+
+- Check the detailed usage of user HOME directory
