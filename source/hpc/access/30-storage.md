@@ -25,7 +25,7 @@ All users have a home folder at the path `/cluster/home/your_utln` this is where
 
 Be aware! Your Home Directory (**30GB**, fixed) should be `/cluster/home/your_utln`
 
-If you are not sure how much storage you have used in your home directory, you can find out the information with [hpctools - Tufts HPC Helper Tool](../examples/hpctools) option `6` from command line interface.
+If you are not sure how much storage you have used in your home directory, you can find out the information with [hpctools - Tufts HPC Helper Tool](../examples/hpctools) option `7` from command line interface.
 
 ### Lab Research Project Storage
 
@@ -34,7 +34,7 @@ Your research project storage (from **50GB and up**) path should be `/cluster/tu
 See your **research project storage quota** by running the following command from **any node on the cluster**:
 
 ```
-$ df -h /cluster/tufts/your_lab_name
+$ df -H /cluster/tufts/your_lab_name
 ```
 
 Or utilizing [hpctools - Tufts HPC Helper Tool](../examples/hpctools) option `5` from command line interface.
