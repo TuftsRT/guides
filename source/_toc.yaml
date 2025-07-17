@@ -82,5 +82,10 @@ subtrees:
                               - glob: bio/lectures/introduction-to-alphafold2/*
                       - glob: bio/lectures/*
               - file: bio/resources/index
+      - file: viz/index
+        title: Data Visualization
+        subtrees:
+          - entries:
+              - glob: viz/*
       - url: https://go.tufts.edu/geospatial
         title: Geospatial
