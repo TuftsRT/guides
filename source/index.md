@@ -28,7 +28,6 @@ grid-columns: 1 1 2 3
   link: "viz/index.html"
 ```
 
-
 ```{admonition} Other Useful Resources
 ---
 class: seealso

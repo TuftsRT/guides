@@ -6,7 +6,6 @@ tags: tableau visualization
 
 Tableau is a powerful data visualization tool that helps users explore, analyze, and present data through interactive and shareable dashboards. It connects easily to a variety of data sources and allows for drag-and-drop simplicity in creating visual insights.
 
-
 ## For more information
 
 Please visit [Access Tufts](https://access.tufts.edu/tableau) if you would like to learn more about how to access Tableau at Tufts.
