@@ -80,7 +80,7 @@ To upload your project to Tableau Public, you will first need to open your proje
 
 Next, navigate to the dashboard you want to upload. From the "Server" menu, select "Tableau Public" and then choose "Save to Tableau Public" from the submenu. You will then be prompted to sign in to Tableau Public. Be sure to use the separate log-in credentials you created for Tableau Public (See "Signing up for Tableau Public" above).
 
-Depending on your version of Tableau Desktop, you may or may not get sent directly to the Tableau Public website. If you're using an older version of Tableau, you may get a message that says: "The workbook was published successfully. Upgrade to the latest version of Tableau Desktop to proceed directly to a viz after publishing." If this is the case, simply navigate to the Tableau Public website in your web browser at [public.tableau.com](public.tableau.com) and sign in using your Tableau Public credentials.
+Depending on your version of Tableau Desktop, you may or may not get sent directly to the Tableau Public website. If you're using an older version of Tableau, you may get a message that says: "The workbook was published successfully. Upgrade to the latest version of Tableau Desktop to proceed directly to a viz after publishing." If this is the case, simply navigate to the Tableau Public website in your web browser at [public.tableau.com](https://public.tableau.com) and sign in using your Tableau Public credentials.
 
 To view your dashboard on Tableau public, click the account icon on the top right-hand corner of the website:
 

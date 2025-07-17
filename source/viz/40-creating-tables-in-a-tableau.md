@@ -157,7 +157,7 @@ You will now see a more stream-lined version of your table with the column headi
 
 ## Next Steps
 
-This lesson showed you how to create a simple summary table in Tableau. If you want to create more complex tables in Tableau, with multiple measures or more complex calculations, we highly encourage you to work through the next lesson on [creating more complex tables](<>). This lesson is optional, however, and if you prefer, you can skip straight ahead to the following lesson on [creating your first data visualizations.](<>)
+This lesson showed you how to create a simple summary table in Tableau. If you want to create more complex tables in Tableau, with multiple measures or more complex calculations, we highly encourage you to work through the next lesson on creating more complex tables. This lesson is optional, however, and if you prefer, you can skip straight ahead to the following lesson on creating your first data visualizations.
 
 ## Additional Resources
 

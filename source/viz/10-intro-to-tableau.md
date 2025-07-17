@@ -14,7 +14,7 @@ Tableau is ideal for:
 
 ### Online Tableau Examples
 
-If you're curious what Tableau can do, take a look at the <a href="https://www.tableau.com/viz-gallery" target="_blank"> Tableau Viz Gallery,</a> a website maintained by Tableau to showcase some of the best visualizations created by its users. Note the way these visualizations often incorporate interactive elements such as mouseover text and drop-down menus to enhance the user experience and provide more detailed information while maintaining clean and accessible interfaces.
+If you're curious what Tableau can do, take a look at the [Tableau Viz Gallery](https://www.tableau.com/viz-gallery), a website maintained by Tableau to showcase some of the best visualizations created by its users. Note the way these visualizations often incorporate interactive elements such as mouseover text and drop-down menus to enhance the user experience and provide more detailed information while maintaining clean and accessible interfaces.
 
 ## What will I learn in this Tutorial?
 
