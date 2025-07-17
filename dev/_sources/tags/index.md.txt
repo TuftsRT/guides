@@ -12,3 +12,5 @@ html_theme.sidebar_secondary.remove: true
 - [open-ondemand-ood (2)](/tags/open-ondemand-ood.md)
 - [research-storage-cluster (2)](/tags/research-storage-cluster.md)
 - [software-installation-cluster (2)](/tags/software-installation-cluster.md)
+- [tableau (1)](/tags/tableau.md)
+- [visualization (1)](/tags/visualization.md)
