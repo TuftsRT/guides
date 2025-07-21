@@ -4,6 +4,34 @@ defaults:
   maxdepth: 1
 subtrees:
   - entries:
+      - file: nlp/index
+        title: Natural Language Processing
+        subtrees:
+          - entries:
+              - file: nlp/introduction/index
+                subtrees:
+                  - entries:
+                      - glob: nlp/introduction/*
+              - file: nlp/text-proc/index
+                subtrees:
+                  - entries:
+                      - glob: nlp/text-proc/*
+              - file: nlp/webscraping/index
+                subtrees:
+                  - entries:
+                      - glob: nlp/webscraping/*
+              - file: nlp/pretrained-models/index
+                subtrees:
+                  - entries:
+                      - glob: nlp/pretrained-models/*
+              - file: nlp/deep-learning/index
+                subtrees:
+                  - entries:
+                      - glob: nlp/deep-learning/*
+              - file: nlp/llms/index
+                subtrees:
+                  - entries:
+                      - glob: nlp/llms/*
       - file: hpc/index
         title: High-Performance Computing
         subtrees:
