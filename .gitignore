@@ -4,3 +4,10 @@ __pycache__/
 build/
 jupyter_execute/
 tags/
+
+# nlp ignores
+*data*
+*utils
+25717-0.txt
+*csv
+*_index

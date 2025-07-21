@@ -19,6 +19,10 @@ grid-columns: 1 1 2 3
   content: "Explore biological data using cutting-edge computational methods and techniques."
   link: "bio/index.html"
 
+- header: "{fas}`book` Natural Language Processing"
+  content: "Discover the intricacies of modern NLP and text analysis techniques from the most simple to the most complex."
+  link: "nlp/index.html"
+
 - header: "{fas}`globe` Geospatial Analysis"
   content: "Curated collection of geospatial learning resources for various backgrounds and applications."
   link: "https://go.tufts.edu/geospatial"

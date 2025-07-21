@@ -12,13 +12,13 @@ grid-columns: 1
 ---
 - header: "{fas}`book` Static Webscraping with `BeautifulSoup`"
   content: "Learn to issue requests and parse page content for data collection and curation."
-  link: "./static-webscraping-with.ipynb"
+  link: "./static-webscraping-with.html"
 
 - header: "{fas}`book` Dynamic Webscraping with `Selenium`"
   content: "Automate website interaction in Python for data extraction."
-  link: "./dynamic-webscraping.ipynb"
+  link: "./dynamic-webscraping.html"
 
 - header: "{fas}`book` Scraping Reddit"
   content: "Use the `pushpull.io` API to discover the depth of Reddit data."
-  link: "./webscraping-iii-scraping-reddit.ipynb"
+  link: "./webscraping-iii-scraping-reddit.html"
 ```

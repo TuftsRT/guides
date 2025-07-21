@@ -12,14 +12,14 @@ grid-columns: 1
 ---
 - header: "{fas}`book` Count Vectorization and TF-IDF"
   content: "Explore feature extraction with two popular algorithms."
-  link: "./textual-feature-extraction-using.ipynb"
+  link: "./textual-feature-extraction-using.html"
 
 - header: "{fas}`book` Creating a Search Engine for your own data using Whoosh"
   content: "Use the `Whoosh` package to create custom search engine for your own data."
-  link: "./whoosh-search-engine.ipynb"
+  link: "./whoosh-search-engine.html"
 
 - header: "{fas}`book` Traditional Topic Modeling in SKLearn"
   content: "Apply the same principles of TF-IDF to the problem of topic modeling, reorganizing a large corpora into subtopics found in that corpora."
-  link: "./traditional-topic-modeling-using.ipynb"
+  link: "./traditional-topic-modeling-using.html"
 
 ```
