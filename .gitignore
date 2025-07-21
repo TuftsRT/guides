@@ -8,6 +8,11 @@ tags/
 # nlp ignores
 *data*
 *utils
-25717-0.txt
+25717-0*
 *csv
 *_index
+.txt
+*wget-log
+*.zip
+*stanfordSentimentTreebank
+*-index
