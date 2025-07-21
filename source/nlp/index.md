@@ -32,7 +32,7 @@ grid-columns: 1
 
 - header: "{fas}`book` 05 Deep learning"
   content: "Build models like BERT and GPT from scratch using `Pytorch`."
-  link: "pretrained-models/index.html"
+  link: "deep-learning/index.html"
 
 - header: "{fas}`book` 06 Large Language Models"
   content: "Learn how to get the most out of both open-source and propritary large language models and artificial intelligence."

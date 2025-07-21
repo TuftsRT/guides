@@ -1,4 +1,4 @@
-# Pretrainig vs. Finetuning
+# Pretraining vs. Finetuning
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Ws3r_cxl-vGVd12Zfyr31wSTwhnAgcne?usp=sharing)
 
