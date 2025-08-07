@@ -4,15 +4,17 @@ tags: hpc
 
 # 2025 Cluster Upgrade
 
-** Currently open to Beta Users, request beta access at ????????????????????
-
+```{attention}
+The upgraded cluster is currently only accessible to approved early adopters.  
+You may request to join our early adopter program at https://tufts.qualtrics.com/jfe/form/SV_08IS0n1YSTR6KRU .
+```
 
 In the summer of 2025 RT launched a new version of the pax cluster with a newer OS version.
 
 As the average compute load on the upgraded cluster increases we will move public partition nodes from the current
 cluster.
 
-RT will work with contribute node owners to confirm thier software works on the upgraded cluster, and determine
+RT will work with contribute node owners to confirm their software works on the upgraded cluster, and determine
 a timeframe that works for the lab to move their nodes.
 
 ## Upgraded cluster access
