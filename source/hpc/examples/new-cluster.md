@@ -32,7 +32,7 @@ The upgraded cluster uses the modules system to load software.  The software ava
 software names have been standardized in lower case.
 
 * The old RHEL7 cluster software is available if you need an older version of software. Run the command `module load 
-  deprecated` to switch to the old modules.  These modules may or may not work on the new cluster, and you should 
+  modtree/deprecated` to switch to the old modules.  These modules may or may not work on the new cluster, and you should 
   work to migrate to more recent versions of your software.  If you need assistance with this contact RT.
 
 
