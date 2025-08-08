@@ -35,6 +35,12 @@ software names have been standardized in lower case.
   modtree/deprecated` to switch to the old modules.  These modules may or may not work on the new cluster, and you should 
   work to migrate to more recent versions of your software.  If you need assistance with this contact RT.
 
+## Known Issues
+The following is a list of known issues that are currently being worked on.
+
+* Broken open ondemand applications
+  * Matlab server
+  * Fiji, and any other VNC based applications
 
 ## Upgraded cluster resources
 
