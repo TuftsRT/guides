@@ -4,7 +4,7 @@ This simple tutorial will walk you through running your first HPC job using SSH 
 
 ---
 
-## 1. Create `helloworld.py` on your **local computer** using your favorite text editor.  TextEdit and Notepad are two good options.
+## 1. Create `helloworld.py` on your **local computer** using your favorite text editor. TextEdit and Notepad are two good options.
 
 Create a Python script named `helloworld.py` with the following contents:
 
@@ -14,7 +14,7 @@ import time
 
 for i in range(10):
     print(f"Hello from HPC! Iteration {i+1}")
-    time.sleep(120)   # Sleep for 120 seconds so we can see the job in the queue
+    time.sleep(120)  # Sleep for 120 seconds so we can see the job in the queue
 ```
 
 ---
@@ -74,7 +74,7 @@ sbatch helloworld_job.sh
 
 ---
 
-##  6. Check job status
+## 6. Check job status
 
 ```bash
 squeue --me
