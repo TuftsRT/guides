@@ -1,6 +1,6 @@
-# Building Software from Source Code on the Cluster
+# Building software from source code
 
-Users can also compile/install oftware from source code on Tufts HPC. This guide will walk you through the essential tools and steps you'll need to successfully build and install applications.
+Users can also compile/install software from source code on the Tufts HPC cluster. This guide will walk you through the essential tools and steps you'll need to successfully build and install applications.
 
 ## ⚙️ Compilers: The Core of the Process
 
