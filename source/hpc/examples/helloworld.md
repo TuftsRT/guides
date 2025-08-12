@@ -52,8 +52,8 @@ Paste this content:
 ```bash
 #!/bin/bash
 #SBATCH --job-name=hello_job
-#SBATCH --output=hello_output.txt
-#SBATCH --error=hello_error.txt
+#SBATCH --output=hello_output.log
+#SBATCH --error=hello_error.log
 #SBATCH --time=00:02:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
@@ -87,8 +87,8 @@ squeue --me
 After the job completes, view logs:
 
 ```bash
-cat hello_output.txt
-cat hello_error.txt
+cat hello_output.log
+cat hello_error.log
 ```
 
 ---
