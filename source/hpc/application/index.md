@@ -16,7 +16,7 @@ grid-columns: 1
 ---
 - header: "{fas}`book` Modules"
   content: "How to use Lmod on the Tufts HPC cluster to access installed applications."
-  link: "../access/60-modules.html"
+  link: "../access/50-modules.html"
 
 - header: "{fas}`book` Conda Environments"
   content: "How to create conda environment on Tufts HPC cluster."
