@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Hisat2 &#8212; TTS Research Technology Guides</title>
+    <title>Building software from source code &#8212; TTS Research Technology Guides</title>
   
   
   
@@ -61,7 +61,7 @@
                 gtag('js', new Date());
                 gtag('config', 'G-ZJ5LXFRJ2G');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'bio/apps/hisat2';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/examples/install-from-source';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
@@ -69,12 +69,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
-    <link rel="canonical" href="https://rtguides.it.tufts.edu/bio/apps/hisat2.html" />
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/hpc/examples/install-from-source.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Hmmer" href="hmmer.html" />
-    <link rel="prev" title="Hap.py" href="hap-py.html" />
+    <link rel="next" title="OnDemand - Debugging" href="ondemand-debugging.html" />
+    <link rel="prev" title="HPC Helper Tool - hpctools" href="hpctools.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="20250812" />
@@ -160,15 +160,15 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../hpc/index.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
     High-Performance Computing
   </a>
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../index.html">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
     Bioinformatics
   </a>
 </li>
@@ -302,15 +302,15 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../hpc/index.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
     High-Performance Computing
   </a>
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../index.html">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
     Bioinformatics
   </a>
 </li>
@@ -396,156 +396,27 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">
-     Bioinformatics 
+     High-Performance Computing 
   </p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Bioinformatics Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../workshops/index.html">Bioinformatics Workshops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../databases/index.html">Bioinformatics Databases</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Bioinformatics Applications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="abcreg.html">Abcreg</a></li>
-<li class="toctree-l2"><a class="reference internal" href="abyss.html">Abyss</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alphafold.html">Alphafold</a></li>
-<li class="toctree-l2"><a class="reference internal" href="amplify.html">Amplify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="angsd.html">Angsd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bakta.html">Bakta</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bbmap.html">Bbmap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bbtools.html">Bbtools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bcftools.html">Bcftools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="beast2.html">Beast2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bedops.html">Bedops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bedtools.html">Bedtools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="biobakery-workflows.html">Biobakery_workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="biopython.html">Biopython</a></li>
-<li class="toctree-l2"><a class="reference internal" href="blast.html">Blast</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bowtie2.html">Bowtie2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="breseq.html">Breseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="busco.html">Busco</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cactus.html">Cactus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="canu.html">Canu</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cellprofiler.html">Cellprofiler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cellprofiler-analyst.html">Cellprofiler-analyst</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cellranger.html">Cellranger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cellranger-atac.html">Cellranger-atac</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cellrank.html">Cellrank</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cufflinks.html">Cufflinks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cutadapt.html">Cutadapt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="diamond.html">Diamond</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dorado.html">Dorado</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dragon-ora.html">Dragon_ora</a></li>
-<li class="toctree-l2"><a class="reference internal" href="exonerate.html">Exonerate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fasta3.html">Fasta3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fastp.html">Fastp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fastqc.html">Fastqc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fastspar.html">Fastspar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fasttree.html">Fasttree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="filtlong.html">Filtlong</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flye.html">Flye</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fqtk.html">Fqtk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gatk4.html">Gatk4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="genomad.html">geNomad</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geomx-ngs-pipeline.html">Geomx_ngs_pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="guppy.html">Guppy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hap-py.html">Hap.py</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Hisat2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hmmer.html">Hmmer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="homer.html">Homer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="htseq.html">Htseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="humann.html">Humann</a></li>
-<li class="toctree-l2"><a class="reference internal" href="impute2.html">Impute2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="iqtree2.html">Iqtree2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kallisto.html">Kallisto</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kneaddata.html">Kneaddata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kraken2.html">Kraken2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="krakentools.html">Krakentools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macs2.html">Macs2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macs3.html">Macs3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="masurca.html">Masurca</a></li>
-<li class="toctree-l2"><a class="reference internal" href="medaka.html">Medaka</a></li>
-<li class="toctree-l2"><a class="reference internal" href="megahit.html">Megahit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="meme.html">Meme</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metaphlan.html">Metaphlan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="miniasm.html">Miniasm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="minimap2.html">Minimap2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="minipolish.html">Minipolish</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mirdeep2.html">Mirdeep2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mirge3.html">Mirge3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mothur.html">Mothur</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multiqc.html">Multiqc</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-ampliseq.html">Nf-core-ampliseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-atacseq.html">Nf-core-atacseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-bacass.html">Nf-core-bacass</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-bamtofastq.html">Nf-core-bamtofastq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-chipseq.html">Nf-core-chipseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-denovotranscript.html">Nf-core-denovotranscript</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-detaxizer.html">Nf-core-detaxizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-differentialabundance.html">Nf-core-differentialabundance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-eager.html">Nf-core-eager</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-fetchngs.html">Nf-core-fetchngs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-funcscan.html">Nf-core-funcscan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-hic.html">Nf-core-hic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-mag.html">Nf-core-mag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-metatdenovo.html">Nf-core-metatdenovo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-methylseq.html">Nf-core-methylseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-nanoseq.html">Nf-core-nanoseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-nanostring.html">Nf-core-nanostring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-pangenome.html">Nf-core-pangenome</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-proteinfold.html">Nf-core-proteinfold</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-raredisease.html">Nf-core-raredisease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-rnafusion.html">Nf-core-rnafusion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-rnaseq.html">Nf-core-rnaseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-rnasplice.html">Nf-core-rnasplice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-sarek.html">Nf-core-sarek</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-scrnaseq.html">Nf-core-scrnaseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-smrnaseq.html">Nf-core-smrnaseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-taxprofiler.html">Nf-core-taxprofiler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nf-core-viralrecon.html">Nf-core-viralrecon</a></li>
-<li class="toctree-l2"><a class="reference internal" href="orthofinder.html">Orthofinder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandaseq.html">Pandaseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parabricks.html">Parabricks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pepper-deepvariant.html">Pepper_deepvariant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="petitefinder.html">Petitefinder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="picard.html">Picard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plink.html">Plink</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plink2.html">Plink2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="polypolish.html">Polypolish</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prokka.html">Prokka</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qiime2.html">Qiime2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qualimap.html">Qualimap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="r-bioinformatics.html">R-bioinformatics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="r-scrnaseq.html">R-scrnaseq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="r-shinyngs.html">R-shinyngs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="raven-assembler.html">Raven-assembler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="raxml-ng-mpi.html">Raxml-ng-mpi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relion.html">Relion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rmats2sashimiplot.html">Rmats2sashimiplot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rnaquast.html">Rnaquast</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rosettafold2.html">Rosettafold2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rosettafold2na.html">Rosettafold2na</a></li>
-<li class="toctree-l2"><a class="reference internal" href="salmon.html">Salmon</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samtools.html">Samtools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scanpy.html">Scanpy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scvelo.html">Scvelo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="signalp6.html">Signalp6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spaceranger.html">Spaceranger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spades.html">Spades</a></li>
-<li class="toctree-l2"><a class="reference internal" href="squid.html">Squid</a></li>
-<li class="toctree-l2"><a class="reference internal" href="star.html">Star</a></li>
-<li class="toctree-l2"><a class="reference internal" href="subread.html">Subread</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tmhmm.html">Tmhmm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transdecoder.html">Transdecoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trgt.html">Trgt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trim-galore.html">Trim-galore</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trimmomatic.html">Trimmomatic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trinity.html">Trinity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trinotate.html">Trinotate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="trycycler.html">Trycycler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vcftools.html">Vcftools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="viennarna.html">Viennarna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminology/index.html">HPC Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../access/index.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/index.html">Computing Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/index.html">Slurm Job Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../application/index.html">Software Applications</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples and Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="helloworld.html">HelloWorld HPC Cluster Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Building software from source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portforward.html">Port Forwarding on HPC Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshots.html">File Recovery on Tufts HPC Cluster</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Bioinformatics Lectures and Trainings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../resources/index.html">Additional Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../policy/index.html">HPC Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help.html">Help with HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage-request.html">HPC Cluster Storage Request</a></li>
 </ul>
 </div>
 </nav></div>
@@ -588,18 +459,18 @@
      
     <li class="breadcrumb-item">
       <a href="../index.html" class="nav-link"
-        >Bioinformatics</a
+        >High-Performance Computing</a
       >
     </li>
      
     <li class="breadcrumb-item">
       <a href="index.html" class="nav-link"
-        >Bioinformatics Applications</a
+        >Examples and Tutorials</a
       >
     </li>
      
     <li class="breadcrumb-item active" aria-current="page">
-      Hisat2
+      Building software...
     </li>
   </ul>
 </nav>
@@ -617,47 +488,123 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="hisat2">
-<h1>Hisat2<a class="headerlink" href="#hisat2" title="Link to this heading">#</a></h1>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>HISAT2 is a fast and sensitive alignment program for mapping
-next-generation sequencing reads (both DNA and RNA) to a population of
-human genomes as well as to a single reference genome.</p>
-</section>
-<section id="versions">
-<h2>Versions<a class="headerlink" href="#versions" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="building-software-from-source-code">
+<h1>Building software from source code<a class="headerlink" href="#building-software-from-source-code" title="Link to this heading">#</a></h1>
+<p>Users can also compile/install software from source code on the Tufts HPC cluster. This guide will walk you through the essential tools and steps you’ll need to successfully build and install applications.</p>
+<section id="compilers-the-core-of-the-process">
+<h2>⚙️ Compilers: The Core of the Process<a class="headerlink" href="#compilers-the-core-of-the-process" title="Link to this heading">#</a></h2>
+<p>A compiler is a critical program that translates your application’s source code (e.g., C++ or Fortran) into machine-readable instructions. The choice of compiler can significantly impact your application’s performance.</p>
+<p>On our cluster, you have access to two powerful compiler suites:</p>
 <ul class="simple">
-<li><p>2.2.1</p></li>
+<li><p>GNU Compiler Collection (GCC): A versatile and widely used open-source compiler suite. It’s an excellent general-purpose option and the default for many applications.</p></li>
+<li><p>Intel oneAPI Compilers: A suite of compilers specifically optimized for Intel processors, which are used on our cluster. Using this suite can lead to substantial performance gains for scientific and HPC applications.
+You can check available compiler versions using the module avail command:</p></li>
 </ul>
-</section>
-<section id="commands">
-<h2>Commands<a class="headerlink" href="#commands" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>extract_exons.py</p></li>
-<li><p>extract_splice_sites.py</p></li>
-</ul>
-</section>
-<section id="example-job">
-<h2>Example job<a class="headerlink" href="#example-job" title="Link to this heading">#</a></h2>
-<p>Adjust slurm options based on job requirements (<a class="reference external" href="https://slurm.schedmd.com/pdfs/summary.pdf">slurm cheat sheet</a>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH -p partitionName  # batch, gpu, preempt, mpi or your group&#39;s own partition</span>
-<span class="c1">#SBATCH -t 1:00:00  # Runtime limit (D-HH:MM:SS)</span>
-<span class="c1">#SBATCH -N 1   # Number of nodes</span>
-<span class="c1">#SBATCH -n 1   # Number of tasks per node</span>
-<span class="c1">#SBATCH -c 4   # Number of CPU cores per task</span>
-<span class="c1">#SBATCH --mem=8G       # Memory required per node</span>
-<span class="c1">#SBATCH --job-name=hisat2      # Job name</span>
-<span class="c1">#SBATCH --mail-type=FAIL,BEGIN,END     # Send an email when job fails, begins, and finishes</span>
-<span class="c1">#SBATCH --mail-user=your.email@tufts.edu       # Email address for notifications</span>
-<span class="c1">#SBATCH --error=%x-%J-%u.err   # Standard error file: &lt;job_name&gt;-&lt;job_id&gt;-&lt;username&gt;.err</span>
-<span class="c1">#SBATCH --output=%x-%J-%u.out  # Standard output file: &lt;job_name&gt;-&lt;job_id&gt;-&lt;username&gt;.out</span>
-
-<span class="n">module</span> <span class="n">purge</span>   <span class="c1">### Optional, but highly recommended.</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">hisat2</span><span class="o">/</span><span class="n">XXXX</span>        <span class="c1">### Latest version is recommended.</span>
+<section id="check-available-gcc-versions">
+<h3>Check available GCC versions<a class="headerlink" href="#check-available-gcc-versions" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module avail gcc
+gcc/12.4.0    gcc/15.1.0 (D)
 </pre></div>
 </div>
+</section>
+<section id="check-available-intel-oneapi-compiler-versions">
+<h3>Check available Intel oneAPI compiler versions<a class="headerlink" href="#check-available-intel-oneapi-compiler-versions" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module avail intel-oneapi-compilers
+intel-oneapi-compilers/2025.1.1
+</pre></div>
+</div>
+</section>
+</section>
+<section id="gnu-make-automating-the-build-process">
+<h2>🔨 GNU Make: Automating the Build Process<a class="headerlink" href="#gnu-make-automating-the-build-process" title="Link to this heading">#</a></h2>
+<p>GNU Make is a program that automates the process of building executables from source code. It uses a file called Makefile (or makefile) which contains a set of rules for compiling the program.</p>
+<section id="general-steps-for-installation-with-make">
+<h3>General Steps for Installation with Make<a class="headerlink" href="#general-steps-for-installation-with-make" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Unpack the source code: Download and extract the compressed source files.</p></li>
+<li><p>Load the compiler: Use module load to activate the correct compiler (e.g., GCC).</p></li>
+<li><p>Configure (if applicable): Some packages have a configure script that checks your system and creates a custom Makefile.</p></li>
+<li><p>Build the program: Run the make command to compile the source code.</p></li>
+<li><p>Install the software (optional): Run make install to move the compiled files to a designated location. <strong>Do not use sudo make install, as you don’t have administrative privileges on the cluster</strong>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Tip</span></code>: By default, make install tries to install into system directories like <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code> where you lack permissions. To install to a custom directory (like your home directory), you must configure the installation path. For packages with a configure script, use the <code class="docutils literal notranslate"><span class="pre">--prefi</span></code>x option: <code class="docutils literal notranslate"><span class="pre">./configure</span> <span class="pre">--prefix=$HOME/my-app</span></code>.</p>
+</section>
+<section id="example-installing-bwa-with-make">
+<h3>Example: Installing BWA with Make<a class="headerlink" href="#example-installing-bwa-with-make" title="Link to this heading">#</a></h3>
+<p>BWA is a popular tool for mapping DNA sequences. This example shows a typical workflow for installing software with make.
+Set up your installation directory: It’s a good practice to create a dedicated directory for your custom software.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME
+$ mkdir apps
+$ cd apps
+</pre></div>
+</div>
+<p>Load the required compiler: BWA requires a C compiler, so we’ll load the latest GCC module.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load gcc/15.1.0
+</pre></div>
+</div>
+<p>Download the source code: Clone the BWA repository from GitHub.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/lh3/bwa.git
+</pre></div>
+</div>
+<p>Build the application: Navigate into the new directory and run make.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd bwa
+$ make
+</pre></div>
+</div>
+<p>Add the new program to your PATH: The compiled bwa executable is now in the bwa directory. To run it from any location, you need to add this directory to your PATH environment variable.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export PATH=$PATH:$HOME/apps/bwa
+</pre></div>
+</div>
+<p>Verify the installation: You can now run the bwa command to see if it works.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bwa
+Program: bwa (alignment via Burrows-Wheeler transformation)
+</pre></div>
+</div>
+</section>
+</section>
+<section id="cmake-a-higher-level-build-system">
+<h2>🧱 CMake: A Higher-Level Build System<a class="headerlink" href="#cmake-a-higher-level-build-system" title="Link to this heading">#</a></h2>
+<p>CMake is a popular cross-platform build system generator. Instead of compiling software directly, it generates native build scripts (like Makefiles) that make can then use.</p>
+<section id="example-installing-regtools-with-cmake">
+<h3>Example: Installing regtools with CMake<a class="headerlink" href="#example-installing-regtools-with-cmake" title="Link to this heading">#</a></h3>
+<p>Some applications, like regtools, require cmake to generate the Makefile before make can be used.
+Load the necessary modules: Always load both the compiler (e.g., gcc) and the latest cmake version.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load gcc/15.1.0
+$ module load cmake/3.31.6
+</pre></div>
+</div>
+<p>Clone the source code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME/apps
+$ git clone https://github.com/griffithlab/regtools
+</pre></div>
+</div>
+<p>Build the application: It’s a best practice to create a separate build directory to keep your source code clean.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd regtools/
+$ mkdir build
+$ cd build/
+</pre></div>
+</div>
+<p>Run cmake to generate the Makefile, then use make</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cmake ..
+$ make
+</pre></div>
+</div>
+</section>
+<section id="install-to-a-custom-prefix">
+<h3>Install to a custom prefix<a class="headerlink" href="#install-to-a-custom-prefix" title="Link to this heading">#</a></h3>
+<p>For applications that use <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code>, you must specify the installation directory with the <code class="docutils literal notranslate"><span class="pre">-DCMAKE_INSTALL_PREFIX</span></code> option during the cmake step.
+This is a common pattern for installing CMake-based applications.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME/apps/regtools
+$ mkdir build
+$ cd build
+
+$ cmake -DCMAKE_INSTALL_PREFIX=$HOME/apps/regtools-install ..
+$ make
+$ make install
+</pre></div>
+</div>
+<p>This command will build the program and then move the final files into a new directory named regtools-install. You can then add the bin directory from this new path to your <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> variable.</p>
+</section>
 </section>
 </section>
 
@@ -672,20 +619,20 @@ human genomes as well as to a single reference genome.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="hap-py.html"
+       href="hpctools.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Hap.py</p>
+        <p class="prev-next-title">HPC Helper Tool - hpctools</p>
       </div>
     </a>
     <a class="right-next"
-       href="hmmer.html"
+       href="ondemand-debugging.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Hmmer</p>
+        <p class="prev-next-title">OnDemand - Debugging</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -704,17 +651,28 @@ human genomes as well as to a single reference genome.</p>
   id="pst-page-navigation-heading-2"
   class="page-toc tocsection onthispage"
 >
-  <i class="fa-solid fa-list"></i> Hisat2
+  <i class="fa-solid fa-list"></i> Building software from source code
 </div>
 <nav
   class="bd-toc-nav page-toc"
   aria-labelledby="pst-page-navigation-heading-2"
 >
   <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versions">Versions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">Commands</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-job">Example job</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilers-the-core-of-the-process">⚙️ Compilers: The Core of the Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-available-gcc-versions">Check available GCC versions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-available-intel-oneapi-compiler-versions">Check available Intel oneAPI compiler versions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-make-automating-the-build-process">🔨 GNU Make: Automating the Build Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-steps-for-installation-with-make">General Steps for Installation with Make</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-installing-bwa-with-make">Example: Installing BWA with Make</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmake-a-higher-level-build-system">🧱 CMake: A Higher-Level Build System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-installing-regtools-with-cmake">Example: Installing regtools with CMake</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-to-a-custom-prefix">Install to a custom prefix</a></li>
+</ul>
+</li>
 </ul>
 </nav></div>
 
@@ -722,7 +680,7 @@ human genomes as well as to a single reference genome.</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/TuftsRT/guides/edit/develop/source/bio/apps/hisat2.rst">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/hpc/examples/install-from-source.md">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -734,7 +692,7 @@ Suggest Edits
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../_sources/bio/apps/hisat2.rst.txt">
+    <a href="../../_sources/hpc/examples/install-from-source.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
@@ -742,7 +700,7 @@ Suggest Edits
 
   <div class="sidebar-secondary-item"><div class="tocsection report-error">
   <a
-    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: bio/apps/hisat2"
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: hpc/examples/install-from-source"
     class="report-error-link"
     ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
   </a>
