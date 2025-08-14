@@ -8,7 +8,7 @@ html_theme.sidebar_secondary.remove: true
 - [computational-methods (2)](/tags/computational-methods.md)
 - [data-management (2)](/tags/data-management.md)
 - [gpu (2)](/tags/gpu.md)
-- [hpc (2)](/tags/hpc.md)
+- [hpc (3)](/tags/hpc.md)
 - [open-ondemand-ood (2)](/tags/open-ondemand-ood.md)
 - [research-storage-cluster (2)](/tags/research-storage-cluster.md)
 - [software-installation-cluster (2)](/tags/software-installation-cluster.md)

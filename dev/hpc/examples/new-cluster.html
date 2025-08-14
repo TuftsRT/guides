@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Conda Environments &#8212; TTS Research Technology Guides</title>
+    <title>2025 Cluster Upgrade &#8212; TTS Research Technology Guides</title>
   
   
   
@@ -61,7 +61,7 @@
                 gtag('js', new Date());
                 gtag('config', 'G-ZJ5LXFRJ2G');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/application/10-condaenv';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/examples/new-cluster';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
@@ -69,12 +69,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
-    <link rel="canonical" href="https://rtguides.it.tufts.edu/hpc/application/10-condaenv.html" />
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/hpc/examples/new-cluster.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="R" href="20-r.html" />
-    <link rel="prev" title="Software Applications" href="index.html" />
+    <link rel="next" title="OnDemand - Debugging" href="ondemand-debugging.html" />
+    <link rel="prev" title="Building software from source code" href="install-from-source.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="20250814" />
@@ -403,15 +403,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../access/index.html">Access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../compute/index.html">Computing Resources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../slurm/index.html">Slurm Job Scheduler</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Software Applications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Conda Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="20-r.html">R</a></li>
-<li class="toctree-l2"><a class="reference internal" href="25-rstudio.html">RStudio via OnDemand</a></li>
-<li class="toctree-l2"><a class="reference internal" href="30-tmux.html">Tmux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="40-vscode.html">VSCode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../application/index.html">Software Applications</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples and Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="helloworld.html">HelloWorld HPC Cluster Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-from-source.html">Building software from source code</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2025 Cluster Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portforward.html">Port Forwarding on HPC Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshots.html">File Recovery on Tufts HPC Cluster</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples and Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../policy/index.html">HPC Policy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help.html">Help with HPC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../storage-request.html">HPC Cluster Storage Request</a></li>
@@ -463,12 +466,12 @@
      
     <li class="breadcrumb-item">
       <a href="index.html" class="nav-link"
-        >Software Applications</a
+        >Examples and Tutorials</a
       >
     </li>
      
     <li class="breadcrumb-item active" aria-current="page">
-      Conda Environments
+      2025 Cluster Upgrade
     </li>
   </ul>
 </nav>
@@ -486,118 +489,66 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="conda-environments">
-<h1>Conda Environments<a class="headerlink" href="#conda-environments" title="Link to this heading">#</a></h1>
-<p>Conda is a software package manager similar to PIP that allows users to easily install software not already available on the cluster. It is designed to install software into user space and does not require administrative permissions. This makes it ideal for use on shared HPC systems.</p>
-<p>In most cases <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">package-name</span></code> is a direct replacement for PIP in instructions from the internet you might be following. You can search <a class="reference external" href="https://anaconda.org/search">Anaconda Cloud</a> for packages available for install. Instructions on specifying an exact version can be found at <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html">Managing Packages</a>.</p>
-<section id="allocate-resources">
-<h2>Allocate Resources<a class="headerlink" href="#allocate-resources" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p><a class="reference internal" href="../slurm/interactive.html"><span class="doc std std-doc">Start an interactive session</span></a> on the cluster on a compute node (execute every time you need to execute/run any programs on the cluster)</p>
-<ol class="arabic simple">
-<li><p>Determine if you need GUI forwarding</p></li>
-<li><p>Determine if you need GPU access</p></li>
-</ol>
-</li>
-<li><p><strong>Load modules</strong></p>
-<ol class="arabic">
-<li><p>Check available conda modules</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">av</span> <span class="pre">miniforge</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">av</span> <span class="pre">anaconda</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">av</span> <span class="pre">miniconda</span></code></p>
-</li>
-<li><p>Load module</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">miniforge/24.11.2-py312</span></code> <strong>Recommended</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda/2021.05</span></code></p>
-<p>or any newer versions of anaconda shown in the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">av</span></code> output</p>
-<p>NOTE: DO NOT use <code class="docutils literal notranslate"><span class="pre">anaconda/3</span></code> and <code class="docutils literal notranslate"><span class="pre">anaconda/2</span></code>, they are very old versions.</p>
-</li>
-<li><p>Load other modules needed (such as <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">cuda/12.2</span></code>)</p></li>
-</ol>
-</li>
-</ol>
-</section>
-<section id="configure-your-conda">
-<h2>Configure your conda<a class="headerlink" href="#configure-your-conda" title="Link to this heading">#</a></h2>
-<p><strong><em>NOTE: in most cases, the steps in this session only needs to be executed ONCE</em></strong></p>
-<p>Since you have limited amount of storage in your home directory, we do no suggest you install the packages there. As you belong to XXXXlab group on the cluster, please use the group research storage for the purpose.</p>
-<p>Create two directories in your group research storage space (one for storing the envs, one for storing the pkgs, for example: condaenv, condapkg)</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">/cluster/tufts/XXXXlab/$USER/condaenv/</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">/cluster/tufts/XXXXlab/$USER/condapkg/</span></code></p>
-<p>If you haven’t used conda before on the cluster, create a file named “.condarc” in your home directory.</p>
-<p>Now add the following 4 lines to the <code class="docutils literal notranslate"><span class="pre">.condarc</span></code> file in your home directory (modify according to your real path to the directories):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>envs_dirs:
-  - /cluster/tufts/XXXXlab/$USER/condaenv/
-pkgs_dirs:
-  - /cluster/tufts/XXXXlab/$USER/condapkg/
-</pre></div>
+  <section class="tex2jax_ignore mathjax_ignore" id="cluster-upgrade">
+<h1>2025 Cluster Upgrade<a class="headerlink" href="#cluster-upgrade" title="Link to this heading">#</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The upgraded cluster is currently only accessible to approved early adopters.
+You may request to join our early adopter program at <a class="reference external" href="https://tufts.qualtrics.com/jfe/form/SV_08IS0n1YSTR6KRU">https://tufts.qualtrics.com/jfe/form/SV_08IS0n1YSTR6KRU</a> .</p>
 </div>
-<p><strong>OR</strong> you can do so from command line with the following commands</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">config</span> <span class="pre">--append</span> <span class="pre">envs_dirs</span> <span class="pre">/cluster/tufts/XXXXlab/$USER/condaenv/</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">config</span> <span class="pre">--append</span> <span class="pre">pkgs_dirs</span> <span class="pre">/cluster/tufts/XXXXlab/$USER/condapkg/</span></code></p>
-<p><strong><em>(only add 4 lines to the .condarc file OR use these commands, NOT BOTH)</em></strong></p>
-<p>Optional: Add channels to your conda config as well (here are only 2, but you can add more you need):</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">config</span> <span class="pre">--add</span> <span class="pre">channels</span> <span class="pre">bioconda</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">config</span> <span class="pre">--add</span> <span class="pre">channels</span> <span class="pre">conda-forge</span></code></p>
-<p>After this, your <code class="docutils literal notranslate"><span class="pre">.condarc</span></code>file should look like this</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cat</span> <span class="pre">~/.condarc</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>envs_dirs:
-  - /cluster/tufts/XXXXlab/$USER/condaenv/
-pkgs_dirs:
-  - /cluster/tufts/XXXXlab/$USER/condapkg/
-channels:
-  - bioconda
-  - conda-forge
-  - defaults
-</pre></div>
-</div>
+<p>In the summer of 2025 TTS Research Technology launched a new version of the pax cluster with a newer OS version. This system shares a
+file system with the existing cluster so all your files and data are accessible in both versions.</p>
+<section id="migration-plan">
+<h2>Migration Plan<a class="headerlink" href="#migration-plan" title="Link to this heading">#</a></h2>
+<p>New users will be encouraged to start using this version when they receive their accounts. Existing HPC users are
+encouraged to try this version as time allows. As the average compute load on the upgraded cluster increases we will
+move public partition nodes from the current cluster to this version.</p>
+<p>TTS Research Technology will work with contribute node owners to confirm their software works on the upgraded cluster,
+and determine a timeframe to move their nodes as the labs convenience.</p>
 </section>
-<section id="create-your-conda-environment">
-<h2>Create your conda environment<a class="headerlink" href="#create-your-conda-environment" title="Link to this heading">#</a></h2>
-<p>Now you can create your own conda env</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">/cluster/tufts/XXXXlab/$USER/condaenv/</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-p</span> <span class="pre">yourenvname</span></code></p>
-<p>or if you have a specific version of python you need to use, e.g. 3.8</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-p</span> <span class="pre">yourenvname</span> <span class="pre">python=3.8</span></code> (Recommended!)</p>
-<p>Note: you will need to have <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code> installed inside the env to pip install packages inside the env.</p>
-<p>Activate the environment (needs to be executed whenever you need to use the conda env you have created)</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">activate</span> <span class="pre">yourenvname</span></code></p>
-<p>If you are using system installed conda, please DO NOT use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span></code> to activate your environment</p>
-<p>Install <code class="docutils literal notranslate"><span class="pre">yourpackage</span></code> in the conda env</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">yourpackage</span></code></p>
-<p>Or if you have python (comes with pip) installed,</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">yourpackage</span></code></p>
-<p>Or follow the instruction on package website.</p>
-<p>Check what’s installed in your conda environment</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">list</span></code></p>
-<p>Test</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;</span> <span class="pre">import</span> <span class="pre">yourpackage</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;</span></code></p>
-<p>When you are done, deactivate the environment</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">deactivate</span></code></p>
-<p>or</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">deactivate</span></code></p>
-<p>:)</p>
-</section>
-<section id="additional-information-for-jupyter-users">
-<h2>Additional Information for Jupyter Users<a class="headerlink" href="#additional-information-for-jupyter-users" title="Link to this heading">#</a></h2>
-<section id="run-conda-env-as-a-kernel-in-jupyter">
-<h3>Run conda env as a kernel in Jupyter<a class="headerlink" href="#run-conda-env-as-a-kernel-in-jupyter" title="Link to this heading">#</a></h3>
-<p>If you would like to use JupyterNotebook or JupyterLab from OnDemand, you can follow the instructions below and <strong>run your conda env as a kernel in Jupyter</strong>.</p>
-<ul>
-<li><p>Make sure with python 3.7+ and make sure you load cluster’s anaconda module (this only works with py3.7+)</p></li>
-<li><p>Activate your conda env from terminal.</p></li>
-<li><p>Install ipykernel with</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ipykernel</span></code> (this assumes you installed python and pip in your env, otherwise, use “–user” flag)</p>
-</li>
-<li><p>Add your env to jupyter with</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">-m</span> <span class="pre">ipykernel</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">--name=myenvname</span></code> (use the name of your environment in the place of “myenvname”)</p>
-</li>
-<li><p>Restart Jupyter from OnDemand</p></li>
-<li><p>:)</p></li>
+<section id="upgraded-cluster-access">
+<h2>Upgraded cluster access<a class="headerlink" href="#upgraded-cluster-access" title="Link to this heading">#</a></h2>
+<p>To access the upgraded cluster</p>
+<ul class="simple">
+<li><p>SSH: login-prod.pax.tufts.edu</p></li>
+<li><p>Web: <a class="reference external" href="https://ondemand-prod.pax.tufts.edu/">https://ondemand-prod.pax.tufts.edu/</a></p></li>
 </ul>
 </section>
+<section id="notable-differences">
+<h2>Notable differences<a class="headerlink" href="#notable-differences" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Operating systems is Linux Rocky 9 (RHEL9 compatible) providing the latest system libraries including; glibc</p></li>
+<li><p>Upgraded cluster is running Nvidia Driver Version: 575.57.08 with CUDA Version: 12.9</p></li>
+</ul>
+</section>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">#</a></h2>
+<p>The upgraded cluster continues to use the modules system to load software. However the software available is
+probably a newer version. All software names have been standardized in lower case.</p>
+<ul class="simple">
+<li><p>The old RHEL7 cluster software is available if you need an older version of software. Run the command <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span>&#160; <span class="pre">modtree/deprecated</span></code> to switch to the old modules. These modules may or may not work on the new cluster, and you should
+work to migrate to more recent versions of your software. To switch back to the current modules, run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span> <span class="pre">modtree/deprecated</span></code>. If you need
+assistance with this contact RT.</p></li>
+</ul>
+</section>
+<section id="known-issues">
+<h2>Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading">#</a></h2>
+<p>The following is a list of known issues that are currently being worked on.</p>
+<ul class="simple">
+<li><p>Broken open ondemand applications</p>
+<ul>
+<li><p>Matlab server</p></li>
+<li><p>Fiji, and any other VNC based applications</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="upgraded-cluster-resources">
+<h2>Upgraded cluster resources<a class="headerlink" href="#upgraded-cluster-resources" title="Link to this heading">#</a></h2>
+<p>New GPU resources are available on this cluster.</p>
+<ul class="simple">
+<li><p>H200 GPUs , request using <code class="docutils literal notranslate"><span class="pre">--gres=gpu:h200:1</span></code></p></li>
+</ul>
 </section>
 </section>
 
@@ -612,20 +563,20 @@ channels:
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="install-from-source.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Software Applications</p>
+        <p class="prev-next-title">Building software from source code</p>
       </div>
     </a>
     <a class="right-next"
-       href="20-r.html"
+       href="ondemand-debugging.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">R</p>
+        <p class="prev-next-title">OnDemand - Debugging</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -644,28 +595,38 @@ channels:
   id="pst-page-navigation-heading-2"
   class="page-toc tocsection onthispage"
 >
-  <i class="fa-solid fa-list"></i> Conda Environments
+  <i class="fa-solid fa-list"></i> 2025 Cluster Upgrade
 </div>
 <nav
   class="bd-toc-nav page-toc"
   aria-labelledby="pst-page-navigation-heading-2"
 >
   <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allocate-resources">Allocate Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-your-conda">Configure your conda</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-your-conda-environment">Create your conda environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-information-for-jupyter-users">Additional Information for Jupyter Users</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-conda-env-as-a-kernel-in-jupyter">Run conda env as a kernel in Jupyter</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-plan">Migration Plan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upgraded-cluster-access">Upgraded cluster access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notable-differences">Notable differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-issues">Known Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upgraded-cluster-resources">Upgraded cluster resources</a></li>
 </ul>
 </nav></div>
+
+  <div class="sidebar-secondary-item"> 
+<div class="tocsection tags-label">
+  <i class="fa-solid fa-tags"></i> Tags
+</div>
+<ul class="tocsection tags-list">
+  <li class="tag-item">
+    <a href="../../tags/hpc.html" class="tag-link">hpc</a>
+  </li>
+</ul>
+ </div>
 
   <div class="sidebar-secondary-item">
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/TuftsRT/guides/edit/develop/source/hpc/application/10-condaenv.md">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/hpc/examples/new-cluster.md">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -677,7 +638,7 @@ Suggest Edits
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../_sources/hpc/application/10-condaenv.md.txt">
+    <a href="../../_sources/hpc/examples/new-cluster.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
@@ -685,7 +646,7 @@ Suggest Edits
 
   <div class="sidebar-secondary-item"><div class="tocsection report-error">
   <a
-    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: hpc/application/10-condaenv"
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: hpc/examples/new-cluster"
     class="report-error-link"
     ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
   </a>
