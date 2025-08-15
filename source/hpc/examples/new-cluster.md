@@ -30,7 +30,7 @@ To access the upgraded cluster
 
 ## Notable differences
 
-- Operating systems is Linux Rocky 9 (RHEL9 compatible) providing the latest system libraries including; glibc
+- Operating systems is Linux Rocky 9 (RHEL9 compatible) providing the latest system libraries including: glibc
 - Upgraded cluster is running Nvidia Driver Version: 575.57.08 with CUDA Version: 12.9
 
 ## Modules
