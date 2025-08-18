@@ -1,0 +1,775 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Accessing Tableau at Tufts &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'viz/20-accessing-tableau-at-tufts';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/viz/20-accessing-tableau-at-tufts.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Loading and Viewing Your Data" href="30-loading-and-viewing-your-data.html" />
+    <link rel="prev" title="Introduction to Tableau" href="10-intro-to-tableau.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250818" />
+    <meta name="docbuild:last-update" content="Aug 18, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../index.html">
+           
+  <img
+    src="../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Introduction to Visualization with Tableau 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10-intro-to-tableau.html">Introduction to Tableau</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Accessing Tableau at Tufts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-loading-and-viewing-your-data.html">Loading and Viewing Your Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40-creating-tables-in-a-tableau.html">Creating a Table in a Tableau Worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50-creating-more-complex-tables.html">Creating More Complex Tables (Optional Lesson)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60-creating-your-first-data.html">Creating Your First Data Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70-introduction-to-dashboards.html">Introduction to Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80-sharing-tableau.html">Sharing and Presenting Tableau Visualizations and Dashboards</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Introduction to...</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Accessing Tableau at Tufts
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-tableau-at-tufts">
+<h1>Accessing Tableau at Tufts<a class="headerlink" href="#accessing-tableau-at-tufts" title="Link to this heading">#</a></h1>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<p>Learn how to access Tableau Desktop at Tufts, whether you are an administrator, student, faculty member, or research staff.</p>
+</section>
+<section id="understanding-tableau-public-vs-tableau-desktop-vs-tableau-desktop-public-edition">
+<h2>Understanding Tableau Public vs. Tableau Desktop vs. Tableau Desktop Public Edition<a class="headerlink" href="#understanding-tableau-public-vs-tableau-desktop-vs-tableau-desktop-public-edition" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Tableau Public</strong>: A free web-based version of Tableau where all published data is publicly accessible. This is not recommended for most university work as it does not ensure data confidentiality. However, if you would like to make your data publicly available and it is suitable for public access, you can publish your dashboard to the Tableau Public Gallery.</p></li>
+<li><p><strong>Tableau Desktop</strong>: A downloadable desktop version of Tableau that allows private data analysis and visualization. This is the recommended tool for all university-related work, including research, teaching, and internal business purposes. It can be accessed in-person via the Tufts computer labs or remotely through the Tufts remote computing insfrastructure (see below for more information).</p></li>
+<li><p><strong>Tableau Desktop Public Edition</strong>: This is a slightly more limited version of Tableau Desktop that’s free for students and researchers. You can download this and use it with an academic license, in which case it you may only use it for academic purposes. It allows you to work privately and upload your dashboards to Tableau Public, while limiting the options for sharing that are available in the full Desktop edition. There are some other minor differences as well; <a class="reference external" href="https://help.tableau.com/current/pro/desktop/en-us/desktop_comparison.htm?_gl=1*jmvnxr*_ga*MTI5NTYxOTU4Ni4xNzQzMTY5Mjcw*_ga_8YLN0SNXVS*czE3NTI2NzQ4NDAkbzEzJGcxJHQxNzUyNjc0ODcxJGoyOSRsMCRoMA..*_gcl_au*MTQzMjYwNTk2MS4xNzUxODk1Mzgz">see here for a full comparison between Tableau Desktop and Tableau Desktop Public Edition</a>. This is a good option if you want to learn Tableau and don’t need to share your workbooks with others, or if you plan to share your workbooks publicly via Tableau Public. Note that you can still show your dashboards during presentations and team meetings using your own Tableau Desktop Public Edition license.</p></li>
+</ul>
+<p>The walkthrough below will use Tableau Desktop. You can see instructions on how to use Tableau Public here.</p>
+</section>
+<section id="ways-to-access-tableau-desktop">
+<h2>Ways to Access Tableau Desktop<a class="headerlink" href="#ways-to-access-tableau-desktop" title="Link to this heading">#</a></h2>
+<p>Your method of accessing Tableau Desktop depends on your role at Tufts and your intended use:</p>
+<section id="administrators-or-staff-using-tableau-for-internal-business-purposes">
+<h3>Administrators or Staff Using Tableau for Internal Business Purposes<a class="headerlink" href="#administrators-or-staff-using-tableau-for-internal-business-purposes" title="Link to this heading">#</a></h3>
+<p>Using Tableau for internal business purposes requires a paid Tableau license. This is managed separately from Tableau used for academic purposes (research or coursework). Administrators should not follow the instructions for academic users below. Instead, please go to: <a class="reference external" href="https://access.tufts.edu/tableau">https://access.tufts.edu/tableau</a></p>
+</section>
+<section id="students-faculty-and-research-staff-using-tableau-for-academic-research-or-coursework">
+<h3>Students, Faculty, and Research Staff Using Tableau for Academic Research or Coursework<a class="headerlink" href="#students-faculty-and-research-staff-using-tableau-for-academic-research-or-coursework" title="Link to this heading">#</a></h3>
+<p>Students, faculty, and research staff have three primary options for accessing Tableau Desktop:</p>
+<section id="option-1-download-and-install-tableau-desktop-public-edition">
+<h4><strong>Option 1: Download and Install Tableau Desktop Public Edition</strong><a class="headerlink" href="#option-1-download-and-install-tableau-desktop-public-edition" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Overview</strong> Tableau Desktop Public Edition may be suitable for you if you don’t mind the restricted sharing options and plan to use it solely for academic and research purposes. You can use it to practice and learn Tableau on your local computer, create dashboards that are suitable for public sharing via Tableau Public, or present your findings in-person to your collaborators while logged in to your own personal account. However, note that Tableau prohibits using your student license for work related to outside jobs or internships.</p></li>
+<li><p><strong>Eligibility</strong>: Free for students and educators with a valid <code class="docutils literal notranslate"><span class="pre">.edu</span></code> email address.</p></li>
+<li><p><strong>Steps</strong>:</p>
+<ol class="arabic simple">
+<li><p>Visit the <a class="reference external" href="https://www.tableau.com/community/academic">Tableau Academic Program website</a>.</p></li>
+<li><p>Request a free license and download Tableau Desktop Public Edition.</p></li>
+<li><p>Install Tableau Desktop Public Edition on your computer and activate it with the license key provided.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="option-2-access-through-tufts-remote-computing-infrastructure">
+<h4><strong>Option 2: Access Through Tufts Remote Computing Infrastructure</strong><a class="headerlink" href="#option-2-access-through-tufts-remote-computing-infrastructure" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Overview</strong>: This option allows you to use a Tufts-managed Windows computer remotely from your personal computer, which in turn gives you full access to Tableau Desktop.</p></li>
+<li><p><strong>Steps</strong>:</p>
+<ol class="arabic simple">
+<li><p>Install the Omnissa (formerly VMware) Horizon desktop client (recommended) or use the web application. For instructions, visit the <a class="reference external" href="https://access.tufts.edu/remote-computing-infrastructure">Tufts Remote Computing page</a>.</p></li>
+<li><p>Log in to the Tufts Remote Computing Infrastructure using your Tufts credentials.</p></li>
+<li><p>Launch Tableau Desktop from the remote environment. Tableau can be found by searching for “Tableau” in the Windows search bar or by clicking on the Tableau desktop shortcut.</p>
+<ul>
+<li><p><strong>NOTE:</strong> Virtual sessions may take some time to fully load. If Tableau doesn’t immediately appear in the Windows search bar or on the Desktop, wait and try again. It may take up to a minute for the system to index files and make Tableau visible.</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong>Accessing and Storing Files</strong>:</p>
+<ul>
+<li><p>Do not attempt to store files or save your work in the remote computer’s file system. Files will be deleted after the session ends. Instead, consider either of the following two options for easy and convenient access to your files:</p>
+<ul>
+<li><p><strong>Cloud Storage with Box</strong></p>
+<ul>
+<li><p>Box is available to all Tufts Faculty, Staff, and Students.</p></li>
+<li><p>When you install Box on your machine, it functions like any other folder in your file system. In most cases, you can securely save your data and your work here. However, if you are working with sensitive or individually identifiable data there may be other considerations. For more information, see the Tufts <a class="reference external" href="https://access.tufts.edu/data-finder">Data Storage Finder.</a></p></li>
+<li><p>Files can then be accessed from any other computer by logging into Box either through a web browser or a desktop client. The Box desktop client is already installed on the remote computer.</p></li>
+<li><p>For more information and installation instructions, click <a class="reference external" href="https://access.tufts.edu/box">here</a>.</p></li>
+</ul>
+</li>
+<li><p><strong>Allow the Remote Computer to Access Local Files</strong></p>
+<ul>
+<li><p>For those using the VMware Horizon desktop client, you can configure the settings to grant the remote computing environment to have direct access to files saved on your local computer. This requires a one-time change to the settings and then you will not have to repeat this step.</p></li>
+<li><p>To enable this:</p>
+<ol class="arabic simple">
+<li><p>Open VMware Horizon Client and log in to vdi.it.tufts.edu.</p></li>
+<li><p>After logging in, open “Settings” from the navigation panel on the left-hand side of the window.</p></li>
+<li><p>In Settings, click on “Applications”. Locate the setting “open local files in hosted applications” and set it to “on”.</p></li>
+<li><p>[Optional] If you have a multi-monitor setup, you may wish to restrict the remote session to a single monitor so that you can still interact with your own computer on the other monitors. To do this, open settings and from the menu on the left select the remote resource you’re using (e.g. “Engineering Lab”). Click on it and you should see a drop-down menu labeled “Display”. Select “Fullscreen - Single Monitor” from this menu.</p></li>
+</ol>
+</li>
+<li><p>Once you have enabled the remote computer’s access to your local file system, log in to the remote computer and open file explorer. Click on “This PC” and select “Network Drive (Z:)”. This will take you to your local computer’s file system.</p></li>
+<li><p>NOTE: Depending on the size and complexity of your project, as well as the strength of your network connection, working out of a mounted drive may cause your Tableau session to run slowly. If this is the case, you might consider moving your project to a temporary folder on the remote desktop. This can sometimes lead to big improvements in the speed of your Tableau session, but be careful to create frequent back-up copies in your local computer’s files, because if your session gets disconnected, you will lose any files that are saved on the remote computer.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="option-3-in-person-use-of-the-tufts-data-lab-and-other-computer-labs">
+<h4><strong>Option 3: In-Person Use of the Tufts Data Lab and Other Computer Labs</strong><a class="headerlink" href="#option-3-in-person-use-of-the-tufts-data-lab-and-other-computer-labs" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Overview</strong>: Tableau Desktop is pre-installed on computers at various labs including the <a class="reference external" href="https://sites.tufts.edu/datalab/">Medford and Boston Tufts Data Labs</a>.</p></li>
+<li><p><strong>Best Use</strong>: Ideal for those who prefer working on-site with ready-to-use Tableau installations.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<p>With Tableau installed and ready to use, we can now proceed to the next lesson on loading and viewing your data.</p>
+</section>
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.tableau.com/community/academic">Tableau Academic Program</a></p></li>
+<li><p><a class="reference external" href="https://access.tufts.edu/remote-computing-infrastructure">Tufts Remote Computing Infrastructure</a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="10-intro-to-tableau.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Tableau</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="30-loading-and-viewing-your-data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Loading and Viewing Your Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Accessing Tableau at Tufts
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-tableau-public-vs-tableau-desktop-vs-tableau-desktop-public-edition">Understanding Tableau Public vs. Tableau Desktop vs. Tableau Desktop Public Edition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ways-to-access-tableau-desktop">Ways to Access Tableau Desktop</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#administrators-or-staff-using-tableau-for-internal-business-purposes">Administrators or Staff Using Tableau for Internal Business Purposes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#students-faculty-and-research-staff-using-tableau-for-academic-research-or-coursework">Students, Faculty, and Research Staff Using Tableau for Academic Research or Coursework</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-download-and-install-tableau-desktop-public-edition"><strong>Option 1: Download and Install Tableau Desktop Public Edition</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-access-through-tufts-remote-computing-infrastructure"><strong>Option 2: Access Through Tufts Remote Computing Infrastructure</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-in-person-use-of-the-tufts-data-lab-and-other-computer-labs"><strong>Option 3: In-Person Use of the Tufts Data Lab and Other Computer Labs</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/viz/20-accessing-tableau-at-tufts.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/viz/20-accessing-tableau-at-tufts.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: viz/20-accessing-tableau-at-tufts"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Aug 18, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

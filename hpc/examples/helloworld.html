@@ -77,8 +77,8 @@
     <link rel="prev" title="Examples and Tutorials" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20250716" />
-    <meta name="docbuild:last-update" content="Jul 16, 2025"/>
+  <meta name="docsearch:version" content="20250818" />
+    <meta name="docbuild:last-update" content="Aug 18, 2025"/>
   </head>
   
   
@@ -170,6 +170,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../bio/index.html">
     Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
   </a>
 </li>
 
@@ -310,6 +317,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
     Geospatial
   </a>
@@ -393,6 +407,8 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples and Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">HelloWorld HPC Cluster Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-from-source.html">Building software from source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new-cluster.html">2025 Cluster Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="portforward.html">Port Forwarding on HPC Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
@@ -475,21 +491,95 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="helloworld-hpc-cluster-tutorial">
 <h1>HelloWorld HPC Cluster Tutorial<a class="headerlink" href="#helloworld-hpc-cluster-tutorial" title="Link to this heading">#</a></h1>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Fill in steps of this simple tutorial</p>
+<p>This simple tutorial will walk you through running your first HPC job using SSH and SLURM job scheduler.</p>
+<hr class="docutils" />
+<section id="create-helloworld-py-on-your-local-computer-using-your-favorite-text-editor-textedit-and-notepad-are-two-good-options">
+<h2>1. Create <code class="docutils literal notranslate"><span class="pre">helloworld.py</span></code> on your <strong>local computer</strong> using your favorite text editor. TextEdit and Notepad are two good options.<a class="headerlink" href="#create-helloworld-py-on-your-local-computer-using-your-favorite-text-editor-textedit-and-notepad-are-two-good-options" title="Link to this heading">#</a></h2>
+<p>Create a Python script named <code class="docutils literal notranslate"><span class="pre">helloworld.py</span></code> with the following contents:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># helloworld.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello from HPC! Iteration </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>  <span class="c1"># Sleep for 120 seconds so we can see the job in the queue</span>
+</pre></div>
 </div>
-<p>This simple tutorial will walk you through running your first HPC job using SSH.</p>
-<ul class="simple">
-<li><p>Create helloworld.py file on local computer (provide very simple python code but should pin a CPU and run for long enough we can view in squeue)</p></li>
-<li><p>Upload to cluster using scp or OnDemand</p></li>
-<li><p>SSH to cluster login node</p></li>
-<li><p>Create batch file using nano editor</p></li>
-<li><p>Schedule batch job using slurm sbatch command</p></li>
-<li><p>Check status with squeue</p></li>
-<li><p>Check output log files</p></li>
-<li><p>Check job efficiency using seff</p></li>
-</ul>
+</section>
+<hr class="docutils" />
+<section id="upload-helloworld-py-to-the-cluster">
+<h2>2. Upload <code class="docutils literal notranslate"><span class="pre">helloworld.py</span></code> to the cluster<a class="headerlink" href="#upload-helloworld-py-to-the-cluster" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">scp</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>helloworld.py<span class="w"> </span>your_utln@login.pax.tufts.edu:~/
+</pre></div>
+</div>
+<p>Or upload using <strong>Open OnDemand</strong>, if available.</p>
+</section>
+<hr class="docutils" />
+<section id="ssh-into-the-cluster">
+<h2>3. SSH into the cluster<a class="headerlink" href="#ssh-into-the-cluster" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>your_utln@login.pax.tufts.edu
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="create-a-slurm-batch-file-using-nano-or-vi">
+<h2>4. Create a SLURM batch file using <code class="docutils literal notranslate"><span class="pre">nano</span></code> or <code class="docutils literal notranslate"><span class="pre">vi</span></code><a class="headerlink" href="#create-a-slurm-batch-file-using-nano-or-vi" title="Link to this heading">#</a></h2>
+<p>Run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>helloworld_job.sh
+</pre></div>
+</div>
+<p>Paste this content:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=hello_job</span>
+<span class="c1">#SBATCH --output=hello_output.log</span>
+<span class="c1">#SBATCH --error=hello_error.log</span>
+<span class="c1">#SBATCH --time=00:02:00</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=1</span>
+
+module<span class="w"> </span>load<span class="w"> </span>python<span class="w">  </span><span class="c1"># Load Python if required by your system</span>
+python<span class="w"> </span>helloworld.py
+</pre></div>
+</div>
+<p>Save and exit with <code class="docutils literal notranslate"><span class="pre">Ctrl+O</span></code>, <code class="docutils literal notranslate"><span class="pre">Enter</span></code>, <code class="docutils literal notranslate"><span class="pre">Ctrl+X</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="submit-your-batch-job">
+<h2>5. Submit your batch job<a class="headerlink" href="#submit-your-batch-job" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>helloworld_job.sh
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="check-job-status">
+<h2>6. Check job status<a class="headerlink" href="#check-job-status" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue<span class="w"> </span>--me
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="check-output-and-error-logs">
+<h2>7. Check output and error logs<a class="headerlink" href="#check-output-and-error-logs" title="Link to this heading">#</a></h2>
+<p>After the job completes, view logs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>hello_output.log
+cat<span class="w"> </span>hello_error.log
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="check-job-efficiency-with-seff">
+<h2>8. Check job efficiency with <code class="docutils literal notranslate"><span class="pre">seff</span></code><a class="headerlink" href="#check-job-efficiency-with-seff" title="Link to this heading">#</a></h2>
+<p>Find your job ID and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>seff<span class="w"> </span>JOB_ID
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>seff<span class="w"> </span><span class="m">123456</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>✅ You’ve now run your first HPC job using SLURM and SSH!</p>
+</section>
 </section>
 
 
@@ -530,6 +620,28 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> HelloWorld HPC Cluster Tutorial
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-helloworld-py-on-your-local-computer-using-your-favorite-text-editor-textedit-and-notepad-are-two-good-options">1. Create <code class="docutils literal notranslate"><span class="pre">helloworld.py</span></code> on your <strong>local computer</strong> using your favorite text editor. TextEdit and Notepad are two good options.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-helloworld-py-to-the-cluster">2. Upload <code class="docutils literal notranslate"><span class="pre">helloworld.py</span></code> to the cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-into-the-cluster">3. SSH into the cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-slurm-batch-file-using-nano-or-vi">4. Create a SLURM batch file using <code class="docutils literal notranslate"><span class="pre">nano</span></code> or <code class="docutils literal notranslate"><span class="pre">vi</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submit-your-batch-job">5. Submit your batch job</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-job-status">6. Check job status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-output-and-error-logs">7. Check output and error logs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-job-efficiency-with-seff">8. Check job efficiency with <code class="docutils literal notranslate"><span class="pre">seff</span></code></a></li>
+</ul>
+</nav></div>
 
   <div class="sidebar-secondary-item">
 
@@ -593,7 +705,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Jul 16, 2025.
+  Last updated on Aug 18, 2025.
   <br/>
 </p></div>
       

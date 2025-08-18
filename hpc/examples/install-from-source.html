@@ -1,0 +1,804 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Building software from source code &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/examples/install-from-source';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/hpc/examples/install-from-source.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2025 Cluster Upgrade" href="new-cluster.html" />
+    <link rel="prev" title="HPC Helper Tool - hpctools" href="hpctools.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250818" />
+    <meta name="docbuild:last-update" content="Aug 18, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     High-Performance Computing 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../terminology/index.html">HPC Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../access/index.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/index.html">Computing Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/index.html">Slurm Job Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../application/index.html">Software Applications</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples and Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="helloworld.html">HelloWorld HPC Cluster Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Building software from source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new-cluster.html">2025 Cluster Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portforward.html">Port Forwarding on HPC Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshots.html">File Recovery on Tufts HPC Cluster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../policy/index.html">HPC Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help.html">Help with HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage-request.html">HPC Cluster Storage Request</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >High-Performance Computing</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Examples and Tutorials</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Building software...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="building-software-from-source-code">
+<h1>Building software from source code<a class="headerlink" href="#building-software-from-source-code" title="Link to this heading">#</a></h1>
+<p>Users can also compile/install software from source code on the Tufts HPC cluster. This guide will walk you through the essential tools and steps you’ll need to successfully build and install applications.</p>
+<section id="compilers-the-core-of-the-process">
+<h2>⚙️ Compilers: The Core of the Process<a class="headerlink" href="#compilers-the-core-of-the-process" title="Link to this heading">#</a></h2>
+<p>A compiler is a critical program that translates your application’s source code (e.g., C++ or Fortran) into machine-readable instructions. The choice of compiler can significantly impact your application’s performance.</p>
+<p>On our cluster, you have access to two powerful compiler suites:</p>
+<ul class="simple">
+<li><p>GNU Compiler Collection (GCC): A versatile and widely used open-source compiler suite. It’s an excellent general-purpose option and the default for many applications.</p></li>
+<li><p>Intel oneAPI Compilers: A suite of compilers specifically optimized for Intel processors, which are used on our cluster. Using this suite can lead to substantial performance gains for scientific and HPC applications.
+You can check available compiler versions using the module avail command:</p></li>
+</ul>
+<section id="check-available-gcc-versions">
+<h3>Check available GCC versions<a class="headerlink" href="#check-available-gcc-versions" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module avail gcc
+gcc/12.4.0    gcc/15.1.0 (D)
+</pre></div>
+</div>
+</section>
+<section id="check-available-intel-oneapi-compiler-versions">
+<h3>Check available Intel oneAPI compiler versions<a class="headerlink" href="#check-available-intel-oneapi-compiler-versions" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module avail intel-oneapi-compilers
+intel-oneapi-compilers/2025.1.1
+</pre></div>
+</div>
+</section>
+</section>
+<section id="gnu-make-automating-the-build-process">
+<h2>🔨 GNU Make: Automating the Build Process<a class="headerlink" href="#gnu-make-automating-the-build-process" title="Link to this heading">#</a></h2>
+<p>GNU Make is a program that automates the process of building executables from source code. It uses a file called Makefile (or makefile) which contains a set of rules for compiling the program.</p>
+<section id="general-steps-for-installation-with-make">
+<h3>General Steps for Installation with Make<a class="headerlink" href="#general-steps-for-installation-with-make" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Unpack the source code: Download and extract the compressed source files.</p></li>
+<li><p>Load the compiler: Use module load to activate the correct compiler (e.g., GCC).</p></li>
+<li><p>Configure (if applicable): Some packages have a configure script that checks your system and creates a custom Makefile.</p></li>
+<li><p>Build the program: Run the make command to compile the source code.</p></li>
+<li><p>Install the software (optional): Run make install to move the compiled files to a designated location. <strong>Do not use sudo make install, as you don’t have administrative privileges on the cluster</strong>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Tip</span></code>: By default, make install tries to install into system directories like <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code> where you lack permissions. To install to a custom directory (like your home directory), you must configure the installation path. For packages with a configure script, use the <code class="docutils literal notranslate"><span class="pre">--prefi</span></code>x option: <code class="docutils literal notranslate"><span class="pre">./configure</span> <span class="pre">--prefix=$HOME/my-app</span></code>.</p>
+</section>
+<section id="example-installing-bwa-with-make">
+<h3>Example: Installing BWA with Make<a class="headerlink" href="#example-installing-bwa-with-make" title="Link to this heading">#</a></h3>
+<p>BWA is a popular tool for mapping DNA sequences. This example shows a typical workflow for installing software with make.
+Set up your installation directory: It’s a good practice to create a dedicated directory for your custom software.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME
+$ mkdir apps
+$ cd apps
+</pre></div>
+</div>
+<p>Load the required compiler: BWA requires a C compiler, so we’ll load the latest GCC module.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load gcc/15.1.0
+</pre></div>
+</div>
+<p>Download the source code: Clone the BWA repository from GitHub.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/lh3/bwa.git
+</pre></div>
+</div>
+<p>Build the application: Navigate into the new directory and run make.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd bwa
+$ make
+</pre></div>
+</div>
+<p>Add the new program to your PATH: The compiled bwa executable is now in the bwa directory. To run it from any location, you need to add this directory to your PATH environment variable.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export PATH=$PATH:$HOME/apps/bwa
+</pre></div>
+</div>
+<p>Verify the installation: You can now run the bwa command to see if it works.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bwa
+Program: bwa (alignment via Burrows-Wheeler transformation)
+</pre></div>
+</div>
+</section>
+</section>
+<section id="cmake-a-higher-level-build-system">
+<h2>🧱 CMake: A Higher-Level Build System<a class="headerlink" href="#cmake-a-higher-level-build-system" title="Link to this heading">#</a></h2>
+<p>CMake is a popular cross-platform build system generator. Instead of compiling software directly, it generates native build scripts (like Makefiles) that make can then use.</p>
+<section id="example-installing-regtools-with-cmake">
+<h3>Example: Installing regtools with CMake<a class="headerlink" href="#example-installing-regtools-with-cmake" title="Link to this heading">#</a></h3>
+<p>Some applications, like regtools, require cmake to generate the Makefile before make can be used.
+Load the necessary modules: Always load both the compiler (e.g., gcc) and the latest cmake version.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load gcc/15.1.0
+$ module load cmake/3.31.6
+</pre></div>
+</div>
+<p>Clone the source code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME/apps
+$ git clone https://github.com/griffithlab/regtools
+</pre></div>
+</div>
+<p>Build the application: It’s a best practice to create a separate build directory to keep your source code clean.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd regtools/
+$ mkdir build
+$ cd build/
+</pre></div>
+</div>
+<p>Run cmake to generate the Makefile, then use make</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cmake ..
+$ make
+</pre></div>
+</div>
+</section>
+<section id="install-to-a-custom-prefix">
+<h3>Install to a custom prefix<a class="headerlink" href="#install-to-a-custom-prefix" title="Link to this heading">#</a></h3>
+<p>For applications that use <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code>, you must specify the installation directory with the <code class="docutils literal notranslate"><span class="pre">-DCMAKE_INSTALL_PREFIX</span></code> option during the cmake step.
+This is a common pattern for installing CMake-based applications.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd $HOME/apps/regtools
+$ mkdir build
+$ cd build
+
+$ cmake -DCMAKE_INSTALL_PREFIX=$HOME/apps/regtools-install ..
+$ make
+$ make install
+</pre></div>
+</div>
+<p>This command will build the program and then move the final files into a new directory named regtools-install. You can then add the bin directory from this new path to your <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> variable.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hpctools.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">HPC Helper Tool - hpctools</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="new-cluster.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2025 Cluster Upgrade</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Building software from source code
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilers-the-core-of-the-process">⚙️ Compilers: The Core of the Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-available-gcc-versions">Check available GCC versions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-available-intel-oneapi-compiler-versions">Check available Intel oneAPI compiler versions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-make-automating-the-build-process">🔨 GNU Make: Automating the Build Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-steps-for-installation-with-make">General Steps for Installation with Make</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-installing-bwa-with-make">Example: Installing BWA with Make</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmake-a-higher-level-build-system">🧱 CMake: A Higher-Level Build System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-installing-regtools-with-cmake">Example: Installing regtools with CMake</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-to-a-custom-prefix">Install to a custom prefix</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/hpc/examples/install-from-source.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/hpc/examples/install-from-source.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: hpc/examples/install-from-source"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Aug 18, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

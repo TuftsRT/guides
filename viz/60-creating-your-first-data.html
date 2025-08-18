@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Creating Your First Data Visualizations &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'viz/60-creating-your-first-data';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/viz/60-creating-your-first-data.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to Dashboards" href="70-introduction-to-dashboards.html" />
+    <link rel="prev" title="Creating More Complex Tables (Optional Lesson)" href="50-creating-more-complex-tables.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250818" />
+    <meta name="docbuild:last-update" content="Aug 18, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../index.html">
+           
+  <img
+    src="../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Introduction to Visualization with Tableau 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10-intro-to-tableau.html">Introduction to Tableau</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-accessing-tableau-at-tufts.html">Accessing Tableau at Tufts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-loading-and-viewing-your-data.html">Loading and Viewing Your Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40-creating-tables-in-a-tableau.html">Creating a Table in a Tableau Worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50-creating-more-complex-tables.html">Creating More Complex Tables (Optional Lesson)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating Your First Data Visualizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="70-introduction-to-dashboards.html">Introduction to Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80-sharing-tableau.html">Sharing and Presenting Tableau Visualizations and Dashboards</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Introduction to...</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Creating Your First...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="creating-your-first-data-visualizations">
+<h1>Creating Your First Data Visualizations<a class="headerlink" href="#creating-your-first-data-visualizations" title="Link to this heading">#</a></h1>
+<p>We’re ready to make our first visualizations! In this lesson we’ll learn the basics of creating bar charts using both measures and dimensions.</p>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Learn the basics of creating data visualizations in Tableau by creating simple bar charts</p></li>
+</ul>
+</section>
+<section id="open-a-new-worksheet">
+<h2>Open a New Worksheet<a class="headerlink" href="#open-a-new-worksheet" title="Link to this heading">#</a></h2>
+<p>To create a new data visualization, we first need to open a new worksheet.</p>
+<p>In the tray at the bottom left of your screen, locate this new worksheet button:</p>
+<img src="https://tufts.box.com/shared/static/fiz7k0izjgomih92uodqzjrs2ss32ovn.png" alt = "Create new worksheet button">
+<p>Click this button once to open a new worksheet. You’ll be taken to a completely new and fresh worksheet. We don’t even have the Response Type filter anymore that we used to get rid of the preview responses. We’ll need to fix that before we visualize anything.</p>
+<section id="applying-filters-to-all-worksheets">
+<h3>Applying Filters to All Worksheets<a class="headerlink" href="#applying-filters-to-all-worksheets" title="Link to this heading">#</a></h3>
+<p>You <em>could</em>, if you wanted to, go through the same procedure of recreating the Response Type filter every time you create a new worksheet, but that’s a lot of work. Luckily, Tableau gives you an easy way to apply the filter just once for all worksheets.</p>
+<p>Go back to the worksheet where you built your “Counts by Gender” table. In the filters shelf, right click on the Response Type. From the drop-down menu, click “Apply to Worksheets” and then select “All Using this Data Source”, like so:</p>
+<img src="https://tufts.box.com/shared/static/nugddkbkfatbx2dpxrse4sg0dmkpq3pk.png" alt="Applying the filter to all worksheets">
+<p>Now go to the new worksheet you just created. (It should still be called “Sheet 3” since we haven’t renamed it yet.) If the Response Type filter hasn’t appeared already, it will appear the moment you start using data from our data set. You can test this by dragging any one of your dimensions or measures to the Rows or Columns shelf, and watch for the filter to appear. Try it, and when you’ve seen it work, remove the pill you added by right-clicking on it and selecting “Remove”.</p>
+<p>In the future, when you create new worksheets, this filter will continue to appear as soon as you start using data from this data set.</p>
+</section>
+</section>
+<section id="charting-the-responses-by-gender">
+<h2>Charting the Responses by Gender<a class="headerlink" href="#charting-the-responses-by-gender" title="Link to this heading">#</a></h2>
+<section id="measures-and-dimensions-revisited">
+<h3>Measures and Dimensions, Revisited<a class="headerlink" href="#measures-and-dimensions-revisited" title="Link to this heading">#</a></h3>
+<p>In the previous lessons, we placed <strong>dimensions</strong> (categorical variables) in the Rows and Columns shelves to create the columns and rows of a table, and we put <strong>measures</strong> (numerical variables) in the body of our table using the Text card in the Marks shelf.</p>
+<p>Actually, the Row and Columns shelves are a little more versatile than that. They can handle measures too, but Tableau won’t interpret measures as the columns or rows of table. Instead, it’s going to assume you’re trying to create a visualization.</p>
+<p>Try it now. Drag the “SurveyData(Count)” Measure to the Rows shelf. Tableau will notice that it’s a measure and immediately try to create a bar chart:</p>
+<img src="https://tufts.box.com/shared/static/kpkgjemyzv30hejqf7xn7zgcobdmyr1c.png" alt="Bar chart with a single column">
+</section>
+<section id="using-dimensions-to-create-multiple-bars-in-the-bar-chart">
+<h3>Using Dimensions to Create Multiple Bars in the Bar Chart<a class="headerlink" href="#using-dimensions-to-create-multiple-bars-in-the-bar-chart" title="Link to this heading">#</a></h3>
+<p>At the moment, it’s a bar chart with a single column. If we want to split up our data into multiple bars, we’re going to need a dimension. Let’s use our Gender dimension for this purpose. Drag Gender from the Data pane to the Columns shelf. Your chart should now look like this:</p>
+<img src="https://tufts.box.com/shared/static/j2fi6spcqid6aue8uxorso0w9dtnfpqt.png">
+<p>Congratulations, you just made your first visualization! Let’s rename the worksheet now so we don’t forget what we created in it. Right-click on the worksheet tab, which should currently same “Sheet 3”, and rename it something like “Gender Counts Bar Chart”.</p>
+<blockquote>
+<div><p><strong>Changing the Visualization Type (Optional Exercise)</strong></p>
+<p>There are often several different ways of visualizing the same data, and this is a good opportunity to try some of them out.</p>
+<ol class="arabic simple">
+<li><p>Duplicate the worksheet so you don’t lose the current version of the visualization you just made.</p></li>
+<li><p>In the duplicated worksheet, take note of the panel of visualization options on the right side of your worksheet. Note that hovering your mouse over each visualization style gives the name of the visualization at the bottom of the panel.</p></li>
+<li><p>We suggest you try the treemaps, the packed bubbles, and the pie chart. When you click on any of these, take note of how Tableau rearranges the Gender and CNT(SurveyData) pills to conform to the new chart type. Feel free to move things around and see what happens; you can always use Ctrl+Z to undo anything, or go back and re-duplicate the Gender Counts Bar Chart to start this exercise over.</p></li>
+</ol>
+</div></blockquote>
+</section>
+</section>
+<section id="charting-the-number-of-respondents-for-each-rating">
+<h2>Charting the Number of Respondents for Each Rating<a class="headerlink" href="#charting-the-number-of-respondents-for-each-rating" title="Link to this heading">#</a></h2>
+<p>Now let’s try something slightly more tricky and see if we can create a similar-looking chart for the number of survey respondents corresponding to each overall rating that was given for Jumbo’s Croissants.</p>
+<p>First, let’s create a new worksheet and call it “Counts by Rating Chart”. In the new worksheet, we’ll do the same thing as before and drag the “SurveyData(Count)” measure to the Rows shelf. As before, you’ll see a single-column bar chart appear, in addition to the filter that you applied earlier to all worksheets using this data set.</p>
+<p>Now remember that for our previous chart (the one of counts by gender), we got multiple bars by adding Gender to the Columns shelf. Let’s try that again, but this time using the Overall Rating measure instead of the Gender dimension. The result should look like this:</p>
+<img src="https://tufts.box.com/shared/static/cdoz5bnahga4w3pvn0wjl0j3jicf139r.png" alt="Counts by rating chart, incorrectly done with two measure fields">
+<p>What happened? Because Overall Rating is a measure, Tableau doesn’t see it as a viable way to group your data. Since you can’t make a bar chart with two measures, it made a guess that you wanted to make a scatter plot instead; note that the chart type in the “Show Me” menu at the right now has the scatter plot selected. (You might also curious as to why it chose to sum up your overall rating measure when you added it to the columns shelf. See the following note for an explanation.)</p>
+<blockquote>
+<div><p><strong>Note:</strong> Tableau won’t <em>always</em> look for a summary statistic (e.g. a sum or average) for measures placed in the Columns or Rows shelves or on one of the Marks cards. That depends on the type visualization or chart you’re trying to make, as well as on what data you’ve already added to these shelves. In this example, the overall rating in the Columns shelf had to work with the CNT(SurveyData) you’d already placed in the Rows shelf. Since a count is just a single data point, it had to find a way to reduce the overall rating to a single data point as well, because in a scatter plot the number of data points has to be equal along each axis.</p>
+</div></blockquote>
+<p>This would all be very helpful if we were trying to create a scatter plot. We wanted to created a bar chart, however, with different columns for each rating from 1 to 10 and the number of people that responded who gave each rating. But clearly we can’t use the overall rating the same way that we used gender because it’s not a dimension. How do we solve this?</p>
+<section id="converting-a-measure-into-a-dimension">
+<h3>Converting a Measure into a Dimension<a class="headerlink" href="#converting-a-measure-into-a-dimension" title="Link to this heading">#</a></h3>
+<p>There are a number of ways to solve our problem, but the easiest is most likely just to convert the Overall Rating into a dimension. This won’t always work, but it works here because the Overall Rating only takes a finite set of values that would work well when treated as categorical.</p>
+<p>There’s just one catch; if you did the optional lesson where you calculated average ratings by gender, then you’ve already used the Overall Rating field as a measure, so we don’t want to mess up our previous work by converting it now. And even if you didn’t do the optional lesson, it’s possible you might still want to do calculations on the Overall Rating. To avoid any problems, let’s create a copy of the overall rating field and make the copy into a dimension, without altering the original.</p>
+<p>To make a copy of a field, right the field and select “Duplicate” from the drop-down menu, like this:</p>
+<img src="https://tufts.box.com/shared/static/x1aksh520fwf7858rsi4ciczi90ewtgf.png" alt="Duplicating the Overall Rating measure">
+<p>A new measure will appear called “Overall Rating (Copy)”. Let’s rename that. Right-click on the copy and select “Rename”, and then call it “Overall Rating Dimension”.</p>
+<p>Now, right-click on “Overall Rating Dimension” and select “Convert to Dimension from the drop-down menu.</p>
+<img src="https://tufts.box.com/shared/static/033c1915b247owcp5p1u5m5qdtwt62tm.png" alt="Select Convert to Dimension from the drop-down menu">
+<p>You will now see that “Overall Rating Dimension” has been moved to the dimensions grouping within your data pane (above the horizontal line).</p>
+<p>Now let’s replace the measure version of Overall Rating in your Columns shelf with the dimension one. Right-click on SUM(Overall Rating) in Columns shelf and select “Remove”, and then drag the overall rating dimension that you just created to the Columns shelf.</p>
+<p>You should now see the chart we were looking for:</p>
+<img src="https://tufts.box.com/shared/static/8h5n3i6zfbbbijuzwy8vru3dlx2o0el8.png" alt="Bar chart of counts by rating after Overall Rating was converted to a dimension">
+<blockquote>
+<div><p><strong>Tip:</strong> This worked because our Overall Ratings field worked equally well as a measure or as a dimension. A more general solution, which would work for measures that are continuous (i.e. contain a range of possible values that don’t convert well into categories) would be to use a histogram instead of a bar chart. Histograms group similar measure values into “bins” which can function similar to a dimension. For more information on histograms and bin variables, see the official Tableau documentation.</p>
+</div></blockquote>
+</section>
+<section id="cleaning-up-your-bar-chart">
+<h3>Cleaning Up Your Bar Chart<a class="headerlink" href="#cleaning-up-your-bar-chart" title="Link to this heading">#</a></h3>
+<p>Your bar chart is starting to look good! Let’s tweak a few things.</p>
+<section id="retitling-your-chart">
+<h4>Retitling your Chart<a class="headerlink" href="#retitling-your-chart" title="Link to this heading">#</a></h4>
+<p>By default, the title you see at the top of your chart is whatever you named your worksheet at the tab on the bottom of your screen. Let’s change it to something else.</p>
+<p>Right-click on the title and select “Edit Title” from the pop-up menu.</p>
+<img src="https://tufts.box.com/shared/static/ij8it2bx6ypebai5wl4caiif7zutsd58.png" alt="Select edit title from the pop-up menu">
+<p>A window will appear with options to change the text. You will see that there’s already some text written there: &lt;Sheet Name&gt;</p>
+<p>The angle brackets (i.e. the less than and greater than symbols) are a special symbol in Tableau’s markdown language to indicate that this isn’t normal text. In this case, they’re being used to tell Tableau to retrieve the name of the worksheet. If you want to change the text for the title, you need to delete everything here, <em>including</em> the angle brackets, and replace it with the text you want. Let’s change it to “Number of Responses by Rating”</p>
+<img src="https://tufts.box.com/shared/static/7c6xj8oe7ltvgvn2rdisczjqjxboph6x.png" alt="Title text window">
+<p>Feel free to change the font or other stylistic properties of the text if you like (just make sure to highlight the text you want to change first). When you’re ready, click “OK”.</p>
+</section>
+<section id="remove-horizontal-axis-label">
+<h4>Remove Horizontal Axis Label<a class="headerlink" href="#remove-horizontal-axis-label" title="Link to this heading">#</a></h4>
+<p>Tableau has labeled the horizontal axis for us using the name of the field we used to create it—in this case, the Overall Rating Dimension field. Since it’s fairly obvious that these are ratings, we can delete this and get rid of visual clutter. Right click on the words “Overall Rating Dimension” and select “Hide Field Labels for Columns” to delete it.</p>
+<img src="https://tufts.box.com/shared/static/zqv5ycu59rmy528wim3ex8uws4rgbg8c.png" alt="Remove unnecessary field heading">
+</section>
+<section id="edit-vertical-axis-label">
+<h4>Edit Vertical Axis Label<a class="headerlink" href="#edit-vertical-axis-label" title="Link to this heading">#</a></h4>
+<p>We can also edit the vertical axis label to look a bit more professional.</p>
+<p>Right-click the vertical axis where it says “Count of SurveyData”, and select “Edit Axis” to get the Edit Axis pop-up window. Under Axis Titles, there’s a field called “Title” that contains the text used to label the axis. Where it says “Count of SurveyData”, change it to something like “Number of Responses”.</p>
+</section>
+</section>
+</section>
+<section id="the-completed-chart">
+<h2>The Completed Chart<a class="headerlink" href="#the-completed-chart" title="Link to this heading">#</a></h2>
+<p>If you’ve followed along until this point, you should now have something that looks like this:</p>
+<img src="https://tufts.box.com/shared/static/zok2jsv9swljavgf9ky27kc7d3kea1rk.png" alt="Completed Counts by Rating Chart">
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<p>You may only want to use Tableau to create charts and tables that can be used in presentations, in which case you’ve already covered the main topics you’ll need to know.</p>
+<p>Tableau, however, has another feature that allows you to bring the contents of multiple worksheets into a single, attractive, and interactive layout known as a <strong>dashboard.</strong> Dashboards are great when you want to present your data on a website and allow your end-user to explore your data with additional menus, mouseover text, and other interactive elements.</p>
+</section>
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://help.tableau.com/current/pro/desktop/en-us/default.htm">Tableau Desktop and Web Authoring Help (Official Tableau documentation))</a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="50-creating-more-complex-tables.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Creating More Complex Tables (Optional Lesson)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="70-introduction-to-dashboards.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Dashboards</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Creating Your First Data Visualizations
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-a-new-worksheet">Open a New Worksheet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-filters-to-all-worksheets">Applying Filters to All Worksheets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-the-responses-by-gender">Charting the Responses by Gender</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-and-dimensions-revisited">Measures and Dimensions, Revisited</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-dimensions-to-create-multiple-bars-in-the-bar-chart">Using Dimensions to Create Multiple Bars in the Bar Chart</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-the-number-of-respondents-for-each-rating">Charting the Number of Respondents for Each Rating</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-a-measure-into-a-dimension">Converting a Measure into a Dimension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-up-your-bar-chart">Cleaning Up Your Bar Chart</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#retitling-your-chart">Retitling your Chart</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-horizontal-axis-label">Remove Horizontal Axis Label</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-vertical-axis-label">Edit Vertical Axis Label</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-completed-chart">The Completed Chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/viz/60-creating-your-first-data.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/viz/60-creating-your-first-data.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: viz/60-creating-your-first-data"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Aug 18, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

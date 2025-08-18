@@ -1,0 +1,831 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to Dashboards &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'viz/70-introduction-to-dashboards';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/viz/70-introduction-to-dashboards.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sharing and Presenting Tableau Visualizations and Dashboards" href="80-sharing-tableau.html" />
+    <link rel="prev" title="Creating Your First Data Visualizations" href="60-creating-your-first-data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20250818" />
+    <meta name="docbuild:last-update" content="Aug 18, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../index.html">
+           
+  <img
+    src="../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Introduction to Visualization with Tableau 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10-intro-to-tableau.html">Introduction to Tableau</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-accessing-tableau-at-tufts.html">Accessing Tableau at Tufts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-loading-and-viewing-your-data.html">Loading and Viewing Your Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40-creating-tables-in-a-tableau.html">Creating a Table in a Tableau Worksheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="50-creating-more-complex-tables.html">Creating More Complex Tables (Optional Lesson)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="60-creating-your-first-data.html">Creating Your First Data Visualizations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="80-sharing-tableau.html">Sharing and Presenting Tableau Visualizations and Dashboards</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Introduction to...</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Introduction to Dashboards
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-dashboards">
+<h1>Introduction to Dashboards<a class="headerlink" href="#introduction-to-dashboards" title="Link to this heading">#</a></h1>
+<p>You’ve now created some bar charts and summary tables, but if you’re looking to put them on a website, you’ll probably want to bring them all together in a single, attractive layout. You may even want to include interactive elements that allow your user to select what data they want to look at.</p>
+<p>For this, we’ll need to create a <strong>dashboard.</strong></p>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Arrange the contents of multiple worksheets into a visually pleasing dashboard</p></li>
+<li><p>Include an interactive filter for your end-user to select subsets of the data they’re most interested in seeing</p></li>
+</ul>
+</section>
+<section id="creating-a-new-dashboard">
+<h2>Creating a New Dashboard<a class="headerlink" href="#creating-a-new-dashboard" title="Link to this heading">#</a></h2>
+<p>To create a new dashboard, locate the “new dashboard” button at the bottom of your screen, right next to the “new worksheet” button you used in the previous lessons. It will look like this:</p>
+<img src="https://tufts.box.com/shared/static/wr4fne9nzgn7mswdi64ribndioenx1ad.png" alt="New Dashboard button">
+<p>You can check that you’ve found the correct button by hovering your mouse over it. If you’re in the right place, some text will pop up that says “New Dashboard”.</p>
+<p>Once you open a new Dashboard, your screen will look like this:</p>
+<img src="https://tufts.box.com/shared/static/izmj9krfw9fienpgwqdc93ykswdupg0e.png" alt="New Dashboard Screen">
+</section>
+<section id="adding-worksheets-to-our-dashboard">
+<h2>Adding Worksheets to our Dashboard<a class="headerlink" href="#adding-worksheets-to-our-dashboard" title="Link to this heading">#</a></h2>
+<p>On the left of your screen, you’ll see the <strong>Dashboard Pane</strong>, with subheadings for Size, Sheets, and Objects. We’ll stick with the default dashboard size for now, which is optimized for dashboards intended to be viewed on a Desktop Browser.</p>
+<p>Now take a look the Sheets section, where you’ll see a list of all the worksheets we’ve created so far. These are the building blocks of our dashboard; dashboards are a place to assemble, arrange, and present the information you created in worksheets.</p>
+<p>Let’s start with the “Counts by Gender” table we created in the lesson on tables.</p>
+<section id="adding-our-counts-by-gender-table">
+<h3>Adding our Counts by Gender Table<a class="headerlink" href="#adding-our-counts-by-gender-table" title="Link to this heading">#</a></h3>
+<p>Adding a the contents of a worksheet to a dashboard is a breeze. Simply click on “Counts by Gender” in the Sheets section of the Dashboard pane, and drag it to the view panel, i.e. the place where it says “Drop sheets here”.</p>
+<p>You should now see the table appear in your dashboard.</p>
+</section>
+<section id="adding-our-counts-by-rating-bar-chart">
+<h3>Adding our Counts by Rating Bar Chart<a class="headerlink" href="#adding-our-counts-by-rating-bar-chart" title="Link to this heading">#</a></h3>
+<p>A useful feature of dashboards is that they can be interactive, allowing the user to choose the data they want want to focus on.</p>
+<p>It would be nice to include some interactive features in our dashboard too. For example, it would be nice if we could give the user a way to filter the responses to a specific gender, so they can see if all demographics are being served equally. Let’s make a quick detour back to our “counts by rating” chart and add one additional element to ensure this kind of interactivity will be enabled when we add it to our dashboard.</p>
+<section id="adding-an-interactive-filter">
+<h4>Adding an interactive filter<a class="headerlink" href="#adding-an-interactive-filter" title="Link to this heading">#</a></h4>
+<p>Navigate back to the “Counts by Rating Chart” by clicking on the corresponding worksheet tab at the bottom of your screen. Once there, find “Gender” in the data pane, and drag it to the Filters shelf.</p>
+<p>A pop-up window will appear:</p>
+<img src="https://tufts.box.com/shared/static/8w5rsgsho226h1z89y4lntomoya7p207.png" alt="Gender filter pop-up window">
+<p>Make sure all options (Male, Female, and Non-Binary) are checked, and click “OK”. Your chart will still look the same as before, but you’ll notice that there’s now a pill for the gender field in the Filters shelf.</p>
+<p>We now have one more step to ensure that this filter appears on our dashboard as an interactive element. Right-click the Gender pill in the filters shelf, and from the pop-up menu, select “Show Filter”, as shown below:</p>
+<img src="https://tufts.box.com/shared/static/lcadwyzfsnbwp5t1rgad5jjcpuo82sb8.png" alt="Selecting the Show Filter option">
+<p>Once you click that, you should notice a new panel of check boxex appear next to your chart in the worksheet view, like this:</p>
+<img src="https://tufts.box.com/shared/static/gbzfy82b0l6wt3xbzkui46ibwupm76tc.png" alt="Response counts by rating chart with gender check boxes">
+<p>These check boxes will now follow our chart into our dashboard and will be available to our end-user to interact with.</p>
+<p>Now we’re ready to add our interactive chart to our dashboard!</p>
+</section>
+<section id="placing-the-response-count-bar-chart-on-the-dashboard">
+<h4>Placing the Response Count Bar Chart on the Dashboard<a class="headerlink" href="#placing-the-response-count-bar-chart-on-the-dashboard" title="Link to this heading">#</a></h4>
+<p>Navigate back to your dashboard by selecting the corresponding tab at the bottom of your screen, and locate the Counts by Rating Chart in the sheets section of your Dashboard Pane.</p>
+<p>In a moment, we’ll drag and drop this chart into our dashboard, just as we did with the Counts by Gender table. This time, however, where we place the chart is going to matter. Since we already have one element in our dashboard (the Counts by Gender table that we added previously), we need to tell Tableau were to put the new chart in relation to this existing element.</p>
+<p>Click and drag the Counts by Rating chart to the dashboard, but don’t release your finger from the mouse just yet. Watch what happens when you move your cursor to different parts of the screen. You’ll see different shaded regions appear, corresponding to different placement options for your chart.</p>
+<p>For our dashboard, we want our Counts by Rating chart to be on the left side of the dashboard, so you should release your finger from the mouse button when your screen looks like this:</p>
+<img src="https://tufts.box.com/shared/static/igkuv2kz9hng7cx9ho7dwgxr02kjbaez.png">
+<p>If you did it correctly, your dashboard should now look like this:</p>
+<img src="https://tufts.box.com/shared/static/78kkwinizjvrvj49wxozl9dbaz3vxym3.png" alt="Dashboard after placing the Counts by Rating chart">
+</section>
+<section id="rearranging-the-dashboard-elements">
+<h4>Rearranging the Dashboard Elements<a class="headerlink" href="#rearranging-the-dashboard-elements" title="Link to this heading">#</a></h4>
+<p>Let’s try to get this looking better by rearranging our chart, table, and interactive filter in a more visually appealing way. We can start by moving the filter closer to the chart.</p>
+<p>Click on the headading of the interactive filter to select the entire filter element. When selected, it should look like this:</p>
+<img src="https://tufts.box.com/shared/static/do3sgqod7a1ib7oa5ix23ow9nwvgwisc.png" alt="Interactive filter selected">
+<p>When selected, you can move it by clicking and dragging here:</p>
+<img src="https://tufts.box.com/shared/static/sfn8b7fxm6q2li3grbzlkgu20sawhdum.png" alt="Click and drag the filter here">
+<p>Guides will appear to help you place it correctly. Follow the example below to move it below your Counts by Gender table, next to your Number of Responses by Rating bar chart.</p>
+<img src="https://tufts.box.com/shared/static/4xqgh96n4yzr9zpesenr6fn6dldvx5ya.png" alt="Placing the filter next to the chart and below the gender counts table">
+<p>Your dashboard will now look like this:</p>
+<img src="https://tufts.box.com/shared/static/qiifb5vupdpfw659wz3c1o7hjao2k3h3.png" alt="Dashboard after moving the filter">
+<p>Now let’s resize a few elements to make this look better:</p>
+<ul class="simple">
+<li><p>Click and drag the tob border of the filter to resize it so that you can see the full filter.</p></li>
+<li><p>Select the bar chart, and widen it by clicking and dragging the right border of the chart.</p></li>
+</ul>
+<p>With the resized elements, your dashboard will be looking more and more like a professional layout!</p>
+<img src="https://tufts.box.com/shared/static/butphvad08qp2oeqlqgmes40s6wnbf8o.png" alt="Dashboard with resized elements">
+</section>
+</section>
+<section id="testing-out-the-interactivity">
+<h3>Testing out the Interactivity<a class="headerlink" href="#testing-out-the-interactivity" title="Link to this heading">#</a></h3>
+<p>Now take a moment to test out the interactivity of our dashboard. Try checking and unchecking some of the boxes in the Gender filter. Notice how the chart adjusts to show you data for only the genders you’ve selected?</p>
+<p>If you didn’t have this interactive filter enabled, you’d have to create a separate chart for every gender, which would add a lot of unnattractive complexity to the dashboard. Interactive elements help simplify your visual layout while still presenting a large amount of information. They can also engage your end-user by making them an active partner in exploring your data.</p>
+</section>
+</section>
+<section id="adding-a-title-to-the-dashboard">
+<h2>Adding a Title to the Dashboard<a class="headerlink" href="#adding-a-title-to-the-dashboard" title="Link to this heading">#</a></h2>
+<p>Now let’s add a text element to our dashboard that can serve as a title or header.</p>
+<p>In the Dashboard pane at the left side of your screen, locate the section that says “Objects” and find within it the text object.</p>
+<img src="https://tufts.box.com/shared/static/10jih4frav0drc6euivfaqkb813z31km.png" alt="The Text object within the Objects pane">
+<p>Drag it to your dashboard, using the guides to place it at the top of your screen, like so:</p>
+<img src="https://tufts.box.com/shared/static/igan7odcjr7xyhcjiebilqxmd8ujk9ux.png" alt="Drag the text object to the top of the dashboard">
+<p>A pop-up window will appear asking you to specify the text for your text object. In this window, type the following:</p>
+<ul class="simple">
+<li><p>In size 48 font, type “Jumbo’s Croissants”</p></li>
+<li><p>In size 16 font, on a new line, type “Customer Satisfaction on a Scale from 1 (Poor) to 10 (Outstanding)”</p></li>
+</ul>
+<img src="https://tufts.box.com/shared/static/qw1mwrl4m54fk3g8ssoe1nw7baopmgge.png" alt="Edit title text">
+<p>Then press OK to see your text appear in the text object on your dashboard.</p>
+<p>You’ll probably notice that the text object you just created is a bit too big. That’s easy to fix! Select the text object, just as before, and click and drag the bottom border to resize it.</p>
+<p>Your dashboard now has a title:</p>
+<img src="https://tufts.box.com/shared/static/uwo43lt08irxls3h4c9mbsgv8euyzc5y.png" alt="Dashboard with text object added for title">
+</section>
+<section id="adding-an-image">
+<h2>Adding an Image<a class="headerlink" href="#adding-an-image" title="Link to this heading">#</a></h2>
+<p>Jumbo’s Croissants has a logo, and Jumbo would love to show it off.</p>
+<img src="https://tufts.box.com/shared/static/ijl45unwq3m1y0nl1nhn7gfe4bbjrppm.png" alt="Jumbo's Croissants Logo">
+<p>You can access this image at <a class="reference external" href="https://tufts.box.com/shared/static/ijl45unwq3m1y0nl1nhn7gfe4bbjrppm.png">this link.</a> Once you click on the link, right-click on the image and select “Save image as” to save it to your computer.</p>
+<p>Adding an image object works exactly the same way as adding a text object. In the objects section of the Dashboard pane, click on “Image” and drag it to the upper left-hand corner of your dashboard, as shown here:</p>
+<img src="https://tufts.box.com/shared/static/vleyki9ajlpspzzj8yo18t02esfpuhl5.png" alt="Drag image to upper left corner">
+<p>A pop-up window will appear from which you can select your image file. Find where it says “Choose and image file…” and click choose, and then navigate to the location on your computer where you saved your image file. When you’re ready, click “OK”, and the image will appear in the image box you just created.</p>
+<img src="https://tufts.box.com/shared/static/o2u7zloxi1fraar9x74wmw4hxgeup8sh.png" alt="Dashboard with image added, before the image is resized">
+<p>When the image first loads, it appears on your dashboard the same size as it is in the image file. To make it scale to the size our image object, right-click on the image and select “Fit Image” from the pop-up menu.</p>
+<img src="https://tufts.box.com/shared/static/nilr5n8nn04qf3pl3bvzlzryzdus54pz.png" alt="Right-click on the image and select Fit Image">
+<p>You will now see the full image. Let’s also resize the image object by clicking and dragging the right border and making it smaller.</p>
+<img src="https://tufts.box.com/shared/static/nilr5n8nn04qf3pl3bvzlzryzdus54pz.png" alt="Dashboard with resized and fitted image">
+</section>
+<section id="final-touches">
+<h2>Final Touches<a class="headerlink" href="#final-touches" title="Link to this heading">#</a></h2>
+<p>We’re almost done! Let’s just make a few additional changes to make things look more professional and visually appealing.</p>
+<section id="reducing-visual-clutter">
+<h3>Reducing Visual Clutter<a class="headerlink" href="#reducing-visual-clutter" title="Link to this heading">#</a></h3>
+<p>Removing unnecessary elements can make for a more streamlined and professional-looking dashboard. For example, when we brought in our bar chart, it came with the title that we gave it in our worksheet. This is the text that says “Number of Responses by Rating” at the top of our chart. This is probably unnecessary for our end-user to understand the chart, since our Dashboard already tells them that this is a customer satisfaction survey on a 1-10 scale, and the y-axis already indicates that we’re charting the number of responses. So let’s get rid of the chart title to reduce visual clutter.</p>
+<p>To get rid of the chart title, simply right-click on where it says “Number of Responses by Rating” and select “Hide Title”.</p>
+<img src="https://tufts.box.com/shared/static/jev3mlpj888bqn4qq1t7kr287mpwhzcl.png" alt="Hide the bar chart title">
+<p>Another place where we can get rid of unnecessary text is in the counts by gender table. Notice the word “Gender” is still hanging out at the top of the column that lists the different genders. But given that we already have a descriptive title for our chart (i.e. “Charts by Gender”), and the fact that it’s already clear what the table is showing, we really don’t need this extra instance of the word “Gender”.</p>
+<p>To remove it, right-click it and select “Hide field labels for rows”, as shown in the image:</p>
+<img src="https://tufts.box.com/shared/static/0wfxgolv7q39jqg7qsp97svfe12nrf0y.png">
+</section>
+<section id="improving-the-filter-title">
+<h3>Improving the Filter Title<a class="headerlink" href="#improving-the-filter-title" title="Link to this heading">#</a></h3>
+<p>We can also make a few improvements to the title of the interactive filter in the bottom right of your dashboard. At the moment, it just says “Gender”, but let’s change it to “Select Gender” to draw the end-user’s attention to it as an interactive element.</p>
+<p>Right-click the title (where it says “Gender”, just above the check boxes) and select “Edit Title” to get a pop-up window where you can edit the text for the interactive filter title.</p>
+<img src="https://tufts.box.com/shared/static/ify0xd5wng87gw23hnp3hj3mraw4pmom.png" >
+<p>Change the text to “Select Gender”, and then change the font size to 16. You can also change the font to “Tableau Light” to be visually consistent with the rest of the dashboard text. When you’re ready, click “OK”.</p>
+</section>
+<section id="rename-the-dashboard">
+<h3>Rename the Dashboard<a class="headerlink" href="#rename-the-dashboard" title="Link to this heading">#</a></h3>
+<p>As a final step, let’s give our dashboard a name. At the bottom of the screen, locate the tab for your dashboard. It should currently say “Dashboard 1”. Just as you did with worksheets, you should right-click on the tab and select rename. Rename it “Customer Satisfaction Dashboard”, or whatever name feels best to you.</p>
+</section>
+</section>
+<section id="admire-your-completed-dashboard">
+<h2>Admire your Completed Dashboard<a class="headerlink" href="#admire-your-completed-dashboard" title="Link to this heading">#</a></h2>
+<p>And we’re done! It’s time to admire your completed dashboard.</p>
+<img src="https://tufts.box.com/shared/static/ueisbazl30vp719852l8vacb4sx1c2hi.png" alt="Completed Dashboard">
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<p>We’ve created some tables and visualizations, but how do we actually use them and share them elsewhere? The next lesson will cover sharing and presenting your creations in Tableau, as well as embedding Tableau Dashboards in websites.</p>
+</section>
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://help.tableau.com/current/pro/desktop/en-us/default.htm">Tableau Desktop and Web Authoring Help (Official Tableau documentation))</a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="60-creating-your-first-data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Creating Your First Data Visualizations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="80-sharing-tableau.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sharing and Presenting Tableau Visualizations and Dashboards</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Introduction to Dashboards
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-dashboard">Creating a New Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-worksheets-to-our-dashboard">Adding Worksheets to our Dashboard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-our-counts-by-gender-table">Adding our Counts by Gender Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-our-counts-by-rating-bar-chart">Adding our Counts by Rating Bar Chart</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-an-interactive-filter">Adding an interactive filter</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#placing-the-response-count-bar-chart-on-the-dashboard">Placing the Response Count Bar Chart on the Dashboard</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rearranging-the-dashboard-elements">Rearranging the Dashboard Elements</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-out-the-interactivity">Testing out the Interactivity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-title-to-the-dashboard">Adding a Title to the Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-an-image">Adding an Image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-touches">Final Touches</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reducing-visual-clutter">Reducing Visual Clutter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-the-filter-title">Improving the Filter Title</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-the-dashboard">Rename the Dashboard</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#admire-your-completed-dashboard">Admire your Completed Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/viz/70-introduction-to-dashboards.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/viz/70-introduction-to-dashboards.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: viz/70-introduction-to-dashboards"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Aug 18, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -22,6 +22,10 @@ grid-columns: 1 1 2 3
 - header: "{fas}`globe` Geospatial Analysis"
   content: "Curated collection of geospatial learning resources for various backgrounds and applications."
   link: "https://go.tufts.edu/geospatial"
+
+- header: "{fas}`chart-bar` Data Visualization"
+  content: "Create interactive data visualization dashboards using Tableau."
+  link: "viz/index.html"
 ```
 
 ```{admonition} Other Useful Resources
