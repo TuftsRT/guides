@@ -30,7 +30,7 @@ Your Selection:
 |
 ```
 
-**Then follow the on-screen instructions to select option `1` to `6`.**
+**Then follow the on-screen instructions to select option `1` to `7`.**
 
 `Option 1. Checking Free Resources On Each Node in Given Partition(s)`
 
