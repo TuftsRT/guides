@@ -18,6 +18,9 @@ Linux is a free, open-source, and Unix-like operating system kernel that was ori
 
 <img src="https://nixwindows.wordpress.com/wp-content/uploads/2015/02/linux-distro-stickers.png" width="600">
 
+
+# Our clusters' OS
+<img src="images/os.png">
 ## Files and File System
 
 ### Everything is a file

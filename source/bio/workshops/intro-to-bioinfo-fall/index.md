@@ -9,7 +9,7 @@ The goals of this workshop are to:
 
 ## Prerequisites
 
-[Access to Tufts HPC](https://shib-idp.tufts.edu/idp/profile/SAML2/POST/SSO?execution=e1s1) (**Note:** To test your account, log into [OnDemand](https://ondemand-prod.pax.tufts.edu). If you can log in, you are all set, if not please reach out to {{ email }})
+[Access to Tufts HPC](https://it.tufts.edu/high-performance-computing) (**Note:** To test your account, log into [OnDemand](https://ondemand-prod.pax.tufts.edu). If you can log in, you are all set, if not please reach out to {{ email }})
 
 ## Agenda
 
