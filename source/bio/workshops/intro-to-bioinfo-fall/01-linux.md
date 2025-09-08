@@ -20,7 +20,8 @@ Linux is a free, open-source, and Unix-like operating system kernel that was ori
 
 
 # Our clusters' OS
-<img src="images/os.png">
+![](img/os.png)
+
 ## Files and File System
 
 ### Everything is a file
