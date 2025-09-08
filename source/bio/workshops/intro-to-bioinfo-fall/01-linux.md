@@ -2,7 +2,7 @@
 
 Linux is a free, open-source, and Unix-like operating system kernel that was originally created by **Linus Torvalds** in 1991. Over time, Linux has grown into a full-fledged operating system used worldwide across various types of devices, from servers and desktop computers to smartphones and embedded systems.
 
-**Popular Linux Distributions:**
+## Popular Linux Distributions
 
 ​ • **Ubuntu:** A user-friendly distribution popular for desktop and server use, based on Debian.
 
@@ -19,7 +19,8 @@ Linux is a free, open-source, and Unix-like operating system kernel that was ori
 <img src="https://nixwindows.wordpress.com/wp-content/uploads/2015/02/linux-distro-stickers.png" width="600">
 
 
-# Our clusters' OS
+### Our clusters' OS
+
 ![](img/os.png)
 
 ## Files and File System
