@@ -129,7 +129,7 @@ These modules may not work reliably on the new cluster. We recommend migrating t
 To return to the new software stack, run:
 
 ```
-module unload module load  modtree/deprecated
+module unload modtree/deprecated
 ```
 
 If you need assistance, please contact us at [tts-research@tufts.edu](mailto:tts-research@tufts.edu).
