@@ -1,4 +1,4 @@
-# 2025 Cluster Upgrade
+## 2025 Cluster Upgrade
 
 ```{attention}
 The upgraded cluster is currently only accessible to approved early adopters.
@@ -65,7 +65,14 @@ The move to Rocky Linux 9.6 will bring noticeable changes to the software enviro
 - **Migration required**  
   While the legacy stacks are available temporarily, users should plan to migrate to the Rocky 9.6 modules as soon as possible. Future support will focus exclusively on the new environment.  
 
-## Migration Plan
+#### Upgraded cluster access
+
+To access the upgraded cluster
+
+- SSH: login-prod.pax.tufts.edu
+- New Open OnDemand: https://ondemand-prod.pax.tufts.edu/
+
+#### Migration Plan
 
 New users will be encouraged to start using this version when they receive their accounts. Existing HPC users are
 encouraged to try this version as time allows. As the average compute load on the upgraded cluster increases we will
@@ -74,28 +81,17 @@ move public partition nodes from the current cluster to this version.
 TTS Research Technology will work with contribute node owners to confirm their software works on the upgraded cluster,
 and determine a timeframe to move their nodes as the labs convenience.
 
-## Upgraded cluster access
-
-To access the upgraded cluster
-
-- SSH: login-prod.pax.tufts.edu
-- Web: https://ondemand-prod.pax.tufts.edu/
-
+#### Applications and servers
 
 ```{gallery-grid}
 ---
 grid-columns: 1
 ---
-- header: "{fas}`book` Applications"
-  content: "Avail scientific applications"
+- header: "{fas}`flask` Applications"
+  content: "A wide selection of pre-built scientific applications that users can easily access and load as modules, eliminating the need for self-installation."
   link: "module.html"
 
-- header: "{fas}`book` Open OnDemand"
-  content: "New Open OnDemand Server"
+- header: "{fas}`laptop-code` Open OnDemand"
+  content: "A new Open OnDemand server that provides a more stable, reliable platform and a modern, intuitive interface with features designed to improve your workflow."
   link: "ood.html"
-
-- header: "{fas}`book` GPU Resources"
-  content: "Available GPU resources on Tufts HPC cluster and how to request them"
-  link: "gpu.html"
-
 ```
