@@ -42,6 +42,10 @@ grid-columns: 1
   content: "Examples and tutorials on getting started on the cluster."
   link: "examples/index.html"
 
+- header: "{fas}`book` 2025 Cluster Upgrade"
+  content: "The 2025 cluster upgrade introduces a new Rocky9 operating system, a new Open OnDemand server, and rebuilt software to enhance HPC performance and reliability."
+  link: "cluster_upgrade/index.html"
+
 ```
 
 > **To Get Support:** - Please email tts-research@tufts.edu for all Tufts HPC cluster questions and requests.
