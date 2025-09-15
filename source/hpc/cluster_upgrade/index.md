@@ -67,17 +67,42 @@ The move to Rocky Linux 9.6 will bring noticeable changes to the software enviro
 
 To access the upgraded cluster
 
-- SSH: login-prod.pax.tufts.edu
+- SSH: ssh yourUTLN@login-prod.pax.tufts.edu
 - New Open OnDemand: https://ondemand-prod.pax.tufts.edu/
 
-#### Migration Plan
+#### Migration Timeline
+- **New Users**: New users will be encouraged to start using the new cluster when they receive their accounts.
 
-New users will be encouraged to start using this version when they receive their accounts. Existing HPC users are
-encouraged to try this version as time allows. As the average compute load on the upgraded cluster increases we will
-move public partition nodes from the current cluster to this version.
+- **Existing Users**: Existing HPC users are encouraged to try the new cluster as time allows. As the average compute load on the upgraded cluster increases, we will move public partition nodes from the current cluster to this new cluster.
 
-TTS Research Technology will work with contribute node owners to confirm their software works on the upgraded cluster,
-and determine a timeframe to move their nodes as the labs convenience.
+- **Contribute Node Owners**: TTS Research Technology will work with contribute node owners to confirm their software works on the upgraded cluster and determine a timeframe to move their nodes at the lab's convenience.
+
+
+#### New hardwares
+
+**NVIDIA H200 GPU**
+
+[NVIDIA H200](https://www.nvidia.com/en-us/data-center/h200/) is a powerhouse for large-scale AI and HPC. It provides a massive boost in memory capacity and bandwidth, which is crucial for training and running large language models and complex simulations.
+
+  - Compute Capability: 9.0 (Hopper Architecture)
+  - GPU Memory: 141 GB HBM3e
+  - Requesting a GPU: To submit a job to a node with an H200 GPU, use the following SLURM directive in your job script:
+    ```
+    #SBATCH --partition=gpu
+    #SBATCH --gres=gpu:h200:1
+    ```
+
+**NVIDIA L40s GPU (coming soon)**
+
+[NVIDIA L40s]((https://www.nvidia.com/en-us/data-center/l40s/)) is a versatile, universal GPU designed for a wide array of data center workloads. It excels at multi-modal generative AI, 3D graphics, and video processing, offering a balance of compute and visualization capabilities.
+
+  - Compute Capability: 8.9 (Ada Lovelace Architecture)
+  - GPU Memory: 48 GB GDDR6
+  - Requesting a GPU: To submit a job to a node with an L40s GPU, use the following SLURM directive in your job script:
+    ```
+    #SBATCH --partition=gpu
+    #SBATCH --gres=gpu:l40s:1
+    ```
 
 #### Applications and servers
 
