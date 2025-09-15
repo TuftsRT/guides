@@ -2,13 +2,11 @@
 
 ```{attention}
 The upgraded cluster is currently only accessible to approved early adopters.
-You may request to join our early adopter program at https://tufts.qualtrics.com/jfe/form/SV_08IS0n1YSTR6KRU .
+You may request to join our [early adopter program](https://tufts.qualtrics.com/jfe/form/SV_08IS0n1YSTR6KRU).
 ```
+In the summer of 2025, TTS Research Technology upgraded the pax cluster to a new version with an updated operating system. The new cluster shares a file system with the existing one, so all your files and data remain accessible on both systems.
 
-In the summer of 2025 TTS Research Technology launched a new version of the pax cluster with a newer OS version. This system shares a
-file system with the existing cluster so all your files and data are accessible in both versions.
-
-![](img/os.png)
+![](img/os.png){width=700}
 
 ##### Why do we need to upgrade cluster's operation system?
 - **End of Life**  
