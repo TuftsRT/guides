@@ -104,7 +104,7 @@ To access the upgraded cluster
     #SBATCH --gres=gpu:l40s:1
     ```
 
-#### Applications and servers
+#### Applications and Servers
 
 ```{gallery-grid}
 ---

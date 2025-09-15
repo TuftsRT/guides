@@ -88,17 +88,18 @@ When you load a module, it can automatically add a new directory to your `MODULE
 ###### An Example of MODULEPATH in Action
 Before loading anything, your `MODULEPATH` points to the default locations, including the Core and Compiler level modules:
 ```
-echo $MODULEPATH
+$ echo $MODULEPATH
 /cluster/tufts/apps/modules/9/x86_64/environments:/cluster/tufts/apps/modules/9/x86_64/openmpi/gcc/12.4.0/4.1.7:/cluster/tufts/apps/modules/9/x86_64/Core:/cluster/tufts/apps/container/ngc/modules:/cluster/tufts/apps/container/biocontainers/modules:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
 ```
 
 Now, load a compiler like `gcc/15.1.0`:
 ```
-module avail gcc/15.1.0
+$ module avail gcc/15.1.0
 ```
 
 If you check `MODULEPATH` again, you'll see a new path has been added to the beginning of the list. This new path points to modules that depend on gcc/15.1.0.
 ```
+$ echo $MODULEPATH
 /cluster/tufts/apps/modules/9/x86_64/gcc/15.1.0:/cluster/tufts/apps/modules/9/x86_64/environments:/cluster/tufts/apps/modules/9/x86_64/openmpi/gcc/12.4.0/4.1.7:/cluster/tufts/apps/modules/9/x86_64/Core:/cluster/tufts/apps/container/ngc/modules:/cluster/tufts/apps/container/biocontainers/modules:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
 ```
 
@@ -117,7 +118,7 @@ For users who still rely on older software versions, the legacy RHEL6/7/8 softwa
 
 You can enable the legacy software stack by running:
 ```
-module load modtree/deprecated
+$ module load modtree/deprecated
 ```
 
 ```{attention}
@@ -129,7 +130,100 @@ These modules may not work reliably on the new cluster. We recommend migrating t
 To return to the new software stack, run:
 
 ```
-module unload modtree/deprecated
+$ module unload modtree/deprecated
 ```
 
 If you need assistance, please contact us at [tts-research@tufts.edu](mailto:tts-research@tufts.edu).
+
+
+#### How to search for avaiable modules?
+
+| Aspect            | `module avail`                                                                 | `module spider`                                                                 |
+|-------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| **Purpose**       | Shows what modules are *currently visible* in your environment.                 | Searches the *entire module tree*, including hidden modules.                     |
+| **Visibility**    | Limited by hierarchical rules (depends on loaded compiler/MPI).                 | Ignores hierarchy — shows all versions and toolchains.                           |
+| **Use Case**      | Quick check: “What can I load right now?”                                       | Discovery: “What software exists and how do I load it?”                          |
+| **Dependencies**  | Does *not* explain why something is missing.                                    | Explains required prerequisites (compiler/MPI/CUDA).                             |
+| **Example**       | `module avail gromacs` may show **nothing** until compiler+MPI are loaded.      | `module spider gromacs` shows all versions and instructions for loading them.    |
+| **Best For**      | Browsing within your *current environment*.                                     | Finding software across *all environments* and learning how to enable it.        |
+
+**Example**
+
+Use module spider to search for all available `gromacs` modules. The command also shows which compiler and MPI modules must be loaded. Once you know the prerequisites, you can load the specific `gromacs` version — even if it was built on the older cluster toolchain.
+```
+
+$ module spider gromacs
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  gromacs:
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     Versions:
+        gromacs/4.5.5
+        gromacs/4.6.1-slurm
+        gromacs/4.6.1
+        gromacs/4.6.5+plumed
+        gromacs/4.6.5d
+        gromacs/4.6.5-gls
+        gromacs/4.6.5
+        gromacs/4.6.7-gpu
+        gromacs/4.6.7
+        gromacs/5.0.1
+        gromacs/5.1.0
+        gromacs/5.1.4-gpu
+        gromacs/5.1.4
+        gromacs/2018.8-gcc-8.5.0-nmiyrcw
+        gromacs/2018.8-gcc-8.5.0-xdrzfdk
+        gromacs/2018.8-plumed
+        gromacs/2021.3
+        gromacs/2022.5-gcc-8.5.0-tpbbv77
+        gromacs/2022.5-gcc-8.5.0-tznaxci
+        gromacs/2022.5
+        gromacs/2023
+        gromacs/2023.2
+        gromacs/2023.3_gcc_9.3.0_cuda
+        gromacs/2023.3_gcc_9.3.0
+        gromacs/2023.5-plumed
+        gromacs/2025.2
+     Other possible modules matches:
+        gromacs-plumed-libmatheval  openmpi/5.0.7-mrxzj45/gromacs
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  To find other possible module matches execute:
+
+      $ module -r spider '.*gromacs.*'
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  For detailed information about a specific "gromacs" package (including how to load the modules) use the module's full name.
+  Note that names that have a trailing (E) are extensions provided by other modules.
+  For example:
+
+     $ module spider gromacs/2025.2
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+```
+Running `module spider gromacs` lists all available gromacs versions, including those built on both the old and new cluster toolchains. To see the exact steps required to load a specific version (for example, `gromacs/2023.3_gcc_9.3.0_cuda`), use:
+```
+$ module spider gromacs/2023.3_gcc_9.3.0_cuda
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  gromacs: gromacs/2023.3_gcc_9.3.0_cuda
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    You will need to load all module(s) on any one of the lines below before the "gromacs/2023.3_gcc_9.3.0_cuda" module is available to load.
+
+      modtree/deprecated
+
+    Help:
+      GROMACS (GROningen MAchine for Chemical Simulations) is a molecular
+      dynamics package primarily designed for simulations of proteins, lipids
+      and nucleic acids. It was originally developed in the Biophysical
+      Chemistry department of University of Groningen, and is now maintained
+      by contributors in universities and research centers across the world.
+      GROMACS is one of the fastest and most popular software packages
+      available and can run on CPUs as well as GPUs. It is free, open source
+      released under the GNU General Public License. Starting from version
+```
+
+We can see that `gromacs/2023.3_gcc_9.3.0_cuda` was built on the old cluster, and to use it, we have to load ` modtree/deprecated` first.
+```
+$ module load modtree/deprecated
+$ module load gromacs/2023.3_gcc_9.3.0_cuda
+```
