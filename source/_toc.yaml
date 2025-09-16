@@ -40,6 +40,10 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: hpc/policy/*
+              - file: hpc/cluster_upgrade/index
+                subtrees:
+                  - entries:
+                      - glob: hpc/cluster_upgrade/*
               - glob: hpc/*
       - file: bio/index
         title: Bioinformatics
