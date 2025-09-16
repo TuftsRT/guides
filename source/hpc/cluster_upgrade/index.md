@@ -94,7 +94,7 @@ To access the upgraded cluster
 
 **NVIDIA L40s GPU (coming soon)**
 
-[NVIDIA L40s]((https://www.nvidia.com/en-us/data-center/l40s/)) is a versatile, universal GPU designed for a wide array of data center workloads. It excels at multi-modal generative AI, 3D graphics, and video processing, offering a balance of compute and visualization capabilities.
+[NVIDIA L40s](https://www.nvidia.com/en-us/data-center/l40s/) is a versatile, universal GPU designed for a wide array of data center workloads. It excels at multi-modal generative AI, 3D graphics, and video processing, offering a balance of compute and visualization capabilities.
 
   - Compute Capability: 8.9 (Ada Lovelace Architecture)
   - GPU Memory: 48 GB GDDR6

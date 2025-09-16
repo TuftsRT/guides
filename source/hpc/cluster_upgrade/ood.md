@@ -1,7 +1,7 @@
 ### Open OnDemand
 Open OnDemand, developed by the Ohio Supercomputer Center ([OSC](https://www.osc.edu/)), is a web-based portal that makes high-performance computing (HPC) resources more accessible to a wider audience. It provides a user-friendly, graphical interface to manage and interact with HPC clusters, eliminating the need for command-line knowledge or complex client software installations. 
 
-During our 2025 cluster upgrade, we also build a new Open OnDemand Server with the new version 4.1 to replace our old OnDemand server v1.8. Upgrading Open OnDemand from version 1.8 to 4.1 represents a massive leap forward in features, stability, and security. Given that Open OnDemand 1.8 was released several years ago, the jump to a much more recent version incorporates years of community-driven development and best practices.
+During our 2025 cluster upgrade, we also build a new Open OnDemand Server with the new version 4.0.7 to replace our old OnDemand server v1.8. Upgrading Open OnDemand from version 1.8 to 4.0.7 represents a massive leap forward in features, stability, and security. Given that Open OnDemand 1.8 was released several years ago, the jump to a much more recent version incorporates years of community-driven development and best practices.
 
 ![](img/ood.png)
 
