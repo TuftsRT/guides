@@ -1,4 +1,4 @@
-## 2025 Cluster Upgrade
+## 2025 cluster upgrade
 
 ```{attention}
 The upgraded cluster is currently only accessible to approved early adopters.
@@ -70,7 +70,7 @@ To access the upgraded cluster
 - SSH: ssh yourUTLN@login-prod.pax.tufts.edu
 - New Open OnDemand: https://ondemand-prod.pax.tufts.edu/
 
-#### Migration Timeline
+#### Migration timeline
 - **New Users**: New users will be encouraged to start using the new cluster when they receive their accounts.
 
 - **Existing Users**: Existing HPC users are encouraged to try the new cluster as time allows. As the average compute load on the upgraded cluster increases, we will move public partition nodes from the current cluster to this new cluster.
@@ -104,7 +104,7 @@ To access the upgraded cluster
     #SBATCH --gres=gpu:l40s:1
     ```
 
-#### Applications and Servers
+#### Applications and servers
 
 ```{gallery-grid}
 ---
