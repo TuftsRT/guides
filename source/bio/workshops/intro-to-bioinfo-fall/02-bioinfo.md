@@ -56,11 +56,10 @@ Use `module avail` to check the full list of tools available on the cluster. Bel
 
 ## Using the Open OnDemand App
 
-You can access Open OnDemand through [this link](https://ondemand.pax.tufts.edu/)
+You can access Open OnDemand through [this link](https://ondemand.pax.tufts.edu/). 
 
-### Bioinformatics Apps
+If you have access to the new cluster, you can access the [new Open OnDemand server](http://ondemand-prod.pax.tufts.edu)
 
-We offer a wide range of bioinformatics tools as apps, including `AlphaFold` and `CellProfiler`. Additionally, 31 nf-core pipelines are available as apps for ease of use, with the most popular being nf-core/rnaseq, which we will demonstrate in our final workshop.
 
 ### RStudio and Apps
 
