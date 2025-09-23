@@ -56,19 +56,22 @@ Use `module avail` to check the full list of tools available on the cluster. Bel
 
 ## Using the Open OnDemand App
 
-You can access Open OnDemand through [this link](https://ondemand.pax.tufts.edu/). 
+* The current Open OnDemand server is available at [https://ondemand.pax.tufts.edu/](https://ondemand.pax.tufts.edu/)
+* If your account has access to the new cluster, use the [new Open OnDemand server](http://ondemand-prod.pax.tufts.edu)
+* To request access to the new cluster, complete the [early adopter program form](https://tufts.qualtrics.com/jfe/form/SV_08IS0n1YSTR6KRU)
+* Additional information is available in the [New Cluster Guide](https://rtguides.it.tufts.edu/hpc/examples/new-cluster.html) 
+* **In today’s workshop, I will demonstrate the features on the new OOD server.**
 
-If you have access to the new cluster, you can access the [new Open OnDemand server](http://ondemand-prod.pax.tufts.edu)
 
+### RStudio Server
 
-### RStudio and Apps
+When launching RStudio Server, use **R/4.5.1**, which includes the most comprehensive set of pre-installed packages (1300+).
 
-RStudio Server, use R/4.5.1 which has the most comprehensive packages installed (1300+).
+**How to initiate an R job**:
 
-**How to initiate an R job**
-
-1. Log in to Open Ondemand.
-1. Navigate to `interactive apps` and select `RStudio Pax`
+1. Log in to [new Open OnDemand server](http://ondemand-prod.pax.tufts.edu) 
+   * Make sure you request access through the [early adopter program](https://tufts.qualtrics.com/jfe/form/SV_08IS0n1YSTR6KRU)
+1. Navigate to `interactive apps` and select `RStudio Server`
 1. Specify the required resources:
    - **Number of hours**
    - **Number of cores**
@@ -90,61 +93,57 @@ We also provide other applications like `Jupyter`, `Matlab server`, `VSCode Serv
 
 ### [nf-core pipelines](https://nf-co.re/pipelines)
 
-- On cluster, use `module avail nf-core` to get the list of nf-core pipelines deployed on cluster.
+- On new Open OnDemand server, you can go to `nf-core pipelines` to find out what has been installed.
 
-- On Open OnDemand, you can go to `bioinformatics apps` to find out what has been installed.
+- [Quick Start Guide to Using the nf-core Pipeline]()
 
-- [Quick Start Guide to Using the nf-core Pipeline](https://tuftsrt.github.io/guides/dev/bio/tutorials/doc/Running_nfcore_pipelines_at_Tufts_HPC.html)
+## Writing a Bioinformatics Job Script
 
-## Writing Bioinformatics job script
+This section introduces how to write a SLURM job script for running bioinformatics workflows. The example uses **`nf-core/rnaseq`**, but the same structure applies to other tools, nf-core pipelines, and custom Nextflow workflows.
 
-Let’s explore how to write a SLURM script, using STAR alignment as an example.
+The **[nf-core](https://nf-co.re/)** community develops best-practice pipelines using **Nextflow**, a workflow manager for reproducible and scalable analyses across HPC, local, and cloud environments. The **[nf-core/rnaseq](https://nf-co.re/rnaseq/3.21.0/)** pipeline provides a complete solution for RNA-seq data processing, including quality control, alignment, and quantification.
 
 ### 1. Prepare the SLURM Script
 
-Create a file named `run_star.sh` and add the following content:
+Create a file named `run_nfcore_rnaseq.sh` and add the following content:
 
 ```
 #!/bin/bash
-#SBATCH -J STAR_JOB             # Job name
-#SBATCH --time=12:00:00         # Maximum runtime (D-HH:MM:SS format)
+#SBATCH -J RNASEQ_JOB           # Job name
+#SBATCH --time=02:00:00         # Maximum runtime (D-HH:MM:SS format)
 #SBATCH -p batch                # Partition (queue) to submit the job to
 #SBATCH -n 1                    # Number of tasks (1 task in this case)
-#SBATCH --mem=32g               # Memory allocation (32 GB)
-#SBATCH --cpus-per-task=8       # Number of CPU cores allocated for the task
-#SBATCH --output=STAR.%j.out    # Standard output file (%j = Job ID)
-#SBATCH --error=STAR.%j.err     # Standard error file (%j = Job ID)
-#SBATCH --mail-type=ALL         # Notifications for job status (start, end, fail)
-#SBATCH --mail-user=utln@tufts.edu  # Your email address for notifications
+#SBATCH --mem=16g               # Memory allocation (32 GB)
+#SBATCH --cpus-per-task=4       # Number of CPU cores allocated for the task
+#SBATCH --output=rnaseq.%j.out  # Standard output file (%j = Job ID)
+#SBATCH --error=rnaseq.%j.err   # Standard error file (%j = Job ID)
 
-# Load necessary module
-module load star/2.7.11b
+# Load Nextflow (adjust module name to your system)
+module load nextflow/25.04.0
+module load singularity/4.3.1
 
 # Create output directory
-mkdir -p star_output
+mkdir -p results_test
 
-# Run STAR alignment for single-end reads
-STAR --genomeDir ./reference_data/reference_index/ \
-     --readFilesIn ./raw_fastq/Irrel_kd_1.subset.fq \
-     --outFileNamePrefix ./star_output/ \
-     --runThreadN 8
+# Run nf-core/rnaseq in test mode
+nextflow run nf-core/rnaseq \
+   -profile test,singularity,slurm \
+   --outdir results_test/
 ```
 
-### 2. Submit the Job Script
+### 2. Submitting and Monitoring
 
 If you're running the script **directly in the terminal**, you need to make it executable first:
 
 ```
-chmod +x run_star.sh
+chmod +x run_nfcore_rnaseq.sh
 ```
 
 However, **SLURM does not require execution permissions**, so you can submit the job as-is using:
 
 ```
-sbatch run_star.sh
+sbatch run_nfcore_rnaseq.sh
 ```
-
-### 3. Monitor Job Status
 
 Use the following command to check the job status:
 
@@ -152,66 +151,31 @@ Use the following command to check the job status:
 squeue -u yourusername
 ```
 
-### STAR Workflow Details
+#### 
 
-#### Loading Modules
+### 3. Outputs and Next Steps
 
-Before using STAR, load the appropriate module:
+- Results: `results_test/`
 
-```
-module load star/2.7.11b
-```
+- Logs: `rnaseq.<jobID>.out`, `rnaseq.<jobID>.err`, `.nextflow.log`
 
-#### Generating the Genome Index
+- For real data, replace `-profile test` with `--input samplesheet.csv` and appropriate genome or reference files, adjusting resource requests as needed.
 
-Before aligning reads, generate the genome index using a reference genome (`.fa`) and an annotation file (`.gtf`):
+  
 
-```
-STAR --runMode genomeGenerate \
-     --genomeDir ./reference_data/ \
-     --genomeFastaFiles ./reference_data/chr1.fa \
-     --sjdbGTFfile ./reference_data/chr1-hg19_genes.gtf \
-     --runThreadN 8
-```
+### 4. Additional Tips
 
-#### Aligning Reads
+- Test commands interactively before adding them to a job script.
 
-##### For Single-End Reads:
+- Adjust SLURM options such as `--time`, `--mem`, and `--cpus-per-task` based on dataset size and pipeline requirements.
 
-```
-STAR --genomeDir ./reference_data/ \
-     --readFilesIn ./raw_fastq/Irrel_kd_1.subset.fq \
-     --outFileNamePrefix ./star_output/ \
-     --runThreadN 8
-```
+- Review SLURM output (`.out`) and error (`.err`) files, as well as `.nextflow.log`, for troubleshooting.
 
-##### For Paired-End Reads:
+- Keep job scripts modular—reuse the same template for different nf-core pipelines by changing only the `nextflow run` command and parameters.
 
-```
-STAR --genomeDir ./reference_data/ \
-     --readFilesIn /path/to/read1.fastq /path/to/read2.fastq \
-     --outFileNamePrefix ./star_output/ \
-     --runThreadN 8
-```
+- Start with small test runs (e.g., `-profile test`) before scaling up to full datasets.
 
-#### Output Files
-
-After running STAR, the output directory will contain:
-
-```
-Aligned.out.sam  Log.final.out  Log.out  Log.progress.out  SJ.out.tab
-```
-
-- **`Aligned.out.sam`**: Contains alignment data.
-- **`Log.final.out`**: Summarizes alignment metrics.
-
-#### Additional Tips
-
-- Always test commands interactively before incorporating them into job scripts.
-
-- Use the SLURM `--time`, `--mem`, and `--cpus-per-task` options to optimize resource allocation.
-
-- Check the SLURM output and error files for troubleshooting.
+  
 
 ### Run job with GPU node
 
