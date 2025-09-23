@@ -2,7 +2,7 @@
 
 Author: Shirley Li, xue.li37@tufts.edu
 
-Date: 2025-02
+Date: 2025-10
 
 ## Prerequisites
 
@@ -63,7 +63,7 @@ If you have access to the new cluster, you can access the [new Open OnDemand ser
 
 ### RStudio and Apps
 
-RStudio Pax, use R/4.4.2 which has the most comprehensive packages installed (1300+).
+RStudio Server, use R/4.5.1 which has the most comprehensive packages installed (1300+).
 
 **How to initiate an R job**
 
@@ -71,10 +71,10 @@ RStudio Pax, use R/4.4.2 which has the most comprehensive packages installed (13
 1. Navigate to `interactive apps` and select `RStudio Pax`
 1. Specify the required resources:
    - **Number of hours**
-   - **Number of CPU cores**
+   - **Number of cores**
    - **Amount of memory**
-   - **CPU partition** (set to `batch`)
-   - **R version** (latest available: 4.4.2)
+   - **Partition** (set to `batch`)
+   - **R version** (latest available: 4.5.1)
 1. Click `Launch` to submit your job to the queue.
 1. Wait a few minutes until your job starts running.
 1. Click `Connect to Rstudio server`
@@ -86,7 +86,7 @@ Refer to our [previous workshop materials](https://tuftsdatalab.github.io/tuftsW
 
 ### Other Apps
 
-We also provide other applications like `Jupyter Bioinfo`, `JupyterLab`, `Jupyter Notebook`, `IGV`, and `Galaxy` to support your daily research activities.
+We also provide other applications like `Jupyter`, `Matlab server`, `VSCode Server`, `FastQC`, and `Fiji` to support your daily research activities.
 
 ### [nf-core pipelines](https://nf-co.re/pipelines)
 
