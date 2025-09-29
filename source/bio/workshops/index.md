@@ -14,15 +14,15 @@ grid-columns: 1
 ---
 - header: "{fas}`dna` Introduction to Git and GitHub - Fall"
   content: "This workshop is designed to provide participants with a foundational understanding of version control using Git and GitHub Desktop. "
-  link: "intro-to-git-github_fall.html"
+  link: "intro-to-git-github_fall/index.html"
 
 - header: "{fas}`dna` Running Bioinformatics Analysis on Tufts HPC - Fall"
   content: "User guide to help users get started on running bioinformatics analysis on Tufts HPC."
-  link: "intro-to-bioinfo-fall/index.html "
+  link: "intro-to-bioinfo-fall/index.html"
 
 - header: "{fas}`dna` Introduction to Git and GitHub - Spring"
   content: "This workshop is designed to provide participants with a foundational understanding of version control using Git and GitHub Desktop. "
-  link: "intro-to-git-github.html"
+  link: "intro-to-git-github/index.html"
 
 - header: "{fas}`dna` Introduction to Singularity - Spring"
   content: "This workshop is designed to introduce users how to use singularity to run applications on HPC."

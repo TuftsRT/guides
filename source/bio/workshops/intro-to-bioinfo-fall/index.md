@@ -2,24 +2,15 @@
 
 ## Welcome  
 
-This workshop is designed to help you:  
+This workshop is designed to help you get started with bioinformatics on the Tufts High-Performance Computing (HPC) cluster. We will cover:
 
-- Begin working with bioinformatics tools and workflows—especially those that use the command line—on the Tufts HPC.  
-- Get familiar with the bioinformatics resources and software available on the Tufts HPC.  
+- [Introduction to the Linux/Unix Command Line](tutorials/01-linux.md)
+- [Bioinfomratics on the Tufts HPC: tools, workflows, and available resources](tutorials/02-bioinfo.md)
 
 ## Prerequisites  
 
-You will need an [active Tufts HPC account](https://it.tufts.edu/high-performance-computing).  
-
-> **Tip:** To test your account, log in to [Tufts OnDemand](https://ondemand.pax.tufts.edu).  
-> - If you can log in successfully, you’re all set.  
-> - If not, please reach out to **tts-research@tufts.edu** for assistance.  
-
-## Agenda  
-
-- [Introduction to the Linux/Unix Command Line](01-linux)  
-- [Bioinformatics on the Tufts HPC](02-bioinfo)  
+You will need an [active Tufts HPC account](https://it.tufts.edu/high-performance-computing). If you are new to the HPC, we strongly recommend reviewing our recent [Intro to HPC workshop](https://tufts.zoom.us/rec/play/O1Zm1daWzJdvy2yciGGUwTZCSa1cUyu4wr89gk52-EYE99jr2iWnqgok3RC6QRMPGAvnH85pRvGgVfd8.SJyARyf_p10iqYqH). 
 
 ## Recording  
 
-A recording of this workshop will be made available after the session.  
+A recording of this workshop will be made available after the session.
