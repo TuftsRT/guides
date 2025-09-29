@@ -10,7 +10,7 @@
 
 ## Contents
 
-Slides for this lecture is [HERE]()
+Slides for this lecture is
 
 Recording for this workshop will be updated after the workshop. 
 
