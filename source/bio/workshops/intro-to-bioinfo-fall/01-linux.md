@@ -18,7 +18,6 @@ Linux is a free, open-source, and Unix-like operating system kernel that was ori
 
 <img src="https://nixwindows.wordpress.com/wp-content/uploads/2015/02/linux-distro-stickers.png" width="600">
 
-
 ### Our clusters' OS
 
 ![](img/os.png)
@@ -276,7 +275,6 @@ more largefile.txt
 - **q**: Quit and exit more.
 - **/search_term**: Search for search_term within the file (forward only).
 
-
 #### grep:Extracting lines matching (not matching) a pattern
 
 ##### Usage
@@ -327,7 +325,6 @@ sed -i.bak 's/old/new/g' filename.txt
 ```
 sed '/pattern/d' filename.txt
 ```
-
 
 ### Data Compression and Archiving
 
