@@ -10,9 +10,9 @@
 
 ## Contents
 
-Slides for this lecture is [HERE]()
+Slides for this lecture is [HERE](<>)
 
-Recording for this workshop will be updated after the workshop. 
+Recording for this workshop will be updated after the workshop.
 
 ## E-List
 
