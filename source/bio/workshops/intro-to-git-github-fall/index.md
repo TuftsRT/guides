@@ -10,9 +10,9 @@
 
 ## Contents
 
-Slides for this lecture is [HERE](https://tufts.box.com/s/ej37uye5lnsxigjsp96g421lovgn641o)
+Slides for this lecture is HERE
 
-Recording for this workshop is [HERE](https://tufts.box.com/s/weuh9npw1zxx580s55kqe3fvy46jmjsz)
+Recording for this workshop will be available soon
 
 ## E-List
 
