@@ -13,9 +13,8 @@ Recording for this workshop is HERE
 
 ## Workshop List - 2025 Fall
 
-- **GLOBUS**
+- **Globus: Transferring Research Data**
 - **Intro to Bio**
-- 
 - **Introduction to Programming with Python**
   - *October 9, 2025, 3:00pm - 5:00pm*
 - **Introduction to Git & GitHub**
