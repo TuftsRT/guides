@@ -1,7 +1,7 @@
 # Introduction to Git & GitHub
 
 - Presenter: Shirley Li, PhD, Bioinformatician, [xue.li37@tufts.edu](mailto:xue.li37@tufts.edu)
-- Date: 2025-01-30
+- Date: 2025-10-15
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@
 
 ## Contents
 
-Slides for this lecture is HERE
+Slides for this lecture is [HERE](https://github.com/TuftsRT/guides/blob/shirley-patch-2/source/bio/workshops/intro_git_github-2025-fall.pdf)
 
 Recording for this workshop will be available soon
 
