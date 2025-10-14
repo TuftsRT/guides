@@ -14,7 +14,7 @@ grid-columns: 1
 ---
 - header: "{fas}`dna` Introduction to Git and GitHub - Fall"
   content: "This workshop is designed to provide participants with a foundational understanding of version control using Git and GitHub Desktop. "
-  link: "intro-to-git-github-fall.html"
+  link: "intro-to-git-github-fall/index.html"
 
 - header: "{fas}`dna`Getting started with Bioinformatics on Tufts HPC - Fall"
   content: "User guide to help users get started on running bioinformatics analysis on Tufts HPC."
