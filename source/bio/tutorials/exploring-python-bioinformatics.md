@@ -14,20 +14,20 @@ In this tutorial, we will use the **Anndata** package as an example to show how 
 ## Prerequisite
 
 1. Familiarity with Linux commands
-2. Experience working with conda environments
+1. Experience working with conda environments
 
 ## Creating conda environment
 
 1. Start an interactive job session
    `srun -p batch -n 1 --time=04:00:00 --mem 4g --pty bash`
 
-2. Load anacoda or minoconda module
+1. Load anacoda or minoconda module
    `module load anaconda/2025.06.0`
 
-3. Load conda-env-mod module
+1. Load conda-env-mod module
    `module load conda-env-mod/default`
 
-4. Configure your conda
+1. Configure your conda
 
    **_NOTE (steps in this session only needs to be executed ONCE)_**
 
@@ -65,7 +65,7 @@ In this tutorial, we will use the **Anndata** package as an example to show how 
      - defaults
    ```
 
-5. Create your conda environment with conda-env-mod
+1. Create your conda environment with conda-env-mod
 
    Change `yourenvname` to the name of the environment you intend to create
 
@@ -110,7 +110,7 @@ In this tutorial, we will use the **Anndata** package as an example to show how 
    Your environment "project_merfish" was created successfully.
    ```
 
-6. Activate conda environment and install new packages
+1. Activate conda environment and install new packages
 
    Note: `conda-env/project_merfish-py3.11.5 ` this may be different and it depends on what `yourenvname` you have
 
@@ -125,7 +125,6 @@ In this tutorial, we will use the **Anndata** package as an example to show how 
 
    conda list # check again
    ```
-
 
    ```
    # packages in environment at project_merfish:
@@ -143,7 +142,7 @@ In this tutorial, we will use the **Anndata** package as an example to show how 
    ...
    ```
 
-7. Create a jupyter kernel
+1. Create a jupyter kernel
 
    `conda-env-mod kernel -n project_merfish`
 
@@ -157,7 +156,6 @@ In this tutorial, we will use the **Anndata** package as an example to show how 
    | via the command line (with 'conda install' or 'pip install'). |
    +---------------------------------------------------------------+
    ```
-
 
 ## Using Open Ondemand Jupyter Lab
 
