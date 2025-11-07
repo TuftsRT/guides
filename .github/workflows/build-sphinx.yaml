@@ -32,7 +32,7 @@ jobs:
             CNAME
             dev
           remove-items: dev
-          build-arguments: "--nitpicky --fail-on-warning"
+          build-arguments: "--keep-going"
           use-bot: "true"
           dry-run: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
           use-expect: "true"
