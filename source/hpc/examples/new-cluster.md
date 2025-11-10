@@ -56,3 +56,4 @@ The following is a list of known issues that are currently being worked on.
 New GPU resources are available on this cluster.
 
 - H200 GPUs , request using `--gres=gpu:h200:1`
+- L40s GPUs , request using `--gres=gpu:l40s`
