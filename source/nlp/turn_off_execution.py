@@ -6,6 +6,19 @@ notebooks = [
     "./deep-learning/ner-spacy.ipynb",
     "./deep-learning/rnn-pytorch.ipynb",
     "./deep-learning/w2v-from-scratch.ipynb",
+    "./deep-learning/tokenizers.ipynb",
+    "./deep-learning/w2v-gensim.ipynb",
+    "./introduction/gentleintroto-nlp-1.ipynb",
+    "./introduction/regex-intro.ipynb",
+    "./pretrained-models/introducing-semantic-search.ipynb",
+    "./pretrained-models/language-hacking-workshop.ipynb",
+    "./pretrained-models/ner-pretrained.ipynb",
+    "./text-proc/textual-feature-extraction-using.ipynb",
+    "./text-proc/traditional-topic-modeling-using.ipynb",
+    "./text-proc/whoosh-search-engine.ipynb",
+    "./webscraping/dynamic-webscraping.ipynb",
+    "./webscraping/static-webscraping-with.ipynb",
+    "./webscraping/webscraping-iii-scraping-reddit.ipynb",
 ]
 
 
