@@ -17,7 +17,7 @@ repos:
       - id: text-unicode-replacement-char
         name: ensure all characters unicode
   - repo: https://github.com/hukkin/mdformat
-    rev: 0.7.22
+    rev: 1.0.0
     hooks:
       - id: mdformat
         name: format markdown files
@@ -33,17 +33,17 @@ repos:
       - id: rstfmt
         name: format rst files
   - repo: https://github.com/PyCQA/isort
-    rev: 6.0.1
+    rev: 7.0.0
     hooks:
       - id: isort
         name: sort python imports
-  - repo: https://github.com/psf/black
-    rev: 25.9.0
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 25.11.0
     hooks:
       - id: black-jupyter
         name: apply black style
   - repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3.9015
+    rev: v0.4.3.9017
     hooks:
       - id: style-files
         name: apply tidyverse style
