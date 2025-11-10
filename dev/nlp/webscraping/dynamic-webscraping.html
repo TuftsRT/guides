@@ -1,0 +1,1334 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Webscraping II: Dynamic websites &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'nlp/webscraping/dynamic-webscraping';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/nlp/webscraping/dynamic-webscraping.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Static Webscraping with BeautifulSoup" href="static-webscraping-with.html" />
+    <link rel="prev" title="Webscraping" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20251110" />
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Natural Language Processing 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text-proc/index.html">Text Processing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Webscraping</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Webscraping II: Dynamic websites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-webscraping-with.html">Static Webscraping with BeautifulSoup</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="webscraping-iii-scraping-reddit.html">The Art of Webscraping III: Scraping Reddit</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../pretrained-models/index.html">Using Pretrained Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep-learning/index.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../llms/index.html">Large Language Models</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Natural Language Processing</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Webscraping</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Webscraping II:...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">colab</span><span class="o">-</span><span class="n">selenium</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="webscraping-ii-dynamic-websites">
+<h1>Webscraping II: Dynamic websites<a class="headerlink" href="#webscraping-ii-dynamic-websites" title="Link to this heading">#</a></h1>
+<p>In the last notebook, we saw how to use <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> to scrape data from a website and read that data into a powerful data structure called a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. In this notebook, we’ll do something very similar again. We’ll be taking a website url, passing it through 3rd party software and extracting useful information that we can use to populate a DataFrame. This time, however, we will be scraping a <em>dynamic</em> website, that is a website whose HTML code is generated by an application.</p>
+<section id="our-task">
+<h2>Our task<a class="headerlink" href="#our-task" title="Link to this heading">#</a></h2>
+<p>The Packard Humanities Institute runs <a class="reference external" href="https://latin.packhum.org/">this site</a>, which collates and presents various textual data on classical Latin literature. It is a very useful resource, but they do not allow users to download anything,
+so we will give in a search query and scrape the resulting data to a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and save it.</p>
+</section>
+<section id="goals">
+<h2>Goals:<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Understand what a dynamic website is and how it is different from a static website</p></li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> along with it’s associated dependencies</p></li>
+<li><p>Navigate the content of the site both in <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> and <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code></p></li>
+<li><p>Get more experience with generating DataFrames</p></li>
+</ul>
+</section>
+<section id="what-is-a-dynamic-website">
+<h2>What is a dynamic website<a class="headerlink" href="#what-is-a-dynamic-website" title="Link to this heading">#</a></h2>
+<p>Let’s delve a bit deeper into what a dynamic website is and why we can’t just use <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> to parse it as we can with static websites. While a static webpage would require a manual update before content on the site can change, a dynamic website takes advantage of client and server-side scripting to be more adaptable to a user’s needs.</p>
+<ul class="simple">
+<li><p>Client-side scripting: code that is executed by the user’s browser, generally using JavaScript. This scripting renders changes to the site when the user interacts with it. This can be anything from selecting a choice in a drop down menu to full fledged games like Wordle. This type of scripting is also common in many static sites.</p></li>
+<li><p>Server-side scripting: code that is executed by the server before sending content to the user’s browser. This code can be written in a wide variety of languages like Ruby (<code class="docutils literal notranslate"><span class="pre">RubyOnRails</span></code>), JavaScript (<code class="docutils literal notranslate"><span class="pre">VueJS</span></code>, <code class="docutils literal notranslate"><span class="pre">NodeJS</span></code>) and Python (<code class="docutils literal notranslate"><span class="pre">Django</span></code>, <code class="docutils literal notranslate"><span class="pre">Flask</span></code>). This code generally gets inputs from querying a database associated with the site and outputs HTML code from a template. This way, programmers can update elements in their sites without having to rewrite large sections of it. But, it also means that the HTML is not yet generated when we do a get request.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">phi_url</span> <span class="o">=</span> <span class="s2">&quot;https://latin.packhum.org/&quot;</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="n">phi_url</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can easily pass the HTML for this page into <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code>, but we can’t interact with the page. We need to click the “Click here if you agree to this License”, but we don’t yet know how. What tool can we use to interact with the webpage and give us back the result of that interaction?</p>
+<p>The answer is: <code class="docutils literal notranslate"><span class="pre">Selenium</span></code>.</p>
+</section>
+<section id="getting-started-with-selenium">
+<h2>Getting started with <code class="docutils literal notranslate"><span class="pre">Selenium</span></code><a class="headerlink" href="#getting-started-with-selenium" title="Link to this heading">#</a></h2>
+<p>The syntax for <code class="docutils literal notranslate"><span class="pre">selenium</span></code> can be quite confusing compared to <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code>. Almost everything you do in <code class="docutils literal notranslate"><span class="pre">selenium</span></code> will go through a <code class="docutils literal notranslate"><span class="pre">WebDriver</span></code> object, below called <code class="docutils literal notranslate"><span class="pre">driver</span></code>. You should think of this a browser window on your own computer. We can do a variety of things with a <code class="docutils literal notranslate"><span class="pre">driver</span></code>, but most important are:</p>
+<ol class="arabic simple">
+<li><p>Submit a GET request to a webapge;</p></li>
+<li><p>Find elements on a page (like <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code>);</p></li>
+<li><p>Create a screenshot of what the page looks like;</p></li>
+<li><p>Click on elements;</p></li>
+<li><p>And write characters into an input box.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">google_colab_selenium</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gs</span>  <span class="c1"># from the google-colab-selenium package, will be different if you want to do this locally</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>  <span class="c1"># driver object is the main entry point for selenium</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># just like using requests, we will use a GET request</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">phi_url</span><span class="p">)</span>  <span class="c1"># this time its method on driver</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.common.by</span><span class="w"> </span><span class="kn">import</span> <span class="n">By</span>  <span class="c1"># allows us to select by different things</span>
+
+<span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;lic&quot;</span><span class="p">)</span>  <span class="c1"># selecting by class name</span>
+<span class="n">enter</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>  <span class="c1"># selenium allows us to click!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="navigating-using-selenium">
+<h2>Navigating using <code class="docutils literal notranslate"><span class="pre">Selenium</span></code><a class="headerlink" href="#navigating-using-selenium" title="Link to this heading">#</a></h2>
+<p>At this point, we will start to use <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> to <strong>automate the actions we would normally make</strong>. This is incredibly powerful. It means that anything you can do once in your own browser, you can replicate in <code class="docutils literal notranslate"><span class="pre">Selenium</span></code>, so you can link up any research process you have to Python, scraping and collecting along the way. Oftentimes though, <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> is not as reliable as you might expect and does things in a “illogical” or “weird” way. As a result, you need to foster a sense of what <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> will do for any given action.</p>
+<p>As always, adding logging and print statement can be very useful.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">save_screenshot</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>  <span class="c1"># driver can take a screenshot</span>
+    <span class="k">return</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+
+
+<span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">&quot;enter_button.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_elements</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Element number:&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;; Text: &quot;</span><span class="p">,</span> <span class="n">element</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># second element is &quot;Word Search&quot;</span>
+<span class="n">list_elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>  <span class="c1"># click on it</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">&quot;word_search.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_term</span> <span class="o">=</span> <span class="s2">&quot;artifex&quot;</span>  <span class="c1"># &quot;artist&quot; in latin</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">)</span>
+<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">search_term</span><span class="p">)</span>  <span class="c1"># send keys inputs the characters into a web element</span>
+<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># equal to hitting enter</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">&quot;search_results.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="starting-on-our-task">
+<h2>Starting on our task<a class="headerlink" href="#starting-on-our-task" title="Link to this heading">#</a></h2>
+<p>As I mentioned above, our task in this notebook is to collect search results. PHI will take in a search term, as we showed above, and return all times that that term appears in its corpus of Latin texts. It will give one line above and one line below. We would like to get all of this passages and organize them into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, making sure to track the author, title and citation of the work.</p>
+<section id="xpath">
+<h3>XPATH<a class="headerlink" href="#xpath" title="Link to this heading">#</a></h3>
+<p>Above we used <code class="docutils literal notranslate"><span class="pre">CLASS_NAME</span></code> and <code class="docutils literal notranslate"><span class="pre">TAG_NAME</span></code> to select web elements, but what if we need a more complex query? When using <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code>, we can use the <code class="docutils literal notranslate"><span class="pre">attrs</span></code> keyword argument in <code class="docutils literal notranslate"><span class="pre">find</span></code> and <code class="docutils literal notranslate"><span class="pre">find_all</span></code> to create complex queries. In <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> we use the <code class="docutils literal notranslate"><span class="pre">By.XPATH</span></code> option. What is XPATH? XML Path Language or XPATH is a simple expression language designed to query markup language documents, like XML and HTML. The syntax can look hard, but here are the key things to keep in mind:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> navigates through the markup tree through the tags between the slash;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">//</span></code> gets the following tag name and starts the query there;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;</span></code> indicates an attribute.</p></li>
+</ul>
+<p>The query below <code class="docutils literal notranslate"><span class="pre">//div[&#64;id='results']/ul/li</span></code> tells <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> to start at the first <code class="docutils literal notranslate"><span class="pre">div</span></code> tag with attribute <code class="docutils literal notranslate"><span class="pre">id='results'</span></code> and then get the first <code class="docutils literal notranslate"><span class="pre">ul</span></code> tags and then get all of the <code class="docutils literal notranslate"><span class="pre">li</span></code> tags.</p>
+<p>To learn more visit <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath">this page</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matches</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Great! We were able to use XPATH to get the results from PHI. But how do we then go to the next page?</p>
+<p>How would you do this in a browser? You would scroll down to the bottom of the page and then click on “Next”. We can do the same in <code class="docutils literal notranslate"><span class="pre">Selenium</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code scrolls to the bottom of the page</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span>
+    <span class="s2">&quot;window.scrollTo(0, document.body.scrollHeight);&quot;</span>
+<span class="p">)</span>  <span class="c1"># this is running a JavaScript snippet, not Python code</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">take_and_show_screenshot</span><span class="p">(</span>
+    <span class="n">driver</span><span class="p">,</span> <span class="s2">&quot;scroll_down.png&quot;</span>
+<span class="p">)</span>  <span class="c1"># nice we scrolled, now we need to click</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">next_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+    <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[@class=&#39;plink pg_n&#39;]&quot;</span>
+<span class="p">)</span>  <span class="c1"># find the next button</span>
+<span class="n">next_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>  <span class="c1"># click!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">&quot;next_page.png&quot;</span><span class="p">)</span>  <span class="c1"># and now were on the next page</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matches</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">)</span>
+<span class="p">)</span>  <span class="c1"># lets do the same as above, get the matches and add them to our list</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>  <span class="c1"># huh? why&#39;s it not working</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What is a <code class="docutils literal notranslate"><span class="pre">StaleElementReferenceException</span></code> and why is the error so weird looking? <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> is not a native Python package. It is written in another programming language called Java (not JavaScript either). As a result, it is not being run in the same runtime as our normal Python code. Thankfully, we don’t really need to worry about this until there’s an error, at which point, we won’t be able to see exactly what caused the error.</p>
+<p>In this case, a <code class="docutils literal notranslate"><span class="pre">StaleElementReferenceException</span></code> refers to what happens when <strong><code class="docutils literal notranslate"><span class="pre">Selenium</span></code> attempts to access a web element that is no longer on the page</strong> This can happen a lot, especially if you are scrolling and moving between pages. To deal with this problem, we need to get all of the text/data we need from a web element on its original page.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a function that strips all of the relevant info</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_relevant_info</span><span class="p">(</span><span class="n">one_match</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">one_match</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">cite_link</span> <span class="o">=</span> <span class="n">one_match</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">text</span><span class="p">,</span> <span class="n">cite_link</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matches</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">one_match</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">get_relevant_info</span><span class="p">(</span><span class="n">one_match</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="pulling-it-all-together">
+<h2>Pulling it all together<a class="headerlink" href="#pulling-it-all-together" title="Link to this heading">#</a></h2>
+<p>Now that we’ve explore the first few pages of results, we are ready to pull all of the pieces together and create a short script that will take in a user query and scrape all of the relevant data from it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="c1"># last thing: there&#39;s a tracker at the top of the page that tells us how many results to expect</span>
+<span class="c1"># we can get the text there to make sure we have everything</span>
+<span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+) results&quot;</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">num_matches</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">selenium.common.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">NoSuchElementException</span><span class="p">,</span>
+<span class="p">)</span>  <span class="c1"># the error when the search bar isn&#39;t there</span>
+
+<span class="c1"># reinitializing the driver</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">phi_url</span><span class="p">)</span>
+
+<span class="c1"># click on enter button</span>
+<span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;lic&quot;</span><span class="p">)</span>
+<span class="n">enter</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+<span class="c1"># click on &quot;Word Search&quot;</span>
+<span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span><span class="p">)</span>
+<span class="n">list_elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+<span class="c1"># submit search term</span>
+<span class="n">search_term</span> <span class="o">=</span> <span class="s2">&quot;artifex&quot;</span>  <span class="c1"># feel free to change</span>
+<span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">)</span>
+<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">search_term</span><span class="p">)</span>
+<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># get number of matches</span>
+<span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+) results&quot;</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of expected results: &quot;</span><span class="p">,</span> <span class="n">num_matches</span><span class="p">)</span>
+
+<span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">page_matches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">):</span>
+        <span class="n">page_matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_relevant_info</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
+    <span class="n">matches</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">page_matches</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;window.scrollTo(0, document.body.scrollHeight);&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">next_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[@class=&#39;plink pg_n&#39;]&quot;</span><span class="p">)</span>
+        <span class="n">next_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">NoSuchElementException</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Huh! Why didn’t it work? What is a <code class="docutils literal notranslate"><span class="pre">NoSuchElementException</span></code>. Like the last error we saw, the traceback is not very helpful, though it does tell us what XPATH set off the error: <code class="docutils literal notranslate"><span class="pre">//div[&#64;id='stats']</span></code>.</p>
+<p>This is getting thrown because <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> is trying to find the results amount before it as loaded into the page. We get a <code class="docutils literal notranslate"><span class="pre">NoSuchElementException</span></code> because, to <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> in the moment that we run this line: <code class="docutils literal notranslate"><span class="pre">driver.find_element(By.XPATH,</span> <span class="pre">&quot;//div[&#64;id='stats']&quot;).text</span></code>, the XPATH <code class="docutils literal notranslate"><span class="pre">//div[&#64;id='stats']</span></code> does not exist, likely nothing exists on the page.</p>
+<p>As a result, we need to have the <code class="docutils literal notranslate"><span class="pre">driver</span></code> wait before we run that code. We can use <code class="docutils literal notranslate"><span class="pre">time.sleep</span></code> to do this. <em>Note</em>: There are ways of doing this in <code class="docutils literal notranslate"><span class="pre">Selenium</span></code> as well, but they’re a little hit-or-miss, and most programmers use <code class="docutils literal notranslate"><span class="pre">time.sleep</span></code> anyways.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="c1"># reinitializing the driver</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">phi_url</span><span class="p">)</span>
+
+<span class="c1"># click on enter button</span>
+<span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;lic&quot;</span><span class="p">)</span>
+<span class="n">enter</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+<span class="c1"># click on &quot;Word Search&quot;</span>
+<span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span><span class="p">)</span>
+<span class="n">list_elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+<span class="c1"># submit search term</span>
+<span class="n">search_term</span> <span class="o">=</span> <span class="s2">&quot;artifex&quot;</span>  <span class="c1"># feel free to change</span>
+<span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">)</span>
+<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">search_term</span><span class="p">)</span>
+<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># wait for the search to load</span>
+
+<span class="c1"># get number of matches</span>
+<span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+) results&quot;</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of expected results: &quot;</span><span class="p">,</span> <span class="n">num_matches</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">current_page</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">page_matches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">):</span>
+        <span class="n">page_matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_relevant_info</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
+    <span class="n">matches</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">page_matches</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current page: &quot;</span><span class="p">,</span> <span class="n">current_page</span><span class="p">)</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;window.scrollTo(0, document.body.scrollHeight);&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># wait for the scroll to load</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">next_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[@class=&#39;plink pg_n&#39;]&quot;</span><span class="p">)</span>
+        <span class="n">next_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="n">current_page</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># wait for the next page to load</span>
+    <span class="k">except</span> <span class="n">NoSuchElementException</span><span class="p">:</span>
+        <span class="k">break</span>  <span class="c1"># break out of loop if the next button isn&#39;t there</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>  <span class="c1"># takes about a minute to run</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="curating-our-data">
+<h2>Curating our data<a class="headerlink" href="#curating-our-data" title="Link to this heading">#</a></h2>
+<p>We now have a lot of useful datafrom PHI, but it’s not in a useful format. For example, there are some results that have one passage of three lines and others that have multiple passages and citations in them. This is a problem. To create a good dataset, the shape of our data should be homogeneous.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># one match per result</span>
+<span class="n">matches</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># multiple matches in one result</span>
+<span class="n">matches</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">splits</span> <span class="o">=</span> <span class="n">matches</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># \n is a helpful delimiter</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># citation info</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">citations</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s]+ (.*)&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span>
+    <span class="mi">1</span>
+<span class="p">)</span>  <span class="c1"># regex to separate the numbers</span>
+<span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>  <span class="c1"># split on the comma</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we’ve separated out the citations and the passages, we need to align the citation to correct passage. Unfortunately, each line is just separated by <code class="docutils literal notranslate"><span class="pre">\n</span></code> and there is nothing separating the passages from each other. Thus, below I show how we can separate the raw data into a list of lists of three lines each, using the <code class="docutils literal notranslate"><span class="pre">range</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>  <span class="c1"># where to start</span>
+    <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span>  <span class="c1"># how far to go</span>
+    <span class="mi">3</span><span class="p">,</span>  <span class="c1"># how many steps to take for each iteration</span>
+<span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>  <span class="c1"># where to start</span>
+    <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span>  <span class="c1"># how far to go</span>
+    <span class="mi">3</span><span class="p">,</span>  <span class="c1"># how many steps to take for each iteration</span>
+<span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span><span class="p">])</span>  <span class="c1"># current line</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># the next line</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># the last line</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">3</span><span class="p">)]</span>  <span class="c1"># as a list comprehension</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">passages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">]</span>  <span class="c1"># joining lists into a single passage</span>
+<span class="n">passages</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">citations</span> <span class="o">=</span> <span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">citations</span><span class="p">,</span> <span class="n">passages</span><span class="p">))</span>  <span class="c1"># zip to align them</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># full code for formatting all of the info</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">one_match</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
+    <span class="n">splits</span> <span class="o">=</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">author_title</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s]+&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># the case where we have more than one passage per result</span>
+        <span class="c1"># same code as above</span>
+        <span class="n">citations</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s]+ (.*)&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">citations</span> <span class="o">=</span> <span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+        <span class="n">passages</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">citations</span><span class="p">,</span> <span class="n">passages</span><span class="p">))</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># the case were one result has one match</span>
+        <span class="c1"># this is new</span>
+        <span class="n">citation</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s\.]+ (.*)&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span>
+            <span class="mi">1</span>
+        <span class="p">)</span>  <span class="c1"># gets citation the same way</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># collects and joins text</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">citation</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># putting it in a dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="s2">&quot;citation&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;cite_link&quot;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="final-function">
+<h2>Final function<a class="headerlink" href="#final-function" title="Link to this heading">#</a></h2>
+<p>Yay! We got the data we wanted and in the form we wanted it in. Now, we can create a function that just takes in the user query and gives back the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">search_phi</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+    <span class="c1"># collecting the data</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">phi_url</span><span class="p">)</span>
+
+    <span class="c1"># click on enter button</span>
+    <span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;lic&quot;</span><span class="p">)</span>
+    <span class="n">enter</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+    <span class="c1"># click on &quot;Word Search&quot;</span>
+    <span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span><span class="p">)</span>
+    <span class="n">list_elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+    <span class="c1"># submit search term</span>
+    <span class="n">search_term</span> <span class="o">=</span> <span class="n">query</span>
+    <span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">)</span>
+    <span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">search_term</span><span class="p">)</span>
+    <span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># wait for the search to load</span>
+
+    <span class="c1"># get number of matches</span>
+    <span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+) results&quot;</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of expected results: &quot;</span><span class="p">,</span> <span class="n">num_matches</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">current_page</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">page_matches</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">):</span>
+            <span class="n">page_matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_relevant_info</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
+        <span class="n">matches</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">page_matches</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current page: &quot;</span><span class="p">,</span> <span class="n">current_page</span><span class="p">)</span>
+        <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;window.scrollTo(0, document.body.scrollHeight);&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># wait for the scroll to load</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">next_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[@class=&#39;plink pg_n&#39;]&quot;</span><span class="p">)</span>
+            <span class="n">next_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+            <span class="n">current_page</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># wait for the next page to load</span>
+        <span class="k">except</span> <span class="n">NoSuchElementException</span><span class="p">:</span>
+            <span class="k">break</span>  <span class="c1"># break out of loop if the next button isn&#39;t there</span>
+        <span class="nb">print</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>  <span class="c1"># takes about a minute to run</span>
+
+    <span class="c1"># format data</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">one_match</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
+        <span class="n">splits</span> <span class="o">=</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">author_title</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s]+&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">author</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># the case where we have more than one passage per result</span>
+            <span class="c1"># same code as above</span>
+            <span class="n">citations</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s]+ (.*)&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">citations</span> <span class="o">=</span> <span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+            <span class="n">passages</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="p">]</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">citations</span><span class="p">,</span> <span class="n">passages</span><span class="p">))</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># the case were one result has one match</span>
+            <span class="c1"># this is new</span>
+            <span class="n">citation</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s\.]+ (.*)&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span>
+                <span class="mi">1</span>
+            <span class="p">)</span>  <span class="c1"># gets citation the same way</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># collects and joins text</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">citation</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="s2">&quot;citation&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;cite_link&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">instar_df</span> <span class="o">=</span> <span class="n">search_phi</span><span class="p">(</span><span class="s2">&quot;instar&quot;</span><span class="p">)</span>
+<span class="n">instar_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualize titles</span>
+<span class="n">instar_df</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualize authors</span>
+<span class="n">instar_df</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Webscraping</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="static-webscraping-with.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Static Webscraping with BeautifulSoup</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Webscraping II: Dynamic websites
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-task">Our task</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-dynamic-website">What is a dynamic website</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-selenium">Getting started with <code class="docutils literal notranslate"><span class="pre">Selenium</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigating-using-selenium">Navigating using <code class="docutils literal notranslate"><span class="pre">Selenium</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-on-our-task">Starting on our task</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xpath">XPATH</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pulling-it-all-together">Pulling it all together</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curating-our-data">Curating our data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-function">Final function</a></li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/nlp/webscraping/dynamic-webscraping.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/nlp/webscraping/dynamic-webscraping.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: nlp/webscraping/dynamic-webscraping"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Nov 10, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

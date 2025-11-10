@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Using pretrained models for Named Entity Recognition (NER) &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'nlp/pretrained-models/ner-pretrained';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/nlp/pretrained-models/ner-pretrained.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Deep Learning" href="../deep-learning/index.html" />
+    <link rel="prev" title="Language Hacking: Using spaCy for Morphosyntactic Analysis" href="language-hacking-workshop.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20251110" />
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Natural Language Processing 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text-proc/index.html">Text Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webscraping/index.html">Webscraping</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Using Pretrained Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introducing-semantic-search.html">Introducing Semantic Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language-hacking-workshop.html">Language Hacking: Using <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> for Morphosyntactic Analysis</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Using pretrained models for Named Entity Recognition (NER)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep-learning/index.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../llms/index.html">Large Language Models</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Natural Language Processing</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Using Pretrained Models</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Using pretrained...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="using-pretrained-models-for-named-entity-recognition-ner">
+<h1>Using pretrained models for Named Entity Recognition (NER)<a class="headerlink" href="#using-pretrained-models-for-named-entity-recognition-ner" title="Link to this heading">#</a></h1>
+<p>In this notebook, we are going to explore an important subfield of natural language processing, named entity recognition or NER.</p>
+<p>By the end of today’s class you’ll be able to:</p>
+<ul class="simple">
+<li><p>Use a pretrained <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> model to find named entities, especially for a non-English language</p></li>
+<li><p>Explain why finding named entities is challenging without the use of a pretrained token classification model</p></li>
+<li><p>Employ list comprehensions and advanced dictionaries in Python to parse model output</p></li>
+<li><p>Install spaCy and download associated models in a Colab notebook</p></li>
+</ul>
+<section id="what-is-ner-and-why-does-it-matter">
+<h2>What is NER and why does it matter?<a class="headerlink" href="#what-is-ner-and-why-does-it-matter" title="Link to this heading">#</a></h2>
+<p>Named entity recognition describes any method which uses computational methods to extract from unstructured text names of people, places or things. It is a hard classification task, meaning that every word in a document is either a type of named entity or it is not. For example in the following sentences:</p>
+<blockquote>
+<div><p>My name is Peter Nadel. I work at Tufts University.</p>
+</div></blockquote>
+<p>the token ‘Peter Nadel’ could be tagged as a PERSON tag, where as Tufts Univerisity could be tagged with a PLACE tag. Importantly, in NER, no token can receive more than one tag.</p>
+<p>As a result, NER can be using in a wide variety of fields and applications.</p>
+</section>
+<section id="how-do-you-do-ner">
+<h2>How do you do NER?<a class="headerlink" href="#how-do-you-do-ner" title="Link to this heading">#</a></h2>
+<p>Just like many other NLP tasks, there are two main ways of conducting NER:</p>
+<ol class="arabic simple">
+<li><p><strong>Rules-based</strong>: This approach involves developing a list of rules which can identify a named entity deterministically. For example, if we wanted to identify someone’s name, we would develop a rule like: find two words that are capitalized next to each other. This has the advantage that we will always find the entities we have rules for, but as the disadvantage that we have to make a huge amount of rules for this approach to be effective.</p></li>
+<li><p><strong>Machine learning</strong>: This approach involves collecting and manually annotating many examples of what named entities look like in context. We can then teach a computer what a named entity looks like, allowing it to identify named entities in new texts. This has the advantage that we don’t need to know exactly what a named entity looks like to work, but requires considerable manual annotation to get started.</p></li>
+</ol>
+<p>In this notebook, we will use a machine learning <em>model</em> to conduct NER. This will be a <em>pretrained</em> model, meaning that someone else already spent the time and energy to make it so that it works and we don’t need to worry about that. (However, later in the course we will train an NER model from scratch.)</p>
+</section>
+<section id="preparing-for-ner">
+<h2>Preparing for NER<a class="headerlink" href="#preparing-for-ner" title="Link to this heading">#</a></h2>
+<p>We’ll be using a package called <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> to conduct our NER. <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> has a variety of pretrained models that we can take advantage of. The number of languages that <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> support is somewhat small, but through this class we’ll see how we can supplement it with other languages. For this example, we’ll use <code class="docutils literal notranslate"><span class="pre">LatinCy</span></code>, a <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> module for the Latin language. The model we’ll be using was trained by <a class="reference external" href="https://isaw.nyu.edu/people/staff/patrick-burns">Patrick Burns</a>, a researcher at NYU’s Institute for the Study of the Ancient World.</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> and <code class="docutils literal notranslate"><span class="pre">LatinCy</span></code> do not come with this Colab notebook by default, so we’ll need to install them. We will be using <code class="docutils literal notranslate"><span class="pre">pip</span></code>, a command line tool for installing Python packages, to do so.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># installations: recall that we use the &#39;!&#39; to indicate that this is a shell command</span>
+<span class="c1"># this cell will take about 5 min to run</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">spacy</span> <span class="n">transformers</span>
+<span class="err">!</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spacy</span> <span class="n">download</span> <span class="n">en_core_web_lg</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">spacy_lookups_data</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="s2">&quot;la-core-web-lg @ https://huggingface.co/latincy/la_core_web_lg/resolve/main/la_core_web_lg-any-py3-none-any.whl&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-spacy-for-named-entity-recognition">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> for Named Entity Recognition<a class="headerlink" href="#using-spacy-for-named-entity-recognition" title="Link to this heading">#</a></h2>
+<section id="english-examples">
+<h3>English examples<a class="headerlink" href="#english-examples" title="Link to this heading">#</a></h3>
+<p>Before we turn to <code class="docutils literal notranslate"><span class="pre">LatinCy</span></code>, let’s take a look at what this task looks like for some simple English texts. Then we can apply the same rationale to using the Latin model with complex Latin texts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+
+<span class="n">english_nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+    <span class="s2">&quot;en_core_web_lg&quot;</span>
+<span class="p">)</span>  <span class="c1"># nlp object takes in the model name and give us back a tool we can work with</span>
+<span class="n">english_nlp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example from above</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">My name is Peter Nadel. I work at Tufts University.</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">english_nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>  <span class="c1"># call english_nlp with text to get a doc object</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># investigate the Doc object</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">spacy.tokens.doc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Doc</span>
+
+<span class="n">Doc</span>  <span class="c1"># can find same info here: https://spacy.io/api/doc</span>
+<span class="c1"># break for two to three minutes to think of some questions</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get entities</span>
+<span class="n">entities</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">entities</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entity </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;| Entity Type: &quot;</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">label_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># now let&#39;s try a more complex example: the opening of middlemarch by goerge eliot</span>
+<span class="c1"># Go back and replace this text when you&#39;re ready</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">It was after the Nycene synod, and under the reign of the pious Irene, that the popes consummated the separation of Rome and Italy, by the translation of the empire to the less orthodox Charlemagne. They were compelled to choose between the rival nations: religion was not the sole motive of their choice; and while they dissembled the failings of their friends, they beheld, with reluctance and suspicion, the Catholic virtues of their foes. The difference of language and manners had perpetuated the enmity of the two capitals; and they were alienated from each other by the hostile opposition of seventy years. In that schism the Romans had tasted of freedom, and the popes of sovereignty: their submission would have exposed them to the revenge of a jealous tyrant; and the revolution of Italy had betrayed the impotence, as well as the tyranny, of the Byzantine court. The Greek emperors had restored the images, but they had not restored the Calabrian estates 85 and the Illyrian diocese, 86 which the Iconociasts had torn away from the successors of St. Peter; and Pope Adrian threatens them with a sentence of excommunication unless they speedily abjure this practical heresy. 87 The Greeks were now orthodox; but their religion might be tainted by the breath of the reigning monarch: the Franks were now contumacious; but a discerning eye might discern their approaching conversion, from the use, to the adoration, of images. The name of Charlemagne was stained by the polemic acrimony of his scribes; but the conqueror himself conformed, with the temper of a statesman, to the various practice of France and Italy. In his four pilgrimages or visits to the Vatican, he embraced the popes in the communion of friendship and piety; knelt before the tomb, and consequently before the image, of the apostle; and joined, without scruple, in all the prayers and processions of the Roman liturgy. Would prudence or gratitude allow the pontiffs to renounce their benefactor? Had they a right to alienate his gift of the Exarchate? Had they power to abolish his government of Rome? The title of patrician was below the merit and greatness of Charlemagne; and it was only by reviving the Western empire that they could pay their obligations or secure their establishment. By this decisive measure they would finally eradicate the claims of the Greeks; from the debasement of a provincial town, the majesty of Rome would be restored: the Latin Christians would be united, under a supreme head, in their ancient metropolis; and the conquerors of the West would receive their crown from the successors of St. Peter. The Roman church would acquire a zealous and respectable advocate; and, under the shadow of the Carlovingian power, the bishop might exercise, with honor and safety, the government of the city. 88</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+    <span class="s2">&quot; </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span>
+<span class="p">)</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">english_nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">entities</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">entities</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entity </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;| Entity Type: &quot;</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">label_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s a lot more entities, so let’s start store this data in a data structure. In Introduction to Digital Humanities, you probably saw how to count words in a block of text. Here we’ll do a similar thing but first we’ll count the number of times an entity is mentioned and then we’ll count how many times a entity type is mentioned.</p>
+<p>And we’ll actually do both of these in two different ways:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">defaultdict</span></code>: a default dictionary is a data structure in Python that functions like a dictionary, but the values are of a certain type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Counter</span></code>: a dictionary that is designed for counting discrete elements of an list or string.</p></li>
+</ul>
+<p>Additionally, for the <code class="docutils literal notranslate"><span class="pre">Counter</span></code>, we’ll need to separate the entities list out into a list of entities and a list of their labels. To do so, we’ll use list comprehensions. A list comprehension is a special Python syntax that allows us to put a loop on a single line. See the example below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># normal for loop</span>
+<span class="n">holder</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+    <span class="n">holder</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># list comprehension</span>
+<span class="n">holder</span> <span class="o">=</span> <span class="p">[</span><span class="n">element</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Importantly, these two blocks of code do the same thing, it’s just that the list comprehension is on a single line. This can help with efficiency (though only for small- to medium-sized lists) and is easier to read.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># method one: defaultdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">entity_counts</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">entity_type_counts</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># for loop for incrementing</span>
+<span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">:</span>
+    <span class="n">entity_counts</span><span class="p">[</span><span class="n">entity</span><span class="o">.</span><span class="n">text</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">entity_type_counts</span><span class="p">[</span><span class="n">entity</span><span class="o">.</span><span class="n">label_</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># top 3 of each</span>
+<span class="c1"># you may not have seen lambda before, we will discuss later in the course, link for those interested: https://docs.python.org/3/glossary.html#term-lambda</span>
+<span class="k">for</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
+    <span class="n">entity_type_counts</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)[:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">entity_type</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">entity</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span>
+    <span class="p">:</span><span class="mi">3</span>
+<span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">entity</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># method two: Counter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="c1"># we need a two lists for entities and labels</span>
+<span class="n">entity_texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">ent</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">]</span>
+<span class="n">entity_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">]</span>
+
+<span class="n">entity_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">entity_texts</span><span class="p">)</span>
+<span class="n">entity_type_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">entity_labels</span><span class="p">)</span>
+
+<span class="c1"># top 3 of each</span>
+<span class="k">for</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">entity_type_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">entity_type</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">entity</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">entity_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">entity</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can now even plot the results</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Entity&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Entity Counts&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">entity_type_counts</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">entity_type_counts</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Entity Type&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Entity Type Counts&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="non-english-case-parsing-latin-texts">
+<h3>Non-English case: Parsing Latin texts<a class="headerlink" href="#non-english-case-parsing-latin-texts" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;la_core_web_lg&quot;</span><span class="p">)</span>  <span class="c1"># loading the latin model instead of the english one</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="data-collection-and-scraping">
+<h4>Data collection and scraping<a class="headerlink" href="#data-collection-and-scraping" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># for this example we&#39;ll use Cicero&#39;s Letter&#39;s to Atticus</span>
+<span class="c1"># here we download it in XML form and parse it with BeautifulSoup4</span>
+<span class="c1"># if you don&#39;t remember this from the intro class, don&#39;t worry we&#39;ll revisit this in week 5</span>
+<span class="err">!</span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">perseus</span><span class="o">.</span><span class="n">tufts</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">hopper</span><span class="o">/</span><span class="n">dltext</span><span class="err">?</span><span class="n">doc</span><span class="o">=</span><span class="n">Perseus</span><span class="o">%</span><span class="mi">3</span><span class="n">Atext</span><span class="o">%</span><span class="mi">3</span><span class="n">A1999</span><span class="mf">.02.0008</span> <span class="o">-</span><span class="n">O</span> <span class="n">atticus</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;atticus.xml&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">features</span><span class="o">=</span><span class="s2">&quot;xml&quot;</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;div2&quot;</span><span class="p">)</span>  <span class="c1"># first letter</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>  <span class="c1"># need to use regular expressions to do some cleaning, we&#39;ll revisit this too</span>
+
+<span class="n">letters</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;div2&quot;</span><span class="p">):</span>
+    <span class="n">dateline</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">dateline</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">salute</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">salute</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+    <span class="n">letters</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">dateline</span><span class="p">,</span> <span class="n">salute</span><span class="p">,</span> <span class="n">text</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># now we can use pandas to store the data for each letter</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dateline&quot;</span><span class="p">,</span> <span class="s2">&quot;salute&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example parse with one letter</span>
+<span class="n">first_letter</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_letter_doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">first_letter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first_letter_entities</span> <span class="o">=</span> <span class="n">first_letter_doc</span><span class="o">.</span><span class="n">ents</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">first_letter_entities</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Entity </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">,</span>
+        <span class="n">entity</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+        <span class="s2">&quot;| Entity Type: &quot;</span><span class="p">,</span>
+        <span class="n">entity</span><span class="o">.</span><span class="n">label_</span><span class="p">,</span>
+        <span class="s2">&quot;| Entity Lemma: &quot;</span><span class="p">,</span>
+        <span class="n">entity</span><span class="o">.</span><span class="n">lemma_</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="c1"># here I also print out the words lemma, the base form of the word for counting purposes</span>
+<span class="c1"># more on this next week</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_entity_counts</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">entities</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span>
+    <span class="n">entity_texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">ent</span><span class="o">.</span><span class="n">lemma_</span> <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">]</span>  <span class="c1"># counting lemmas not text</span>
+    <span class="n">entity_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">]</span>
+    <span class="n">entity_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">entity_texts</span><span class="p">)</span>
+    <span class="n">entity_type_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">entity_labels</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">entity_counts</span><span class="p">,</span> <span class="n">entity_type_counts</span>
+
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;entity_counts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_entity_counts</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;entity_type_counts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>  <span class="c1"># taking the type counts</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;entity_counts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># taking the lemma counts</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">all_entity_counts</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">all_type_counts</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">entity_type_counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># limiting the plot below to 15 so that there aren&#39;t too many</span>
+<span class="n">top_15_entities</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">all_entity_counts</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span>
+    <span class="p">:</span><span class="mi">15</span>
+<span class="p">]</span>
+<span class="n">top_15_entities</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">top_15_entities</span><span class="p">)</span>
+<span class="n">top_15_entities</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">top_15_entities</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">top_15_entities</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Entity&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Entity Counts&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">all_type_counts</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_type_counts</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Entity Type&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Entity Type Counts&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>We’ve seen today how using specialized, pretrained models can help us do tasks like named entity recognition. We also worked on our Python skills in data parsing and plotting. In the next class, we will discuss some of the other features of <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> models.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="language-hacking-workshop.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Language Hacking: Using <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> for Morphosyntactic Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../deep-learning/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deep Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Using pretrained models for Named Entity Recognition (NER)
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-ner-and-why-does-it-matter">What is NER and why does it matter?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-you-do-ner">How do you do NER?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-for-ner">Preparing for NER</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-spacy-for-named-entity-recognition">Using <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> for Named Entity Recognition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#english-examples">English examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-english-case-parsing-latin-texts">Non-English case: Parsing Latin texts</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection-and-scraping">Data collection and scraping</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/nlp/pretrained-models/ner-pretrained.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/nlp/pretrained-models/ner-pretrained.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: nlp/pretrained-models/ner-pretrained"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Nov 10, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

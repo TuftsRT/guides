@@ -1,0 +1,1085 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>A Gentle Introduction to Natural Language Process &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'nlp/introduction/gentleintroto-nlp-1';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/nlp/introduction/gentleintroto-nlp-1.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Regular Expressions" href="regex-intro.html" />
+    <link rel="prev" title="Introduction" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20251110" />
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Natural Language Processing 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">A Gentle Introduction to Natural Language Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="regex-intro.html">Regular Expressions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../text-proc/index.html">Text Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webscraping/index.html">Webscraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pretrained-models/index.html">Using Pretrained Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep-learning/index.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../llms/index.html">Large Language Models</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Natural Language Processing</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Introduction</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      A Gentle Introduction...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="a-gentle-introduction-to-natural-language-process">
+<h1>A Gentle Introduction to Natural Language Process<a class="headerlink" href="#a-gentle-introduction-to-natural-language-process" title="Link to this heading">#</a></h1>
+<p>Today, we will take a text, <em>War and Peace</em> by Leo Tolstoy, and try to get verify or refute the claims of an outside source, <em>Tolstoy’s Phoenix: From Method to Meaning in War and Peace</em> by George R. Clay (1998). This is a very common task both in and outside of the digital humanities and will introduce you to the popular NLP Python package, the Natural Language Toolkit (NLTK), and expose you to common methodologies for wrangling textual data.</p>
+<section id="our-overall-task">
+<h2>Our overall task<a class="headerlink" href="#our-overall-task" title="Link to this heading">#</a></h2>
+<p>We will start by downloading the book and then we will learn how to clean the text, perform basic statistics, create visualizations, and discuss what we found and how to present those results</p>
+</section>
+<section id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Understand the rights we have to access books on Project Gutenberg</p></li>
+<li><p>Read in a text from Project Gutenberg</p></li>
+<li><p>Clean textual data using regular expressions</p></li>
+<li><p>Perform basic word frequency statistics</p></li>
+<li><p>Create visualziations of these statistics</p></li>
+<li><p>Discuss how to communicte these results</p></li>
+<li><p>Return to our research question</p></li>
+</ul>
+</section>
+<section id="general-methods">
+<h2>General methods<a class="headerlink" href="#general-methods" title="Link to this heading">#</a></h2>
+<section id="read-in-our-data">
+<h3>Read in our data<a class="headerlink" href="#read-in-our-data" title="Link to this heading">#</a></h3>
+<p>We will start with a url from Project Gutenberg. All of the texts from Gutenberg are in the public domain, so we won’t have to worry about rights, but be aware of who own the intellectual property to a text before you scrape it. In this section, we will break the text up by chapter division. Later we’ll do the same but by book division.</p>
+<section id="the-requests-library">
+<h4>The requests library<a class="headerlink" href="#the-requests-library" title="Link to this heading">#</a></h4>
+<p>Here, we are using a library called <code class="docutils literal notranslate"><span class="pre">requests</span></code>. This library is great for HTTP requests, which are like asking for a specific action from the internet.</p>
+<p>More details below:
+<a class="reference external" href="https://pypi.org/project/requests/">https://pypi.org/project/requests/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.gutenberg.org/cache/epub/2600/pg2600.txt&quot;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## IMPORTANT: this pipeline will work for all text, but you will need to understand your text</span>
+<span class="c1">## There is no one-size-fits-all for text cleaning, especially for extra information, like tables</span>
+<span class="c1">## of content and disclaimers</span>
+
+<span class="c1"># In this case, we found the first line that states the start of the book. We found this by looking at the actual book.</span>
+<span class="c1"># Link to book: https://www.gutenberg.org/cache/epub/2600/pg2600.txt</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;BOOK ONE: 1805</span><span class="se">\r\n\r\n\r\n\r\n\r\n\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">start</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">end</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;END OF THE PROJECT GUTENBERG EBOOK WAR AND PEACE&quot;</span><span class="p">)</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Using the start and end points that we found above, we can filter out all of the text before the start of the book</span>
+<span class="c1">## and after its end.</span>
+
+<span class="c1">## In Python, we can use square brackets to delimit the new start and new end that we want. As we see below:</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have a text that we are confident is nothing but the text of the book, we can begin to dissect it into its component parts. First, let’s break it up into chapters.</p>
+<p>To do so, I am using a very versatile package called <code class="docutils literal notranslate"><span class="pre">re</span></code> or regular expressions (regex) to do some advanced string parsing. This regex function, finditer, takes in a pattern and a text and returns all of the times that pattern occurs in the text. These patterns can look very complicated, but, in this case, it is ‘(Chapter [A-Z]+)’, which means: <em>find all of the times when there is the word ‘CHAPTER’ followed by a space and then any amount of capital letters</em>.
+This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or CHAPTER XII)
+<br></p>
+<p>Finditer also return the indices where the chapter title begins and ends. So, we can use the ending of one chapter title and the beginning of the next one to get all of the text in between the two chapters. This text is, by definition, the text in that chapter.</p>
+<p>You can read more about regex <a class="reference external" href="https://librarycarpentry.org/lc-data-intro-archives/04-regular-expressions/index.html">here</a> and you can play around with your own regex at <a class="reference external" href="https://regex101.com/">regex101</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">ch_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">ch_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(CHAPTER [A-Z]+)&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ch_list</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ch_list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">ch_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Chapter </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ch_list</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ch_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Chapter </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have all the text extracted! But… dictionaries are not the most useful data structure. They can be difficult to query and to get basic statistics from. So we will convert our dictionary into a more robust data structure, a dataframe from the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> package.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>  <span class="c1">## You will almost always see pandas imported this way.</span>
+
+<span class="c1">## Let&#39;s see what happens when we input the dictionary directly</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ch_dict</span><span class="p">)</span>
+<span class="c1">## it&#39;s close but not quite what we wanted</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## pandas is programmed to look for numerical indices, which dictionaries (because they&#39;re an unordered data type) do not have</span>
+<span class="c1">## we can coerce it though to accept string values as the index with the &#39;from_dict&#39; method and the &#39;orient&#39; keyword argument</span>
+<span class="c1">## the &#39;reset_index&#39; method will then turn our index into a column and give us an index for the rows</span>
+<span class="n">ch_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">ch_dict</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
+<span class="n">ch_df</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">ch_df</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;chapter&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;start_idx&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;end_idx&quot;</span><span class="p">})</span>
+<span class="n">ch_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that the dataframe is in the correct orientation, let’s use the indices that we got to select the texts of each chapter. All we need to do is input <code class="docutils literal notranslate"><span class="pre">start_idx:end_idx</span></code> into square brackets next to the <code class="docutils literal notranslate"><span class="pre">text</span></code> object. Below is an example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;start_idx&quot;</span><span class="p">]</span>  <span class="c1">## .iloc[0] gives us the first element of the dataframe</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;end_idx&quot;</span><span class="p">]</span>
+<span class="n">text</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
+<span class="c1">## the first full chapter of War and Peace</span>
+<span class="c1">## you can change the number after iloc to change which chapter you see</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is great, but now how do we do it with the whole column?</p>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">.apply</span></code> method from <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, which allows us to cast a single function to every cell in a column. In this case, we need to use two different columns, so we will use a <code class="docutils literal notranslate"><span class="pre">lambda</span></code> expression. <code class="docutils literal notranslate"><span class="pre">lambda</span></code> expressions are a way to build very simple functions in Python. They are very flexible and support a lot of different features like flow control and regular expressions. <a class="reference external" href="https://www.w3schools.com/python/python_lambda.asp">Here</a> is a useful starter guide to <code class="docutils literal notranslate"><span class="pre">lambda</span></code> from W3Schools.</p>
+<p>For us, we need <code class="docutils literal notranslate"><span class="pre">lambda</span></code> expression that will pull a value for each column and return the text between those two values. Note the <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> keyword parameter. This tells <code class="docutils literal notranslate"><span class="pre">pandas</span></code> that we want to go through the columns not the rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ch_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">text</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;start_idx&quot;</span><span class="p">]</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;end_idx&quot;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ch_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="p">)</span>  <span class="c1">## using lambda again for some simple cleaning with the replace and lower methods</span>
+<span class="n">ch_df</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;start_idx&quot;</span><span class="p">,</span> <span class="s2">&quot;end_idx&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>  <span class="c1">## and now we can drop our indices just so they don&#39;t clutter up our dataframe</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ch_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="tokenization">
+<h3>Tokenization<a class="headerlink" href="#tokenization" title="Link to this heading">#</a></h3>
+<p>Now that we have read in our data and began some cleaning, we will tokenize our text. Tokenization is a process by which we can split up the chapter we got into relevant units. There are two main types of tokenization:</p>
+<ul class="simple">
+<li><p>Sentence-level tokenization: splitting up the text into sentences</p></li>
+<li><p>Word-level tokenization: splitting up the text into words</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## The Natural Language Toolkit (NLTK) provides a lot of very useful utilities for cleaning and analyzing textual data.</span>
+<span class="c1">## It requires this &#39;punkt&#39; download for us to be able to tokenize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;punkt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="sentence-level-tokenization">
+<h4>Sentence-level tokenization<a class="headerlink" href="#sentence-level-tokenization" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ch_df</span><span class="p">[</span><span class="s2">&quot;sents&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span>
+    <span class="n">ch_df</span><span class="p">[</span><span class="s2">&quot;sents&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>  <span class="c1">## each element of the &#39;sents&#39; column is a list of sentences in each chapter</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Now we can &#39;explode&#39; these lists, so that each sentence has its own cell in the &#39;sents&#39; column.</span>
+<span class="n">sent_explode</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">&quot;sents&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;text&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sent_explode</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="word-level-tokenization">
+<h4>Word-level tokenization<a class="headerlink" href="#word-level-tokenization" title="Link to this heading">#</a></h4>
+<p>To conduct word-level tokenization, we’ll be using regex again but this time, we’ll use a useful function in NLTK that takes in a regular expression and will split words on that pattern. This is opposition to so-called ‘white-space tokenization’ where words are delimited by spaces. This type of tokenization can be useful in some cases, but in most natural language will be insufficient. That’s why this NLTK function is so helpful. All we need to do is input the pattern below and we will get very good English tokenization</p>
+<p>Note that tokenization is language dependent. This means that just because a certain method works for English it will not necessarily work for other languages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.tokenize</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegexpTokenizer</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">RegexpTokenizer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?x)\w+(?:[-’]\w+)*&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ex_sentence</span> <span class="o">=</span> <span class="n">sent_explode</span><span class="o">.</span><span class="n">sents</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ex_sentence</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">ex_sentence</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sent_explode</span><span class="p">[</span><span class="s2">&quot;word_tokenized&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sent_explode</span><span class="p">[</span><span class="s2">&quot;sents&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">)</span>
+<span class="n">sent_explode</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="visualization">
+<h3>Visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h3>
+<p>We can now create a general function to visualize word use over the course of the book. For this task, we are more interested in general trends, so let’s zoom back out to the book-level.</p>
+<p>For more information on how to create visualization in Python, please go through <a class="reference external" href="https://tuftsdatalab.github.io/uep239-data-analysis/">this training</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## creating a new dataframe organized by book</span>
+<span class="c1">## this is the same code as above</span>
+<span class="n">book_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">book_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(BOOK [A-Z]+:)&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">book_list</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">book_list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">book_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Book </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">book_list</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">book_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Book </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">book_df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">book_dict</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;start_idx&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;end_idx&quot;</span><span class="p">})</span>
+<span class="p">)</span>
+
+<span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">text</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;start_idx&quot;</span><span class="p">]</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;end_idx&quot;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">book_df</span> <span class="o">=</span> <span class="n">book_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;start_idx&quot;</span><span class="p">,</span> <span class="s2">&quot;end_idx&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;word_tokenized&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search</span> <span class="o">=</span> <span class="s2">&quot;napoleon&quot;</span>
+<span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;search_count&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;word_tokenized&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="p">)</span>
+
+<span class="n">book_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;search_count&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="generalizing">
+<h2>Generalizing<a class="headerlink" href="#generalizing" title="Link to this heading">#</a></h2>
+<p>Once I am happy with how my pipeline is functioning, I like to then try to write a function that is as general as possible. In this case, we started with a Gutenberg URL to a <code class="docutils literal notranslate"><span class="pre">txt</span></code> file, so let’s take that as the starting place for our general function. Please take some time to develop a function which will return a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> which we can use to generate a similar visualization as above from any Gutenbery URL. Be careful to note where, in the code above, some methods are specific to <em>War and Peace</em> and which are general.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_gutenberg_data</span><span class="p">(</span>
+    <span class="n">url</span><span class="p">,</span>  <span class="c1"># the Gutenberg URL</span>
+    <span class="c1"># you may need more arguments for your function</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Takes in a Gutenberg URL</span>
+<span class="sd">    Returns a DataFrame of relevant information</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">## GET TEXT FROM URL WITH A REQUEST</span>
+
+    <span class="c1">## TRIM YOUR TEXT BASED ON SUBSTRINGS</span>
+
+    <span class="n">content_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">content_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;YOUR REGEX HERE!!&quot;</span><span class="p">),</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="c1">## CREATE A DICTIONARY FOR THE INDEX POSITIONS YOUR CONTENT</span>
+
+    <span class="c1">## CONVERT YOUR DICTIONARY INTO A DATAFRAME</span>
+
+    <span class="c1">## CREATE A TEXT COLUMN IN YOUR DATAFRAME</span>
+
+    <span class="c1">## CLEAN YOUR TEXT</span>
+
+    <span class="c1">## TOKENIZE (SENTENCE AND WORD LEVEL)</span>
+
+    <span class="c1">## RETURN YOUR DATAFRAME</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1">## INPUT SEARCH TERM HERE</span>
+
+<span class="c1">## ADD A COUNTS COLUMN</span>
+
+<span class="c1">## PLOT A GRAPH</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="specific-application">
+<h2>Specific Application<a class="headerlink" href="#specific-application" title="Link to this heading">#</a></h2>
+<p>From <em>Tolstoy’s Phoenix: From Method to Meaning in War and Peace</em> by George R. Clay (1998), page 7:
+<br></p>
+<blockquote>
+<div><p>In the most direct use of Tolstoy’s technqiues, he categorizes in his own voice. Instead of “The princess smiled, thinking she know more about the subject than Prince Vasili,” he will write: “The princess smiled, <em>as people do</em> who think they know more about the subject under discussion than those they are talking with” (1:2, p.77; emphasis added). The first version expresses a private thought, but the one Tolstoy used implies (as R. F. Christian phrased it) that “there is a basic denominator of human experience” – a sameness about our pattern of behavior, so that we all know what kind of smile it is… By writing “as people do,” Tolstoy isn’t telling us what this smile is like, he is assuming that we <em>know</em> what it is like: that we have seen it many times before…</p>
+</div></blockquote>
+<p>Let’s try to find more examples and see if they fall in line with Clay’s analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># the phrases Clay identifies as relevant</span>
+<span class="n">phrases</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;as people do&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;of one who&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;peculiar to&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;as with everyone&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;as one who&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;only used by persons who&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;of a man who&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;which a man has&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;in the way&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;as is usually the case&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;such as often occurs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;which usually follows&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">printExcerpt</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;chapter&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;sents&quot;</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">phrase</span> <span class="ow">in</span> <span class="n">phrases</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">phrase</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+    <span class="n">sub_df</span> <span class="o">=</span> <span class="n">sent_explode</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sent_explode</span><span class="p">[</span><span class="s2">&quot;sents&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">phrase</span><span class="p">)]</span>
+    <span class="n">sub_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">printExcerpt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Great! Now we can see all of the times that Tolstoy uses these particular phrases and we can begin to see what Clay is saying. In this lines, Tolstoy is not giving us a direct characterization or description of a person or thing. Instead he is telling us about the type of person or thing it is. The next step would be then to see if there is a trend in the people or things he refers to in this manner or if this is, as Clay contends, is a general feature of Tolstoy’s prose. At every step in that process, we must make sure to compare our results with Clay and Tolstoy himself. It can be easy to trick yourself into a discovery and the only way to avoid that is to have a close connection to the data itself. Always spend time to play around with your data, even after you think it’s 100% clean, to see what it hides.</p>
+</section>
+<section id="reviewing-what-we-learned">
+<h2>Reviewing what we learned<a class="headerlink" href="#reviewing-what-we-learned" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>How to take advantage of free repositories of text like Project Gutenberg</p></li>
+<li><p>Taking a url to a text and reading it into our Python runtime</p></li>
+<li><p>Cleaning our data so that we can find some general statistics</p></li>
+<li><p>How to create visualizations of these statistics</p></li>
+<li><p>Applying simple methodologies to a complex question</p></li>
+<li><p>Outlining a method we could use to answer such a question</p></li>
+</ul>
+<p>As a challenge, now that we have a good baseline for picking out the phrases Clay points us too, can you create dataframe that stores the sentence, what phrase from Clay it uses, and what chapter it is in? Be sure to start with a dictionary, as we did when we created a dataframe together and then convert it into a dataframe using <code class="docutils literal notranslate"><span class="pre">from_dict</span></code>. When you’re done, you can then export it as a .csv file, so you can use it later with the method <code class="docutils literal notranslate"><span class="pre">whatever_your_df_is_called.to_csv('name_of_file.csv')</span></code>. This way you can share your work with other scholars and later can deploy it to a website or another publication. If you have trouble or just want to show off how you did it, feel free to reach out and let me know at <a class="reference external" href="mailto:peter&#46;nadel&#37;&#52;&#48;tufts&#46;edu">peter<span>&#46;</span>nadel<span>&#64;</span>tufts<span>&#46;</span>edu</a></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="thanks-for-reading">
+<h1>Thanks for reading<a class="headerlink" href="#thanks-for-reading" title="Link to this heading">#</a></h1>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="regex-intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Regular Expressions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> A Gentle Introduction to Natural Language Process
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">A Gentle Introduction to Natural Language Process</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-overall-task">Our overall task</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-methods">General methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-our-data">Read in our data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-requests-library">The requests library</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sentence-level-tokenization">Sentence-level tokenization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#word-level-tokenization">Word-level tokenization</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizing">Generalizing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-application">Specific Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-what-we-learned">Reviewing what we learned</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#thanks-for-reading">Thanks for reading</a></li>
+</ul>
+
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/nlp/introduction/gentleintroto-nlp-1.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/nlp/introduction/gentleintroto-nlp-1.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: nlp/introduction/gentleintroto-nlp-1"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Nov 10, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

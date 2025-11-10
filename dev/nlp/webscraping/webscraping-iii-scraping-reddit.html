@@ -1,0 +1,1168 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Art of Webscraping III: Scraping Reddit &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'nlp/webscraping/webscraping-iii-scraping-reddit';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/nlp/webscraping/webscraping-iii-scraping-reddit.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using Pretrained Models" href="../pretrained-models/index.html" />
+    <link rel="prev" title="Static Webscraping with BeautifulSoup" href="static-webscraping-with.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20251110" />
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Natural Language Processing 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text-proc/index.html">Text Processing</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Webscraping</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dynamic-webscraping.html">Webscraping II: Dynamic websites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static-webscraping-with.html">Static Webscraping with BeautifulSoup</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The Art of Webscraping III: Scraping Reddit</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../pretrained-models/index.html">Using Pretrained Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep-learning/index.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../llms/index.html">Large Language Models</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Natural Language Processing</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Webscraping</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      The Art of...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-art-of-webscraping-iii-scraping-reddit">
+<h1>The Art of Webscraping III: Scraping Reddit<a class="headerlink" href="#the-art-of-webscraping-iii-scraping-reddit" title="Link to this heading">#</a></h1>
+<p>In the past two notebooks in this webscraiping series, we saw how we could use Python to automate getting data from websites. First <code class="docutils literal notranslate"><span class="pre">beautifulsoup</span></code> gave us a method of navigating the HTML of a static webpage and then <code class="docutils literal notranslate"><span class="pre">selenium</span></code> allowed us to parse dynamically generated pages.</p>
+<p>In this notebook, we’ll look at a specialized source of data that we can pull from, Reddit. Reddit.com is a collection of forums where uses can discuss topics of shared interest. A lot of people use Reddit, so many NLP researchers use it as a place to gather data for novel datasets. In this example, we’ll collect a swathe of text from <a class="reference internal" href="#reddit.com/r/latin"><span class="xref myst">r/latin</span></a> and save it as a CSV.</p>
+<p>Over the past few years, Reddit has made it very difficult to get large chunks of their data. That said, another group, pullpush.io, have saved and hosted terabytes of historical Reddit data for public use. We’ll be using their API in this notebook.</p>
+<p><strong>Nota Bene</strong>: pullpush’s API service is designed for academic use only! It is an incredible resource, especially because it is free. Please do not abuse it!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because pullpush is an API service. We will ask for data using an URL. This URL will include information like what subreddit we want to search through, the dates we want to search in, and how the results should be ordered. Se below for an example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ex_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.pullpush.io/reddit/search/submission/?subreddit=latin&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s break that down into its component parts:</p>
+<ul class="simple">
+<li><p>*<a class="reference external" href="https://api.pullpush.io/reddit/search/*:">https://api.pullpush.io/reddit/search/*:</a> This part of the URL should never change. This is the base URL that we’ll be adding to depending on our purposes.</p></li>
+<li><p><em>submission/</em>: This addition tells pullpsuh that we want to search posts (submissions) and not comments. As we will see later, there is different string that we can use instead that will allow us to search for comments.</p></li>
+<li><p><em>?</em>: This question mark is the start of our specific query. It tells pullpush that we are going to be giving it instructions about what data we are expecting to get.</p></li>
+<li><p><em>subreddit=latin</em>: This section tells pullpush we want data from the r/latin subreddit. This is very simple but there are many we can nuance this significantly.</p></li>
+</ul>
+<p>This is the simplest type of query we can run so let’s see what it gives us.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># using the requests library to make a GET request</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ex_url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>  <span class="c1"># status code 200 means it worked</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 100 dictionary responses</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="collecting-submissions-posts">
+<h2>Collecting Submissions (Posts)<a class="headerlink" href="#collecting-submissions-posts" title="Link to this heading">#</a></h2>
+<p>As we can see, each one of these dictionaries from the <code class="docutils literal notranslate"><span class="pre">data</span></code> list, holds the information from an individual post. But why are there only 100? Pullpush only allows users to get 100 posts per request, meaning that we’ll have to get creative with how we request data from Pullpush.</p>
+<p>To do so we’ll have to take advantage of the other request modifiers besides just “subreddit.” A list of all of these can be found <a class="reference external" href="https://pullpush.io/#docs">here</a>.</p>
+<p>One method that we can try is using timestamps to segment the data into chunks less than or equal to 100. Pullpush allows us to ask for posts given a specific time block. We can then loop through these time blocks until we get the data that we want.</p>
+<p>Below I’ll walkthrough getting data for a single day. According to the pullpush documentation, there is a “before” and an “after” modeifier, but these only accept an “Epoch value”. What does that mean?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># normal python date</span>
+<span class="n">_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">_date</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># epoch value</span>
+<span class="n">dt_with_timezone</span> <span class="o">=</span> <span class="n">_date</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="nb">int</span><span class="p">(</span><span class="n">dt_with_timezone</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An “epoch value” or Unix Timestamp is a special method of encoding dates for computers. It is a standard which represents dates as the number a seconds that have elapsed since January 1, 1970. This might seem abritary and that’s because it is! That said we can create a few functions to make translating between normal Python datetime objects and epoch values easier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">convert_utc_to_date</span><span class="p">(</span><span class="n">ts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a UTC timestamp to a local datetime object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">utc_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcfromtimestamp</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+    <span class="n">local_datetime</span> <span class="o">=</span> <span class="n">utc_datetime</span><span class="o">.</span><span class="n">astimezone</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">local_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">convert_date_to_utc</span><span class="p">(</span><span class="n">dt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a local datetime object to a UTC timestamp.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dt_with_timezone</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">dt_with_timezone</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="n">convert_utc_to_date</span><span class="p">(</span><span class="n">convert_date_to_utc</span><span class="p">(</span><span class="n">_date</span><span class="p">))</span>
+<span class="p">)</span>  <span class="c1"># should print 2022-01-01 00:00:00</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s try adding this to our request URL and retrieve a day worth of posts. A day is 86400 seconds so all we need to do is convert our datetime object to UTC and then add 86400.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
+<span class="n">utc_ts</span> <span class="o">=</span> <span class="n">convert_date_to_utc</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span>
+
+<span class="n">url_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/search/submission/?after=</span><span class="si">{</span><span class="n">utc_ts</span><span class="si">}</span><span class="s2">&amp;before=</span><span class="si">{</span><span class="n">utc_ts</span><span class="o">+</span><span class="mi">86400</span><span class="si">}</span><span class="s2">&amp;subreddit=latin&quot;</span>  <span class="c1"># can use &amp; to join modifiers</span>
+<span class="n">url_query</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_query</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of posts: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Most recent post: </span><span class="si">{</span><span class="n">convert_utc_to_date</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;created_utc&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Least recent post: </span><span class="si">{</span><span class="n">convert_utc_to_date</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;created_utc&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wonderful! Now we have a way to get all of the posts for a single day. Now we can create a loop where we go through every day between a start date and an end date, collecting all of the data in between. To facilitate this we are going to create a generator which does so.</p>
+<p>Generators look like functions, but they’re slightly different. Instead of using the <code class="docutils literal notranslate"><span class="pre">return</span></code> keyword, an generator using the <code class="docutils literal notranslate"><span class="pre">yield</span></code> keyword, which acts like an index in a list. Refer to the example below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># generating squares</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gen_squares</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c1"># loop through each number in range 0 to n</span>
+        <span class="k">yield</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>  <span class="c1"># return the number and the number&#39;s square</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">gen_squares</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>  <span class="c1"># computation only occurs here</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>  <span class="c1"># prints empty line</span>
+
+<span class="nb">type</span><span class="p">(</span><span class="n">gen_squares</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># type = generator</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># out date generator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">date_range_generator</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="n">start_date</span>  <span class="c1"># sets current to the start date</span>
+    <span class="n">total_days</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">end_date</span> <span class="o">-</span> <span class="n">start_date</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># defines the amount of days we want to loop through</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_days</span><span class="p">):</span>  <span class="c1"># for each day</span>
+        <span class="k">yield</span> <span class="n">current</span>  <span class="c1"># give back the current date</span>
+        <span class="n">current</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span>
+            <span class="n">days</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">)</span>  <span class="c1"># add a day to the current date, move to the next day</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># one last thing... adding a progress bar</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">date_range_generator</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="n">start_date</span>  <span class="c1"># sets current to the start date</span>
+    <span class="n">total_days</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">end_date</span> <span class="o">-</span> <span class="n">start_date</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># defines the amount of days we want to loop through</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span>
+        <span class="nb">range</span><span class="p">(</span><span class="n">total_days</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Processing Days&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;day&quot;</span>
+    <span class="p">):</span>  <span class="c1"># for each day, now with a progress bar</span>
+        <span class="k">yield</span> <span class="n">current</span>  <span class="c1"># give back the current date</span>
+        <span class="n">current</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span>
+            <span class="n">days</span><span class="o">=</span><span class="mi">1</span>
+        <span class="p">)</span>  <span class="c1"># add a day to the current date, move to the next day</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># giving it a try!</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1"># just a week of data</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">date_range_generator</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+    <span class="n">utc_ts</span> <span class="o">=</span> <span class="n">convert_date_to_utc</span><span class="p">(</span><span class="n">day</span><span class="p">)</span>
+    <span class="n">url_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/search/submission/?after=</span><span class="si">{</span><span class="n">utc_ts</span><span class="si">}</span><span class="s2">&amp;before=</span><span class="si">{</span><span class="n">utc_ts</span><span class="o">+</span><span class="mi">86400</span><span class="si">}</span><span class="s2">&amp;subreddit=latin&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_query</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]:</span>  <span class="c1"># loop through each post and...</span>
+            <span class="k">if</span> <span class="n">post</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>  <span class="c1"># checking if it is already in our data list</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>  <span class="c1"># if not, then we can add it</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># more than 100!!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have a good way of getting our data, we can dump it into a DataFrame and save it as a CSV. Most of the information here is either repetitive or not useful, so we can select only a subset of the most valuable data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">cols_of_interest</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;author&quot;</span><span class="p">,</span>  <span class="c1"># username</span>
+    <span class="s2">&quot;created_utc&quot;</span><span class="p">,</span>  <span class="c1"># when it was posted</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">,</span>  <span class="c1"># id of thread, useful for comments</span>
+    <span class="s2">&quot;num_comments&quot;</span><span class="p">,</span>  <span class="c1"># number of comments</span>
+    <span class="s2">&quot;score&quot;</span><span class="p">,</span>  <span class="c1"># upvotes - downvotes</span>
+    <span class="s2">&quot;selftext&quot;</span><span class="p">,</span>  <span class="c1"># text of the post</span>
+    <span class="s2">&quot;title&quot;</span><span class="p">,</span>  <span class="c1"># title of the post</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">,</span>  <span class="c1"># url to the thread</span>
+<span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_of_interest</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="n">convert_utc_to_date</span>
+<span class="p">)</span>  <span class="c1"># convert utc to normal date format</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;r_latin20240501to20240507.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="collecting-comments">
+<h2>Collecting Comments<a class="headerlink" href="#collecting-comments" title="Link to this heading">#</a></h2>
+<p>Now that we’ve successfully collected all of the posts in a given time frame, we can turn to collecting comments for each post as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># choosing an example from the work above</span>
+
+<span class="n">more_than_one_comment</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">num_comments</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<span class="p">]</span>  <span class="c1"># filtering out posts with more than one comment</span>
+<span class="n">ex_post</span> <span class="o">=</span> <span class="n">more_than_one_comment</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># first one</span>
+<span class="n">ex_post</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we&#39;ll need the value at the id column</span>
+<span class="n">ex_id</span> <span class="o">=</span> <span class="n">ex_post</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+<span class="n">ex_id</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Instead of using “submission” in our query url, we will use “comment”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">comments_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/comment/search?link_id=</span><span class="si">{</span><span class="n">ex_id</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">comments_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span>
+    <span class="n">data</span>
+<span class="p">)</span>  <span class="c1"># there will be a mismatch between this number and the num_comments column as this includes responses to existing comments</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_comments</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="n">comments_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/comment/search?link_id=</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">comments_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As opposed to the posts, a list of comments like this does not work well with CSV data. CSVs prefer data to be all the “shape” meaning all of the rows have all of the same values. Comments can be tricky because the number of them will always be different, which means it’s impractical to have column for each comment, as we would end of having a lot of empty columns if a certain post gets a large amount of comments.</p>
+<p>We can coerce is into a CSV but JSON format would suit this data much better, so we’ll compose a JSON file which has the unique IDs from our DataFrame of posts so that they can be link together.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># filtering by the data we&#39;re interested in</span>
+<span class="n">fields_of_interest</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;score&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;replies&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;author&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parent_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;created&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">to_json</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>  <span class="c1"># loop through our ids</span>
+    <span class="n">comments</span> <span class="o">=</span> <span class="n">get_comments</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>  <span class="c1"># get our comments</span>
+    <span class="n">comments_by_id</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># empty list to to hold the comments</span>
+    <span class="k">for</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">comments</span><span class="p">:</span>
+        <span class="n">comments_by_id</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">comment</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">fields_of_interest</span><span class="p">}</span>
+        <span class="p">)</span>  <span class="c1"># filter by our fields of interest</span>
+    <span class="n">to_json</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">comments_by_id</span>  <span class="c1"># assign the list of comments to the original id</span>
+
+<span class="c1"># this loop will take some time because we have to submit a GET request for every ID, for ~100 ids it took 5 minutes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>  <span class="c1"># python json library</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;r_latin20240501to20240507_comments.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">to_json</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>  <span class="c1"># saves dictionary as json</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-whole-process">
+<h2>The whole process<a class="headerlink" href="#the-whole-process" title="Link to this heading">#</a></h2>
+<p>Below are all of the steps we followed as a class in Python. This format allows us to customize our inputs without having to worry about the core functionality working.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">RedditScraper</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">subreddit</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">start_date</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">end_date</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subreddit</span> <span class="o">=</span> <span class="n">subreddit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;r_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subreddit</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">end_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cols_of_interest</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;author&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created_utc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;num_comments&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;score&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;selftext&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields_of_interest</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;score&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;replies&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;author&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;parent_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;body&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">convert_utc_to_date</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts a UTC timestamp to a local datetime object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">utc_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcfromtimestamp</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+        <span class="n">local_datetime</span> <span class="o">=</span> <span class="n">utc_datetime</span><span class="o">.</span><span class="n">astimezone</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">local_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">convert_date_to_utc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts a local datetime object to a UTC timestamp.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dt_with_timezone</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">dt_with_timezone</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">date_range_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Yields next day between start_date and end_date.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">start_date</span>
+        <span class="n">total_days</span> <span class="o">=</span> <span class="p">(</span><span class="n">end_date</span> <span class="o">-</span> <span class="n">start_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">total_days</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Processing Days&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">current</span>
+            <span class="n">current</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">scrape_posts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Scrapes posts from Reddit and dumps output in a DataFrame.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">start_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span>
+        <span class="n">end_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_range_generator</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+            <span class="n">utc_ts</span> <span class="o">=</span> <span class="n">convert_date_to_utc</span><span class="p">(</span><span class="n">day</span><span class="p">)</span>
+            <span class="n">url_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/search/submission/?after=</span><span class="si">{</span><span class="n">utc_ts</span><span class="si">}</span><span class="s2">&amp;before=</span><span class="si">{</span><span class="n">utc_ts</span><span class="o">+</span><span class="mi">86400</span><span class="si">}</span><span class="s2">&amp;subreddit=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subreddit</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_query</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]:</span>  <span class="c1"># loop through each post and...</span>
+                    <span class="k">if</span> <span class="n">post</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>  <span class="c1"># checking if it is already in our data list</span>
+                        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>  <span class="c1"># if not, then we can add it</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cols_of_interest</span><span class="p">]</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_utc_to_date</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_post_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Saves DataFrame to CSV.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output_file</span><span class="si">}</span><span class="s2">_posts.csv&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_comments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+        <span class="n">comments_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/comment/search?link_id=</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">comments_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">scrape_comments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Scrapes comments from Reddit given the ids from self.df.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">to_json</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">id</span><span class="p">):</span>
+            <span class="n">comments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_comments</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+            <span class="n">comments_by_id</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">comment</span> <span class="ow">in</span> <span class="n">comments</span><span class="p">:</span>
+                <span class="n">comments_by_id</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">comment</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields_of_interest</span><span class="p">}</span>
+                <span class="p">)</span>
+            <span class="n">to_json</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">comments_by_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_json</span> <span class="o">=</span> <span class="n">to_json</span>
+        <span class="k">return</span> <span class="n">to_json</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_comment_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Saves comments to JSON.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output_file</span><span class="si">}</span><span class="s2">_comments.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_json</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_json</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrape_posts</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_post_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scrape_comments</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_comment_data</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">latin_scraper</span> <span class="o">=</span> <span class="n">RedditScraper</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;latin&quot;</span><span class="p">)</span>
+<span class="n">latin_scraper</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="static-webscraping-with.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Static Webscraping with BeautifulSoup</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../pretrained-models/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using Pretrained Models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> The Art of Webscraping III: Scraping Reddit
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collecting-submissions-posts">Collecting Submissions (Posts)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collecting-comments">Collecting Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-whole-process">The whole process</a></li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/nlp/webscraping/webscraping-iii-scraping-reddit.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/nlp/webscraping/webscraping-iii-scraping-reddit.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: nlp/webscraping/webscraping-iii-scraping-reddit"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Nov 10, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

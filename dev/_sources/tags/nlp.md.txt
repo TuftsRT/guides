@@ -1,0 +1,11 @@
+---
+orphan:
+nosearch:
+html_theme.sidebar_secondary.remove: true
+---
+# nlp
+- [](/nlp/deep-learning/index.md)
+- [](/nlp/index.md)
+- [](/nlp/pretrained-models/index.md)
+- [](/nlp/text-proc/index.md)
+- [](/nlp/webscraping/index.md)
