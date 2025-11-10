@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Language Hacking: Using spaCy for Morphosyntactic Analysis &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'nlp/pretrained-models/language-hacking-workshop';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/nlp/pretrained-models/language-hacking-workshop.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using pretrained models for Named Entity Recognition (NER)" href="ner-pretrained.html" />
+    <link rel="prev" title="Introducing Semantic Search" href="introducing-semantic-search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20251110" />
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Natural Language Processing 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text-proc/index.html">Text Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webscraping/index.html">Webscraping</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Using Pretrained Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introducing-semantic-search.html">Introducing Semantic Search</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Language Hacking: Using <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> for Morphosyntactic Analysis</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="ner-pretrained.html">Using pretrained models for Named Entity Recognition (NER)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep-learning/index.html">Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../llms/index.html">Large Language Models</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Natural Language Processing</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Using Pretrained Models</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Language Hacking:...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">datasets</span> <span class="n">wiktionaryparser</span> <span class="o">-</span><span class="n">Uq</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="language-hacking-using-spacy-for-morphosyntactic-analysis">
+<h1>Language Hacking: Using <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> for Morphosyntactic Analysis<a class="headerlink" href="#language-hacking-using-spacy-for-morphosyntactic-analysis" title="Link to this heading">#</a></h1>
+<p>This workshop is inspired by <a class="reference external" href="https://hdsr.mitpress.mit.edu/pub/owxwohyz/release/6">this article</a> written by Tufts professor, Dr. Gregory Crane. Crane teaches in the Classical Studies department, meaning that he studies historical languages like Ancient Greek and Latin, so you might be wondering how natural language processing could be relevant to such a discipline. The answer is in <em>language hacking</em>, the processing of taking a language which you may or may not know and using pretrained language models to give you a deeper understanding of the text.</p>
+<p>Professor Crane is a ‘digital philologist.’ Philology (from φιλολογία, the “love of words”) is the study of language in historical sources, which can include everything from ancient literature to contemporary song lyrics. As a result, philologists are interested in many different languages, especially sources in many languages, but no one, no matter how good a philologist, can learn every language they might be interested in.</p>
+<p>This is where language hacking comes in. Deep learning models like the ones we’ll play around with today offer new opportunities for research, language-learning and cross-cultural exchange.</p>
+<section id="what-is-spacy">
+<h2>What is <code class="docutils literal notranslate"><span class="pre">spaCy</span></code>?<a class="headerlink" href="#what-is-spacy" title="Link to this heading">#</a></h2>
+<p>Above I mentioned that we would be using a language model to tell us about the meaning of words in languages we don’t know. In this lesson, we’ll download these models from a Python package called <code class="docutils literal notranslate"><span class="pre">spaCy</span></code>. <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> is very powerful package with a lot of functionality. We’ll only be using a small part of what they offer: their pretrained language models.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-and-model-preparation">
+<h1>Data and Model Preparation<a class="headerlink" href="#data-and-model-preparation" title="Link to this heading">#</a></h1>
+<p>Before we can start language hacking, we need to set up our texts and models. For this example, I’ll be using the original French version of Alexandre Dumas’ <em>The Three Muskeeters</em> (<em>Les trois mousquetaires</em>). As a result, we’ll also be using the French <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> model, which we’ll need to download.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dataset</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;pnadel/les_trois_mousquetaires&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">][:</span><span class="mi">1000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># downloading french model from spacy</span>
+<span class="err">!</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spacy</span> <span class="n">download</span> <span class="n">fr_core_news_md</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># loading the model</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;fr_core_news_md&quot;</span><span class="p">)</span>
+<span class="n">nlp</span>  <span class="c1"># working!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="apply-the-model">
+<h2>Apply the Model<a class="headerlink" href="#apply-the-model" title="Link to this heading">#</a></h2>
+<p>Now that we have our data and our model, we can apply the one to the other. The <code class="docutils literal notranslate"><span class="pre">nlp</span></code> object that we made above can be called like a function with some text. See below with a simple example.</p>
+<section id="introduction-to-morphosyntax">
+<h3>Introduction to Morphosyntax<a class="headerlink" href="#introduction-to-morphosyntax" title="Link to this heading">#</a></h3>
+<p>This section serves as an introduction to some important NLP vocabulary and Python syntax for using <code class="docutils literal notranslate"><span class="pre">spaCy</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is spacy `Doc` object</span>
+<span class="n">example</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span>
+    <span class="s2">&quot;Je m&#39;appelle Peter. J&#39;aime les jeux vidéos.&quot;</span>
+<span class="p">)</span>  <span class="c1"># &quot;My name is Peter. I like video games&quot;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># .text just gives us the text as a string</span>
+<span class="n">example</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># iterable to access each sentence in the original text</span>
+<span class="n">example</span><span class="o">.</span><span class="n">sents</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">sents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># iterating through each sentence</span>
+<span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">example</span><span class="o">.</span><span class="n">sents</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sent</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># iterating through each token</span>
+<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">example</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># iterating through each token</span>
+<span class="c1"># AND getting some morphosyntactic information</span>
+<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">example</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">lemma_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>See bleow for a glossary of relevant terms for the rest of this notebook.</p>
+<ul class="simple">
+<li><p><em>Lemma</em>: A lemma is the root form of a word. For example, the words “ran”, “running” and “runs” all come from the root “run”. In this case, “run” would be the lemma of “ran”, “running” and “runs” (Accessed through the <code class="docutils literal notranslate"><span class="pre">lemma_</span></code> property).</p></li>
+<li><p><em>Part of speech</em>: You might be familiar with part of speech as the function that a word takes in a sentence, but there couple different standards for representing this information.</p>
+<ul>
+<li><p><em>UPOS</em> or <em>Universal part of speech</em>: This is the “normal” part of speech that you likely saw while learning English (Accessed through the <code class="docutils literal notranslate"><span class="pre">pos_</span></code> property).</p></li>
+<li><p><em>XPOS</em> or <em>Language-specific part of speech</em>: These are part of speech tags that might change depending on language. Oddly, they don’t always change from language to language. In fact, they can be shared between languages but are often much more specific about the part of speech of a word (Accessed through the <code class="docutils literal notranslate"><span class="pre">tag_</span></code> property).</p></li>
+</ul>
+</li>
+<li><p><em>Morphology</em>: To quote the <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> docs, “Inflectional morphology is the process by which a root form of a word is modified by adding prefixes or suffixes that specify its grammatical function but do not change its part-of-speech.” So, where a lemma is the root form of a word, morphological features are what are added to the lemma to create grammatically correct variants of the same lemma (Accessed through the <code class="docutils literal notranslate"><span class="pre">morph</span></code> property).</p></li>
+<li><p><em>Sentence relation</em> or <em>Sentence dependency</em>: Each word, in addition to its part of speech and lemma, can be identified by what words it depends on or what words depend on it (or both). For example, the word “apple” is a <code class="docutils literal notranslate"><span class="pre">NOUN</span></code> yet it can be used either as a subject (“The apple is red”) or an object (I ate the apple). The UPOS tag would be the same for each, but the sentence relation, that is what the word is doing in the sentence, would be different (Accessed through the <code class="docutils literal notranslate"><span class="pre">dep_</span></code> property). You can find a list of dependencies here: <a class="reference external" href="https://universaldependencies.org/en/index.html">English</a> or <a class="reference external" href="https://universaldependencies.org/fr/index.html">French</a>.</p></li>
+<li><p><em>Treebanks</em>: A sentence is made up of a series of words which are dependent on one another. This understanding allows us to construct tree-like structures of sentences. This is similar to diagraming sentences, if you have ever done that. It can be quite useful to use this model when language hacking, as it will give you a better idea about how to progress through a sentence. Below you can see the treebank that <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> created for the first sentence.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">spacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">displacy</span>
+
+<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">sents</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dep&quot;</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As in all treebanks, the verb (“appelle”) depends on only one thing: root, a placeholder which represents the semantic beginning of the sentence. From here all word depend on the main verb of the sentence. Take a look at the next example to see a variation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># copulative example</span>
+<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
+    <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;Je suis fatigué&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dep&quot;</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>  <span class="c1"># &quot;I am tired&quot; in English</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this treebank, there is not word with the VERB tag. Instead, the root word is “fatigué” or “tired” in English. This is because the grammatical verb is “suis” or “am” in English is tagged as a <code class="docutils literal notranslate"><span class="pre">cop</span></code> or <em>copulative</em> (this is sometimes called a ‘linking’ verb in English education, as <em>copula</em> &gt; Lat. <em>co-</em>, together and <em>apere</em>, fasten). These verbs only join a subject to an adjective but do not indicate any action. It is for this reason that in many language they are left out (cf. A. Gk. “μακρός ὁ οἴκος”, meaning “the house is large”, but literally “the house large”). Even in English, certain dialects like African American Vernacular English (AAVE) sometimes do not express copular verbs. For all of these reasons, they are marked differently than other verbs in treebanks.</p>
+</section>
+<section id="using-the-data">
+<h3>Using the Data<a class="headerlink" href="#using-the-data" title="Link to this heading">#</a></h3>
+<p>Now that we have a grasp on the core vocabulary, we can begin to delve into real French literature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first_chapter</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">]</span>
+<span class="n">first_chapter_doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">first_chapter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first_sentence</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">first_chapter_doc</span><span class="o">.</span><span class="n">sents</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_sentence</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In English: A short time ago, while making researches in the Royal Library for my History of Louis XIV., I stumbled by chance upon the Memoirs of M. d’Artagnan, printed—as were most of the works of that period, in which authors could not tell the truth without the risk of a residence, more or less long, in the Bastille—at Amsterdam, by Pierre Rogue.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">first_sentence</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dep&quot;</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This tree is very complex, so let’s break it down using <code class="docutils literal notranslate"><span class="pre">spaCy</span></code>’s <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">rights</span></code>, <code class="docutils literal notranslate"><span class="pre">lefts</span></code> and <code class="docutils literal notranslate"><span class="pre">children</span></code> functionalities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># each token has a &quot;head&quot; word</span>
+<span class="c1"># this is the word that it depends on</span>
+<span class="n">first_sentence</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">first_sentence</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">head</span>
+<span class="c1"># the head word of faisant is tombai</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># picking out the root verb</span>
+<span class="c1"># looking for a token whose head is itself</span>
+<span class="n">root</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">first_sentence</span> <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="n">token</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">root</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">pos_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># `lefts` returns a generator of all words to the left of a given token</span>
+<span class="c1"># which have that given token as their head</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LEFTS&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">lefts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="c1"># `rights` returns a generator of all words to the right of a given token</span>
+<span class="c1"># which have that given token as their head</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RIGHTS&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">rights</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># `children` returns a generator of all of the descendants of a given word</span>
+<span class="k">for</span> <span class="n">descendant</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">descendant</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">descendant</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="trying-to-read-in-a-language-we-don-t-know">
+<h3>Trying to Read in a Language We Don’t Know<a class="headerlink" href="#trying-to-read-in-a-language-we-don-t-know" title="Link to this heading">#</a></h3>
+<p>We can now move on to using these morphosyntactic annotations to read text in a language we don’t know.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># first let&#39;s apply the model to the whole text</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="n">tqdm</span><span class="o">.</span><span class="n">pandas</span><span class="p">()</span>  <span class="c1"># for a progress bar</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;spacy_docs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="n">nlp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># using wiktionary api as our dictionary</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">wiktionaryparser</span><span class="w"> </span><span class="kn">import</span> <span class="n">WiktionaryParser</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">WiktionaryParser</span><span class="p">()</span>
+<span class="n">word</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s2">&quot;hasard&quot;</span><span class="p">,</span> <span class="s2">&quot;french&quot;</span><span class="p">)</span>
+<span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;definitions&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">look_up_definition</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">WiktionaryParser</span><span class="p">()</span>
+    <span class="n">word</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s2">&quot;french&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;definitions&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;No definition for this word. It is likely a proper noun.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pprint</span>
+
+<span class="n">pp</span> <span class="o">=</span> <span class="n">pprint</span><span class="o">.</span><span class="n">PrettyPrinter</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">example_sentence</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">spacy_docs</span><span class="o">.</span><span class="n">sents</span><span class="p">)[</span>
+    <span class="mi">4</span>
+<span class="p">]</span>  <span class="c1"># picking an easy example sentence, but feel free to alter the index to get a more complex sentence</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">example_sentence</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># treebank</span>
+<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">example_sentence</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dep&quot;</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Steps to get started language hacking:</p>
+<ol class="arabic simple">
+<li><p>Find the root. This will usually be the verb.</p></li>
+<li><p>Look at what directly depends on the root. Begin translation.</p></li>
+<li><p>For each dependent word, look at what depends directly on it. Continue translation.</p></li>
+<li><p>Make observations on word usage and syntax</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># find root and look it up</span>
+<span class="n">root</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">example_sentence</span> <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">head</span> <span class="o">==</span> <span class="n">token</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">root</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">look_up_definition</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">lemma_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this information, we can see that the root of tis sentences is “entra”, that it means “enter” and that it is a 3rd person singular, indictative, past tense verb, which would translate to “entered” in English. Now we can look at the <code class="docutils literal notranslate"><span class="pre">lefts</span></code> and <code class="docutils literal notranslate"><span class="pre">rights</span></code> to find what depends on the root.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LEFTS: </span><span class="si">{</span><span class="p">[</span><span class="n">r</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">root</span><span class="o">.</span><span class="n">lefts</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">first_dep</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">lefts</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">first_dep</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">first_dep</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">first_dep</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">first_dep</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">look_up_definition</span><span class="p">(</span>
+    <span class="n">first_dep</span><span class="o">.</span><span class="n">lemma_</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the ‘nsubj’ tag, we can tell that this word is the subject of the verb “entra” and it means “he”. In the context of the story, this “he” refers to King Louis XIII.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RIGHTS: </span><span class="si">{</span><span class="p">[</span><span class="n">r</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">root</span><span class="o">.</span><span class="n">rights</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">next_dep</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">rights</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">next_dep</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">next_dep</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">next_dep</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">next_dep</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">look_up_definition</span><span class="p">(</span>
+    <span class="n">next_dep</span><span class="o">.</span><span class="n">lemma_</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the “obl:arg” tag, we can see that the king entered some kind of suburb. Let’s explore this word’s dependencies to find out more.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">descendant</span> <span class="ow">in</span> <span class="n">next_dep</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span> <span class="o">!=</span> <span class="s2">&quot;dep&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="n">descendant</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+            <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span>
+            <span class="n">descendant</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span>
+            <span class="n">look_up_definition</span><span class="p">(</span><span class="n">descendant</span><span class="o">.</span><span class="n">lemma_</span><span class="p">),</span>
+            <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this information, we can see that “he [the king] entered by the the Saint-Jacques suburb.” We’re almost there!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">last_dep</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">rights</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">last_dep</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">last_dep</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">last_dep</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">last_dep</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">look_up_definition</span><span class="p">(</span>
+    <span class="n">last_dep</span><span class="o">.</span><span class="n">lemma_</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">descendant</span> <span class="ow">in</span> <span class="n">last_dep</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span> <span class="o">!=</span> <span class="s2">&quot;dep&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="n">descendant</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+            <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span>
+            <span class="n">descendant</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span>
+            <span class="n">look_up_definition</span><span class="p">(</span><span class="n">descendant</span><span class="o">.</span><span class="n">lemma_</span><span class="p">),</span>
+            <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perfect! Now we have enough to create a translation of the whole sentence:</p>
+<p><strong>“He [the king] entered by the Saint-Jacques suburb in a splendid ceremony.”</strong></p>
+<p>Feel free to go back up and follow the same procedure with a different sentence.</p>
+</section>
+</section>
+<section id="limitations-of-language-hacking">
+<h2>Limitations of Language Hacking<a class="headerlink" href="#limitations-of-language-hacking" title="Link to this heading">#</a></h2>
+<p>Language hacking is a very useful paradigm for reading text in languages you either don’t know or are learning. It allows scholars to explore traditions and cultures that they would have been excluded from in the past. That said, it comes with some key limitations.</p>
+<ul class="simple">
+<li><p>Dictionaries: As we saw above, we relied heavily on the open source wiktionary as our dictionary. This will work fine for a language like French with millions of speakers. But for languages that no one or very few people speak, a specialized dictionary will be necessary.</p></li>
+<li><p>Available language models: The point above about dictionaries also holds for pretrained language models. <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> has pretrained language models for a number of languages, but there are many, many more languages that they do not support. Training a new model for a new language is possible, but very time-consuming.</p></li>
+<li><p>Inexact translations: Language hacking is by no means a substitute for a prepared translation. Translators can provide a much more competent rendering of the original language, but language hacking gives scholars an additional method to interrogate linguistic questions in texts from other languages.</p></li>
+</ul>
+<p>Please contact me at <a class="reference external" href="mailto:peter&#46;nadel&#37;&#52;&#48;tufts&#46;edu">peter<span>&#46;</span>nadel<span>&#64;</span>tufts<span>&#46;</span>edu</a> for any questions.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="introducing-semantic-search.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introducing Semantic Search</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ner-pretrained.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using pretrained models for Named Entity Recognition (NER)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Language Hacking: Using <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> for Morphosyntactic Analysis
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Language Hacking: Using <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> for Morphosyntactic Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-spacy">What is <code class="docutils literal notranslate"><span class="pre">spaCy</span></code>?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-model-preparation">Data and Model Preparation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-the-model">Apply the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-morphosyntax">Introduction to Morphosyntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-data">Using the Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trying-to-read-in-a-language-we-don-t-know">Trying to Read in a Language We Don’t Know</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-language-hacking">Limitations of Language Hacking</a></li>
+</ul>
+</li>
+</ul>
+
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/nlp/pretrained-models/language-hacking-workshop.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/nlp/pretrained-models/language-hacking-workshop.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: nlp/pretrained-models/language-hacking-workshop"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Nov 10, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

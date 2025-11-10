@@ -1,0 +1,1398 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Natural Language Processing: Using Word Vectors for Textual Analysis &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'nlp/deep-learning/w2v-gensim';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/nlp/deep-learning/w2v-gensim.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Large Language Models" href="../llms/index.html" />
+    <link rel="prev" title="word2vec using numpy" href="w2v-from-scratch.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20251110" />
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Natural Language Processing 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../text-proc/index.html">Text Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webscraping/index.html">Webscraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pretrained-models/index.html">Using Pretrained Models</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Deep Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="decoder-pytorch.html">Decoder-only Transformers: Generative Pre-trained Transformers (GPTs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoder-pytorch.html">Encoder-only Transformers: Bidirectional Encoder Representations from Transformers (BERT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ner-spacy.html">Extracting Ancient Placenames using Named Entity Recognition and <code class="docutils literal notranslate"><span class="pre">spaCy</span></code></a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="rnn-pytorch.html">Machine Translation (mostly) from Scratch using <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="tokenizers.html">Byte-Pair Encoding Tokenization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="w2v-from-scratch.html">word2vec using <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Natural Language Processing: Using Word Vectors for Textual Analysis</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../llms/index.html">Large Language Models</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Natural Language Processing</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Deep Learning</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Natural Language...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="natural-language-processing-using-word-vectors-for-textual-analysis">
+<h1>Natural Language Processing: Using Word Vectors for Textual Analysis<a class="headerlink" href="#natural-language-processing-using-word-vectors-for-textual-analysis" title="Link to this heading">#</a></h1>
+<p>We’ve seen how neural nets and deep learning can help us answer questions relevant to natural language processing, like Name Entity Recognition. Today, we’ll talk about a more basic process that underlies the work we did with  <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> in the last lab, namely, the word2vec algorithm.</p>
+<p>In this lab, we will:</p>
+<ul class="simple">
+<li><p>Understand the goal behind word2vec</p></li>
+<li><p>Visualize the complex relationships it can capture</p></li>
+<li><p>See what word2vec is doing behind the scenes</p></li>
+<li><p>Apply these complex relationships to solve a problem</p></li>
+</ul>
+<p>This lab seeks to draw together a lot of disperate concepts and show you how neural nets, though they seem intimidating, are a logical outcome of the data science you have already seen in this course.</p>
+<section id="what-is-word2vec">
+<h2>What is word2vec<a class="headerlink" href="#what-is-word2vec" title="Link to this heading">#</a></h2>
+<p>Before we dive into how it works, let’s first take a look at what the goal of word2vec is. As the name implies, this very simple neural net seeks to transform words into vectors. As we will see, each unique word in a corpus will have an associated vector attached to it. This vector can be manipulated like any other vector, allowing us to apply complex mathematical operations to word meaning and sense.</p>
+<p>In deep learning, this is called <em>feature extraction</em> because we are teaching a model how to extract the linguistic features from a word (though it could be anything, including images or audio). Feature extraction is rarely the end point in analysis. Instead, we can use these extracted features as the inputs to another model which will do some analysis. Before we get there though, let’s look at how we can harness the power of word2vec.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">gensim</span> <span class="n">datasets</span> <span class="o">-</span><span class="n">Uq</span> <span class="c1"># this package handles word2vec for us</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="the-packages-we-ll-need">
+<h3>The packages we’ll need<a class="headerlink" href="#the-packages-we-ll-need" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">gensim</span></code> implements word2vec for us in an incredibly effiecent and parallelized manner. This means we don’t even need to use GPUs or other advanced techniques to run it.</p>
+<p>In this lab, we’ll look at a collection of New York Times headlines that I created. It is a useful dataset, but we need to download it from a place called HuggingFace, using their <code class="docutils literal notranslate"><span class="pre">datasets</span></code> library. (If you’re interested in how I built this dataset and how the <code class="docutils literal notranslate"><span class="pre">datasets</span></code> library works, let me know and I’d be happy to share the code with you)</p>
+<p>But first, we’re going to examine a pretrained model called GloVe wiki-gigaword-300, which is trained on a repository of wikipedia articles. Working with this model will give us good intuition for working with the NYT dataset at the end of the lab.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">numpy</span><span class="o">==</span><span class="mf">1.26.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gensim</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dataset</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gensim.downloader</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">api</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;glove-wiki-gigaword-300&quot;</span><span class="p">)</span>  <span class="c1"># takes about 3 minutes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this model takes in a word and gives back a vector (word TO vec)</span>
+<span class="n">model</span><span class="p">[</span><span class="s2">&quot;obama&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s2">&quot;obama&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">[</span><span class="s2">&quot;obama&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this model is from about 8 years ago so some things aren&#39;t covered</span>
+<span class="n">model</span><span class="p">[</span><span class="s2">&quot;icespice&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="using-word-vectors">
+<h2>Using word vectors<a class="headerlink" href="#using-word-vectors" title="Link to this heading">#</a></h2>
+<p>It’s cool that we can turn text into numbers, but what can we do with them?</p>
+<section id="similarity-measurement">
+<h3>Similarity measurement<a class="headerlink" href="#similarity-measurement" title="Link to this heading">#</a></h3>
+<p>The dot product (<code class="docutils literal notranslate"><span class="pre">np.dot</span></code> or <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>) tells us how similar two vectors are. The same is true for word vectors. The higher the number the stronger the relationship between the two vectors.</p>
+<p>This is mathematically equivalent to:
+<span class="math notranslate nohighlight">\({\displaystyle \mathbf {a} \cdot \mathbf {b} =\mathbf {a} ^{\mathsf {T}}\mathbf {b}}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># strong relationship</span>
+<span class="n">obama_vector</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;obama&quot;</span><span class="p">]</span>
+<span class="n">president_vector</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;president&quot;</span><span class="p">]</span>
+<span class="n">obama_vector</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">president_vector</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">obama_vector</span><span class="p">,</span> <span class="n">president_vector</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a less strong relationship</span>
+<span class="n">random_vector</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;random&quot;</span><span class="p">]</span>  <span class="c1"># random word</span>
+<span class="n">obama_vector</span> <span class="o">@</span> <span class="n">random_vector</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># cosine similarity, scaled version of the dot product</span>
+<span class="c1"># this will ensure that values are between -1 and 1</span>
+<span class="n">president_scaled_sim</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">obama_vector</span>
+    <span class="o">@</span> <span class="n">president_vector</span>
+    <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">obama_vector</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">president_vector</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="n">random_scaled_sim</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">obama_vector</span>
+    <span class="o">@</span> <span class="n">random_vector</span>
+    <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">obama_vector</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">random_vector</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">president_scaled_sim</span><span class="p">,</span> <span class="n">random_scaled_sim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># strongest relationships</span>
+<span class="c1"># gensim docs: https://radimrehurek.com/gensim/models/keyedvectors.html</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s2">&quot;obama&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-word-vectors">
+<h3>Visualizing word vectors<a class="headerlink" href="#visualizing-word-vectors" title="Link to this heading">#</a></h3>
+<p>If you look online for word vectors, you may find 2-d or 3-d representations of word vectors. These can be very interesting to look at and can give us a good intuition for what the word2vec model is doing (before we see exactly what it’s doing below).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">TruncatedSVD</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 2-d dimensionality reduction</span>
+<span class="n">svd</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">reduced</span> <span class="o">=</span> <span class="n">svd</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">vectors</span><span class="p">)</span>
+
+<span class="c1"># putting into a dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">reduced</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">index_to_key</span><span class="p">)))</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;word&quot;</span><span class="p">})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># taking a closer look</span>
+<span class="n">captials_countries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;paris&quot;</span><span class="p">,</span> <span class="s2">&quot;france&quot;</span><span class="p">,</span> <span class="s2">&quot;london&quot;</span><span class="p">,</span> <span class="s2">&quot;england&quot;</span><span class="p">,</span> <span class="s2">&quot;rome&quot;</span><span class="p">,</span> <span class="s2">&quot;italy&quot;</span><span class="p">]</span>
+<span class="n">cc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">word</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">captials_countries</span><span class="p">)]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cc</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that there is an internal logic to these vectors that is detected just from the data itself. We didn’t have to prompt or show the model anything. Instead, we just gave it the text and it figured out there is the same relationship between Paris and France as there is between London and England. Maybe you’re starting to see why we sometimes call this ‘artifical intelligence’.</p>
+<section id="task-1">
+<h4>TASK 1<a class="headerlink" href="#task-1" title="Link to this heading">#</a></h4>
+<p>Because these word vectors are just vectors that represent word meaning, we can do arithmetic on the vectors and expect to see a similar change in meaning. See the examples below and then try a set of semantic analogies for yourself.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ex1: what are toes minus feet plus hands?</span>
+<span class="c1"># toes are to feet as hands are to ___</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;toes&quot;</span><span class="p">,</span> <span class="s2">&quot;hand&quot;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;feet&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ex2: what is a king minus a man plus a woman?</span>
+<span class="c1"># men are to kings as women are to ___</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;man&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ex3: what is a turtle minus a shell plus teeth?</span>
+<span class="c1"># shells are to turtles as teeth are to ___</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;turtle&quot;</span><span class="p">,</span> <span class="s2">&quot;teeth&quot;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># try a couple out for yourself:</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;moat&quot;</span><span class="p">,</span> <span class="s2">&quot;swamp&quot;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;water&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># bonus: try to code this out without the `most similar` function, don&#39;t worry about the similarity score</span>
+<span class="c1"># hint: if you have an index, you can find the word that goes with it with the model.index_to_key list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="answer">
+<h5>Answer<a class="headerlink" href="#answer" title="Link to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;king&quot;</span><span class="p">]</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;woman&quot;</span><span class="p">]</span>
+<span class="n">n1</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;man&quot;</span><span class="p">]</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
+<span class="n">pos</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">n1</span><span class="p">)</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">400000</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span> <span class="n">x</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="mi">400000</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sims</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">400000</span><span class="p">):</span>
+    <span class="n">sims</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">@</span> <span class="n">sub</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim_scores</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">vectors</span> <span class="o">@</span> <span class="n">sub</span><span class="o">.</span><span class="n">T</span>
+<span class="n">sim_scores</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># without `most_similar`</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_most_similar</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="p">[],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[],</span> <span class="n">to_see</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">positive</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">model</span><span class="p">[</span><span class="n">positive</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">model</span><span class="p">[</span><span class="n">negative</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">vectors</span> <span class="o">@</span> <span class="n">sub</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="n">to_see</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">index_to_key</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sim</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_most_similar</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;toes&quot;</span><span class="p">,</span> <span class="s2">&quot;hand&quot;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;feet&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="how-does-word2vec-work">
+<h2>How does word2vec work?<a class="headerlink" href="#how-does-word2vec-work" title="Link to this heading">#</a></h2>
+<p>This section will have a lot of explanation and some code, though I don’t plan on explaining each line. If you’d like to see an example of word2vec coded out from scratch, let me know. Instead this section will focus on giving you an intuition on this is working.</p>
+<section id="training-data">
+<h3>Training data<a class="headerlink" href="#training-data" title="Link to this heading">#</a></h3>
+<p>Before we can start training, we need to prepare our data for training. We already did one of these steps above, tokenization. In fact, when we prepared the data above, we followed all the right steps.</p>
+</section>
+<section id="training-objective">
+<h3>Training objective<a class="headerlink" href="#training-objective" title="Link to this heading">#</a></h3>
+<p>First, we need to better understand what the objective of word2vec is. We saw that it could take in some text and convert it into a vector. But this is, ironically, more of a byproduct of the training process than the goal.</p>
+<p>Instead, word2vec seeks to predict the next word after a given word. (Then, the vectors we got above were the weights that the model predicted per unique word. See below.) To do so, we need to arrange our data in a format that lets us train in this way.</p>
+</section>
+<section id="block-size">
+<h3>Block size<a class="headerlink" href="#block-size" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">block_size</span></code> represents a moving context window which arranges our text into usable training data.</p>
+<p>Below is a diagram of this process using a <code class="docutils literal notranslate"><span class="pre">block_size</span></code> size of 2 (taken from: <a class="reference external" href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/</a>).</p>
+<p><img alt="training_data.png" src="data:image/png;base64,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" /></p>
+<p>For the purposes of this model, we would take in the first members of these tuples and try to predict the second.</p>
+</section>
+<section id="embedding-layer">
+<h3>Embedding layer<a class="headerlink" href="#embedding-layer" title="Link to this heading">#</a></h3>
+<p>Now, how do we take the objective above and get the result we saw from <code class="docutils literal notranslate"><span class="pre">gensim</span></code>?</p>
+<p>An embedding “layer” is just a data structure that holds all of the unique words in our texts and for each one has an arbitrarily log vector associated with it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">nn</span>
+
+<span class="n">embedl</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># this embedding has 10 words at 100 vectors long</span>
+<span class="n">embedl</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embedl</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># random weights of a single &quot;word&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Right now, these numbers are completely random, bur the training process will make them not random, so they will represent the meaning of the word they are assigned to.</p>
+</section>
+<section id="linear-layer">
+<h3>Linear layer<a class="headerlink" href="#linear-layer" title="Link to this heading">#</a></h3>
+<p>A linear layer is a fancy way of doing as many of the word-level (“what word comes next?”) predictions at the same time and will look very familiar from linear regression:</p>
+<p><span class="math notranslate nohighlight">\(y_{pred} = xA^{\mathsf {T}}+b\)</span>, where <span class="math notranslate nohighlight">\(A\)</span> is our embedding matrix. This <em>linear</em> transformation will give us the predictions for any piece of the data.</p>
+<p>We can then compare these predictions to the correct values and train this model using gradient descent.</p>
+</section>
+</section>
+<section id="using-word-vectors-for-analysis">
+<h2>Using word vectors for analysis<a class="headerlink" href="#using-word-vectors-for-analysis" title="Link to this heading">#</a></h2>
+<p>Now that we see how these vectors are created we can use them to answer a question. Specifically, we’ll look at the entire NYT dataset and try to predict, based on just a headline, what section of the Times it’s from.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># loading in our (92k) headlines</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;pnadel/nyt_headlines&quot;</span><span class="p">)</span>
+<span class="n">full</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<span class="n">hls</span> <span class="o">=</span> <span class="n">full</span><span class="o">.</span><span class="n">headline</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="n">hls</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">hls</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">full</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">full</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="tokenization">
+<h3>Tokenization<a class="headerlink" href="#tokenization" title="Link to this heading">#</a></h3>
+<p>Before we can turn our words into vectors, we need to <em>tokenize</em> our text. Tokenization is the process of turning our sentences into a list of words. Tokenization can be very complicated (with HuggingFace even providing a <code class="docutils literal notranslate"><span class="pre">tokenizers</span></code> library) but we’ll keep it very simple for this example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gensim.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">simple_preprocess</span>  <span class="c1"># gensim&#39;s native tokenization function</span>
+
+<span class="n">simple_preprocess</span><span class="p">(</span><span class="n">hls</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># using a list comprehension to tokenize our whole list</span>
+<span class="n">hls</span> <span class="o">=</span> <span class="p">[</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">hl</span><span class="p">)</span> <span class="k">for</span> <span class="n">hl</span> <span class="ow">in</span> <span class="n">hls</span><span class="p">]</span>
+<span class="n">hls</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-training">
+<h3>Model training<a class="headerlink" href="#model-training" title="Link to this heading">#</a></h3>
+<p>If we have a list of list of tokens (aka a list of tokenized sentences), <code class="docutils literal notranslate"><span class="pre">gensim</span></code> makes it really easy to train a word2vec model.</p>
+<p>But what are all these parameters?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vector_size</span></code>: the length of our word vectors, as we’ll see the longer the vector the more linguistic information it can hold, but it also has a higher chance to overfit</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">window</span></code>: this is the size of the context window that controls training data, we’ll see this in more detail below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_count</span></code>: if a word occurs less than this number, it is ignored</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">epochs</span></code>: how long to train the model, like <code class="docutils literal notranslate"><span class="pre">vector_size</span></code>, the higher the number the better the model, but it also has a higher chance to overfit.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gensim.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Word2Vec</span>
+
+<span class="c1"># training the model (~1 min)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">hls</span><span class="p">,</span> <span class="n">vector_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># vector representing &#39;biden&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># vector representing &#39;president&#39;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s2">&quot;president&quot;</span><span class="p">],</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s2">&quot;president&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s2">&quot;president&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="setting-up-our-classification-model">
+<h3>Setting up our classification model<a class="headerlink" href="#setting-up-our-classification-model" title="Link to this heading">#</a></h3>
+<p>If we were to encode all the words in our headlines with their individual word embeddings, we wouldn’t be able to train a classifier because the number of words in each headline varies. As a result, to compute a single vector for a headline, we’ll just take the mean. This is a process called <strong>mean pooling</strong> and is very popular when create document-level embeddings. Can you think of why this might not be the best option in all cases? What are some alternatives?</p>
+<p>I’ll also do some data splits below. Hwere they are spelled out:</p>
+<ul class="simple">
+<li><p>First split: <code class="docutils literal notranslate"><span class="pre">full_vector</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">df</span></code> + <code class="docutils literal notranslate"><span class="pre">valid</span></code> (.33 split)</p></li>
+<li><p>Second split: <code class="docutils literal notranslate"><span class="pre">df</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">train</span></code> + <code class="docutils literal notranslate"><span class="pre">test</span></code> (.33 split)</p></li>
+</ul>
+<p>At the end, we’ll be left with three datasets. We’ll train on <code class="docutils literal notranslate"><span class="pre">train</span></code>, test on <code class="docutils literal notranslate"><span class="pre">test</span></code> and then evaluate our classification model with <code class="docutils literal notranslate"><span class="pre">valid</span></code>.</p>
+<section id="task-2">
+<h4>TASK 2<a class="headerlink" href="#task-2" title="Link to this heading">#</a></h4>
+<p>As mentioned above, we need to take the mean of each set of embeddings of a headline. Below, try to do so by any means that makes sense to you.</p>
+<p>Some useful variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hls</span></code> - list of list of each word in each headline</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code> - calling <code class="docutils literal notranslate"><span class="pre">model.wv[word]</span></code> for any word will give you the embedding for that word</p></li>
+</ul>
+<p>At the end, you should have a list of mean embeddings for each headline.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># for each headline we want a 50 long vector that is the mean of all of its word embeddings</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h5>Answer<a class="headerlink" href="#id1" title="Link to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sent_vectors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dataframes-and-splits">
+<h4>DataFrames and Splits<a class="headerlink" href="#dataframes-and-splits" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">full_vector</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sent_vectors</span><span class="p">)</span>
+<span class="n">full_vector</span><span class="p">[</span><span class="s2">&quot;section&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span>
+
+<span class="c1"># first split</span>
+<span class="n">df</span><span class="p">,</span> <span class="n">valid</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">full_vector</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1337</span><span class="p">)</span>
+<span class="n">df</span>
+
+<span class="c1"># second split</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1337</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="n">test</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="n">test</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">train</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="logistic-regression">
+<h3>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">lr_model</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">lr_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># simple accuracy on test set</span>
+<span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span>
+
+<span class="c1"># confusion matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">lr_model</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="random-forest-classifier">
+<h3>Random Forest Classifier<a class="headerlink" href="#random-forest-classifier" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">rf_model</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># takes about 30 seconds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># simple accuracy</span>
+<span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># confusion matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">rf_model</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># check on our validation set</span>
+<span class="n">X_v</span> <span class="o">=</span> <span class="n">valid</span><span class="p">[</span><span class="n">valid</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">y_v</span> <span class="o">=</span> <span class="n">valid</span><span class="p">[</span><span class="n">valid</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">v_pred</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># simple accuracy</span>
+<span class="p">(</span><span class="n">v_pred</span> <span class="o">==</span> <span class="n">y_v</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">v_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_v</span><span class="p">,</span> <span class="n">v_pred</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">rf_model</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># check where we&#39;re wrong</span>
+<span class="n">check</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;headline&quot;</span><span class="p">:</span> <span class="n">full</span><span class="o">.</span><span class="n">headline</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">y_v</span><span class="o">.</span><span class="n">index</span><span class="p">],</span> <span class="s2">&quot;true&quot;</span><span class="p">:</span> <span class="n">y_v</span><span class="p">,</span> <span class="s2">&quot;pred&quot;</span><span class="p">:</span> <span class="n">v_pred</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="n">wrong</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">check</span><span class="o">.</span><span class="n">true</span> <span class="o">!=</span> <span class="n">check</span><span class="o">.</span><span class="n">pred</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">wrong</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Text: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;headline&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">True Label: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">Predicted Label: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">---------&quot;</span>
+    <span class="p">),</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
+<p>Language modeling can, at times, be very complicated and very simple. As we saw, the word2vec model attempts to recreate the simple logic that we all have while reading a text, yet the details of individual choices can still seem mystifying.</p>
+<p>View this notebooks as an invitation into the realm of natural language processing. I find that online resources for NLP range from incredibly informative to almost worthless, so I’ve provided some links below to some places to visit if you’re interested in learning more:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/&#64;AndrejKarpathy">Andrej Karpathy’s Youtube account</a> is an amazing resource for learning how to design NLP models of the generation after Word2Vec.</p></li>
+<li><p><a class="reference external" href="https://course.fast.ai/">Jeremy Howard’s fast.ai course</a> is designed for data scientists to learn about deep learning.</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/course/chapter1/1">HuggingFace’s NLP course</a> gives a practical walk through for the HuggingFace NLP framework.</p></li>
+</ul>
+<p>And as always, you can feel free to email me with a question or to set up a meeting at <a class="reference external" href="mailto:peter&#46;nadel&#37;&#52;&#48;tufts&#46;edu">peter<span>&#46;</span>nadel<span>&#64;</span>tufts<span>&#46;</span>edu</a>.</p>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="w2v-from-scratch.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">word2vec using <code class="docutils literal notranslate"><span class="pre">numpy</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../llms/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Large Language Models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Natural Language Processing: Using Word Vectors for Textual Analysis
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Natural Language Processing: Using Word Vectors for Textual Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-word2vec">What is word2vec</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-packages-we-ll-need">The packages we’ll need</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-word-vectors">Using word vectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity-measurement">Similarity measurement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-word-vectors">Visualizing word vectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1">TASK 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#answer">Answer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-word2vec-work">How does word2vec work?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-data">Training data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-objective">Training objective</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block-size">Block size</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-layer">Embedding layer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-layer">Linear layer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-word-vectors-for-analysis">Using word vectors for analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training">Model training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-our-classification-model">Setting up our classification model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2">TASK 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-and-splits">DataFrames and Splits</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/nlp/deep-learning/w2v-gensim.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/nlp/deep-learning/w2v-gensim.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: nlp/deep-learning/w2v-gensim"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Nov 10, 2025.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
