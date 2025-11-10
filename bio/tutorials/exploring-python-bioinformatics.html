@@ -77,8 +77,8 @@
     <link rel="prev" title="A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand" href="de-seq2-in-r-ood.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20250818" />
-    <meta name="docbuild:last-update" content="Aug 18, 2025"/>
+  <meta name="docsearch:version" content="20251110" />
+    <meta name="docbuild:last-update" content="Nov 10, 2025"/>
   </head>
   
   
@@ -492,8 +492,8 @@
 <h1>Exploring Python Bioinformatics Packages with Jupyter Notebook<a class="headerlink" href="#exploring-python-bioinformatics-packages-with-jupyter-notebook" title="Link to this heading">#</a></h1>
 <p>Shirley Li, Bioinformatician, TTS Research Technology
 <a class="reference external" href="mailto:xue&#46;li37&#37;&#52;&#48;tufts&#46;edu">xue<span>&#46;</span>li37<span>&#64;</span>tufts<span>&#46;</span>edu</a></p>
-<p>Date: 2024-11-01</p>
-<p>In this tutorial, we will use the <strong>Anndata</strong> package as an example to show how to run interactive Python sessions through the Tufts Open OnDemand Jupyter Notebook.</p>
+<p>Date: 2025-10-03</p>
+<p>In this tutorial, we will use the <strong>Anndata</strong> package as an example to show how to run interactive Python sessions through the Tufts Open OnDemand Jupyter App. The example is based on the upgraded cluster and the new OOD environment. For more details, see the <a class="reference external" href="https://rtguides.it.tufts.edu/hpc/examples/new-cluster.html">2025 cluster upgrade</a></p>
 <section id="prerequisite">
 <h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -504,18 +504,12 @@
 <section id="creating-conda-environment">
 <h2>Creating conda environment<a class="headerlink" href="#creating-conda-environment" title="Link to this heading">#</a></h2>
 <ol class="arabic">
-<li><p>Start an interactive job session<br />
-<code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-p</span> <span class="pre">interactive</span> <span class="pre">-n</span> <span class="pre">1</span> <span class="pre">--time=04:00:00</span> <span class="pre">--mem</span> <span class="pre">4g</span> <span class="pre">--pty</span> <span class="pre">bash</span></code></p></li>
-<li><p>Load anacoda or minoconda module</p>
-<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda/2021.05</span></code></p>
-<p>or</p>
-<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda/2021.11</span></code></p>
-<p>or</p>
-<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">miniconda/23.10</span></code></p>
-</li>
-<li><p>Load conda-env-mod module</p>
-<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">conda-env-mod/default</span></code></p>
-</li>
+<li><p>Start an interactive job session
+<code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-p</span> <span class="pre">batch</span> <span class="pre">-n</span> <span class="pre">1</span> <span class="pre">--time=04:00:00</span> <span class="pre">--mem</span> <span class="pre">4g</span> <span class="pre">--pty</span> <span class="pre">bash</span></code></p></li>
+<li><p>Load anacoda or minoconda module
+<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda/2025.06.0</span></code></p></li>
+<li><p>Load conda-env-mod module
+<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">conda-env-mod/default</span></code></p></li>
 <li><p>Configure your conda</p>
 <p><strong><em>NOTE (steps in this session only needs to be executed ONCE)</em></strong></p>
 <p>Since your home directory has limited storage, it’s recommended to install conda packages in your group research storage space. Follow these steps:</p>
@@ -549,7 +543,8 @@ channels:
 conda-env-mod create -p yourenvname python=3.8  --jupyter
 </pre></div>
 </div>
-<p>You will see something like this, and enter <code class="docutils literal notranslate"><span class="pre">y</span></code> to continue</p>
+<p>Accept <code class="docutils literal notranslate"><span class="pre">Terms</span> <span class="pre">of</span> <span class="pre">Service</span> <span class="pre">(ToS)</span></code> if there is any.
+You will see something like this, and enter <code class="docutils literal notranslate"><span class="pre">y</span></code> to continue</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The following NEW packages will be INSTALLED:
 
   _libgcc_mutex      conda-forge/linux-64::_libgcc_mutex-0.1-conda_forge
@@ -563,24 +558,28 @@ Proceed ([y]/n)? y
 </pre></div>
 </div>
 <p>When it’s complete, you will see something like this.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-<span class="n">Preparing</span> <span class="n">transaction</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Preparing</span> <span class="n">transaction</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
 <span class="n">Verifying</span> <span class="n">transaction</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
 <span class="n">Executing</span> <span class="n">transaction</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
 <span class="o">+---------------------------------------------------------------+</span>
 <span class="o">|</span> <span class="n">To</span> <span class="n">use</span> <span class="n">this</span> <span class="n">environment</span><span class="p">,</span> <span class="n">load</span> <span class="n">the</span> <span class="n">following</span> <span class="n">modules</span><span class="p">:</span>          <span class="o">|</span>
 <span class="o">|</span>     <span class="n">module</span> <span class="n">load</span> <span class="n">use</span><span class="o">.</span><span class="n">own</span>                                       <span class="o">|</span>
-<span class="o">|</span>     <span class="n">module</span> <span class="n">load</span> <span class="n">conda</span><span class="o">-</span><span class="n">env</span><span class="o">/</span><span class="n">bio_test</span><span class="o">-</span><span class="n">py3</span><span class="mf">.11.5</span>                   <span class="o">|</span>
+<span class="o">|</span>     <span class="n">module</span> <span class="n">load</span> <span class="n">conda</span><span class="o">-</span><span class="n">env</span><span class="o">/</span><span class="n">project_merfish</span><span class="o">-</span><span class="n">py3</span><span class="mf">.13.5</span>            <span class="o">|</span>
 <span class="o">|</span> <span class="p">(</span><span class="n">then</span> <span class="n">standard</span> <span class="s1">&#39;conda install&#39;</span> <span class="o">/</span> <span class="s1">&#39;pip install&#39;</span> <span class="o">/</span> <span class="n">run</span> <span class="n">scripts</span><span class="p">)</span> <span class="o">|</span>
 <span class="o">+---------------------------------------------------------------+</span>
+<span class="n">Jupyter</span> <span class="n">kernel</span> <span class="n">created</span><span class="p">:</span> <span class="s2">&quot;Python (My project_merfish Kernel)&quot;</span>
+<span class="o">+---------------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">We</span> <span class="n">recommend</span> <span class="n">installing</span> <span class="n">packages</span> <span class="n">into</span> <span class="n">your</span> <span class="n">kernel</span> <span class="n">environment</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">via</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span> <span class="p">(</span><span class="k">with</span> <span class="s1">&#39;conda install&#39;</span> <span class="ow">or</span> <span class="s1">&#39;pip install&#39;</span><span class="p">)</span><span class="o">.</span> <span class="o">|</span>
+<span class="o">+---------------------------------------------------------------+</span>
+<span class="n">Your</span> <span class="n">environment</span> <span class="s2">&quot;project_merfish&quot;</span> <span class="n">was</span> <span class="n">created</span> <span class="n">successfully</span><span class="o">.</span>
 </pre></div>
 </div>
 </li>
 <li><p>Activate conda environment and install new packages</p>
-<p>Note: <code class="docutils literal notranslate"><span class="pre">conda-env/bio_test-py3.11.5</span> </code> this may be different and it depends on what <code class="docutils literal notranslate"><span class="pre">yourenvname</span></code> you have</p>
+<p>Note: <code class="docutils literal notranslate"><span class="pre">conda-env/project_merfish-py3.11.5</span> </code> this may be different and it depends on what <code class="docutils literal notranslate"><span class="pre">yourenvname</span></code> you have</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">use</span><span class="o">.</span><span class="n">own</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">conda</span><span class="o">-</span><span class="n">env</span><span class="o">/</span><span class="n">bio_test</span><span class="o">-</span><span class="n">py3</span><span class="mf">.11.5</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">conda</span><span class="o">-</span><span class="n">env</span><span class="o">/</span><span class="n">project_merfish</span><span class="o">-</span><span class="n">py3</span><span class="mf">.11.5</span>
 
 <span class="n">conda</span> <span class="nb">list</span> <span class="c1"># check packages installed in this environment</span>
 
@@ -590,43 +589,40 @@ Proceed ([y]/n)? y
 <span class="n">conda</span> <span class="nb">list</span> <span class="c1"># check again</span>
 </pre></div>
 </div>
-</li>
-</ol>
-<p>​</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># packages in environment at bio_test:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># packages in environment at project_merfish:</span>
 <span class="c1">#</span>
-<span class="c1"># Name                    Version                   Build  Channel</span>
-<span class="n">_libgcc_mutex</span>             <span class="mf">0.1</span>                 <span class="n">conda_forge</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-<span class="n">_openmp_mutex</span>             <span class="mf">4.5</span>                       <span class="mi">2</span><span class="n">_gnu</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-<span class="n">anndata</span>                   <span class="mf">0.10.8</span>                   <span class="n">pypi_0</span>    <span class="n">pypi</span>
-<span class="n">array</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">compat</span>          <span class="mf">1.7.1</span>                    <span class="n">pypi_0</span>    <span class="n">pypi</span>
-<span class="n">asttokens</span>                 <span class="mf">2.4.1</span>              <span class="n">pyhd8ed1ab_0</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-<span class="n">bzip2</span>                     <span class="mf">1.0.8</span>                <span class="n">hd590300_5</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="c1"># Name                     Version          Build               Channel</span>
+<span class="n">_libgcc_mutex</span>              <span class="mf">0.1</span>              <span class="n">conda_forge</span>         <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">_openmp_mutex</span>              <span class="mf">4.5</span>              <span class="mi">2</span><span class="n">_gnu</span>               <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">_python_abi3_support</span>       <span class="mf">1.0</span>              <span class="n">hd8ed1ab_2</span>          <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">asttokens</span>                  <span class="mf">3.0.0</span>            <span class="n">pyhd8ed1ab_1</span>        <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">bzip2</span>                      <span class="mf">1.0.8</span>            <span class="n">hda65f42_8</span>          <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">ca</span><span class="o">-</span><span class="n">certificates</span>            <span class="mf">2025.8.3</span>         <span class="n">hbd8a1cb_0</span>          <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">comm</span>                       <span class="mf">0.2.3</span>            <span class="n">pyhe01879c_0</span>        <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">cpython</span>                    <span class="mf">3.13.7</span>           <span class="n">py313hd8ed1ab_100</span>   <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+<span class="n">debugpy</span>                    <span class="mf">1.8.17</span>           <span class="n">py313h5d5ffb9_0</span>     <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
 <span class="o">...</span>
 </pre></div>
 </div>
-<ol class="arabic" start="7">
-<li><p>Create a jupyter kernel</p>
-<p><code class="docutils literal notranslate"><span class="pre">conda-env-mod</span> <span class="pre">kernel</span> <span class="pre">-n</span> <span class="pre">bio_test</span></code></p>
 </li>
-</ol>
+<li><p>Create a jupyter kernel</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda-env-mod</span> <span class="pre">kernel</span> <span class="pre">-n</span> <span class="pre">project_merfish</span></code></p>
 <p>You will see something like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Setting</span> <span class="n">CONDA_ENVS_PATH</span><span class="o">=/</span><span class="n">cluster</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">xli37</span><span class="o">/.</span><span class="n">conda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">rhel7</span><span class="mf">.8</span><span class="o">/</span><span class="n">conda</span><span class="o">-</span><span class="mf">23.10.0</span>
-<span class="n">New</span> <span class="n">environments</span> <span class="n">will</span> <span class="n">be</span> <span class="n">created</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">directory</span> <span class="n">unless</span> <span class="o">--</span><span class="n">prefix</span> <span class="ow">is</span> <span class="n">specified</span><span class="o">.</span>
-<span class="n">requested</span> <span class="n">kernel</span> <span class="k">with</span> <span class="n">arguments</span><span class="p">:</span>  <span class="o">-</span><span class="n">n</span> <span class="s1">&#39;bio_test&#39;</span> <span class="o">--</span>
-
-<span class="n">Jupyter</span> <span class="n">kernel</span> <span class="n">created</span><span class="p">:</span> <span class="s2">&quot;Python (My bio_test Kernel)&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">requested</span> <span class="n">kernel</span> <span class="k">with</span> <span class="n">arguments</span><span class="p">:</span>  <span class="o">-</span><span class="n">n</span> <span class="s1">&#39;project_merfish&#39;</span> <span class="o">--</span>
+<span class="n">Jupyter</span> <span class="n">kernel</span> <span class="n">created</span><span class="p">:</span> <span class="s2">&quot;Python (My project_merfish Kernel)&quot;</span>
 <span class="o">+---------------------------------------------------------------+</span>
 <span class="o">|</span> <span class="n">We</span> <span class="n">recommend</span> <span class="n">installing</span> <span class="n">packages</span> <span class="n">into</span> <span class="n">your</span> <span class="n">kernel</span> <span class="n">environment</span> <span class="o">|</span>
 <span class="o">|</span> <span class="n">via</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span> <span class="p">(</span><span class="k">with</span> <span class="s1">&#39;conda install&#39;</span> <span class="ow">or</span> <span class="s1">&#39;pip install&#39;</span><span class="p">)</span><span class="o">.</span> <span class="o">|</span>
+<span class="o">+---------------------------------------------------------------+</span>
 </pre></div>
 </div>
-<p>​</p>
+</li>
+</ol>
 </section>
 <section id="using-open-ondemand-jupyter-lab">
 <h2>Using Open Ondemand Jupyter Lab<a class="headerlink" href="#using-open-ondemand-jupyter-lab" title="Link to this heading">#</a></h2>
 <p>Natigate to <a class="reference external" href="https://ondemand.pax.tufts.edu/">Open Ondemand</a></p>
-<p>In Open Ondemand dashboard, let’s go to <code class="docutils literal notranslate"><span class="pre">Interactive</span> <span class="pre">APPs</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Lab</span></code> and select the <code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">of</span> <span class="pre">hours</span></code>, <code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">of</span> <span class="pre">cores</span></code>, and <code class="docutils literal notranslate"><span class="pre">Amount</span> <span class="pre">of</span> <span class="pre">memory</span></code> that you would like to request and Launch this job.</p>
+<p>In Open Ondemand dashboard, let’s go to <code class="docutils literal notranslate"><span class="pre">Interactive</span> <span class="pre">APPs</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Jupyter</span></code> and select the <code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">of</span> <span class="pre">hours</span></code>, <code class="docutils literal notranslate"><span class="pre">number</span> <span class="pre">of</span> <span class="pre">cores</span></code>, and <code class="docutils literal notranslate"><span class="pre">Amount</span> <span class="pre">of</span> <span class="pre">memory</span></code> that you would like to request and Launch this job.</p>
 <p>Under <code class="docutils literal notranslate"><span class="pre">Notebook</span></code>, select the kernel you just created. Ex: anndata_python.</p>
 <p>Start your python code from there.</p>
 <p>Example code to check the Anndata installation:</p>
@@ -789,7 +785,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 18, 2025.
+  Last updated on Nov 10, 2025.
   <br/>
 </p></div>
       
