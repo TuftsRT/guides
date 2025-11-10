@@ -10,7 +10,7 @@
 
 ## Contents
 
-Slides for this lecture is [HERE](https://github.com/TuftsRT/guides/blob/shirley-patch-2/source/bio/workshops/intro_git_github-2025-fall.pdf)
+Slides for this lecture is [HERE](intro_git_github-2025-fall.pdf)
 
 Recording for this workshop will be available soon
 
