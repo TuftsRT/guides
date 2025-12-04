@@ -2,7 +2,7 @@
 
 Gocryptfs allows you to create a folder where the file contents and names are encrypted before being saved to the underlying storage system.  This can be used to allow you to store data in places you might otherwise not be able to.
 
-Technical details on Gocryptfs can be found on their site at ????????????????
+Technical details on Gocryptfs can be found on their site at [https://github.com/rfjakob/gocryptfs](https://github.com/rfjakob/gocryptfs)
 
 # Temporarily store data
 This example explains how you can temporarily download and use data that you otherwise could not have in the HPC environment.  
@@ -49,24 +49,3 @@ rm -rf ~/securetemp
 rm -rf ${temp_encrypted_dir}
 ```
 
-
-# Long term storage
-
-
-## Make encrypted storage folder.  You will be prompted to enter a password needed each time you mount the folder in the future.
-```
-module load gocryptfs
-mkdir ~/access ~/encrypted
-#Make  it
-gocryptfs -init ~/encrypted -i 15m
-```
-
-## Mount the folder
-
-```
-module load gocryptfs
-#Mount it
-gocryptfs ~/encrypted ~/access 
-
-cd ~/access 
-```
