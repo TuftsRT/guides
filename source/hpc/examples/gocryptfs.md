@@ -39,6 +39,7 @@ rm ${temp_password_file}  #After this is run the dir can not be mounted any addi
 cd ~/securetemp/access
 
 #DO YOUR SECURE WORK
+#Download data from Box directly into ~/securetemp/access
 #Making sure to only write confidential data to ~/securetemp/access
 #Remember to copy results somewhere?  Anything in here will be deleted.
 
