@@ -22,7 +22,7 @@ This application expects a folder of image files uploaded to the Cluster. So lon
 
 OCR is an Open OnDemand application on the Cluster, meaning that it can be access from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](ondemand-p01.pax.tufts.edu). Once there, select the "Interactive Apps" drop down and click on "Optical Character Recognition".
 
-![Interactive Apps dropdown](#)
+![Interactive Apps dropdown](./assets/ocr-dropdown.png)
 
 ## Configuring you session
 
@@ -38,21 +38,21 @@ Once you've clicked on "Optical Character Recognition", you will be able to conf
 
 The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
 
-![Demo Config](./assets/OnDemandOCRConfig.png)
+![Demo Config](./assets/on-demand-ocr-config.png)
 
 ## Getting your results
 
 Once you've launched your session, you will see the loading message below. It is very normal to see this for a couple minutes.
 
-![Starting](./assets/OCRStarting.png)
+![Starting](./assets/ocr-starting.png)
 
 When the application starts running, you'll see the message below:
 
-![Running](./assets/OCRRunning.png)
+![Running](./assets/ocr-running.png)
 
 When the application is complete and the text has been searched, you will see the message below:
 
-![Complete](./assets/OCRCompleted.png)
+![Complete](./assets/ocr-completed.png)
 
 You can new visit the directory with your source files and the results will be in a new subfolder called "[the name of your original folder]\_output".
 

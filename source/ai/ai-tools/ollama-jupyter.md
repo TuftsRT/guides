@@ -25,7 +25,7 @@ This application is best suited for individuals with experience with the Python 
 
 Ollama + Jupyter is an Open OnDemand application on the Cluster, meaning that it can be accessed from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](ondemand-p01.pax.tufts.edu). Once there, select the "Interactive Apps" drop down and click on "Ollama + Jupyter".
 
-![Interactive Apps dropdown](../../images/OllamaJupyterList.png)
+![Interactive Apps dropdown](./assets/ollama-jupyter-list.png)
 
 ## Configuring your session
 
@@ -39,17 +39,17 @@ Once you've clicked on "Ollama + Jupyter", you will be able to configure the set
 
 The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
 
-![Demo Config](../../images/OllamaJupyterConfig.png)
+![Demo Config](../../images/ollama-jupyter-config.png)
 
 ## Logging in to Ollama
 
 Once you've launched your session, you will see the loading message below. It is very normal to see this for a couple minutes.
 
-![Starting](../../images/OllamaJupyterStarting.png)
+![Starting](../../images/ollama-jupyter-starting.png)
 
 When the application is ready, you'll see the message below:
 
-![Running](../../images/OllamaJupyterRunning.png)
+![Running](../../images/ollama-jupyter-running.png)
 
 When you are ready click "Connect to Jupyter". All of the data that you enter here **will stay on the Cluster and will not be shared on the internet.**
 
