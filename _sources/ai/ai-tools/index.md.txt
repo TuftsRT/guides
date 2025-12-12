@@ -28,5 +28,5 @@ grid-columns: 1
 
 - header: "{fas}`book` Research Application: Text Search"
   content: "Search through a large corpus of documents quickly."
-  link: "30-tmux.html"
+  link: "ra-text-search.html"
 ```

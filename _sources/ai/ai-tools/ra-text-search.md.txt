@@ -22,7 +22,7 @@ This application is best suited for individuals who have a large set of document
 
 Text Search is an Open OnDemand application on the Cluster, meaning that it can be access from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](ondemand-p01.pax.tufts.edu). Once there, select the "Interactive Apps" drop down and click on "Text Search".
 
-![Interactive Apps dropdown](#)
+![Interactive Apps dropdown](./assets/text-search-dropdown.png)
 
 ## Configuring your session
 
@@ -43,21 +43,21 @@ Once you've clicked on "Text Search", you will be able to configure the setting 
 
 The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
 
-![Demo Config](./assets/OnDemandTextSearchConfig.png)
+![Demo Config](./assets/on-demand-text-search-config.png)
 
 ## Getting your results
 
 Once you've launched your session, you will see the loading message below. It is very normal to see this for a couple minutes.
 
-![Starting](./assets/TextSearchStarting.png)
+![Starting](./assets/text-search-starting.png)
 
 When the application starts running, you'll see the message below:
 
-![Running](./assets/TextSearchRunning.png)
+![Running](./assets/text-search-running.png)
 
 When the application is complete and the text has been searched, you will see the message below:
 
-![Complete](./assets/TextSearchCompleted.png)
+![Complete](./assets/text-search-completed.png)
 
 You can new visit the directory with your source documents and the results will be in a new subfolder called "text-search-output".
 
