@@ -22,7 +22,7 @@ This application expects a folder of audio files uploaded to the Cluster. So lon
 
 ASR is an Open OnDemand application on the Cluster, meaning that it can be access from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](ondemand-p01.pax.tufts.edu). Once there, select the "Interactive Apps" drop down and click on "Automated Speech Recognition".
 
-![Interactive Apps dropdown](#)
+![Interactive Apps dropdown](./assets/asr-dropdown.png)
 
 ## Configuring you session
 
@@ -37,21 +37,21 @@ Once you've clicked on "Automated Speech Recognition", you will be able to confi
 
 The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
 
-![Demo Config](./assets/OnDemandASRConfig.png)
+![Demo Config](./assets/on-demand-asr-config.png)
 
 ## Getting your results
 
 Once you've launched your session, you will see the loading message below. It is very normal to see this for a couple minutes.
 
-![Starting](./assets/ASRStarting.png)
-./assets
+![Starting](./assets/asr-starting.png)
+
 When the application starts running, you'll see the message below:
 
-![Running](./assets/ASRRunning.png)
+![Running](./assets/asr-running.png)
 
 When the application is complete and the text has been searched, you will see the message below:
 
-![Complete](./assets/ASRCompleted.png)
+![Complete](./assets/asr-completed.png)
 
 You can new visit the directory with your source files and the results will be in a new subfolder called "asr_output".
 

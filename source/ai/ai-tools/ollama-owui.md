@@ -25,7 +25,7 @@ This application is best suited for individuals who are **new** to working with 
 
 Ollama + Open WebUI is an Open OnDemand application on the Cluster, meaning that it can be accessed from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](ondemand-p01.pax.tufts.edu). Once there, select the "Interactive Apps" drop down and click on "Ollama + Open WebUI".
 
-![Interactive Apps dropdown](../../images/InteractiveAppsDropdown.png)
+![Interactive Apps dropdown](./assets/interactive-apps-dropdown.png)
 
 ## Configuring your session
 
@@ -38,17 +38,17 @@ Once you've clicked on "Ollama + Open WebUI", you will be able to configure the 
 - *GPU architecture*: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the `hpctools` CLI. Learn more [here](https://rtguides.it.tufts.edu/hpc/examples/hpctools.html).
   The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
 
-![Demo Config](../../images/OnDemandOllama.png)
+![Demo Config](./assets/on-demand-ollama.png)
 
 ## Logging in to Ollama
 
 Once you've launched your session, you will see the loading message below. It is very normal to see this for a couple minutes.
 
-![Starting](../../images/OllamaStarting.png)
+![Starting](../../images/ollama-starting.png)
 
 When the application is ready, you'll see the message below:
 
-![Running](../../images/OllamaRunning.png)
+![Running](../../images/ollama-running.png)
 
 When you are ready click "Connect to Ollama". As the message says, if you are a first-time user, you will need to configure an account. All of the data that you enter here **will stay on the Cluster and will not be shared on the internet.** You will then be able to use these credentials to log in every time you want to use this application.
 
@@ -58,6 +58,6 @@ When you are ready click "Connect to Ollama". As the message says, if you are a 
 
 After you have logged in you will be able to start chatting with a model. If you'd like to change this model you can select other option in the upper left corner.
 
-![List](../../images/OllamaList.png)
+![List](../../images/ollama-list.png)
 
 For a list of all models and research use cases can be found [here](<>). For a list of features, please visit this page: https://docs.openwebui.com/features/. For other questions, please reach out to Research Technology at: tts-research@tufts.edu.
