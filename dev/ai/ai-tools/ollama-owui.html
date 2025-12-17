@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using the Ollama + Open WebUI Application on the Cluster &#8212; TTS Research Technology Guides</title>
+    <title>Using the Research Chatbot (LLM) on the Cluster &#8212; TTS Research Technology Guides</title>
   
   
   
@@ -443,7 +443,7 @@
     </li>
      
     <li class="breadcrumb-item active" aria-current="page">
-      Using the Ollama +...
+      Using the Research...
     </li>
   </ul>
 </nav>
@@ -461,40 +461,43 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="using-the-ollama-open-webui-application-on-the-cluster">
-<h1>Using the Ollama + Open WebUI Application on the Cluster<a class="headerlink" href="#using-the-ollama-open-webui-application-on-the-cluster" title="Link to this heading">#</a></h1>
-<p>By Peter Nadel, Digital Humanities Natural Language Processing Specialist</p>
-<p>In this document, we show the best practices for accessing Ollama with Open WebUI on the Tufts High Performance Compute (HPC) Cluster. This document does not give an in-depth description of all of the features of Ollama or Open WebUI. For this, we encourage you to explore the documentation of each of these projects:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="using-the-research-chatbot-llm-on-the-cluster">
+<h1>Using the Research Chatbot (LLM) on the Cluster<a class="headerlink" href="#using-the-research-chatbot-llm-on-the-cluster" title="Link to this heading">#</a></h1>
+<p>By Peter Nadel, Digital Humanities Natural Language Processing Specialist, and Ryan Veiga, Data Science Specialist</p>
+<p>The Research Chatbot provides a chat interface for using open-source large language models (LLMs), similar to ChatGPT, making it easy to explore generative AI models without coding. However, unlike ChatGPT and other web-based LLMs, the Research Chatbot runs locally on Tufts University servers, making any information shared with the ChatBot secure and private. (For more information on the secure use of generative AI tools at Tufts, please consult the Tufts Technology Services <a class="reference external" href="https://it.tufts.edu/guidelines-use-generative-ai-tools">Guidelines for Use of Generative AI Tools.</a>)</p>
+<p>In this document, we show the best practices for accessing the Research Chatbot (LLM) on the Tufts High Performance Compute (HPC) Cluster. This document does not provide an in-depth description of its features, however. For more information on what the Research Chatbot is and what you can do with it, see the links under “What is the Research Chatbot?” below.</p>
+<p>This tool is intended for educators or researchers who want to experiment with conversational models for classroom or research use. This tool not meant for personal use.</p>
+<section id="who-is-the-research-chatbot-for">
+<h2>Who is the Research Chatbot for?<a class="headerlink" href="#who-is-the-research-chatbot-for" title="Link to this heading">#</a></h2>
+<p>The Research Chatbot is best suited for individuals who are <strong>new</strong> to working with AI for research and would like a secure, conversational experience that mimics web-based services like ChatGPT, Google Gemini, Microsoft Copilot, or Anthropic’s Claude. This tool can give you a sense of how to use AI for research, but may not be suited for large data sets or complex or advanced requests. For more information on other options you have for AI on the Cluster, please visit <a class="reference internal" href="#TBD"><span class="xref myst">this link</span></a>.</p>
+</section>
+<section id="what-is-the-research-chatbot">
+<h2>What is the Research Chatbot?<a class="headerlink" href="#what-is-the-research-chatbot" title="Link to this heading">#</a></h2>
+<p>The Research Chatbot is the Tufts University implementation of Ollama with Open WebUI on the High-Performance Computing (HPC) Cluster.</p>
+<ul class="simple">
+<li><p><strong>Ollama</strong> is a program for using large language models (LLMs). Specifically, Ollama focuses open source and open weight LLMs usually accessible on websites like <a class="reference internal" href="#huggingface.co"><span class="xref myst">HuggingFace</span></a>. We take advantage of the compute resources on our Cluster to run Ollama with a variety of pre-downloaded models. Ollama is the bridge that we use to send your questions/requests/responses from your keyboard to the LLM itself.</p></li>
+<li><p>Unlike Ollama, <strong>Open WebUI</strong> does not itself communicate with an LLM. Instead, it is the main interface for working with Ollama. It supports the wide variety of tasks that Ollama supports in a simple and clean user platform that facilitates experimentation and iteration. It has many different features that we cannot dive into in this document, but we encourage you to explore their documentation above, as well as the application itself.</p></li>
+</ul>
+<p>For a more in-depth description of all the features of Ollama and Open WebUI, we encourage you to explore the documentation of each of these projects:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.ollama.com/">Ollama documentation</a></p></li>
 <li><p><a class="reference external" href="https://docs.openwebui.com/">Open WebUI documentation</a>.</p></li>
 </ul>
 <p>We also encourage you to explore the <a class="reference external" href="https://rtguides.it.tufts.edu/hpc/index.html">HPC Cluster documentation</a>.</p>
-<section id="what-is-ollama">
-<h2>What is Ollama<a class="headerlink" href="#what-is-ollama" title="Link to this heading">#</a></h2>
-<p>Ollama is a program for using large language models (LLMs). Specifically, Ollama focuses open source and open weight LLMs usually accessible on websites like <a class="reference internal" href="#huggingface.co"><span class="xref myst">HuggingFace</span></a>. We take advantage of the compute resources on our Cluster to run Ollama with a variety of pre-downloaded models. Ollama is the bridge that we use to send your questions/requests/responses from your keyboard to the LLM itself.</p>
-</section>
-<section id="what-is-open-webui">
-<h2>What is Open WebUI<a class="headerlink" href="#what-is-open-webui" title="Link to this heading">#</a></h2>
-<p>Unlike Ollama, Open WebUI does not itself communicate with an LLM. Instead, it is the main interface for working with Ollama. It supports the wide variety of tasks that Ollama supports in a simple and clean user platform that facilitates experimentation and iteration. It has many different features that we cannot dive into in this document, but we encourage you to explore their documentation above, as well as the application itself.</p>
-</section>
-<section id="who-is-this-for">
-<h2>Who is this for?<a class="headerlink" href="#who-is-this-for" title="Link to this heading">#</a></h2>
-<p>This application is best suited for individuals who are <strong>new</strong> to working with AI for research. This tool can give you a sense of how to use AI for research, but may be difficult to use for a lot of data or requests. For more information on other options you have for AI on the Cluster, please visit <a class="reference internal" href="#TBD"><span class="xref myst">this link</span></a>.</p>
 </section>
 <section id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
-<p>Ollama + Open WebUI is an Open OnDemand application on the Cluster, meaning that it can be accessed from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the <a class="reference internal" href="#ondemand-p01.pax.tufts.edu"><span class="xref myst">Open OnDemand website for the Tufts Cluster</span></a>. Once there, select the “Interactive Apps” drop down and click on “Ollama + Open WebUI”.</p>
+<p>The Research Chatbot is an Open OnDemand application on the HPC Cluster, meaning that it can be accessed from the Interactive Apps drop-down menu in the Open OnDemand website. To get started, visit and log into the <a class="reference internal" href="#ondemand-p01.pax.tufts.edu"><span class="xref myst">Open OnDemand website for the Tufts Cluster</span></a>. Once there, select the “Interactive Apps” drop-down menu and click on “Research Chatbot (LLMs)”.</p>
 <p><img alt="Interactive Apps dropdown" src="../../_images/interactive-apps-dropdown.png" /></p>
 </section>
 <section id="configuring-your-session">
 <h2>Configuring your session<a class="headerlink" href="#configuring-your-session" title="Link to this heading">#</a></h2>
-<p>Once you’ve clicked on “Ollama + Open WebUI”, you will be able to configure the setting for using the application. Some of these options can be confusing, so we have left an example configuration below. If you are unsure, feel free to use this one. Otherwise, we explore what these parameters mean here:</p>
+<p>Once you’ve clicked on “Research Chatbot (LLMs)”, you will be able to configure the settings for using the application. Some of these options can be confusing, so we have left an example configuration in the image below. If you are unsure, feel free to use the same values as in the example. Otherwise, we explore what these parameters mean here:</p>
 <ul class="simple">
 <li><p><em>Number of hours</em>: This parameter controls how long your session will run for. At the conclusion of this time, your session will end. Be sure to choose a time that matches how you expect to need in hours. You can always budget more time than you may need and they end the session early if you need.</p></li>
 <li><p><em>Number of cores</em>: This field controls how many CPU cores are allocated for your session. It is important to pick a value proportional to the size of the LLM you’d like to run. If you are having trouble choosing, you can use the value shown below.</p></li>
-<li><p><em>Amount of Memory (GB)</em>: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose, so I like to use double the amount of CPU cores that I have selected.</p></li>
-<li><p><em>Partition</em>: For most Ollama application, you should choose the “gpu” option. Generally, we require hardware acceleration to run LLMs. You can run some models, however, with just CPUs, especially if you adjust the number of cores and amount of memory to be quite high, in which case, you could select “batch” for this option.</p></li>
+<li><p><em>Amount of Memory (GB)</em>: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose; as a starting point, a loose “rule of thumb” is to double the number of CPU cores you have selected.</p></li>
+<li><p><em>Partition</em>: For most Research Chatbot applications, you should choose the “gpu” option. Generally, we require hardware acceleration to run LLMs. You can run some models, however, with just CPUs, especially if you adjust the number of cores and amount of memory to be quite high, in which case, you could select “batch” for this option.</p></li>
 <li><p><em>GPU architecture</em>: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the <code class="docutils literal notranslate"><span class="pre">hpctools</span></code> CLI. Learn more <a class="reference external" href="https://rtguides.it.tufts.edu/hpc/examples/hpctools.html">here</a>.
 The rest of the the fields should remain in their default configuration. When you are ready, click “Launch”.</p></li>
 </ul>
@@ -506,7 +509,7 @@ The rest of the the fields should remain in their default configuration. When yo
 <p><img alt="Starting" src="images/ollama-starting.png" /></p>
 <p>When the application is ready, you’ll see the message below:</p>
 <p><img alt="Running" src="images/ollama-running.png" /></p>
-<p>When you are ready click “Connect to Ollama”. As the message says, if you are a first-time user, you will need to configure an account. All of the data that you enter here <strong>will stay on the Cluster and will not be shared on the internet.</strong> You will then be able to use these credentials to log in every time you want to use this application.</p>
+<p>When you are ready, click “Connect to Ollama”, which will open a browser window with a prompt to enter your login credentials. Note that if you are a first-time user, you will need to create an account. All of the data that you enter here <strong>will stay on the Cluster and will not be shared on the internet.</strong> You will then be able to use these login credentials to log in every time you want to use this application.</p>
 <p><em>Note</em>: First-time users must follow the directions in the blue box.</p>
 </section>
 <section id="start-using-ollama">
@@ -542,16 +545,15 @@ The rest of the the fields should remain in their default configuration. When yo
   id="pst-page-navigation-heading-2"
   class="page-toc tocsection onthispage"
 >
-  <i class="fa-solid fa-list"></i> Using the Ollama + Open WebUI Application on the Cluster
+  <i class="fa-solid fa-list"></i> Using the Research Chatbot (LLM) on the Cluster
 </div>
 <nav
   class="bd-toc-nav page-toc"
   aria-labelledby="pst-page-navigation-heading-2"
 >
   <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-ollama">What is Ollama</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-open-webui">What is Open WebUI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-for">Who is this for?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-the-research-chatbot-for">Who is the Research Chatbot for?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-research-chatbot">What is the Research Chatbot?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-your-session">Configuring your session</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-in-to-ollama">Logging in to Ollama</a></li>
