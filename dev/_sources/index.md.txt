@@ -30,6 +30,10 @@ grid-columns: 1 1 2 3
 - header: "{fas}`chart-bar` Data Visualization"
   content: "Create interactive data visualization dashboards using Tableau."
   link: "viz/index.html"
+
+- header: "{fas}`server` AI and Data Science"
+  content: "Learn about Artificial Intelligence at Tufts."
+  link: "ai/index.html"
 ```
 
 ```{admonition} Other Useful Resources

@@ -4,9 +4,11 @@ nosearch:
 html_theme.sidebar_secondary.remove: true
 ---
 # Tags
+- [ai (1)](/tags/ai.md)
 - [bioinformatics (16)](/tags/bioinformatics.md)
 - [computational-methods (2)](/tags/computational-methods.md)
 - [data-management (2)](/tags/data-management.md)
+- [data-science (1)](/tags/data-science.md)
 - [gpu (2)](/tags/gpu.md)
 - [hpc (3)](/tags/hpc.md)
 - [introduction (1)](/tags/introduction.md)
