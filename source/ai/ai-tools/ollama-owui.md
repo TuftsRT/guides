@@ -8,7 +8,6 @@ In this document, we show the best practices for accessing the Research Chatbot 
 
 This tool is intended for educators or researchers who want to experiment with conversational models for classroom or research use. This tool not meant for personal use.
 
-
 ## Who is the Research Chatbot for?
 
 The Research Chatbot is best suited for individuals who are **new** to working with AI for research and would like a secure, conversational experience that mimics web-based services like ChatGPT, Google Gemini, Microsoft Copilot, or Anthropic's Claude. This tool can give you a sense of how to use AI for research, but may not be suited for large data sets or complex or advanced requests. For more information on other options you have for AI on the Cluster, please visit [this link](TBD).
