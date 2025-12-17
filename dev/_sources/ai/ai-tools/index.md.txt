@@ -10,19 +10,19 @@ You must have an HPC account to access this applications. Please visit the [Acco
 ---
 grid-columns: 1
 ---
-- header: "{fas}`book` Ollama and OpenWebUI"
+- header: "{fas}`book` Research Chatbot (LLMs)"
   content: "Learn to use open-source models on the Cluster using the OpenWebUI interface."
   link: "ollama-owui.html"
 
-- header: "{fas}`book` Ollama and Jupyter"
+- header: "{fas}`book` LLM Notebooks (Ollama + Jupyter)"
   content: "Employ AI in a Jupyter notebook to allow for advanced text and image processing"
   link: "ollama-jupyter.html"
 
-- header: "{fas}`book` Research Application: Optical Character Recognition"
+- header: "{fas}`book` Research Application: Optical Character Recognition (OCR)"
   content: "Convert images to text for your research projects."
   link: "ra-ocr.html"
 
-- header: "{fas}`book` Research Application: Automated Speech Recognition"
+- header: "{fas}`book` Research Application: Automated Speech Recognition (ASR)"
   content: "Convert audio to text for your research projects."
   link: "ra-asr.html"
 
