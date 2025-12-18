@@ -1,4 +1,4 @@
-# Using the LLM Notebooks on the Cluster
+# Using LLM Notebooks on the Cluster
 
 By Peter Nadel, Digital Humanities Natural Language Processing Specialist, and Ryan Veiga, Data Science Specialist
 
@@ -14,7 +14,7 @@ This application is best suited for individuals with experience with the Python 
 
 ## What is the LLM Notebooks Application?
 
-The LLM Notebooks application is the Tufts University implementation of Ollama with Jupyter Notebooks on the High Performance Computing (HPC) Cluster.
+The LLM Notebooks application is our implementation of Ollama with Jupyter Notebooks on the Tufts High Performance Computing (HPC) Cluster.
 
 - **Ollama** is a program for using large language models (LLMs). Specifically, Ollama focuses open source and open weight LLMs usually accessible on websites like [HuggingFace](huggingface.co). We take advantage of the compute resources on our Cluster to run Ollama with a variety of pre-downloaded models. Ollama is the bridge that we use to send your questions/requests/responses from your keyboard to the LLM itself.
 - **Jupyter** is a web-based Python programming platform that enables interactive computing through computational notebooks. A notebook is a shareable document that combines computer code, natural language documentation, interactive visualizations and data. Jupyter notebooks are designed for fast prototyping and code explanation. It is an ideal choice for classroom learning, as well as research software development.
@@ -60,7 +60,7 @@ When you are ready click "Connect to Jupyter". All of the data that you enter he
 
 For a list of all models and research use cases can be found [here](<>). For a list of features, please visit this page: https://docs.jupyter.org/en/latest/. For other questions, please reach out to Research Technology at: tts-research@tufts.edu.
 
-## Using the LLM Notebooks
+## Using LLM Notebooks
 
 The user is expected to be familiar with the basics of Python and the Jupyter notebook environment. To access an Ollama LLM from within your Jupyter notebook, you will need to first import the chat function from the Ollama module:
 
@@ -97,7 +97,7 @@ Note that we specified both the model (gemma3) and its size (12b, i.e. 12 billio
 
 You should enter both a **system prompt** and **user prompt**. A system prompt gives instructions at the system level on how the LLM should respond to the user prompt, and will follow instructions of the system prompt in the event that it is in conflict with the user prompt. The system prompt is general used for framing the intended behavior of the chatbot, setting constraints and providing ethical guidance. The user prompt is the message that an end-user would enter to query the LLM, similar to entering a question into ChatGPT's user interface.
 
-For an example of attaching external documents or data to your query, see the example below:
+For an example of attaching external documents or data to your query using the Gemma 3 see the example below:
 
 ```python
 from pypdf import PdfReader
@@ -108,7 +108,7 @@ reader = PdfReader("document.pdf")
 text = "\n".join(page.extract_text() or "" for page in reader.pages)
 
 # Send to Ollama in one message
-response = ollama.chat(model="llama3.1", messages=[{"role": "user", "content": text}])
+response = ollama.chat(model="gemma3:27b", messages=[{"role": "user", "content": text}])
 
 print(response["message"]["content"])
 ```
