@@ -97,7 +97,7 @@ Note that we specified both the model (gemma3) and its size (12b, i.e. 12 billio
 
 You should enter both a **system prompt** and **user prompt**. A system prompt gives instructions at the system level on how the LLM should respond to the user prompt, and will follow instructions of the system prompt in the event that it is in conflict with the user prompt. The system prompt is general used for framing the intended behavior of the chatbot, setting constraints and providing ethical guidance. The user prompt is the message that an end-user would enter to query the LLM, similar to entering a question into ChatGPT's user interface.
 
-For an example of attaching external documents or data to your query using the Gemma 3  see the example below:
+For an example of attaching external documents or data to your query using the Gemma 3 see the example below:
 
 ```python
 from pypdf import PdfReader
