@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using the Ollama + Jupyter Application on the Cluster &#8212; TTS Research Technology Guides</title>
+    <title>Using the LLM Notebooks on the Cluster &#8212; TTS Research Technology Guides</title>
   
   
   
@@ -443,7 +443,7 @@
     </li>
      
     <li class="breadcrumb-item active" aria-current="page">
-      Using the Ollama +...
+      Using the LLM...
     </li>
   </ul>
 </nav>
@@ -461,35 +461,38 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="using-the-ollama-jupyter-application-on-the-cluster">
-<h1>Using the Ollama + Jupyter Application on the Cluster<a class="headerlink" href="#using-the-ollama-jupyter-application-on-the-cluster" title="Link to this heading">#</a></h1>
-<p>By Peter Nadel, Digital Humanities Natural Language Processing Specialist</p>
-<p>In this document, we show the best practices for accessing Ollama with Jupyter on the Tufts High Performance Compute (HPC) Cluster. This document does not give an in-depth description of all of the features of Ollama or Jupyter. For this, we encourage you to explore the documentation of each of these projects:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="using-the-llm-notebooks-on-the-cluster">
+<h1>Using the LLM Notebooks on the Cluster<a class="headerlink" href="#using-the-llm-notebooks-on-the-cluster" title="Link to this heading">#</a></h1>
+<p>By Peter Nadel, Digital Humanities Natural Language Processing Specialist, and Ryan Veiga, Data Science Specialist</p>
+<p>LLM Notebooks combine open-source LLMs with a Jupyter-based Python environment, enabling users to build intelligent workflows, prototype AI-driven agents, and integrate generative models into data analysis and course work. The experience is meant to expose open-source LLMs within the popular Jupyter interface. This provides a similar experience to accessing cloud-based API models (such as OpenAI or Anthropic APIs), while ensuring privacy by keeping all the data (user input, system prompts, responses) local. (For more information on the secure use of generative AI tools at Tufts, please consult the Tufts Technology Services <a class="reference external" href="https://it.tufts.edu/guidelines-use-generative-ai-tools">Guidelines for Use of Generative AI Tools.</a>)</p>
+<p>In this document, we show the best practices for accessing LLM Notebooks on the Tufts High Performance Compute (HPC) Cluster. This document does not provide an in-depth description of its features, however. For more information on what the LLM Notebooks application is and what you can do with it, see the links under “What is the LLM Notebooks Application?” below. Additionally, we have curated and documented the most useful open source models, stored securely on the Tufts HPC storage. The documentation of the models are available <a class="reference external" href="https://tufts.box.com/v/ResearchChatbotModels">here</a>.</p>
+<p>The LLM Notebooks application is intended for researchers and educators who want flexibility and control through a code-first approach. This tool is not meant for personal use.</p>
+<section id="who-is-this-for">
+<h2>Who is this for?<a class="headerlink" href="#who-is-this-for" title="Link to this heading">#</a></h2>
+<p>This application is best suited for individuals with experience with the Python programming language and who would like to learn more about how AI can facilitate certain research applications. This tools can support high-throughput methods, but users may find other approaches easier when scaling to larger and larger datasets.</p>
+</section>
+<section id="what-is-the-llm-notebooks-application">
+<h2>What is the LLM Notebooks Application?<a class="headerlink" href="#what-is-the-llm-notebooks-application" title="Link to this heading">#</a></h2>
+<p>The LLM Notebooks application is the Tufts University implementation of Ollama with Jupyter Notebooks on the High Performance Computing (HPC) Cluster.</p>
+<ul class="simple">
+<li><p><strong>Ollama</strong> is a program for using large language models (LLMs). Specifically, Ollama focuses open source and open weight LLMs usually accessible on websites like <a class="reference internal" href="#huggingface.co"><span class="xref myst">HuggingFace</span></a>. We take advantage of the compute resources on our Cluster to run Ollama with a variety of pre-downloaded models. Ollama is the bridge that we use to send your questions/requests/responses from your keyboard to the LLM itself.</p></li>
+<li><p><strong>Jupyter</strong> is a web-based Python programming platform that enables interactive computing through computational notebooks. A notebook is a shareable document that combines computer code, natural language documentation, interactive visualizations and data. Jupyter notebooks are designed for fast prototyping and code explanation. It is an ideal choice for classroom learning, as well as research software development.</p></li>
+</ul>
+<p>For a more in-depth description of all the features of Ollama and Jupyter Notebooks, we encourage you to explore the documentation of each of these projects:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.ollama.com/">Ollama documentation</a></p></li>
 <li><p><a class="reference external" href="https://jupyter.org/">Jupyter documentation</a>.</p></li>
 </ul>
 <p>We also encourage you to explore the <a class="reference external" href="https://rtguides.it.tufts.edu/hpc/index.html">HPC Cluster documentation</a>.</p>
-<section id="what-is-ollama">
-<h2>What is Ollama<a class="headerlink" href="#what-is-ollama" title="Link to this heading">#</a></h2>
-<p>Ollama is a program for using large language models (LLMs). Specifically, Ollama focuses open source and open weight LLMs usually accessible on websites like <a class="reference internal" href="#huggingface.co"><span class="xref myst">HuggingFace</span></a>. We take advantage of the compute resources on our Cluster to run Ollama with a variety of pre-downloaded models. Ollama is the bridge that we use to send your questions/requests/responses from your keyboard to the LLM itself.</p>
-</section>
-<section id="what-is-jupyter">
-<h2>What is Jupyter<a class="headerlink" href="#what-is-jupyter" title="Link to this heading">#</a></h2>
-<p>Jupyter is a web-based Python programming platform that enables interactive computing through computational notebooks. A notebook is a shareable document that combines computer code, natural language documentation, interactive visualizations and data. Jupyter notebooks are designed for fast prototyping and code explanation. It is an ideal choice for classroom learning, as well as research software development.</p>
-</section>
-<section id="who-is-this-for">
-<h2>Who is this for?<a class="headerlink" href="#who-is-this-for" title="Link to this heading">#</a></h2>
-<p>This application is best suited for individuals with experience with the Python programming language and who would like to learn more about how AI can facilitate certain research applications. This tools can support high-throughput methods, but uses may find other approaches easier when scaling to larger and larger datasets. For more information on other options you have for AI on the Cluster, please visit <a class="reference internal" href="#TBD"><span class="xref myst">this link</span></a>.</p>
 </section>
 <section id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
-<p>Ollama + Jupyter is an Open OnDemand application on the Cluster, meaning that it can be accessed from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the <a class="reference internal" href="#ondemand-p01.pax.tufts.edu"><span class="xref myst">Open OnDemand website for the Tufts Cluster</span></a>. Once there, select the “Interactive Apps” drop down and click on “Ollama + Jupyter”.</p>
+<p>LLM Notebooks is an Open OnDemand application on the Cluster, meaning that it can be accessed from the Interactive Apps drop-down menu in the Open OnDemand website. To get started, visit and log into the <a class="reference internal" href="#ondemand-p01.pax.tufts.edu"><span class="xref myst">Open OnDemand website for the Tufts Cluster</span></a>. Once there, select the “Interactive Apps” drop-down menu and click on “LLM Notebooks”.</p>
 <p><img alt="Interactive Apps dropdown" src="../../_images/ollama-jupyter-list.png" /></p>
 </section>
 <section id="configuring-your-session">
 <h2>Configuring your session<a class="headerlink" href="#configuring-your-session" title="Link to this heading">#</a></h2>
-<p>Once you’ve clicked on “Ollama + Jupyter”, you will be able to configure the setting for using the application. Some of these options can be confusing, so we have left an example configuration below. If you are unsure, feel free to use this one. Otherwise, we explore what these parameters mean here:</p>
+<p>Once you’ve clicked on “LLM Notebooks”, you will be able to configure the settings for using the application. Some of these options can be confusing, so we have left an example configuration in the image below. If you are unsure, feel free to use the same values as in the example. Otherwise, we explore what these parameters mean here:</p>
 <ul class="simple">
 <li><p><em>Number of hours</em>: This parameter controls how long your session will run for. At the conclusion of this time, your session will end. Be sure to choose a time that matches how you expect to need in hours. You can always budget more time than you may need and they end the session early if you need.</p></li>
 <li><p><em>Number of cores</em>: This field controls how many CPU cores are allocated for your session. It is important to pick a value proportional to the size of the LLM you’d like to run. If you are having trouble choosing, you can use the value shown below.</p></li>
@@ -508,6 +511,54 @@
 <p><img alt="Running" src="../../_images/ollama-jupyter-running.png" /></p>
 <p>When you are ready click “Connect to Jupyter”. All of the data that you enter here <strong>will stay on the Cluster and will not be shared on the internet.</strong></p>
 <p>For a list of all models and research use cases can be found <a class="reference internal" href="#"><span class="xref myst">here</span></a>. For a list of features, please visit this page: <a class="reference external" href="https://docs.jupyter.org/en/latest/">https://docs.jupyter.org/en/latest/</a>. For other questions, please reach out to Research Technology at: <a class="reference external" href="mailto:tts-research&#37;&#52;&#48;tufts&#46;edu">tts-research<span>&#64;</span>tufts<span>&#46;</span>edu</a>.</p>
+</section>
+<section id="using-the-llm-notebooks">
+<h2>Using the LLM Notebooks<a class="headerlink" href="#using-the-llm-notebooks" title="Link to this heading">#</a></h2>
+<p>The user is expected to be familiar with the basics of Python and the Jupyter notebook environment. To access an Ollama LLM from within your Jupyter notebook, you will need to first import the chat function from the Ollama module:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ollama</span><span class="w"> </span><span class="kn">import</span> <span class="n">chat</span>
+</pre></div>
+</div>
+<p>To use the chat function, you will need to specify a model and the messages to pass to that model, as shown in the following example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">chat</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gemma3:12b&quot;</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s2">&quot;You are a patient programming tutor. &quot;</span>
+                <span class="s2">&quot;Explain things step by step, write code in small pieces, &quot;</span>
+                <span class="s2">&quot;and add clear comments to every code block.&quot;</span>
+            <span class="p">),</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Write a Python script to read a CSV and plot a histogram.&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">][</span><span class="s2">&quot;content&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Note that we specified both the model (gemma3) and its size (12b, i.e. 12 billion parameters) separated by a colon. For a list of available models, <a class="reference external" href="https://tufts.box.com/v/ResearchChatbotModels">click here.</a></p>
+<p>You should enter both a <strong>system prompt</strong> and <strong>user prompt</strong>. A system prompt gives instructions at the system level on how the LLM should respond to the user prompt, and will follow instructions of the system prompt in the event that it is in conflict with the user prompt. The system prompt is general used for framing the intended behavior of the chatbot, setting constraints and providing ethical guidance. The user prompt is the message that an end-user would enter to query the LLM, similar to entering a question into ChatGPT’s user interface.</p>
+<p>For an example of attaching external documents or data to your query, see the example below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pypdf</span><span class="w"> </span><span class="kn">import</span> <span class="n">PdfReader</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ollama</span>
+
+<span class="c1"># Load PDF</span>
+<span class="n">reader</span> <span class="o">=</span> <span class="n">PdfReader</span><span class="p">(</span><span class="s2">&quot;document.pdf&quot;</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">extract_text</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span> <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">pages</span><span class="p">)</span>
+
+<span class="c1"># Send to Ollama in one message</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">ollama</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama3.1&quot;</span><span class="p">,</span> <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">}])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">][</span><span class="s2">&quot;content&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>In this example, text is read from a PDF using the PdfReader function from the pypdf module, saved to an object called “text” in the Jupyter environment, and then passed to the model using “content” key value.</p>
+<p>For additional questions, please reach out to TTS Research Technology at: <a class="reference external" href="mailto:tts-research&#37;&#52;&#48;tufts&#46;edu">tts-research<span>&#64;</span>tufts<span>&#46;</span>edu</a>.</p>
 </section>
 </section>
 
@@ -536,19 +587,19 @@
   id="pst-page-navigation-heading-2"
   class="page-toc tocsection onthispage"
 >
-  <i class="fa-solid fa-list"></i> Using the Ollama + Jupyter Application on the Cluster
+  <i class="fa-solid fa-list"></i> Using the LLM Notebooks on the Cluster
 </div>
 <nav
   class="bd-toc-nav page-toc"
   aria-labelledby="pst-page-navigation-heading-2"
 >
   <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-ollama">What is Ollama</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-jupyter">What is Jupyter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-for">Who is this for?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-llm-notebooks-application">What is the LLM Notebooks Application?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-your-session">Configuring your session</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-in-to-ollama">Logging in to Ollama</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-llm-notebooks">Using the LLM Notebooks</a></li>
 </ul>
 </nav></div>
 
