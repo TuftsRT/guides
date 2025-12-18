@@ -39,17 +39,17 @@ Once you've clicked on "Ollama + Jupyter", you will be able to configure the set
 
 The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
 
-![Demo Config](../../images/ollama-jupyter-config.png)
+![Demo Config](./assets/ollama-jupyter-config.png)
 
 ## Logging in to Ollama
 
 Once you've launched your session, you will see the loading message below. It is very normal to see this for a couple minutes.
 
-![Starting](../../images/ollama-jupyter-starting.png)
+![Starting](./assets/ollama-jupyter-starting.png)
 
 When the application is ready, you'll see the message below:
 
-![Running](../../images/ollama-jupyter-running.png)
+![Running](./assets/ollama-jupyter-running.png)
 
 When you are ready click "Connect to Jupyter". All of the data that you enter here **will stay on the Cluster and will not be shared on the internet.**
 

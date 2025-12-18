@@ -50,11 +50,11 @@ Once you've clicked on "Research Chatbot (LLMs)", you will be able to configure 
 
 Once you've launched your session, you will see the loading message below. It is very normal to see this for a couple minutes.
 
-![Starting](../../images/ollama-starting.png)
+![Starting](./assets/ollama-starting.png)
 
 When the application is ready, you'll see the message below:
 
-![Running](../../images/ollama-running.png)
+![Running](./assets/ollama-running.png)
 
 When you are ready, click "Connect to Ollama", which will open a browser window with a prompt to enter your login credentials. Note that if you are a first-time user, you will need to create an account. All of the data that you enter here **will stay on the Cluster and will not be shared on the internet.** You will then be able to use these login credentials to log in every time you want to use this application.
 
@@ -64,6 +64,6 @@ When you are ready, click "Connect to Ollama", which will open a browser window 
 
 After you have logged in you will be able to start chatting with a model. If you'd like to change this model you can select other option in the upper left corner.
 
-![List](../../images/ollama-list.png)
+![List](./assets/ollama-list.png)
 
 For a list of all models and research use cases can be found [here](<>). For a list of features, please visit this page: https://docs.openwebui.com/features/. For other questions, please reach out to Research Technology at: tts-research@tufts.edu.
