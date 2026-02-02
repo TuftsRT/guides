@@ -49,5 +49,6 @@ include the output in the log for troubleshooting purposes.
 | rtx_a5000   | 24GB       | 8            | preempt                | rtx_a5000                       |                          |
 | l40         | 48GB       | 4            | preempt                | l40                             |                          |
 | h100        | 80GB       | 3            | preempt                | h100                            |                          |
+| h200        | 80GB       | 8            | gpu, preempt           | h200                            | SXM                      |
 
 All GPU cards drivers except t4 support CUDA 12.2
