@@ -3,7 +3,7 @@
 The following applications have been developed and deployed to the HPC to enable researchers to better interface with artificial intelligence (AI). We serve two kinds of applications: chatbot-style application which allow users to engage with AI in an open-ended fashion, and purpose-built research applications which take in data in a certain format, conduct some task or analysis, and output the results.
 
 ```{attention}
-You must have an HPC account to access this applications. Please visit the [Account Request](../../access/10-account-request.md) page if you do not already have one.
+You must have an HPC account to access this applications. Please visit the [Account Request](../../hpc/access/10-account-request.md) page if you do not already have one.
 ```
 
 ```{gallery-grid}

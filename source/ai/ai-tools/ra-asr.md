@@ -20,7 +20,7 @@ This application expects a folder of audio files uploaded to the Cluster. So lon
 
 ## Getting started
 
-ASR is an Open OnDemand application on the Cluster, meaning that it can be access from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](ondemand-p01.pax.tufts.edu). Once there, select the "Interactive Apps" drop down and click on "Automated Speech Recognition".
+ASR is an Open OnDemand application on the Cluster, meaning that it can be access from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](https://ondemand-prod.pax.tufts.edu/). Once there, select the "Interactive Apps" drop down and click on "Automated Speech Recognition".
 
 ![Interactive Apps dropdown](./assets/asr-dropdown.png)
 
@@ -28,12 +28,12 @@ ASR is an Open OnDemand application on the Cluster, meaning that it can be acces
 
 Once you've clicked on "Automated Speech Recognition", you will be able to configure the setting for using the application. Some of these options can be confusing, so we have left an example configuration below. If you are unsure, feel free to use this one. Otherwise, we explore what these parameters mean here:
 
-- *Number of hours*: This parameter controls how long your session will run for. At the conclusion of this time, your session will end. Be sure to choose a time that matches how you expect to need in hours. You can always budget more time than you may need and they end the session early if you need.
-- *Number of cores*: This field controls how many CPU cores are allocated for your session. It is important to pick a value proportional to the size of the LLM you'd like to run. If you are having trouble choosing, you can use the value shown below.
-- *Amount of Memory (GB)*: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose, so I like to use double the amount of CPU cores that I have selected.
-- *Partition*: You should choose the "gpu" option. Generally, we require hardware acceleration to run ASR models. You can run some models, however, with just CPUs, especially if you adjust the number of cores and amount of memory to be quite high, in which case, you could select "batch" for this option.
-- *GPU architecture*: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the `hpctools` CLI. Learn more [here](https://rtguides.it.tufts.edu/hpc/examples/hpctools.html).
-- *Input audio directory*: This parameter should be the file path to the folder with the audio files you'd like to transcribe. To upload files use the file explorer as explained [here](https://rtguides.it.tufts.edu/hpc/access/40-xfer.html#ondemand)
+- _Number of hours_: This parameter controls how long your session will run for. At the conclusion of this time, your session will end. Be sure to choose a time that matches how you expect to need in hours. You can always budget more time than you may need and they end the session early if you need.
+- _Number of cores_: This field controls how many CPU cores are allocated for your session. It is important to pick a value proportional to the size of the LLM you'd like to run. If you are having trouble choosing, you can use the value shown below.
+- _Amount of Memory (GB)_: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose, so I like to use double the amount of CPU cores that I have selected.
+- _Partition_: You should choose the "gpu" option. Generally, we require hardware acceleration to run ASR models. You can run some models, however, with just CPUs, especially if you adjust the number of cores and amount of memory to be quite high, in which case, you could select "batch" for this option.
+- _GPU architecture_: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the `hpctools` CLI. Learn more [here](https://rtguides.it.tufts.edu/hpc/examples/hpctools.html).
+- _Input audio directory_: This parameter should be the file path to the folder with the audio files you'd like to transcribe. To upload files use the file explorer as explained [here](https://rtguides.it.tufts.edu/hpc/access/40-xfer.html#ondemand)
 
 The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
 
