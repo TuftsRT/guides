@@ -3,26 +3,26 @@
 The following applications have been developed and deployed to the HPC to enable researchers to better interface with artificial intelligence (AI). We serve two kinds of applications: chatbot-style application which allow users to engage with AI in an open-ended fashion, and purpose-built research applications which take in data in a certain format, conduct some task or analysis, and output the results.
 
 ```{attention}
-You must have an HPC account to access this applications. Please visit the [Account Request](../../access/10-account-request.md) page if you do not already have one.
+You must have an HPC account to access this applications. Please visit the [Account Request](../../hpc/access/10-account-request.md) page if you do not already have one.
 ```
 
 ```{gallery-grid}
 ---
 grid-columns: 1
 ---
-- header: "{fas}`book` Ollama and OpenWebUI"
+- header: "{fas}`book` Research Chatbot (LLMs)"
   content: "Learn to use open-source models on the Cluster using the OpenWebUI interface."
   link: "ollama-owui.html"
 
-- header: "{fas}`book` Ollama and Jupyter"
+- header: "{fas}`book` LLM Notebooks (Ollama + Jupyter)"
   content: "Employ AI in a Jupyter notebook to allow for advanced text and image processing"
   link: "ollama-jupyter.html"
 
-- header: "{fas}`book` Research Application: Optical Character Recognition"
+- header: "{fas}`book` Research Application: Optical Character Recognition (OCR)"
   content: "Convert images to text for your research projects."
   link: "ra-ocr.html"
 
-- header: "{fas}`book` Research Application: Automated Speech Recognition"
+- header: "{fas}`book` Research Application: Automated Speech Recognition (ASR)"
   content: "Convert audio to text for your research projects."
   link: "ra-asr.html"
 
