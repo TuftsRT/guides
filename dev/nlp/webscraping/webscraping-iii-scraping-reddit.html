@@ -194,6 +194,21 @@
   </a>
 </li>
 
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../ai/index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
   </ul>
 </nav></div>
       
@@ -340,6 +355,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../viz/index.html">
     Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../ai/index.html">
+    Artificial Intelligence
   </a>
 </li>
 
@@ -499,7 +521,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="the-art-of-webscraping-iii-scraping-reddit">
 <h1>The Art of Webscraping III: Scraping Reddit<a class="headerlink" href="#the-art-of-webscraping-iii-scraping-reddit" title="Link to this heading">#</a></h1>
 <p>In the past two notebooks in this webscraiping series, we saw how we could use Python to automate getting data from websites. First <code class="docutils literal notranslate"><span class="pre">beautifulsoup</span></code> gave us a method of navigating the HTML of a static webpage and then <code class="docutils literal notranslate"><span class="pre">selenium</span></code> allowed us to parse dynamically generated pages.</p>
-<p>In this notebook, we’ll look at a specialized source of data that we can pull from, Reddit. Reddit.com is a collection of forums where uses can discuss topics of shared interest. A lot of people use Reddit, so many NLP researchers use it as a place to gather data for novel datasets. In this example, we’ll collect a swathe of text from <a class="reference internal" href="#reddit.com/r/latin"><span class="xref myst">r/latin</span></a> and save it as a CSV.</p>
+<p>In this notebook, we’ll look at a specialized source of data that we can pull from, Reddit. Reddit.com is a collection of forums where uses can discuss topics of shared interest. A lot of people use Reddit, so many NLP researchers use it as a place to gather data for novel datasets. In this example, we’ll collect a swathe of text from <a class="reference external" href="https://www.reddit.com/r/latin/">r/latin</a> and save it as a CSV.</p>
 <p>Over the past few years, Reddit has made it very difficult to get large chunks of their data. That said, another group, pullpush.io, have saved and hosted terabytes of historical Reddit data for public use. We’ll be using their API in this notebook.</p>
 <p><strong>Nota Bene</strong>: pullpush’s API service is designed for academic use only! It is an incredible resource, especially because it is free. Please do not abuse it!</p>
 <div class="cell docutils container">
