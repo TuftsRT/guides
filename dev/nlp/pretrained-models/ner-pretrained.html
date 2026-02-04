@@ -77,8 +77,8 @@
     <link rel="prev" title="Language Hacking: Using spaCy for Morphosyntactic Analysis" href="language-hacking-workshop.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260203" />
-    <meta name="docbuild:last-update" content="Feb 03, 2026"/>
+  <meta name="docsearch:version" content="20260204" />
+    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
   </head>
   
   
@@ -597,9 +597,7 @@
 <span class="c1"># Go back and replace this text when you&#39;re ready</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">It was after the Nycene synod, and under the reign of the pious Irene, that the popes consummated the separation of Rome and Italy, by the translation of the empire to the less orthodox Charlemagne. They were compelled to choose between the rival nations: religion was not the sole motive of their choice; and while they dissembled the failings of their friends, they beheld, with reluctance and suspicion, the Catholic virtues of their foes. The difference of language and manners had perpetuated the enmity of the two capitals; and they were alienated from each other by the hostile opposition of seventy years. In that schism the Romans had tasted of freedom, and the popes of sovereignty: their submission would have exposed them to the revenge of a jealous tyrant; and the revolution of Italy had betrayed the impotence, as well as the tyranny, of the Byzantine court. The Greek emperors had restored the images, but they had not restored the Calabrian estates 85 and the Illyrian diocese, 86 which the Iconociasts had torn away from the successors of St. Peter; and Pope Adrian threatens them with a sentence of excommunication unless they speedily abjure this practical heresy. 87 The Greeks were now orthodox; but their religion might be tainted by the breath of the reigning monarch: the Franks were now contumacious; but a discerning eye might discern their approaching conversion, from the use, to the adoration, of images. The name of Charlemagne was stained by the polemic acrimony of his scribes; but the conqueror himself conformed, with the temper of a statesman, to the various practice of France and Italy. In his four pilgrimages or visits to the Vatican, he embraced the popes in the communion of friendship and piety; knelt before the tomb, and consequently before the image, of the apostle; and joined, without scruple, in all the prayers and processions of the Roman liturgy. Would prudence or gratitude allow the pontiffs to renounce their benefactor? Had they a right to alienate his gift of the Exarchate? Had they power to abolish his government of Rome? The title of patrician was below the merit and greatness of Charlemagne; and it was only by reviving the Western empire that they could pay their obligations or secure their establishment. By this decisive measure they would finally eradicate the claims of the Greeks; from the debasement of a provincial town, the majesty of Rome would be restored: the Latin Christians would be united, under a supreme head, in their ancient metropolis; and the conquerors of the West would receive their crown from the successors of St. Peter. The Roman church would acquire a zealous and respectable advocate; and, under the shadow of the Carlovingian power, the bishop might exercise, with honor and safety, the government of the city. 88</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-    <span class="s2">&quot; </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span>
-<span class="p">)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
 <span class="n">doc</span> <span class="o">=</span> <span class="n">english_nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="n">entities</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">entities</span><span class="p">):</span>
@@ -983,7 +981,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 03, 2026.
+  Last updated on Feb 04, 2026.
   <br/>
 </p></div>
       
