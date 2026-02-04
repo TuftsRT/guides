@@ -12,7 +12,6 @@ Training workshops on bioinformatics provided by TTS Research Technology.
 ---
 grid-columns: 1
 ---
-
 - header: "{fas}`dna`Getting started with Bioinformatics on Tufts HPC - Fall"
   content: "User guide to help users get started on running bioinformatics analysis on Tufts HPC."
   link: "https://zhan4429.github.io/Intro_to_bioinfor_2025fall/"

@@ -10,7 +10,6 @@ Hands-on session for bioinformatics guest lectures
 ---
 grid-columns: 1
 ---
-
 - header: "{fas}`dna` Introduction to Alphafold2 -- 2024"
   content: "Slides and hands-on sessions for class: CHBE-0165-2024Mar (Biomolecular Engineering and Design)"
   link: "introduction-to-alphafold2/index.html"
