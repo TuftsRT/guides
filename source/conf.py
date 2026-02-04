@@ -10,6 +10,8 @@ from sphinx.errors import ConfigError
 # needed for Sphinx to load extensions properly
 sys.path.append(os.path.abspath("_ext"))
 
+suppress_warnings = ["misc.highlighting_failure"]
+
 project = "TTS Research Technology Guides"
 author = "Tufts University"
 email = "tts-research@tufts.edu"
