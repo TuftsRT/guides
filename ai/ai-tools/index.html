@@ -73,10 +73,12 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using LLM Notebooks on the Cluster" href="ollama-jupyter.html" />
+    <link rel="prev" title="AI and Data Science" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20251212" />
-    <meta name="docbuild:last-update" content="Dec 12, 2025"/>
+  <meta name="docsearch:version" content="20260204" />
+    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
   </head>
   
   
@@ -192,6 +194,21 @@
   </a>
 </li>
 
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
   </ul>
 </nav></div>
       
@@ -291,10 +308,8 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -340,6 +355,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../viz/index.html">
     Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Artificial Intelligence
   </a>
 </li>
 
@@ -407,6 +429,25 @@
     
   </div>
   
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     AI and Data Science 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Artificial Intelligence Tools</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="ollama-jupyter.html">Using LLM Notebooks on the Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ollama-owui.html">Using the Research Chatbot (LLM) on the Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ra-asr.html">Using Automated Speech Recognition on the Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ra-ocr.html">Using Opitical Character Recognition on the Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ra-text-search.html">Using Text Search on the Cluster</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -442,6 +483,12 @@
       </a>
     </li>
      
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >AI and Data Science</a
+      >
+    </li>
+     
     <li class="breadcrumb-item active" aria-current="page">
       Artificial Intelligence Tools
     </li>
@@ -466,14 +513,14 @@
 <p>The following applications have been developed and deployed to the HPC to enable researchers to better interface with artificial intelligence (AI). We serve two kinds of applications: chatbot-style application which allow users to engage with AI in an open-ended fashion, and purpose-built research applications which take in data in a certain format, conduct some task or analysis, and output the results.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
-<p>You must have an HPC account to access this applications. Please visit the <a class="reference internal" href="#../../access/10-account-request.md"><span class="xref myst">Account Request</span></a> page if you do not already have one.</p>
+<p>You must have an HPC account to access this applications. Please visit the <a class="reference internal" href="../../hpc/access/10-account-request.html"><span class="std std-doc">Account Request</span></a> page if you do not already have one.</p>
 </div>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 gallery-directive docutils">
 <div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Ollama and OpenWebUI</p>
+<p class="sd-card-text"><span class="fas fa-book"></span> Research Chatbot (LLMs)</p>
 </div>
 <div class="sd-card-body docutils">
 <p class="sd-card-text">Learn to use open-source models on the Cluster using the OpenWebUI interface.</p>
@@ -483,7 +530,7 @@
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Ollama and Jupyter</p>
+<p class="sd-card-text"><span class="fas fa-book"></span> LLM Notebooks (Ollama + Jupyter)</p>
 </div>
 <div class="sd-card-body docutils">
 <p class="sd-card-text">Employ AI in a Jupyter notebook to allow for advanced text and image processing</p>
@@ -493,7 +540,7 @@
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Research Application: Optical Character Recognition</p>
+<p class="sd-card-text"><span class="fas fa-book"></span> Research Application: Optical Character Recognition (OCR)</p>
 </div>
 <div class="sd-card-body docutils">
 <p class="sd-card-text">Convert images to text for your research projects.</p>
@@ -503,7 +550,7 @@
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Research Application: Automated Speech Recognition</p>
+<p class="sd-card-text"><span class="fas fa-book"></span> Research Application: Automated Speech Recognition (ASR)</p>
 </div>
 <div class="sd-card-body docutils">
 <p class="sd-card-text">Convert audio to text for your research projects.</p>
@@ -522,6 +569,8 @@
 </div>
 </div>
 </div>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
 
@@ -534,6 +583,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AI and Data Science</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ollama-jupyter.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using LLM Notebooks on the Cluster</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -600,14 +667,14 @@ Suggest Edits
 
   <p class="copyright">
     
-      © Copyright 2025, Tufts University.
+      © Copyright 2026, Tufts University.
       <br/>
     
   </p>
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Dec 12, 2025.
+  Last updated on Feb 04, 2026.
   <br/>
 </p></div>
       
