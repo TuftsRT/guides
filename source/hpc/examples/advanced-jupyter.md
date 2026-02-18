@@ -10,7 +10,7 @@ This tutorial is particualrily useful if you need to run on a system that we do 
 
 ### Install
 
-- These instructions require conda. You can use conda via modules, or the custom conda instructions below.
+- These instructions require conda. You can use our conda install available via modules, or the custom conda instructions below.
 
 #. conda create -n jupyter python=3
 #. conda activate jupyter
@@ -20,24 +20,21 @@ This tutorial is particualrily useful if you need to run on a system that we do 
 
 This is an example work flow to access a jupyter notebook from the browser of your computer.
 
-Request a node be allocated
+From a login node request a compute node be allocated
 
-`salloc -N 1 --gres=gpu:1 -t 15`
+[utln01@login-p01 ~]$ `salloc -N 1 -p gpu --gres=gpu:1 -t 15`
 
-See which node was allocated
+Once an node is allocated by Slurm you will be connected to this node automatically.  You will see your shell prompt change to **[utln01@pax00# ~]$** .
 
-`squeue`
-
-SSH to the node and start jupyter notebook
+On this compute node you cam run the commands below to start jupyter
 
 ```
-ssh nodename##
 conda activate jupyter
 jupyter notebook --no-browser --ip=0.0.0.0
 ```
 
 Connect a new SSH session from your client with a port forward to the allocated node
-ssh -L 8888:nodename##:8888 username@login.pax.tufts.edu
+ssh -L 8888:nodename##:8888 utln@login-prod.pax.tufts.edu
 
 On your client computer use a web browser to navigate to http://127.0.0.1:8888/?token=#########################################
 
@@ -77,3 +74,40 @@ You can a activate conda environment using the following commands. Replace the p
 source ~/miniconda3x86/etc/profile.d/conda.sh
 conda activate environment-name
 ```
+
+#### Running job using sbatch
+Sometimes it makes sense to run Jupyter as a "non interactive" job using sbatch instead of salloc.  This can be useful for long running notebooks or other situations where you want the job to keep running if you are disconnected.  Even though the job is "non interactive" you can still connect to it the same way and use it interactively.  There are 3 main differences when using this method.
+
+**Main Differences**
+1. Use sbatch and a job submission script
+2. Locate your allocated node
+3. Get Jupyter port and URL from output log
+
+##### Use sbatch and a job submission script
+
+To start your job create a file named jupyter_session.sh
+```
+#!/bin/bash
+#SBATCH -p PartitionName  # gpu, batch or preempt
+#SBATCH -t 04:00:00 #4 Hours
+#SBATCH -c 4 #4 CPUs
+#SBATCH --gres=gpu:1 # 1 GPU, if needed
+#SBATCH --job-name=jupyter
+#SBATCH --mail-type=FAIL,BEGIN,END
+#SBATCH --error=%x-%J-%u.err
+#SBATCH --output=%x-%J-%u.out
+
+module purge
+module load conda
+
+conda activate jupyter
+jupyter notebook --no-browser --ip=0.0.0.0
+```
+
+##### Locate your allocated node
+The squeue command will show you your jobs, and the nodes they are allocated to run on. Use `squeue --me` and locate the hostname (pax###) of the node that shows your jobs as running.
+
+`squeue --me`
+
+##### Establish SSH port forward 
+Setup the SSH port forward 
