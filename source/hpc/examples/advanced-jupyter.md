@@ -74,6 +74,9 @@ You can a activate conda environment using the following commands. Replace the p
 source ~/miniconda3x86/etc/profile.d/conda.sh
 conda activate environment-name
 ```
+#### Different port number than 8888
+
+It is not uncommon for multiple instances of jupyter to be running on the same compute node.  If this is the case the port number of 8888 will be a different number, you will need to use this alternate number instead.  You can specify a port number using the `--port` option, for example `--port 6767`.  However jupyter will fail to start if that number you manually specify is already in use.
 
 #### Running job using sbatch
 
@@ -101,10 +104,10 @@ To start your job create a file named jupyter_session.sh
 #SBATCH --output=%x-%J-%u.out
 
 module purge
-module load conda
+module load anaconda/2025.06.0
 
 conda activate jupyter
-jupyter notebook --no-browser --ip=0.0.0.0
+jupyter lab --no-browser --ip=0.0.0.0
 ```
 
 ##### Locate your allocated node
@@ -113,6 +116,17 @@ The squeue command will show you your jobs, and the nodes they are allocated to 
 
 `squeue --me`
 
-##### Establish SSH port forward
+```
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+            247071       gpu  jupyter utln01  R       0:06      1 pax0##
+```
+
+##### Locate connection information
+
+When using sbatch the jupyter output will be located in the slurm error log, in this case a file in the same folder as your submission script in a file named similar to jupyter-jobid#-utln01.err .  This file will contain familar output that includes the 
+
+`http://127.0.0.1:8888/lab?token=234234asadf959e57836a23266cf996223453dsa4de`
 
 Setup the SSH port forward
+
+
