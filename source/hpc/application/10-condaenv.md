@@ -19,19 +19,16 @@ In most cases `conda install package-name` is a direct replacement for PIP in in
 
       `$ module av anaconda`
 
-      `$ module av miniconda`
 
    1. Load module
 
-      `$ module load miniforge/24.11.2-py312` **Recommended**
+      `$ module load miniforge/25.3.0` **Recommended**
 
-      `$ module load anaconda/2021.05`
+      `$ module load anaconda/2025.06.0`
 
-      or any newer versions of anaconda shown in the `module av` output
+      or any newer versions of anaconda or miniforge shown in the `module av` output
 
-      NOTE: DO NOT use `anaconda/3` and `anaconda/2`, they are very old versions.
-
-   1. Load other modules needed (such as `$ module load cuda/12.2`)
+   1. Load other modules needed (such as `$ module load cuda/12.9.0`)
 
 ## Configure your conda
 
@@ -45,7 +42,7 @@ Create two directories in your group research storage space (one for storing the
 
 `$ mkdir /cluster/tufts/XXXXlab/$USER/condapkg/`
 
-If you haven't used conda before on the cluster, create a file named ".condarc" in your home directory.
+If you haven't used conda before on the cluster, create a file named `.condarc` in your home directory.
 
 Now add the following 4 lines to the `.condarc` file in your home directory (modify according to your real path to the directories):
 
@@ -87,23 +84,21 @@ channels:
 
 ## Create your conda environment
 
-Now you can create your own conda env
+Now you can create your own conda env:
 
-`$ cd /cluster/tufts/XXXXlab/$USER/condaenv/`
+`$ conda create -n yourenvname`
 
-`$ conda create -p yourenvname`
+The environment will be created in the `envs_dirs` location configured in the previous steps.
 
-or if you have a specific version of python you need to use, e.g. 3.8
+or if you have a specific version of python you need to use, e.g. 3.11
 
-`$ conda create -p yourenvname python=3.8` (Recommended!)
+`$ conda create -n yourenvname python=3.11` (Recommended!)
 
 Note: you will need to have `python` and `pip` installed inside the env to pip install packages inside the env.
 
 Activate the environment (needs to be executed whenever you need to use the conda env you have created)
 
-`$ source activate yourenvname`
-
-If you are using system installed conda, please DO NOT use `conda activate` to activate your environment
+`$ conda activate yourenvname`
 
 Install `yourpackage` in the conda env
 
@@ -115,23 +110,23 @@ Or if you have python (comes with pip) installed,
 
 Or follow the instruction on package website.
 
+---
+
+### ⚠️ **IMPORTANT: CONDA vs. PIP WARNING**
+
+> **Mixing `conda install` and `pip install` can break your environment.** 
+> 
+> Conda and Pip manage dependencies differently. If Pip overwrites a library that Conda is tracking, it can lead to "Clobbering" (corrupting the environment).
+>
+> **Follow these best practices:**
+> 1. **Conda First:** Search for your package on `conda-forge` or `bioconda` first.
+> 2. **Pip Last:** Only use `pip` if the package is not available via Conda. 
+---
 Check what's installed in your conda environment
 
 `$ conda list`
 
-Test
-
-`$ python`
-
-`<<< import yourpackage`
-
-`<<<`
-
-When you are done, deactivate the environment
-
-`$ source deactivate`
-
-or
+When you are complete the data analysis, deactivate the environment
 
 `$ conda deactivate`
 
@@ -143,13 +138,13 @@ or
 
 If you would like to use JupyterNotebook or JupyterLab from OnDemand, you can follow the instructions below and **run your conda env as a kernel in Jupyter**.
 
-- Make sure with python 3.7+ and make sure you load cluster's anaconda module (this only works with py3.7+)
+- `module load anaconda` or `module load miniforge`.
 
-- Activate your conda env from terminal.
+- Activate your conda env from terminal by `conda activate yourenvname`.
 
 - Install ipykernel with
 
-  `$ pip install ipykernel` (this assumes you installed python and pip in your env, otherwise, use "--user" flag)
+  `$ pip install ipykernel`.
 
 - Add your env to jupyter with
 

@@ -26,6 +26,8 @@
 >
 > `module av <software>`
 >
+> `module spider <software>`
+>
 > `module list`
 >
 > `module load <software>`
@@ -39,83 +41,86 @@
 - To **check available modules** installed on the cluster:
 
   ```
-   [tutln01@login-prod-01 ~]$ module av
+   $ module av
   ```
 
-- Upon login, environment variable **`PATH`** is set for the system to search executables along these paths:
-
+  or 
+    ```
+   $ module spider
   ```
-  [tutln01@login-prod-01 ~]$ echo $PATH
 
-  /usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/cluster/home/tutln01/bin:/cluster/home/tutln01/.local/bin
-  ```
+ #### `module av` vs. `module spider` 
+| Feature | `module av` | `module spider` |
+| :--- | :--- | :--- |
+| **Search Scope** | Only shows modules currently available to load based on your environment. | Searches the entire software hierarchy, including hidden or nested modules. |
+| **Hierarchy Aware** | Yes; it only shows what matches your current compiler/MPI stack. | No; it finds software regardless of whether its dependencies are loaded. |
+| **Common Use Case** | Checking what you can use *right now*. | Finding *if* a piece of software exists and how to load it. |
+| **Output Detail** | Lists available versions briefly. | Provides detailed instructions on required parent modules for specific versions. |
+
 
 ### Example: Using `gcc` Compiler
 
 - Check what versions of gcc compiler is available: load the version I would like to use, and use it:
 
   ```
-  [tutln01@login-prod-01 ~]$ module av gcc
+  $ module avail gcc
+  ------ /cluster/tufts/apps/modules/9/x86_64/Core -------
+    gcc/12.4.0    gcc/15.1.0 (D)
 
-  ----------------------------------------------------------- /opt/shared/Modules/modulefiles-rhel6     ------------------------------------------------------------
-  gcc/4.7.0 gcc/4.9.2 gcc/5.3.0 gcc/7.3.0
-
-  -------------------------------------------------------------- /cluster/tufts/hpc/tools/module   ---------------------------------------------------------------
-  gcc/8.4.0 gcc/9.3.0 gcc/11.2.0
+  Where:
+  D:  Default Module
   ```
 
 - Load the desired version of gcc:
 
   ```
-  [tutln01@login-prod-01 ~]$ module load gcc/7.3.0
+  $ module load gcc/12.4.0
   ```
 
 - Use `module list` to **check loaded modules** in current environment:
 
   ```
-  [tutln01@login-prod-01 ~]$ module list
+  $ module list
 
-  Currently Loaded Modulefiles:
-  1) use.own     2) gcc/7.3.0
+  Currently Loaded Modules:
+  1) gmp/6.3.0-gt7twni (H)   2) gcc/12.4.0
   ```
 
 - Verify the `gcc` Version:
 
   ```
-  [tutln01@login-prod-01 ~]$ which gcc
-  /opt/shared/gcc/7.3.0/bin/gcc
+  $ which gcc
+  /cluster/tufts/apps/spack/9/x86_64/apps/linux-broadwell/gcc-12.4.0-c4qsn6yjbnde4mdnr6wlplee454jnden/bin/gcc
 
-  [tutln01@login-prod-01 ~]$ echo $PATH
-  /opt/shared/gcc/7.3.0/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/cluster/home/tutln01/bin:/cluster/ho  me/tutln01/.local/bin
-
-  [tutln01@login-prod-01 ~]$ gcc --version
-  gcc (GCC) 7.3.0
-  Copyright (C) 2017 Free Software Foundation, Inc.
+  $ gcc --version
+  gcc (Spack GCC) 12.4.0
+  Copyright (C) 2022 Free Software Foundation, Inc.
   This is free software; see the source for copying conditions.  There is NO
   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ```
 
-- **swap a module for another** (doesn't have to be the same software):
+- **switch a module for another** (doesn't have to be the same software):
 
   ```
-  [tutln01@login-prod-01 ~]$ module swap gcc/7.3.0 gcc/9.3.0
-  [tutln01@login-prod-01 ~]$ module list
-  Currently Loaded Modulefiles:
-  1) use.own     2) gcc/9.3.0
+  $ module switch gcc/12.4.0 gcc/15.1.0
+  $ module list
+  Currently Loaded Modules:
+  1) gmp/6.3.0-gt7twni (H)   2) gcc/15.1.0
+
+  Where:
+   H:  Hidden Module
   ```
 
 - **unload loaded modules**:
 
-  ```
-  [tutln01@login-prod-01 ~]$ module unload gcc
-  [tutln01@login-prod-01 ~]$ echo $PATH
-  /usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/cluster/home/tutln01/bin:/cluster/home/tutln01/.local/bin
-  ```
+    ```
+    $ module unload gcc
+    ```
 
 - **unload ALL** of the loaded modules:
 
   ```
-  [tutln01@login-prod-01 ~]$ module purge
+  $ module purge
   ```
 
 ​
