@@ -5,9 +5,11 @@ This tutorial covers an advanced method to install one's own copy of Jupyer.  Mo
 ```
 
 ## Who is this tutorial for
+
 This tutorial is particularly useful if you need to run on a system that we do not have compatible versions of conda or Jupyter, such as ARM-based systems like the GH200, or if you want to access a running Jupyter session from your local machine.
 
 ## Port forwarding
+
 This also covers port forwarding, a process that allows users to access Jupyter running on the Tufts HPC Cluster from their local computer. This is especially useful for connecting to the LLM Notebooks from your local computer, to allow for running Ollama models on the HPC from your local machine's familiar environment. For more details on the AI Tools on the cluster, see here: https://go.tufts.edu/AITools.
 
 ## Jupyter
