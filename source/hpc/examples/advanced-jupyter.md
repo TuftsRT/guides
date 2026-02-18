@@ -22,9 +22,9 @@ This is an example work flow to access a jupyter notebook from the browser of yo
 
 From a login node request a compute node be allocated
 
-[utln01@login-p01 ~]$ `salloc -N 1 -p gpu --gres=gpu:1 -t 15`
+[utln01@login-p01 ~]\$ `salloc -N 1 -p gpu --gres=gpu:1 -t 15`
 
-Once an node is allocated by Slurm you will be connected to this node automatically.  You will see your shell prompt change to **[utln01@pax00# ~]$** .
+Once an node is allocated by Slurm you will be connected to this node automatically. You will see your shell prompt change to **[utln01@pax00# ~]\$** .
 
 On this compute node you cam run the commands below to start jupyter
 
@@ -76,16 +76,19 @@ conda activate environment-name
 ```
 
 #### Running job using sbatch
-Sometimes it makes sense to run Jupyter as a "non interactive" job using sbatch instead of salloc.  This can be useful for long running notebooks or other situations where you want the job to keep running if you are disconnected.  Even though the job is "non interactive" you can still connect to it the same way and use it interactively.  There are 3 main differences when using this method.
+
+Sometimes it makes sense to run Jupyter as a "non interactive" job using sbatch instead of salloc. This can be useful for long running notebooks or other situations where you want the job to keep running if you are disconnected. Even though the job is "non interactive" you can still connect to it the same way and use it interactively. There are 3 main differences when using this method.
 
 **Main Differences**
+
 1. Use sbatch and a job submission script
-2. Locate your allocated node
-3. Get Jupyter port and URL from output log
+1. Locate your allocated node
+1. Get Jupyter port and URL from output log
 
 ##### Use sbatch and a job submission script
 
 To start your job create a file named jupyter_session.sh
+
 ```
 #!/bin/bash
 #SBATCH -p PartitionName  # gpu, batch or preempt
@@ -105,9 +108,11 @@ jupyter notebook --no-browser --ip=0.0.0.0
 ```
 
 ##### Locate your allocated node
+
 The squeue command will show you your jobs, and the nodes they are allocated to run on. Use `squeue --me` and locate the hostname (pax###) of the node that shows your jobs as running.
 
 `squeue --me`
 
-##### Establish SSH port forward 
-Setup the SSH port forward 
+##### Establish SSH port forward
+
+Setup the SSH port forward
