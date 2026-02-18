@@ -1,20 +1,26 @@
 # Advanced Jupyter
 
 ```{warning}
-This tutorial covers an advanced method to install onces own copy of Jupyer.  Most user should utilized our existing Jupyter install via OnDemand.
+This tutorial covers an advanced method to install one's own copy of Jupyer.  Most user should utilized our existing Jupyter install via OnDemand.
 ```
 
-This tutorial is particularly useful if you need to run on a system that we do not have compatible versions of conda or jupyter in modules for. For example the arm GH200 test system.
+## Who is this tutorial for
+This tutorial is particularly useful if you need to run on a system that we do not have compatible versions of conda or Jupyter, such as ARM-based systems like the GH200, or if you want to access a running Jupyter session from your local machine.
+
+## Port forwarding
+This also covers port forwarding, a process that allows users to access Jupyter running on the Tufts HPC Cluster from their local computer. This is especially useful for connecting to the LLM Notebooks from your local computer, to allow for running Ollama models on the HPC from your local machine's familiar environment. For more details on the AI Tools on the cluster, see here: https://go.tufts.edu/AITools.
 
 ## Jupyter
 
 ### Install
 
-- These instructions require conda. You can use our conda install available via modules, or the custom conda instructions below.
+- These instructions require conda. You can use our [conda install available via modules](./hpc/application/10-condaenv.html), or the [custom conda instructions below](#Conda).
 
-#. conda create -n jupyter python=3
-#. conda activate jupyter
-#. conda install -c conda-forge jupyterlab
+```
+conda create -n jupyter python=3
+conda activate jupyter
+conda install -c conda-forge jupyterlab
+```
 
 ### Workflow
 
@@ -68,7 +74,7 @@ This command will activate the conda install at the path provided in your curren
 
 #### Activating a conda environment in a script or Slurm submission file
 
-You can a activate conda environment using the following commands. Replace the path in source with the path for you conda install
+You can activate a conda environment using the following commands. Replace the path in source with the path for you conda install
 
 ```
 source ~/miniconda3x86/etc/profile.d/conda.sh
