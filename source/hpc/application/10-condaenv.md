@@ -19,7 +19,6 @@ In most cases `conda install package-name` is a direct replacement for PIP in in
 
       `$ module av anaconda`
 
-
    1. Load module
 
       `$ module load miniforge/25.3.0` **Recommended**
@@ -114,14 +113,17 @@ Or follow the instruction on package website.
 
 ### ⚠️ **IMPORTANT: CONDA vs. PIP WARNING**
 
-> **Mixing `conda install` and `pip install` can break your environment.** 
-> 
+> **Mixing `conda install` and `pip install` can break your environment.**
+>
 > Conda and Pip manage dependencies differently. If Pip overwrites a library that Conda is tracking, it can lead to "Clobbering" (corrupting the environment).
 >
 > **Follow these best practices:**
+>
 > 1. **Conda First:** Search for your package on `conda-forge` or `bioconda` first.
-> 2. **Pip Last:** Only use `pip` if the package is not available via Conda. 
+> 1. **Pip Last:** Only use `pip` if the package is not available via Conda.
+
 ---
+
 Check what's installed in your conda environment
 
 `$ conda list`
