@@ -74,7 +74,7 @@ module purge
 # load the module so the correct version python is available to you
 module load anaconda/2021.05
 # when using GPUs, make sure to load the appropriate version of cuda toolkit to provide necessary libraries for your application
-module load cuda/12.2
+module load cuda/12.9
 # If you have a conda env that you would like to use, activate it here using "source activate xxx". DO NOT USE "conda activate"
 source activate [target_env]
 # run python script

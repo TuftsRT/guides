@@ -37,7 +37,7 @@ JobId=296794 JobName=bash
    StartTime=2021-03-22T22:18:55 EndTime=2021-03-24T00:48:55 Deadline=N/A
    PreemptEligibleTime=2021-03-22T22:18:55 PreemptTime=None
    SuspendTime=None SecsPreSuspend=0 LastSchedEval=2021-03-22T22:18:55
-   Partition=preempt AllocNode:Sid=login-prod-01:34458
+   Partition=preempt AllocNode:Sid=login-p01:34458
    ReqNodeList=(null) ExcNodeList=(null)
    NodeList=cc1gpu001
    BatchHost=cc1gpu001

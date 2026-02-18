@@ -57,3 +57,11 @@ New GPU resources are available on this cluster.
 
 - H200 GPUs , request using `--gres=gpu:h200:1`
 - L40s GPUs , request using `--gres=gpu:l40s`
+
+# Retirement
+
+As part of this upgrade several legacy software and services are being retired.  We have identified a modern replacement for each.
+
+- Galaxy     NF-core           2/1/2026
+- FastX HPC  Desktop           4/1/2026
+- Flamenco   Blender Render    6/30/2026
