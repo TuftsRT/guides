@@ -124,8 +124,13 @@ The squeue command will show you your jobs, and the nodes they are allocated to 
 
 ##### Locate connection information
 
-When using sbatch the jupyter output will be located in the slurm error log, in this case a file in the same folder as your submission script in a file named similar to jupyter-jobid#-utln01.err . This file will contain familiar output that includes the
+When using sbatch the jupyter output will be located in the slurm error log, in this case a file in the same folder as your submission script in a file named similar to jupyter-jobid#-utln01.err .  This file will contain familar output that includes the 
 
-`http://127.0.0.1:8888/lab?token=234234asadf959e57836a23266cf996223453dsa4de`
+`http://127.0.0.1:8888/lab?token=234234asadf959invalid96223453dsa4de`
 
-Setup the SSH port forward
+Setup the SSH port forward using the node name we found previously and the port number shown in this url found in the error log.
+```
+ssh -L 8888:pax0##:8888 utln@login-prod.pax.tufts.edu
+```
+
+On your client computer use a web browser to navigate to http://127.0.0.1:8888/lab?token=234234asadf959invalid96223453dsa4de
