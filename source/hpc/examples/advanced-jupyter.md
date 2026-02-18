@@ -85,20 +85,18 @@ conda activate environment-name
 
 #### Different port number than 8888
 
-It is not uncommon for multiple instances of Jupyter to be running on the same compute node. If this is the case, the **default** port number of 8888 will be a different number, you will need to use this alternate number instead. 
+It is not uncommon for multiple instances of Jupyter to be running on the same compute node. If this is the case, the **default** port number of 8888 will be a different number, you will need to use this alternate number instead.
 
-You can specify a port number using the `--port` option when calling `jupyter lab` or `jupyter notebook`, for example `--port 6767`. However, Jupyter will fail to start if that number you manually specify is already in use. 
+You can specify a port number using the `--port` option when calling `jupyter lab` or `jupyter notebook`, for example `--port 6767`. However, Jupyter will fail to start if that number you manually specify is already in use.
 
 To search for available ports, you can use the command:
-`ss -tuln` 
+`ss -tuln`
 
 We recommenced you use ports around 8000 for this. You can check if a given port is open, such as 8080, by passing the result to `grep`:
 
 `ss -tuln | grep -w ':8080'`
 
 This will return a service it is exists on the port, and nothing if the port is available.
-
-
 
 #### Running job using sbatch
 
