@@ -4,7 +4,7 @@
 This tutorial covers an advanced method to install onces own copy of Jupyer.  Most user should utilized our existing Jupyter install via OnDemand.
 ```
 
-This tutorial is particualrily useful if you need to run on a system that we do not have compatible versions of conda or jupyter in modules for. For example the arm GH200 test system.
+This tutorial is particularly useful if you need to run on a system that we do not have compatible versions of conda or jupyter in modules for. For example the arm GH200 test system.
 
 ## Jupyter
 
