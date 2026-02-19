@@ -24,7 +24,6 @@ Now let's work on the content of the file.
 
 You can refer to the following `cmake` modulefile located at `/cluster/tufts/apps/modules/9/x86_64/gcc/15.1.0/cmake/3.31.6.lua`.
 
-
 ```
 -- -*- lua -*---
 -- cmake@3.31.6~doc+ncurses+ownlibs+qtgui build_system=generic build_type=Release arch=linux-rocky9-broadwell/htsgau3

@@ -77,5 +77,6 @@ We always recommend also selecting a public partition in case your lab resources
 
 `sbatch -p labpartition,public`
 
-```{warning}
+````{warning}
 Lab partitions may have different resource limits that are more or less restrictive than the defaults above.```
+````
