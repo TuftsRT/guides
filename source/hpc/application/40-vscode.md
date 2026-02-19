@@ -1,8 +1,20 @@
 # VSCode
 
-In this walkthrough, we'll examine how to set up a tunnel between the Cluster and your local installation of VSCode. This can be useful when you need to create, edit and publish sophisticated codebases on the Cluster. We can also use this method for running `Jupyter Notebooks` from the Cluster.
+There are multiple ways to run VSCode with cluster resources. In this guide, we will walk through using OnDemand VSCode Server App and setting up a tunnel between the Cluster and your local installation of VSCode. This can be useful when you need to create, edit and publish sophisticated codebases on the Cluster. We can also use the latter method for running `Jupyter Notebooks` from the Cluster.
 
-This process requires that you already have a Github account. Please feel free to make one [here](https://github.com/).
+The tunneling process requires a Github account. If you don't already have one, please create one [here](https://github.com/).
+
+## OnDemand VSCode Server
+
+1. Login to Tufts HPC Cluster Open OnDemand [https://ondemand-prod.pax.tufts.edu/](https://ondemand-p01.pax.tufts.edu/)
+2. Select "VSCode Server" from `Interactive Apps` menu
+<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-launch.png" alt="VSCodeServer" width="60%"/>
+3. Fill the form and `Launch` the application. The VSCode Server session will be running on the compute node of requested amount of resources.
+<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-form.png" alt="VSCodeServerForm" width="60%"/>
+4. Click `Connect to VS Code`
+<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-connect.png" alt="VSCodeServerConnect" width="60%"/>
+5. Once VSCode Server is launched, users have the option to install desired extentions from the `Extensions` menu.
+6. It is important to `Delete` the OnDemand VSCode Server session when finished to free up resources for other users.
 
 ## Local Extensions (Optional)
 
@@ -36,11 +48,11 @@ Start a tmux session on Tufts HPC cluster in any shell environment on the login 
 
 Allocate appropriate amount of resources you need for your session with `srun` to start an [interactive session](../slurm/interactive.md) inside the tmux session.
 
-> e.g. `srun -p interactive -n 2 --mem=4g --pty bash`
+> e.g. `srun -p batch -n 2 --mem=4g -t 4:00:00 --pty bash`
 
 - Load vscode_cli module
 
-`module load vscode_cli/1.77.3`
+`module load vscode-cli/1.107.0`
 
 Then configure and start tunnel:
 
