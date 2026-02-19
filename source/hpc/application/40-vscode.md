@@ -45,38 +45,39 @@ Setting up SSH Keyless Access to the HPC cluster is optional.
 You can follow the instructions here to setup your SSH keyless access. This will make your life much easier in the long run: [SSH Keyless Access](https://www.tecmint.com/ssh-passwordless-login-using-ssh-keygen-in-5-easy-steps/)
 
 
-### Tunnels:
+### Tunnel
 
-1. [Tmux](30-tmux.md) Session (Optional)
+**1. [Tmux](30-tmux.md) Session (Optional)**
 
 If you have spotty internet connection or you are planning to work in the current session for a long time, using tmux to help you keep the session running even if you disconnect from the HPC cluster. Please use tmux responsibly and detele your session when you finish to free up resources for other users.
 
 Start a [tmux](30-tmux.md) session on Tufts HPC cluster in any shell environment on the login node.
 
-2. Allocate Resources on HPC Cluster
-
+**2. Allocate Resources on HPC Cluster
+**
 Allocate appropriate amount of resources you need for your session with `srun` to start an [interactive session](../slurm/interactive.md) inside the tmux session.
 
 > e.g. `$ srun -p batch -n 2 --mem=4g -t 4:00:00 --pty bash`
 
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscodecli-srun.png" alt="srun" width="60%"/>
 
+It is important to `exit` the interactive session when finished to free up resources for other users.
 
-3. Load Cluster VSCode CLI Module
-
+**3. Load Cluster VSCode CLI Module
+**
 `$ module load vscode-cli/1.107.0`
 
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscodecli-module.png" alt="vscodecli" width="60%"/>
 
 
-4. Then Configure and Start Tunnel
-
+**4. Then Configure and Start Tunnel
+**
 `$ code tunnel`
 
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscodecli-tunnel.png" alt="vscodecli-tunnel" width="60%"/>
 
-5. Authentication
-
+**5. Authentication
+**
 Follow onscreen instructions and any Two Factor Authentication steps from Github to proceed. 
 
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/vscode-tunnel-browser.png" alt="vscodecli-tunnel-browser" width="60%"/>
