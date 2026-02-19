@@ -58,18 +58,21 @@ Start a [tmux](30-tmux) session on Tufts HPC cluster in any shell environment on
 Allocate appropriate amount of resources you need for your session with `srun` to start an [interactive session](../slurm/interactive.md) inside the tmux session.
 
 > e.g. `$ srun -p batch -n 2 --mem=4g -t 4:00:00 --pty bash`
+
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscodecli-srun.png" alt="srun" width="60%"/>
 
 
 3. Load Cluster VSCode CLI Module
 
 `$ module load vscode-cli/1.107.0`
+
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscodecli-module.png" alt="vscodecli" width="60%"/>
 
 
 4. Then Configure and Start Tunnel
 
 `$ code tunnel`
+
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscodecli-tunnel.png" alt="vscodecli-tunnel" width="60%"/>
 
 5. Authentication
