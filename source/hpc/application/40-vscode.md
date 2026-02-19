@@ -7,14 +7,20 @@ The tunneling process requires a Github account. If you don't already have one, 
 ## OnDemand VSCode Server
 
 1. Login to Tufts HPC Cluster Open OnDemand [https://ondemand-prod.pax.tufts.edu/](https://ondemand-p01.pax.tufts.edu/)
+
 2. Select "VSCode Server" from `Interactive Apps` menu
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-launch.png" alt="VSCodeServer" width="60%"/>
+
 3. Fill the form and `Launch` the application. The VSCode Server session will be running on the compute node of requested amount of resources.
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-form.png" alt="VSCodeServerForm" width="60%"/>
+
 4. Click `Connect to VS Code`
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-connect.png" alt="VSCodeServerConnect" width="60%"/>
+
 5. Once VSCode Server is launched, users have the option to install desired extentions from the `Extensions` menu.
+
 6. It is important to `Delete` the OnDemand VSCode Server session when finished to free up resources for other users.
+
 
 ## Local Extensions (Optional)
 
