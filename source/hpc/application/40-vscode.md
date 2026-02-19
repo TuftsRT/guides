@@ -53,8 +53,8 @@ If you have spotty internet connection or you are planning to work in the curren
 
 Start a [tmux](30-tmux.md) session on Tufts HPC cluster in any shell environment on the login node.
 
-**2. Allocate Resources on HPC Cluster
-**
+**2. Allocate Resources on HPC Cluster**
+
 Allocate appropriate amount of resources you need for your session with `srun` to start an [interactive session](../slurm/interactive.md) inside the tmux session.
 
 > e.g. `$ srun -p batch -n 2 --mem=4g -t 4:00:00 --pty bash`
@@ -63,29 +63,29 @@ Allocate appropriate amount of resources you need for your session with `srun` t
 
 It is important to `exit` the interactive session when finished to free up resources for other users.
 
-**3. Load Cluster VSCode CLI Module
-**
+**3. Load Cluster VSCode CLI Module**
+
 `$ module load vscode-cli/1.107.0`
 
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscodecli-module.png" alt="vscodecli" width="60%"/>
 
 
-**4. Then Configure and Start Tunnel
-**
+**4. Then Configure and Start Tunnel**
+
 `$ code tunnel`
 
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscodecli-tunnel.png" alt="vscodecli-tunnel" width="60%"/>
 
-**5. Authentication
-**
+**5. Authentication**
+
 Follow onscreen instructions and any Two Factor Authentication steps from Github to proceed. 
 
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/vscode-tunnel-browser.png" alt="vscodecli-tunnel-browser" width="60%"/>
 
-> *Browser Option*
+- Browser Option
 Once you have done so, copy the link given into your local browser. You should now see a VSCode window running from the browser. Feel free to connect any directory by clicking on the file explorer on the left. Currently, VSCode does not support Python environments to be ported through the remote tunnel. Read more [here](https://github.com/microsoft/vscode-python/issues/21557).
 
-> *Local VSCode*
+- Local VSCode
 On your locally installed VSCode, you can find your active tunnels in "Remote Explorer".
 
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/vscode-tunnel-signin.png" alt="vscodecli-tunnel-signin" width="60%"/>
