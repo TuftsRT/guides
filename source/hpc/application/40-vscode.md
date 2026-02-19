@@ -16,7 +16,6 @@ The tunneling process requires a Github account. If you don't already have one, 
 5. Once VSCode Server is launched, users have the option to install desired extentions from the `Extensions` menu.
 6. It is important to `Delete` the OnDemand VSCode Server session when finished to free up resources for other users.
 
-
 ## Local Extensions (Optional)
 
 These extensions need to be installed and system meet all prerequisites indicated on the official extension page. These are optional, but they add additional functionality which may be important for data science workflows.
