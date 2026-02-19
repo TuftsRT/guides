@@ -83,9 +83,11 @@ Follow onscreen instructions and any Two Factor Authentication steps from Github
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/vscode-tunnel-browser.png" alt="vscodecli-tunnel-browser" width="60%"/>
 
 - Browser Option
+  
 Once you have done so, copy the link given into your local browser. You should now see a VSCode window running from the browser. Feel free to connect any directory by clicking on the file explorer on the left. Currently, VSCode does not support Python environments to be ported through the remote tunnel. Read more [here](https://github.com/microsoft/vscode-python/issues/21557).
 
-- Local VSCode
+- Local VSCode Option
+  
 On your locally installed VSCode, you can find your active tunnels in "Remote Explorer".
 
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/vscode-tunnel-signin.png" alt="vscodecli-tunnel-signin" width="60%"/>
