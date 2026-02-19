@@ -1,6 +1,6 @@
 # Interactive Sessions
 
-An Interactive job is one that a user starts and then continues to directly interact with it during the duration of its execution. This could be any shell application, Jupyter notebooks, X11 graphical application, etc. Interactive jobs are typically submitted via the Slurm salloc or srun commands.
+An Interactive job is one that a user starts and then continues to directly interact with it during the duration of its execution. This could be any shell application, Jupyter notebooks, X11 graphical application, etc. Interactive jobs are typically submitted via the Slurm salloc or srun commands or the OnDemand web interface.
 
 `$ srun [options] --pty [command]`
 

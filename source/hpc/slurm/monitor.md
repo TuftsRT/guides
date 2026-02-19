@@ -10,15 +10,15 @@ We recommend new users start with the Open OnDemand method.
 
 The Open OnDemand server provides an ["Active Jobs" dashboard](https://ondemand-prod.pax.tufts.edu/pun/sys/dashboard/activejobs) that shows your pending and running jobs, as well as your job history.  It can be accessed at under the **Jobs** -> **Active Jobs** menu item.  
 
-![Active Jobs](./assets/ood-jobs-1.png)
+![Active Jobs](../assets/ood-jobs-1.png)
 
 Clicking on each job will show additional details about it.  Completed jobs will include efficiency data under the **Resources and I/O** tab.
 
-![Job Details](./assets/ood-jobs-2.png)
+![Job Details](../assets/ood-jobs-2.png)
 
 Overall cluster status and resources the available can be see on the ["System Status" dashboard](https://ondemand-prod.pax.tufts.edu/pun/sys/dashboard/system-status).  It can be accessed at under the **Clusters** -> **System Status** menu item.  
 
-![System Status](./assets/ood-cluster-1.png)
+![System Status](../assets/ood-cluster-1.png)
 
 ## Using the command line
 Slurm provides a set of commands to control and monitor your HPC jobs.  These can be run on any HPC node including the login nodes.
