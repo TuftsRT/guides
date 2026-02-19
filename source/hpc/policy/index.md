@@ -11,7 +11,7 @@ Tufts HPC cluster is an "institutional systems" and its acceptable use is govern
 
 ## Data
 
-- Data storage on the HPC Cluster is provided by the Tier 1 HPC research storage.  Details on this service can be found at (https://it.tufts.edu/research-data-storage).
+- Data storage on the HPC Cluster is provided by the Tier 1 HPC research storage system.  Details on this service can be found at (https://it.tufts.edu/research-data-storage).
 - No restricted data is allowed on Tufts HPC cluster.
 
 ## HPC Researcher Contribution Node
