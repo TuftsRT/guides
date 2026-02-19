@@ -47,11 +47,11 @@ You can follow the instructions here to setup your SSH keyless access. This will
 
 ### Tunnels:
 
-1. [Tmux](30-tmux) Session (Optional)
+1. [Tmux](30-tmux.md) Session (Optional)
 
 If you have spotty internet connection or you are planning to work in the current session for a long time, using tmux to help you keep the session running even if you disconnect from the HPC cluster. Please use tmux responsibly and detele your session when you finish to free up resources for other users.
 
-Start a [tmux](30-tmux) session on Tufts HPC cluster in any shell environment on the login node.
+Start a [tmux](30-tmux.md) session on Tufts HPC cluster in any shell environment on the login node.
 
 2. Allocate Resources on HPC Cluster
 
