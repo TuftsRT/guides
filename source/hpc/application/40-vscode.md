@@ -14,8 +14,8 @@ The tunneling process requires a Github account. If you don't already have one, 
 4. Click `Connect to VS Code`
 <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-connect.png" alt="VSCodeServerConnect" width="60%"/>
 5. Once VSCode Server is launched, users have the option to install desired extentions from the `Extensions` menu.
-
 6. It is important to `Delete` the OnDemand VSCode Server session when finished to free up resources for other users.
+
 
 ## Local Extensions (Optional)
 
