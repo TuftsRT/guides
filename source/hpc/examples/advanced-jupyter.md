@@ -30,7 +30,7 @@ This is an example work flow to access a Jupyter notebook from the web browser o
 
 Using SSH on your local computer, connect to a login node and request a compute node be allocated
 
-[utln01@login-p01 ~]\$ ```salloc -N 1 -p gpu --gres=gpu:1 -t 15```
+[utln01@login-p01 ~]\$ `salloc -N 1 -p gpu --gres=gpu:1 -t 15`
 
 Once an node is allocated by Slurm you will be connected to this node automatically. You will see your shell prompt change to **[utln01@pax00# ~]\$** .
 
@@ -41,12 +41,14 @@ conda activate jupyter
 jupyter notebook --no-browser --ip=0.0.0.0
 ```
 
-As Jupyter starts up you will see several message printed to your SSH console.  From this you need 3 important pieces of information.
-1. The network port that Jupyter started on.  This is a 4 digit number, typically `8888`
-2. The local host (127.0.0.1) URL with authentication token Jupyter generated.  It will look similar to `http://127.0.0.1:8888/?token=#########################################`.
-3. The nodename of the compute node you are running Jupyter on. This will be pax with 3 numbers after it, similar to pax000.  It will be visible in the message, and is also the same as the name shown in the shell prompt.
+As Jupyter starts up you will see several message printed to your SSH console. From this you need 3 important pieces of information.
+
+1. The network port that Jupyter started on. This is a 4 digit number, typically `8888`
+1. The local host (127.0.0.1) URL with authentication token Jupyter generated. It will look similar to `http://127.0.0.1:8888/?token=#########################################`.
+1. The nodename of the compute node you are running Jupyter on. This will be pax with 3 numbers after it, similar to pax000. It will be visible in the message, and is also the same as the name shown in the shell prompt.
 
 In a new window, connect a 2nd SSH session from your client with a port forward to the allocated node
+
 ```
 ssh -L 8888:pax###:8888 utln@login-prod.pax.tufts.edu
 ```
@@ -63,11 +65,12 @@ This explains how to install your own local version of conda.
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh -p ~/miniconda3x86
 ```
+
 - You will need to read and accept the license terms.
 - If this is the first conda install inside your account you can let conda auto initialize your environment.
   -- When prompted to run conda init, answer yes.
   -- source ~/.bashrc
-- If this is a 2nd install of conda for a difference architecture do not run conda init. The installer will display a command to run to manually setup conda each time you login.  Keep this for future reference.
+- If this is a 2nd install of conda for a difference architecture do not run conda init. The installer will display a command to run to manually setup conda each time you login. Keep this for future reference.
 
 ### Installing conda on Arm
 
@@ -75,6 +78,7 @@ bash Miniconda3-latest-Linux-x86_64.sh -p ~/miniconda3x86
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
 bash Miniconda3-latest-Linux-aarch64.sh  -p ~/miniconda3arm
 ```
+
 - You will need to read and accept the license terms.
 - If this is the first conda install inside your account you can let conda auto initialize your environment.
   -- When prompted to run conda init, answer yes.
@@ -84,7 +88,7 @@ bash Miniconda3-latest-Linux-aarch64.sh  -p ~/miniconda3arm
 ### Manually activating conda, or switching conda between x86/arm installs
 
 This command will activate the conda install at the path provided in your current shell.
- ```eval "$(~/miniconda3x86/bin/conda shell.bash hook)"```
+`eval "$(~/miniconda3x86/bin/conda shell.bash hook)"`
 
 ### Activating a conda environment in a script or Slurm submission file
 
@@ -102,11 +106,11 @@ It is not uncommon for multiple instances of Jupyter to be running on the same c
 You can specify a port number using the `--port` option when calling `jupyter lab` or `jupyter notebook`, for example `--port 6767`. However, Jupyter will fail to start if that number you manually specify is already in use.
 
 To search for available ports, you can use the command:
-```ss -tuln```
+`ss -tuln`
 
 We recommend you use ports around 8000 for this. You can check if a given port is open, such as 8080, by passing the result to `grep`:
 
-```ss -tuln | grep -w ':8080'```
+`ss -tuln | grep -w ':8080'`
 
 This will return a service it is exists on the port, and nothing if the port is available.
 
@@ -146,7 +150,7 @@ jupyter lab --no-browser --ip=0.0.0.0
 
 The squeue command will show you your jobs, and the nodes they are allocated to run on. Use `squeue --me` and locate the hostname (pax###) of the node that shows your jobs as running.
 
-```squeue --me```
+`squeue --me`
 
 ```
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
