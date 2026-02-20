@@ -63,7 +63,6 @@ You can follow the instructions here to set up your SSH keyless access. This wil
 
 ### Tunnel
 
-#### Overview
 
 To set up a tunnel from the HPC to your local computer, you will first allocate resources, load the VSCode CLI module, configure and start your tunneling session, authenticate and access VSCode, use the software, and then release resources when your work is complete. 
 
