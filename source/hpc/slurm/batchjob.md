@@ -2,9 +2,9 @@
 
 A Batch jobs is one where once submitted to the scheduler, the user does not intervene. The application is started by the scheduler once the requested nodes are allocated, and it runs unattended until completion. After completion the user returns at their convivence to review the program output files. Batch jobs are created by the user submitting a batch script file to the Slurm scheduler using the sbatch command.
 
- - It is easy to submit a batch job.
+- It is easy to submit a batch job.
 
- - You will need a slurm batch job script which contains all the resource requirements and the commands to run your program.
+- You will need a slurm batch job script which contains all the resource requirements and the commands to run your program.
 
 Please see examples below:
 
@@ -86,7 +86,7 @@ conda deactivate
 
 `$ sbatch mygpujob.sh`
 
-This will output the unique ID for the job.  Keep this for reference.
+This will output the unique ID for the job. Keep this for reference.
 
 \*\*You can find more sample scripts in `/cluster/tufts/hpc/tools/slurm_scripts`. \*\*
 

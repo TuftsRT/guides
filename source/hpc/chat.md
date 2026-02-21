@@ -4,11 +4,10 @@ tags: hpc ai chat
 
 # AI Chat Assistant
 
-<iframe 
-  src="https://copilotstudio.microsoft.com/environments/Default-fbbf6c60-0344-4c29-9459-725685739b19/bots/ca_agentZWy_17/webchat?__version__=2" 
+<iframe
+  src="https://copilotstudio.microsoft.com/environments/Default-fbbf6c60-0344-4c29-9459-725685739b19/bots/ca_agentZWy_17/webchat?__version__=2"
   frameborder="0" style="width: 100%; height: 700px;">
 </iframe>
-
 
 <br/>
 <br/>

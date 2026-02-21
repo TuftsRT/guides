@@ -6,11 +6,12 @@ An Interactive job is one that a user starts and then continues to directly inte
 
 - Command
 
-  - `command` to run an application, given the module is already loaded. 
+  - `command` to run an application, given the module is already loaded.
   - `bash` to request a bash shell
 
 - Options
   --pty
+
   - Partition `-p`
     - Default batch
   - Time `-t` or `--time=`

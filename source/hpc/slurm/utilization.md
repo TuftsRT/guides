@@ -1,27 +1,31 @@
 # Job Resource Utilization
 
-Making sure you are making efficient use of the HPC resources you request is very important.  Any HPC job will only use a portion of the resources you request, so it is important to make sure you are not requesting alot more than you need. Reviewing your completed jobs helps you make better decisions on how much resources to request for future jobs.
+Making sure you are making efficient use of the HPC resources you request is very important. Any HPC job will only use a portion of the resources you request, so it is important to make sure you are not requesting alot more than you need. Reviewing your completed jobs helps you make better decisions on how much resources to request for future jobs.
 
-Way to view job effiency after completion
+Way to view job efficiency after completion
+
 - Slurm job completion emails
 - Open OnDemand Active Jobs Dashboard
 - Slurm seff command
 
-Ways to view job effiency during execution
+Ways to view job efficiency during execution
+
 - top command
 - nvidia-smi command
 
 ## Completed Jobs
 
 ### Slurm job completion emails
-If you use Open OnDemand to run jobs, or request Slurm emails on job completion these message include **Job Efficiency Metrics** in the message.  An email attachment includes additional details.
+
+If you use Open OnDemand to run jobs, or request Slurm emails on job completion these message include **Job Efficiency Metrics** in the message. An email attachment includes additional details.
 
 ### Active Jobs Dashboard
-The Open OnDemand server provides an ["Active Jobs" dashboard](https://ondemand-prod.pax.tufts.edu/pun/sys/dashboard/activejobs) that shows your job history.  It can be accessed at under the **Jobs** -> **Active Jobs** menu item.  Clicking on each completed job in the **Job History** section will show additional details about it.  Completed jobs will include efficiency data under the **Resources and I/O** tab.
 
-### seff 
+The Open OnDemand server provides an ["Active Jobs" dashboard](https://ondemand-prod.pax.tufts.edu/pun/sys/dashboard/activejobs) that shows your job history. It can be accessed at under the **Jobs** -> **Active Jobs** menu item. Clicking on each completed job in the **Job History** section will show additional details about it. Completed jobs will include efficiency data under the **Resources and I/O** tab.
 
-You can check your **completed** jobs using the slurm seff command.  The would be job that no longer show as running or pending in the queue.  This command can be run on any hpc node. Knowing your slurm JOBID is required.
+### seff
+
+You can check your **completed** jobs using the slurm seff command. The would be job that no longer show as running or pending in the queue. This command can be run on any hpc node. Knowing your slurm JOBID is required.
 
 Display job CPU and memory usage:
 
@@ -63,17 +67,19 @@ If you don't know your job IDs or can't find them.  Utilize [hpctools - Tufts HP
 
 ## Running Jobs
 
-Sometimes it is neccessary to review the resource utilization while a job is running.  This is typically done by connected to the node your jobs is currently running on via SSH, and running additional commands.
+Sometimes it is necessary to review the resource utilization while a job is running. This is typically done by connected to the node your jobs is currently running on via SSH, and running additional commands.
 
 ### top
-The top command will list all the processes running on the compute node and the memory and CPU being used.  To see the processes for your user run `top -u $USER`.
+
+The top command will list all the processes running on the compute node and the memory and CPU being used. To see the processes for your user run `top -u $USER`.
 
 ### nvidia-smi
+
 When using GPU nodes the `nvidia-smi` command is useful for spot checking GPU compute and memory usage. You will only see the GPUs allocated to your user.
 
 ```
 [utln@pax00# ~]$ nvidia-smi
-Wed Feb 18 22:52:34 2026       
+Wed Feb 18 22:52:34 2026
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
 |-----------------------------------------+------------------------+----------------------+
@@ -113,7 +119,7 @@ Wed Feb 18 22:52:34 2026
 | N/A   34C    P0             80W /  700W |       0MiB / 143771MiB |      0%      Default |
 |                                         |                        |             Disabled |
 +-----------------------------------------+------------------------+----------------------+
-                                                                                         
+
 +-----------------------------------------------------------------------------------------+
 | Processes:                                                                              |
 |  GPU   GI   CI              PID   Type   Process name                        GPU Memory |

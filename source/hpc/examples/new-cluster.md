@@ -18,7 +18,6 @@ file system with the existing cluster so all your files and data are accessible 
 - Updated system unlocks the power of next-generation GPUs, CPUs, interconnects, and storage with seamless compatibility
 - Establishing a strong foundation for future enhancements
 
-
 ## Migration Plan
 
 New users will be encouraged to start using this version when they receive their accounts. Existing HPC users are
@@ -30,7 +29,7 @@ and determine a timeframe to move their nodes as the labs convenience.
 
 ## Compute nodes
 
-Public partition nodes are being moved to the new cluster throughout the spring of 2026.  Most public resources will be moved by the end of May.  Please test your software and workflows, and move your usage to the upgraded cluster ASAP.  Signifigant planned migration dates are listed below.
+Public partition nodes are being moved to the new cluster throughout the spring of 2026. Most public resources will be moved by the end of May. Please test your software and workflows, and move your usage to the upgraded cluster ASAP. Significant planned migration dates are listed below.
 
 - 32 A100 GPUs migrating on 3/1/2026
 - All public GPUs migrated by 5/31/2026
@@ -39,14 +38,13 @@ TTS Research Technology will work with contribute node owners to confirm their l
 
 ## Software / Service retirement
 
-As part of this upgrade several legacy software and services are being retired. We have identified a modern replacement for each.  If you have concerns or questions about the replacements, or timeline please contact us.
+As part of this upgrade several legacy software and services are being retired. We have identified a modern replacement for each. If you have concerns or questions about the replacements, or timeline please contact us.
 
 | Software being retired | Replacement    | Retirement Date |
-|------------------------|----------------|-----------------|
+| ---------------------- | -------------- | --------------- |
 | Galaxy                 | NF-Core        | 2/1/2026        |
 | FastX                  | HPC Desktop    | 4/1/2026        |
 | Flamenco               | Blender Render | 6/30/2026       |
-
 
 ## Upgraded cluster access
 
@@ -86,4 +84,3 @@ New GPU resources are available on this cluster.
 
 - H200 GPUs , request using `--gres=gpu:h200:1`
 - L40s GPUs , request using `--gres=gpu:l40s`
-

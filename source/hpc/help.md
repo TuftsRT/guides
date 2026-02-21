@@ -19,6 +19,4 @@ For interactive jobs
 - Error message you received
 - Output of the `module list` command
 
-
 If you have questions or need assistance, please contact the TTS Research Technology Team at [tts-research@tufts.edu](mailto:tts-research@tufts.edu).
-
