@@ -60,8 +60,8 @@ New GPU resources are available on this cluster.
 
 # Retirement
 
-As part of this upgrade several legacy software and services are being retired.  We have identified a modern replacement for each.
+As part of this upgrade several legacy software and services are being retired. We have identified a modern replacement for each.
 
-- Galaxy     NF-core           2/1/2026
-- FastX HPC  Desktop           4/1/2026
-- Flamenco   Blender Render    6/30/2026
+- Galaxy NF-core 2/1/2026
+- FastX HPC Desktop 4/1/2026
+- Flamenco Blender Render 6/30/2026

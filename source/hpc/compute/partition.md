@@ -1,9 +1,8 @@
 ---
-title: "Partitions and Limits"
+title: Partitions and Limits
 ---
 
 # Tufts HPC Partitions and Limits
-
 
 Tufts HPC cluster resources are grouped into different partitions. A partition is a logical collections of nodes that comprise different hardware resources and limits based on **functionality** and **priority** levels.
 
@@ -33,10 +32,6 @@ Current Cluster Resource Limits:
 >
 >   GPU: 20
 
-
-
-
-
 ## Partitions
 
 **Public Partitions:**
@@ -59,8 +54,6 @@ $ sinfo
 
 ## Quality of Service (QOS)
 
-
-
 ## Time limit
 
 Each partition has a specific time limit.
@@ -78,11 +71,12 @@ preempt         7-00:00:00
 
 # Lab Partitions
 
-Some research labs have dedicated nodes available in the HPC Cluster through our contrib node program. These are accessed using a partition name for each lab.  You can see this name by running the `sinfo` command.
+Some research labs have dedicated nodes available in the HPC Cluster through our contrib node program. These are accessed using a partition name for each lab. You can see this name by running the `sinfo` command.
 
-We always reccomend also selecting a public parition in case your lab resources are fully utilized.  Multiple partitions can be specified as a comma seperated list.
+We always recommend also selecting a public partition in case your lab resources are fully utilized. Multiple partitions can be specified as a comma separated list.
 
 `sbatch -p labpartition,public`
 
-```{warning}
-Lab partitions may have different resource limits that are more or less restrictive than the defaults above.
+````{warning}
+Lab partitions may have different resource limits that are more or less restrictive than the defaults above.```
+````
