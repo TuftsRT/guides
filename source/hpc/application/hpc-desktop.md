@@ -20,12 +20,14 @@ Replacement for use cases previously served via FastX.
 4. **Terminal**
 
    <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-desktop-terminal.png" alt="Desktop Terminal" width="60%"/>
+   
 
    <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-desktop-terminal-allocation.png" alt="Desktop allocation" width="60%"/>
 
 5. **Folder**
 
    <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-desktop-folder.png" alt="Desktop folder" width="60%"/>
+
 
    <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-desktop-folderoption.png" alt="Desktop folder option" width="60%"/>
 
