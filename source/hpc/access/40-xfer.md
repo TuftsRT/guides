@@ -45,7 +45,7 @@ There are several methods available to copy your data to and from the HPC cluste
 
 ![ood-homedir](../assets/el9/newondemand-homedir.png)
 
-  You may not see your lab folder listed under `/cluster/tufts`, **DO** use `Change directory` button and **TYPE** out the **FULL** path.
+You may not see your lab folder listed under `/cluster/tufts`, **DO** use `Change directory` button and **TYPE** out the **FULL** path.
 
 ## Command Line - scp & rsync
 

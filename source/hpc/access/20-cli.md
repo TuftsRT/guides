@@ -34,7 +34,6 @@ You will see a login screen as below, and you should use your Tufts username (lo
 You can now use the Tufts HPC cluster resources on OnDemand.
 [Getting Started with OnDemand](./15-ondemand.md)
 
-
 ## 2) SSH
 
 The SSH protocol aka **Secure Shell** is a method for secure remote login from one computer to another via the command line. The command line, also known as the command prompt or the terminal, allows you to control your computer directly, or to connect to other computers (like the HPC) via SSH. On Windows, this is commonly done with Command Prompt or Windows Terminal. On MacOS, this is done via Terminal or other shells, and on Linux there are a variety of built-in Terminal programs such as Gnome Terminal, Console, and XTerm.

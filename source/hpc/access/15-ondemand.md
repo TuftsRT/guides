@@ -30,10 +30,9 @@ You can also `Upload` or `Download` files and folders to/from the cluster from/t
 
 ### Jobs
 
-Use `Jobs` menu to monitor and mange active jobs, lookup job histories, compose and submit new jobs, as well as create and manage projects on HPC cluster.
+Use `Jobs` menu to monitor and manage active jobs, lookup job histories, compose and submit new jobs, as well as create and manage projects on HPC cluster.
 
 ![ood-jobs](../assets/el9/newondemand-jobs.png)
-
 
 ### Clusters
 
@@ -45,13 +44,12 @@ Start a terminal using **`Tufts HPC Shell Access`** in `Clusters`.
 
 ![ood-shell](../assets/el9/newondemand-shell.png)
 
-`System Status` provides an overview of cluster queue and resource status. 
+`System Status` provides an overview of cluster queue and resource status.
 
 ![ood-sysstatus](../assets/el9/newondemand-systemstatus.png)
 
 It also shows node-level resource availability details:
 ![ood-sysstatus](../assets/el9/newondemand-systemstatus-nodedetails.png)
-
 
 ### Interactive Apps
 
@@ -62,5 +60,3 @@ There are many popular GUI-ready applications available on OnDemand, such as [RS
 If you need X11 access through OnDemand to display any GUI applications that's not already available under `Interactive Apps`, [HPC Desktop](../application/hpc-desktop.md) is a great option.
 
 ![ood-hpc-desktop](../assets/el9/newondemand-desktop.png)
-
-
