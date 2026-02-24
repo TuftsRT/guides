@@ -16,7 +16,20 @@ In general the HPC resources in the public partitions are available to reseacher
 
 A limit is placed on the total resources a single user can have allocated at any one time. The current limits are shown here.
 
+\<<\<<\<<< HEAD
+
+> - **Public Partitions** (batch+gpu)
+>
+> Job Count: 250
+> CPU: 250
+> CPU Memory: 5000GB
+> GPU: 10
+> Maximum Job Time limit: 48 hours (longer available upon request)
+
+\=======
 **Public Partitions** (batch + gpu)
+
+> > > > > > > 0046f8b2e855706ca7ce5fdede9988bdf437966e
 
 - CPU: 250 cores
 - RAM: 5000 GB
@@ -69,7 +82,11 @@ Each partition has a time limit that a jobs runtime cannot exceed. Most use case
 ```
 PARTITION       TIMELIMIT
 batch*          2-00:00:00
+<<<<<<< HEAD
+gpu             7-00:00:00
+=======
 gpu             2-00:00:00
+>>>>>>> 0046f8b2e855706ca7ce5fdede9988bdf437966e
 preempt         7-00:00:00
 ```
 
