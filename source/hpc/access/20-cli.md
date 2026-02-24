@@ -15,7 +15,7 @@ There are two main ways to access the HPC cluster to run software:
 
 ## New Users
 
-For new users who have not used HPC resources before, we recommend starting with the **OnDemand Portal** via your web browser. OnDemand is useful for running many graphical applications such as MATLAB, Jupyter Notebooks, RStudio, and uploading downloading small files (\<900MB) all within your web browser session.
+For new users who have not used HPC resources before, we recommend starting with the [**OnDemand Portal**](./15-ondemand.md) via your web browser. OnDemand is useful for running many graphical applications such as [MATLAB](../application/matlab.md), Jupyter Notebooks, [RStudio](../application/25-rstudio.md), and uploading downloading small files (\<900MB) all within your web browser session.
 
 Users who require command line access, with greater control and longer running times for their research tasks are advised to use **Secure Shell (SSH)**.
 
@@ -25,21 +25,15 @@ To access the OnDemand Portal, open your web browser. Note that for the best use
 
 Navigate to the Tufts HPC [OnDemand](https://ondemand-prod.pax.tufts.edu). If you are off-campus, [the Tufts VPN](https://access.tufts.edu/vpn) is required.
 
+![ood-login](../assets/el9/newondemand-login.png)
+
 You will see a login screen as below, and you should use your Tufts username (lowercase) and password to login:
 
-![OnDemand Login Screen](https://tufts.box.com/shared/static/kwskz4ybo21sq2agcq4e7khmknc99qa0.jpg)
-
-You'll see the OnDemand logo, along with tabs including:
-
-- Files
-- Jobs
-- Clusters
-- Interactive Apps
-- Bioinformatics Apps
-- ...
+![ood-home](../assets/el9/newondemand-home.png)
 
 You can now use the Tufts HPC cluster resources on OnDemand.
-[Getting Started with OnDemand](15-ondemand)
+[Getting Started with OnDemand](./15-ondemand.md)
+
 
 ## 2) SSH
 
@@ -82,6 +76,7 @@ There are 3 login nodes: `login-p01`, `login-p02`, `login-p03`
   > - Cross-Platform: [SecureCRT](https://access.tufts.edu/securecrt)
   > - Native: Windows 11, Mac and Linux all include a command line SSH clients in the operating system (OS). Commands such as `scp` can be used for quick connections without installing additional software.
   > - Windows: [PuTTY](https://www.putty.org/)
+  > - [OnDemand](https://ondemand-prod.pax.tufts.edu) `Tufts HPC Shell Access` in `Clusters`
 
 - Setting up [SSH keyless access](https://www.tecmint.com/ssh-passwordless-login-using-ssh-keygen-in-5-easy-steps/)
 
