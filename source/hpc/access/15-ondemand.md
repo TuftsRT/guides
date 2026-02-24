@@ -45,6 +45,13 @@ Start a terminal using **`Tufts HPC Shell Access`** in `Clusters`.
 
 ![ood-shell](../assets/el9/newondemand-shell.png)
 
+`System Status` provides an overview of cluster queue and resource status. 
+
+![ood-sysstatus](../assets/el9/newondemand-systemstatus.png)
+
+It also shows node-level resource availability details:
+![ood-sysstatus](../assets/el9/newondemand-systemstatus-nodedetails.png)
+
 
 ### Interactive Apps
 
