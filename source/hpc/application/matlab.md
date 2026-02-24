@@ -12,16 +12,16 @@ There are multiple ways to use MATLAB with Tufts HPC Cluster resources. In this 
 
 1. Select **Matlab Server** from the `Interactive Apps` menu.
 
-   <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-matlab.png" alt="Matlab Server launch" width="60%"/>
+   <img src="../assets/EL9/newondemand-matlab.png" alt="Matlab Server launch" width="60%"/>
 
 1. Fill out the form and click **Launch**.\
    The Matlab Server session will run on a compute node using the resources you requested.
 
-   <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-matlab-launchform.png" alt="Matlab Server form" width="60%"/>
+   <img src="../assets/EL9/newondemand-matlab-launchform.png" alt="Matlab Server form" width="60%"/>
 
 1. Click **Connect to Matlab Server**.
 
-   <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-matlab-connect.png" alt="Matlab Server connect" width="60%"/>
+   <img src="../assets/EL9/newondemand-matlab-connect.png" alt="Matlab Server connect" width="60%"/>
 
 1. When finished, **delete the Matlab Server session** in Open OnDemand to free resources for other users.
 

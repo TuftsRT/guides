@@ -3,26 +3,28 @@
 ```{important}
    VPN - Off-campus access from non-Tufts Network please connect to [Tufts VPN](https://access.tufts.edu/vpn).
 ```
+## Login
 
-OnDemand provides easy access to the HPC environment using a web browser.
-Start by going to [**OnDemand**](https://ondemand-prod.pax.tufts.edu/), https://ondemand-prod.pax.tufts.edu/ using **Chrome or FireFox**.
+OnDemand empowers Tufts HPC community with remote web access to Tufts HPC cluster.
+From a browser, go to [**OnDemand**](https://ondemand-prod.pax.tufts.edu/), https://ondemand-prod.pax.tufts.edu/
+SSO - Use your **Tufts UTLN** (all lower-case) and **password** to login.
 
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/ondemand_login.png" alt="Core-Node" width=70%>
+<img src="../assets/EL9/newondemand-login.png" alt="ood-login" width=70%>
 
-Use your **Tufts UTLN** (all lower-case) and **password** to login.
 
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/ondemand_home.png" alt="Core-Node" width=70%>
+## Explore Tufts HPC OnDemand
 
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/ondemand_menu.png" alt="Core-Node" width=70%>
+OnDemand makes it easy to access cluster resources and your favorite software for data visualization, simulations, modeling, and more. 
 
-**`Clusters`**, you can start a shell access to the HPC cluster.
+<img src="../assets/EL9/newondemand-home.png" alt="ood-home" width=70%>
 
-**`Tufts HPC Shell Access`** = `$ ssh your_utln@login-prod.pax.tufts.edu` = `$ ssh your_utln@login-prod.pax.tufts.edu`.
+### Clusters
 
-OR
+You can start a terminal using **`Tufts HPC Shell Access`** in `Clusters`.
 
-Use the `>_Open in Terminal` button in `Files` to open a terminal in whichever directory you navigated to.
+**`Tufts HPC Shell Access`** = `$ ssh your_utln@login-prod.pax.tufts.edu`
 
+### 
 If you need X11 access through OnDemand to display any GUI applications, please use our [OnDemand](https://ondemand-prod.pax.tufts.edu/) **`Clusters`** for this option:
 
 **`Tufts HPC FastX11 Shell Access`** = `$ ssh -XYC your_utln@login-prod.pax.tufts.edu` (with X11 for GUI applications).
