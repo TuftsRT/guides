@@ -2,7 +2,7 @@
 
 Once you setup **TWO** desired endpoints in `File Manager`, navigate to the target folders (origin and destination), "drag and drop" files need to be transferred from origin to destination, or click **Transfer or Sync to** in the right-pane menu.
 
-<img src="../assets/TuftsGlobus/globus-transfer.png" alt="globus-transfer" width=30%>
+![globus-transfer](../../assets/tufts-globus/globus-transfer.png)
 
 Between the two `Start` buttons at the top of the page, the Transfer & Timer Options dropdown provides access to several options. By default, Globus verifies file integrity after transfer using checksums. Click the information icons for explanations of the other transfer settings.
 
