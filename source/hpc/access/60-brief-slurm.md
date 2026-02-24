@@ -53,4 +53,4 @@ you wrote, or third party software you installed.
 
 1. View your job in the queue using `squeue --Your_Tufts_Username`
 
-For an in-depth description of all the Slurm options visit [Slurm Job Scheduler](../slurm/index).
+For an in-depth description of all the Slurm options visit [Slurm Job Scheduler](../slurm/index.md).
