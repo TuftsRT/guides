@@ -55,7 +55,7 @@ It also shows node-level resource availability details:
 
 ### Interactive Apps
 
-There are many popular GUI-ready applications available on OnDemand, such as [RStudio](../application/25-rstudio.md), Jupter, [Matlab Server](../application/matlab.md),[VSCode Server](../application/40-vscode.md), .etc
+There are many popular GUI-ready applications available on OnDemand, such as [RStudio](../application/25-rstudio.md), Jupter, [Matlab Server](../application/matlab.md), [VSCode Server](../application/40-vscode.md), .etc
 
 ![ood-apps](../assets/el9/newondemand-interactiveapps.png)
 
