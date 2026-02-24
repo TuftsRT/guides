@@ -3,7 +3,7 @@
 There are multiple ways to use VSCode with Tufts HPC Cluster resources. In this guide, we cover two supported approaches:
 
 1. **OnDemand VSCode Server**, which runs entirely in your browser
-2. **Local VSCode with a remote tunnel**, which connects your local VSCode installation to the cluster
+1. **Local VSCode with a remote tunnel**, which connects your local VSCode installation to the cluster
 
 These approaches are useful when you need to create, edit, and manage sophisticated codebases directly on the cluster. The tunneling method can also be used to run `Jupyter Notebooks` backed by cluster resources.
 
@@ -14,22 +14,22 @@ The tunneling workflow requires a GitHub or Microsoft account. If you do not alr
 1. Log in to Tufts HPC Open OnDemand:\
    [https://ondemand-prod.pax.tufts.edu/](https://ondemand-prod.pax.tufts.edu/)
 
-2. Select **VSCode Server** from the `Interactive Apps` menu.
+1. Select **VSCode Server** from the `Interactive Apps` menu.
 
    <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-launch.png" alt="VSCode Server launch" width="60%"/>
 
-3. Fill out the form and click **Launch**.\
+1. Fill out the form and click **Launch**.\
    The VSCode Server session will run on a compute node using the resources you requested.
 
    <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-form.png" alt="VSCode Server form" width="60%"/>
 
-4. Click **Connect to VS Code**.
+1. Click **Connect to VS Code**.
 
    <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-connect.png" alt="VSCode Server connect" width="60%"/>
 
-5. Once VSCode Server launches, you can install extensions using the **Extensions** view.
+1. Once VSCode Server launches, you can install extensions using the **Extensions** view.
 
-6. When finished, **delete the VSCode Server session** in Open OnDemand to free resources for other users.
+1. When finished, **delete the VSCode Server session** in Open OnDemand to free resources for other users.
 
 **Tips on using VSCode Server**
 

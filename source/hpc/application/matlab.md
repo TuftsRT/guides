@@ -3,27 +3,27 @@
 There are multiple ways to use MATLAB with Tufts HPC Cluster resources. In this guide, we cover two supported approaches:
 
 1. **OnDemand Matlab Server**, which runs entirely in your browser
-2. **Matlab Batch Jobs via Command Line**, which runs on cluster in the background
+1. **Matlab Batch Jobs via Command Line**, which runs on cluster in the background
 
 ## OnDemand Matlab Server
 
 1. Log in to Tufts HPC Open OnDemand:\
    [https://ondemand-prod.pax.tufts.edu/](https://ondemand-prod.pax.tufts.edu/)
 
-2. Select **Matlab Server** from the `Interactive Apps` menu.
+1. Select **Matlab Server** from the `Interactive Apps` menu.
 
    <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-matlab.png" alt="Matlab Server launch" width="60%"/>
 
-3. Fill out the form and click **Launch**.\
+1. Fill out the form and click **Launch**.\
    The Matlab Server session will run on a compute node using the resources you requested.
 
    <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-matlab-launchform.png" alt="Matlab Server form" width="60%"/>
 
-4. Click **Connect to Matlab Server**.
+1. Click **Connect to Matlab Server**.
 
    <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-matlab-connect.png" alt="Matlab Server connect" width="60%"/>
 
-5. When finished, **delete the Matlab Server session** in Open OnDemand to free resources for other users.
+1. When finished, **delete the Matlab Server session** in Open OnDemand to free resources for other users.
 
 ## MATLAB Batch Jobs on HPC Cluster via Command Line
 
@@ -33,9 +33,9 @@ Matlab batch job refers to running Matlab scripts or Matlab commands in a batch 
 
 1. Login to the HPC cluster
 
-2. Upload your Matlab script or create your own on HPC cluster
+1. Upload your Matlab script or create your own on HPC cluster
 
-3. Go to the directory/folder which contains your Matlab script, e.g.:
+1. Go to the directory/folder which contains your Matlab script, e.g.:
 
 `$ cd /cluster/tufts/xxxlab/username/myfolder`
 
@@ -60,7 +60,7 @@ Matlab batch job refers to running Matlab scripts or Matlab commands in a batch 
    matlab -nodisplay -nojvm -nodesktop -nosplash < test.m
    ```
 
-5. Submit it with
+1. Submit it with
 
    `$ sbatch batchjob.sh`
 
