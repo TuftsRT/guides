@@ -30,7 +30,7 @@ grid-columns: 1
   content: "Understand the terminologies used across Tufts HPC cluster documentations"
   link: "../terminology/index.html"
 
-- header: "{fas}`book` HPC Partitions"
+- header: "{fas}`book` HPC Partitions and Limits"
   content: "Partitions on Tufts HPC cluster and their purposes"
   link: "partition.html"
 
