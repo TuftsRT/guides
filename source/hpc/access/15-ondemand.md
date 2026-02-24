@@ -28,6 +28,12 @@ You can also `Upload` or `Download` files and folders to/from the cluster from/t
 
 ![ood-homedir](../assets/el9/newondemand-homedir.png)
 
+### Jobs
+
+Use `Jobs` menu to monitor and mange active jobs, lookup job histories, compose and submit new jobs, as well as create and manage projects on HPC cluster.
+
+![ood-jobs](../assets/el9/newondemand-jobs.png)
+
 
 ### Clusters
 
