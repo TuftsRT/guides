@@ -12,7 +12,6 @@ Visit [www.globus.org](https://www.globus.org/) and click "Login" at the top of 
 
 ![globus-login-02](../../assets/tufts-globus/globus-auth-02.png)
 
-
 Click `Continue`. This will redirect you to the Tufts Shibboleth login page (SSO).
 
 Enter your Tufts credentials and log in.
