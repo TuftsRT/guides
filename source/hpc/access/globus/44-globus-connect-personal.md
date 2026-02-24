@@ -4,7 +4,7 @@ Create a private collection on your own computer. Globus Connect Personal allows
 
 Go to [Globus Connect Personal](https://www.globus.org/globus-connect-personal) and select appropriate installer, download, and install.
 
-![globuspersonal-collections](../../assets/tufts-globus/globus_versions.png)
+![globuspersonal-collections](../../assets/tufts-globus/globus-versions.png)
 
 Follow provided instruction, link Tufts account, and setup Globus Connect Personal. Create your local endpoint collection, e.g. "mycollection".
 
@@ -12,4 +12,4 @@ Once successfully setup local endpoint with Globus Connect Personal, go to [www.
 
 Click in the `Collection` field at the top of the `File Manager` page and find your personal local endpoint (e.g. "mycollection").
 
-![globuspersonal-mycollections](../../assets/tufts-globus/globus_mycollection.png)
+![globuspersonal-mycollections](../../assets/tufts-globus/globus-mycollection.png)
