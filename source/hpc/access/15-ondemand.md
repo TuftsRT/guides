@@ -59,6 +59,8 @@ There are many popular GUI-ready applications available on OnDemand, such as [RS
 
 ![ood-apps](../assets/el9/newondemand-interactiveapps.png)
 
-If you need X11 access through OnDemand to display any GUI applications that's not already available under `Interactive Apps`, you may use the [HPC Desktop](../application/hpc-desktop.md).
+If you need X11 access through OnDemand to display any GUI applications that's not already available under `Interactive Apps`, [HPC Desktop](../application/hpc-desktop.md) is a great option.
+
+![ood-hpc-desktop](../assets/el9/newondemand-desktop.png)
 
 
