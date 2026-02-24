@@ -18,7 +18,6 @@ A limit is placed on the total resources a single user can have allocated at any
 
 **Public Partitions** (batch + gpu)
 
-
 - CPU: 250 cores
 - RAM: 5000 GB
 - GPU: 10
