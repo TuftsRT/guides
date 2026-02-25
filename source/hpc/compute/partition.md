@@ -16,20 +16,7 @@ In general the HPC resources in the public partitions are available to reseacher
 
 A limit is placed on the total resources a single user can have allocated at any one time. The current limits are shown here.
 
-\<<\<<\<<< HEAD
-
-> - **Public Partitions** (batch+gpu)
->
-> Job Count: 250
-> CPU: 250
-> CPU Memory: 5000GB
-> GPU: 10
-> Maximum Job Time limit: 48 hours (longer available upon request)
-
-\=======
 **Public Partitions** (batch + gpu)
-
-> > > > > > > 0046f8b2e855706ca7ce5fdede9988bdf437966e
 
 - CPU: 250 cores
 - RAM: 5000 GB
@@ -72,8 +59,6 @@ The cluster utilizes Slurm QOS to manage special cases and exceptions to the def
 Common QOSs available are
 
 - Interactive - Single Job for up to 4 hours with 1 GPU,
-- normal-7days -
-- expanded -
 
 ## Time limit
 
@@ -82,12 +67,8 @@ Each partition has a time limit that a jobs runtime cannot exceed. Most use case
 ```
 PARTITION       TIMELIMIT
 batch*          2-00:00:00
-<<<<<<< HEAD
-gpu             7-00:00:00
-=======
 gpu             2-00:00:00
->>>>>>> 0046f8b2e855706ca7ce5fdede9988bdf437966e
-preempt         7-00:00:00
+preempt         2-00:00:00
 ```
 
 - **preempt** - Be aware, `preempt` partition consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs.
