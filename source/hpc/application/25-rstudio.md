@@ -15,16 +15,16 @@
 
 Logs from RStudio could be corrupted sometimes which will cause RStudio not launching from OnDemand. Here are a few things you can try. Make sure all RStudio sessions are deleted before this.
 
-- Rename the file `/cluster/home/$USER/.local/share/rstudio`
+- Rename the file `~/.local/share/rstudio`
 
-`$ /cluster/home/$USER/.local/share/rstudio /cluster/home/$USER/.local/share/rstudio_bkp`
+`$ ~/.local/share/rstudio  ~/.local/share/rstudio_bkp`
 
 - Rename the `/cluster/home/$USER/.RData`
 
-`$ /cluster/home/$USER/.RData /cluster/home/$USER/.RData_bkp`
+`$ ~/.RData  ~/.RData_bkp`
 
 Now you can try relaunch RStudio. If it's working properly for you, test out your workflow.
 
-If you get all you need without issues, you can go ahead and delete `/cluster/home/$USER/.local/share/rstudio_bkp` and `/cluster/home/$USER/.RData_bkp`.
+If you get all you need without issues, you can go ahead and delete `~/.local/share/rstudio_bkp` and `~/.RData_bkp`.
 
 If you have any questions or need additional assistance, feel free to reach out to us at {{ email }}.
