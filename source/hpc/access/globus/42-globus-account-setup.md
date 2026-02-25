@@ -8,24 +8,24 @@ You can also link other accounts, either personal or through other institutions.
 
 Visit [www.globus.org](https://www.globus.org/) and click "Login" at the top of the page. On the Globus login page, choose "Tufts University".
 
-<img src="../assets//TuftsGlobus/Globus-auth-01.png" alt="globus-login-01" width=70%>
+![globus-login-01](../../assets/tufts-globus/globus-auth-01.png)
 
-<img src="../assets//TuftsGlobus/Globus-login.png" alt="globus-login-02" width=70%>
+![globus-login-02](../../assets/tufts-globus/globus-auth-02.png)
 
 Click `Continue`. This will redirect you to the Tufts Shibboleth login page (SSO).
 
 Enter your Tufts credentials and log in.
 
-<img src="../assets/TuftsGlobus/Globus-sso.png" alt="globus-sso" width=70%>
+![globus-sso](../../assets/tufts-globus/globus-sso.png)
 
 Click `Continue` on the "Welcome – You've Successfully Logged In" page.
 
-<img src="../assets/TuftsGlobus/Globus-welcome.png" alt="globus-welcome" width=70%>
+![gloubs-welcome](../../assets/tufts-globus/globus-welcome.png)
 
 You may be prompted to provide additional information. Select "non-profit research or educational purposes" and agree to the "Terms of Service and Privacy Policy". Complete the form and click `Continue`.
 
-<img src="../assets/TuftsGlobus/Globus-auth-02.png" alt="globus-moreinfo" width=70%>
+![gloubs-moreinfo](../../assets/tufts-globus/globus-auth-02.png)
 
 Finally, you need to give Globus permission to use your identity to access information and perform actions (like file transfers) on your behalf.
 
-<img src="../assets/TuftsGlobus/permission.png" alt="globus-permission" width=70%>
+![gloubs-permission](../../assets/tufts-globus/permission.png)
