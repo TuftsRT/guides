@@ -34,14 +34,14 @@ Using SSH on your local computer, connect to a login node and request a compute 
 
 Once an node is allocated by Slurm you will be connected to this node automatically. You will see your shell prompt change to **[utln01@pax00# ~]\$** .
 
-On this compute node you cam run the commands below to start Jupyter
+On this compute node you can run the commands below to start Jupyter
 
 ```
 conda activate jupyter
 jupyter notebook --no-browser --ip=0.0.0.0
 ```
 
-As Jupyter starts up you will see several message printed to your SSH console. From this you need 3 important pieces of information.
+As Jupyter starts up you will see several messages printed to your SSH console. From this you need 3 important pieces of information.
 
 1. The network port that Jupyter started on. This is a 4 digit number, typically `8888`
 1. The local host (127.0.0.1) URL with authentication token Jupyter generated. It will look similar to `http://127.0.0.1:8888/?token=#########################################`.
@@ -57,7 +57,7 @@ On your client computer use your favorite web browser to navigate to http://127.
 
 ## Conda
 
-This explains how to install your own local version of conda.
+This explains how to install your own version of conda on the HPC cluster.
 
 ### Installing conda on x86
 
