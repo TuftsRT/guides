@@ -17,11 +17,11 @@ Logs from RStudio could be corrupted sometimes which will cause RStudio not laun
 
 - Rename the file `~/.local/share/rstudio`
 
-`$ ~/.local/share/rstudio  ~/.local/share/rstudio_bkp`
+`$ mv ~/.local/share/rstudio  ~/.local/share/rstudio_bkp`
 
 - Rename the `/cluster/home/$USER/.RData`
 
-`$ ~/.RData  ~/.RData_bkp`
+`$ mv ~/.RData  ~/.RData_bkp`
 
 Now you can try relaunch RStudio. If it's working properly for you, test out your workflow.
 
