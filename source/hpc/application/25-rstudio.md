@@ -4,14 +4,20 @@
 
 ## Launch RStudio
 
-1. Go to [OnDemand](https://ondemand.cluster.tufts.edu) Login with your username (lowercase) and password.
-1. `RStudio` apps are available in both `Interactive Apps` and `Bioinformatics Apps` tabs.
-1. Select the time, number of cores, CPU memory you need, as well as the version of R you wish to run.
-1. Load the module you need for your packages to run, if no additional modules are needed, leave it blank.
-1. Each user can only start one OnDemand RStudio session on one compute node at a time. If you need to start multiple RStudio sessions, please make sure you select a different nodename from your current running session.
-1. Click "Launch" and wait for available resources.
-1. Once it's ready, click on the `Connect to RStudio` button
-1. When you finished, exit RStudio properly `q()`, then close the RStudio tab, and go back to the main page click `Delete` to end the session.
+1. Go to [OnDemand](https://ondemand-p01.pax.tufts.edu/) Login with Tufts SSO.
+1. `RStudio Server` app is available in `Interactive Apps`
+
+![ood-rstudio](../assets/el9/newondemand-rstudio.png)
+
+1. Fill the request form with the appropriate amount of resources needed for your work and the version of R needed. Click `Launch` to launch the session.
+
+![ood-rstudio-launch](../assets/el9/newondemand-rstudio-launch.png)
+
+1. Once the resource for your session is allocated, click `Connect to RStudio Server` to start.
+
+![ood-rstudio-connect](../assets/el9/newondemand-rstudio-connect.png)
+
+1. When you finished, exit RStudio properly `q()`, then close the RStudio tab, and go back to the `My Interactive Sessions` page click `Delete` to end the session and free up resources for other users.
 
 ## Debug OnDemand RStudio Pax
 
