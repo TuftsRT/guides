@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Private Modules &#8212; TTS Research Technology Guides</title>
+    <title>Advanced Jupyter &#8212; TTS Research Technology Guides</title>
   
   
   
@@ -61,7 +61,7 @@
                 gtag('js', new Date());
                 gtag('config', 'G-ZJ5LXFRJ2G');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/examples/privatemodule';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/examples/advanced-jupyter';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
@@ -69,12 +69,12 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
         </script>
     <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
-    <link rel="canonical" href="https://rtguides.it.tufts.edu/hpc/examples/privatemodule.html" />
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/hpc/examples/advanced-jupyter.html" />
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="File Recovery on Tufts HPC Cluster" href="snapshots.html" />
-    <link rel="prev" title="Port Forwarding on HPC Cluster" href="portforward.html" />
+    <link rel="next" title="HelloWorld HPC Cluster Tutorial" href="helloworld.html" />
+    <link rel="prev" title="Examples and Tutorials" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="20260225" />
@@ -441,14 +441,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../slurm/index.html">Slurm Job Scheduler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../application/index.html">Software Applications</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples and Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="advanced-jupyter.html">Advanced Jupyter</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Advanced Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helloworld.html">HelloWorld HPC Cluster Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install-from-source.html">Building software from source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="new-cluster.html">2025 Cluster Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="portforward.html">Port Forwarding on HPC Cluster</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Private Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="snapshots.html">File Recovery on Tufts HPC Cluster</a></li>
 </ul>
 </details></li>
@@ -508,7 +508,7 @@
     </li>
      
     <li class="breadcrumb-item active" aria-current="page">
-      Private Modules
+      Advanced Jupyter
     </li>
   </ul>
 </nav>
@@ -526,87 +526,160 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="private-modules">
-<h1>Private Modules<a class="headerlink" href="#private-modules" title="Link to this heading">#</a></h1>
-<p>Users on Tufts HPC cluster can create their own module files and load their own private modules to make using locally installed software easier.</p>
-<section id="install-your-software">
-<h2>1. Install your software<a class="headerlink" href="#install-your-software" title="Link to this heading">#</a></h2>
-<p>After installation, make sure you know the path to the software. Especially the<code class="docutils literal notranslate"><span class="pre">bin</span></code> <code class="docutils literal notranslate"><span class="pre">lib</span></code> or <code class="docutils literal notranslate"><span class="pre">lib64</span></code> <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">man</span></code> if there are any.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="advanced-jupyter">
+<h1>Advanced Jupyter<a class="headerlink" href="#advanced-jupyter" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This tutorial covers an advanced method to install one’s own copy of Jupyer.  Most users should utilized our existing Jupyter install via OnDemand.</p>
+</div>
+<section id="who-is-this-tutorial-for">
+<h2>Who is this tutorial for<a class="headerlink" href="#who-is-this-tutorial-for" title="Link to this heading">#</a></h2>
+<p>This tutorial is particularly useful if you need to run on a system that we do not have compatible versions of conda or Jupyter, such as ARM-based systems like the GH200, or if you want to access a running Jupyter session from your local machine.</p>
+<section id="port-forwarding">
+<h3>Port forwarding<a class="headerlink" href="#port-forwarding" title="Link to this heading">#</a></h3>
+<p>This also covers port forwarding, a process that allows users to access Jupyter running on the Tufts HPC Cluster from their local computer. This is especially useful for connecting to the LLM Notebooks from your local computer, to allow for running Ollama models on the HPC from your local machine’s familiar environment. For more details on the AI Tools on the cluster, see here: <a class="reference internal" href="../../ai/index.html"><span class="doc std std-doc">https://go.tufts.edu/AITools</span></a>.</p>
 </section>
-<section id="create-your-module-file">
-<h2>2. Create your module file<a class="headerlink" href="#create-your-module-file" title="Link to this heading">#</a></h2>
-<p>The <strong>location</strong> of the module file is very important! If it’s misplaced, your module won’t show up.</p>
-<p>Please put your own module file in your home directory, under <code class="docutils literal notranslate"><span class="pre">privatemodules</span></code>.</p>
-<p>Each software should have its own directory, such as <code class="docutils literal notranslate"><span class="pre">mysoftware</span></code>.</p>
-<p>And for each version of the software, there should be a module file, such as <code class="docutils literal notranslate"><span class="pre">v1.0.0</span></code>.</p>
-<p>The overall structure should be:</p>
-<p><code class="docutils literal notranslate"><span class="pre">/cluster/home/$USER/privatemodules/mysoftware/v1.0.0</span></code></p>
-<p>Now let’s work on the content of the file.</p>
-<p>You can reference/borrow existing module files on the cluster.</p>
-<p>For simple software, you can use “cmake/3.18” as a template.</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">av</span> <span class="pre">cmake</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">------------------------------------------------------------------------------------------------------</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">Modules</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">-</span><span class="n">rhel6</span> <span class="o">------------------------------------------------------------------------------------------------------</span>
-<span class="n">cmake</span><span class="o">/</span><span class="mf">2.8</span>      <span class="n">cmake</span><span class="o">/</span><span class="mf">2.8.11.2</span> <span class="n">cmake</span><span class="o">/</span><span class="mf">3.2.1</span>    <span class="n">cmake</span><span class="o">/</span><span class="mf">3.4.3</span>
-
-<span class="o">---------------------------------------------------------------------------------------------------------</span> <span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">hpc</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">module</span> <span class="o">---------------------------------------------------------------------------------------------------------</span>
-<span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span>     <span class="n">cmake</span><span class="o">/</span><span class="mf">3.23</span><span class="n">_gui</span>
-</pre></div>
-</div>
-<p>To take a look at the module file:</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cat</span> <span class="pre">/cluster/tufts/hpc/tools/module/cmake/3.18</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#%Module -*- tcl -*-
-#
-# cmake 3.18
-#
-#
-
-set ver 3.18
-
-proc ModulesHelp { } {
-  global ver
-  puts stderr &quot;\tThis module sets up the cmake 3.18 environment installed by DM in hpc_tools, version $ver &quot;
-}
-
-module-whatis   &quot;load cmake 3.18&quot;
-
-
-prepend-path PATH /cluster/tufts/hpc/tools/spack/linux-rhel7-ivybridge/gcc-8.4.0/cmake-3.18.2-r2hx6rewcozqvda5gfo7rouhzlqy2k6t/bin
-
-#
-# appended log section
-#
-
-if {[module-info mode &quot;load&quot;]} {
-  global env
-  if {[info exists env(USER)]} {
-    set the_user [lindex [array get env USER] 1]
-  } else {
-    set the_user &quot;foo&quot;
-  }
-  system [concat &quot;logger environment-modules&quot; [module-info name] $the_user ]
-}
-
-</pre></div>
-</div>
-<p>Most of the content is informational.</p>
-<p>The most important function part of the module file would be the <code class="docutils literal notranslate"><span class="pre">prepend-path</span></code> line, it adds the cmake <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory path to the environment variable <code class="docutils literal notranslate"><span class="pre">PATH</span></code> so that the system will be able to find the cmake executables.</p>
-<p>If your software requires other environment variables such as <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> or <code class="docutils literal notranslate"><span class="pre">CPATH</span></code> to be set to function, then you should <code class="docutils literal notranslate"><span class="pre">prepend-path</span></code> those variables as well with the appropriate directories.</p>
-<p>Once your module file is ready. Save it.</p>
 </section>
-<section id="load-your-own-module">
-<h2>3. Load Your Own Module<a class="headerlink" href="#load-your-own-module" title="Link to this heading">#</a></h2>
-<p>In order to enable the usage of private module, <code class="docutils literal notranslate"><span class="pre">use.own</span></code> module needs to be loaded first:</p>
-<p><code class="docutils literal notranslate"> <span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">use.own</span></code></p>
-<p>Now you can check your own module.</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">av</span> <span class="pre">mysoftware</span></code></p>
-<p>And it should show up as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>------------- /cluster/home/$USER/privatemodules ---------------------------------------------------------------------------------------------------------
-mysoftware/v1.0.0
+<section id="jupyter">
+<h2>Jupyter<a class="headerlink" href="#jupyter" title="Link to this heading">#</a></h2>
+</section>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Link to this heading">#</a></h2>
+<p>These instructions require conda. You can use our <a class="reference internal" href="../application/10-condaenv.html"><span class="doc std std-doc">conda install available via modules</span></a>, or the <a class="reference internal" href="#conda">custom conda instructions below</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">jupyter</span> <span class="n">python</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">jupyter</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span>
 </pre></div>
 </div>
-<p>You can load it just like other modules on the cluster:</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">my</span> <span class="pre">software/v1.0.0</span></code></p>
-<p>:)</p>
+</section>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Link to this heading">#</a></h2>
+<p>This is an example work flow to access a Jupyter notebook from the web browser of your local computer.</p>
+<p>Using SSH on your local computer, connect to a login node and request a compute node be allocated</p>
+<p>[utln01&#64;login-p01 ~]$ <code class="docutils literal notranslate"><span class="pre">salloc</span> <span class="pre">-N</span> <span class="pre">1</span> <span class="pre">-p</span> <span class="pre">gpu</span> <span class="pre">--gres=gpu:1</span> <span class="pre">-t</span> <span class="pre">15</span></code></p>
+<p>Once an node is allocated by Slurm you will be connected to this node automatically. You will see your shell prompt change to <strong>[utln01&#64;pax00# ~]$</strong> .</p>
+<p>On this compute node you can run the commands below to start Jupyter</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">jupyter</span>
+<span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">browser</span> <span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="mf">0.0.0.0</span>
+</pre></div>
+</div>
+<p>As Jupyter starts up you will see several messages printed to your SSH console. From this you need 3 important pieces of information.</p>
+<ol class="arabic simple">
+<li><p>The network port that Jupyter started on. This is a 4 digit number, typically <code class="docutils literal notranslate"><span class="pre">8888</span></code></p></li>
+<li><p>The local host (127.0.0.1) URL with authentication token Jupyter generated. It will look similar to <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8888/?token=#########################################</span></code>.</p></li>
+<li><p>The nodename of the compute node you are running Jupyter on. This will be pax with 3 numbers after it, similar to pax000. It will be visible in the message, and is also the same as the name shown in the shell prompt.</p></li>
+</ol>
+<p>In a new window, connect a 2nd SSH session from your client with a port forward to the allocated node</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">8888</span><span class="p">:</span><span class="n">pax</span><span class="c1">###:8888 utln@login-prod.pax.tufts.edu</span>
+</pre></div>
+</div>
+<p>On your client computer use your favorite web browser to navigate to <a class="reference external" href="http://127.0.0.1:8888/?token=#########################################">http://127.0.0.1:8888/?token=#########################################</a> replacing this example url with the similar localhost (127.0.0.1) version output by Jupyter when it started.</p>
+</section>
+<section id="conda">
+<h2>Conda<a class="headerlink" href="#conda" title="Link to this heading">#</a></h2>
+<p>This explains how to install your own version of conda on the HPC cluster.</p>
+<section id="installing-conda-on-x86">
+<h3>Installing conda on x86<a class="headerlink" href="#installing-conda-on-x86" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">anaconda</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">bash</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">miniconda3x86</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You will need to read and accept the license terms.</p></li>
+<li><p>If this is the first conda install inside your account you can let conda auto initialize your environment.
+– When prompted to run conda init, answer yes.
+– source ~/.bashrc</p></li>
+<li><p>If this is a 2nd install of conda for a difference architecture do not run conda init. The installer will display a command to run to manually setup conda each time you login. Keep this for future reference.</p></li>
+</ul>
+</section>
+<section id="installing-conda-on-arm">
+<h3>Installing conda on Arm<a class="headerlink" href="#installing-conda-on-arm" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">anaconda</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">aarch64</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">bash</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">aarch64</span><span class="o">.</span><span class="n">sh</span>  <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">miniconda3arm</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You will need to read and accept the license terms.</p></li>
+<li><p>If this is the first conda install inside your account you can let conda auto initialize your environment.
+– When prompted to run conda init, answer yes.</p></li>
+</ul>
+</section>
+</section>
+<section id="common-situations">
+<h2>Common situations<a class="headerlink" href="#common-situations" title="Link to this heading">#</a></h2>
+<section id="manually-activating-conda-or-switching-conda-between-x86-arm-installs">
+<h3>Manually activating conda, or switching conda between x86/arm installs<a class="headerlink" href="#manually-activating-conda-or-switching-conda-between-x86-arm-installs" title="Link to this heading">#</a></h3>
+<p>This command will activate the conda install at the path provided in your current shell.
+<code class="docutils literal notranslate"><span class="pre">eval</span> <span class="pre">&quot;$(~/miniconda3x86/bin/conda</span> <span class="pre">shell.bash</span> <span class="pre">hook)&quot;</span></code></p>
+</section>
+<section id="activating-a-conda-environment-in-a-script-or-slurm-submission-file">
+<h3>Activating a conda environment in a script or Slurm submission file<a class="headerlink" href="#activating-a-conda-environment-in-a-script-or-slurm-submission-file" title="Link to this heading">#</a></h3>
+<p>You can activate a conda environment using the following commands. Replace the path passed to the source command with the path for you conda install</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/</span><span class="n">miniconda3x86</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">environment</span><span class="o">-</span><span class="n">name</span>
+</pre></div>
+</div>
+</section>
+<section id="different-port-number-than-8888">
+<h3>Different port number than 8888<a class="headerlink" href="#different-port-number-than-8888" title="Link to this heading">#</a></h3>
+<p>It is not uncommon for multiple instances of Jupyter to be running on the same compute node. If this is the case, the <strong>default</strong> port number of 8888 will be a different number, you will need to use this alternate number instead.</p>
+<p>You can specify a port number using the <code class="docutils literal notranslate"><span class="pre">--port</span></code> option when calling <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code> or <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code>, for example <code class="docutils literal notranslate"><span class="pre">--port</span> <span class="pre">6767</span></code>. However, Jupyter will fail to start if that number you manually specify is already in use.</p>
+<p>To search for available ports, you can use the command:
+<code class="docutils literal notranslate"><span class="pre">ss</span> <span class="pre">-tuln</span></code></p>
+<p>We recommend you use ports around 8000 for this. You can check if a given port is open, such as 8080, by passing the result to <code class="docutils literal notranslate"><span class="pre">grep</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ss</span> <span class="pre">-tuln</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-w</span> <span class="pre">':8080'</span></code></p>
+<p>This will return a service it is exists on the port, and nothing if the port is available.</p>
+</section>
+<section id="starting-jupyter-using-sbatch">
+<h3>Starting Jupyter using sbatch<a class="headerlink" href="#starting-jupyter-using-sbatch" title="Link to this heading">#</a></h3>
+<p>Sometimes it makes sense to run Jupyter as a “non interactive” job using sbatch instead of salloc. This can be useful for long running notebooks or other situations where you want the job to keep running if you are disconnected. Even though the job is “non interactive” you can still connect to it the same way and use it interactively. There are 3 main differences when using this method.</p>
+<p><strong>Main Differences</strong></p>
+<ol class="arabic simple">
+<li><p>Use sbatch and a job submission script</p></li>
+<li><p>Locate your allocated node</p></li>
+<li><p>Get Jupyter port and URL from output log</p></li>
+</ol>
+<section id="use-sbatch-and-a-job-submission-script">
+<h4>Use sbatch and a job submission script<a class="headerlink" href="#use-sbatch-and-a-job-submission-script" title="Link to this heading">#</a></h4>
+<p>To start your job create a file named jupyter_session.sh</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -p PartitionName  # gpu, batch or preempt</span>
+<span class="c1">#SBATCH -t 04:00:00 #4 Hours</span>
+<span class="c1">#SBATCH -c 4 #4 CPUs</span>
+<span class="c1">#SBATCH --gres=gpu:1 # 1 GPU, if needed</span>
+<span class="c1">#SBATCH --job-name=jupyter</span>
+<span class="c1">#SBATCH --mail-type=FAIL,BEGIN,END</span>
+<span class="c1">#SBATCH --error=%x-%J-%u.err</span>
+<span class="c1">#SBATCH --output=%x-%J-%u.out</span>
+
+<span class="n">module</span> <span class="n">purge</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">anaconda</span><span class="o">/</span><span class="mf">2025.06.0</span>
+
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">jupyter</span>
+<span class="n">jupyter</span> <span class="n">lab</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">browser</span> <span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="mf">0.0.0.0</span>
+</pre></div>
+</div>
+</section>
+<section id="locate-your-allocated-node">
+<h4>Locate your allocated node<a class="headerlink" href="#locate-your-allocated-node" title="Link to this heading">#</a></h4>
+<p>The squeue command will show you your jobs, and the nodes they are allocated to run on. Use <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code> and locate the hostname (pax###) of the node that shows your jobs as running.</p>
+<p><code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>             <span class="n">JOBID</span> <span class="n">PARTITION</span>     <span class="n">NAME</span>     <span class="n">USER</span> <span class="n">ST</span>       <span class="n">TIME</span>  <span class="n">NODES</span> <span class="n">NODELIST</span><span class="p">(</span><span class="n">REASON</span><span class="p">)</span>
+            <span class="mi">247071</span>       <span class="n">gpu</span>  <span class="n">jupyter</span> <span class="n">utln01</span>  <span class="n">R</span>       <span class="mi">0</span><span class="p">:</span><span class="mi">06</span>      <span class="mi">1</span> <span class="n">pax0</span><span class="c1">##</span>
+</pre></div>
+</div>
+</section>
+<section id="locating-connection-information">
+<h4>Locating connection information<a class="headerlink" href="#locating-connection-information" title="Link to this heading">#</a></h4>
+<p>When using sbatch the Jupyter output will be located in the slurm error log, in this case a file in the same folder as your submission script in a file named similar to jupyter-jobid#-utln01.err . This file will contain familiar output that includes a url similar to the one shown below.</p>
+<p><code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8888/lab?token=234234asadf959invalid96223453dsa4de</span></code></p>
+<p>Setup the SSH port forward using the node name we found previously and the port number shown in this url found in the error log.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">8888</span><span class="p">:</span><span class="n">pax</span><span class="c1">###:8888 utln@login-prod.pax.tufts.edu</span>
+</pre></div>
+</div>
+<p>On your client computer use a web browser to navigate to <a class="reference external" href="http://127.0.0.1:8888/lab?token=234234asadf959invalid96223453dsa4de">http://127.0.0.1:8888/lab?token=234234asadf959invalid96223453dsa4de</a></p>
+</section>
+</section>
 </section>
 </section>
 
@@ -621,20 +694,20 @@ mysoftware/v1.0.0
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="portforward.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Port Forwarding on HPC Cluster</p>
+        <p class="prev-next-title">Examples and Tutorials</p>
       </div>
     </a>
     <a class="right-next"
-       href="snapshots.html"
+       href="helloworld.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">File Recovery on Tufts HPC Cluster</p>
+        <p class="prev-next-title">HelloWorld HPC Cluster Tutorial</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -653,16 +726,37 @@ mysoftware/v1.0.0
   id="pst-page-navigation-heading-2"
   class="page-toc tocsection onthispage"
 >
-  <i class="fa-solid fa-list"></i> Private Modules
+  <i class="fa-solid fa-list"></i> Advanced Jupyter
 </div>
 <nav
   class="bd-toc-nav page-toc"
   aria-labelledby="pst-page-navigation-heading-2"
 >
   <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-your-software">1. Install your software</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-your-module-file">2. Create your module file</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-your-own-module">3. Load Your Own Module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-tutorial-for">Who is this tutorial for</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#port-forwarding">Port forwarding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter">Jupyter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install">Install</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow">Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">Conda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda-on-x86">Installing conda on x86</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda-on-arm">Installing conda on Arm</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-situations">Common situations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manually-activating-conda-or-switching-conda-between-x86-arm-installs">Manually activating conda, or switching conda between x86/arm installs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activating-a-conda-environment-in-a-script-or-slurm-submission-file">Activating a conda environment in a script or Slurm submission file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-port-number-than-8888">Different port number than 8888</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-jupyter-using-sbatch">Starting Jupyter using sbatch</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-sbatch-and-a-job-submission-script">Use sbatch and a job submission script</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-your-allocated-node">Locate your allocated node</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locating-connection-information">Locating connection information</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </nav></div>
 
@@ -670,7 +764,7 @@ mysoftware/v1.0.0
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/TuftsRT/guides/edit/develop/source/hpc/examples/privatemodule.md">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/hpc/examples/advanced-jupyter.md">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -682,7 +776,7 @@ Suggest Edits
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../_sources/hpc/examples/privatemodule.md.txt">
+    <a href="../../_sources/hpc/examples/advanced-jupyter.md.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
@@ -690,7 +784,7 @@ Suggest Edits
 
   <div class="sidebar-secondary-item"><div class="tocsection report-error">
   <a
-    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: hpc/examples/privatemodule"
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: hpc/examples/advanced-jupyter"
     class="report-error-link"
     ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
   </a>
