@@ -41,15 +41,15 @@ There are several methods available to copy your data to and from the HPC cluste
 
   **[https://ondemand-prod.pax.tufts.edu/](https://ondemand-prod.pax.tufts.edu/)**
 
-- Under **`Files`**, using the **`Upload`** or **`Download`** buttons to transfer. Make sure you navigate to the destination/source directory on cluster using the **`Go To`** button before transferring files.
+- **`Home Directory`** Under **`Files`**, using the **`Upload`** or **`Download`** buttons to transfer. Make sure you navigate to the destination/source directory on cluster using the **`Change directory`** button before transferring files.
 
-  <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/ondemand_homedir.png" alt="Core-Node" width=70%>
+![ood-homedir](../assets/el9/newondemand-homedir.png)
 
-  You may not see your lab folder listed under `/cluster/tufts`, **DO** use `Go To` button and **TYPE** out the **FULL** path.
+You may not see your lab folder listed under `/cluster/tufts`, **DO** use `Change directory` button and **TYPE** out the **FULL** path.
 
 ## Command Line - scp & rsync
 
-> Hostname\*\* for file transfer: login-prod.pax.tufts.edu
+> Hostname for file transfer: **login-prod.pax.tufts.edu**
 >
 > NOTE:
 >
@@ -58,7 +58,7 @@ There are several methods available to copy your data to and from the HPC cluste
 >   - Home Directory: _/cluster/home/your_utln/your_folder_
 >   - Research Project Storage Space Directory: _/cluster/tufts/your_lab_name/your_utln/your_folder_
 
-\*\*_Execute from your local machine terminal._ \*\*
+The following commands are execute from your local machine terminal.
 
 General Format:
 
