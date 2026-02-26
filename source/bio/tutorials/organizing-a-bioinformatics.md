@@ -1,12 +1,14 @@
 # How to Organize a Bioinformatics Project on the Tufts HPC
+
 *A Practical Guide for Reproducible and Scalable Research*
-           
-Author: Shirley Li, xue.li37@tufts.edu             
-Date: 2026-02-26        
+
+Author: Shirley Li, xue.li37@tufts.edu\
+Date: 2026-02-26
 
 If you are running RNA-seq, single-cell, spatial transcriptomics, or other omics analyses on the Tufts HPC cluster, organizing your project correctly from the beginning will save time, reduce errors, and make your work reproducible.
 
 This guide explains:
+
 - Where to work on the Tufts HPC
 - A recommended project folder structure
 - What belongs in each directory
@@ -30,9 +32,7 @@ Your lab should maintain shared resources under:
 
 Use the shared folder for reference genomes, indexes, annotation files, or datasets reused across the lab.
 
-
-
-## 2. Recommended Project Structure 
+## 2. Recommended Project Structure
 
 Use this structure **inside your project**:
 
@@ -59,21 +59,19 @@ project_name/
 ```
 
 **Key idea:**
- Reusable code lives in `scripts_global/`; analysis-specific code stays inside each `analysis*/scripts/`.
+Reusable code lives in `scripts_global/`; analysis-specific code stays inside each `analysis*/scripts/`.
 
-
-
-## 3. What Goes in Each Folder 
+## 3. What Goes in Each Folder
 
 ### **data_raw/**
 
 Untouched input files (FASTQ, BAM, MERFISH CSV, Visium outputs).
- Should never be modified.
+Should never be modified.
 
 ### **data_processed/**
 
 Filtered matrices, Seurat objects (`.rds`), processed tables.
- Time-consuming results that you want to reuse.
+Time-consuming results that you want to reuse.
 
 ### **scripts_global/**
 
@@ -92,15 +90,15 @@ Analysis-specific R/Python scripts, e.g.:
 ### **analysis\*/notebooks/**
 
 Exploratory notebooks (Rmd/Jupyter).
- Not part of the formal pipeline.
+Not part of the formal pipeline.
 
 ### **analysis\*/slurm/**
 
 Job submission files (`.sbatch`).
- Match names to scripts, e.g.:
+Match names to scripts, e.g.:
 
 ```
-scripts/01_qc.R  
+scripts/01_qc.R
 slurm/01_qc.sbatch
 ```
 
@@ -119,8 +117,6 @@ Conda environments, `renv` folder, Apptainer definitions.
 ### **docs/**
 
 Notes, meeting summaries, methods drafts, descriptions of workflows.
-
-
 
 ## 4. Version Control: Use Git + GitHub
 
@@ -151,29 +147,35 @@ results/
 
 Create a GitHub repo for tracking scripts + documentation.
 
-
 ## 5. Essential Best Practices for HPC Projects
+
 ### 5.1. Separate Raw and Processed Data
+
 Raw data:
+
 - Never modified
 - Archived after publication
 - Moved to cold storage if appropriate
-Public raw datasets:
+  Public raw datasets:
 - Document download commands
 - Delete after processing (can be re-downloaded)
 
 ### 5.2. Document Software Versions
+
 Record:
+
 - Tool versions
 - Parameters
 - Package versions
-Write analysis notes in a methods-style format while working.
+  Write analysis notes in a methods-style format while working.
 
 ### 5.3. Keep Folder Sizes Reasonable
+
 A typical manuscript project (excluding raw/intermediate data) should only be a few GB.
 Regular cleanup is much easier than emergency cleanup.
 
 ### 5.4. Use Consistent Naming Conventions
+
 Match:
 `01_qc.R  ↔  01_qc.sbatch`
 
@@ -182,14 +184,17 @@ Avoid ambiguous names like:
 `final_new_v2_fixed.R`
 
 ### 5.5. Save Intermediate Objects
+
 For large omics analyses:
+
 - Save Seurat .rds
 - Save processed matrices
-Preprocessing can take hours. Avoid repeating it.
+  Preprocessing can take hours. Avoid repeating it.
 
 ### 5.6. Track Everything with Git
 
 Track:
+
 - Code
 - SLURM scripts
 - Notebooks
@@ -198,14 +203,18 @@ Track:
 - Commit frequently.
 
 ## Frequently Asked Questions
+
 ### Q: Should each paper have its own project folder?
+
 Yes.
 Each manuscript should have its own top-level project directory. This prevents cross-contamination of scripts, results, and documentation between studies.
 
 ### Q: Should I organize by data type or biological question?
+
 Organize by biological question or manuscript goal.
 
 For example:
+
 ```
 analysis1/  → differential expression
 analysis2/  → spatial analysis
@@ -217,11 +226,13 @@ Avoid mixing unrelated analyses in the same folder.
 ### Q: Where should I run interactive work on Tufts HPC?
 
 Use Open OnDemand for:
+
 - RStudio
 - Jupyter
 - Small-scale exploratory work
 
 Use SLURM batch jobs for:
+
 - Large RNA-seq runs
 - STAR alignment
 - nf-core workflows
@@ -230,10 +241,11 @@ Use SLURM batch jobs for:
 ### Q: Should I run everything through SLURM?
 
 If a job:
+
 - Runs > 5–10 minutes
 - Uses multiple cores
 - Requires significant memory
-It should be submitted via SLURM.
+  It should be submitted via SLURM.
 
 Interactive sessions are for exploration only.
 
@@ -254,19 +266,24 @@ Use descriptive and date-aware names:
 ```
 
 Avoid vague names like:
+
 ```
 new_project/
 final_analysis/
 test2/
 ```
+
 ### Q: Should notebooks replace scripts?
+
 No.
 Notebooks are for:
+
 - Exploration
 - Visualization
 - Demonstration
 
 Scripts are for:
+
 - Reproducible pipelines
 - SLURM jobs
 - Formal analysis
@@ -276,6 +293,7 @@ A clean workflow uses both.
 ### Q: When should I clean up intermediate files?
 
 After:
+
 - You save key processed objects
 - The pipeline has completed successfully
 - The manuscript is accepted
@@ -292,11 +310,13 @@ If a folder grows unexpectedly large, check:
 `du -sh *`
 
 ### Q: Should I store environments inside the project?
+
 Yes.
 Keep environment definitions in:
 `envs/`
 
 This ensures:
+
 - Reproducibility
 - Easier collaboration
 - Future reruns of analysis
@@ -304,6 +324,7 @@ This ensures:
 ### Q: How do I make my project reproducible for future lab members?
 
 Keep clear folder structure
+
 - Maintain README.md
 - Track code with Git
 - Record software versions
@@ -315,6 +336,7 @@ A future lab member should be able to understand your project in one hour.
 
 Mixing everything in one folder.
 Typical bad pattern:
+
 ```
 scripts/
 data/
@@ -323,6 +345,7 @@ more_scripts/
 new_results/
 final/
 ```
+
 Without structure, scaling becomes impossible.
 
 ### Q: Should I compress FASTQ or BAM files?

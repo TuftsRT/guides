@@ -33,6 +33,7 @@ nextflow run nf-core/rnaseq -profile tufts ...
 For a comprehensive list of available pipelines, visit the [nf-core website](https://nf-co.re/pipelines). There are currently more than 100 pipelines available through nf-core.
 
 ### Example slurm script
+
 ```
 #!/bin/bash
 #SBATCH --job-name=rnaseq_nfcore
@@ -60,8 +61,8 @@ nextflow run nf-core/rnaseq \
     --fasta $genome \
     --gtf $gtf \
     --star_index /cluster/tufts/workshop/public/2026spring/star_index/  \
-    --salmon_index /cluster/tufts/workshop/public/2026spring/salmon_index/ 
-    --outdir rnaseq 
+    --salmon_index /cluster/tufts/workshop/public/2026spring/salmon_index/
+    --outdir rnaseq
 
 
 echo "Finished at $(date)"
@@ -97,7 +98,7 @@ rnaseq/
 
 ```
 multiqc/
-multiqc/star_salmon/multiqc_report.html 
+multiqc/star_salmon/multiqc_report.html
 ```
 
 Open this first.
@@ -112,17 +113,13 @@ salmon.merged.gene_counts.tsv   → gene-level counts (used for differential exp
 salmon.merged.gene_tpm.tsv      → normalized expression (for visualization)
 ```
 
-
-
 ### 3.3 Pipeline Metadata (Reproducibility)
 
 ```
 pipeline_info/nf_core_rnaseq_software_mqc_versions.yml
 ```
 
-Contains software versions 
-
-
+Contains software versions
 
 #### Open OnDemand App
 
@@ -131,10 +128,6 @@ In your working directory, this file list all parameter used
 ```
 nf-params.json
 ```
-
-
-
-
 
 ## 4. Logs and Troubleshooting
 
@@ -150,7 +143,7 @@ Monitor during run:
 tail -f .nextflow.log
 ```
 
-It locates in the workding dir, not the outdir. 
+It locates in the workding dir, not the outdir.
 
 ### 4.2 SLURM Log Files
 
@@ -167,8 +160,6 @@ In session ID folder:
 output.log  # check progress
 ```
 
-
-
 ### 4.3 Per-Process Logs (Advanced)
 
 Located inside:
@@ -184,5 +175,3 @@ Files:
 .command.err
 .command.out
 ```
-
-

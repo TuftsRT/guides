@@ -8,11 +8,9 @@ Yucheng Zhang, Senior Bioinformatics Engineer, yucheng.zhang@tufts.edu
 
 TTS Research Technology
 
-------
+---
 
 A curated collection of practical, reproducible bioinformatics tutorials for researchers working on the Tufts HPC. These guides focus on real-world analysis workflows — from RNA-seq and spatial transcriptomics to workflow management and high-performance computing — designed to help you move from raw data to interpretable results efficiently and reproducibly.
-
-
 
 ## Getting Started
 
@@ -23,15 +21,11 @@ For users new to Tufts HPC or bioinformatics.
 - **[Package installation using container-mod](container-mod.md)**
 - **[Exploring Python Bioinformatics Packages with Jupyter Notebook](exploring-python-bioinformatics.md)**
 
-
-
 ## Project Organization & Best Practices
 
 - **[How to Organize a Bioinformatics Project on the Tufts HPC](Organizing-a-Bioinformatics-Project-on-the-Tufts-HPC.md)**
 
 - **[Getting started with bioinformatics tools](bioinformatics-tools-guide.md)**
-
-  
 
 ## HPC & Parallel Computing
 
@@ -39,22 +33,15 @@ For users new to Tufts HPC or bioinformatics.
 
 - **[Parallel Read Alignment on SLURM](parallel-read-alignment.md)**
 
-  
-
 ## Workflow Management & Pipelines
 
 - **[Running nfcore pipelines on Tufts HPC](running-nfcore-pipelines.md)**
-
-  
 
 ## Bulk RNA-seq Analysis
 
 - **[A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand](de-seq2-in-r-ood.md)**
 
-
-
 ## Single-Cell & Spatial Transcriptomics
 
 - **[scRNA-seq analysis with RStudio (Seurat)](sc-rna-seq-analysis-with-r.md)**
 - **[A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)](Practical-Guide-to-Analyzing-Spatial-Transcriptomics-Data.md)**
-

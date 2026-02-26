@@ -1,8 +1,7 @@
 # A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand
 
-Author: Shirley Li, xue.li37@tufts.edu   
-Date: 2026-02-26 
-
+Author: Shirley Li, xue.li37@tufts.edu\
+Date: 2026-02-26
 
 ## Prerequisite
 

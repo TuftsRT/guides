@@ -1,6 +1,6 @@
 # A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)
 
-Author: Shirley Li, xue.li37@tufts.edu               
+Author: Shirley Li, xue.li37@tufts.edu\
 Date: 2025-12-06
 
 ## 1. Overview
@@ -20,7 +20,6 @@ The focus is on **practical application**, including:
 
 This is not a theory-focused document; instead, it is designed to help researchers analyze data on the Tufts HPC environment or locally.
 
-
 # 2. Vizgen MERFISH
 
 ## 2.1 What MERFISH Is
@@ -34,8 +33,6 @@ Key characteristics:
 - Molecule-level detection
 - Customizable gene panels
 - Produces cell-by-gene matrices and molecule coordinates
-
-
 
 ## 2.2 Typical Output Files
 
@@ -51,8 +48,6 @@ The primary data for analysis:
 
 - `cell_by_gene.csv`: counts matrix
 - `cell_metadata.csv`: x/y positions, cell segmentation, QC metrics
-
-
 
 ## 2.3 MERFISH Analysis Workflow in R
 
@@ -138,8 +133,6 @@ coords <- obj@meta.data[, c("x", "y")]
 nn <- get.knn(coords, k = 10)
 ```
 
-
-
 # 3. 10x Genomics Visium
 
 ## 3.1 What Visium Is
@@ -152,8 +145,6 @@ Key characteristics:
 - Multiple cells per spot
 - Supports FFPE and fresh frozen samples
 - Strong for tissue-level discovery and regional differences
-
-
 
 ## 3.2 Output Files from Space Ranger
 
@@ -170,8 +161,6 @@ Files used for analysis:
 - `barcodes.tsv.gz`
 - `tissue_positions_list.csv`
 - high-resolution H&E image
-
-
 
 ## 3.3 Visium Analysis Workflow in R
 
@@ -244,8 +233,6 @@ enrich <- enrichGO(
 )
 ```
 
-
-
 # 4. NanoString GeoMx DSP
 
 ## 4.1 What GeoMx DSP Is
@@ -259,8 +246,6 @@ Key characteristics:
 - Supports whole transcriptome and targeted panels
 - Ideal for comparisons between regions, tumor microenvironment, inflamed vs non-inflamed areas
 
-
-
 ## 4.2 Typical GeoMx Files
 
 ```
@@ -270,8 +255,6 @@ panel_annotation.txt
 QC_stats/
 image_tiles/
 ```
-
-
 
 ## 4.3 GeoMx Analysis Workflow in R
 
@@ -336,8 +319,6 @@ enrichGO(
 )
 ```
 
-
-
 # 5. Summary of Recommended Tools
 
 | Platform  | Resolution              | Primary Tools (R)                  | Typical Analyses                                          |
@@ -346,9 +327,8 @@ enrichGO(
 | Visium    | Spot-level              | Seurat, SPOTlight, clusterProfiler | Clustering, deconvolution, spatially variable genes       |
 | GeoMx DSP | ROI-level               | GeoMxTools, limma, clusterProfiler | Region comparisons, FFPE profiling, pathway analysis      |
 
+# 6. Notes
 
-
-# 6. Notes                  
 - All provided code is compatible with SLURM workloads on the Tufts HPC.
 - Use the latest Open OnDemand RStudio session for interactive development.
 - We recommend using Seurat v5 for spatial transcriptomics pipelines.
