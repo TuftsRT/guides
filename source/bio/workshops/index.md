@@ -6,6 +6,27 @@ tags: bioinformatics
 
 Training workshops on bioinformatics provided by TTS Research Technology.
 
+## 2026 Spring
+Version Control & Programming:               
+- Introduction to Git&GitHub - [Register](https://tufts.libcal.com/event/16315143) · **[Slides](https://tufts.box.com/s/2amh79p12ymzqs7aj0uh9owhhaapf4lm)**
+- Introduction to Programming with Python - [Register](https://tufts.libcal.com/event/16321443)
+
+Reproducible environment:        
+- Reproducible and Portable Scientific Computing on HPC with Containers - [Register](https://tufts.libcal.com/event/16315146)               
+- Mastering Conda Environments for Reproducible Research - [Register](https://tufts.libcal.com/event/16315200)
+
+HPC &  Workflow Automation
+- Scalable and Reproducible Bioinformatics with Nextflow and nf-core (Part I) - [Register](https://tufts.libcal.com/event/16315171)
+- Scalable and Reproducible Bioinformatics with Nextflow and nf-core (Part II) - [Register](https://tufts.libcal.com/event/16315145) · **[Hands-on](nfcore-openondemand.md)**
+- From Script to Scheduler: Running Bioinformatics Jobs on Tufts HPC - [Register](https://tufts.libcal.com/event/16315206) · **[Slides](https://tufts.libcal.com/event/16315206)** · **[Hands-on](bioinformatics_slurm_job.md)**
+
+
+R & RStudio on HPC:
+- From Terminal to Browser: R and RStudio on HPC - [Register](https://tufts.libcal.com/event/16315230)
+- From Code to Report: Reproducible Data Analysis with R Markdown - [Register](https://tufts.libcal.com/event/16315217)
+- Building Reproducible Parallel Workflows in RStudio on the HPC - [Register](https://tufts.libcal.com/event/16315026)
+
+
 ## 2025
 
 ```{gallery-grid}
