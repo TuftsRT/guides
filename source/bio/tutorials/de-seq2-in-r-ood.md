@@ -1,5 +1,8 @@
 # A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand
 
+Author: Shirley Li, xue.li37@tufts.edu\
+Date: 2026-02-26
+
 ## Prerequisite
 
 1. **Access to Tufts HPC**: If you don’t already have an account, you can request one [here](https://shib-idp.tufts.edu/idp/profile/SAML2/POST/SSO?execution=e1s1).
@@ -28,18 +31,18 @@
 
 ## Step1: Access the Cluster via Open OnDemand
 
-**Log in** to [Open OnDemand](https://ondemand.pax.tufts.edu) using your Tufts HPC credentials.
+**Log in** to [Open OnDemand](https://ondemand-p01.pax.tufts.edu/) using your Tufts HPC credentials.
 
 **Start an RStudio Job**:
 
-1. Navigate to **Interactive Apps**, then select **RStudio_Pax**.
+1. Navigate to **Interactive Apps**, then select **RStudio Server**.
 
 1. Fill in the required fields:
 
    - **Number of hours**: Specify the time needed for your session. (Recommended starting point: 24 hours)
    - **Number of CPU cores**: Choose based on your computational needs. (Recommended starting point: 8 cores)
    - **Amount of memory**: Allocate sufficient memory for your analysis. (Recommended starting point: 32 GB)
-   - **R Version**: Select `4.4.1`.
+   - **R Version**: Select `4.5.2`.
 
 1. Click **Launch** to start the job.
 
