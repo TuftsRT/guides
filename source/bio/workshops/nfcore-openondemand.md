@@ -4,9 +4,22 @@
 
 Shirley Li: xue.li37@tufts.edu
 
-
-
 Pipeline version used in workshop: [**nf-core/rnaseq 3.22.2**](https://nf-co.re/rnaseq/3.22.2/)
+
+
+
+# Workshop Overview
+
+This hands-on session demonstrates how to run the **nf-core/rnaseq** pipeline on the Tufts HPC system using two approaches:
+
+- Open OnDemand graphical interface
+- Command-line (CLI) submission via SLURM
+
+Participants will learn how to prepare input files, configure pipeline parameters, submit jobs, and interpret key output results.
+
+This workshop focuses on practical execution and reproducibility rather than RNA-seq theory.
+
+
 
 # 1. Prepare Input Files
 

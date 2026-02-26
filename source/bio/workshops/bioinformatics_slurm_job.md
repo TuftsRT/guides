@@ -4,6 +4,26 @@
 
 Shirley Li: [xue.li37@tufts.edu ](mailto:xue.li37@tufts.edu)         
 
+
+
+## Workshop Overview
+
+This hands-on workshop introduces how to run bioinformatics analyses on the Tufts HPC using SLURM. Using an RNA-seq example, participants will learn how to structure projects, submit jobs, and scale workflows efficiently.
+
+**You will learn how to:**
+
+- Organize a reproducible HPC project directory
+
+- Write and submit SLURM batch scripts
+
+- Allocate CPU, memory, and runtime appropriately
+
+- Monitor logs and troubleshoot jobs
+
+- Use job dependencies and SLURM job arrays for scalable analysis
+
+  
+
 ## 1. Set Up Your Working Directory
 
 All work for this project will be done under:
