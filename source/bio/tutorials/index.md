@@ -18,7 +18,7 @@ A curated collection of practical, reproducible bioinformatics tutorials for res
 
 For users new to Tufts HPC or bioinformatics.
 
-- **[Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis](set-up-conda-environment. d)**
+- **[Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis](set-up-conda-environment.md)**
 - **[Introduction to biocontainers and singularity](using-singularity.md)**
 - **[Package installation using container-mod](container-mod.md)**
 - **[Exploring Python Bioinformatics Packages with Jupyter Notebook](exploring-python-bioinformatics.md)**
@@ -27,34 +27,34 @@ For users new to Tufts HPC or bioinformatics.
 
 ## Project Organization & Best Practices
 
-- **[How to Organize a Bioinformatics Project on the Tufts HPC](Organizing-a-Bioinformatics-Project-on-the-Tufts-HPC.html)**
+- **[How to Organize a Bioinformatics Project on the Tufts HPC](Organizing-a-Bioinformatics-Project-on-the-Tufts-HPC.md)**
 
-- **[Getting started with bioinformatics tools](bioinformatics-tools-guide.html)**
+- **[Getting started with bioinformatics tools](bioinformatics-tools-guide.md)**
 
   
 
 ## HPC & Parallel Computing
 
-- **[Parallel Computing in R for Bioinformatics](parallel-computing-in-r.html)**
+- **[Parallel Computing in R for Bioinformatics](parallel-computing-in-r.md)**
 
-- **[Parallel Read Alignment on SLURM](parallel-read-alignment.html)**
+- **[Parallel Read Alignment on SLURM](parallel-read-alignment.md)**
 
   
 
 ## Workflow Management & Pipelines
 
-- **[Running nfcore pipelines on Tufts HPC](running-nfcore-pipelines.html)**
+- **[Running nfcore pipelines on Tufts HPC](running-nfcore-pipelines.md)**
 
   
 
 ## Bulk RNA-seq Analysis
 
-- **[A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand](de-seq2-in-r-ood.html)**
+- **[A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand](de-seq2-in-r-ood.md)**
 
 
 
 ## Single-Cell & Spatial Transcriptomics
 
-- **[scRNA-seq analysis with RStudio (Seurat)](sc-rna-seq-analysis-with-r.html)**
-- **[A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)](Practical-Guide-to-Analyzing-Spatial-Transcriptomics-Data.html)**
+- **[scRNA-seq analysis with RStudio (Seurat)](sc-rna-seq-analysis-with-r.md)**
+- **[A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)](Practical-Guide-to-Analyzing-Spatial-Transcriptomics-Data.md)**
 
