@@ -1,0 +1,1129 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP) &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bio/tutorials/practical-guide-to-analyzing';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/bio/tutorials/practical-guide-to-analyzing.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Running nf-core pipelines on Tufts HPC" href="running-nfcore-pipelines.html" />
+    <link rel="prev" title="Parallel read alignment" href="parallel-read-alignment.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20260226" />
+    <meta name="docbuild:last-update" content="Feb 26, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nlp/index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../ai/index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nlp/index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../ai/index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Bioinformatics 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Bioinformatics Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bioinformatics-tools-guide.html">Getting started with bioinformatics tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container-mod.html">Package installation and module generation with container-mod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="de-seq2-in-r-ood.html">A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exploring-python-bioinformatics.html">Exploring Python Bioinformatics Packages with Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing-a-bioinformatics.html">How to Organize a Bioinformatics Project on the Tufts HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-computing-in-r.html">Parallel Computing in R for Bioinformatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-read-alignment.html">Parallel read alignment</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="running-nfcore-pipelines.html">Running nf-core pipelines on Tufts HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sc-rna-seq-analysis-with-r.html">scRNA-seq analysis with RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set-up-conda-environment.html">Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-singularity.html">Using containers with Singularity to ensure reproducible research</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../workshops/index.html">Bioinformatics Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databases/index.html">Bioinformatics Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/index.html">Bioinformatics Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Bioinformatics Lectures and Trainings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/index.html">Additional Resources</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Bioinformatics</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Bioinformatics Tutorials</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      A Practical Guide to...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="a-practical-guide-to-spatial-transcriptomics-analysis-in-r-merfish-10x-visium-geomx-dsp">
+<h1>A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)<a class="headerlink" href="#a-practical-guide-to-spatial-transcriptomics-analysis-in-r-merfish-10x-visium-geomx-dsp" title="Link to this heading">#</a></h1>
+<p>Author: Shirley Li, <a class="reference external" href="mailto:xue&#46;li37&#37;&#52;&#48;tufts&#46;edu">xue<span>&#46;</span>li37<span>&#64;</span>tufts<span>&#46;</span>edu</a><br />
+Date: 2025-12-06</p>
+<section id="overview">
+<h2>1. Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This document introduces three major spatial transcriptomics platforms used in modern biological and biomedical research:</p>
+<ul class="simple">
+<li><p><strong>Vizgen MERFISH</strong>: Single-molecule, imaging-based, single-cell resolved</p></li>
+<li><p><strong>10x Genomics Visium</strong>: Sequencing-based, spot-level whole-transcriptome</p></li>
+<li><p><strong>NanoString GeoMx DSP</strong>: Region-of-interest (ROI) based spatial profiling</p></li>
+</ul>
+<p>The focus is on <strong>practical application</strong>, including:</p>
+<ul class="simple">
+<li><p>What each platform is used for</p></li>
+<li><p>What types of files they generate</p></li>
+<li><p>How to analyze the data</p></li>
+<li><p>Fully reproducible <strong>R-based workflows</strong></p></li>
+</ul>
+<p>This is not a theory-focused document; instead, it is designed to help researchers analyze data on the Tufts HPC environment or locally.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="vizgen-merfish">
+<h1>2. Vizgen MERFISH<a class="headerlink" href="#vizgen-merfish" title="Link to this heading">#</a></h1>
+<section id="what-merfish-is">
+<h2>2.1 What MERFISH Is<a class="headerlink" href="#what-merfish-is" title="Link to this heading">#</a></h2>
+<p>MERFISH (Multiplexed Error-Robust FISH) from Vizgen is an <strong>imaging-based single-cell spatial transcriptomics</strong> technology. It detects individual RNA molecules directly in tissue, enabling subcellular precision.</p>
+<p>Key characteristics:</p>
+<ul class="simple">
+<li><p>Single-cell resolution</p></li>
+<li><p>High spatial fidelity</p></li>
+<li><p>Molecule-level detection</p></li>
+<li><p>Customizable gene panels</p></li>
+<li><p>Produces cell-by-gene matrices and molecule coordinates</p></li>
+</ul>
+</section>
+<section id="typical-output-files">
+<h2>2.2 Typical Output Files<a class="headerlink" href="#typical-output-files" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cell_by_gene</span><span class="o">.</span><span class="n">csv</span>
+<span class="n">cell_metadata</span><span class="o">.</span><span class="n">csv</span>
+<span class="n">molecule_list</span><span class="o">.</span><span class="n">csv</span>
+<span class="n">fov_positions</span><span class="o">.</span><span class="n">json</span>
+<span class="n">images</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>The primary data for analysis:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cell_by_gene.csv</span></code>: counts matrix</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cell_metadata.csv</span></code>: x/y positions, cell segmentation, QC metrics</p></li>
+</ul>
+</section>
+<section id="merfish-analysis-workflow-in-r">
+<h2>2.3 MERFISH Analysis Workflow in R<a class="headerlink" href="#merfish-analysis-workflow-in-r" title="Link to this heading">#</a></h2>
+<section id="load-required-libraries">
+<h3>Load required libraries<a class="headerlink" href="#load-required-libraries" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">Seurat</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-1-load-counts-and-metadata">
+<h3>Step 1. Load counts and metadata<a class="headerlink" href="#step-1-load-counts-and-metadata" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>counts &lt;- read_csv(&quot;cell_by_gene.csv&quot;)
+counts &lt;- as.data.frame(counts)
+rownames(counts) &lt;- counts$cell
+counts$cell &lt;- NULL
+counts &lt;- t(counts)
+
+metadata &lt;- read_csv(&quot;cell_metadata.csv&quot;)
+rownames(metadata) &lt;- metadata$cell
+
+obj &lt;- CreateSeuratObject(counts = counts, meta.data = metadata)
+</pre></div>
+</div>
+</section>
+<section id="step-2-qc-and-filtering">
+<h3>Step 2. QC and filtering<a class="headerlink" href="#step-2-qc-and-filtering" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">[[</span><span class="s2">&quot;percent.mt&quot;</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">PercentageFeatureSet</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s2">&quot;^mt-&quot;</span><span class="p">)</span>
+
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">subset</span><span class="p">(</span>
+    <span class="n">obj</span><span class="p">,</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">nFeature_RNA</span> <span class="o">&gt;</span> <span class="mi">30</span> <span class="o">&amp;</span>
+             <span class="n">nCount_RNA</span> <span class="o">&gt;</span> <span class="mi">500</span> <span class="o">&amp;</span>
+             <span class="n">percent</span><span class="o">.</span><span class="n">mt</span> <span class="o">&lt;</span> <span class="mi">25</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-normalization-and-scaling">
+<h3>Step 3. Normalization and scaling<a class="headerlink" href="#step-3-normalization-and-scaling" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">NormalizeData</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">FindVariableFeatures</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">ScaleData</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-pca-neighbors-clustering">
+<h3>Step 4. PCA, neighbors, clustering<a class="headerlink" href="#step-4-pca-neighbors-clustering" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">RunPCA</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">FindNeighbors</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">dims</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">FindClusters</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">RunUMAP</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">dims</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">DimPlot</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">reduction</span> <span class="o">=</span> <span class="s2">&quot;umap&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-spatial-visualization">
+<h3>Step 5. Spatial visualization<a class="headerlink" href="#step-5-spatial-visualization" title="Link to this heading">#</a></h3>
+<p>Requires <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates in metadata.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">obj</span><span class="nd">@meta</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">seurat_clusters</span><span class="p">))</span> <span class="o">+</span>
+    <span class="n">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">coord_fixed</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">theme_bw</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="step-6-marker-genes-and-annotation">
+<h3>Step 6. Marker genes and annotation<a class="headerlink" href="#step-6-marker-genes-and-annotation" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">markers</span> <span class="o">&lt;-</span> <span class="n">FindAllMarkers</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-7-neighborhood-analysis">
+<h3>Step 7. Neighborhood analysis<a class="headerlink" href="#step-7-neighborhood-analysis" title="Link to this heading">#</a></h3>
+<p>Example using nearest neighbors.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">FNN</span><span class="p">)</span>
+<span class="n">coords</span> <span class="o">&lt;-</span> <span class="n">obj</span><span class="nd">@meta</span><span class="o">.</span><span class="n">data</span><span class="p">[,</span> <span class="n">c</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">)]</span>
+<span class="n">nn</span> <span class="o">&lt;-</span> <span class="n">get</span><span class="o">.</span><span class="n">knn</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="x-genomics-visium">
+<h1>3. 10x Genomics Visium<a class="headerlink" href="#x-genomics-visium" title="Link to this heading">#</a></h1>
+<section id="what-visium-is">
+<h2>3.1 What Visium Is<a class="headerlink" href="#what-visium-is" title="Link to this heading">#</a></h2>
+<p>10x Visium is a <strong>sequencing-based spatial transcriptomics</strong> system. mRNA is captured on spatially barcoded spots (~55 µm), processed through Space Ranger, and analyzed via R or Python.</p>
+<p>Key characteristics:</p>
+<ul class="simple">
+<li><p>Whole-transcriptome profiling</p></li>
+<li><p>Multiple cells per spot</p></li>
+<li><p>Supports FFPE and fresh frozen samples</p></li>
+<li><p>Strong for tissue-level discovery and regional differences</p></li>
+</ul>
+</section>
+<section id="output-files-from-space-ranger">
+<h2>3.2 Output Files from Space Ranger<a class="headerlink" href="#output-files-from-space-ranger" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_feature_bc_matrix</span><span class="o">/</span>
+<span class="n">spatial</span><span class="o">/</span>
+<span class="n">analysis</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Files used for analysis:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">matrix.mtx.gz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">features.tsv.gz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">barcodes.tsv.gz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tissue_positions_list.csv</span></code></p></li>
+<li><p>high-resolution H&amp;E image</p></li>
+</ul>
+</section>
+<section id="visium-analysis-workflow-in-r">
+<h2>3.3 Visium Analysis Workflow in R<a class="headerlink" href="#visium-analysis-workflow-in-r" title="Link to this heading">#</a></h2>
+<section id="step-1-load-data">
+<h3>Step 1. Load data<a class="headerlink" href="#step-1-load-data" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">Seurat</span><span class="p">)</span>
+
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">Load10X_Spatial</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="s2">&quot;path/to/visium_folder&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-qc">
+<h3>Step 2. QC<a class="headerlink" href="#step-2-qc" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">[[</span><span class="s2">&quot;percent.mt&quot;</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">PercentageFeatureSet</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s2">&quot;^MT-&quot;</span><span class="p">)</span>
+
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">subset</span><span class="p">(</span>
+    <span class="n">obj</span><span class="p">,</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">nCount_Spatial</span> <span class="o">&gt;</span> <span class="mi">500</span> <span class="o">&amp;</span>
+             <span class="n">nFeature_Spatial</span> <span class="o">&gt;</span> <span class="mi">200</span> <span class="o">&amp;</span>
+             <span class="n">percent</span><span class="o">.</span><span class="n">mt</span> <span class="o">&lt;</span> <span class="mi">25</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-normalization-and-clustering">
+<h3>Step 3. Normalization and clustering<a class="headerlink" href="#step-3-normalization-and-clustering" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">SCTransform</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">assay</span> <span class="o">=</span> <span class="s2">&quot;Spatial&quot;</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">RunPCA</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">FindNeighbors</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">dims</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">FindClusters</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">RunUMAP</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">dims</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">SpatialDimPlot</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-differential-expression">
+<h3>Step 4. Differential expression<a class="headerlink" href="#step-4-differential-expression" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">markers</span> <span class="o">&lt;-</span> <span class="n">FindAllMarkers</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-spatially-variable-features">
+<h3>Step 5. Spatially variable features<a class="headerlink" href="#step-5-spatially-variable-features" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">svg</span> <span class="o">&lt;-</span> <span class="n">FindSpatiallyVariableFeatures</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">assay</span> <span class="o">=</span> <span class="s2">&quot;SCT&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-6-cell-type-deconvolution-example-spotlight">
+<h3>Step 6. Cell type deconvolution (example: SPOTlight)<a class="headerlink" href="#step-6-cell-type-deconvolution-example-spotlight" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">SPOTlight</span><span class="p">)</span>
+
+<span class="c1"># sc is a Seurat object with scRNA-seq reference</span>
+<span class="n">res</span> <span class="o">&lt;-</span> <span class="n">spotlight_deconvolution</span><span class="p">(</span><span class="n">se_sc</span> <span class="o">=</span> <span class="n">sc</span><span class="p">,</span> <span class="n">st_obj</span> <span class="o">=</span> <span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-7-pathway-enrichment">
+<h3>Step 7. Pathway enrichment<a class="headerlink" href="#step-7-pathway-enrichment" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>library(clusterProfiler)
+library(org.Hs.eg.db)
+
+genes &lt;- markers$gene[markers$cluster == &quot;0&quot;]
+
+enrich &lt;- enrichGO(
+    gene = genes,
+    OrgDb = org.Hs.eg.db,
+    keyType = &quot;SYMBOL&quot;
+)
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="nanostring-geomx-dsp">
+<h1>4. NanoString GeoMx DSP<a class="headerlink" href="#nanostring-geomx-dsp" title="Link to this heading">#</a></h1>
+<section id="what-geomx-dsp-is">
+<h2>4.1 What GeoMx DSP Is<a class="headerlink" href="#what-geomx-dsp-is" title="Link to this heading">#</a></h2>
+<p>GeoMx DSP is an ROI-based spatial profiling technology used widely in translational and pathology settings. ROIs are defined using immunofluorescence, and gene expression is collected via UV cleavage of barcoded probes.</p>
+<p>Key characteristics:</p>
+<ul class="simple">
+<li><p>ROI-level profiling, not single-cell</p></li>
+<li><p>Works well with FFPE</p></li>
+<li><p>Supports whole transcriptome and targeted panels</p></li>
+<li><p>Ideal for comparisons between regions, tumor microenvironment, inflamed vs non-inflamed areas</p></li>
+</ul>
+</section>
+<section id="typical-geomx-files">
+<h2>4.2 Typical GeoMx Files<a class="headerlink" href="#typical-geomx-files" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exprMat</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">metadata</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">panel_annotation</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">QC_stats</span><span class="o">/</span>
+<span class="n">image_tiles</span><span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="geomx-analysis-workflow-in-r">
+<h2>4.3 GeoMx Analysis Workflow in R<a class="headerlink" href="#geomx-analysis-workflow-in-r" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Step 1. Load data<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GeoMxTools</span><span class="p">)</span>
+
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">readNanoStringGeoMxSet</span><span class="p">(</span>
+    <span class="n">dccFiles</span> <span class="o">=</span> <span class="s2">&quot;path/to/dcc/&quot;</span><span class="p">,</span>
+    <span class="n">pkcFiles</span> <span class="o">=</span> <span class="s2">&quot;path/to/pkc/&quot;</span><span class="p">,</span>
+    <span class="n">phenoDataFile</span> <span class="o">=</span> <span class="s2">&quot;metadata.txt&quot;</span><span class="p">,</span>
+    <span class="n">exprsFile</span> <span class="o">=</span> <span class="s2">&quot;exprMat.txt&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Step 2. QC<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>obj &lt;- shiftCountsOne(obj)
+obj &lt;- setSegmentQCFlags(obj)
+obj &lt;- setGeneQCFlags(obj)
+
+obj &lt;- obj[, obj$SegmentQC == &quot;PASS&quot;]
+</pre></div>
+</div>
+</section>
+<section id="step-3-normalization">
+<h3>Step 3. Normalization<a class="headerlink" href="#step-3-normalization" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">normalize</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">norm_method</span> <span class="o">=</span> <span class="s2">&quot;quant&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-pca">
+<h3>Step 4. PCA<a class="headerlink" href="#step-4-pca" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">runPCA</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="n">plotPCA</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-differential-expression-via-limma">
+<h3>Step 5. Differential expression via limma<a class="headerlink" href="#step-5-differential-expression-via-limma" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">limma</span><span class="p">)</span>
+
+<span class="n">design</span> <span class="o">&lt;-</span> <span class="n">model</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="o">~</span> <span class="n">group</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pData</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+<span class="n">fit</span> <span class="o">&lt;-</span> <span class="n">lmFit</span><span class="p">(</span><span class="n">exprs</span><span class="p">(</span><span class="n">obj</span><span class="p">),</span> <span class="n">design</span><span class="p">)</span>
+<span class="n">fit</span> <span class="o">&lt;-</span> <span class="n">eBayes</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
+
+<span class="n">topTable</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="n">coef</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-6-pathway-analysis">
+<h3>Step 6. Pathway analysis<a class="headerlink" href="#step-6-pathway-analysis" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">clusterProfiler</span><span class="p">)</span>
+<span class="n">genes</span> <span class="o">&lt;-</span> <span class="n">rownames</span><span class="p">(</span><span class="n">topTable</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="n">coef</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">number</span> <span class="o">=</span> <span class="n">Inf</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">))</span>
+
+<span class="n">enrichGO</span><span class="p">(</span>
+    <span class="n">gene</span> <span class="o">=</span> <span class="n">genes</span><span class="p">,</span>
+    <span class="n">OrgDb</span> <span class="o">=</span> <span class="n">org</span><span class="o">.</span><span class="n">Hs</span><span class="o">.</span><span class="n">eg</span><span class="o">.</span><span class="n">db</span><span class="p">,</span>
+    <span class="n">keyType</span> <span class="o">=</span> <span class="s2">&quot;SYMBOL&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="summary-of-recommended-tools">
+<h1>5. Summary of Recommended Tools<a class="headerlink" href="#summary-of-recommended-tools" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Resolution</p></th>
+<th class="head"><p>Primary Tools ®</p></th>
+<th class="head"><p>Typical Analyses</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MERFISH</p></td>
+<td><p>Single-cell/subcellular</p></td>
+<td><p>Seurat, ggplot2, FNN</p></td>
+<td><p>Cell classification, spatial visualization, neighborhoods</p></td>
+</tr>
+<tr class="row-odd"><td><p>Visium</p></td>
+<td><p>Spot-level</p></td>
+<td><p>Seurat, SPOTlight, clusterProfiler</p></td>
+<td><p>Clustering, deconvolution, spatially variable genes</p></td>
+</tr>
+<tr class="row-even"><td><p>GeoMx DSP</p></td>
+<td><p>ROI-level</p></td>
+<td><p>GeoMxTools, limma, clusterProfiler</p></td>
+<td><p>Region comparisons, FFPE profiling, pathway analysis</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="notes">
+<h1>6. Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>All provided code is compatible with SLURM workloads on the Tufts HPC.</p></li>
+<li><p>Use the latest Open OnDemand RStudio session for interactive development.</p></li>
+<li><p>We recommend using Seurat v5 for spatial transcriptomics pipelines.</p></li>
+<li><p>For MERFISH or Visium analyses, request 16–32 CPUs as a start. Always pair with sufficient memory (–mem=64G or more).</p></li>
+<li><p>Data import and QC can be time-consuming. Save your Seurat (or other) object to an .rds file and continue from the saved object to avoid re-running preprocessing.</p></li>
+</ul>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="parallel-read-alignment.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Parallel read alignment</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="running-nfcore-pipelines.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Running nf-core pipelines on Tufts HPC</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">1. Overview</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vizgen-merfish">2. Vizgen MERFISH</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-merfish-is">2.1 What MERFISH Is</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-output-files">2.2 Typical Output Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merfish-analysis-workflow-in-r">2.3 MERFISH Analysis Workflow in R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-required-libraries">Load required libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-load-counts-and-metadata">Step 1. Load counts and metadata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-qc-and-filtering">Step 2. QC and filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-normalization-and-scaling">Step 3. Normalization and scaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-pca-neighbors-clustering">Step 4. PCA, neighbors, clustering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-spatial-visualization">Step 5. Spatial visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-marker-genes-and-annotation">Step 6. Marker genes and annotation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-neighborhood-analysis">Step 7. Neighborhood analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#x-genomics-visium">3. 10x Genomics Visium</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-visium-is">3.1 What Visium Is</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-files-from-space-ranger">3.2 Output Files from Space Ranger</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visium-analysis-workflow-in-r">3.3 Visium Analysis Workflow in R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-load-data">Step 1. Load data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-qc">Step 2. QC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-normalization-and-clustering">Step 3. Normalization and clustering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-differential-expression">Step 4. Differential expression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-spatially-variable-features">Step 5. Spatially variable features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-cell-type-deconvolution-example-spotlight">Step 6. Cell type deconvolution (example: SPOTlight)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-pathway-enrichment">Step 7. Pathway enrichment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nanostring-geomx-dsp">4. NanoString GeoMx DSP</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-geomx-dsp-is">4.1 What GeoMx DSP Is</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-geomx-files">4.2 Typical GeoMx Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geomx-analysis-workflow-in-r">4.3 GeoMx Analysis Workflow in R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Step 1. Load data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Step 2. QC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-normalization">Step 3. Normalization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-pca">Step 4. PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-differential-expression-via-limma">Step 5. Differential expression via limma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-pathway-analysis">Step 6. Pathway analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-recommended-tools">5. Summary of Recommended Tools</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">6. Notes</a></li>
+</ul>
+
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/bio/tutorials/practical-guide-to-analyzing.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/bio/tutorials/practical-guide-to-analyzing.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: bio/tutorials/practical-guide-to-analyzing"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Feb 26, 2026.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

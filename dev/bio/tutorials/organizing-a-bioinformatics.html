@@ -1,0 +1,1091 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>How to Organize a Bioinformatics Project on the Tufts HPC &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bio/tutorials/organizing-a-bioinformatics';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/bio/tutorials/organizing-a-bioinformatics.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Parallel Computing in R for Bioinformatics" href="parallel-computing-in-r.html" />
+    <link rel="prev" title="Exploring Python Bioinformatics Packages with Jupyter Notebook" href="exploring-python-bioinformatics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20260226" />
+    <meta name="docbuild:last-update" content="Feb 26, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nlp/index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../ai/index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nlp/index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../ai/index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     Bioinformatics 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Bioinformatics Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bioinformatics-tools-guide.html">Getting started with bioinformatics tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container-mod.html">Package installation and module generation with container-mod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="de-seq2-in-r-ood.html">A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exploring-python-bioinformatics.html">Exploring Python Bioinformatics Packages with Jupyter Notebook</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">How to Organize a Bioinformatics Project on the Tufts HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-computing-in-r.html">Parallel Computing in R for Bioinformatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel-read-alignment.html">Parallel read alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="practical-guide-to-analyzing.html">A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="running-nfcore-pipelines.html">Running nf-core pipelines on Tufts HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sc-rna-seq-analysis-with-r.html">scRNA-seq analysis with RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="set-up-conda-environment.html">Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-singularity.html">Using containers with Singularity to ensure reproducible research</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../workshops/index.html">Bioinformatics Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../databases/index.html">Bioinformatics Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/index.html">Bioinformatics Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Bioinformatics Lectures and Trainings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/index.html">Additional Resources</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >Bioinformatics</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Bioinformatics Tutorials</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      How to Organize a...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="how-to-organize-a-bioinformatics-project-on-the-tufts-hpc">
+<h1>How to Organize a Bioinformatics Project on the Tufts HPC<a class="headerlink" href="#how-to-organize-a-bioinformatics-project-on-the-tufts-hpc" title="Link to this heading">#</a></h1>
+<p><em>A Practical Guide for Reproducible and Scalable Research</em></p>
+<p>Author: Shirley Li, <a class="reference external" href="mailto:xue&#46;li37&#37;&#52;&#48;tufts&#46;edu">xue<span>&#46;</span>li37<span>&#64;</span>tufts<span>&#46;</span>edu</a><br />
+Date: 2026-02-26</p>
+<p>If you are running RNA-seq, single-cell, spatial transcriptomics, or other omics analyses on the Tufts HPC cluster, organizing your project correctly from the beginning will save time, reduce errors, and make your work reproducible.</p>
+<p>This guide explains:</p>
+<ul class="simple">
+<li><p>Where to work on the Tufts HPC</p></li>
+<li><p>A recommended project folder structure</p></li>
+<li><p>What belongs in each directory</p></li>
+<li><p>How to use Git/GitHub correctly</p></li>
+<li><p>Best practices for long-term project management</p></li>
+<li><p>This structure works for SLURM-based workflows, R/Python pipelines, and multi-analysis projects.</p></li>
+</ul>
+<section id="where-to-work-on-tufts-hpc">
+<h2>1. Where to Work on Tufts HPC<a class="headerlink" href="#where-to-work-on-tufts-hpc" title="Link to this heading">#</a></h2>
+<p>Each user works under:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/&lt;</span><span class="n">labname</span><span class="o">&gt;/&lt;</span><span class="n">utln</span><span class="o">&gt;/</span>
+</pre></div>
+</div>
+<p>Your lab should maintain shared resources under:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/&lt;</span><span class="n">labname</span><span class="o">&gt;/</span><span class="n">shared</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Use the shared folder for reference genomes, indexes, annotation files, or datasets reused across the lab.</p>
+</section>
+<section id="recommended-project-structure">
+<h2>2. Recommended Project Structure<a class="headerlink" href="#recommended-project-structure" title="Link to this heading">#</a></h2>
+<p>Use this structure <strong>inside your project</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">project_name</span><span class="o">/</span>
+    <span class="n">data_raw</span><span class="o">/</span>
+    <span class="n">data_processed</span><span class="o">/</span>
+    <span class="n">scripts_global</span><span class="o">/</span>
+    <span class="n">analysis1</span><span class="o">/</span>
+        <span class="n">scripts</span><span class="o">/</span>
+        <span class="n">results</span><span class="o">/</span>
+        <span class="n">logs</span><span class="o">/</span>
+        <span class="n">slurm</span><span class="o">/</span>
+        <span class="n">notebooks</span><span class="o">/</span>
+    <span class="n">analysis2</span><span class="o">/</span>
+        <span class="n">scripts</span><span class="o">/</span>
+        <span class="n">results</span><span class="o">/</span>
+        <span class="n">logs</span><span class="o">/</span>
+        <span class="n">slurm</span><span class="o">/</span>
+        <span class="n">notebooks</span><span class="o">/</span>
+    <span class="n">envs</span><span class="o">/</span>
+    <span class="n">docs</span><span class="o">/</span>
+    <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p><strong>Key idea:</strong>
+Reusable code lives in <code class="docutils literal notranslate"><span class="pre">scripts_global/</span></code>; analysis-specific code stays inside each <code class="docutils literal notranslate"><span class="pre">analysis*/scripts/</span></code>.</p>
+</section>
+<section id="what-goes-in-each-folder">
+<h2>3. What Goes in Each Folder<a class="headerlink" href="#what-goes-in-each-folder" title="Link to this heading">#</a></h2>
+<section id="data-raw">
+<h3><strong>data_raw/</strong><a class="headerlink" href="#data-raw" title="Link to this heading">#</a></h3>
+<p>Untouched input files (FASTQ, BAM, MERFISH CSV, Visium outputs).
+Should never be modified.</p>
+</section>
+<section id="data-processed">
+<h3><strong>data_processed/</strong><a class="headerlink" href="#data-processed" title="Link to this heading">#</a></h3>
+<p>Filtered matrices, Seurat objects (<code class="docutils literal notranslate"><span class="pre">.rds</span></code>), processed tables.
+Time-consuming results that you want to reuse.</p>
+</section>
+<section id="scripts-global">
+<h3><strong>scripts_global/</strong><a class="headerlink" href="#scripts-global" title="Link to this heading">#</a></h3>
+<p>Shared utilities, helper functions, custom plotting, reusable QC code.</p>
+</section>
+<section id="analysis-scripts">
+<h3><strong>analysis*/scripts/</strong><a class="headerlink" href="#analysis-scripts" title="Link to this heading">#</a></h3>
+<p>Analysis-specific R/Python scripts, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="n">_qc</span><span class="o">.</span><span class="n">R</span>
+<span class="mi">02</span><span class="n">_clustering</span><span class="o">.</span><span class="n">R</span>
+<span class="mi">03</span><span class="n">_spatial</span><span class="o">.</span><span class="n">R</span>
+</pre></div>
+</div>
+</section>
+<section id="analysis-notebooks">
+<h3><strong>analysis*/notebooks/</strong><a class="headerlink" href="#analysis-notebooks" title="Link to this heading">#</a></h3>
+<p>Exploratory notebooks (Rmd/Jupyter).
+Not part of the formal pipeline.</p>
+</section>
+<section id="analysis-slurm">
+<h3><strong>analysis*/slurm/</strong><a class="headerlink" href="#analysis-slurm" title="Link to this heading">#</a></h3>
+<p>Job submission files (<code class="docutils literal notranslate"><span class="pre">.sbatch</span></code>).
+Match names to scripts, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scripts</span><span class="o">/</span><span class="mi">01</span><span class="n">_qc</span><span class="o">.</span><span class="n">R</span>
+<span class="n">slurm</span><span class="o">/</span><span class="mi">01</span><span class="n">_qc</span><span class="o">.</span><span class="n">sbatch</span>
+</pre></div>
+</div>
+</section>
+<section id="analysis-results">
+<h3><strong>analysis*/results/</strong><a class="headerlink" href="#analysis-results" title="Link to this heading">#</a></h3>
+<p>Figures, tables, intermediate outputs.</p>
+</section>
+<section id="analysis-logs">
+<h3><strong>analysis*/logs/</strong><a class="headerlink" href="#analysis-logs" title="Link to this heading">#</a></h3>
+<p>SLURM <code class="docutils literal notranslate"><span class="pre">.out</span></code>/<code class="docutils literal notranslate"><span class="pre">.err</span></code> logs and analysis logs.</p>
+</section>
+<section id="envs">
+<h3><strong>envs/</strong><a class="headerlink" href="#envs" title="Link to this heading">#</a></h3>
+<p>Conda environments, <code class="docutils literal notranslate"><span class="pre">renv</span></code> folder, Apptainer definitions.</p>
+</section>
+<section id="docs">
+<h3><strong>docs/</strong><a class="headerlink" href="#docs" title="Link to this heading">#</a></h3>
+<p>Notes, meeting summaries, methods drafts, descriptions of workflows.</p>
+</section>
+</section>
+<section id="version-control-use-git-github">
+<h2>4. Version Control: Use Git + GitHub<a class="headerlink" href="#version-control-use-git-github" title="Link to this heading">#</a></h2>
+<p>Track <strong>only code and documents</strong>, not large data.</p>
+<p>Put these under Git:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scripts_global</span><span class="o">/</span>
+<span class="n">analysis</span><span class="o">*/</span><span class="n">scripts</span><span class="o">/</span>
+<span class="n">analysis</span><span class="o">*/</span><span class="n">slurm</span><span class="o">/</span>
+<span class="n">analysis</span><span class="o">*/</span><span class="n">notebooks</span><span class="o">/</span>
+<span class="n">docs</span><span class="o">/</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Add to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_raw</span><span class="o">/</span>
+<span class="n">data_processed</span><span class="o">/</span>
+<span class="n">results</span><span class="o">/</span>
+<span class="o">*.</span><span class="n">rds</span>
+<span class="o">*.</span><span class="n">h5</span>
+<span class="o">*.</span><span class="n">fastq</span><span class="o">*</span>
+<span class="o">*.</span><span class="n">bam</span>
+</pre></div>
+</div>
+<p>Create a GitHub repo for tracking scripts + documentation.</p>
+</section>
+<section id="essential-best-practices-for-hpc-projects">
+<h2>5. Essential Best Practices for HPC Projects<a class="headerlink" href="#essential-best-practices-for-hpc-projects" title="Link to this heading">#</a></h2>
+<section id="separate-raw-and-processed-data">
+<h3>5.1. Separate Raw and Processed Data<a class="headerlink" href="#separate-raw-and-processed-data" title="Link to this heading">#</a></h3>
+<p>Raw data:</p>
+<ul class="simple">
+<li><p>Never modified</p></li>
+<li><p>Archived after publication</p></li>
+<li><p>Moved to cold storage if appropriate
+Public raw datasets:</p></li>
+<li><p>Document download commands</p></li>
+<li><p>Delete after processing (can be re-downloaded)</p></li>
+</ul>
+</section>
+<section id="document-software-versions">
+<h3>5.2. Document Software Versions<a class="headerlink" href="#document-software-versions" title="Link to this heading">#</a></h3>
+<p>Record:</p>
+<ul class="simple">
+<li><p>Tool versions</p></li>
+<li><p>Parameters</p></li>
+<li><p>Package versions
+Write analysis notes in a methods-style format while working.</p></li>
+</ul>
+</section>
+<section id="keep-folder-sizes-reasonable">
+<h3>5.3. Keep Folder Sizes Reasonable<a class="headerlink" href="#keep-folder-sizes-reasonable" title="Link to this heading">#</a></h3>
+<p>A typical manuscript project (excluding raw/intermediate data) should only be a few GB.
+Regular cleanup is much easier than emergency cleanup.</p>
+</section>
+<section id="use-consistent-naming-conventions">
+<h3>5.4. Use Consistent Naming Conventions<a class="headerlink" href="#use-consistent-naming-conventions" title="Link to this heading">#</a></h3>
+<p>Match:
+<code class="docutils literal notranslate"><span class="pre">01_qc.R</span>&#160; <span class="pre">↔</span>&#160; <span class="pre">01_qc.sbatch</span></code></p>
+<p>Use logical numbering.
+Avoid ambiguous names like:
+<code class="docutils literal notranslate"><span class="pre">final_new_v2_fixed.R</span></code></p>
+</section>
+<section id="save-intermediate-objects">
+<h3>5.5. Save Intermediate Objects<a class="headerlink" href="#save-intermediate-objects" title="Link to this heading">#</a></h3>
+<p>For large omics analyses:</p>
+<ul class="simple">
+<li><p>Save Seurat .rds</p></li>
+<li><p>Save processed matrices
+Preprocessing can take hours. Avoid repeating it.</p></li>
+</ul>
+</section>
+<section id="track-everything-with-git">
+<h3>5.6. Track Everything with Git<a class="headerlink" href="#track-everything-with-git" title="Link to this heading">#</a></h3>
+<p>Track:</p>
+<ul class="simple">
+<li><p>Code</p></li>
+<li><p>SLURM scripts</p></li>
+<li><p>Notebooks</p></li>
+<li><p>Documentation</p></li>
+<li><p>Exclude all data.</p></li>
+<li><p>Commit frequently.</p></li>
+</ul>
+</section>
+</section>
+<section id="frequently-asked-questions">
+<h2>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Link to this heading">#</a></h2>
+<section id="q-should-each-paper-have-its-own-project-folder">
+<h3>Q: Should each paper have its own project folder?<a class="headerlink" href="#q-should-each-paper-have-its-own-project-folder" title="Link to this heading">#</a></h3>
+<p>Yes.
+Each manuscript should have its own top-level project directory. This prevents cross-contamination of scripts, results, and documentation between studies.</p>
+</section>
+<section id="q-should-i-organize-by-data-type-or-biological-question">
+<h3>Q: Should I organize by data type or biological question?<a class="headerlink" href="#q-should-i-organize-by-data-type-or-biological-question" title="Link to this heading">#</a></h3>
+<p>Organize by biological question or manuscript goal.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>analysis1/  → differential expression
+analysis2/  → spatial analysis
+analysis3/  → integration
+</pre></div>
+</div>
+<p>Avoid mixing unrelated analyses in the same folder.</p>
+</section>
+<section id="q-where-should-i-run-interactive-work-on-tufts-hpc">
+<h3>Q: Where should I run interactive work on Tufts HPC?<a class="headerlink" href="#q-where-should-i-run-interactive-work-on-tufts-hpc" title="Link to this heading">#</a></h3>
+<p>Use Open OnDemand for:</p>
+<ul class="simple">
+<li><p>RStudio</p></li>
+<li><p>Jupyter</p></li>
+<li><p>Small-scale exploratory work</p></li>
+</ul>
+<p>Use SLURM batch jobs for:</p>
+<ul class="simple">
+<li><p>Large RNA-seq runs</p></li>
+<li><p>STAR alignment</p></li>
+<li><p>nf-core workflows</p></li>
+<li><p>High-memory jobs</p></li>
+</ul>
+</section>
+<section id="q-should-i-run-everything-through-slurm">
+<h3>Q: Should I run everything through SLURM?<a class="headerlink" href="#q-should-i-run-everything-through-slurm" title="Link to this heading">#</a></h3>
+<p>If a job:</p>
+<ul class="simple">
+<li><p>Runs &gt; 5–10 minutes</p></li>
+<li><p>Uses multiple cores</p></li>
+<li><p>Requires significant memory
+It should be submitted via SLURM.</p></li>
+</ul>
+<p>Interactive sessions are for exploration only.</p>
+</section>
+<section id="q-where-should-i-store-large-reference-genomes">
+<h3>Q: Where should I store large reference genomes?<a class="headerlink" href="#q-where-should-i-store-large-reference-genomes" title="Link to this heading">#</a></h3>
+<p>Store them in:
+<code class="docutils literal notranslate"><span class="pre">/cluster/tufts/&lt;labname&gt;/shared/</span></code></p>
+<p>Never duplicate reference genomes across personal project folders.</p>
+</section>
+<section id="q-how-should-i-name-my-project-folders">
+<h3>Q: How should I name my project folders?<a class="headerlink" href="#q-how-should-i-name-my-project-folders" title="Link to this heading">#</a></h3>
+<p>Use descriptive and date-aware names:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2026</span><span class="n">_skin_merfish_project</span><span class="o">/</span>
+<span class="mi">2026</span><span class="n">_rnaseq_inflammation</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Avoid vague names like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_project</span><span class="o">/</span>
+<span class="n">final_analysis</span><span class="o">/</span>
+<span class="n">test2</span><span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="q-should-notebooks-replace-scripts">
+<h3>Q: Should notebooks replace scripts?<a class="headerlink" href="#q-should-notebooks-replace-scripts" title="Link to this heading">#</a></h3>
+<p>No.
+Notebooks are for:</p>
+<ul class="simple">
+<li><p>Exploration</p></li>
+<li><p>Visualization</p></li>
+<li><p>Demonstration</p></li>
+</ul>
+<p>Scripts are for:</p>
+<ul class="simple">
+<li><p>Reproducible pipelines</p></li>
+<li><p>SLURM jobs</p></li>
+<li><p>Formal analysis</p></li>
+</ul>
+<p>A clean workflow uses both.</p>
+</section>
+<section id="q-when-should-i-clean-up-intermediate-files">
+<h3>Q: When should I clean up intermediate files?<a class="headerlink" href="#q-when-should-i-clean-up-intermediate-files" title="Link to this heading">#</a></h3>
+<p>After:</p>
+<ul class="simple">
+<li><p>You save key processed objects</p></li>
+<li><p>The pipeline has completed successfully</p></li>
+<li><p>The manuscript is accepted</p></li>
+<li><p>Large intermediate files (temporary BAMs, intermediate matrices) should not live forever.</p></li>
+</ul>
+</section>
+<section id="q-how-large-should-a-project-folder-be">
+<h3>Q: How large should a project folder be?<a class="headerlink" href="#q-how-large-should-a-project-folder-be" title="Link to this heading">#</a></h3>
+<p>As a rule of thumb:
+Code + figures + docs → usually only a few GB</p>
+<p>Large raw/intermediate data should not dominate your active project space</p>
+<p>If a folder grows unexpectedly large, check:
+<code class="docutils literal notranslate"><span class="pre">du</span> <span class="pre">-sh</span> <span class="pre">*</span></code></p>
+</section>
+<section id="q-should-i-store-environments-inside-the-project">
+<h3>Q: Should I store environments inside the project?<a class="headerlink" href="#q-should-i-store-environments-inside-the-project" title="Link to this heading">#</a></h3>
+<p>Yes.
+Keep environment definitions in:
+<code class="docutils literal notranslate"><span class="pre">envs/</span></code></p>
+<p>This ensures:</p>
+<ul class="simple">
+<li><p>Reproducibility</p></li>
+<li><p>Easier collaboration</p></li>
+<li><p>Future reruns of analysis</p></li>
+</ul>
+</section>
+<section id="q-how-do-i-make-my-project-reproducible-for-future-lab-members">
+<h3>Q: How do I make my project reproducible for future lab members?<a class="headerlink" href="#q-how-do-i-make-my-project-reproducible-for-future-lab-members" title="Link to this heading">#</a></h3>
+<p>Keep clear folder structure</p>
+<ul class="simple">
+<li><p>Maintain README.md</p></li>
+<li><p>Track code with Git</p></li>
+<li><p>Record software versions</p></li>
+<li><p>Avoid undocumented manual steps</p></li>
+</ul>
+<p>A future lab member should be able to understand your project in one hour.</p>
+</section>
+<section id="q-what-is-the-most-common-mistake-in-hpc-project-organization">
+<h3>Q: What is the most common mistake in HPC project organization?<a class="headerlink" href="#q-what-is-the-most-common-mistake-in-hpc-project-organization" title="Link to this heading">#</a></h3>
+<p>Mixing everything in one folder.
+Typical bad pattern:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scripts</span><span class="o">/</span>
+<span class="n">data</span><span class="o">/</span>
+<span class="n">results</span><span class="o">/</span>
+<span class="n">more_scripts</span><span class="o">/</span>
+<span class="n">new_results</span><span class="o">/</span>
+<span class="n">final</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Without structure, scaling becomes impossible.</p>
+</section>
+<section id="q-should-i-compress-fastq-or-bam-files">
+<h3>Q: Should I compress FASTQ or BAM files?<a class="headerlink" href="#q-should-i-compress-fastq-or-bam-files" title="Link to this heading">#</a></h3>
+<p>FASTQ should remain .fastq.gz.
+Do not unzip them.</p>
+<p>BAM files can be archived if no longer needed, but do not delete primary alignment results before publication unless archived properly.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="exploring-python-bioinformatics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exploring Python Bioinformatics Packages with Jupyter Notebook</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="parallel-computing-in-r.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Parallel Computing in R for Bioinformatics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> How to Organize a Bioinformatics Project on the Tufts HPC
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-work-on-tufts-hpc">1. Where to Work on Tufts HPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-project-structure">2. Recommended Project Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-goes-in-each-folder">3. What Goes in Each Folder</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-raw"><strong>data_raw/</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processed"><strong>data_processed/</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts-global"><strong>scripts_global/</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-scripts"><strong>analysis*/scripts/</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-notebooks"><strong>analysis*/notebooks/</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-slurm"><strong>analysis*/slurm/</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-results"><strong>analysis*/results/</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-logs"><strong>analysis*/logs/</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envs"><strong>envs/</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docs"><strong>docs/</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-control-use-git-github">4. Version Control: Use Git + GitHub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-best-practices-for-hpc-projects">5. Essential Best Practices for HPC Projects</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-raw-and-processed-data">5.1. Separate Raw and Processed Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#document-software-versions">5.2. Document Software Versions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-folder-sizes-reasonable">5.3. Keep Folder Sizes Reasonable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-consistent-naming-conventions">5.4. Use Consistent Naming Conventions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-intermediate-objects">5.5. Save Intermediate Objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#track-everything-with-git">5.6. Track Everything with Git</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequently-asked-questions">Frequently Asked Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-should-each-paper-have-its-own-project-folder">Q: Should each paper have its own project folder?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-should-i-organize-by-data-type-or-biological-question">Q: Should I organize by data type or biological question?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-where-should-i-run-interactive-work-on-tufts-hpc">Q: Where should I run interactive work on Tufts HPC?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-should-i-run-everything-through-slurm">Q: Should I run everything through SLURM?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-where-should-i-store-large-reference-genomes">Q: Where should I store large reference genomes?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-how-should-i-name-my-project-folders">Q: How should I name my project folders?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-should-notebooks-replace-scripts">Q: Should notebooks replace scripts?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-when-should-i-clean-up-intermediate-files">Q: When should I clean up intermediate files?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-how-large-should-a-project-folder-be">Q: How large should a project folder be?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-should-i-store-environments-inside-the-project">Q: Should I store environments inside the project?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-how-do-i-make-my-project-reproducible-for-future-lab-members">Q: How do I make my project reproducible for future lab members?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-what-is-the-most-common-mistake-in-hpc-project-organization">Q: What is the most common mistake in HPC project organization?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-should-i-compress-fastq-or-bam-files">Q: Should I compress FASTQ or BAM files?</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/bio/tutorials/organizing-a-bioinformatics.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/bio/tutorials/organizing-a-bioinformatics.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: bio/tutorials/organizing-a-bioinformatics"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Feb 26, 2026.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

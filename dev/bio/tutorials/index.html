@@ -77,8 +77,8 @@
     <link rel="prev" title="Bioinformatics" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260225" />
-    <meta name="docbuild:last-update" content="Feb 25, 2026"/>
+  <meta name="docsearch:version" content="20260226" />
+    <meta name="docbuild:last-update" content="Feb 26, 2026"/>
   </head>
   
   
@@ -440,9 +440,16 @@
 <li class="toctree-l2"><a class="reference internal" href="container-mod.html">Package installation and module generation with container-mod</a></li>
 <li class="toctree-l2"><a class="reference internal" href="de-seq2-in-r-ood.html">A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exploring-python-bioinformatics.html">Exploring Python Bioinformatics Packages with Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing-a-bioinformatics.html">How to Organize a Bioinformatics Project on the Tufts HPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel-computing-in-r.html">Parallel Computing in R for Bioinformatics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel-read-alignment.html">Parallel read alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running-nfcore-pipelines.html">Running nfcore pipelines on Tufts HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="practical-guide-to-analyzing.html">A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="running-nfcore-pipelines.html">Running nf-core pipelines on Tufts HPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sc-rna-seq-analysis-with-r.html">scRNA-seq analysis with RStudio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="set-up-conda-environment.html">Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="using-singularity.html">Using containers with Singularity to ensure reproducible research</a></li>
@@ -520,111 +527,55 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bioinformatics-tutorials">
 <h1>Bioinformatics Tutorials<a class="headerlink" href="#bioinformatics-tutorials" title="Link to this heading">#</a></h1>
-<p>Bioinformatics tutorials provided by Tufts Research Technology.</p>
-<div class="sd-container-fluid sd-sphinx-override sd-mb-4 gallery-directive docutils">
-<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Bioinformatics tools guide</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">An overview of the bioinformatics tools currently available Tufts cluster, organized by specific research areas.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="bioinformatics-tools-guide.html"><span>bioinformatics-tools-guide.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Parallel read alignment with slurm</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">An overview of running read alignment in parallel using the SLURM job scheduler.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="parallel-read-alignment.html"><span>parallel-read-alignment.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Running nfcore pipelines at Tufts HPC</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">How to run nf-core pipelines on Tufts HPC.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="running-nfcore-pipelines.html"><span>running-nfcore-pipelines.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Using singularity in bioinformatics</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Introduction to biocontainers and singularity.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="using-singularity.html"><span>using-singularity.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Using Python Packages with Jupyter Notebook</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Exploring Python Bioinformatics Packages with Jupyter Notebook.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="exploring-python-bioinformatics.html"><span>exploring-python-bioinformatics.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> scRNA-seq in Python</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="set-up-conda-environment.html"><span>set-up-conda-environment.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> scRNA-seq in R</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">scRNA-seq analysis with RStudio.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="sc-rna-seq-analysis-with-r.html"><span>sc-rna-seq-analysis-with-r.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Parallel Computing in R for Bioinformatics</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Parallel Computing in R for Bioinformatics.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="parallel-computing-in-r.html"><span>parallel-computing-in-r.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Package installation using container-mod</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Creating modulefiles for containers.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="container-mod.html"><span>container-mod.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Differential Expression Analysis with DESeq2 using OOD RStudio</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Differential Expression Analysis with DESeq2 using OOD RStudio</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="de-seq2-in-r-ood.html"><span>de-seq2-in-r-ood.html</span></a></div>
-</div>
-</div>
-</div>
+<p>Maintained by:</p>
+<p>Shirley Li, Bioinformatician, <a class="reference external" href="mailto:xue&#46;li37&#37;&#52;&#48;tufts&#46;edu">xue<span>&#46;</span>li37<span>&#64;</span>tufts<span>&#46;</span>edu</a></p>
+<p>Yucheng Zhang, Senior Bioinformatics Engineer, <a class="reference external" href="mailto:yucheng&#46;zhang&#37;&#52;&#48;tufts&#46;edu">yucheng<span>&#46;</span>zhang<span>&#64;</span>tufts<span>&#46;</span>edu</a></p>
+<p>TTS Research Technology</p>
+<hr class="docutils" />
+<p>A curated collection of practical, reproducible bioinformatics tutorials for researchers working on the Tufts HPC. These guides focus on real-world analysis workflows — from RNA-seq and spatial transcriptomics to workflow management and high-performance computing — designed to help you move from raw data to interpretable results efficiently and reproducibly.</p>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<p>For users new to Tufts HPC or bioinformatics.</p>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="set-up-conda-environment.html"><span class="std std-doc">Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis</span></a></strong></p></li>
+<li><p><strong><a class="reference internal" href="using-singularity.html"><span class="std std-doc">Introduction to biocontainers and singularity</span></a></strong></p></li>
+<li><p><strong><a class="reference internal" href="container-mod.html"><span class="std std-doc">Package installation using container-mod</span></a></strong></p></li>
+<li><p><strong><a class="reference internal" href="exploring-python-bioinformatics.html"><span class="std std-doc">Exploring Python Bioinformatics Packages with Jupyter Notebook</span></a></strong></p></li>
+</ul>
+</section>
+<section id="project-organization-best-practices">
+<h2>Project Organization &amp; Best Practices<a class="headerlink" href="#project-organization-best-practices" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="#Organizing-a-Bioinformatics-Project-on-the-Tufts-HPC.md"><span class="xref myst">How to Organize a Bioinformatics Project on the Tufts HPC</span></a></strong></p></li>
+<li><p><strong><a class="reference internal" href="bioinformatics-tools-guide.html"><span class="std std-doc">Getting started with bioinformatics tools</span></a></strong></p></li>
+</ul>
+</section>
+<section id="hpc-parallel-computing">
+<h2>HPC &amp; Parallel Computing<a class="headerlink" href="#hpc-parallel-computing" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="parallel-computing-in-r.html"><span class="std std-doc">Parallel Computing in R for Bioinformatics</span></a></strong></p></li>
+<li><p><strong><a class="reference internal" href="parallel-read-alignment.html"><span class="std std-doc">Parallel Read Alignment on SLURM</span></a></strong></p></li>
+</ul>
+</section>
+<section id="workflow-management-pipelines">
+<h2>Workflow Management &amp; Pipelines<a class="headerlink" href="#workflow-management-pipelines" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="running-nfcore-pipelines.html"><span class="std std-doc">Running nfcore pipelines on Tufts HPC</span></a></strong></p></li>
+</ul>
+</section>
+<section id="bulk-rna-seq-analysis">
+<h2>Bulk RNA-seq Analysis<a class="headerlink" href="#bulk-rna-seq-analysis" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="de-seq2-in-r-ood.html"><span class="std std-doc">A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand</span></a></strong></p></li>
+</ul>
+</section>
+<section id="single-cell-spatial-transcriptomics">
+<h2>Single-Cell &amp; Spatial Transcriptomics<a class="headerlink" href="#single-cell-spatial-transcriptomics" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="sc-rna-seq-analysis-with-r.html"><span class="std std-doc">scRNA-seq analysis with RStudio (Seurat)</span></a></strong></p></li>
+<li><p><strong><a class="reference internal" href="#Practical-Guide-to-Analyzing-Spatial-Transcriptomics-Data.md"><span class="xref myst">A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)</span></a></strong></p></li>
+</ul>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -668,16 +619,25 @@
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item"> 
-<div class="tocsection tags-label">
-  <i class="fa-solid fa-tags"></i> Tags
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Bioinformatics Tutorials
 </div>
-<ul class="tocsection tags-list">
-  <li class="tag-item">
-    <a href="../../tags/bioinformatics.html" class="tag-link">bioinformatics</a>
-  </li>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-organization-best-practices">Project Organization &amp; Best Practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-parallel-computing">HPC &amp; Parallel Computing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-management-pipelines">Workflow Management &amp; Pipelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-rna-seq-analysis">Bulk RNA-seq Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-cell-spatial-transcriptomics">Single-Cell &amp; Spatial Transcriptomics</a></li>
 </ul>
- </div>
+</nav></div>
 
   <div class="sidebar-secondary-item">
 
@@ -741,7 +701,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 25, 2026.
+  Last updated on Feb 26, 2026.
   <br/>
 </p></div>
       
