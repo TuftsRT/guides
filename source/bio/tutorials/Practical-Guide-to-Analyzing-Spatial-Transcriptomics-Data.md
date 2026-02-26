@@ -1,4 +1,4 @@
-# Practical Guide to Analyzing Spatial Transcriptomics Data
+# A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)
 
 Author: Shirley Li, xue.li37@tufts.edu               
 Date: 2025-12-06
