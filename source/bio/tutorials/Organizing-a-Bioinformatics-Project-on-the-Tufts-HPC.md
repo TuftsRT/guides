@@ -1,9 +1,18 @@
-# Organizing a Bioinformatics Project on the Tufts HPC
-
-*For PhD students, rotation students, and beginners starting their first HPC project*             
+# How to Organize a Bioinformatics Project on the Tufts HPC
+*A Practical Guide for Reproducible and Scalable Research*
+           
 Author: Shirley Li, xue.li37@tufts.edu             
-Date: 2025-12-06         
+Date: 2026-02-26        
 
+If you are running RNA-seq, single-cell, spatial transcriptomics, or other omics analyses on the Tufts HPC cluster, organizing your project correctly from the beginning will save time, reduce errors, and make your work reproducible.
+
+This guide explains:
+- Where to work on the Tufts HPC
+- A recommended project folder structure
+- What belongs in each directory
+- How to use Git/GitHub correctly
+- Best practices for long-term project management
+- This structure works for SLURM-based workflows, R/Python pipelines, and multi-analysis projects.
 
 ## 1. Where to Work on Tufts HPC
 
@@ -143,11 +152,182 @@ results/
 Create a GitHub repo for tracking scripts + documentation.
 
 
+## 5. Essential Best Practices for HPC Projects
+### 5.1. Separate Raw and Processed Data
+Raw data:
+- Never modified
+- Archived after publication
+- Moved to cold storage if appropriate
+Public raw datasets:
+- Document download commands
+- Delete after processing (can be re-downloaded)
 
-## 6. Essential Best Practices 
-- **Keep raw and processed data separate.** Treat raw data as read-only; archive it and move it to cold storage after the paper is published or the project is complete. For public datasets, document how you downloaded and preprocessed them, and delete raw public files once processing is finished—they can always be re-downloaded and should not occupy long-term storage.
-- **Document software, tools, and package versions.** Record versions and parameters as you work, and write analysis notes in the style of a methods section rather than waiting until manuscript writing. Use the secure LLM tools available on the Tufts HPC to help organize and polish the wording.
-- **Maintain reasonable folder sizes.** A typical manuscript folder (excluding raw and intermediate files) is small—often only a few GB. A full PhD project folder (excluding raw/intermediate data) should also remain within a manageable size. Check regularly; decluttering continuously is much easier than cleaning up everything at the end or when lab storage becomes tight.
-- **Use consistent naming conventions.** Match analysis scripts with their SLURM submission files (e.g., `01_qc.R` ↔ `01_qc.sbatch`), and use logical, descriptive naming to keep workflows clear and easy to navigate.
-- **Save intermediate processed objects.** Store Seurat `.rds` files or other processed objects to avoid re-running costly QC, loading, and preprocessing steps, especially for large-scale omics analyses where preprocessing can be time-consuming.
-- **Track your code and documentation with Git/GitHub.** Version-control only code, notebooks, SLURM files, and documentation. Exclude all data via `.gitignore`, and sync regularly to maintain a clean, reproducible workflow history.
+### 5.2. Document Software Versions
+Record:
+- Tool versions
+- Parameters
+- Package versions
+Write analysis notes in a methods-style format while working.
+
+### 5.3. Keep Folder Sizes Reasonable
+A typical manuscript project (excluding raw/intermediate data) should only be a few GB.
+Regular cleanup is much easier than emergency cleanup.
+
+### 5.4. Use Consistent Naming Conventions
+Match:
+`01_qc.R  ↔  01_qc.sbatch`
+
+Use logical numbering.
+Avoid ambiguous names like:
+`final_new_v2_fixed.R`
+
+### 5.5. Save Intermediate Objects
+For large omics analyses:
+- Save Seurat .rds
+- Save processed matrices
+Preprocessing can take hours. Avoid repeating it.
+
+### 5.6. Track Everything with Git
+
+Track:
+- Code
+- SLURM scripts
+- Notebooks
+- Documentation
+- Exclude all data.
+- Commit frequently.
+
+## Frequently Asked Questions
+### Q: Should each paper have its own project folder?
+Yes.
+Each manuscript should have its own top-level project directory. This prevents cross-contamination of scripts, results, and documentation between studies.
+
+### Q: Should I organize by data type or biological question?
+Organize by biological question or manuscript goal.
+
+For example:
+```
+analysis1/  → differential expression
+analysis2/  → spatial analysis
+analysis3/  → integration
+```
+
+Avoid mixing unrelated analyses in the same folder.
+
+### Q: Where should I run interactive work on Tufts HPC?
+
+Use Open OnDemand for:
+- RStudio
+- Jupyter
+- Small-scale exploratory work
+
+Use SLURM batch jobs for:
+- Large RNA-seq runs
+- STAR alignment
+- nf-core workflows
+- High-memory jobs
+
+### Q: Should I run everything through SLURM?
+
+If a job:
+- Runs > 5–10 minutes
+- Uses multiple cores
+- Requires significant memory
+It should be submitted via SLURM.
+
+Interactive sessions are for exploration only.
+
+### Q: Where should I store large reference genomes?
+
+Store them in:
+`/cluster/tufts/<labname>/shared/`
+
+Never duplicate reference genomes across personal project folders.
+
+### Q: How should I name my project folders?
+
+Use descriptive and date-aware names:
+
+```
+2026_skin_merfish_project/
+2026_rnaseq_inflammation/
+```
+
+Avoid vague names like:
+```
+new_project/
+final_analysis/
+test2/
+```
+### Q: Should notebooks replace scripts?
+No.
+Notebooks are for:
+- Exploration
+- Visualization
+- Demonstration
+
+Scripts are for:
+- Reproducible pipelines
+- SLURM jobs
+- Formal analysis
+
+A clean workflow uses both.
+
+### Q: When should I clean up intermediate files?
+
+After:
+- You save key processed objects
+- The pipeline has completed successfully
+- The manuscript is accepted
+- Large intermediate files (temporary BAMs, intermediate matrices) should not live forever.
+
+### Q: How large should a project folder be?
+
+As a rule of thumb:
+Code + figures + docs → usually only a few GB
+
+Large raw/intermediate data should not dominate your active project space
+
+If a folder grows unexpectedly large, check:
+`du -sh *`
+
+### Q: Should I store environments inside the project?
+Yes.
+Keep environment definitions in:
+`envs/`
+
+This ensures:
+- Reproducibility
+- Easier collaboration
+- Future reruns of analysis
+
+### Q: How do I make my project reproducible for future lab members?
+
+Keep clear folder structure
+- Maintain README.md
+- Track code with Git
+- Record software versions
+- Avoid undocumented manual steps
+
+A future lab member should be able to understand your project in one hour.
+
+### Q: What is the most common mistake in HPC project organization?
+
+Mixing everything in one folder.
+Typical bad pattern:
+```
+scripts/
+data/
+results/
+more_scripts/
+new_results/
+final/
+```
+Without structure, scaling becomes impossible.
+
+### Q: Should I compress FASTQ or BAM files?
+
+FASTQ should remain .fastq.gz.
+Do not unzip them.
+
+BAM files can be archived if no longer needed, but do not delete primary alignment results before publication unless archived properly.
