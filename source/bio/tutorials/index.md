@@ -1,52 +1,60 @@
----
-tags: bioinformatics
----
-
 # Bioinformatics Tutorials
 
-Bioinformatics tutorials provided by Tufts Research Technology.
+Maintained by:
 
-```{gallery-grid}
----
-grid-columns: 1
----
-- header: "{fas}`book` Bioinformatics tools guide"
-  content: "An overview of the bioinformatics tools currently available Tufts cluster, organized by specific research areas. "
-  link: "bioinformatics-tools-guide.html"
+Shirley Li, Bioinformatician, xue.li37@tufts.edu
 
-- header: "{fas}`book` Parallel read alignment with slurm"
-  content: "An overview of running read alignment in parallel using the SLURM job scheduler."
-  link: "parallel-read-alignment.html"
+Yucheng Zhang, Senior Bioinformatics Engineer, yucheng.zhang@tufts.edu
 
-- header: "{fas}`book` Running nfcore pipelines at Tufts HPC"
-  content: "How to run nf-core pipelines on Tufts HPC."
-  link: "running-nfcore-pipelines.html"
+TTS Research Technology
 
-- header: "{fas}`book` Using singularity in bioinformatics"
-  content: "Introduction to biocontainers and singularity."
-  link: "using-singularity.html"
+------
 
-- header: "{fas}`book` Using Python Packages with Jupyter Notebook"
-  content: "Exploring Python Bioinformatics Packages with Jupyter Notebook."
-  link: "exploring-python-bioinformatics.html"
+A curated collection of practical, reproducible bioinformatics tutorials for researchers working on the Tufts HPC. These guides focus on real-world analysis workflows — from RNA-seq and spatial transcriptomics to workflow management and high-performance computing — designed to help you move from raw data to interpretable results efficiently and reproducibly.
 
-- header: "{fas}`book` scRNA-seq in Python"
-  content: "Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis."
-  link: "set-up-conda-environment.html"
 
-- header: "{fas}`book` scRNA-seq in R"
-  content: "scRNA-seq analysis with RStudio."
-  link: "sc-rna-seq-analysis-with-r.html"
 
-- header: "{fas}`book` Parallel Computing in R for Bioinformatics"
-  content: "Parallel Computing in R for Bioinformatics."
-  link: "parallel-computing-in-r.html"
+## Getting Started
 
-- header: "{fas}`book` Package installation using container-mod"
-  content: "Creating modulefiles for containers."
-  link: "container-mod.html"
+For users new to Tufts HPC or bioinformatics.
 
-- header: "{fas}`book` Differential Expression Analysis with DESeq2 using OOD RStudio"
-  content: "Differential Expression Analysis with DESeq2 using OOD RStudio"
-  link: "de-seq2-in-r-ood.html"
-```
+- **[Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis](set-up-conda-environment.html)**
+- **[Introduction to biocontainers and singularity](using-singularity.html)**
+- **[Package installation using container-mod](container-mod.html)**
+- **[Exploring Python Bioinformatics Packages with Jupyter Notebook](exploring-python-bioinformatics.html)**
+
+
+
+## Project Organization & Best Practices
+
+- **[How to Organize a Bioinformatics Project on the Tufts HPC](Organizing-a-Bioinformatics-Project-on-the-Tufts-HPC.html)**
+
+- **[Getting started with bioinformatics tools](bioinformatics-tools-guide.html)**
+
+  
+
+## HPC & Parallel Computing
+
+- **[Parallel Computing in R for Bioinformatics](parallel-computing-in-r.html)**
+
+- **[Parallel Read Alignment on SLURM](parallel-read-alignment.html)**
+
+  
+
+## Workflow Management & Pipelines
+
+- **[Running nfcore pipelines on Tufts HPC](running-nfcore-pipelines.html)**
+
+  
+
+## Bulk RNA-seq Analysis
+
+- **[A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand](de-seq2-in-r-ood.html)**
+
+
+
+## Single-Cell & Spatial Transcriptomics
+
+- **[scRNA-seq analysis with RStudio (Seurat)](sc-rna-seq-analysis-with-r.html)**
+- **[A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)](Practical-Guide-to-Analyzing-Spatial-Transcriptomics-Data.html)**
+
