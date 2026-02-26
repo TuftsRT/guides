@@ -49,7 +49,7 @@ Learn how to create your own [conda environment and Jupyter kernel](./10-condaen
 
 ![ood-jupyterclass-connect](../assets/el9/newondemand-jupyterclass-connect.png)
 
-3. Change and select the corresponding course/workshop kernel to start your work.
+3. Change and select the corresponding course/workshop kernel to access the preinstalled packages and start your work.
 
 ![ood-jupyterclass-kernel](../assets/el9/newondemand-jupyterclass-kernel.png)
 
