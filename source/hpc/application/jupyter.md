@@ -1,7 +1,8 @@
 # Jupyter
 
-> General and Classroom Jupyter apps are availalbe and supported on Tufts HPC [OnDemand](https://ondemand-prod.pax.tufts.edu/), https://ondemand-prod.pax.tufts.edu/  under `Interactive Apps`.
-> Both Jupyter Notebook and Jupyter Lab are availble via `Jupyter` and `Jupyter for classroom` apps.
+> - **General and Classroom Jupyter** apps are availalbe and supported on Tufts HPC [OnDemand](https://ondemand-prod.pax.tufts.edu/), https://ondemand-prod.pax.tufts.edu/  under `Interactive Apps`.
+>
+> - Both **Jupyter Notebook** and **Jupyter Lab** are availble via `Jupyter` and `Jupyter for classroom` apps.
 
 ![ood-jupyter](../assets/el9/newondemand-jupyter.png)
 
