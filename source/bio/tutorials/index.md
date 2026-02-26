@@ -18,10 +18,10 @@ A curated collection of practical, reproducible bioinformatics tutorials for res
 
 For users new to Tufts HPC or bioinformatics.
 
-- **[Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis](set-up-conda-environment.html)**
-- **[Introduction to biocontainers and singularity](using-singularity.html)**
-- **[Package installation using container-mod](container-mod.html)**
-- **[Exploring Python Bioinformatics Packages with Jupyter Notebook](exploring-python-bioinformatics.html)**
+- **[Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis](set-up-conda-environment. d)**
+- **[Introduction to biocontainers and singularity](using-singularity.md)**
+- **[Package installation using container-mod](container-mod.md)**
+- **[Exploring Python Bioinformatics Packages with Jupyter Notebook](exploring-python-bioinformatics.md)**
 
 
 
