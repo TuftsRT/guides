@@ -24,13 +24,11 @@ For users new to Tufts HPC or bioinformatics.
 ## Project Organization & Best Practices
 
 - **[How to Organize a Bioinformatics Project on the Tufts HPC](organizing-a-bioinformatics.md)**
-
 - **[Getting started with bioinformatics tools](bioinformatics-tools-guide.md)**
 
 ## HPC & Parallel Computing
 
 - **[Parallel Computing in R for Bioinformatics](parallel-computing-in-r.md)**
-
 - **[Parallel Read Alignment on SLURM](parallel-read-alignment.md)**
 
 ## Workflow Management & Pipelines
