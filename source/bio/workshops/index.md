@@ -27,9 +27,7 @@ HPC & Workflow Automation
 R & RStudio on HPC:
 
 - From Terminal to Browser: R and RStudio on HPC - [Register](https://tufts.libcal.com/event/16315230)
-
 - From Code to Report: Reproducible Data Analysis with R Markdown - [Register](https://tufts.libcal.com/event/16315217) · **[Slides](https://tufts.box.com/s/wnpic0yvbts1v1k4sfkjpe25y5toap9i)** · **[Workshop Materials](https://tufts.box.com/s/ti34peq59l9kl01z31xo5s2gta06aibr)**
-
 - Building Reproducible Parallel Workflows in RStudio on the HPC - [Register](https://tufts.libcal.com/event/16315026)
 
 ## 2025
