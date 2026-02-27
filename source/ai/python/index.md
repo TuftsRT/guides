@@ -1,5 +1,5 @@
 ---
-tags:  python vs-code google-colab conda jupyter hpc 
+tags: python vs-code google-colab conda jupyter hpc
 ---
 
 # Python for Research and Data Science
@@ -9,7 +9,6 @@ Welcome to the Tufts RT Python Setup documentation!
 If you are looking for general information on what Python is and whether it's right for you, start with Python for Research and Data Science.
 
 Note that this guide best for users interesetd in statistics, machine learning, data analysis, data science, artificial intelligence, and data visualization. Application developers and other users may be better served by other online documentation.
-
 
 ```{gallery-grid}
 ---
