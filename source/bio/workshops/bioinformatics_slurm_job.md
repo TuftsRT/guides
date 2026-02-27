@@ -167,7 +167,7 @@ fastqc $DIR/raw_data/*.fastq.gz \
 echo "Job finished on $(date)"
 ```
 
-### What This Job Does
+**What This Job Does**
 
 - Reads FASTQ files from `raw_data/`
 - Writes reports to `results/fastqc/`
@@ -183,7 +183,7 @@ sbatch fastqc.sh
 
 
 
-# 5. Alignment with STAR
+## 5. Alignment with STAR
 
 `star.sh`
 
@@ -219,7 +219,7 @@ do
 done
 ```
 
-### What This Job Does
+**What This Job Does**
 
 - Aligns reads to the reference genome
 - Processes all samples in a loop
@@ -266,7 +266,7 @@ done
 
 ```
 
-### What This Job Does
+**What This Job Does**
 
 - Takes STAR output BAM files
 - Sorts each BAM file
@@ -314,7 +314,7 @@ chmod +x run_pipeline.sh
 
 
 
-### What This Does
+**What This Does**
 
 - FASTQC runs independently
 - STAR runs
