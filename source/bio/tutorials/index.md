@@ -23,7 +23,7 @@ For users new to Tufts HPC or bioinformatics.
 
 ## Project Organization & Best Practices
 
-- **[How to Organize a Bioinformatics Project on the Tufts HPC](Organizing-a-Bioinformatics-Project-on-the-Tufts-HPC.md)**
+- **[How to Organize a Bioinformatics Project on the Tufts HPC](organizing-a-bioinformatics.md)**
 
 - **[Getting started with bioinformatics tools](bioinformatics-tools-guide.md)**
 
