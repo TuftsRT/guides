@@ -6,8 +6,6 @@ Shirley Li: xue.li37@tufts.edu
 
 Pipeline version used in workshop: [**nf-core/rnaseq 3.22.2**](https://nf-co.re/rnaseq/3.22.2/)
 
-
-
 # Workshop Overview
 
 This hands-on session demonstrates how to run the **nf-core/rnaseq** pipeline on the Tufts HPC system using two approaches:
@@ -18,8 +16,6 @@ This hands-on session demonstrates how to run the **nf-core/rnaseq** pipeline on
 Participants will learn how to prepare input files, configure pipeline parameters, submit jobs, and interpret key output results.
 
 This workshop focuses on practical execution and reproducibility rather than RNA-seq theory.
-
-
 
 # 1. Prepare Input Files
 
@@ -42,10 +38,6 @@ Our sample fastq file located here:
 /cluster/tufts/workshop/public/2026spring/nfcore/fastq/
 ```
 
-
-
-
-
 ## 1.2 Sample Sheet (`samplesheet.csv`)
 
 Required format:
@@ -65,15 +57,11 @@ Notes:
 - Paired-end files must match correctly.
 - Paths can be relative or absolute (recommended).
 
-
-
 On HPC:
 
 ```
 /cluster/tufts/workshop/public/2026spring/nfcore/samplesheet.csv
 ```
-
-
 
 ## 1.3 Reference Files
 
@@ -100,7 +88,7 @@ GTF (Annotation):
 https://ftp.ensembl.org/pub/release-111/gtf/homo_sapiens/Homo_sapiens.GRCh38.111.gtf.gz
 ```
 
-### Local example (For workshop use only). 
+### Local example (For workshop use only).
 
 **This directory may be deleted after the workshop. Keep your own copy if you plan to rerun the analysis.**
 
@@ -115,10 +103,6 @@ GTF (Annotation):
 ```
 /cluster/tufts/workshop/public/2026spring/star_index/Homo_sapiens.GRCh38.111.gtf
 ```
-
-
-
-
 
 # 2. Running via Open OnDemand
 
@@ -141,8 +125,6 @@ Configure:
 Other parameters can remain default unless discussed in workshop.
 
 Submit job.
-
-
 
 # 3. Running via CLI (SLURM)
 
@@ -175,10 +157,10 @@ nextflow run nf-core/rnaseq \
     --fasta $genome \
     --gtf $gtf \
     --star_index /cluster/tufts/workshop/public/2026spring/star_index/  \
-    --salmon_index /cluster/tufts/workshop/public/2026spring/salmon_index/ 
-    --outdir rnaseq 
+    --salmon_index /cluster/tufts/workshop/public/2026spring/salmon_index/
+    --outdir rnaseq
 
-# -resume 
+# -resume
 
 # --star_index is provided for the workshop to avoid rebuilding the index and save time.
 # You do not need this flag when running the pipeline independently.
@@ -191,8 +173,6 @@ Submit job:
 ```
 sbatch run_rnaseq.slurm
 ```
-
-
 
 # 4. Key Results
 
@@ -224,7 +204,7 @@ rnaseq/
 
 ```
 multiqc/
-multiqc/star_salmon/multiqc_report.html 
+multiqc/star_salmon/multiqc_report.html
 ```
 
 Open this first.
@@ -239,17 +219,13 @@ salmon.merged.gene_counts.tsv   → gene-level counts (used for differential exp
 salmon.merged.gene_tpm.tsv      → normalized expression (for visualization)
 ```
 
-
-
 ## 4.3 Pipeline Metadata (Reproducibility)
 
 ```
 pipeline_info/nf_core_rnaseq_software_mqc_versions.yml
 ```
 
-Contains software versions 
-
-
+Contains software versions
 
 ### Open OnDemand App
 
@@ -258,10 +234,6 @@ In your working directory, this file list all parameter used
 ```
 nf-params.json
 ```
-
-
-
-
 
 # 5. Logs and Troubleshooting
 
@@ -277,7 +249,7 @@ Monitor during run:
 tail -f .nextflow.log
 ```
 
-It locates in the workding dir, not the outdir. 
+It locates in the workding dir, not the outdir.
 
 ## 5.2 SLURM Log Files
 
@@ -293,8 +265,6 @@ In session ID folder:
 ```
 output.log  # check progress
 ```
-
-
 
 ## 5.3 Per-Process Logs (Advanced)
 
@@ -312,8 +282,6 @@ Files:
 .command.out
 ```
 
-
-
 # 6. Running With Your Own Data
 
 To run your own dataset, you need:
@@ -326,6 +294,6 @@ To run your own dataset, you need:
 Steps:
 
 1. Upload FASTQ files to your working directory.
-2. Create a `samplesheet.csv`.
-3. Adjust reference paths if needed.
-4. Launch the pipeline via Open OnDemand or CLI.
+1. Create a `samplesheet.csv`.
+1. Adjust reference paths if needed.
+1. Launch the pipeline via Open OnDemand or CLI.
