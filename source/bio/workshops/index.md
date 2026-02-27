@@ -32,8 +32,6 @@ R & RStudio on HPC:
 
 - Building Reproducible Parallel Workflows in RStudio on the HPC - [Register](https://tufts.libcal.com/event/16315026)
 
-  
-
 ## 2025
 
 ```{gallery-grid}
