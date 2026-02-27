@@ -23,14 +23,12 @@ For users new to Tufts HPC or bioinformatics.
 
 ## Project Organization & Best Practices
 
-- **[How to Organize a Bioinformatics Project on the Tufts HPC](Organizing-a-Bioinformatics-Project-on-the-Tufts-HPC.md)**
-
+- **[How to Organize a Bioinformatics Project on the Tufts HPC](organizing-a-bioinformatics.md)**
 - **[Getting started with bioinformatics tools](bioinformatics-tools-guide.md)**
 
 ## HPC & Parallel Computing
 
 - **[Parallel Computing in R for Bioinformatics](parallel-computing-in-r.md)**
-
 - **[Parallel Read Alignment on SLURM](parallel-read-alignment.md)**
 
 ## Workflow Management & Pipelines
@@ -44,4 +42,4 @@ For users new to Tufts HPC or bioinformatics.
 ## Single-Cell & Spatial Transcriptomics
 
 - **[scRNA-seq analysis with RStudio (Seurat)](sc-rna-seq-analysis-with-r.md)**
-- **[A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)](Practical-Guide-to-Analyzing-Spatial-Transcriptomics-Data.md)**
+- **[A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)](practical-guide-to-analyzing.md)**
