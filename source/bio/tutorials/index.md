@@ -42,4 +42,4 @@ For users new to Tufts HPC or bioinformatics.
 ## Single-Cell & Spatial Transcriptomics
 
 - **[scRNA-seq analysis with RStudio (Seurat)](sc-rna-seq-analysis-with-r.md)**
-- **[A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)](Practical-Guide-to-Analyzing-Spatial-Transcriptomics-Data.md)**
+- **[A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)](practical-guide-to-analyzing.md)**
