@@ -181,4 +181,4 @@ baseurl_obj: ParseResult = urlparse(
 )
 notfound_urls_prefix = baseurl_obj.path.strip(".")
 
-templates_path = ["_templates"]
+templates_path = ["_templates"] + (["_noindex"] if dev else [])
