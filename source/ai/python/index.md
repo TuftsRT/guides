@@ -16,23 +16,23 @@ grid-columns: 1
 ---
 - header: "{fas}`book` Python for Research and Data Science"
   content: "Start here to begin learning how to set up Python."
-  link: "00_intro_to_python.html"
+  link: "00-intro-to-python.html"
 
 - header: "{fas}`book` Which Python Setup is Right for You?"
   content: "Our recommendations for Python setups based on your needs and experience level, with descriptions to help you decide what's right for you."
-  link: "10_which_python_setup.html"
+  link: "10-which-python-setup.html"
 
 - header: "{fas}`book` Google Colab"
   content: "Learn how to access Google Colab at Tufts, our recommendation for beginner-to-intermediate Python programmers and Python learners."
-  link: "20_google_colab.html"
+  link: "20-google-colab.html"
 
 - header: "{fas}`book`  Microsoft Visual Studio Code with Conda (Miniforge): Installation and Setup"
   content: "Learn how to set up Microsoft Visual Studio Code with Conda (Miniforge), our recommended local Python configuration for intermediate-to-advanced users."
-  link: "30_vs_code_with_miniforge.html"
+  link: "30-vs-code-with-miniforge.html"
 
 - header: "{fas}`book` Microsoft Visual Studio Code with Conda (Miniforge): Getting the Most Out of Your Setup"
   content: "When you've finished installing and configuring Microsoft Visual Studio Code with Conda, click here to learn how to use your setup effectively."
-  link: "40_VS_code_and_conda_users_guide.html"
+  link: "40-VS-code-and-conda-users-guide.html"
 
 
 ```
