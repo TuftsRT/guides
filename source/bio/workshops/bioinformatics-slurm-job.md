@@ -1,10 +1,8 @@
 # Running Bioinformatics Jobs on Tufts HPC
 
-2026-02-24           
+2026-02-24
 
-Shirley Li: [xue.li37@tufts.edu ](mailto:xue.li37@tufts.edu)         
-
-
+Shirley Li: [xue.li37@tufts.edu ](mailto:xue.li37@tufts.edu)
 
 ## Workshop Overview
 
@@ -22,8 +20,6 @@ This hands-on workshop introduces how to run bioinformatics analyses on the Tuft
 
 - Use job dependencies and SLURM job arrays for scalable analysis
 
-  
-
 ## 1. Set Up Your Working Directory
 
 All work for this project will be done under:
@@ -34,18 +30,14 @@ All work for this project will be done under:
 
 If you have a dedicated lab storage space, you may use that instead.
 
-
-
 Create a directory for your project
 
 ```
-mkdir /cluster/tufts/workshop/utln/myproject/    
+mkdir /cluster/tufts/workshop/utln/myproject/
 # creating a folder to hold all files related to this analysis
 ```
 
 **Always create a dedicated project directory. Never mix analyses together.**
-
-
 
 ## 2. Create a Basic Project Structure
 
@@ -56,7 +48,7 @@ cd /cluster/tufts/workshop/utln/myproject/
 # You are now inside your project folder
 
 mkdir raw_data results scripts
-touch README.md 
+touch README.md
 # Document what this project does
 
 mkdir scripts/logs
@@ -64,8 +56,6 @@ mkdir scripts/logs
 # SLURM will generate: .out files (standard output) and .err files (error messages)
 # Keeping logs in one place makes debugging much easier.
 ```
-
-
 
 Your project structure should look like this:
 
@@ -83,8 +73,6 @@ This structure keeps:
 - Raw input data separate
 - Results organized
 - Scripts and logs clearly managed
-
-
 
 ## 3. Prepare Input Fastq Files
 
@@ -105,8 +93,6 @@ ln -s /cluster/tufts/workshop/public/2026spring/nfcore/fastq/* ./
 # This creates shortcuts in your raw_data/ folder that point to the original files.
 ```
 
-
-
 **Why We Don’t Copy the Files**
 
 FASTQ files are large. Copying them would:
@@ -117,8 +103,6 @@ FASTQ files are large. Copying them would:
 
 Instead, we use symbolic links.
 
-
-
 This allows you to:
 
 - Access the files locally in your project
@@ -126,8 +110,6 @@ This allows you to:
 - Avoid duplicating large datasets
 
 - Keep the original data unchanged
-
-  
 
 ## 4. Running FastQC
 
@@ -151,7 +133,7 @@ echo "Job started on $(date)"
 echo "Running on node: $(hostname)"
 
 # Load FastQC module (adjust if needed)
-module load fastqc/0.11.9  
+module load fastqc/0.11.9
 
 
 DIR=/cluster/tufts/workshop/utln/myproject/
@@ -181,8 +163,6 @@ Submit:
 sbatch fastqc.sh
 ```
 
-
-
 # 5. Alignment with STAR
 
 `star.sh`
@@ -197,7 +177,7 @@ sbatch fastqc.sh
 #SBATCH --output=logs/star_%j.out
 #SBATCH --error=logs/star_%j.err
 
-module load star/2.7.11b     
+module load star/2.7.11b
 
 STARINDEX=/cluster/tufts/workshop/public/2026spring/star_index/
 DIR=/cluster/tufts/workshop/utln/myproject/
@@ -207,14 +187,14 @@ mkdir -p $DIR/results/star/
 for fq in $DIR/raw_data/*_1_*.fastq.gz
 do
     sample=$(basename $fq _1_sub.fastq.gz)
-    
+
     STAR \
       --runThreadN 8 \
       --genomeDir $STARINDEX \
       --readFilesIn $fq \
       --readFilesCommand zcat \
       --outFileNamePrefix $DIR/results/star/${sample}_
-      
+
     echo $fq DONE
 done
 ```
@@ -232,8 +212,6 @@ Submit:
 sbatch star.sh
 ```
 
-
-
 ## 6. Post-Processing the BAM File (Sorting)
 
 Many downstream tools require a **sorted BAM file**. We will sort the BAM file using `samtools`.
@@ -250,7 +228,7 @@ Many downstream tools require a **sorted BAM file**. We will sort the BAM file u
 #SBATCH --output=logs/sort_%j.out
 #SBATCH --error=logs/sort_%j.err
 
-module load samtools/1.21 
+module load samtools/1.21
 
 mkdir -p $DIR/results/sorted_bam/
 
@@ -279,8 +257,6 @@ Submit:
 sbatch sort.sh
 ```
 
-
-
 ## 7. Wrapper Script to Chain Jobs
 
 This script chains STAR and sorting using SLURM dependency. FastQC runs independently.
@@ -303,16 +279,12 @@ echo "Sorting job submitted with Job ID: $jid2"
 
 ```
 
-
-
 Make Script Executable and run:
 
 ```
 chmod +x run_pipeline.sh
 ./run_pipeline.sh
 ```
-
-
 
 ### What This Does
 
@@ -321,11 +293,7 @@ chmod +x run_pipeline.sh
 - Sorting runs only if STAR finishes successfully
 - If STAR fails, sorting will not start
 
-
-
-------
-
-
+---
 
 ## Advanced usage: SLURM Job Array
 
@@ -334,8 +302,6 @@ In the previous `star.sh` script, we used a `for` loop to process all samples in
 That approach works, but it runs samples **sequentially** — one after another — within the same job allocation.
 
 If you have multiple independent samples, a more scalable approach is to use a **SLURM job array**.
-
-
 
 ### Why Use a Job Array?
 
@@ -368,7 +334,7 @@ This improves efficiency and scalability.
 #SBATCH --output=logs/star_%A_%a.out
 #SBATCH --error=logs/star_%A_%a.err
 
-module load star/2.7.11b 
+module load star/2.7.11b
 
 STARINDEX=/cluster/tufts/workshop/public/2026spring/star_index/
 DIR=/cluster/tufts/workshop/utln/myproject/
@@ -397,6 +363,3 @@ STAR \
   --readFilesCommand zcat \
   --outFileNamePrefix $DIR/results/star/${sample}_
 ```
-
-
-
