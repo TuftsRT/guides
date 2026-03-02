@@ -17,6 +17,7 @@ An Interactive job is one that a user starts and then continues to directly inte
   - Time `-t` or `--time=`
     - Default 15 minutes
     - Format: DD-HH:MM:SS
+    - Maximum: 2-00:00:00
   - Number of CPU cores `-n`
     - Default 1
     - Common 2 or 4
@@ -26,6 +27,7 @@ An Interactive job is one that a user starts and then continues to directly inte
   - GPU `--gres=`
     - Default none
     - Common --gres=gpu:1
+    - Reference [GPU Resource](../compute/gpu.md) page for GPU architecture specifics
   - X Window `--x11=first`
     - Default none
   - QOS `--qos=`
