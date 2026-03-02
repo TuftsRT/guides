@@ -31,7 +31,7 @@ module purge
 # for example, running a python script
 # load the module so the correct version python is available to you
 module load miniforge/25.3.0
-# If you have a conda env that you would like to use, activate it 
+# If you have a conda env that you would like to use, activate it
 source activate [target_env]
 # run python script
 python myscript.py #make sure myscript.py exists in the current directory
@@ -73,7 +73,7 @@ module purge
 module load miniforge/25.3.0
 # when using GPUs, make sure to load the appropriate version of cuda toolkit to provide necessary libraries for your application
 module load cuda/12.9.0
-# If you have a conda env that you would like to use, activate it 
+# If you have a conda env that you would like to use, activate it
 source activate [target_env]
 # run python script
 python myscript.py #make sure myscript.py exists in the current directory
