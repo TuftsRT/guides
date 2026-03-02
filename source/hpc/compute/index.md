@@ -22,6 +22,8 @@ Some systems are only available to all users on the preempt partition.
 
 Mixed systems include a limited number of various GPUs including V100, A100, H100 and GH200.
 
+Up-to-date system information, real-time status, and resource availability can be viewed with [OnDemand System Status](https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status) app.
+
 ```{gallery-grid}
 ---
 grid-columns: 1
@@ -37,9 +39,5 @@ grid-columns: 1
 - header: "{fas}`book` GPU Resources"
   content: "Available GPU resources on Tufts HPC cluster and how to request them"
   link: "gpu.html"
-
-- header: "{fas}`book` HPC Helper Tool - hpctools"
-  content: "Utilize a command line tool - hpctools - to help you find available resource on Tufts HPC cluster"
-  link: "../examples/hpctools.html"
 
 ```
