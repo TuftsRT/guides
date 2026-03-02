@@ -22,7 +22,7 @@ Some systems are only available to all users on the preempt partition.
 
 Mixed systems include a limited number of various GPUs including V100, A100, H100 and GH200.
 
-Up-to-date system resource information, real-time status, and availabilty can be viewed with [OnDemand](https://ondemand-prod.pax.tufts.edu/) [System Status](https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status) app.
+Up-to-date system information, real-time status, and resource availabilty can be viewed with [OnDemand](https://ondemand-prod.pax.tufts.edu/) [System Status](https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status) app.
 
 ```{gallery-grid}
 ---

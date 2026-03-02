@@ -10,7 +10,7 @@ Tufts HPC cluster resources are grouped into different partitions. A partition i
 Research Lab members may have access to additional resources and different limits. See ["Lab Partitions"](#lab-partitions) section below.
 ```
 
-Up-to-date system resource information, real-time status, and availabilty can be viewed with [OnDemand](https://ondemand-prod.pax.tufts.edu/) [System Status](https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status) app.
+Up-to-date system information, real-time status, and resource availabilty can be viewed with [OnDemand](https://ondemand-prod.pax.tufts.edu/) [System Status](https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status) app.
 
 
 ### General limits
