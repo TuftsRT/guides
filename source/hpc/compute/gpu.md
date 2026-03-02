@@ -52,8 +52,7 @@ include the output in the log for troubleshooting purposes.
 | h100        | 80GB       | 3            | preempt                | h100                            |                          |
 | h200        | 141GB      | 8            | gpu, preempt           | h200                            | SXM                      |
 
-All GPU cards drivers except t4 support CUDA 12.9
+> All GPU cards drivers except t4 support CUDA 12.9
 
-Up-to-date system information, real-time status, and resource availabilty can be viewed with [OnDemand](https://ondemand-prod.pax.tufts.edu/) [System Status](https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status) app.
-
+Up-to-date system information, real-time status, and resource availabilty can be viewed with [OnDemand System Status](https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status) app.
 
