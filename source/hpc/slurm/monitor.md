@@ -51,7 +51,7 @@ These two are the most common, and means you are waiting in line for compute nod
 Other common reasons are
 
 - **Dependency** - This job has a dependency on another job that has not been satisfied.
-- **QOSMax**\* - This means you are currently using the maximum of given resource per user or account. For instance QOSMaxCpuPerUserLimit reffers to the CPU limit and QOSMaxGRESPerUser reffers to the GPU limit.
+- **QOSMax**\* - This means you are currently using the maximum of given resource per user or account. For instance QOSMaxCpuPerUserLimit refers to the CPU limit and QOSMaxGRESPerUser refers to the GPU limit.
 - **Reservation** - The job is waiting its advanced reservation to become available.
 
 To check **details** of your **active jobs** (running or pending):

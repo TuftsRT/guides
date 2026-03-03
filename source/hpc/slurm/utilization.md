@@ -1,6 +1,6 @@
 # Job Resource Utilization
 
-Making sure you are making efficient use of the HPC resources you request is very important. Any HPC job will only use a portion of the resources you request, so it is important to make sure you are not requesting alot more than you need. Reviewing your completed jobs helps you make better decisions on how much resources to request for future jobs.
+Making sure you are making efficient use of the HPC resources you request is very important. Any HPC job will only use a portion of the resources you request, so it is important to make sure you are not requesting a lot more than you need. Reviewing your completed jobs helps you make better decisions on how much resources to request for future jobs.
 
 Way to view job efficiency after completion
 
