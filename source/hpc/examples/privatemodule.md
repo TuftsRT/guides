@@ -14,65 +14,36 @@ Please put your own module file in your home directory, under `privatemodules`.
 
 Each software should have its own directory, such as `mysoftware`.
 
-And for each version of the software, there should be a module file, such as `v1.0.0`.
+And for each version of the software, there should be a module file, such as `1.0.0.lua`.
 
 The overall structure should be:
 
-`/cluster/home/$USER/privatemodules/mysoftware/v1.0.0`
+`/cluster/home/$USER/privatemodules/mysoftware/1.0.0.lua`
 
 Now let's work on the content of the file.
 
-You can reference/borrow existing module files on the cluster.
-
-For simple software, you can use "cmake/3.18" as a template.
-
-`$ module av cmake`
+You can refer to the following `cmake` modulefile located at `/cluster/tufts/apps/modules/9/x86_64/gcc/15.1.0/cmake/3.31.6.lua`.
 
 ```
------------------------------------------------------------------------------------------------------- /opt/shared/Modules/modulefiles-rhel6 ------------------------------------------------------------------------------------------------------
-cmake/2.8      cmake/2.8.11.2 cmake/3.2.1    cmake/3.4.3
+-- -*- lua -*---
+-- cmake@3.31.6~doc+ncurses+ownlibs+qtgui build_system=generic build_type=Release arch=linux-rocky9-broadwell/htsgau3
+--
 
---------------------------------------------------------------------------------------------------------- /cluster/tufts/hpc/tools/module ---------------------------------------------------------------------------------------------------------
-cmake/3.18     cmake/3.23_gui
-```
+whatis([[Name : cmake]])
+whatis([[Version : 3.31.6]])
+whatis([[Short description : A cross-platform, open-source build system. CMake is a family of tools designed to build, test and package software. ]])
 
-To take a look at the module file:
-
-`$ cat /cluster/tufts/hpc/tools/module/cmake/3.18`
-
-```
-#%Module -*- tcl -*-
-#
-# cmake 3.18
-#
-#
-
-set ver 3.18
-
-proc ModulesHelp { } {
-  global ver
-  puts stderr "\tThis module sets up the cmake 3.18 environment installed by DM in hpc_tools, version $ver "
-}
-
-module-whatis   "load cmake 3.18"
+help([[A cross-platform, open-source build system. CMake is a family of tools
+designed to build, test and package software.]])
 
 
-prepend-path PATH /cluster/tufts/hpc/tools/spack/linux-rhel7-ivybridge/gcc-8.4.0/cmake-3.18.2-r2hx6rewcozqvda5gfo7rouhzlqy2k6t/bin
+depends_on("gmake/4.4.1-yi34qio")
+depends_on("qt/5.15.12-qkjcg5f")
 
-#
-# appended log section
-#
-
-if {[module-info mode "load"]} {
-  global env
-  if {[info exists env(USER)]} {
-    set the_user [lindex [array get env USER] 1]
-  } else {
-    set the_user "foo"
-  }
-  system [concat "logger environment-modules" [module-info name] $the_user ]
-}
-
+local modroot="/cluster/tufts/apps/spack/9/x86_64/apps/linux-broadwell/cmake-3.31.6-htsgau3kr7aenjwhvsdbkadkwjrfgulh"
+prepend_path("PATH", modroot.."/bin", ":")
+prepend_path("ACLOCAL_PATH", modroot.."/share/aclocal", ":")
+prepend_path("CMAKE_PREFIX_PATH", modroot.."/.", ":")
 ```
 
 Most of the content is informational.
@@ -96,12 +67,12 @@ Now you can check your own module.
 And it should show up as:
 
 ```
-------------- /cluster/home/$USER/privatemodules ---------------------------------------------------------------------------------------------------------
-mysoftware/v1.0.0
+------------- /cluster/home/$USER/privatemodules ------------------
+mysoftware/1.0.0
 ```
 
 You can load it just like other modules on the cluster:
 
-`$ module load my software/v1.0.0`
+`$ module load my software/1.0.0`
 
 :)

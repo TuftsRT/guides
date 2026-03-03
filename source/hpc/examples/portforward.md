@@ -6,7 +6,7 @@
 ## 1. Login to the Cluster from terminal with SSH
 
 ```
-$ ssh your_username@login.pax.tufts.edu
+$ ssh your_username@login-prod.pax.tufts.edu
 ```
 
 Follow any Two-Factor Authentication directions that are necessary.
@@ -30,7 +30,7 @@ First, we'll need to request GPU resources and then load in the required softwar
 
 ```
 $ srun -p gpu --gres=gpu:a100:1 -n 8 --mem=16g -t 3-0 --pty bash
-$ module load cuda/12.2
+$ module load cuda/12.9
 $ module load anaconda/2021.05
 ```
 
