@@ -79,8 +79,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260302" />
-    <meta name="docbuild:last-update" content="Mar 02, 2026"/> 
+  <meta name="docsearch:version" content="20260303" />
+    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
   </head>
   
   
@@ -447,7 +447,7 @@
 <li class="toctree-l2"><a class="reference internal" href="helloworld.html">HelloWorld HPC Cluster Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install-from-source.html">Building software from source code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="new-cluster.html">2025 Cluster Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new-cluster.html">HPC Cluster Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Port Forwarding on HPC Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
@@ -536,7 +536,7 @@ This is particularly useful for running <code class="docutils literal notranslat
 </div></blockquote>
 <section id="login-to-the-cluster-from-terminal-with-ssh">
 <h2>1. Login to the Cluster from terminal with SSH<a class="headerlink" href="#login-to-the-cluster-from-terminal-with-ssh" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh your_username@login.pax.tufts.edu
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh your_username@login-prod.pax.tufts.edu
 </pre></div>
 </div>
 <p>Follow any Two-Factor Authentication directions that are necessary.</p>
@@ -555,7 +555,7 @@ $ tmux new -s mynewsession
 <p>More <a class="reference internal" href="../compute/gpu.html"><span class="doc std std-doc">GPU resource</span></a> details</p>
 <p>First, we’ll need to request GPU resources and then load in the required software for working with CUDA and Python.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ srun -p gpu --gres=gpu:a100:1 -n 8 --mem=16g -t 3-0 --pty bash
-$ module load cuda/12.2
+$ module load cuda/12.9
 $ module load anaconda/2021.05
 </pre></div>
 </div>
@@ -787,7 +787,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 02, 2026.
+  Last updated on Mar 03, 2026.
   <br/>
 </p></div>
       

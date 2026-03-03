@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2025 Cluster Upgrade &#8212; TTS Research Technology Guides</title>
+    <title>HPC Cluster Upgrade &#8212; TTS Research Technology Guides</title>
   
   
   
@@ -79,8 +79,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260302" />
-    <meta name="docbuild:last-update" content="Mar 02, 2026"/> 
+  <meta name="docsearch:version" content="20260303" />
+    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
   </head>
   
   
@@ -447,7 +447,7 @@
 <li class="toctree-l2"><a class="reference internal" href="helloworld.html">HelloWorld HPC Cluster Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install-from-source.html">Building software from source code</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2025 Cluster Upgrade</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HPC Cluster Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="portforward.html">Port Forwarding on HPC Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
@@ -510,7 +510,7 @@
     </li>
      
     <li class="breadcrumb-item active" aria-current="page">
-      2025 Cluster Upgrade
+      HPC Cluster Upgrade
     </li>
   </ul>
 </nav>
@@ -528,8 +528,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="cluster-upgrade">
-<h1>2025 Cluster Upgrade<a class="headerlink" href="#cluster-upgrade" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="hpc-cluster-upgrade">
+<h1>HPC Cluster Upgrade<a class="headerlink" href="#hpc-cluster-upgrade" title="Link to this heading">#</a></h1>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>The upgraded cluster is currently only accessible to approved early adopters.
@@ -537,6 +537,13 @@ You may request to join our early adopter program at <a class="reference externa
 </div>
 <p>In the summer of 2025 TTS Research Technology launched a new version of the pax cluster with a newer OS version. This system shares a
 file system with the existing cluster so all your files and data are accessible in both versions.</p>
+<ul class="simple">
+<li><p>Newer OS provides longer product life and support</p></li>
+<li><p>Strengthens security</p></li>
+<li><p>Up-to-date drivers, compilers and libraries provide a reliable foundation for software installation and execution</p></li>
+<li><p>Updated system unlocks the power of next-generation GPUs, CPUs, interconnects, and storage with seamless compatibility</p></li>
+<li><p>Establishing a strong foundation for future enhancements</p></li>
+</ul>
 <section id="migration-plan">
 <h2>Migration Plan<a class="headerlink" href="#migration-plan" title="Link to this heading">#</a></h2>
 <p>New users will be encouraged to start using this version when they receive their accounts. Existing HPC users are
@@ -544,6 +551,42 @@ encouraged to try this version as time allows. As the average compute load on th
 move public partition nodes from the current cluster to this version.</p>
 <p>TTS Research Technology will work with contribute node owners to confirm their software works on the upgraded cluster,
 and determine a timeframe to move their nodes as the labs convenience.</p>
+</section>
+<section id="compute-nodes">
+<h2>Compute nodes<a class="headerlink" href="#compute-nodes" title="Link to this heading">#</a></h2>
+<p>Public partition nodes are being moved to the new cluster throughout the spring of 2026. Most public resources will be moved by the end of May. Please test your software and workflows, and move your usage to the upgraded cluster ASAP. Significant planned migration dates are listed below.</p>
+<ul class="simple">
+<li><p>32 A100 GPUs migrating on 3/1/2026</p></li>
+<li><p>All public GPUs migrated by 5/31/2026</p></li>
+</ul>
+<p>TTS Research Technology will work with contribute node owners to confirm their labs software works on the upgraded cluster, and determine a timeframe to move their nodes at the labs convenience.</p>
+</section>
+<section id="software-service-retirement">
+<h2>Software / Service retirement<a class="headerlink" href="#software-service-retirement" title="Link to this heading">#</a></h2>
+<p>As part of this upgrade several legacy software and services are being retired. We have identified a modern replacement for each. If you have concerns or questions about the replacements, or timeline please contact us.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Software being retired</p></th>
+<th class="head"><p>Replacement</p></th>
+<th class="head"><p>Retirement Date</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Galaxy</p></td>
+<td><p>NF-Core</p></td>
+<td><p>2/1/2026</p></td>
+</tr>
+<tr class="row-odd"><td><p>FastX</p></td>
+<td><p>HPC Desktop</p></td>
+<td><p>4/1/2026</p></td>
+</tr>
+<tr class="row-even"><td><p>Flamenco</p></td>
+<td><p>Blender Render</p></td>
+<td><p>6/30/2026</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="upgraded-cluster-access">
 <h2>Upgraded cluster access<a class="headerlink" href="#upgraded-cluster-access" title="Link to this heading">#</a></h2>
@@ -557,7 +600,10 @@ and determine a timeframe to move their nodes as the labs convenience.</p>
 <h2>Notable differences<a class="headerlink" href="#notable-differences" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Operating systems is Rocky Linux 9 (RHEL9 compatible) providing the latest system libraries including: glibc</p></li>
+<li><p>Hyper-Threading has been disabled on all compute nodes in the upgraded cluster</p></li>
 <li><p>Upgraded cluster is running Nvidia Driver Version: 575.57.08 with CUDA Version: 12.9</p></li>
+<li><p>No GPUs in the preempt partition, use the regular gpu partition if you need GPUs</p></li>
+<li><p>MPI partition has been retired, use the batch partition</p></li>
 </ul>
 </section>
 <section id="modules">
@@ -635,7 +681,7 @@ assistance with this contact RT.</p></li>
   id="pst-page-navigation-heading-2"
   class="page-toc tocsection onthispage"
 >
-  <i class="fa-solid fa-list"></i> 2025 Cluster Upgrade
+  <i class="fa-solid fa-list"></i> HPC Cluster Upgrade
 </div>
 <nav
   class="bd-toc-nav page-toc"
@@ -643,6 +689,8 @@ assistance with this contact RT.</p></li>
 >
   <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-plan">Migration Plan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-nodes">Compute nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-service-retirement">Software / Service retirement</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upgraded-cluster-access">Upgraded cluster access</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notable-differences">Notable differences</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
@@ -724,7 +772,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 02, 2026.
+  Last updated on Mar 03, 2026.
   <br/>
 </p></div>
       

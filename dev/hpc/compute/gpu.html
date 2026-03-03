@@ -73,14 +73,14 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Resource Usage limit" href="limits.html" />
+    <link rel="next" title="Tufts HPC Partitions and Limits" href="partition.html" />
     <link rel="prev" title="Computing Resources" href="index.html" />
 <meta name="robots" content="noindex, nofollow" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260302" />
-    <meta name="docbuild:last-update" content="Mar 02, 2026"/> 
+  <meta name="docsearch:version" content="20260303" />
+    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
   </head>
   
   
@@ -441,8 +441,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../access/index.html">Access</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Computing Resources</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">GPU Resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="limits.html">Resource Usage limit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="partition.html">Tufts HPC Partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partition.html">Tufts HPC Partitions and Limits</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../slurm/index.html">Slurm Job Scheduler</a></li>
@@ -534,18 +534,18 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">gpu:1</span></code> : requesting one GPU (any GPU architecture available in the request partition)</p></li>
 </ul>
 </li>
-<li><p>To request a specific GPU architecture you can add it to the gres <code class="docutils literal notranslate"><span class="pre">--gres=gpu:t4:1</span></code>, e.g.</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">srun</span> <span class="pre">-p</span> <span class="pre">preempt</span> <span class="pre">-n</span> <span class="pre">2</span> <span class="pre">--mem=4g</span> <span class="pre">--gres=gpu:t4:1</span> <span class="pre">-t</span> <span class="pre">1:00:00</span> <span class="pre">--pty</span> <span class="pre">bash</span></code></p>
+<li><p>To request a specific GPU architecture you can add it to the gres <code class="docutils literal notranslate"><span class="pre">--gres=gpu:l40s:1</span></code>, e.g.</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">srun</span> <span class="pre">-p</span> <span class="pre">preempt</span> <span class="pre">-n</span> <span class="pre">2</span> <span class="pre">--mem=4g</span> <span class="pre">--gres=gpu:l40s:1</span> <span class="pre">-t</span> <span class="pre">1:00:00</span> <span class="pre">--pty</span> <span class="pre">bash</span></code></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--gres</span></code> : Generic Resource</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">gpu:t4:1</span></code> : requesting one T4 GPU.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu:l40s:1</span></code> : requesting one T4 GPU.</p></li>
 </ul>
 </li>
 <li><p>You can request more than one type (but not all) of GPUs with <code class="docutils literal notranslate"><span class="pre">constraint</span></code>, e.g.</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">srun</span> <span class="pre">-p</span> <span class="pre">preempt</span> <span class="pre">-n</span> <span class="pre">2</span> <span class="pre">--mem=4g</span> <span class="pre">--gres=gpu:1</span> <span class="pre">--constraint=&quot;t4|p100|v100&quot;</span> <span class="pre">-t</span> <span class="pre">1:00:00</span> <span class="pre">--pty</span> <span class="pre">bash</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">srun</span> <span class="pre">-p</span> <span class="pre">preempt</span> <span class="pre">-n</span> <span class="pre">2</span> <span class="pre">--mem=4g</span> <span class="pre">--gres=gpu:1</span> <span class="pre">--constraint=&quot;a100|l40s|H200&quot;</span> <span class="pre">-t</span> <span class="pre">1:00:00</span> <span class="pre">--pty</span> <span class="pre">bash</span></code></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--constraint</span></code> : set constraints on the resources allocated for the task.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">t4|p100|v100</span></code> : indicates that the task can use a GPU of type t4, p100, or v100, where the | symbol means “or”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a100|l40s|H200</span></code> : indicates that the task can use a GPU of type a100, l40s, or H200, where the | symbol means “or”.</p></li>
 </ul>
 </li>
 </ul>
@@ -646,7 +646,7 @@ include the output in the log for troubleshooting purposes.</p></li>
 <td><p>4</p></td>
 <td><p>gpu, preempt</p></td>
 <td><p>l40s</p></td>
-<td><p>Upgraded Cluster</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p>h100</p></td>
 <td><p>80GB</p></td>
@@ -656,16 +656,19 @@ include the output in the log for troubleshooting purposes.</p></li>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p>h200</p></td>
-<td><p>80GB</p></td>
+<td><p>141GB</p></td>
 <td><p>8</p></td>
 <td><p>gpu, preempt</p></td>
 <td><p>h200</p></td>
-<td><p>SXM, Upgraded Cluster</p></td>
+<td><p>SXM</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>All GPU cards drivers except t4 support CUDA 12.2</p>
+<blockquote>
+<div><p>All GPU cards drivers except t4 support CUDA 12.9</p>
+</div></blockquote>
+<p>Up-to-date system information, real-time status, and resource availability can be viewed with <a class="reference external" href="https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status">OnDemand System Status</a> app.</p>
 </section>
 </section>
 
@@ -689,11 +692,11 @@ include the output in the log for troubleshooting purposes.</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="limits.html"
+       href="partition.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Resource Usage limit</p>
+        <p class="prev-next-title">Tufts HPC Partitions and Limits</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -785,7 +788,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 02, 2026.
+  Last updated on Mar 03, 2026.
   <br/>
 </p></div>
       

@@ -79,8 +79,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260302" />
-    <meta name="docbuild:last-update" content="Mar 02, 2026"/> 
+  <meta name="docsearch:version" content="20260303" />
+    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
   </head>
   
   
@@ -447,6 +447,12 @@
 <li class="toctree-l2"><a class="reference internal" href="25-rstudio.html">RStudio via OnDemand</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Tmux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="40-vscode.html">VSCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpc-desktop.html">HPC Desktop</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab.html">MATLAB</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples and Tutorials</a></li>
@@ -540,12 +546,12 @@
 <p><strong>How to use tmux on Tufts HPC Cluster?</strong></p>
 <section id="load-tmux-module">
 <h2>Load tmux module<a class="headerlink" href="#load-tmux-module" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-prod-01</span> <span class="pre">~]$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">tmux</span></code>
-Make a note of the login node name <code class="docutils literal notranslate"><span class="pre">login-prod-01</span></code> where your tmux session lives.</p>
+<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-p01</span> <span class="pre">~]$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">tmux</span></code>
+Make a note of the login node name <code class="docutils literal notranslate"><span class="pre">login-p01</span></code> where your tmux session lives.</p>
 </section>
 <section id="start-your-tmux-session">
 <h2>Start your tmux session<a class="headerlink" href="#start-your-tmux-session" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-prod-01</span> <span class="pre">~]$</span> <span class="pre">tmux</span> <span class="pre">new</span> <span class="pre">-s</span> <span class="pre">mysession</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-p01</span> <span class="pre">~]$</span> <span class="pre">tmux</span> <span class="pre">new</span> <span class="pre">-s</span> <span class="pre">mysession</span></code></p>
 </section>
 <section id="start-your-interactive-session-inside-the-tmux-session-and-run-your-programs">
 <h2>Start your Interactive session inside the tmux session, and run your programs<a class="headerlink" href="#start-your-interactive-session-inside-the-tmux-session-and-run-your-programs" title="Link to this heading">#</a></h2>
@@ -559,16 +565,16 @@ Make a note of the login node name <code class="docutils literal notranslate"><s
 <h2>Get your work session back<a class="headerlink" href="#get-your-work-session-back" title="Link to this heading">#</a></h2>
 <p>Log back in to the cluster or start a new terminal.</p>
 <p>If you are allocated on a <strong>different</strong> login node than where your tmux session lives.</p>
-<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-prod-03</span> <span class="pre">~]$</span> <span class="pre">ssh</span> <span class="pre">login-prod-01</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-prod-01</span> <span class="pre">~]$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">tmux</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-p03</span> <span class="pre">~]$</span> <span class="pre">ssh</span> <span class="pre">login-p01</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-p01</span> <span class="pre">~]$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">tmux</span></code></p>
 </section>
 <section id="check-tmux-sessions">
 <h2>Check tmux sessions<a class="headerlink" href="#check-tmux-sessions" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-prod-01</span> <span class="pre">~]$</span> <span class="pre">tmux</span> <span class="pre">ls</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-p01</span> <span class="pre">~]$</span> <span class="pre">tmux</span> <span class="pre">ls</span></code></p>
 </section>
 <section id="pick-your-session-and-reattach-it">
 <h2>Pick your session and reattach it<a class="headerlink" href="#pick-your-session-and-reattach-it" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-prod-01</span> <span class="pre">~]$</span> <span class="pre">tmux</span> <span class="pre">a</span> <span class="pre">-t</span> <span class="pre">mysession</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-p01</span> <span class="pre">~]$</span> <span class="pre">tmux</span> <span class="pre">a</span> <span class="pre">-t</span> <span class="pre">mysession</span></code></p>
 </section>
 </section>
 
@@ -694,7 +700,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 02, 2026.
+  Last updated on Mar 03, 2026.
   <br/>
 </p></div>
       

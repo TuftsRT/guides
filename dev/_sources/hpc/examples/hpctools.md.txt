@@ -5,9 +5,9 @@
 Users can run hpctools on any node (compute or login):
 
 ```
-[username@login-prod-01 ~]$ module load hpctools
+[username@login-p01 ~]$ module load hpctools
 	 command: hpctools
-[username@login-prod-01 ~]$ hpctools
+[username@login-p01 ~]$ hpctools
  Please select from the following options:
 
   1. Checking Free Resources On Each Node in Given Partition(s)

@@ -79,8 +79,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260302" />
-    <meta name="docbuild:last-update" content="Mar 02, 2026"/> 
+  <meta name="docsearch:version" content="20260303" />
+    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
   </head>
   
   
@@ -525,10 +525,11 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="batch-jobs">
 <h1>Batch Jobs<a class="headerlink" href="#batch-jobs" title="Link to this heading">#</a></h1>
-<p>Batch jobs are best suited for production level work, as there’s no chance for users to interact and modify the programs while it’s running. So be sure to debug and test your programs beforehand.</p>
-<p>It is easy to submit a batch job.</p>
-<p>You will need a slurm batch job script which contains all the resource requirements and the commands to run your program.</p>
-<p>We strongly recommend user check available resources using <a class="reference internal" href="../examples/hpctools.html"><span class="std std-doc">hpctools - Tufts HPC Helper Tool</span></a> before submitting batch jobs.</p>
+<p>A Batch jobs is one where once submitted to the scheduler, the user does not intervene. The application is started by the scheduler once the requested nodes are allocated, and it runs unattended until completion. After completion the user returns at their convivence to review the program output files. Batch jobs are created by the user submitting a batch script file to the Slurm scheduler using the sbatch command.</p>
+<ul class="simple">
+<li><p>It is easy to submit a batch job.</p></li>
+<li><p>You will need a slurm batch job script which contains all the resource requirements and the commands to run your program.</p></li>
+</ul>
 <p>Please see examples below:</p>
 <section id="cpu-batch-job">
 <h2>CPU Batch Job<a class="headerlink" href="#cpu-batch-job" title="Link to this heading">#</a></h2>
@@ -543,16 +544,16 @@
 <span class="c1">#SBATCH --output=MyJob.%j.%N.out  #saving standard output to file, %j=JOBID, %N=NodeName</span>
 <span class="c1">#SBATCH --error=MyJob.%j.%N.err   #saving standard error to file, %j=JOBID, %N=NodeName</span>
 <span class="c1">#SBATCH --mail-type=ALL    #email options</span>
-<span class="c1">#SBATCH --mail-user=Your_Tufts_Email@tufts.edu</span>
+<span class="c1">#SBATCH --mail-user=Your_Tufts_Email@tufts.edu  #please make sure to use your own Tufts email</span>
 
-<span class="c1">#[commands_you_would_like_to_exe_on_the_compute_nodes]</span>
+<span class="c1"># [commands_you_would_like_to_exe_on_the_compute_nodes]</span>
 <span class="c1"># have a clean start. purge all loaded modules in current environment</span>
 module<span class="w"> </span>purge
 <span class="c1"># for example, running a python script</span>
 <span class="c1"># load the module so the correct version python is available to you</span>
-module<span class="w"> </span>load<span class="w"> </span>anaconda/2021.05
-<span class="c1"># If you have a conda env that you would like to use, activate it here using &quot;source activate xxx&quot;. DO NOT USE &quot;conda activate&quot;</span>
-<span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>mycondaenv
+module<span class="w"> </span>load<span class="w"> </span>miniforge/25.3.0
+<span class="c1"># If you have a conda env that you would like to use, activate it</span>
+<span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span><span class="o">[</span>target_env<span class="o">]</span>
 <span class="c1"># run python script</span>
 python<span class="w"> </span>myscript.py<span class="w"> </span><span class="c1">#make sure myscript.py exists in the current directory</span>
 <span class="c1"># make sure you save all plots, data, outputs generated to files in your script</span>
@@ -579,17 +580,17 @@ conda<span class="w"> </span>deactivate
 <span class="c1">#SBATCH --output=MyJob.%j.%N.out  #saving standard output to file, %j=JOBID, %N=NodeName</span>
 <span class="c1">#SBATCH --error=MyJob.%j.%N.err   #saving standard error to file, %j=JOBID, %N=NodeName</span>
 <span class="c1">#SBATCH --mail-type=ALL    #email optitions</span>
-<span class="c1">#SBATCH --mail-user=Your_Tufts_Email@tufts.edu</span>
+<span class="c1">#SBATCH --mail-user=Your_Tufts_Email@tufts.edu #please make sure to use your own Tufts email</span>
 
-<span class="c1">#[commands_you_would_like_to_exe_on_the_compute_nodes]</span>
-<span class="c1">#</span>
+<span class="c1"># [commands_you_would_like_to_exe_on_the_compute_nodes]</span>
+<span class="c1"># have a clean start. purge all loaded modules in current environment</span>
 module<span class="w"> </span>purge
 <span class="c1"># for example, running a python script</span>
 <span class="c1"># load the module so the correct version python is available to you</span>
-module<span class="w"> </span>load<span class="w"> </span>anaconda/2021.05
+module<span class="w"> </span>load<span class="w"> </span>miniforge/25.3.0
 <span class="c1"># when using GPUs, make sure to load the appropriate version of cuda toolkit to provide necessary libraries for your application</span>
-module<span class="w"> </span>load<span class="w"> </span>cuda/12.2
-<span class="c1"># If you have a conda env that you would like to use, activate it here using &quot;source activate xxx&quot;. DO NOT USE &quot;conda activate&quot;</span>
+module<span class="w"> </span>load<span class="w"> </span>cuda/12.9.0
+<span class="c1"># If you have a conda env that you would like to use, activate it</span>
 <span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span><span class="o">[</span>target_env<span class="o">]</span>
 <span class="c1"># run python script</span>
 python<span class="w"> </span>myscript.py<span class="w"> </span><span class="c1">#make sure myscript.py exists in the current directory</span>
@@ -600,9 +601,7 @@ conda<span class="w"> </span>deactivate
 </div>
 <p><strong>Submit</strong> the job using the following command from command line interface:</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sbatch</span> <span class="pre">mygpujob.sh</span></code></p>
-<p>You will receive an unique ID for the job.</p>
-<p>**You can find more sample scripts in <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/hpc/tools/slurm_scripts</span></code>. **</p>
-<p><strong>Feel free to cope the scripts to your own directory and modify them for your own use.</strong></p>
+<p>This will output the unique ID for the job. Keep this for reference.</p>
 </section>
 </section>
 
@@ -723,7 +722,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 02, 2026.
+  Last updated on Mar 03, 2026.
   <br/>
 </p></div>
       

@@ -1,12 +1,10 @@
 # Batch Jobs
 
-Batch jobs are best suited for production level work, as there's no chance for users to interact and modify the programs while it's running. So be sure to debug and test your programs beforehand.
+A Batch jobs is one where once submitted to the scheduler, the user does not intervene. The application is started by the scheduler once the requested nodes are allocated, and it runs unattended until completion. After completion the user returns at their convivence to review the program output files. Batch jobs are created by the user submitting a batch script file to the Slurm scheduler using the sbatch command.
 
-It is easy to submit a batch job.
+- It is easy to submit a batch job.
 
-You will need a slurm batch job script which contains all the resource requirements and the commands to run your program.
-
-We strongly recommend user check available resources using [hpctools - Tufts HPC Helper Tool](../examples/hpctools.md) before submitting batch jobs.
+- You will need a slurm batch job script which contains all the resource requirements and the commands to run your program.
 
 Please see examples below:
 
@@ -25,16 +23,16 @@ Write a batch submission script e.g. **mycpujob.sh**
 #SBATCH --output=MyJob.%j.%N.out  #saving standard output to file, %j=JOBID, %N=NodeName
 #SBATCH --error=MyJob.%j.%N.err   #saving standard error to file, %j=JOBID, %N=NodeName
 #SBATCH --mail-type=ALL    #email options
-#SBATCH --mail-user=Your_Tufts_Email@tufts.edu
+#SBATCH --mail-user=Your_Tufts_Email@tufts.edu  #please make sure to use your own Tufts email
 
-#[commands_you_would_like_to_exe_on_the_compute_nodes]
+# [commands_you_would_like_to_exe_on_the_compute_nodes]
 # have a clean start. purge all loaded modules in current environment
 module purge
 # for example, running a python script
 # load the module so the correct version python is available to you
-module load anaconda/2021.05
-# If you have a conda env that you would like to use, activate it here using "source activate xxx". DO NOT USE "conda activate"
-source activate mycondaenv
+module load miniforge/25.3.0
+# If you have a conda env that you would like to use, activate it
+source activate [target_env]
 # run python script
 python myscript.py #make sure myscript.py exists in the current directory
 # make sure you save all plots, data, outputs generated to files in your script
@@ -65,17 +63,17 @@ Write a batch submission script e.g. **mygpujob.sh**
 #SBATCH --output=MyJob.%j.%N.out  #saving standard output to file, %j=JOBID, %N=NodeName
 #SBATCH --error=MyJob.%j.%N.err   #saving standard error to file, %j=JOBID, %N=NodeName
 #SBATCH --mail-type=ALL    #email optitions
-#SBATCH --mail-user=Your_Tufts_Email@tufts.edu
+#SBATCH --mail-user=Your_Tufts_Email@tufts.edu #please make sure to use your own Tufts email
 
-#[commands_you_would_like_to_exe_on_the_compute_nodes]
-#
+# [commands_you_would_like_to_exe_on_the_compute_nodes]
+# have a clean start. purge all loaded modules in current environment
 module purge
 # for example, running a python script
 # load the module so the correct version python is available to you
-module load anaconda/2021.05
+module load miniforge/25.3.0
 # when using GPUs, make sure to load the appropriate version of cuda toolkit to provide necessary libraries for your application
-module load cuda/12.2
-# If you have a conda env that you would like to use, activate it here using "source activate xxx". DO NOT USE "conda activate"
+module load cuda/12.9.0
+# If you have a conda env that you would like to use, activate it
 source activate [target_env]
 # run python script
 python myscript.py #make sure myscript.py exists in the current directory
@@ -88,8 +86,4 @@ conda deactivate
 
 `$ sbatch mygpujob.sh`
 
-You will receive an unique ID for the job.
-
-\*\*You can find more sample scripts in `/cluster/tufts/hpc/tools/slurm_scripts`. \*\*
-
-**Feel free to cope the scripts to your own directory and modify them for your own use.**
+This will output the unique ID for the job. Keep this for reference.

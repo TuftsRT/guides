@@ -79,8 +79,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260302" />
-    <meta name="docbuild:last-update" content="Mar 02, 2026"/> 
+  <meta name="docsearch:version" content="20260303" />
+    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
   </head>
   
   
@@ -555,6 +555,7 @@
 <div><p><strong>Module Cheat Sheet</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">av</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">av</span> <span class="pre">&lt;software&gt;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span> <span class="pre">&lt;software&gt;</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">&lt;software&gt;</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span> <span class="pre">&lt;software&gt;</span></code></p>
@@ -563,77 +564,101 @@
 </div></blockquote>
 <ul>
 <li><p>To <strong>check available modules</strong> installed on the cluster:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> [tutln01@login-prod-01 ~]$ module av
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> $ module av
 </pre></div>
 </div>
-</li>
-<li><p>Upon login, environment variable <strong><code class="docutils literal notranslate"><span class="pre">PATH</span></code></strong> is set for the system to search executables along these paths:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 ~]$ echo $PATH
-
-/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/cluster/home/tutln01/bin:/cluster/home/tutln01/.local/bin
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module spider
 </pre></div>
 </div>
 </li>
 </ul>
+<section id="module-av-vs-module-spider">
+<h3><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">av</span></code> vs. <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span></code><a class="headerlink" href="#module-av-vs-module-spider" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Feature</p></th>
+<th class="head text-left"><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">av</span></code></p></th>
+<th class="head text-left"><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Search Scope</strong></p></td>
+<td class="text-left"><p>Only shows modules currently available to load based on your environment.</p></td>
+<td class="text-left"><p>Searches the entire software hierarchy, including hidden or nested modules.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Hierarchy Aware</strong></p></td>
+<td class="text-left"><p>Yes; it only shows what matches your current compiler/MPI stack.</p></td>
+<td class="text-left"><p>No; it finds software regardless of whether its dependencies are loaded.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Common Use Case</strong></p></td>
+<td class="text-left"><p>Checking what you can use <em>right now</em>.</p></td>
+<td class="text-left"><p>Finding <em>if</em> a piece of software exists and how to load it.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Output Detail</strong></p></td>
+<td class="text-left"><p>Lists available versions briefly.</p></td>
+<td class="text-left"><p>Provides detailed instructions on required parent modules for specific versions.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="example-using-gcc-compiler">
 <h3>Example: Using <code class="docutils literal notranslate"><span class="pre">gcc</span></code> Compiler<a class="headerlink" href="#example-using-gcc-compiler" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Check what versions of gcc compiler is available: load the version I would like to use, and use it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 ~]$ module av gcc
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module avail gcc
+------ /cluster/tufts/apps/modules/9/x86_64/Core -------
+  gcc/12.4.0    gcc/15.1.0 (D)
 
------------------------------------------------------------ /opt/shared/Modules/modulefiles-rhel6     ------------------------------------------------------------
-gcc/4.7.0 gcc/4.9.2 gcc/5.3.0 gcc/7.3.0
-
--------------------------------------------------------------- /cluster/tufts/hpc/tools/module   ---------------------------------------------------------------
-gcc/8.4.0 gcc/9.3.0 gcc/11.2.0
+Where:
+D:  Default Module
 </pre></div>
 </div>
 </li>
 <li><p>Load the desired version of gcc:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 ~]$ module load gcc/7.3.0
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load gcc/12.4.0
 </pre></div>
 </div>
 </li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code> to <strong>check loaded modules</strong> in current environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 ~]$ module list
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module list
 
-Currently Loaded Modulefiles:
-1) use.own     2) gcc/7.3.0
+Currently Loaded Modules:
+1) gmp/6.3.0-gt7twni (H)   2) gcc/12.4.0
 </pre></div>
 </div>
 </li>
 <li><p>Verify the <code class="docutils literal notranslate"><span class="pre">gcc</span></code> Version:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 ~]$ which gcc
-/opt/shared/gcc/7.3.0/bin/gcc
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ which gcc
+/cluster/tufts/apps/spack/9/x86_64/apps/linux-broadwell/gcc-12.4.0-c4qsn6yjbnde4mdnr6wlplee454jnden/bin/gcc
 
-[tutln01@login-prod-01 ~]$ echo $PATH
-/opt/shared/gcc/7.3.0/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/cluster/home/tutln01/bin:/cluster/ho  me/tutln01/.local/bin
-
-[tutln01@login-prod-01 ~]$ gcc --version
-gcc (GCC) 7.3.0
-Copyright (C) 2017 Free Software Foundation, Inc.
+$ gcc --version
+gcc (Spack GCC) 12.4.0
+Copyright (C) 2022 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 </pre></div>
 </div>
 </li>
-<li><p><strong>swap a module for another</strong> (doesn’t have to be the same software):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 ~]$ module swap gcc/7.3.0 gcc/9.3.0
-[tutln01@login-prod-01 ~]$ module list
-Currently Loaded Modulefiles:
-1) use.own     2) gcc/9.3.0
+<li><p><strong>switch a module for another</strong> (doesn’t have to be the same software):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module switch gcc/12.4.0 gcc/15.1.0
+$ module list
+Currently Loaded Modules:
+1) gmp/6.3.0-gt7twni (H)   2) gcc/15.1.0
+
+Where:
+ H:  Hidden Module
 </pre></div>
 </div>
 </li>
 <li><p><strong>unload loaded modules</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 ~]$ module unload gcc
-[tutln01@login-prod-01 ~]$ echo $PATH
-/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/cluster/home/tutln01/bin:/cluster/home/tutln01/.local/bin
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module unload gcc
 </pre></div>
 </div>
 </li>
 <li><p><strong>unload ALL</strong> of the loaded modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 ~]$ module purge
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module purge
 </pre></div>
 </div>
 </li>
@@ -700,6 +725,7 @@ Currently Loaded Modulefiles:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-modules">What are modules?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-modules">Why Use Modules?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-modules">How to use modules?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-av-vs-module-spider"><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">av</span></code> vs. <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-using-gcc-compiler">Example: Using <code class="docutils literal notranslate"><span class="pre">gcc</span></code> Compiler</a></li>
 </ul>
 </li>
@@ -769,7 +795,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 02, 2026.
+  Last updated on Mar 03, 2026.
   <br/>
 </p></div>
       

@@ -79,8 +79,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260302" />
-    <meta name="docbuild:last-update" content="Mar 02, 2026"/> 
+  <meta name="docsearch:version" content="20260303" />
+    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
   </head>
   
   
@@ -447,7 +447,7 @@
 <li class="toctree-l2"><a class="reference internal" href="helloworld.html">HelloWorld HPC Cluster Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install-from-source.html">Building software from source code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="new-cluster.html">2025 Cluster Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new-cluster.html">HPC Cluster Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="portforward.html">Port Forwarding on HPC Cluster</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Private Modules</a></li>
@@ -540,54 +540,30 @@
 <p>The <strong>location</strong> of the module file is very important! If it’s misplaced, your module won’t show up.</p>
 <p>Please put your own module file in your home directory, under <code class="docutils literal notranslate"><span class="pre">privatemodules</span></code>.</p>
 <p>Each software should have its own directory, such as <code class="docutils literal notranslate"><span class="pre">mysoftware</span></code>.</p>
-<p>And for each version of the software, there should be a module file, such as <code class="docutils literal notranslate"><span class="pre">v1.0.0</span></code>.</p>
+<p>And for each version of the software, there should be a module file, such as <code class="docutils literal notranslate"><span class="pre">1.0.0.lua</span></code>.</p>
 <p>The overall structure should be:</p>
-<p><code class="docutils literal notranslate"><span class="pre">/cluster/home/$USER/privatemodules/mysoftware/v1.0.0</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">/cluster/home/$USER/privatemodules/mysoftware/1.0.0.lua</span></code></p>
 <p>Now let’s work on the content of the file.</p>
-<p>You can reference/borrow existing module files on the cluster.</p>
-<p>For simple software, you can use “cmake/3.18” as a template.</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">av</span> <span class="pre">cmake</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">------------------------------------------------------------------------------------------------------</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">Modules</span><span class="o">/</span><span class="n">modulefiles</span><span class="o">-</span><span class="n">rhel6</span> <span class="o">------------------------------------------------------------------------------------------------------</span>
-<span class="n">cmake</span><span class="o">/</span><span class="mf">2.8</span>      <span class="n">cmake</span><span class="o">/</span><span class="mf">2.8.11.2</span> <span class="n">cmake</span><span class="o">/</span><span class="mf">3.2.1</span>    <span class="n">cmake</span><span class="o">/</span><span class="mf">3.4.3</span>
+<p>You can refer to the following <code class="docutils literal notranslate"><span class="pre">cmake</span></code> modulefile located at <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/apps/modules/9/x86_64/gcc/15.1.0/cmake/3.31.6.lua</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span> <span class="o">-*-</span> <span class="n">lua</span> <span class="o">-*---</span>
+<span class="o">--</span> <span class="n">cmake</span><span class="o">@</span><span class="mf">3.31.6</span><span class="o">~</span><span class="n">doc</span><span class="o">+</span><span class="n">ncurses</span><span class="o">+</span><span class="n">ownlibs</span><span class="o">+</span><span class="n">qtgui</span> <span class="n">build_system</span><span class="o">=</span><span class="n">generic</span> <span class="n">build_type</span><span class="o">=</span><span class="n">Release</span> <span class="n">arch</span><span class="o">=</span><span class="n">linux</span><span class="o">-</span><span class="n">rocky9</span><span class="o">-</span><span class="n">broadwell</span><span class="o">/</span><span class="n">htsgau3</span>
+<span class="o">--</span>
 
-<span class="o">---------------------------------------------------------------------------------------------------------</span> <span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">hpc</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">module</span> <span class="o">---------------------------------------------------------------------------------------------------------</span>
-<span class="n">cmake</span><span class="o">/</span><span class="mf">3.18</span>     <span class="n">cmake</span><span class="o">/</span><span class="mf">3.23</span><span class="n">_gui</span>
-</pre></div>
-</div>
-<p>To take a look at the module file:</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cat</span> <span class="pre">/cluster/tufts/hpc/tools/module/cmake/3.18</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#%Module -*- tcl -*-
-#
-# cmake 3.18
-#
-#
+<span class="n">whatis</span><span class="p">([[</span><span class="n">Name</span> <span class="p">:</span> <span class="n">cmake</span><span class="p">]])</span>
+<span class="n">whatis</span><span class="p">([[</span><span class="n">Version</span> <span class="p">:</span> <span class="mf">3.31.6</span><span class="p">]])</span>
+<span class="n">whatis</span><span class="p">([[</span><span class="n">Short</span> <span class="n">description</span> <span class="p">:</span> <span class="n">A</span> <span class="n">cross</span><span class="o">-</span><span class="n">platform</span><span class="p">,</span> <span class="nb">open</span><span class="o">-</span><span class="n">source</span> <span class="n">build</span> <span class="n">system</span><span class="o">.</span> <span class="n">CMake</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">family</span> <span class="n">of</span> <span class="n">tools</span> <span class="n">designed</span> <span class="n">to</span> <span class="n">build</span><span class="p">,</span> <span class="n">test</span> <span class="ow">and</span> <span class="n">package</span> <span class="n">software</span><span class="o">.</span> <span class="p">]])</span>
 
-set ver 3.18
-
-proc ModulesHelp { } {
-  global ver
-  puts stderr &quot;\tThis module sets up the cmake 3.18 environment installed by DM in hpc_tools, version $ver &quot;
-}
-
-module-whatis   &quot;load cmake 3.18&quot;
+<span class="n">help</span><span class="p">([[</span><span class="n">A</span> <span class="n">cross</span><span class="o">-</span><span class="n">platform</span><span class="p">,</span> <span class="nb">open</span><span class="o">-</span><span class="n">source</span> <span class="n">build</span> <span class="n">system</span><span class="o">.</span> <span class="n">CMake</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">family</span> <span class="n">of</span> <span class="n">tools</span>
+<span class="n">designed</span> <span class="n">to</span> <span class="n">build</span><span class="p">,</span> <span class="n">test</span> <span class="ow">and</span> <span class="n">package</span> <span class="n">software</span><span class="o">.</span><span class="p">]])</span>
 
 
-prepend-path PATH /cluster/tufts/hpc/tools/spack/linux-rhel7-ivybridge/gcc-8.4.0/cmake-3.18.2-r2hx6rewcozqvda5gfo7rouhzlqy2k6t/bin
+<span class="n">depends_on</span><span class="p">(</span><span class="s2">&quot;gmake/4.4.1-yi34qio&quot;</span><span class="p">)</span>
+<span class="n">depends_on</span><span class="p">(</span><span class="s2">&quot;qt/5.15.12-qkjcg5f&quot;</span><span class="p">)</span>
 
-#
-# appended log section
-#
-
-if {[module-info mode &quot;load&quot;]} {
-  global env
-  if {[info exists env(USER)]} {
-    set the_user [lindex [array get env USER] 1]
-  } else {
-    set the_user &quot;foo&quot;
-  }
-  system [concat &quot;logger environment-modules&quot; [module-info name] $the_user ]
-}
-
+<span class="n">local</span> <span class="n">modroot</span><span class="o">=</span><span class="s2">&quot;/cluster/tufts/apps/spack/9/x86_64/apps/linux-broadwell/cmake-3.31.6-htsgau3kr7aenjwhvsdbkadkwjrfgulh&quot;</span>
+<span class="n">prepend_path</span><span class="p">(</span><span class="s2">&quot;PATH&quot;</span><span class="p">,</span> <span class="n">modroot</span><span class="o">..</span><span class="s2">&quot;/bin&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">prepend_path</span><span class="p">(</span><span class="s2">&quot;ACLOCAL_PATH&quot;</span><span class="p">,</span> <span class="n">modroot</span><span class="o">..</span><span class="s2">&quot;/share/aclocal&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">prepend_path</span><span class="p">(</span><span class="s2">&quot;CMAKE_PREFIX_PATH&quot;</span><span class="p">,</span> <span class="n">modroot</span><span class="o">..</span><span class="s2">&quot;/.&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Most of the content is informational.</p>
@@ -602,12 +578,12 @@ if {[module-info mode &quot;load&quot;]} {
 <p>Now you can check your own module.</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">av</span> <span class="pre">mysoftware</span></code></p>
 <p>And it should show up as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>------------- /cluster/home/$USER/privatemodules ---------------------------------------------------------------------------------------------------------
-mysoftware/v1.0.0
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>------------- /cluster/home/$USER/privatemodules ------------------
+mysoftware/1.0.0
 </pre></div>
 </div>
 <p>You can load it just like other modules on the cluster:</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">my</span> <span class="pre">software/v1.0.0</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">my</span> <span class="pre">software/1.0.0</span></code></p>
 <p>:)</p>
 </section>
 </section>
@@ -730,7 +706,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 02, 2026.
+  Last updated on Mar 03, 2026.
   <br/>
 </p></div>
       

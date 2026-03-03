@@ -11,19 +11,19 @@ NVIDIA GPUs are available in `gpu` and `preempt` public partitions as well as so
   - `--gres` : Generic Resource
   - `gpu:1` : requesting one GPU (any GPU architecture available in the request partition)
 
-- To request a specific GPU architecture you can add it to the gres `--gres=gpu:t4:1`, e.g.
+- To request a specific GPU architecture you can add it to the gres `--gres=gpu:l40s:1`, e.g.
 
-  `$ srun -p preempt -n 2 --mem=4g --gres=gpu:t4:1 -t 1:00:00 --pty bash`
+  `$ srun -p preempt -n 2 --mem=4g --gres=gpu:l40s:1 -t 1:00:00 --pty bash`
 
   - `--gres` : Generic Resource
-  - `gpu:t4:1` : requesting one T4 GPU.
+  - `gpu:l40s:1` : requesting one T4 GPU.
 
 - You can request more than one type (but not all) of GPUs with `constraint`, e.g.
 
-  `$ srun -p preempt -n 2 --mem=4g --gres=gpu:1 --constraint="t4|p100|v100" -t 1:00:00 --pty bash`
+  `$ srun -p preempt -n 2 --mem=4g --gres=gpu:1 --constraint="a100|l40s|H200" -t 1:00:00 --pty bash`
 
   - `--constraint` : set constraints on the resources allocated for the task.
-  - `t4|p100|v100` : indicates that the task can use a GPU of type t4, p100, or v100, where the | symbol means "or".
+  - `a100|l40s|H200` : indicates that the task can use a GPU of type a100, l40s, or H200, where the | symbol means "or".
 
 ```{warning}
 - **DO NOT** manually set `CUDA_VISIBLE_DEVICES`.
@@ -48,8 +48,10 @@ include the output in the log for troubleshooting purposes.
 | l40s        | 48GB       | 4            | preempt                | l40s                            |                          |
 | rtx_a5000   | 24GB       | 8            | preempt                | rtx_a5000                       |                          |
 | l40         | 48GB       | 4            | preempt                | l40                             |                          |
-| l40s        | 48GB       | 4            | gpu, preempt           | l40s                            | Upgraded Cluster         |
+| l40s        | 48GB       | 4            | gpu, preempt           | l40s                            |                          |
 | h100        | 80GB       | 3            | preempt                | h100                            |                          |
-| h200        | 80GB       | 8            | gpu, preempt           | h200                            | SXM, Upgraded Cluster    |
+| h200        | 141GB      | 8            | gpu, preempt           | h200                            | SXM                      |
 
-All GPU cards drivers except t4 support CUDA 12.2
+> All GPU cards drivers except t4 support CUDA 12.9
+
+Up-to-date system information, real-time status, and resource availability can be viewed with [OnDemand System Status](https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status) app.

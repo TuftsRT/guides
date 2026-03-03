@@ -79,8 +79,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260302" />
-    <meta name="docbuild:last-update" content="Mar 02, 2026"/> 
+  <meta name="docsearch:version" content="20260303" />
+    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
   </head>
   
   
@@ -447,6 +447,12 @@
 <li class="toctree-l2"><a class="reference internal" href="25-rstudio.html">RStudio via OnDemand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="30-tmux.html">Tmux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="40-vscode.html">VSCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpc-desktop.html">HPC Desktop</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab.html">MATLAB</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples and Tutorials</a></li>
@@ -527,14 +533,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="r">
 <h1>R<a class="headerlink" href="#r" title="Link to this heading">#</a></h1>
 <blockquote>
-<div><p>Updates coming soon!</p>
-</div></blockquote>
-<p>HPC Tools R package repos:</p>
-<blockquote>
-<div><p>For <code class="docutils literal notranslate"><span class="pre">R/4.0.0</span></code>, use <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/hpc/tools/R/4.0.0</span></code></p>
-<p>For <code class="docutils literal notranslate"><span class="pre">R/4.1.1</span></code>, use <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/hpc/tools/R/4.1</span></code></p>
-<p>For <code class="docutils literal notranslate"><span class="pre">R/4.2.0</span></code>, use <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/hpc/tools/R/4.2.0</span></code></p>
-<p>For <code class="docutils literal notranslate"><span class="pre">R/4.3.0</span></code>, use <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/hpc/tools/R/4.3.0</span></code></p>
+<div><p>In this guide, we walk you through how to start and run R from shell command line on Tufts HPC cluster</p>
 </div></blockquote>
 <section id="r-interactive-session">
 <h2>R Interactive Session<a class="headerlink" href="#r-interactive-session" title="Link to this heading">#</a></h2>
@@ -542,69 +541,70 @@
 <p><strong>Steps:</strong></p>
 <ol class="arabic">
 <li><p>Login to the HPC cluster (new cluster Pax)</p>
-<p><code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">your_username&#64;login.pax.tufts.edu</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">your_username&#64;login-prod.pax.tufts.edu</span></code></p>
 </li>
-<li><p>From the login node, load R module (e.g. <code class="docutils literal notranslate"><span class="pre">R/4.0.0</span></code>)</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">R/4.0.0</span></code></p>
-<p>Please check other available versions with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">av</span></code></p>
+<li><p>From the login node, load R module (e.g. <code class="docutils literal notranslate"><span class="pre">r/4.4.3</span></code>)</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">r/4.4.3</span></code></p>
+<p>Please check other available R versions with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">av</span> <span class="pre">r</span></code></p>
 </li>
 <li><p>Allocate computing resources. Start an interactive session with your desired number of cores and memory, here we are using 2 cores with 4GB of memory</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">srun</span> <span class="pre">-p</span> <span class="pre">interactive</span> <span class="pre">-n</span> <span class="pre">2</span> <span class="pre">--mem=4g</span> <span class="pre">--pty</span> <span class="pre">bash</span></code></p>
-<p>Note: Interactive partition has a default 4-hour time limit</p>
-<p>For more information on how to allocate resources on Tufts HPC cluster, please reference: <a class="reference external" href="https://tufts.box.com/v/Pax-User-Guide">Pax User Guide</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">srun</span> <span class="pre">-p</span> <span class="pre">batch</span> <span class="pre">-n</span> <span class="pre">2</span> <span class="pre">--mem=4g</span> <span class="pre">-t</span> <span class="pre">4:00:00</span> <span class="pre">--pty</span> <span class="pre">bash</span></code></p>
+<p>For more information on how to allocate resources on Tufts HPC cluster <a class="reference internal" href="../slurm/interactive.html"><span class="std std-doc">Slurm</span></a></p>
 </li>
 <li><p>Within the interactive session, you can start R</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">R</span></code></p>
 </li>
-<li></li>
 </ol>
 <p>In R, you can install the packages you need in your home directory with:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">install.packages(&quot;XXX&quot;)</span></code>.</p>
-<p>You can also use the packages installed in HPC Tools R package repo:</p>
-<p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">LIB='/cluster/tufts/hpc/tools/R/4.0.0'</span> </code></p>
-<p><code class="docutils literal notranslate"><span class="pre">&gt;.libPaths(c(&quot;&quot;,LIB))</span> </code></p>
-<p>If you are having trouble installing the packages you need, please contact <a class="reference external" href="mailto:tts-research&#37;&#52;&#48;tufts&#46;edu">tts-research<span>&#64;</span>tufts<span>&#46;</span>edu</a>.</p>
-<ol class="arabic" start="6">
+<p>If you are having trouble installing packages, please contact <a class="reference external" href="mailto:tts-research&#37;&#52;&#48;tufts&#46;edu">tts-research<span>&#64;</span>tufts<span>&#46;</span>edu</a>.</p>
+<ol class="arabic" start="5">
 <li><p>Exit from R command line interface:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">q()</span></code></p>
 </li>
-<li><p>To terminate interactive session</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">exit</span></code></p>
-</li>
+<li><p>It is important to <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">exit</span></code> the interactive session when finished to free up resources for other users.</p></li>
 </ol>
 </section>
 <section id="r-batch-jobs">
 <h2>R batch jobs<a class="headerlink" href="#r-batch-jobs" title="Link to this heading">#</a></h2>
 <p>R batch job refers to running R scripts or R commands in a batch mode, where the job is submitted to the computing cluster’s scheduler to be executed asynchronously. Batch jobs are typically used for computationally intensive tasks or tasks that require significant processing time, as they allow users to submit jobs and continue working without having to wait for the job to complete. This approach is useful for running R scripts that involve large datasets, complex calculations, or simulations that may take a long time to finish.</p>
 <p><strong>Steps:</strong></p>
-<ol class="arabic">
+<ol class="arabic simple">
 <li><p>Login to the HPC cluster</p></li>
-<li><p>Upload your R script to the HPC cluster</p></li>
-<li><p>Go to the directory/folder which contains your R script</p></li>
+<li><p>Upload your R script or create your own on HPC cluster</p></li>
+<li><p>Go to the directory/folder which contains your R script, e.g.:</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">/cluster/tufts/xxxlab/username/myfolder</span></code></p>
+<ol class="arabic" start="4">
 <li><p>Open your favorite text editor and write a slurm submission script similar to the following one <code class="docutils literal notranslate"><span class="pre">batchjob.sh</span></code> (name your own)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH -J myRjob  #job name</span>
-<span class="c1">#SBATCH --time=00-00:20:00 #requested time</span>
-<span class="c1">#SBATCH -p batch  #running on &quot;batch&quot; partition/queue</span>
-<span class="c1">#SBATCH -n 2  #2 cores total</span>
-<span class="c1">#SBATCH --mem=2g #requesting 2GB of RAM total</span>
+<span class="c1">#SBATCH -J myRjob             #job name</span>
+<span class="c1">#SBATCH --time=00-00:20:00    #requested time</span>
+<span class="c1">#SBATCH -p batch              #running on &quot;batch&quot; partition/queue</span>
+<span class="c1">#SBATCH -n 1                  #1 CPU core total</span>
+<span class="c1">#SBATCH --mem=2g              #requesting 2GB of RAM total</span>
 <span class="c1">#SBATCH --output=myRjob.%j.out #saving standard output to file</span>
 <span class="c1">#SBATCH --error=myRjob.%j.err  #saving standard error to file</span>
-<span class="c1">#SBATCH --mail-type=ALL  #email optitions</span>
-<span class="c1">#SBATCH --mail-user=Your_Tufts_Email @tufts.edu</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">R</span><span class="o">/</span><span class="mf">4.0.0</span>
+<span class="c1">#SBATCH --mail-type=ALL       #email optitions</span>
+<span class="c1">#SBATCH --mail-user=Your_Tufts_Email@tufts.edu</span>
+
+<span class="c1">#Below this point, are the commands executed on the computing resource allocated</span>
+<span class="n">module</span> <span class="n">purge</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">r</span><span class="o">/</span><span class="mf">4.4.3</span>
 <span class="n">Rscript</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">save</span> <span class="n">your_rscript_name</span><span class="o">.</span><span class="n">R</span>
 </pre></div>
 </div>
 </li>
-</ol>
-<p>​ You can find a sample script that you can copy to your own directory in <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/hpc/tools/slurm_scripts/R</span></code></p>
-<ol class="arabic" start="5">
 <li><p>Submit it with</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sbatch</span> <span class="pre">batchjob.sh</span></code></p>
 </li>
-<li><p>If you are submitting multiple batch jobs to run the same script on different datasets, please make sure they are saving results to different files inside of your R script.</p></li>
 </ol>
+<blockquote>
+<div><p>NOTE: If you are submitting multiple batch jobs to run the same R script on different datasets, please make sure the results are saved to unique files inside of your R script.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Learn more about <a class="reference internal" href="../slurm/batchjob.html"><span class="std std-doc">slurm batch job</span></a></p>
+</div></blockquote>
 </section>
 </section>
 
@@ -725,7 +725,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 02, 2026.
+  Last updated on Mar 03, 2026.
   <br/>
 </p></div>
       

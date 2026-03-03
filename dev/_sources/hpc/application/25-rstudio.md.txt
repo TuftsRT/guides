@@ -1,32 +1,30 @@
 # RStudio via OnDemand
 
-> Updates coming soon!
-
 ## Launch RStudio
 
-1. Go to [OnDemand](https://ondemand.cluster.tufts.edu) Login with your username (lowercase) and password.
-1. `RStudio` apps are available in both `Interactive Apps` and `Bioinformatics Apps` tabs.
-1. Select the time, number of cores, CPU memory you need, as well as the version of R you wish to run.
-1. Load the module you need for your packages to run, if no additional modules are needed, leave it blank.
-1. Each user can only start one OnDemand RStudio session on one compute node at a time. If you need to start multiple RStudio sessions, please make sure you select a different nodename from your current running session.
-1. Click "Launch" and wait for available resources.
-1. Once it's ready, click on the `Connect to RStudio` button
-1. When you finished, exit RStudio properly `q()`, then close the RStudio tab, and go back to the main page click `Delete` to end the session.
+1. Go to [OnDemand](https://ondemand-p01.pax.tufts.edu/) Login with Tufts SSO.
+1. `RStudio Server` app is available in `Interactive Apps`
+   ![ood-rstudio](../assets/el9/newondemand-rstudio.png)
+1. Fill the request form with the appropriate amount of resources needed for your work and the version of R needed. Click `Launch` to launch the session.
+   ![ood-rstudio-launch](../assets/el9/newondemand-rstudio-launch.png)
+1. Once the resource for your session is allocated, click `Connect to RStudio Server` to start.
+   ![ood-rstudio-connect](../assets/el9/newondemand-rstudio-connect.png)
+1. When you finished, exit RStudio properly `q()`, then close the RStudio tab, and go back to the `My Interactive Sessions` page click `Delete` to end the session and free up resources for other users.
 
 ## Debug OnDemand RStudio Pax
 
 Logs from RStudio could be corrupted sometimes which will cause RStudio not launching from OnDemand. Here are a few things you can try. Make sure all RStudio sessions are deleted before this.
 
-- Rename the file `/cluster/home/$USER/.local/share/rstudio`
+- Rename the file `~/.local/share/rstudio`
 
-  $ `mv /cluster/home/$USER/.local/share/rstudio /cluster/home/\$USER/.local/share/rstudio_bkp\`
+`$ mv ~/.local/share/rstudio  ~/.local/share/rstudio_bkp`
 
 - Rename the `/cluster/home/$USER/.RData`
 
-  $ `mv /cluster/home/$USER/.RData /cluster/home/\$USER/.RData_bkp\`
+`$ mv ~/.RData  ~/.RData_bkp`
 
 Now you can try relaunch RStudio. If it's working properly for you, test out your workflow.
 
-If you get all you need without issues, you can go ahead and delete `/cluster/home/$USER/.local/share/rstudio_bkp` and `/cluster/home/$USER/.RData_bkp`.
+If you get all you need without issues, you can go ahead and delete `~/.local/share/rstudio_bkp` and `~/.RData_bkp`.
 
 If you have any questions or need additional assistance, feel free to reach out to us at {{ email }}.

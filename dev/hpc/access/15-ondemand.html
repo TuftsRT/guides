@@ -79,8 +79,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260302" />
-    <meta name="docbuild:last-update" content="Mar 02, 2026"/> 
+  <meta name="docsearch:version" content="20260303" />
+    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
   </head>
   
   
@@ -533,21 +533,49 @@
 <p class="admonition-title">Important</p>
 <p>VPN - Off-campus access from non-Tufts Network please connect to <a class="reference external" href="https://access.tufts.edu/vpn">Tufts VPN</a>.</p>
 </div>
-<p>OnDemand provides easy access to the HPC environment using a web browser.
-Start by going to <a class="reference external" href="https://ondemand.pax.tufts.edu"><strong>OnDemand</strong></a>, <a class="reference external" href="https://ondemand.pax.tufts.edu">https://ondemand.pax.tufts.edu</a> using <strong>Chrome or FireFox</strong>.</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/ondemand_login.png" alt="Core-Node" width=70%>
-<p>Use your <strong>Tufts UTLN</strong> (all lower-case) and <strong>password</strong> to login.</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/ondemand_home.png" alt="Core-Node" width=70%>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/ondemand_menu.png" alt="Core-Node" width=70%>
-<p><strong><code class="docutils literal notranslate"><span class="pre">Clusters</span></code></strong>, you can start a shell access to the HPC cluster.</p>
-<p><strong><code class="docutils literal notranslate"><span class="pre">Tufts</span> <span class="pre">HPC</span> <span class="pre">Shell</span> <span class="pre">Access</span></code></strong> = <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ssh</span> <span class="pre">your_utln&#64;login.cluster.tufts.edu</span></code> = <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ssh</span> <span class="pre">your_utln&#64;login.pax.tufts.edu</span></code>.</p>
-<p>OR</p>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">&gt;_Open</span> <span class="pre">in</span> <span class="pre">Terminal</span></code> button in <code class="docutils literal notranslate"><span class="pre">Files</span></code> to open a terminal in whichever directory you navigated to.</p>
-<p>If you need X11 access through OnDemand to display any GUI applications, please use our <a class="reference external" href="https://ondemand.pax.tufts.edu">OnDemand</a> <strong><code class="docutils literal notranslate"><span class="pre">Clusters</span></code></strong> for this option:</p>
-<p><strong><code class="docutils literal notranslate"><span class="pre">Tufts</span> <span class="pre">HPC</span> <span class="pre">FastX11</span> <span class="pre">Shell</span> <span class="pre">Access</span></code></strong> = <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ssh</span> <span class="pre">-XYC</span> <span class="pre">your_utln&#64;login.cluster.tufts.edu</span></code> (with X11 for GUI applications).</p>
-<p><a class="reference external" href="https://tufts.box.com/s/s1vig4km289dzx8qkq4mbhlp4es0oxu1">FastX Web/Desktop Client Setup Instructions</a></p>
-<p>OR</p>
-<p>You also have the option to use the <code class="docutils literal notranslate"><span class="pre">Xfce</span> <span class="pre">Terminal</span></code> under new <a class="reference external" href="https://ondemand.pax.tufts.edu">OnDemand</a> <code class="docutils literal notranslate"><span class="pre">Interactive</span> <span class="pre">Apps</span></code> with limited computing resources.</p>
+<section id="login">
+<h2>Login<a class="headerlink" href="#login" title="Link to this heading">#</a></h2>
+<p>OnDemand empowers Tufts HPC community with remote web access to Tufts HPC cluster.
+From a browser, go to <a class="reference external" href="https://ondemand-prod.pax.tufts.edu/"><strong>OnDemand</strong></a>, <a class="reference external" href="https://ondemand-prod.pax.tufts.edu/">https://ondemand-prod.pax.tufts.edu/</a>
+SSO - Use your <strong>Tufts UTLN</strong> (all lower-case) and <strong>password</strong> to login.</p>
+<p><img alt="ood-login" src="../../_images/newondemand-login.png" /></p>
+</section>
+<section id="explore-tufts-hpc-ondemand">
+<h2>Explore Tufts HPC OnDemand<a class="headerlink" href="#explore-tufts-hpc-ondemand" title="Link to this heading">#</a></h2>
+<p>OnDemand makes it easy to access cluster resources and your favorite software for data visualization, simulations, modeling, and more.</p>
+<section id="files">
+<h3>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h3>
+<p>Access, manage, and edit your files and folders on HPC cluster directly from OnDemand using <code class="docutils literal notranslate"><span class="pre">Files</span></code> option.</p>
+<p><img alt="ood-home" src="../../_images/newondemand-home.png" /></p>
+<p>Click on <code class="docutils literal notranslate"><span class="pre">Home</span> <span class="pre">Directory</span></code>, it will take you to <code class="docutils literal notranslate"><span class="pre">/cluster/home/your_username</span></code>
+You can use the <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">directory</span></code> button to go to a different folder, such as your lab folder <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/your_lab</span></code>
+You can also <code class="docutils literal notranslate"><span class="pre">Upload</span></code> or <code class="docutils literal notranslate"><span class="pre">Download</span></code> files and folders to/from the cluster from/to your local computer.</p>
+<p><img alt="ood-homedir" src="../../_images/newondemand-homedir.png" /></p>
+</section>
+<section id="jobs">
+<h3>Jobs<a class="headerlink" href="#jobs" title="Link to this heading">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">Jobs</span></code> menu to monitor and manage active jobs, lookup job histories, compose and submit new jobs, as well as create and manage projects on HPC cluster.</p>
+<p><img alt="ood-jobs" src="../../_images/newondemand-jobs.png" /></p>
+</section>
+<section id="clusters">
+<h3>Clusters<a class="headerlink" href="#clusters" title="Link to this heading">#</a></h3>
+<p>Start a terminal using <strong><code class="docutils literal notranslate"><span class="pre">Tufts</span> <span class="pre">HPC</span> <span class="pre">Shell</span> <span class="pre">Access</span></code></strong> in <code class="docutils literal notranslate"><span class="pre">Clusters</span></code>.</p>
+<p><img alt="ood-clusters" src="../../_images/newondemand-clusters.png" /></p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Tufts</span> <span class="pre">HPC</span> <span class="pre">Shell</span> <span class="pre">Access</span></code></strong> = <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ssh</span> <span class="pre">your_utln&#64;login-prod.pax.tufts.edu</span></code></p>
+<p><img alt="ood-shell" src="../../_images/newondemand-shell.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">System</span> <span class="pre">Status</span></code> provides an overview of cluster queue and resource status.</p>
+<p><img alt="ood-sysstatus" src="../../_images/newondemand-systemstatus.png" /></p>
+<p>It also shows node-level resource availability details:
+<img alt="ood-sysstatus" src="../../_images/newondemand-systemstatus-nodedetails.png" /></p>
+</section>
+<section id="interactive-apps">
+<h3>Interactive Apps<a class="headerlink" href="#interactive-apps" title="Link to this heading">#</a></h3>
+<p>There are many popular GUI-ready applications available on OnDemand, such as <a class="reference internal" href="../application/25-rstudio.html"><span class="std std-doc">RStudio</span></a>, Jupter, <a class="reference internal" href="../application/matlab.html"><span class="std std-doc">Matlab Server</span></a>, <a class="reference internal" href="../application/40-vscode.html"><span class="std std-doc">VSCode Server</span></a>, .etc</p>
+<p><img alt="ood-apps" src="../../_images/newondemand-interactiveapps.png" /></p>
+<p>If you need X11 access through OnDemand to display any GUI applications that’s not already available under <code class="docutils literal notranslate"><span class="pre">Interactive</span> <span class="pre">Apps</span></code>, <a class="reference internal" href="../application/hpc-desktop.html"><span class="std std-doc">HPC Desktop</span></a> is a great option.</p>
+<p><img alt="ood-hpc-desktop" src="../../_images/newondemand-desktop.png" /></p>
+</section>
+</section>
 </section>
 
 
@@ -588,6 +616,28 @@ Start by going to <a class="reference external" href="https://ondemand.pax.tufts
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> OnDemand - Tufts HPC Cluster Web Interface
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#login">Login</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-tufts-hpc-ondemand">Explore Tufts HPC OnDemand</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jobs">Jobs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clusters">Clusters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-apps">Interactive Apps</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
 
   <div class="sidebar-secondary-item">
 
@@ -651,7 +701,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 02, 2026.
+  Last updated on Mar 03, 2026.
   <br/>
 </p></div>
       

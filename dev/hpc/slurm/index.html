@@ -74,13 +74,13 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Batch Jobs" href="batchjob.html" />
-    <link rel="prev" title="Tufts HPC Partitions" href="../compute/partition.html" />
+    <link rel="prev" title="Tufts HPC Partitions and Limits" href="../compute/partition.html" />
 <meta name="robots" content="noindex, nofollow" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260302" />
-    <meta name="docbuild:last-update" content="Mar 02, 2026"/> 
+  <meta name="docsearch:version" content="20260303" />
+    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
   </head>
   
   
@@ -520,7 +520,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="slurm-job-scheduler">
 <h1>Slurm Job Scheduler<a class="headerlink" href="#slurm-job-scheduler" title="Link to this heading">#</a></h1>
 <p>The HPC cluster uses the Slurm Job Scheduler to assign users jobs to compute nodes. Jobs are allocated based on the
-requested resources and the submitting users priority. We use the FairShare algorithm which adjusts priority to
+requested resources, submission time, and the users previous usage. We use the FairShare algorithm which adjusts priority to
 balance usage across of our users.</p>
 <p>Command Quick Reference</p>
 <ul class="simple">
@@ -529,7 +529,7 @@ balance usage across of our users.</p>
 <li><p><strong>sbatch</strong> submits batch jobs</p></li>
 <li><p><strong>sprio</strong> Displays the priorities of pending jobs in the queue</p></li>
 <li><p><strong>scancel</strong> can be used to cancel jobs</p></li>
-<li><p><strong>salloc</strong> allocates a compute node for interactive use</p></li>
+<li><p><strong>srun</strong> allocates a compute node for use</p></li>
 <li><p><strong>sacct</strong> display historical report data for jobs</p></li>
 <li><p><strong>seff</strong> displays job CPU and Memory efficiency</p></li>
 </ul>
@@ -538,10 +538,10 @@ balance usage across of our users.</p>
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Partitions</p>
+<p class="sd-card-text"><span class="fas fa-book"></span> Partitions and Limits</p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">How to select where your jobs and the resources available to them.</p>
+<p class="sd-card-text">How to select where your jobs run and the resources available to them.</p>
 </div>
 <a class="sd-stretched-link sd-hide-link-text reference external" href="../compute/partition.html"><span>../compute/partition.html</span></a></div>
 </div>
@@ -607,7 +607,7 @@ balance usage across of our users.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Tufts HPC Partitions</p>
+        <p class="prev-next-title">Tufts HPC Partitions and Limits</p>
       </div>
     </a>
     <a class="right-next"
@@ -692,7 +692,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 02, 2026.
+  Last updated on Mar 03, 2026.
   <br/>
 </p></div>
       
