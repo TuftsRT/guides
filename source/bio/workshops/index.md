@@ -15,12 +15,12 @@ Version Control & Programming:
 
 Reproducible environment:
 
-- Reproducible and Portable Scientific Computing on HPC with Containers - [Register](https://tufts.libcal.com/event/16315146) · **[Workshop Materials](container101.ipdf)**
+- Reproducible and Portable Scientific Computing on HPC with Containers - [Register](https://tufts.libcal.com/event/16315146) · **[Workshop Materials](https://tufts.box.com/shared/static/370oj0tcax0vln2cvakgex213m36h7co.pdf)**
 - Mastering Conda Environments for Reproducible Research - [Register](https://tufts.libcal.com/event/16315200)
 
 HPC & Workflow Automation
 
-- Scalable and Reproducible Bioinformatics with Nextflow and nf-core (Part I) - [Register](https://tufts.libcal.com/event/16315171) · **[Workshop Materials](nextflow101.pdf)** · **[Recording](https://tufts.box.com/s/o280g9bjc1jokrhas4had9jhmanp1vpg)**
+- Scalable and Reproducible Bioinformatics with Nextflow and nf-core (Part I) - [Register](https://tufts.libcal.com/event/16315171) · **[Workshop Materials](https://tufts.box.com/shared/static/k9mwssgxv319hai4lid3cxt40wesfdbm.pdf)** · **[Recording](https://tufts.box.com/s/o280g9bjc1jokrhas4had9jhmanp1vpg)**
 - Scalable and Reproducible Bioinformatics with Nextflow and nf-core (Part II) - [Register](https://tufts.libcal.com/event/16315145) · **[Hands-on](nfcore-openondemand.md)**
 - From Script to Scheduler: Running Bioinformatics Jobs on Tufts HPC - [Register](https://tufts.libcal.com/event/16315206) · **[Slides](https://tufts.box.com/s/abw6dktmjj0hveecd0iksmll1vb29xsm)** · **[Hands-on](bioinformatics_slurm_job.md)**
 
