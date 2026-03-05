@@ -1,8 +1,8 @@
 # Python with Microsoft VS Code and Conda: Getting the Most Out of Your Setup
 
-If you have completed the [installation process for VS Code and conda](30_vs_code_with_miniforge.md), we highly recommend that you review this page for information on how to use your setup effectively.
+If you have completed the [installation process for VS Code and conda](30-vs-code-with-miniforge.md), we highly recommend that you review this page for information on how to use your setup effectively.
 
-> If you would like to use this setup, but have not yet installed and configured it, click [here](30_vs_code_with_miniforge.md). For help in determining the best Python setup for you, click [here](10_which_python_setup.md).
+> If you would like to use this setup, but have not yet installed and configured it, click [here](30-vs-code-with-miniforge.md). For help in determining the best Python setup for you, click [here](10-which-python-setup.md).
 
 The reference guide below is divided into two sections:
 
@@ -19,7 +19,7 @@ Note that we provide instructions on two different styles of Python programming 
 
 For Windows users, the Miniforge distribution comes with an installation of Miniforge Prompt, which is a terminal with conda enabled. Miniforge Prompt can be found by searching your system applications. You can always use Miniforge Prompt to manage conda from the command line.
 
-During our [setup instructions](30_vs_code_with_miniforge.md) we suggested that you run the command `conda init --all` in Miniforge Prompt to permanently activate conda access from other terminals as well, including from the terminal within VS Code. (This may not work on all system setups however, so if you find that you have trouble accessing conda from a different terminal, you can always go back to using Miniforge Prompt.)
+During our [setup instructions](30-vs-code-with-miniforge.md) we suggested that you run the command `conda init --all` in Miniforge Prompt to permanently activate conda access from other terminals as well, including from the terminal within VS Code. (This may not work on all system setups however, so if you find that you have trouble accessing conda from a different terminal, you can always go back to using Miniforge Prompt.)
 
 To check if conda is enabled in your terminal, you can type `conda --version` on the command line and press enter. If it returns the word "conda" with a version number, you can use conda from that terminal. (Note that you can also activate conda by locating and running the conda executable from a terminal command line on your machine, though this method will be time-consuming and inefficient for most users.)
 
@@ -27,7 +27,7 @@ If you would like to use the terminal from within VS Code, open VS Code and sele
 
 #### MacOS
 
-During the setup process, you should have set conda to automatically activate in the Terminal application. You can search your system for the Terminal application when you need to manage your conda environments or install packages. You can check that conda is activated in your terminal by typing `conda --version` on the command line and pressing enter. If it returns a version number, then conda is active in that terminal. If not, then you should return to the [troubleshooting instructions](30_vs_code_with_miniforge.md#conda-is-not-working-from-the-terminal-application) on the VS Code and conda setup page.
+During the setup process, you should have set conda to automatically activate in the Terminal application. You can search your system for the Terminal application when you need to manage your conda environments or install packages. You can check that conda is activated in your terminal by typing `conda --version` on the command line and pressing enter. If it returns a version number, then conda is active in that terminal. If not, then you should return to the [troubleshooting instructions](30-vs-code-with-miniforge.md#conda-is-not-working-from-the-terminal-application) on the VS Code and conda setup page.
 
 ### Creating Environments
 
@@ -67,7 +67,7 @@ Instead of using base, you will need to create new environments to use for your 
 
 ### Installing Libraries
 
-Conda is a more advanced package manager than pip. To gain the full benefits and functionality of conda, you will need to develop a habit of using conda rather than pip to install your packages, except in cases where a given package is *only* available using pip.
+Conda is a more advanced package manager than pip. To gain the full benefits and functionality of conda, you will need to develop a habit of using conda rather than pip to install your packages, except in cases where a given package is _only_ available using pip.
 
 Always be sure to activate your desired environment before installing packages. For example, if you have an environment called "myenv", you can activate it from a terminal command line by typing:
 
@@ -104,7 +104,7 @@ Your environment will need the ipykernel package installed to work with Jupyter 
 
 ##### What if my conda environment is not visible in VS Code?
 
-Please see the [troubleshooting guide](30_vs_code_with_miniforge.md#the-newly-created-research-environment-does-not-appear-in-vs-code) in our installation and setup instructions.
+Please see the [troubleshooting guide](30-vs-code-with-miniforge.md#the-newly-created-research-environment-does-not-appear-in-vs-code) in our installation and setup instructions.
 
 #### Viewing Jupyter Variables and Data Frames in Your Jupyter Session
 
@@ -116,7 +116,7 @@ To view your data, you will need the Data Wrangler extension. You will be prompt
 
 ### Using standard Python (.py) files and Jupyter Interactivity
 
-Jupyter Notebook has become popular in data analysis, research, and data science in part due to its *interactivity*, i.e. the ability to run small chunks of code and see the results side-by-side with your code cells. It is not the only way to code in Python, however; many users will also favor the standard Python file (with extension .py), depending on their personal preferences or the needs of their projects. This approach can have a few advantages, the most notable of which being that .py files can be more easily run from the command line or submitted for processing via a batch script. This is especially useful for users who need to schedule their code to run in a high-performance computing (HPC) cluster.
+Jupyter Notebook has become popular in data analysis, research, and data science in part due to its _interactivity_, i.e. the ability to run small chunks of code and see the results side-by-side with your code cells. It is not the only way to code in Python, however; many users will also favor the standard Python file (with extension .py), depending on their personal preferences or the needs of their projects. This approach can have a few advantages, the most notable of which being that .py files can be more easily run from the command line or submitted for processing via a batch script. This is especially useful for users who need to schedule their code to run in a high-performance computing (HPC) cluster.
 
 Fortunately, Microsoft VS Code provides an easy way to bring the interactivity of Jupyter notebooks to coding in .py files, giving you the best of both worlds. By sectioning your code in your .py file the correct way, you can create cells that can be sent to a separate Jupyter interactive window, which runs the code and displays the output.
 
@@ -128,17 +128,17 @@ From the File menu, select "New File". In the dropdown menu that appears at the 
 
 To indicate that you are creating a Jupyter cell in your .py file, you will need to use `# %%` at the beginning of a new line to indicate the start of the cell. All the code that follows this marker will be part of the cell until a new cell is created with `# %%`. See the image below for an example.
 
-![Creating Jupyter cells in a .py file](img/jupyter_with_py_cells.png)
+![Creating Jupyter cells in a .py file](img/jupyter-with-py-cells.png)
 
 Note that (assuming the Jupyter extension is installed) VS Code will automatically detect that a cell has been created, and options for running and debugging the cell will automatically appear above the `# %%`. You can also run cells with ctrl+enter (cmd+enter on MacOS), which runs the cell, or shift+enter, which runs the cell and creates a new one.
 
 When you run a cell, VS Code will create a new Jupyter interactive window in which to perform the operations and display the output. The window should open automatically in a separate tab. We recommend that you click and drag this tab to the right to create a split-screen view, so that you can code and see the interactive window output simultaneously, as shown in the image below.
 
-![Jupyter interactive window](img/py_with_new_interactive_window.png)
+![Jupyter interactive window](img/py-with-new-interactive-window.png)
 
-You will need to select a kernel to run the cells in your code. Click "Select Kernel" and select your preferred environment from the drop-down menu. If you do not see your environment, please see the [troubleshooting guide](30_vs_code_with_miniforge.md#the-newly-created-research-environment-does-not-appear-in-vs-code) in our installation and setup instructions.
+You will need to select a kernel to run the cells in your code. Click "Select Kernel" and select your preferred environment from the drop-down menu. If you do not see your environment, please see the [troubleshooting guide](30-vs-code-with-miniforge.md#the-newly-created-research-environment-does-not-appear-in-vs-code) in our installation and setup instructions.
 
-![Running code in an interactive window](img/running_code_in_interactive_window.png)
+![Running code in an interactive window](img/running-code-in-interactive.png)
 
 Once your kernel is connected, you can run the cells in your .py file to see the output in the interactive window.
 
@@ -148,7 +148,7 @@ Note that you can also enter and run code directly into the interactive window i
 
 As with the Jupyter Notebook setup described earlier in this document, you can open a "Jupyter Variables" window to view all Python variables currently stored in memory in your Jupyter session. Look for the "Jupyter Variables" button at the top of your interactive window to access this option. If it's hidden, click the "..." at the top of the interactive window to see more options.
 
-![Jupyter panel with .py file](img/py_with_jupyter_vars_pane.png)
+![Jupyter panel with .py file](img/py-with-jupyter-vars-pane.png)
 
 You can now see all your Jupyter variables in a panel at the bottom of the screen. If you have a pandas data frame in memory, you can click on it to view your data (requires installation of the Data Wrangler extension).
 

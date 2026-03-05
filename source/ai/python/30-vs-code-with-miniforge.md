@@ -1,8 +1,8 @@
 # Installing and Setting Up Python with Microsoft Visual Studio Code and Conda (Miniforge)
 
-This guide is for those who have decided to use Microsoft Visual Studio (VS) Code with conda (using the Miniforge distribution) for Python programming and are looking for instructions on how to get started. If you would like to review the strengths and limitations of this setup, or if you remain unsure that this is the best setup for you, please consult the documentation under [Which Python Setup is Right for You?](10_which_python_setup.md)
+This guide is for those who have decided to use Microsoft Visual Studio (VS) Code with conda (using the Miniforge distribution) for Python programming and are looking for instructions on how to get started. If you would like to review the strengths and limitations of this setup, or if you remain unsure that this is the best setup for you, please consult the documentation under [Which Python Setup is Right for You?](10-which-python-setup.md)
 
-This page will walk you through the installation and configuration process, up to the point of creating your first Jupyter Notebook file. Once you have completed these steps, we highly recommend continuing on to our [VS Code and Conda: Getting the Most Out of Your Setup](40_VS_code_and_conda_users_guide.md) guide, in order to ensure that you are getting the most out of your setup and using all its features effectively.
+This page will walk you through the installation and configuration process, up to the point of creating your first Jupyter Notebook file. Once you have completed these steps, we highly recommend continuing on to our [VS Code and Conda: Getting the Most Out of Your Setup](40-vs-code-and-conda-users-guide.md) guide, in order to ensure that you are getting the most out of your setup and using all its features effectively.
 
 ## Overview
 
@@ -12,7 +12,7 @@ This Python setup comes in two parts:
 
 - **Microsoft Visual Studio Code** (or "VS Code" for short) is an Interactive Development Environment (IDE), or an application that provides a graphical user interface for writing your code and viewing its output.
 
-To use this setup effectively, you will need to learn how to use conda tools to create environments and install libraries. If you are unfamiliar with the concepts behind Python environments, libraries, and the role of an environment/package manager, we recommend returning to our [explanation](10_which_python_setup.md#what-are-environments-and-libraries) on our "Which Python Setup is Right for Me?" page.
+To use this setup effectively, you will need to learn how to use conda tools to create environments and install libraries. If you are unfamiliar with the concepts behind Python environments, libraries, and the role of an environment/package manager, we recommend returning to our [explanation](10-which-python-setup.md#what-are-environments-and-libraries) on our "Which Python Setup is Right for Me?" page.
 
 ## Installation and Setup Instructions
 
@@ -49,7 +49,7 @@ To begin, search your system for "Miniforge Prompt" to locate and open the Minif
 
 #### MacOS
 
-The installation process for conda should have created a setting that automatically activates conda in any new terminal. To test this, open the Terminal application and look for the word "(base)" in parentheses preceding the command prompt. You can also type `conda --version` into the command prompt and press enter. If you see the word "conda" with a version number, then conda is activated. If not, see the [Conda is not working from the Terminal application](link) section of the troubleshooting guide at the end of this page.
+The installation process for conda should have created a setting that automatically activates conda in any new terminal. To test this, open the Terminal application and look for the word "(base)" in parentheses preceding the command prompt. You can also type `conda --version` into the command prompt and press enter. If you see the word "conda" with a version number, then conda is activated. If not, see the [Conda is not working from the Terminal application](#conda-is-not-working-from-the-terminal-application) section of the troubleshooting guide at the end of this page.
 
 When you have verified that conda works from your terminal, proceed to Configuration Commands section below.
 
@@ -67,7 +67,7 @@ The following additional steps are optional, but recommended:
 - `conda config --set auto_activate false`
   - This prevents auto-activation of the default "base" environment when opening a conda-enabled terminal. Using base is discouraged because it does not provide a stable environment for your code and can cause problems for your setup. By deactivating auto-activation of the base environment, we reduce the risk that the user will make unadvised changes by accident. See the note in step 3 for a more detailed explanation of the base environment.
 - `conda config --set channel_priority strict`
-  - This command tells conda to use strict channel priority when installing libraries (packages). Conda can download packages from different “channels” (package sources), and sometimes the same package exists in more than one channel. With channel_priority strict, conda will always prefer packages from higher-priority channels (such as conda-forge, which Miniforge uses) and will not mix in lower-priority versions unless absolutely necessary. This helps prevent dependency conflicts and ensures your environments remain consistent and predictable.
+  - This command tells conda to use strict channel priority when installing libraries (packages). Conda can download packages from different “channels” (package sources), and sometimes the same package exists in more than one channel. With channel-priority strict, conda will always prefer packages from higher-priority channels (such as conda-forge, which Miniforge uses) and will not mix in lower-priority versions unless absolutely necessary. This helps prevent dependency conflicts and ensures your environments remain consistent and predictable.
 - `conda install --yes --name base mamba`
   - This installs the "mamba" package installer. Using mamba (instead of conda) to install packages is optional, and some users prefer it for being faster than conda.
 
@@ -77,7 +77,7 @@ The following additional steps are optional, but recommended:
 >
 > Before we proceed, it's important to note that conda comes with a special environment called the **base environment** by default. The base environment contains conda itself and the core tools needed to manage packages and environments. Unlike project-specific environments that you create for your own work, base is intended mainly for managing conda rather than for running your research or projects. Using the base environment for everyday work is discouraged. Installing packages into base can lead to dependency conflicts between projects, make your code harder to reproduce, and in some cases interfere with conda’s own functionality.
 >
-> Instead of using base, you will need to create new environments to use for your research projects. In this setup guide we will walk you through creating your first environment. For more advice on creating and managing environments, see our [Getting the Most Out of Your Setup](40_VS_code_and_conda_users_guide.md) guide.
+> Instead of using base, you will need to create new environments to use for your research projects. In this setup guide we will walk you through creating your first environment. For more advice on creating and managing environments, see our [Getting the Most Out of Your Setup](40-vs-code-and-conda-users-guide.md) guide.
 
 Now let's create a new environment called "research" that you can use for a generic research project. (If you prefer to give it a different name, feel free to use that instead. Just be sure to substitute your preferred name wherever you see the word "research" in the instructions that follow. Conda environments should contain only letters, numbers, hyphens, underscores, or periods, but no spaces or other special characters.)
 
@@ -107,9 +107,9 @@ conda activate research
 
 When the "research" environment has been activated, the command prompt will be preceded with the word "research" in parentheses: (Windows example shown, MacOS will be similar)
 
-![Research environment activated](img/conda_activate_research.png)
+![Research environment activated](img/conda-activate-research.png)
 
-Because we did not specify a specific version of Python when we created our "research" environment, it will have automatically selected the most recent stable version of Python. (For information on specifying specific Python versions, see the [Getting the Most Out of Your Setup](40_VS_code_and_conda_users_guide.md) guide.) To check the Python version that your "research" environment is using, you can type:
+Because we did not specify a specific version of Python when we created our "research" environment, it will have automatically selected the most recent stable version of Python. (For information on specifying specific Python versions, see the [Getting the Most Out of Your Setup](40-vs-code-and-conda-users-guide.md) guide.) To check the Python version that your "research" environment is using, you can type:
 
 ```
 python --version
@@ -159,17 +159,17 @@ Download the installer and locate the dmg file in your Downloads folder. Double-
 
 In order to use VS Code with Python, you will need to install the Python and Jupyter Notebook extensions. With VS Code open, look for the extensions icon on the left side of your screen.
 
-![Extensions icon](img/extensions_icon.png)
+![Extensions icon](img/extensions-icon.png)
 
 Click on the extension icon to open the Extensions pane. Search for "Python" and select the Python extension from the list. Be sure to select the official extension developed by Microsoft. (When you click on the extension, a page for that extension will open and the developer will be listed right underneath the extension name. You should check that the developer is listed as "Microsoft".)
 
-![Python extension](img/python_extension.png)
+![Python extension](img/python-extension.png)
 
 Click "install" to install the extension. (Note this will automatically trigger the installation of several other related extensions as well.)
 
 Once you have installed the Python extension, you will also need to install the Jupyter extension. Type "Jupyter" in the Extensions search bar and select it from the list, and verify that you have selected the official extension managed by Microsoft.
 
-![Jupyter extension](img/jupyter_extension.png)
+![Jupyter extension](img/jupyter-extension.png)
 
 Click "install" to install the extension. (Note that once again this will also trigger the installation of related extensions.)
 
@@ -181,11 +181,11 @@ From the File menu, select New File. A drop-down menu will appear from the middl
 
 A brand new Jupyter Notebook file will open and your screen will look like this:
 
-![New Jupyter Notebook](img/new_jupyter_notebook.png)
+![New Jupyter Notebook](img/new-jupyter-notebook.png)
 
 Before we can start coding, we have to tell VS Code where to look for the Python Kernel that will be used to run the code that you enter in this notebook. In the top-right corner of your VS Code window, locate the "Select Kernel" button. This will open a menu from the top-middle of your VS Code window. Click on "Python Environments", and you should see the research environment you created appear in the list:
 
-![Select python environment](img/select_conda_environment.png)
+![Select python environment](img/select-conda-environment.png)
 
 VS Code automatically detects the environments you created with conda and show you a list to choose the environment you want to use for this notebook. (If not, see the [troubleshooting section](#the-newly-created-research-environment-does-not-appear-in-vs-code) at the end of this page.) If you see the base environment on the list, do not select it; you should instead select the "research" environment (or whatever you called it) that we created in step 3. (If a security prompt appears, click "Allow".) The "Select Kernel" button will now change to show the "research" environment and the version of Python you're using.
 
@@ -193,17 +193,17 @@ If you followed the instructions to this point, you will have already installed 
 
 You can now test to see if your setup and installation worked. Type some code into a code cell in your Jupyter notebook and press shift+enter to run it. If you see your expected output appear underneath the cell, then your installation worked.
 
-Congratulations! You have completed this installation and setup tutorial. We recommend that you now continue to the [Getting the Most Out of Your Setup](40_VS_code_and_conda_users_guide.md) guide for practical information on making the most of your setup.
+Congratulations! You have completed this installation and setup tutorial. We recommend that you now continue to the [Getting the Most Out of Your Setup](40-vs-code-and-conda-users-guide.md) guide for practical information on making the most of your setup.
 
-### Troubleshooting
+## Troubleshooting
 
-#### Conda is not working from the Terminal application
+### Conda is not working from the Terminal application
 
-##### Windows:
+#### Windows
 
 You can always access conda from the Miniforge Prompt application. To activate conda from other terminals, type `conda init --all` in Miniforge Prompt and press enter. If this does not work, continue to use Miniforge Prompt to manage conda.
 
-##### MacOS
+#### MacOS
 
 If conda is not working from a terminal, type `conda init zsh` in the terminal and press enter. Then restart your terminal.
 
@@ -213,7 +213,7 @@ If you get a message saying "conda" not found, you will need to locate conda in 
 export PATH='/Users/username/miniforge3/bin:$PATH'
 ```
 
-#### The newly created "research" environment does not appear in VS Code
+### The newly created "research" environment does not appear in VS Code
 
 If your newly created "research" conda environment is not visible, first confirm that it exists. Open a terminal and type `conda env list`. If you do not see the research environment, return to step three in the tutorial to create it.
 

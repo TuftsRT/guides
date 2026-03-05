@@ -2,7 +2,7 @@
 
 - A **node** is a single computer in the system, which has a number of computing units, **cores**.
 
-![core-node](../assets/basic/CoreNode.png)
+![core-node](../assets/basic/core-node.png)
 
 - Number of CPU cores must be specified when running programs on Tufts HPC cluster.
 

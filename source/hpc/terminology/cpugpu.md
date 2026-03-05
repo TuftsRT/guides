@@ -14,7 +14,7 @@
 
   - Performing a narrower range of more specialized tasks
 
-  ![cpu-gpu](../assets/basic/CPUGPU.png)
+  ![cpu-gpu](../assets/basic/cpugpu.png)
 
 - GPU is like the turbo boost to a car's engine, the CPU.
 
