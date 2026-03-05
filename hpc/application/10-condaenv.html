@@ -77,8 +77,8 @@
     <link rel="prev" title="Software Applications" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260204" />
-    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -445,6 +445,12 @@
 <li class="toctree-l2"><a class="reference internal" href="25-rstudio.html">RStudio via OnDemand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="30-tmux.html">Tmux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="40-vscode.html">VSCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpc-desktop.html">HPC Desktop</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab.html">MATLAB</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples and Tutorials</a></li>
@@ -540,15 +546,13 @@
 <li><p>Check available conda modules</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">av</span> <span class="pre">miniforge</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">av</span> <span class="pre">anaconda</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">av</span> <span class="pre">miniconda</span></code></p>
 </li>
 <li><p>Load module</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">miniforge/24.11.2-py312</span></code> <strong>Recommended</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda/2021.05</span></code></p>
-<p>or any newer versions of anaconda shown in the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">av</span></code> output</p>
-<p>NOTE: DO NOT use <code class="docutils literal notranslate"><span class="pre">anaconda/3</span></code> and <code class="docutils literal notranslate"><span class="pre">anaconda/2</span></code>, they are very old versions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">miniforge/25.3.0</span></code> <strong>Recommended</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda/2025.06.0</span></code></p>
+<p>or any newer versions of anaconda or miniforge shown in the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">av</span></code> output</p>
 </li>
-<li><p>Load other modules needed (such as <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">cuda/12.2</span></code>)</p></li>
+<li><p>Load other modules needed (such as <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">cuda/12.9.0</span></code>)</p></li>
 </ol>
 </li>
 </ol>
@@ -560,7 +564,7 @@
 <p>Create two directories in your group research storage space (one for storing the envs, one for storing the pkgs, for example: condaenv, condapkg)</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">/cluster/tufts/XXXXlab/$USER/condaenv/</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">/cluster/tufts/XXXXlab/$USER/condapkg/</span></code></p>
-<p>If you haven’t used conda before on the cluster, create a file named “.condarc” in your home directory.</p>
+<p>If you haven’t used conda before on the cluster, create a file named <code class="docutils literal notranslate"><span class="pre">.condarc</span></code> in your home directory.</p>
 <p>Now add the following 4 lines to the <code class="docutils literal notranslate"><span class="pre">.condarc</span></code> file in your home directory (modify according to your real path to the directories):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>envs_dirs:
   - /cluster/tufts/XXXXlab/$USER/condaenv/
@@ -590,31 +594,38 @@ channels:
 </section>
 <section id="create-your-conda-environment">
 <h2>Create your conda environment<a class="headerlink" href="#create-your-conda-environment" title="Link to this heading">#</a></h2>
-<p>Now you can create your own conda env</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">/cluster/tufts/XXXXlab/$USER/condaenv/</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-p</span> <span class="pre">yourenvname</span></code></p>
-<p>or if you have a specific version of python you need to use, e.g. 3.8</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-p</span> <span class="pre">yourenvname</span> <span class="pre">python=3.8</span></code> (Recommended!)</p>
+<p>Now you can create your own conda env:</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">yourenvname</span></code></p>
+<p>The environment will be created in the <code class="docutils literal notranslate"><span class="pre">envs_dirs</span></code> location configured in the previous steps.</p>
+<p>or if you have a specific version of python you need to use, e.g. 3.11</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">yourenvname</span> <span class="pre">python=3.11</span></code> (Recommended!)</p>
 <p>Note: you will need to have <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code> installed inside the env to pip install packages inside the env.</p>
 <p>Activate the environment (needs to be executed whenever you need to use the conda env you have created)</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">activate</span> <span class="pre">yourenvname</span></code></p>
-<p>If you are using system installed conda, please DO NOT use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span></code> to activate your environment</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">yourenvname</span></code></p>
 <p>Install <code class="docutils literal notranslate"><span class="pre">yourpackage</span></code> in the conda env</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">yourpackage</span></code></p>
 <p>Or if you have python (comes with pip) installed,</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">yourpackage</span></code></p>
 <p>Or follow the instruction on package website.</p>
+<hr class="docutils" />
+<section id="important-conda-vs-pip-warning">
+<h3>⚠️ <strong>IMPORTANT: CONDA vs. PIP WARNING</strong><a class="headerlink" href="#important-conda-vs-pip-warning" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p><strong>Mixing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> can break your environment.</strong></p>
+<p>Conda and Pip manage dependencies differently. If Pip overwrites a library that Conda is tracking, it can lead to “Clobbering” (corrupting the environment).</p>
+<p><strong>Follow these best practices:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Conda First:</strong> Search for your package on <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> or <code class="docutils literal notranslate"><span class="pre">bioconda</span></code> first.</p></li>
+<li><p><strong>Pip Last:</strong> Only use <code class="docutils literal notranslate"><span class="pre">pip</span></code> if the package is not available via Conda.</p></li>
+</ol>
+</div></blockquote>
+<hr class="docutils" />
 <p>Check what’s installed in your conda environment</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">list</span></code></p>
-<p>Test</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;</span> <span class="pre">import</span> <span class="pre">yourpackage</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;</span></code></p>
-<p>When you are done, deactivate the environment</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">deactivate</span></code></p>
-<p>or</p>
+<p>When you are complete the data analysis, deactivate the environment</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">deactivate</span></code></p>
 <p>:)</p>
+</section>
 </section>
 <section id="additional-information-for-jupyter-users">
 <h2>Additional Information for Jupyter Users<a class="headerlink" href="#additional-information-for-jupyter-users" title="Link to this heading">#</a></h2>
@@ -622,10 +633,10 @@ channels:
 <h3>Run conda env as a kernel in Jupyter<a class="headerlink" href="#run-conda-env-as-a-kernel-in-jupyter" title="Link to this heading">#</a></h3>
 <p>If you would like to use JupyterNotebook or JupyterLab from OnDemand, you can follow the instructions below and <strong>run your conda env as a kernel in Jupyter</strong>.</p>
 <ul>
-<li><p>Make sure with python 3.7+ and make sure you load cluster’s anaconda module (this only works with py3.7+)</p></li>
-<li><p>Activate your conda env from terminal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda</span></code> or <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">miniforge</span></code>.</p></li>
+<li><p>Activate your conda env from terminal by <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">yourenvname</span></code>.</p></li>
 <li><p>Install ipykernel with</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ipykernel</span></code> (this assumes you installed python and pip in your env, otherwise, use “–user” flag)</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ipykernel</span></code>.</p>
 </li>
 <li><p>Add your env to jupyter with</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">-m</span> <span class="pre">ipykernel</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">--name=myenvname</span></code> (use the name of your environment in the place of “myenvname”)</p>
@@ -689,7 +700,10 @@ channels:
   <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allocate-resources">Allocate Resources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-your-conda">Configure your conda</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-your-conda-environment">Create your conda environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-your-conda-environment">Create your conda environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#important-conda-vs-pip-warning">⚠️ <strong>IMPORTANT: CONDA vs. PIP WARNING</strong></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-information-for-jupyter-users">Additional Information for Jupyter Users</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-conda-env-as-a-kernel-in-jupyter">Run conda env as a kernel in Jupyter</a></li>
 </ul>
@@ -759,7 +773,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 04, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       

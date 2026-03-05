@@ -77,8 +77,8 @@
     <link rel="prev" title="Interactive Sessions" href="interactive.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260204" />
-    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -523,23 +523,51 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="job-monitoring-and-management">
 <h1>Job Monitoring and Management<a class="headerlink" href="#job-monitoring-and-management" title="Link to this heading">#</a></h1>
-<p>Utilize <a class="reference internal" href="../examples/hpctools.html"><span class="doc std std-doc">hpctools - Tufts HPC Helper Tool</span></a> to monitor active jobs</p>
+<p>Monitoring your jobs and the resources they use is an important part of using any HPC cluster. There are two primary ways to do that on our systems, the Open OnDemand Dashboard and Slurm command line tools.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>We recommend new users start with the Open OnDemand method.</p>
+</div>
+<section id="open-ondemand-dashboard">
+<h2>Open OnDemand Dashboard<a class="headerlink" href="#open-ondemand-dashboard" title="Link to this heading">#</a></h2>
+<p>The Open OnDemand server provides an <a class="reference external" href="https://ondemand-prod.pax.tufts.edu/pun/sys/dashboard/activejobs">“Active Jobs” dashboard</a> that shows your pending and running jobs, as well as your job history. It can be accessed at under the <strong>Jobs</strong> -&gt; <strong>Active Jobs</strong> menu item.</p>
+<p><img alt="Active Jobs" src="../../_images/ood-jobs-1.png" /></p>
+<p>Clicking on each job will show additional details about it. Completed jobs will include efficiency data under the <strong>Resources and I/O</strong> tab.</p>
+<p><img alt="Job Details" src="../../_images/ood-jobs-2.png" /></p>
+<p>Overall cluster status and resources the available can be see on the <a class="reference external" href="https://ondemand-prod.pax.tufts.edu/pun/sys/dashboard/system-status">“System Status” dashboard</a>. It can be accessed at under the <strong>Clusters</strong> -&gt; <strong>System Status</strong> menu item.</p>
+<p><img alt="System Status" src="../../_images/ood-cluster-1.png" /></p>
+</section>
+<section id="using-the-command-line">
+<h2>Using the command line<a class="headerlink" href="#using-the-command-line" title="Link to this heading">#</a></h2>
+<p>Slurm provides a set of commands to control and monitor your HPC jobs. These can be run on any HPC node including the login nodes.</p>
 <section id="check-active-jobs">
-<h2>Check Active Jobs<a class="headerlink" href="#check-active-jobs" title="Link to this heading">#</a></h2>
+<h3>Check Active Jobs<a class="headerlink" href="#check-active-jobs" title="Link to this heading">#</a></h3>
 <p>Active jobs are the jobs in the stage of R (running), PD (pending), or CG (completing). Only active jobs can be displayed in <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command output.</p>
 <p>To check your active jobs in the queue:</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">squeue</span> <span class="pre">--me</span></code> or <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">your_utln</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>tutln01@cc1gpu001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>squeue<span class="w"> </span>--me
 <span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-<span class="w">            </span><span class="m">296794</span><span class="w">   </span>preempt<span class="w">     </span>bash<span class="w"> </span>tutln01<span class="w">  </span>R<span class="w">       </span><span class="m">5</span>:12<span class="w">      </span><span class="m">1</span><span class="w"> </span>cc1gpu001
+<span class="w">            </span><span class="m">296794</span><span class="w">   </span>preempt<span class="w">     </span>bash<span class="w"> </span>tutln01<span class="w">  </span>R<span class="w">       </span><span class="m">5</span>:12<span class="w">      </span><span class="m">1</span><span class="w"> </span>pax00#
 <span class="o">[</span>tutln01@cc1gpu001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>squeue<span class="w"> </span>-u<span class="w"> </span>tutln01
 <span class="w">             </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-<span class="w">            </span><span class="m">296794</span><span class="w">   </span>preempt<span class="w">     </span>bash<span class="w"> </span>tutln01<span class="w">  </span>R<span class="w">       </span><span class="m">5</span>:21<span class="w">      </span><span class="m">1</span><span class="w"> </span>cc1gpu001
+<span class="w">            </span><span class="m">296794</span><span class="w">   </span>preempt<span class="w">     </span>bash<span class="w"> </span>tutln01<span class="w">  </span>R<span class="w">       </span><span class="m">5</span>:21<span class="w">      </span><span class="m">1</span><span class="w"> </span>pax00#
 </pre></div>
 </div>
+<p>If your job is in the PD (pending) state the reason column will include details of why. Some common reasons are listed here, and a full list can be seen at <a class="reference external" href="https://slurm.schedmd.com/job_reason_codes.html">https://slurm.schedmd.com/job_reason_codes.html</a> . If after reviewing these it is still not clear, please contact us for assistance.</p>
+<p>These two are the most common, and means you are waiting in line for compute nodes to become available.</p>
+<ul class="simple">
+<li><p><strong>Resources</strong> - The resources requested by the job are not available (e.g., already used by other jobs).</p></li>
+<li><p><strong>Priority</strong> - One of more higher priority jobs exist for the partition associated with the job.</p></li>
+</ul>
+<p>Other common reasons are</p>
+<ul class="simple">
+<li><p><strong>Dependency</strong> - This job has a dependency on another job that has not been satisfied.</p></li>
+<li><p><strong>QOSMax</strong>* - This means you are currently using the maximum of given resource per user or account. For instance QOSMaxCpuPerUserLimit refers to the CPU limit and QOSMaxGRESPerUser refers to the GPU limit.</p></li>
+<li><p><strong>Reservation</strong> - The job is waiting its advanced reservation to become available.</p></li>
+</ul>
 <p>To check <strong>details</strong> of your <strong>active jobs</strong> (running or pending):</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">jobid</span> <span class="pre">-dd</span> <span class="pre">JOBID</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>tutln01@cc1gpu001<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>scontrol<span class="w"> </span>show<span class="w"> </span>jobid<span class="w"> </span>-dd<span class="w"> </span><span class="m">296794</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>tutln01@pax00#<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>scontrol<span class="w"> </span>show<span class="w"> </span>jobid<span class="w"> </span>-dd<span class="w"> </span><span class="m">296794</span>
 <span class="nv">JobId</span><span class="o">=</span><span class="m">296794</span><span class="w"> </span><span class="nv">JobName</span><span class="o">=</span>bash
 <span class="w">   </span><span class="nv">UserId</span><span class="o">=</span>tutln01<span class="o">(</span><span class="m">31003</span><span class="o">)</span><span class="w"> </span><span class="nv">GroupId</span><span class="o">=</span>tutln01<span class="o">(</span><span class="m">5343</span><span class="o">)</span><span class="w"> </span><span class="nv">MCS_label</span><span class="o">=</span>N/A
 <span class="w">   </span><span class="nv">Priority</span><span class="o">=</span><span class="m">10833</span><span class="w"> </span><span class="nv">Nice</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">Account</span><span class="o">=(</span>null<span class="o">)</span><span class="w"> </span><span class="nv">QOS</span><span class="o">=</span>normal
@@ -552,7 +580,7 @@
 <span class="w">   </span><span class="nv">StartTime</span><span class="o">=</span><span class="m">2021</span>-03-22T22:18:55<span class="w"> </span><span class="nv">EndTime</span><span class="o">=</span><span class="m">2021</span>-03-24T00:48:55<span class="w"> </span><span class="nv">Deadline</span><span class="o">=</span>N/A
 <span class="w">   </span><span class="nv">PreemptEligibleTime</span><span class="o">=</span><span class="m">2021</span>-03-22T22:18:55<span class="w"> </span><span class="nv">PreemptTime</span><span class="o">=</span>None
 <span class="w">   </span><span class="nv">SuspendTime</span><span class="o">=</span>None<span class="w"> </span><span class="nv">SecsPreSuspend</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">LastSchedEval</span><span class="o">=</span><span class="m">2021</span>-03-22T22:18:55
-<span class="w">   </span><span class="nv">Partition</span><span class="o">=</span>preempt<span class="w"> </span>AllocNode:Sid<span class="o">=</span>login-prod-01:34458
+<span class="w">   </span><span class="nv">Partition</span><span class="o">=</span>preempt<span class="w"> </span>AllocNode:Sid<span class="o">=</span>login-p01:34458
 <span class="w">   </span><span class="nv">ReqNodeList</span><span class="o">=(</span>null<span class="o">)</span><span class="w"> </span><span class="nv">ExcNodeList</span><span class="o">=(</span>null<span class="o">)</span>
 <span class="w">   </span><span class="nv">NodeList</span><span class="o">=</span>cc1gpu001
 <span class="w">   </span><span class="nv">BatchHost</span><span class="o">=</span>cc1gpu001
@@ -572,11 +600,12 @@
 </div>
 </section>
 <section id="cancel-jobs">
-<h2>Cancel Jobs<a class="headerlink" href="#cancel-jobs" title="Link to this heading">#</a></h2>
+<h3>Cancel Jobs<a class="headerlink" href="#cancel-jobs" title="Link to this heading">#</a></h3>
 <p>To cancel a specific job:</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scancel</span> <span class="pre">JOBID</span></code></p>
 <p>To cancel all of your jobs:</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scancel</span> <span class="pre">-u</span> <span class="pre">$USER</span></code> or <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scancel</span> <span class="pre">-u</span> <span class="pre">your_utln</span></code></p>
+</section>
 </section>
 </section>
 
@@ -630,8 +659,12 @@
   aria-labelledby="pst-page-navigation-heading-2"
 >
   <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-active-jobs">Check Active Jobs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cancel-jobs">Cancel Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-ondemand-dashboard">Open OnDemand Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-command-line">Using the command line</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-active-jobs">Check Active Jobs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cancel-jobs">Cancel Jobs</a></li>
+</ul>
+</li>
 </ul>
 </nav></div>
 
@@ -697,7 +730,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 04, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       

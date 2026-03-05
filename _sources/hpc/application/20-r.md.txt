@@ -1,16 +1,6 @@
 # R
 
-> Updates coming soon!
-
-HPC Tools R package repos:
-
-> For `R/4.0.0`, use `/cluster/tufts/hpc/tools/R/4.0.0`
->
-> For `R/4.1.1`, use `/cluster/tufts/hpc/tools/R/4.1`
->
-> For `R/4.2.0`, use `/cluster/tufts/hpc/tools/R/4.2.0`
->
-> For `R/4.3.0`, use `/cluster/tufts/hpc/tools/R/4.3.0`
+> In this guide, we walk you through how to start and run R from shell command line on Tufts HPC cluster
 
 ## R Interactive Session
 
@@ -20,47 +10,35 @@ An R interactive session refers to the mode of using the R programming language 
 
 1. Login to the HPC cluster (new cluster Pax)
 
-   `ssh your_username@login.pax.tufts.edu`
+   `ssh your_username@login-prod.pax.tufts.edu`
 
-1. From the login node, load R module (e.g. `R/4.0.0`)
+1. From the login node, load R module (e.g. `r/4.4.3`)
 
-   `$ module load R/4.0.0`
+   `$ module load r/4.4.3`
 
-   Please check other available versions with `module av`
+   Please check other available R versions with `module av r`
 
 1. Allocate computing resources. Start an interactive session with your desired number of cores and memory, here we are using 2 cores with 4GB of memory
 
-   `$ srun -p interactive -n 2 --mem=4g --pty bash`
+   `$ srun -p batch -n 2 --mem=4g -t 4:00:00 --pty bash`
 
-   Note: Interactive partition has a default 4-hour time limit
-
-   For more information on how to allocate resources on Tufts HPC cluster, please reference: [Pax User Guide](https://tufts.box.com/v/Pax-User-Guide)
+   For more information on how to allocate resources on Tufts HPC cluster [Slurm](../slurm/interactive.md)
 
 1. Within the interactive session, you can start R
 
    `$ R`
 
-1.
-
 In R, you can install the packages you need in your home directory with:
 
 `> install.packages("XXX")`.
 
-You can also use the packages installed in HPC Tools R package repo:
+If you are having trouble installing packages, please contact tts-research@tufts.edu.
 
-`> LIB='/cluster/tufts/hpc/tools/R/4.0.0' `
-
-`>.libPaths(c("",LIB)) `
-
-If you are having trouble installing the packages you need, please contact tts-research@tufts.edu.
-
-6. Exit from R command line interface:
+5. Exit from R command line interface:
 
    `> q()`
 
-1. To terminate interactive session
-
-   `$ exit`
+1. It is important to `$ exit` the interactive session when finished to free up resources for other users.
 
 ## R batch jobs
 
@@ -70,31 +48,36 @@ R batch job refers to running R scripts or R commands in a batch mode, where the
 
 1. Login to the HPC cluster
 
-1. Upload your R script to the HPC cluster
+1. Upload your R script or create your own on HPC cluster
 
-1. Go to the directory/folder which contains your R script
+1. Go to the directory/folder which contains your R script, e.g.:
 
-1. Open your favorite text editor and write a slurm submission script similar to the following one `batchjob.sh` (name your own)
+`$ cd /cluster/tufts/xxxlab/username/myfolder`
+
+4. Open your favorite text editor and write a slurm submission script similar to the following one `batchjob.sh` (name your own)
 
    ```
    #!/bin/bash
-   #SBATCH -J myRjob  #job name
-   #SBATCH --time=00-00:20:00 #requested time
-   #SBATCH -p batch  #running on "batch" partition/queue
-   #SBATCH -n 2  #2 cores total
-   #SBATCH --mem=2g #requesting 2GB of RAM total
+   #SBATCH -J myRjob             #job name
+   #SBATCH --time=00-00:20:00    #requested time
+   #SBATCH -p batch              #running on "batch" partition/queue
+   #SBATCH -n 1                  #1 CPU core total
+   #SBATCH --mem=2g              #requesting 2GB of RAM total
    #SBATCH --output=myRjob.%j.out #saving standard output to file
    #SBATCH --error=myRjob.%j.err  #saving standard error to file
-   #SBATCH --mail-type=ALL  #email optitions
-   #SBATCH --mail-user=Your_Tufts_Email @tufts.edu
-   module load R/4.0.0
+   #SBATCH --mail-type=ALL       #email optitions
+   #SBATCH --mail-user=Your_Tufts_Email@tufts.edu
+
+   #Below this point, are the commands executed on the computing resource allocated
+   module purge
+   module load r/4.4.3
    Rscript --no-save your_rscript_name.R
    ```
 
-​ You can find a sample script that you can copy to your own directory in `/cluster/tufts/hpc/tools/slurm_scripts/R`
-
-5. Submit it with
+1. Submit it with
 
    `$ sbatch batchjob.sh`
 
-1. If you are submitting multiple batch jobs to run the same script on different datasets, please make sure they are saving results to different files inside of your R script.
+> NOTE: If you are submitting multiple batch jobs to run the same R script on different datasets, please make sure the results are saved to unique files inside of your R script.
+
+> Learn more about [slurm batch job](../slurm/batchjob.md)

@@ -77,8 +77,8 @@
     <link rel="prev" title="Job Monitoring and Management" href="monitor.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260204" />
-    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -523,17 +523,36 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="job-resource-utilization">
 <h1>Job Resource Utilization<a class="headerlink" href="#job-resource-utilization" title="Link to this heading">#</a></h1>
-<section id="check-your-finished-jobs">
-<h2>Check your <strong>finished</strong> jobs<a class="headerlink" href="#check-your-finished-jobs" title="Link to this heading">#</a></h2>
-<p><em>The jobs you can no longer see in <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command output.</em></p>
-<p><strong>Querying finished jobs helps users make better decisions on how much resources to request for future jobs.</strong></p>
-<p>JOBID is required.</p>
+<p>Making sure you are making efficient use of the HPC resources you request is very important. Any HPC job will only use a portion of the resources you request, so it is important to make sure you are not requesting a lot more than you need. Reviewing your completed jobs helps you make better decisions on how much resources to request for future jobs.</p>
+<p>Way to view job efficiency after completion</p>
+<ul class="simple">
+<li><p>Slurm job completion emails</p></li>
+<li><p>Open OnDemand Active Jobs Dashboard</p></li>
+<li><p>Slurm seff command</p></li>
+</ul>
+<p>Ways to view job efficiency during execution</p>
+<ul class="simple">
+<li><p>top command</p></li>
+<li><p>nvidia-smi command</p></li>
+</ul>
+<section id="completed-jobs">
+<h2>Completed Jobs<a class="headerlink" href="#completed-jobs" title="Link to this heading">#</a></h2>
+<section id="slurm-job-completion-emails">
+<h3>Slurm job completion emails<a class="headerlink" href="#slurm-job-completion-emails" title="Link to this heading">#</a></h3>
+<p>If you use Open OnDemand to run jobs, or request Slurm emails on job completion these message include <strong>Job Efficiency Metrics</strong> in the message. An email attachment includes additional details.</p>
+</section>
+<section id="active-jobs-dashboard">
+<h3>Active Jobs Dashboard<a class="headerlink" href="#active-jobs-dashboard" title="Link to this heading">#</a></h3>
+<p>The Open OnDemand server provides an <a class="reference external" href="https://ondemand-prod.pax.tufts.edu/pun/sys/dashboard/activejobs">“Active Jobs” dashboard</a> that shows your job history. It can be accessed at under the <strong>Jobs</strong> -&gt; <strong>Active Jobs</strong> menu item. Clicking on each completed job in the <strong>Job History</strong> section will show additional details about it. Completed jobs will include efficiency data under the <strong>Resources and I/O</strong> tab.</p>
+</section>
+<section id="seff">
+<h3>seff<a class="headerlink" href="#seff" title="Link to this heading">#</a></h3>
+<p>You can check your <strong>completed</strong> jobs using the slurm seff command. The would be job that no longer show as running or pending in the queue. This command can be run on any hpc node. Knowing your slurm JOBID is required.</p>
 <p>Display job CPU and memory usage:</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">seff</span> <span class="pre">JOBID</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>tutln01@login-prod-01<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>seff<span class="w"> </span><span class="m">296794</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>tutln01@login-p01<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>seff<span class="w"> </span><span class="m">296794</span>
 Job<span class="w"> </span>ID:<span class="w"> </span><span class="m">296794</span>
 Cluster:<span class="w"> </span>pax
-Use<span class="w"> </span>of<span class="w"> </span>uninitialized<span class="w"> </span>value<span class="w"> </span><span class="nv">$user</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>concatenation<span class="w"> </span><span class="o">(</span>.<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>string<span class="w"> </span>at<span class="w"> </span>/usr/bin/seff<span class="w"> </span>line<span class="w"> </span><span class="m">154</span>,<span class="w"> </span>&lt;DATA&gt;<span class="w"> </span>line<span class="w"> </span><span class="m">602</span>.
 User/Group:<span class="w"> </span>/tutln01
 State:<span class="w"> </span>COMPLETED<span class="w"> </span><span class="o">(</span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span><span class="m">0</span><span class="o">)</span>
 Nodes:<span class="w"> </span><span class="m">1</span>
@@ -560,6 +579,74 @@ Memory<span class="w"> </span>Efficiency:<span class="w"> </span><span class="m"
 <p class="admonition-title">Hint</p>
 <p>If you don’t know your job IDs or can’t find them.  Utilize <a class="reference internal" href="../examples/hpctools.html"><span class="std std-doc">hpctools - Tufts HPC Helper Tool</span></a> on the HPC cluster to find all of your jobs since a certain date.</p>
 </div>
+</section>
+</section>
+<section id="running-jobs">
+<h2>Running Jobs<a class="headerlink" href="#running-jobs" title="Link to this heading">#</a></h2>
+<p>Sometimes it is necessary to review the resource utilization while a job is running. This is typically done by connected to the node your jobs is currently running on via SSH, and running additional commands.</p>
+<section id="top">
+<h3>top<a class="headerlink" href="#top" title="Link to this heading">#</a></h3>
+<p>The top command will list all the processes running on the compute node and the memory and CPU being used. To see the processes for your user run <code class="docutils literal notranslate"><span class="pre">top</span> <span class="pre">-u</span> <span class="pre">$USER</span></code>.</p>
+</section>
+<section id="nvidia-smi">
+<h3>nvidia-smi<a class="headerlink" href="#nvidia-smi" title="Link to this heading">#</a></h3>
+<p>When using GPU nodes the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> command is useful for spot checking GPU compute and memory usage. You will only see the GPUs allocated to your user.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">utln</span><span class="nd">@pax00</span><span class="c1"># ~]$ nvidia-smi</span>
+<span class="n">Wed</span> <span class="n">Feb</span> <span class="mi">18</span> <span class="mi">22</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span><span class="mi">34</span> <span class="mi">2026</span>
+<span class="o">+-----------------------------------------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">NVIDIA</span><span class="o">-</span><span class="n">SMI</span> <span class="mf">575.57.08</span>              <span class="n">Driver</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">575.57.08</span>      <span class="n">CUDA</span> <span class="n">Version</span><span class="p">:</span> <span class="mf">12.9</span>     <span class="o">|</span>
+<span class="o">|-----------------------------------------+------------------------+----------------------+</span>
+<span class="o">|</span> <span class="n">GPU</span>  <span class="n">Name</span>                 <span class="n">Persistence</span><span class="o">-</span><span class="n">M</span> <span class="o">|</span> <span class="n">Bus</span><span class="o">-</span><span class="n">Id</span>          <span class="n">Disp</span><span class="o">.</span><span class="n">A</span> <span class="o">|</span> <span class="n">Volatile</span> <span class="n">Uncorr</span><span class="o">.</span> <span class="n">ECC</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">Fan</span>  <span class="n">Temp</span>   <span class="n">Perf</span>          <span class="n">Pwr</span><span class="p">:</span><span class="n">Usage</span><span class="o">/</span><span class="n">Cap</span> <span class="o">|</span>           <span class="n">Memory</span><span class="o">-</span><span class="n">Usage</span> <span class="o">|</span> <span class="n">GPU</span><span class="o">-</span><span class="n">Util</span>  <span class="n">Compute</span> <span class="n">M</span><span class="o">.</span> <span class="o">|</span>
+<span class="o">|</span>                                         <span class="o">|</span>                        <span class="o">|</span>               <span class="n">MIG</span> <span class="n">M</span><span class="o">.</span> <span class="o">|</span>
+<span class="o">|=========================================+========================+======================|</span>
+<span class="o">|</span>   <span class="mi">0</span>  <span class="n">NVIDIA</span> <span class="n">H200</span>                    <span class="n">On</span>  <span class="o">|</span>   <span class="mi">00000000</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">00.0</span> <span class="n">Off</span> <span class="o">|</span>                    <span class="mi">0</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">N</span><span class="o">/</span><span class="n">A</span>   <span class="mi">44</span><span class="n">C</span>    <span class="n">P0</span>            <span class="mi">263</span><span class="n">W</span> <span class="o">/</span>  <span class="mi">700</span><span class="n">W</span> <span class="o">|</span>   <span class="mi">18193</span><span class="n">MiB</span> <span class="o">/</span> <span class="mi">143771</span><span class="n">MiB</span> <span class="o">|</span>     <span class="mi">54</span><span class="o">%</span>      <span class="n">Default</span> <span class="o">|</span>
+<span class="o">|</span>                                         <span class="o">|</span>                        <span class="o">|</span>             <span class="n">Disabled</span> <span class="o">|</span>
+<span class="o">+-----------------------------------------+------------------------+----------------------+</span>
+<span class="o">|</span>   <span class="mi">1</span>  <span class="n">NVIDIA</span> <span class="n">H200</span>                    <span class="n">On</span>  <span class="o">|</span>   <span class="mi">00000000</span><span class="p">:</span><span class="mi">3</span><span class="n">B</span><span class="p">:</span><span class="mf">00.0</span> <span class="n">Off</span> <span class="o">|</span>                    <span class="mi">0</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">N</span><span class="o">/</span><span class="n">A</span>   <span class="mi">35</span><span class="n">C</span>    <span class="n">P0</span>             <span class="mi">78</span><span class="n">W</span> <span class="o">/</span>  <span class="mi">700</span><span class="n">W</span> <span class="o">|</span>       <span class="mi">0</span><span class="n">MiB</span> <span class="o">/</span> <span class="mi">143771</span><span class="n">MiB</span> <span class="o">|</span>      <span class="mi">0</span><span class="o">%</span>      <span class="n">Default</span> <span class="o">|</span>
+<span class="o">|</span>                                         <span class="o">|</span>                        <span class="o">|</span>             <span class="n">Disabled</span> <span class="o">|</span>
+<span class="o">+-----------------------------------------+------------------------+----------------------+</span>
+<span class="o">|</span>   <span class="mi">2</span>  <span class="n">NVIDIA</span> <span class="n">H200</span>                    <span class="n">On</span>  <span class="o">|</span>   <span class="mi">00000000</span><span class="p">:</span><span class="mi">4</span><span class="n">C</span><span class="p">:</span><span class="mf">00.0</span> <span class="n">Off</span> <span class="o">|</span>                    <span class="mi">0</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">N</span><span class="o">/</span><span class="n">A</span>   <span class="mi">43</span><span class="n">C</span>    <span class="n">P0</span>            <span class="mi">252</span><span class="n">W</span> <span class="o">/</span>  <span class="mi">700</span><span class="n">W</span> <span class="o">|</span>   <span class="mi">18711</span><span class="n">MiB</span> <span class="o">/</span> <span class="mi">143771</span><span class="n">MiB</span> <span class="o">|</span>     <span class="mi">53</span><span class="o">%</span>      <span class="n">Default</span> <span class="o">|</span>
+<span class="o">|</span>                                         <span class="o">|</span>                        <span class="o">|</span>             <span class="n">Disabled</span> <span class="o">|</span>
+<span class="o">+-----------------------------------------+------------------------+----------------------+</span>
+<span class="o">|</span>   <span class="mi">3</span>  <span class="n">NVIDIA</span> <span class="n">H200</span>                    <span class="n">On</span>  <span class="o">|</span>   <span class="mi">00000000</span><span class="p">:</span><span class="mi">5</span><span class="n">D</span><span class="p">:</span><span class="mf">00.0</span> <span class="n">Off</span> <span class="o">|</span>                    <span class="mi">0</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">N</span><span class="o">/</span><span class="n">A</span>   <span class="mi">45</span><span class="n">C</span>    <span class="n">P0</span>            <span class="mi">257</span><span class="n">W</span> <span class="o">/</span>  <span class="mi">700</span><span class="n">W</span> <span class="o">|</span>   <span class="mi">18711</span><span class="n">MiB</span> <span class="o">/</span> <span class="mi">143771</span><span class="n">MiB</span> <span class="o">|</span>     <span class="mi">53</span><span class="o">%</span>      <span class="n">Default</span> <span class="o">|</span>
+<span class="o">|</span>                                         <span class="o">|</span>                        <span class="o">|</span>             <span class="n">Disabled</span> <span class="o">|</span>
+<span class="o">+-----------------------------------------+------------------------+----------------------+</span>
+<span class="o">|</span>   <span class="mi">4</span>  <span class="n">NVIDIA</span> <span class="n">H200</span>                    <span class="n">On</span>  <span class="o">|</span>   <span class="mi">00000000</span><span class="p">:</span><span class="mi">9</span><span class="n">B</span><span class="p">:</span><span class="mf">00.0</span> <span class="n">Off</span> <span class="o">|</span>                    <span class="mi">0</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">N</span><span class="o">/</span><span class="n">A</span>   <span class="mi">40</span><span class="n">C</span>    <span class="n">P0</span>            <span class="mi">237</span><span class="n">W</span> <span class="o">/</span>  <span class="mi">700</span><span class="n">W</span> <span class="o">|</span>   <span class="mi">18711</span><span class="n">MiB</span> <span class="o">/</span> <span class="mi">143771</span><span class="n">MiB</span> <span class="o">|</span>     <span class="mi">47</span><span class="o">%</span>      <span class="n">Default</span> <span class="o">|</span>
+<span class="o">|</span>                                         <span class="o">|</span>                        <span class="o">|</span>             <span class="n">Disabled</span> <span class="o">|</span>
+<span class="o">+-----------------------------------------+------------------------+----------------------+</span>
+<span class="o">|</span>   <span class="mi">5</span>  <span class="n">NVIDIA</span> <span class="n">H200</span>                    <span class="n">On</span>  <span class="o">|</span>   <span class="mi">00000000</span><span class="p">:</span><span class="n">BB</span><span class="p">:</span><span class="mf">00.0</span> <span class="n">Off</span> <span class="o">|</span>                    <span class="mi">0</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">N</span><span class="o">/</span><span class="n">A</span>   <span class="mi">34</span><span class="n">C</span>    <span class="n">P0</span>             <span class="mi">79</span><span class="n">W</span> <span class="o">/</span>  <span class="mi">700</span><span class="n">W</span> <span class="o">|</span>       <span class="mi">0</span><span class="n">MiB</span> <span class="o">/</span> <span class="mi">143771</span><span class="n">MiB</span> <span class="o">|</span>      <span class="mi">0</span><span class="o">%</span>      <span class="n">Default</span> <span class="o">|</span>
+<span class="o">|</span>                                         <span class="o">|</span>                        <span class="o">|</span>             <span class="n">Disabled</span> <span class="o">|</span>
+<span class="o">+-----------------------------------------+------------------------+----------------------+</span>
+<span class="o">|</span>   <span class="mi">6</span>  <span class="n">NVIDIA</span> <span class="n">H200</span>                    <span class="n">On</span>  <span class="o">|</span>   <span class="mi">00000000</span><span class="p">:</span><span class="n">CB</span><span class="p">:</span><span class="mf">00.0</span> <span class="n">Off</span> <span class="o">|</span>                    <span class="mi">0</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">N</span><span class="o">/</span><span class="n">A</span>   <span class="mi">42</span><span class="n">C</span>    <span class="n">P0</span>            <span class="mi">241</span><span class="n">W</span> <span class="o">/</span>  <span class="mi">700</span><span class="n">W</span> <span class="o">|</span>   <span class="mi">18711</span><span class="n">MiB</span> <span class="o">/</span> <span class="mi">143771</span><span class="n">MiB</span> <span class="o">|</span>     <span class="mi">48</span><span class="o">%</span>      <span class="n">Default</span> <span class="o">|</span>
+<span class="o">|</span>                                         <span class="o">|</span>                        <span class="o">|</span>             <span class="n">Disabled</span> <span class="o">|</span>
+<span class="o">+-----------------------------------------+------------------------+----------------------+</span>
+<span class="o">|</span>   <span class="mi">7</span>  <span class="n">NVIDIA</span> <span class="n">H200</span>                    <span class="n">On</span>  <span class="o">|</span>   <span class="mi">00000000</span><span class="p">:</span><span class="n">DB</span><span class="p">:</span><span class="mf">00.0</span> <span class="n">Off</span> <span class="o">|</span>                    <span class="mi">0</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">N</span><span class="o">/</span><span class="n">A</span>   <span class="mi">34</span><span class="n">C</span>    <span class="n">P0</span>             <span class="mi">80</span><span class="n">W</span> <span class="o">/</span>  <span class="mi">700</span><span class="n">W</span> <span class="o">|</span>       <span class="mi">0</span><span class="n">MiB</span> <span class="o">/</span> <span class="mi">143771</span><span class="n">MiB</span> <span class="o">|</span>      <span class="mi">0</span><span class="o">%</span>      <span class="n">Default</span> <span class="o">|</span>
+<span class="o">|</span>                                         <span class="o">|</span>                        <span class="o">|</span>             <span class="n">Disabled</span> <span class="o">|</span>
+<span class="o">+-----------------------------------------+------------------------+----------------------+</span>
+
+<span class="o">+-----------------------------------------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">Processes</span><span class="p">:</span>                                                                              <span class="o">|</span>
+<span class="o">|</span>  <span class="n">GPU</span>   <span class="n">GI</span>   <span class="n">CI</span>              <span class="n">PID</span>   <span class="n">Type</span>   <span class="n">Process</span> <span class="n">name</span>                        <span class="n">GPU</span> <span class="n">Memory</span> <span class="o">|</span>
+<span class="o">|</span>        <span class="n">ID</span>   <span class="n">ID</span>                                                               <span class="n">Usage</span>      <span class="o">|</span>
+<span class="o">|=========================================================================================|</span>
+<span class="o">|</span>    <span class="mi">0</span>   <span class="n">N</span><span class="o">/</span><span class="n">A</span>  <span class="n">N</span><span class="o">/</span><span class="n">A</span>         <span class="mi">1213801</span>      <span class="n">C</span>   <span class="n">python</span>                                <span class="mi">18184</span><span class="n">MiB</span> <span class="o">|</span>
+<span class="o">|</span>    <span class="mi">2</span>   <span class="n">N</span><span class="o">/</span><span class="n">A</span>  <span class="n">N</span><span class="o">/</span><span class="n">A</span>         <span class="mi">1213800</span>      <span class="n">C</span>   <span class="n">python</span>                                <span class="mi">18702</span><span class="n">MiB</span> <span class="o">|</span>
+<span class="o">|</span>    <span class="mi">3</span>   <span class="n">N</span><span class="o">/</span><span class="n">A</span>  <span class="n">N</span><span class="o">/</span><span class="n">A</span>         <span class="mi">1213803</span>      <span class="n">C</span>   <span class="n">python</span>                                <span class="mi">18702</span><span class="n">MiB</span> <span class="o">|</span>
+<span class="o">|</span>    <span class="mi">4</span>   <span class="n">N</span><span class="o">/</span><span class="n">A</span>  <span class="n">N</span><span class="o">/</span><span class="n">A</span>         <span class="mi">1059301</span>      <span class="n">C</span>   <span class="n">python</span>                                <span class="mi">18702</span><span class="n">MiB</span> <span class="o">|</span>
+<span class="o">|</span>    <span class="mi">6</span>   <span class="n">N</span><span class="o">/</span><span class="n">A</span>  <span class="n">N</span><span class="o">/</span><span class="n">A</span>         <span class="mi">1213802</span>      <span class="n">C</span>   <span class="n">python</span>                                <span class="mi">18702</span><span class="n">MiB</span> <span class="o">|</span>
+<span class="o">+-----------------------------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -613,7 +700,17 @@ Memory<span class="w"> </span>Efficiency:<span class="w"> </span><span class="m"
   aria-labelledby="pst-page-navigation-heading-2"
 >
   <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-finished-jobs">Check your <strong>finished</strong> jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#completed-jobs">Completed Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-job-completion-emails">Slurm job completion emails</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#active-jobs-dashboard">Active Jobs Dashboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seff">seff</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-jobs">Running Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#top">top</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia-smi">nvidia-smi</a></li>
+</ul>
+</li>
 </ul>
 </nav></div>
 
@@ -679,7 +776,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 04, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       

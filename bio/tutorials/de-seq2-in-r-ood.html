@@ -77,8 +77,8 @@
     <link rel="prev" title="Package installation and module generation with container-mod" href="container-mod.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260204" />
-    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -440,9 +440,16 @@
 <li class="toctree-l2"><a class="reference internal" href="container-mod.html">Package installation and module generation with container-mod</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exploring-python-bioinformatics.html">Exploring Python Bioinformatics Packages with Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing-a-bioinformatics.html">How to Organize a Bioinformatics Project on the Tufts HPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel-computing-in-r.html">Parallel Computing in R for Bioinformatics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel-read-alignment.html">Parallel read alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running-nfcore-pipelines.html">Running nfcore pipelines on Tufts HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="practical-guide-to-analyzing.html">A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="running-nfcore-pipelines.html">Running nf-core pipelines on Tufts HPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sc-rna-seq-analysis-with-r.html">scRNA-seq analysis with RStudio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="set-up-conda-environment.html">Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="using-singularity.html">Using containers with Singularity to ensure reproducible research</a></li>
@@ -526,6 +533,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="a-beginners-guide-to-differential-expression-analysis-with-deseq2-in-r-on-open-ondemand">
 <h1>A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand<a class="headerlink" href="#a-beginners-guide-to-differential-expression-analysis-with-deseq2-in-r-on-open-ondemand" title="Link to this heading">#</a></h1>
+<p>Author: Shirley Li, <a class="reference external" href="mailto:xue&#46;li37&#37;&#52;&#48;tufts&#46;edu">xue<span>&#46;</span>li37<span>&#64;</span>tufts<span>&#46;</span>edu</a><br />
+Date: 2026-02-26</p>
 <section id="prerequisite">
 <h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -560,16 +569,16 @@
 </section>
 <section id="step1-access-the-cluster-via-open-ondemand">
 <h2>Step1: Access the Cluster via Open OnDemand<a class="headerlink" href="#step1-access-the-cluster-via-open-ondemand" title="Link to this heading">#</a></h2>
-<p><strong>Log in</strong> to <a class="reference external" href="https://ondemand.pax.tufts.edu">Open OnDemand</a> using your Tufts HPC credentials.</p>
+<p><strong>Log in</strong> to <a class="reference external" href="https://ondemand-p01.pax.tufts.edu/">Open OnDemand</a> using your Tufts HPC credentials.</p>
 <p><strong>Start an RStudio Job</strong>:</p>
 <ol class="arabic simple">
-<li><p>Navigate to <strong>Interactive Apps</strong>, then select <strong>RStudio_Pax</strong>.</p></li>
+<li><p>Navigate to <strong>Interactive Apps</strong>, then select <strong>RStudio Server</strong>.</p></li>
 <li><p>Fill in the required fields:</p>
 <ul class="simple">
 <li><p><strong>Number of hours</strong>: Specify the time needed for your session. (Recommended starting point: 24 hours)</p></li>
 <li><p><strong>Number of CPU cores</strong>: Choose based on your computational needs. (Recommended starting point: 8 cores)</p></li>
 <li><p><strong>Amount of memory</strong>: Allocate sufficient memory for your analysis. (Recommended starting point: 32 GB)</p></li>
-<li><p><strong>R Version</strong>: Select <code class="docutils literal notranslate"><span class="pre">4.4.1</span></code>.</p></li>
+<li><p><strong>R Version</strong>: Select <code class="docutils literal notranslate"><span class="pre">4.5.2</span></code>.</p></li>
 </ul>
 </li>
 <li><p>Click <strong>Launch</strong> to start the job.</p></li>
@@ -880,7 +889,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 04, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       

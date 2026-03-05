@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Running nfcore pipelines on Tufts HPC &#8212; TTS Research Technology Guides</title>
+    <title>Running nf-core pipelines on Tufts HPC &#8212; TTS Research Technology Guides</title>
   
   
   
@@ -74,11 +74,11 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="scRNA-seq analysis with RStudio" href="sc-rna-seq-analysis-with-r.html" />
-    <link rel="prev" title="Parallel read alignment" href="parallel-read-alignment.html" />
+    <link rel="prev" title="A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)" href="practical-guide-to-analyzing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260204" />
-    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -440,9 +440,16 @@
 <li class="toctree-l2"><a class="reference internal" href="container-mod.html">Package installation and module generation with container-mod</a></li>
 <li class="toctree-l2"><a class="reference internal" href="de-seq2-in-r-ood.html">A Beginner’s Guide to Differential Expression Analysis with DESeq2 in R on Open OnDemand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exploring-python-bioinformatics.html">Exploring Python Bioinformatics Packages with Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing-a-bioinformatics.html">How to Organize a Bioinformatics Project on the Tufts HPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel-computing-in-r.html">Parallel Computing in R for Bioinformatics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel-read-alignment.html">Parallel read alignment</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Running nfcore pipelines on Tufts HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="practical-guide-to-analyzing.html">A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)</a></li>
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Running nf-core pipelines on Tufts HPC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sc-rna-seq-analysis-with-r.html">scRNA-seq analysis with RStudio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="set-up-conda-environment.html">Set Up Conda Environment and Create Jupyter Kernel for scRNA-seq Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="using-singularity.html">Using containers with Singularity to ensure reproducible research</a></li>
@@ -506,7 +513,7 @@
     </li>
      
     <li class="breadcrumb-item active" aria-current="page">
-      Running nfcore...
+      Running nf-core...
     </li>
   </ul>
 </nav>
@@ -524,44 +531,156 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="running-nfcore-pipelines-on-tufts-hpc">
-<h1>Running nfcore pipelines on Tufts HPC<a class="headerlink" href="#running-nfcore-pipelines-on-tufts-hpc" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="running-nf-core-pipelines-on-tufts-hpc">
+<h1>Running nf-core pipelines on Tufts HPC<a class="headerlink" href="#running-nf-core-pipelines-on-tufts-hpc" title="Link to this heading">#</a></h1>
 <p>Shirley Li, Bioinformatician, TTS Research Technology
 <a class="reference external" href="mailto:xue&#46;li37&#37;&#52;&#48;tufts&#46;edu">xue<span>&#46;</span>li37<span>&#64;</span>tufts<span>&#46;</span>edu</a></p>
-<p>Date: 2024-11-01</p>
+<p>Date: 2026-02-25</p>
 <p>You have two options for running the nf-core pipeline on Tufts HPC: through Open OnDemand or the command-line interface.</p>
 <section id="open-ondemand">
 <h2>1. Open Ondemand<a class="headerlink" href="#open-ondemand" title="Link to this heading">#</a></h2>
-<p>Navigate to <a class="reference external" href="https://ondemand.pax.tufts.edu/">Open Ondemand</a>, under <code class="docutils literal notranslate"><span class="pre">Bioinformatics</span> <span class="pre">Apps</span></code>, choose the appropriate application for the pipeline you wish to execute.</p>
+<p>Navigate to <a class="reference external" href="https://ondemand-p01.pax.tufts.edu/">Open Ondemand</a>, under <code class="docutils literal notranslate"><span class="pre">nf-core</span> <span class="pre">pipelines</span></code>, choose the appropriate application for the pipeline you wish to execute.</p>
 </section>
-<section id="linux-command-line-interface">
-<h2>2. Linux Command Line Interface<a class="headerlink" href="#linux-command-line-interface" title="Link to this heading">#</a></h2>
-<p>By using <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code>, you can see the available modules. There are two ways to run the nf-core pipeline via the command-line interface:</p>
-<section id="option-1">
-<h3>Option 1<a class="headerlink" href="#option-1" title="Link to this heading">#</a></h3>
+<section id="command-line-interface">
+<h2>2. Command Line Interface<a class="headerlink" href="#command-line-interface" title="Link to this heading">#</a></h2>
 <p>Load the necessary modules</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">3.8.4</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">nf</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="mf">2.13.1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">nextflow</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">4.3.4</span>
 </pre></div>
 </div>
 <p>Run the pipeline with this command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nextflow</span> <span class="n">run</span> <span class="n">nf</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="n">mag</span> <span class="o">-</span><span class="n">profile</span> <span class="n">tufts</span> <span class="o">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nextflow</span> <span class="n">run</span> <span class="n">nf</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="n">rnaseq</span> <span class="o">-</span><span class="n">profile</span> <span class="n">tufts</span> <span class="o">...</span>
 </pre></div>
 </div>
-<p>For a comprehensive list of available pipelines, visit the <a class="reference external" href="https://nf-co.re/pipelines">nf-core website</a>. There are currently 107 pipelines available through nf-core.</p>
+<p>For a comprehensive list of available pipelines, visit the <a class="reference external" href="https://nf-co.re/pipelines">nf-core website</a>. There are currently more than 100 pipelines available through nf-core.</p>
+<section id="example-slurm-script">
+<h3>Example slurm script<a class="headerlink" href="#example-slurm-script" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#SBATCH --job-name=rnaseq_nfcore
+#SBATCH --partition=batch
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+#SBATCH --time=02:00:00
+#SBATCH --output=rnaseq_%j.log
+#SBATCH --error=rnaseq_%j.err
+
+echo &quot;Starting job at $(date)&quot;
+echo &quot;Running on node: $(hostname)&quot;
+echo &quot;Job ID: $SLURM_JOB_ID&quot;
+
+module load nextflow
+module load singularity/4.3.4
+
+genome=/cluster/tufts/workshop/public/2026spring/reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+gtf=/cluster/tufts/workshop/public/2026spring/reference/Homo_sapiens.GRCh38.111.gtf.gz
+
+nextflow run nf-core/rnaseq \
+    -r 3.22.2 \
+    -profile tufts \
+    --input samplesheet.csv \
+    --fasta $genome \
+    --gtf $gtf \
+    --star_index /cluster/tufts/workshop/public/2026spring/star_index/  \
+    --salmon_index /cluster/tufts/workshop/public/2026spring/salmon_index/
+    --outdir rnaseq
+
+
+echo &quot;Finished at $(date)&quot;
+</pre></div>
+</div>
 </section>
-<section id="option-2">
-<h3>Option 2<a class="headerlink" href="#option-2" title="Link to this heading">#</a></h3>
-<p>Load singularity module and the specific pipeline module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">3.8.4</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">nf</span><span class="o">-</span><span class="n">core</span><span class="o">-</span><span class="n">mag</span><span class="o">/</span><span class="mf">2.5.4</span>
+</section>
+<section id="key-results">
+<h2>3. Key Results<a class="headerlink" href="#key-results" title="Link to this heading">#</a></h2>
+<p>If you define your output directory as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">outdir</span> <span class="n">rnaseq</span>
 </pre></div>
 </div>
-<p>Execute the pipeline using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mag</span> <span class="o">...</span>
+<p>then all pipeline results will be written inside:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rnaseq</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>Currently, 31 pipelines have been deployed as modules on Tufts HPC for ease of use.</p>
+<p>This directory will contain subfolders such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rnaseq/
+├── multiqc/
+├── star_salmon/
+├── pipeline_info/
+├── fastqc/
+├── trimgalore/
+└── work/   (intermediate files, DELETE after COMPLETION to save space)
+</pre></div>
+</div>
+<section id="summary-report-most-important">
+<h3>3.1 Summary Report (Most Important)<a class="headerlink" href="#summary-report-most-important" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">multiqc</span><span class="o">/</span>
+<span class="n">multiqc</span><span class="o">/</span><span class="n">star_salmon</span><span class="o">/</span><span class="n">multiqc_report</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>Open this first.</p>
+</section>
+<section id="gene-level-counts">
+<h3>3.2 Gene-Level Counts<a class="headerlink" href="#gene-level-counts" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>salmon.merged.gene_counts.tsv   → gene-level counts (used for differential expression)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>salmon.merged.gene_tpm.tsv      → normalized expression (for visualization)
+</pre></div>
+</div>
+</section>
+<section id="pipeline-metadata-reproducibility">
+<h3>3.3 Pipeline Metadata (Reproducibility)<a class="headerlink" href="#pipeline-metadata-reproducibility" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline_info</span><span class="o">/</span><span class="n">nf_core_rnaseq_software_mqc_versions</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<p>Contains software versions</p>
+<section id="open-ondemand-app">
+<h4>Open OnDemand App<a class="headerlink" href="#open-ondemand-app" title="Link to this heading">#</a></h4>
+<p>In your working directory, this file list all parameter used</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nf</span><span class="o">-</span><span class="n">params</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="logs-and-troubleshooting">
+<h2>4. Logs and Troubleshooting<a class="headerlink" href="#logs-and-troubleshooting" title="Link to this heading">#</a></h2>
+<section id="main-nextflow-log">
+<h3>4.1 Main Nextflow Log<a class="headerlink" href="#main-nextflow-log" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">nextflow</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+<p>Monitor during run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span><span class="n">nextflow</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+<p>It locates in the workding dir, not the outdir.</p>
+</section>
+<section id="slurm-log-files">
+<h3>4.2 SLURM Log Files<a class="headerlink" href="#slurm-log-files" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rnaseq_</span><span class="o">&lt;</span><span class="n">jobid</span><span class="o">&gt;.</span><span class="n">log</span>   <span class="c1"># check progress</span>
+<span class="n">rnaseq_</span><span class="o">&lt;</span><span class="n">jobid</span><span class="o">&gt;.</span><span class="n">err</span>   <span class="c1"># check errors</span>
+</pre></div>
+</div>
+<section id="id1">
+<h4>Open OnDemand App<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>In session ID folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">output</span><span class="o">.</span><span class="n">log</span>  <span class="c1"># check progress</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="per-process-logs-advanced">
+<h3>4.3 Per-Process Logs (Advanced)<a class="headerlink" href="#per-process-logs-advanced" title="Link to this heading">#</a></h3>
+<p>Located inside:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">work</span><span class="o">/&lt;</span><span class="nb">hash</span><span class="o">&gt;/</span>
+</pre></div>
+</div>
+<p>Files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">log</span>
+<span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">err</span>
+<span class="o">.</span><span class="n">command</span><span class="o">.</span><span class="n">out</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -577,12 +696,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="parallel-read-alignment.html"
+       href="practical-guide-to-analyzing.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Parallel read alignment</p>
+        <p class="prev-next-title">A Practical Guide to Spatial Transcriptomics Analysis in R (MERFISH, 10x Visium, GeoMx DSP)</p>
       </div>
     </a>
     <a class="right-next"
@@ -609,7 +728,7 @@
   id="pst-page-navigation-heading-2"
   class="page-toc tocsection onthispage"
 >
-  <i class="fa-solid fa-list"></i> Running nfcore pipelines on Tufts HPC
+  <i class="fa-solid fa-list"></i> Running nf-core pipelines on Tufts HPC
 </div>
 <nav
   class="bd-toc-nav page-toc"
@@ -617,9 +736,26 @@
 >
   <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-ondemand">1. Open Ondemand</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-command-line-interface">2. Linux Command Line Interface</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1">Option 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2">Option 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-interface">2. Command Line Interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-slurm-script">Example slurm script</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-results">3. Key Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-report-most-important">3.1 Summary Report (Most Important)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gene-level-counts">3.2 Gene-Level Counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-metadata-reproducibility">3.3 Pipeline Metadata (Reproducibility)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#open-ondemand-app">Open OnDemand App</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logs-and-troubleshooting">4. Logs and Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-nextflow-log">4.1 Main Nextflow Log</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-log-files">4.2 SLURM Log Files</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Open OnDemand App</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-process-logs-advanced">4.3 Per-Process Logs (Advanced)</a></li>
 </ul>
 </li>
 </ul>
@@ -698,7 +834,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 04, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       

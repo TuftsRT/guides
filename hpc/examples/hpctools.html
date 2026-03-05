@@ -77,8 +77,8 @@
     <link rel="prev" title="HelloWorld HPC Cluster Tutorial" href="helloworld.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260204" />
-    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -441,10 +441,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../slurm/index.html">Slurm Job Scheduler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../application/index.html">Software Applications</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples and Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="advanced-jupyter.html">Advanced Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helloworld.html">HelloWorld HPC Cluster Tutorial</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">HPC Helper Tool - hpctools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install-from-source.html">Building software from source code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="new-cluster.html">2025 Cluster Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new-cluster.html">HPC Cluster Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="portforward.html">Port Forwarding on HPC Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
@@ -529,9 +530,9 @@
 <h1>HPC Helper Tool - hpctools<a class="headerlink" href="#hpc-helper-tool-hpctools" title="Link to this heading">#</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">hpctools</span></code> is available a set of helper scripts that helps users locate available resources, checking home directory usage and research storage space quota, monitoring active and completed jobs, .etc</p>
 <p>Users can run hpctools on any node (compute or login):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[username@login-prod-01 ~]$ module load hpctools
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[username@login-p01 ~]$ module load hpctools
 	 command: hpctools
-[username@login-prod-01 ~]$ hpctools
+[username@login-p01 ~]$ hpctools
  Please select from the following options:
 
   1. Checking Free Resources On Each Node in Given Partition(s)
@@ -689,7 +690,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 04, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       

@@ -1,0 +1,887 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Advanced Jupyter &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/examples/advanced-jupyter';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/hpc/examples/advanced-jupyter.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HelloWorld HPC Cluster Tutorial" href="helloworld.html" />
+    <link rel="prev" title="Examples and Tutorials" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nlp/index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../ai/index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nlp/index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../ai/index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     High-Performance Computing 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../terminology/index.html">HPC Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../access/index.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/index.html">Computing Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm/index.html">Slurm Job Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../application/index.html">Software Applications</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples and Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Advanced Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helloworld.html">HelloWorld HPC Cluster Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-from-source.html">Building software from source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new-cluster.html">HPC Cluster Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portforward.html">Port Forwarding on HPC Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snapshots.html">File Recovery on Tufts HPC Cluster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../policy/index.html">HPC Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../help.html">Help with HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage-request.html">HPC Cluster Storage Request</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >High-Performance Computing</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Examples and Tutorials</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Advanced Jupyter
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="advanced-jupyter">
+<h1>Advanced Jupyter<a class="headerlink" href="#advanced-jupyter" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This tutorial covers an advanced method to install one’s own copy of Jupyer.  Most users should utilized our existing Jupyter install via OnDemand.</p>
+</div>
+<section id="who-is-this-tutorial-for">
+<h2>Who is this tutorial for<a class="headerlink" href="#who-is-this-tutorial-for" title="Link to this heading">#</a></h2>
+<p>This tutorial is particularly useful if you need to run on a system that we do not have compatible versions of conda or Jupyter, such as ARM-based systems like the GH200, or if you want to access a running Jupyter session from your local machine.</p>
+<section id="port-forwarding">
+<h3>Port forwarding<a class="headerlink" href="#port-forwarding" title="Link to this heading">#</a></h3>
+<p>This also covers port forwarding, a process that allows users to access Jupyter running on the Tufts HPC Cluster from their local computer. This is especially useful for connecting to the LLM Notebooks from your local computer, to allow for running Ollama models on the HPC from your local machine’s familiar environment. For more details on the AI Tools on the cluster, see here: <a class="reference internal" href="../../ai/index.html"><span class="doc std std-doc">https://go.tufts.edu/AITools</span></a>.</p>
+</section>
+</section>
+<section id="jupyter">
+<h2>Jupyter<a class="headerlink" href="#jupyter" title="Link to this heading">#</a></h2>
+</section>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Link to this heading">#</a></h2>
+<p>These instructions require conda. You can use our <a class="reference internal" href="../application/10-condaenv.html"><span class="doc std std-doc">conda install available via modules</span></a>, or the <a class="reference internal" href="#conda">custom conda instructions below</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">jupyter</span> <span class="n">python</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">jupyter</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span>
+</pre></div>
+</div>
+</section>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Link to this heading">#</a></h2>
+<p>This is an example work flow to access a Jupyter notebook from the web browser of your local computer.</p>
+<p>Using SSH on your local computer, connect to a login node and request a compute node be allocated</p>
+<p>[utln01&#64;login-p01 ~]$ <code class="docutils literal notranslate"><span class="pre">salloc</span> <span class="pre">-N</span> <span class="pre">1</span> <span class="pre">-p</span> <span class="pre">gpu</span> <span class="pre">--gres=gpu:1</span> <span class="pre">-t</span> <span class="pre">15</span></code></p>
+<p>Once an node is allocated by Slurm you will be connected to this node automatically. You will see your shell prompt change to <strong>[utln01&#64;pax00# ~]$</strong> .</p>
+<p>On this compute node you can run the commands below to start Jupyter</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">jupyter</span>
+<span class="n">jupyter</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">browser</span> <span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="mf">0.0.0.0</span>
+</pre></div>
+</div>
+<p>As Jupyter starts up you will see several messages printed to your SSH console. From this you need 3 important pieces of information.</p>
+<ol class="arabic simple">
+<li><p>The network port that Jupyter started on. This is a 4 digit number, typically <code class="docutils literal notranslate"><span class="pre">8888</span></code></p></li>
+<li><p>The local host (127.0.0.1) URL with authentication token Jupyter generated. It will look similar to <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8888/?token=#########################################</span></code>.</p></li>
+<li><p>The nodename of the compute node you are running Jupyter on. This will be pax with 3 numbers after it, similar to pax000. It will be visible in the message, and is also the same as the name shown in the shell prompt.</p></li>
+</ol>
+<p>In a new window, connect a 2nd SSH session from your client with a port forward to the allocated node</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">8888</span><span class="p">:</span><span class="n">pax</span><span class="c1">###:8888 utln@login-prod.pax.tufts.edu</span>
+</pre></div>
+</div>
+<p>On your client computer use your favorite web browser to navigate to <a class="reference external" href="http://127.0.0.1:8888/?token=#########################################">http://127.0.0.1:8888/?token=#########################################</a> replacing this example url with the similar localhost (127.0.0.1) version output by Jupyter when it started.</p>
+</section>
+<section id="conda">
+<h2>Conda<a class="headerlink" href="#conda" title="Link to this heading">#</a></h2>
+<p>This explains how to install your own version of conda on the HPC cluster.</p>
+<section id="installing-conda-on-x86">
+<h3>Installing conda on x86<a class="headerlink" href="#installing-conda-on-x86" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">anaconda</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">bash</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">miniconda3x86</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You will need to read and accept the license terms.</p></li>
+<li><p>If this is the first conda install inside your account you can let conda auto initialize your environment.
+– When prompted to run conda init, answer yes.
+– source ~/.bashrc</p></li>
+<li><p>If this is a 2nd install of conda for a difference architecture do not run conda init. The installer will display a command to run to manually setup conda each time you login. Keep this for future reference.</p></li>
+</ul>
+</section>
+<section id="installing-conda-on-arm">
+<h3>Installing conda on Arm<a class="headerlink" href="#installing-conda-on-arm" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">anaconda</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">aarch64</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">bash</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">aarch64</span><span class="o">.</span><span class="n">sh</span>  <span class="o">-</span><span class="n">p</span> <span class="o">~/</span><span class="n">miniconda3arm</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You will need to read and accept the license terms.</p></li>
+<li><p>If this is the first conda install inside your account you can let conda auto initialize your environment.
+– When prompted to run conda init, answer yes.</p></li>
+</ul>
+</section>
+</section>
+<section id="common-situations">
+<h2>Common situations<a class="headerlink" href="#common-situations" title="Link to this heading">#</a></h2>
+<section id="manually-activating-conda-or-switching-conda-between-x86-arm-installs">
+<h3>Manually activating conda, or switching conda between x86/arm installs<a class="headerlink" href="#manually-activating-conda-or-switching-conda-between-x86-arm-installs" title="Link to this heading">#</a></h3>
+<p>This command will activate the conda install at the path provided in your current shell.
+<code class="docutils literal notranslate"><span class="pre">eval</span> <span class="pre">&quot;$(~/miniconda3x86/bin/conda</span> <span class="pre">shell.bash</span> <span class="pre">hook)&quot;</span></code></p>
+</section>
+<section id="activating-a-conda-environment-in-a-script-or-slurm-submission-file">
+<h3>Activating a conda environment in a script or Slurm submission file<a class="headerlink" href="#activating-a-conda-environment-in-a-script-or-slurm-submission-file" title="Link to this heading">#</a></h3>
+<p>You can activate a conda environment using the following commands. Replace the path passed to the source command with the path for you conda install</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/</span><span class="n">miniconda3x86</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">conda</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">environment</span><span class="o">-</span><span class="n">name</span>
+</pre></div>
+</div>
+</section>
+<section id="different-port-number-than-8888">
+<h3>Different port number than 8888<a class="headerlink" href="#different-port-number-than-8888" title="Link to this heading">#</a></h3>
+<p>It is not uncommon for multiple instances of Jupyter to be running on the same compute node. If this is the case, the <strong>default</strong> port number of 8888 will be a different number, you will need to use this alternate number instead.</p>
+<p>You can specify a port number using the <code class="docutils literal notranslate"><span class="pre">--port</span></code> option when calling <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code> or <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code>, for example <code class="docutils literal notranslate"><span class="pre">--port</span> <span class="pre">6767</span></code>. However, Jupyter will fail to start if that number you manually specify is already in use.</p>
+<p>To search for available ports, you can use the command:
+<code class="docutils literal notranslate"><span class="pre">ss</span> <span class="pre">-tuln</span></code></p>
+<p>We recommend you use ports around 8000 for this. You can check if a given port is open, such as 8080, by passing the result to <code class="docutils literal notranslate"><span class="pre">grep</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ss</span> <span class="pre">-tuln</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-w</span> <span class="pre">':8080'</span></code></p>
+<p>This will return a service it is exists on the port, and nothing if the port is available.</p>
+</section>
+<section id="starting-jupyter-using-sbatch">
+<h3>Starting Jupyter using sbatch<a class="headerlink" href="#starting-jupyter-using-sbatch" title="Link to this heading">#</a></h3>
+<p>Sometimes it makes sense to run Jupyter as a “non interactive” job using sbatch instead of salloc. This can be useful for long running notebooks or other situations where you want the job to keep running if you are disconnected. Even though the job is “non interactive” you can still connect to it the same way and use it interactively. There are 3 main differences when using this method.</p>
+<p><strong>Main Differences</strong></p>
+<ol class="arabic simple">
+<li><p>Use sbatch and a job submission script</p></li>
+<li><p>Locate your allocated node</p></li>
+<li><p>Get Jupyter port and URL from output log</p></li>
+</ol>
+<section id="use-sbatch-and-a-job-submission-script">
+<h4>Use sbatch and a job submission script<a class="headerlink" href="#use-sbatch-and-a-job-submission-script" title="Link to this heading">#</a></h4>
+<p>To start your job create a file named jupyter_session.sh</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -p PartitionName  # gpu, batch or preempt</span>
+<span class="c1">#SBATCH -t 04:00:00 #4 Hours</span>
+<span class="c1">#SBATCH -c 4 #4 CPUs</span>
+<span class="c1">#SBATCH --gres=gpu:1 # 1 GPU, if needed</span>
+<span class="c1">#SBATCH --job-name=jupyter</span>
+<span class="c1">#SBATCH --mail-type=FAIL,BEGIN,END</span>
+<span class="c1">#SBATCH --error=%x-%J-%u.err</span>
+<span class="c1">#SBATCH --output=%x-%J-%u.out</span>
+
+<span class="n">module</span> <span class="n">purge</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">anaconda</span><span class="o">/</span><span class="mf">2025.06.0</span>
+
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">jupyter</span>
+<span class="n">jupyter</span> <span class="n">lab</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">browser</span> <span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="mf">0.0.0.0</span>
+</pre></div>
+</div>
+</section>
+<section id="locate-your-allocated-node">
+<h4>Locate your allocated node<a class="headerlink" href="#locate-your-allocated-node" title="Link to this heading">#</a></h4>
+<p>The squeue command will show you your jobs, and the nodes they are allocated to run on. Use <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code> and locate the hostname (pax###) of the node that shows your jobs as running.</p>
+<p><code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>             <span class="n">JOBID</span> <span class="n">PARTITION</span>     <span class="n">NAME</span>     <span class="n">USER</span> <span class="n">ST</span>       <span class="n">TIME</span>  <span class="n">NODES</span> <span class="n">NODELIST</span><span class="p">(</span><span class="n">REASON</span><span class="p">)</span>
+            <span class="mi">247071</span>       <span class="n">gpu</span>  <span class="n">jupyter</span> <span class="n">utln01</span>  <span class="n">R</span>       <span class="mi">0</span><span class="p">:</span><span class="mi">06</span>      <span class="mi">1</span> <span class="n">pax0</span><span class="c1">##</span>
+</pre></div>
+</div>
+</section>
+<section id="locating-connection-information">
+<h4>Locating connection information<a class="headerlink" href="#locating-connection-information" title="Link to this heading">#</a></h4>
+<p>When using sbatch the Jupyter output will be located in the slurm error log, in this case a file in the same folder as your submission script in a file named similar to jupyter-jobid#-utln01.err . This file will contain familiar output that includes a url similar to the one shown below.</p>
+<p><code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8888/lab?token=234234asadf959invalid96223453dsa4de</span></code></p>
+<p>Setup the SSH port forward using the node name we found previously and the port number shown in this url found in the error log.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">8888</span><span class="p">:</span><span class="n">pax</span><span class="c1">###:8888 utln@login-prod.pax.tufts.edu</span>
+</pre></div>
+</div>
+<p>On your client computer use a web browser to navigate to <a class="reference external" href="http://127.0.0.1:8888/lab?token=234234asadf959invalid96223453dsa4de">http://127.0.0.1:8888/lab?token=234234asadf959invalid96223453dsa4de</a></p>
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Examples and Tutorials</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="helloworld.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">HelloWorld HPC Cluster Tutorial</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Advanced Jupyter
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-tutorial-for">Who is this tutorial for</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#port-forwarding">Port forwarding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter">Jupyter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install">Install</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow">Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">Conda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda-on-x86">Installing conda on x86</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-conda-on-arm">Installing conda on Arm</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-situations">Common situations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manually-activating-conda-or-switching-conda-between-x86-arm-installs">Manually activating conda, or switching conda between x86/arm installs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activating-a-conda-environment-in-a-script-or-slurm-submission-file">Activating a conda environment in a script or Slurm submission file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-port-number-than-8888">Different port number than 8888</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-jupyter-using-sbatch">Starting Jupyter using sbatch</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-sbatch-and-a-job-submission-script">Use sbatch and a job submission script</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locate-your-allocated-node">Locate your allocated node</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#locating-connection-information">Locating connection information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/hpc/examples/advanced-jupyter.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/hpc/examples/advanced-jupyter.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: hpc/examples/advanced-jupyter"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Mar 05, 2026.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

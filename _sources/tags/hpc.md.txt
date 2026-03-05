@@ -4,6 +4,7 @@ nosearch:
 html_theme.sidebar_secondary.remove: true
 ---
 # hpc
+- [](/ai/python/index.md)
 - [](/hpc/examples/index.md)
 - [](/hpc/examples/new-cluster.md)
 - [](/hpc/index.md)

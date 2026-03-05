@@ -77,8 +77,8 @@
     <link rel="prev" title="HPC Storage" href="30-storage.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260204" />
-    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -545,7 +545,7 @@
 <p>There are several methods available to copy your data to and from the HPC cluster. These include SCP/SFTP, OnDemand and Globus.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>File Transfer Hostname xfer.pax.tufts.edu (formerly xfer.cluster.tufts.edu)</p>
+<p>File Transfer hosts (xfer) are being retired in favor of using the login nodes directly for SCP/SFTP or rsync.</p>
 </div>
 <ul>
 <li><p>File Transfer Protocol</p>
@@ -563,7 +563,7 @@
 <li><p>Cross-Platform: <strong><a class="reference external" href="https://filezilla-project.org/">FileZilla</a></strong></p></li>
 <li><p>Cross-Platform: <strong><a class="reference external" href="https://cyberduck.io/">Cyberduck</a></strong></p></li>
 <li><p>Native: Windows 11, Mac and Linux all include a command line SSH clients in the OS. This <code class="docutils literal notranslate"><span class="pre">scp</span></code> command can be used for quick connections without installing additional software.</p></li>
-<li><p>Web Interface:<strong><a class="reference external" href="https://ondemand.pax.tufts.edu">OnDemand</a></strong> (Only for transferring files size <strong>less than 976MB per file.</strong>)</p></li>
+<li><p>Web Interface:<strong><a class="reference external" href="https://ondemand-prod.pax.tufts.edu">OnDemand</a></strong> (Only for transferring files size <strong>less than 976MB per file.</strong>)</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -573,18 +573,17 @@
 <h2>OnDemand<a class="headerlink" href="#ondemand" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>Go to OnDemand:</p>
-<p><strong><a class="reference external" href="https://ondemand.pax.tufts.edu/">https://ondemand.pax.tufts.edu/</a></strong></p>
+<p><strong><a class="reference external" href="https://ondemand-prod.pax.tufts.edu/">https://ondemand-prod.pax.tufts.edu/</a></strong></p>
 </li>
-<li><p>Under <strong><code class="docutils literal notranslate"><span class="pre">Files</span></code></strong>, using the <strong><code class="docutils literal notranslate"><span class="pre">Upload</span></code></strong> or <strong><code class="docutils literal notranslate"><span class="pre">Download</span></code></strong> buttons to transfer. Make sure you navigate to the destination/source directory on cluster using the <strong><code class="docutils literal notranslate"><span class="pre">Go</span> <span class="pre">To</span></code></strong> button before transferring files.</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/ondemand_homedir.png" alt="Core-Node" width=70%>
-<p>You may not see your lab folder listed under <code class="docutils literal notranslate"><span class="pre">/cluster/tufts</span></code>, <strong>DO</strong> use <code class="docutils literal notranslate"><span class="pre">Go</span> <span class="pre">To</span></code> button and <strong>TYPE</strong> out the <strong>FULL</strong> path.</p>
-</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Home</span> <span class="pre">Directory</span></code></strong> Under <strong><code class="docutils literal notranslate"><span class="pre">Files</span></code></strong>, using the <strong><code class="docutils literal notranslate"><span class="pre">Upload</span></code></strong> or <strong><code class="docutils literal notranslate"><span class="pre">Download</span></code></strong> buttons to transfer. Make sure you navigate to the destination/source directory on cluster using the <strong><code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">directory</span></code></strong> button before transferring files.</p></li>
 </ul>
+<p><img alt="ood-homedir" src="../../_images/newondemand-homedir.png" /></p>
+<p>You may not see your lab folder listed under <code class="docutils literal notranslate"><span class="pre">/cluster/tufts</span></code>, <strong>DO</strong> use <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">directory</span></code> button and <strong>TYPE</strong> out the <strong>FULL</strong> path.</p>
 </section>
 <section id="command-line-scp-rsync">
 <h2>Command Line - scp &amp; rsync<a class="headerlink" href="#command-line-scp-rsync" title="Link to this heading">#</a></h2>
 <blockquote>
-<div><p>Hostname** for file transfer: xfer.cluster.tufts.edu</p>
+<div><p>Hostname for file transfer: <strong>login-prod.pax.tufts.edu</strong></p>
 <p>NOTE:</p>
 <ul class="simple">
 <li><p><strong>Local_Path</strong> : Path to your files or directory on your local computer</p></li>
@@ -596,7 +595,7 @@
 </li>
 </ul>
 </div></blockquote>
-<p>**<em>Execute from your local machine terminal.</em> **</p>
+<p>The following commands are execute from your local machine terminal.</p>
 <p>General Format:</p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scp</span> <span class="pre">From_Path</span> <span class="pre">To_Path</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">rsync</span> <span class="pre">From_Path</span> <span class="pre">To_Pat</span></code></p>
@@ -606,24 +605,24 @@
 <ul class="simple">
 <li><p>Download from cluster</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scp</span> <span class="pre">your_utln&#64;xfer.cluster.tufts.edu:Cluster_Path</span> <span class="pre">Local_Path</span>&#160; </code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">rsync</span> <span class="pre">your_utln&#64;xfer.cluster.tufts.edu:Cluster_Path</span> <span class="pre">Local_Path</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scp</span> <span class="pre">your_utln&#64;login-prod.pax.tufts.edu:Cluster_Path</span> <span class="pre">Local_Path</span>&#160; </code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">rsync</span> <span class="pre">your_utln&#64;login-prod.pax.tufts.edu:Cluster_Path</span> <span class="pre">Local_Path</span></code></p>
 <ul class="simple">
 <li><p>Upload to cluster</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scp</span> <span class="pre">Local_Path</span> <span class="pre">your_utln&#64;xfer.cluster.tufts.edu:Cluster_Path</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">rsync</span> <span class="pre">Local_Path</span> <span class="pre">your_utln&#64;xfer.cluster.tufts.edu:Cluster_Path</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scp</span> <span class="pre">Local_Path</span> <span class="pre">your_utln&#64;login-prod.pax.tufts.edu:Cluster_Path</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">rsync</span> <span class="pre">Local_Path</span> <span class="pre">your_utln&#64;login-prod.pax.tufts.edu:Cluster_Path</span></code></p>
 <p><strong>Directory</strong> Transfer with <code class="docutils literal notranslate"><span class="pre">scp</span></code> or <code class="docutils literal notranslate"><span class="pre">rsync</span></code>:</p>
 <ul class="simple">
 <li><p>Download from cluster</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">your_utln&#64;xfer.cluster.tufts.edu:Cluster_Path</span> <span class="pre">Local_Path</span>&#160; </code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">rsync</span> <span class="pre">-azP</span> <span class="pre">your_utln&#64;xfer.cluster.tufts.edu:Cluster_Path</span> <span class="pre">Local_Path</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">your_utln&#64;login-prod.pax.tufts.edu:Cluster_Path</span> <span class="pre">Local_Path</span>&#160; </code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">rsync</span> <span class="pre">-azP</span> <span class="pre">your_utln&#64;login-prod.pax.tufts.edu:Cluster_Path</span> <span class="pre">Local_Path</span></code></p>
 <ul class="simple">
 <li><p>Upload to cluster</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">Local_Path</span> <span class="pre">your_utln&#64;xfer.cluster.tufts.edu:Cluster_Path</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">rsync</span> <span class="pre">-azP</span> <span class="pre">Local_Path</span> <span class="pre">your_utln&#64;xfer.cluster.tufts.edu:Cluster_Path</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">Local_Path</span> <span class="pre">your_utln&#64;login-prod.pax.tufts.edu:Cluster_Path</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">rsync</span> <span class="pre">-azP</span> <span class="pre">Local_Path</span> <span class="pre">your_utln&#64;login-prod.pax.tufts.edu:Cluster_Path</span></code></p>
 </section>
 </section>
 
@@ -745,7 +744,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 04, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       

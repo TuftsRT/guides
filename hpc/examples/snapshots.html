@@ -77,8 +77,8 @@
     <link rel="prev" title="Private Modules" href="privatemodule.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260204" />
-    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -441,10 +441,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../slurm/index.html">Slurm Job Scheduler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../application/index.html">Software Applications</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples and Tutorials</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="advanced-jupyter.html">Advanced Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="helloworld.html">HelloWorld HPC Cluster Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hpctools.html">HPC Helper Tool - hpctools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install-from-source.html">Building software from source code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="new-cluster.html">2025 Cluster Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new-cluster.html">HPC Cluster Upgrade</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ondemand-debugging.html">OnDemand - Debugging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="portforward.html">Port Forwarding on HPC Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="privatemodule.html">Private Modules</a></li>
@@ -549,13 +550,13 @@
 <li><p>Navigate to the target directory path: go to any directory (project or home, in this example, it’s <code class="docutils literal notranslate"><span class="pre">/cluster/home/tutln01/work</span></code> ) where you need files to be recovered</p></li>
 <li><p>Access to the <code class="docutils literal notranslate"><span class="pre">.snapshot</span></code> of that directory.</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 ~]$ cd /cluster/home/tutln01/work
-[tutln01@login-prod-01 work]$ pwd
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-p01 ~]$ cd /cluster/home/tutln01/work
+[tutln01@login-p01 work]$ pwd
 /cluster/home/tutln01/work
-[tutln01@login-prod-01 work]$ cd .snapshot
-[tutln01@login-prod-01 .snapshot]$ date
+[tutln01@login-p01 work]$ cd .snapshot
+[tutln01@login-p01 .snapshot]$ date
 Mon Apr 24 10:15:59 EDT 2023
-[tutln01@login-prod-01 .snapshot]$ ll
+[tutln01@login-p01 .snapshot]$ ll
 total 0
 drwxrwx--- 2 tutln01 facstaff 4096 Feb 24 12:36 homedir_2023-03-21_14_38_07_UTC
 drwxrwx--- 2 tutln01 facstaff 4096 Feb 24 12:36 homedir_2023-03-22_07_00_00_UTC
@@ -575,10 +576,10 @@ drwxrwx--- 2 tutln01 facstaff 4096 Feb 24 12:36 homedir_2023-04-24_07_00_00_UTC
 <p>Choose the desired snapshot date.</p>
 <p>For example, assume I accidentally deleted a file from this directory on 2023-04-20, I would check both <code class="docutils literal notranslate"><span class="pre">homedir_2023-04-20_07_00_00_UTC</span></code> from 2023-04-20 as well as <code class="docutils literal notranslate"><span class="pre">homedir_2023-04-19_07_00_00_UTC</span></code> from 2023-04-19 for the desired version of the file. Repeat the following steps for both dates if needed.</p>
 <p>Pick a snapshot date, and list the contents (our target directory is <code class="docutils literal notranslate"><span class="pre">/cluster/home/tutln01/work</span></code> in this case)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 .snapshot]$ cd homedir_2023-04-20_07_00_00_UTC
-[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ pwd
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-p01 .snapshot]$ cd homedir_2023-04-20_07_00_00_UTC
+[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ pwd
 /cluster/home/tutln01/work/.snapshot/homedir_2023-04-20_07_00_00_UTC
-[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ ll
+[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ ll
 </pre></div>
 </div>
 </section>
@@ -589,18 +590,18 @@ drwxrwx--- 2 tutln01 facstaff 4096 Feb 24 12:36 homedir_2023-04-24_07_00_00_UTC
 <li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code> (Interactive): Prompts for confirmation before overwriting files.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-r</span></code> (Recursive): Copies directories and their contents recursively.</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ pwd
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ pwd
 /cluster/home/tutln01/work/.snapshot/homedir_2023-04-20_07_00_00_UTC
-[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ cp -i myfile ~/work/myfile_recovered
+[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ cp -i myfile ~/work/myfile_recovered
 </pre></div>
 </div>
 <p>If you are recovering directories, copy the directory recursively.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ cp -i -r mydir ~/work/mydir_recovered
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ cp -i -r mydir ~/work/mydir_recovered
 </pre></div>
 </div>
 <p>Now you can go back to your target directory and check if the file/directory has been copied over</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ cd /cluster/home/tutln01/work
-[tutln01@login-prod-01 work]$ ls -lrt
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ cd /cluster/home/tutln01/work
+[tutln01@login-p01 work]$ ls -lrt
 </pre></div>
 </div>
 <p>If you have multiple files/directories need to be recovered, repeat the above steps.</p>
@@ -730,7 +731,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 04, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       

@@ -4,11 +4,11 @@ Tufts Research Technology provides two site collections: Tufts HPC Cluster and S
 
 After you’ve signed up and logged in to Globus, you’ll begin at the File Manager. The first time you use the File Manager, all fields will be blank.
 
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/TuftsGlobus/Globus-manager.png" alt="globus-filemanager" width=70%>
+![globus-filemanager](../../assets/tufts-globus/globus-manager.png)
 
 Click in the `Collection` field at the top of the File Manager page and type "Tufts". Globus will list collections with matching names. Select target collection.
 
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/TuftsGlobus/globus-tufts-collections.png" alt="globus-collections" width=70%>
+![globus-collections](../../assets/tufts-globus/globus-tufts-collections.png)
 
 **Tufts proivdes two site collections:**
 

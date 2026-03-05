@@ -77,8 +77,8 @@
     <link rel="prev" title="Modules" href="50-modules.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260204" />
-    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -529,13 +529,13 @@
 <h1>Running your software<a class="headerlink" href="#running-your-software" title="Link to this heading">#</a></h1>
 <p>There are two ways to run software on the HPC Cluster, OnDemand ( Simplest ) and via SSH ( Most flexible ). Both
 utilized the Slurm job scheduler to allocate you resources (CPU, Memory, and GPU if needed) on the compute nodes.
-We will cover both briefly on this page. Each is also covered extensively in their own sections <a class="reference internal" href="../slurm/index.html"><span class="doc std std-doc">Slurm Job Scheduler</span></a> and <a class="reference internal" href="15-ondemand.html"><span class="doc std std-doc">OnDemand</span></a> .</p>
+We will cover both briefly on this page. Each is also covered extensively in their own sections <a class="reference internal" href="../slurm/index.html"><span class="std std-doc">Slurm Job Scheduler</span></a> and <a class="reference internal" href="15-ondemand.html"><span class="std std-doc">OnDemand</span></a> .</p>
 <section id="ondemand-simplest">
 <h2>OnDemand (Simplest)<a class="headerlink" href="#ondemand-simplest" title="Link to this heading">#</a></h2>
 <p>OnDemand is a web portal that provides easy access to the HPC environment using a web browser. It provides web
 forms for commonly used applications.</p>
 <ol class="arabic simple">
-<li><p>Start by going to <a class="reference external" href="https://ondemand.pax.tufts.edu"><strong>OnDemand</strong></a>, <a class="reference external" href="https://ondemand.pax.tufts.edu">https://ondemand.pax.tufts.edu</a> using <strong>Chrome or FireFox</strong></p></li>
+<li><p>Start by going to <a class="reference external" href="https://ondemand-prod.pax.tufts.edu"><strong>OnDemand</strong></a>, <a class="reference external" href="https://ondemand-prod.pax.tufts.edu">https://ondemand-prod.pax.tufts.edu</a> using <strong>Chrome or FireFox</strong></p></li>
 <li><p>Login using your Tufts TTS username (utln) and password</p></li>
 <li><p><strong>Interactive Apps</strong> and <strong>Bioinformatics Apps</strong> menus provide a listing of the software available.</p></li>
 <li><p>Select the applications of interest and fill in the appropriate values for your job.</p></li>
@@ -543,7 +543,7 @@ forms for commonly used applications.</p>
 available, this is typically within a few minutes, but could be longer during periods of high use.</p></li>
 </ol>
 <p>Under <strong>Jobs</strong> -&gt; <strong>Active Jobs</strong> you can see your running jobs. It also provides a file explorer Under <strong>Files</strong>.</p>
-<p>For additional instructions on using it visit <a class="reference internal" href="15-ondemand.html"><span class="doc std std-doc">OnDemand</span></a>.</p>
+<p>For additional instructions on using it visit <a class="reference internal" href="15-ondemand.html"><span class="std std-doc">OnDemand</span></a>.</p>
 </section>
 <section id="ssh-most-flexible">
 <h2>SSH ( Most flexible )<a class="headerlink" href="#ssh-most-flexible" title="Link to this heading">#</a></h2>
@@ -551,7 +551,7 @@ available, this is typically within a few minutes, but could be longer during pe
 cluster. This method allows you to run any compatible software on the cluster. This includes custom software that
 you wrote, or third party software you installed.</p>
 <ol class="arabic">
-<li><p>Login to login.pax.tufts.edu using SSH</p></li>
+<li><p>Login to login-prod.pax.tufts.edu using SSH</p></li>
 <li><p>Create a batch script file to run using Slurm , for example <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">myFirstJob.sh</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
 <span class="c1">#SBATCH -J My_First_Job     #job name</span>
@@ -575,7 +575,7 @@ you wrote, or third party software you installed.</p>
 <li><p>Submit your job using <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">myFirstJob.sh</span></code></p></li>
 <li><p>View your job in the queue using <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--Your_Tufts_Username</span></code></p></li>
 </ol>
-<p>For an in-depth description of all the Slurm options visit <a class="reference internal" href="../slurm/index.html"><span class="doc std std-doc">Slurm Job Scheduler</span></a>.</p>
+<p>For an in-depth description of all the Slurm options visit <a class="reference internal" href="../slurm/index.html"><span class="std std-doc">Slurm Job Scheduler</span></a>.</p>
 </section>
 </section>
 
@@ -696,7 +696,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 04, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       

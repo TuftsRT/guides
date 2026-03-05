@@ -1,0 +1,842 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Python with Microsoft VS Code and Conda: Getting the Most Out of Your Setup &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=736ec69d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ai/python/40-vs-code-and-conda-users-guide';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/ai/python/40-vs-code-and-conda-users-guide.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Installing and Setting Up Python with Microsoft Visual Studio Code and Conda (Miniforge)" href="30-vs-code-with-miniforge.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nlp/index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nlp/index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     AI and Data Science 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ai-tools/index.html">Artificial Intelligence Tools</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Python for Research and Data Science</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00-intro-to-python.html">Python for Statistics, Data Analysis, and Data Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10-which-python-setup.html">Which Python Setup is Right for You?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20-google-colab.html">Google Colab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="30-vs-code-with-miniforge.html">Installing and Setting Up Python with Microsoft Visual Studio Code and Conda (Miniforge)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Python with Microsoft VS Code and Conda: Getting the Most Out of Your Setup</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >AI and Data Science</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Python for Research...</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Python with Microsoft...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-with-microsoft-vs-code-and-conda-getting-the-most-out-of-your-setup">
+<h1>Python with Microsoft VS Code and Conda: Getting the Most Out of Your Setup<a class="headerlink" href="#python-with-microsoft-vs-code-and-conda-getting-the-most-out-of-your-setup" title="Link to this heading">#</a></h1>
+<p>If you have completed the <a class="reference internal" href="30-vs-code-with-miniforge.html"><span class="std std-doc">installation process for VS Code and conda</span></a>, we highly recommend that you review this page for information on how to use your setup effectively.</p>
+<blockquote>
+<div><p>If you would like to use this setup, but have not yet installed and configured it, click <a class="reference internal" href="30-vs-code-with-miniforge.html"><span class="std std-doc">here</span></a>. For help in determining the best Python setup for you, click <a class="reference internal" href="10-which-python-setup.html"><span class="std std-doc">here</span></a>.</p>
+</div></blockquote>
+<p>The reference guide below is divided into two sections:</p>
+<ul class="simple">
+<li><p><strong>Using Conda</strong>: a helpful reference for using conda to manage environments. You may wish to refer to this page whenever you need to manage your environments or install libraries/packages.</p></li>
+<li><p><strong>Using VS Code</strong>: a short guide to the key features and ways of programming in Python in VS Code.</p></li>
+</ul>
+<p>Note that we provide instructions on two different styles of Python programming in our VS Code section: one that uses Jupyter Notebook files (with extension .ipynb), and one that uses Jupyter functionality within the more standard Python file (with a .py extension). The Jupyter Notebook (.ipynb) will be familiar to users coming from Google Colab, and is the recommended option for new users. Users who plan to write code that will be run from the command line or from a batch script (e.g. for scheduling jobs on the HPC) should learn to use the .py option.</p>
+<section id="using-conda">
+<h2>Using Conda<a class="headerlink" href="#using-conda" title="Link to this heading">#</a></h2>
+<section id="accessing-conda-in-a-terminal">
+<h3>Accessing Conda in a Terminal<a class="headerlink" href="#accessing-conda-in-a-terminal" title="Link to this heading">#</a></h3>
+<section id="windows">
+<h4>Windows<a class="headerlink" href="#windows" title="Link to this heading">#</a></h4>
+<p>For Windows users, the Miniforge distribution comes with an installation of Miniforge Prompt, which is a terminal with conda enabled. Miniforge Prompt can be found by searching your system applications. You can always use Miniforge Prompt to manage conda from the command line.</p>
+<p>During our <a class="reference internal" href="30-vs-code-with-miniforge.html"><span class="std std-doc">setup instructions</span></a> we suggested that you run the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">init</span> <span class="pre">--all</span></code> in Miniforge Prompt to permanently activate conda access from other terminals as well, including from the terminal within VS Code. (This may not work on all system setups however, so if you find that you have trouble accessing conda from a different terminal, you can always go back to using Miniforge Prompt.)</p>
+<p>To check if conda is enabled in your terminal, you can type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">--version</span></code> on the command line and press enter. If it returns the word “conda” with a version number, you can use conda from that terminal. (Note that you can also activate conda by locating and running the conda executable from a terminal command line on your machine, though this method will be time-consuming and inefficient for most users.)</p>
+<p>If you would like to use the terminal from within VS Code, open VS Code and select “Terminal” from the “View” menu.</p>
+</section>
+<section id="macos">
+<h4>MacOS<a class="headerlink" href="#macos" title="Link to this heading">#</a></h4>
+<p>During the setup process, you should have set conda to automatically activate in the Terminal application. You can search your system for the Terminal application when you need to manage your conda environments or install packages. You can check that conda is activated in your terminal by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">--version</span></code> on the command line and pressing enter. If it returns a version number, then conda is active in that terminal. If not, then you should return to the <a class="reference internal" href="30-vs-code-with-miniforge.html#conda-is-not-working-from-the-terminal-application"><span class="std std-ref">troubleshooting instructions</span></a> on the VS Code and conda setup page.</p>
+</section>
+</section>
+<section id="creating-environments">
+<h3>Creating Environments<a class="headerlink" href="#creating-environments" title="Link to this heading">#</a></h3>
+<p>From Miniforge Prompt or a conda-enabled terminal, the simplest way to create an environment is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">newenvname</span>
+</pre></div>
+</div>
+<p>You can replace “newenvname” with a name of your choice. (Environment names should not contain spaces. Use letters, numbers, underscores, hyphens, or periods in environment names.)</p>
+<p>The above command will create a new environment with the most recent stable version of Python. If you prefer a specific version of Python, you can specify it as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">myenv</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.9</span>
+</pre></div>
+</div>
+<p>To see whether an environment has been created, you can type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="nb">list</span>
+</pre></div>
+</div>
+<p>This will provide a list of all your environments.</p>
+<p>For more information on creating and managing environments, see the conda user guide: <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/index.html#">https://docs.conda.io/projects/conda/en/latest/user-guide/index.html#</a></p>
+</section>
+<section id="when-should-i-create-new-environments">
+<h3>When Should I Create New Environments?<a class="headerlink" href="#when-should-i-create-new-environments" title="Link to this heading">#</a></h3>
+<p>As mentioned in our installation/setup guide, it’s important to note that conda comes with a special environment called the <strong>base environment</strong> by default. The base environment contains conda itself and the core tools needed to manage packages and environments. Unlike project-specific environments that you create for your own work, base is intended mainly for managing conda rather than for running your research or projects. Using the base environment for everyday work is discouraged. Installing packages into base can lead to dependency conflicts between projects, make your code harder to reproduce, and in some cases interfere with conda’s own functionality.</p>
+<p>Instead of using base, you will need to create new environments to use for your research projects. Note that you do not need to create a new environment every time you do something new in Python. Many researchers will use the same environment for all their work until it comes time to update to a new version of Python. In general, it’s recommended that you create new environments whenever:</p>
+<ol class="arabic simple">
+<li><p>You’re embarking on a large, stand-alone project, and want to maintain a stable version of Python and all libraries necessary for that project, along with their dependencies.</p></li>
+<li><p>You have a number of related projects that depend on a similar set of libraries.</p></li>
+<li><p>You want to update to a newer version of Python for new projects and tasks going forward.</p></li>
+</ol>
+</section>
+<section id="installing-libraries">
+<h3>Installing Libraries<a class="headerlink" href="#installing-libraries" title="Link to this heading">#</a></h3>
+<p>Conda is a more advanced package manager than pip. To gain the full benefits and functionality of conda, you will need to develop a habit of using conda rather than pip to install your packages, except in cases where a given package is <em>only</em> available using pip.</p>
+<p>Always be sure to activate your desired environment before installing packages. For example, if you have an environment called “myenv”, you can activate it from a terminal command line by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">myenv</span>
+</pre></div>
+</div>
+<p>Once the environment is activated, you will see the name of the environment in parentheses at the beginning of your command prompt.</p>
+<p>You can install a library as in the following example, using pandas as an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pandas</span>
+</pre></div>
+</div>
+<p>You will most likely be given a prompt asking if you wish to proceed with the installation, in which case you should type <code class="docutils literal notranslate"><span class="pre">y</span></code> and press enter.</p>
+</section>
+</section>
+<section id="using-vs-code">
+<h2>Using VS Code<a class="headerlink" href="#using-vs-code" title="Link to this heading">#</a></h2>
+<p>We present two ways to write Python code in VS Code:</p>
+<ul class="simple">
+<li><p><strong>Using the Jupyter Notebook extension</strong>: this is the VS Code implementation of Jupyter Notebooks. The user experience is similar to using the standalone Jupyter Notebooks app or Google Colab, but with the added benefit of all the features of VS Code. This option is recommended for new users.</p></li>
+<li><p><strong>Using standard Python files (with extension .py) and Jupyter Interactivity</strong>: This option allows you to code in a standard .py file with the added benefit of being able to take advantage of Jupyter interactivity. This is especially useful for those planning to run their files from a command line or shell script, as it does not require the extra step of converting a Jupyter Notebook file to a .py file.</p></li>
+</ul>
+<section id="using-the-jupyter-notebook-extension">
+<h3>Using the Jupyter Notebook Extension<a class="headerlink" href="#using-the-jupyter-notebook-extension" title="Link to this heading">#</a></h3>
+<section id="creating-a-new-jupyter-notebook-file-and-connecting-to-your-project-environment">
+<h4>Creating a New Jupyter Notebook File and Connecting to Your Project Environment<a class="headerlink" href="#creating-a-new-jupyter-notebook-file-and-connecting-to-your-project-environment" title="Link to this heading">#</a></h4>
+<p>To create a new Jupyter Notebook file, click the File menu and select “New File”. A drop-down menu will appear at the top-center of your screen. If the Jupyter Notebook extension has been installed, you will have an option to select “Jupyter Notebook” from this menu.</p>
+<p>To connect to a conda environment, look for the “Select Kernel” button in the top-right corner of your Jupyter notebook file. A drop-down menu will appear with a list of your conda environments. Select the environment you want to use.</p>
+<p>Your environment will need the ipykernel package installed to work with Jupyter notebook. If you did not already install it when you created your environment, you will be prompted to install it when you first try to run a code cell.</p>
+<section id="what-if-my-conda-environment-is-not-visible-in-vs-code">
+<h5>What if my conda environment is not visible in VS Code?<a class="headerlink" href="#what-if-my-conda-environment-is-not-visible-in-vs-code" title="Link to this heading">#</a></h5>
+<p>Please see the <a class="reference internal" href="30-vs-code-with-miniforge.html#the-newly-created-research-environment-does-not-appear-in-vs-code"><span class="std std-ref">troubleshooting guide</span></a> in our installation and setup instructions.</p>
+</section>
+</section>
+<section id="viewing-jupyter-variables-and-data-frames-in-your-jupyter-session">
+<h4>Viewing Jupyter Variables and Data Frames in Your Jupyter Session<a class="headerlink" href="#viewing-jupyter-variables-and-data-frames-in-your-jupyter-session" title="Link to this heading">#</a></h4>
+<p>A useful feature of the Jupyter Notebook extension in VS Code is the option to view all variables and data frames that are currently active in your Jupyter session.</p>
+<p>To use this feature, look for the “Jupyter Variables” button at the top of your Jupyter Notebook file. Clicking on this will open a new panel with a list of all your variables and data frames.</p>
+<p>To view your data, you will need the Data Wrangler extension. You will be prompted to download the extension when you click on your data in the Jupyter Variables panel.</p>
+</section>
+</section>
+<section id="using-standard-python-py-files-and-jupyter-interactivity">
+<h3>Using standard Python (.py) files and Jupyter Interactivity<a class="headerlink" href="#using-standard-python-py-files-and-jupyter-interactivity" title="Link to this heading">#</a></h3>
+<p>Jupyter Notebook has become popular in data analysis, research, and data science in part due to its <em>interactivity</em>, i.e. the ability to run small chunks of code and see the results side-by-side with your code cells. It is not the only way to code in Python, however; many users will also favor the standard Python file (with extension .py), depending on their personal preferences or the needs of their projects. This approach can have a few advantages, the most notable of which being that .py files can be more easily run from the command line or submitted for processing via a batch script. This is especially useful for users who need to schedule their code to run in a high-performance computing (HPC) cluster.</p>
+<p>Fortunately, Microsoft VS Code provides an easy way to bring the interactivity of Jupyter notebooks to coding in .py files, giving you the best of both worlds. By sectioning your code in your .py file the correct way, you can create cells that can be sent to a separate Jupyter interactive window, which runs the code and displays the output.</p>
+<p>Note that you will need the Python and Jupyter Extensions to use this setup.</p>
+</section>
+<section id="setting-up">
+<h3>Setting up<a class="headerlink" href="#setting-up" title="Link to this heading">#</a></h3>
+<p>From the File menu, select “New File”. In the dropdown menu that appears at the top of your screen, select “Python File”. This will open a blank .py file.</p>
+<p>To indicate that you are creating a Jupyter cell in your .py file, you will need to use <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">%%</span></code> at the beginning of a new line to indicate the start of the cell. All the code that follows this marker will be part of the cell until a new cell is created with <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">%%</span></code>. See the image below for an example.</p>
+<p><img alt="Creating Jupyter cells in a .py file" src="../../_images/jupyter-with-py-cells.png" /></p>
+<p>Note that (assuming the Jupyter extension is installed) VS Code will automatically detect that a cell has been created, and options for running and debugging the cell will automatically appear above the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">%%</span></code>. You can also run cells with ctrl+enter (cmd+enter on MacOS), which runs the cell, or shift+enter, which runs the cell and creates a new one.</p>
+<p>When you run a cell, VS Code will create a new Jupyter interactive window in which to perform the operations and display the output. The window should open automatically in a separate tab. We recommend that you click and drag this tab to the right to create a split-screen view, so that you can code and see the interactive window output simultaneously, as shown in the image below.</p>
+<p><img alt="Jupyter interactive window" src="../../_images/py-with-new-interactive-window.png" /></p>
+<p>You will need to select a kernel to run the cells in your code. Click “Select Kernel” and select your preferred environment from the drop-down menu. If you do not see your environment, please see the <a class="reference internal" href="30-vs-code-with-miniforge.html#the-newly-created-research-environment-does-not-appear-in-vs-code"><span class="std std-ref">troubleshooting guide</span></a> in our installation and setup instructions.</p>
+<p><img alt="Running code in an interactive window" src="../../_images/running-code-in-interactive.png" /></p>
+<p>Once your kernel is connected, you can run the cells in your .py file to see the output in the interactive window.</p>
+<p>Note that you can also enter and run code directly into the interactive window if you do not want to add it to your .py script. To use this option, enter your code in the shaded box at the bottom of the interactive window and press enter.</p>
+</section>
+<section id="viewing-your-jupyter-variables">
+<h3>Viewing your Jupyter Variables<a class="headerlink" href="#viewing-your-jupyter-variables" title="Link to this heading">#</a></h3>
+<p>As with the Jupyter Notebook setup described earlier in this document, you can open a “Jupyter Variables” window to view all Python variables currently stored in memory in your Jupyter session. Look for the “Jupyter Variables” button at the top of your interactive window to access this option. If it’s hidden, click the “…” at the top of the interactive window to see more options.</p>
+<p><img alt="Jupyter panel with .py file" src="../../_images/py-with-jupyter-vars-pane.png" /></p>
+<p>You can now see all your Jupyter variables in a panel at the bottom of the screen. If you have a pandas data frame in memory, you can click on it to view your data (requires installation of the Data Wrangler extension).</p>
+</section>
+</section>
+<section id="getting-help">
+<h2>Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading">#</a></h2>
+<p>Congratulations on building your setup in Python. We hope you find it useful and fun!</p>
+<p>If you need support with your Python setup and workflows, or with other data science and research topics, please reach out to us at:
+<a class="reference external" href="mailto:datalab-support&#37;&#52;&#48;elist&#46;tufts&#46;edu">datalab-support<span>&#64;</span>elist<span>&#46;</span>tufts<span>&#46;</span>edu</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="30-vs-code-with-miniforge.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Installing and Setting Up Python with Microsoft Visual Studio Code and Conda (Miniforge)</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Python with Microsoft VS Code and Conda: Getting the Most Out of Your Setup
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda">Using Conda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-conda-in-a-terminal">Accessing Conda in a Terminal</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">MacOS</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-environments">Creating Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-should-i-create-new-environments">When Should I Create New Environments?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-libraries">Installing Libraries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-vs-code">Using VS Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-jupyter-notebook-extension">Using the Jupyter Notebook Extension</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-jupyter-notebook-file-and-connecting-to-your-project-environment">Creating a New Jupyter Notebook File and Connecting to Your Project Environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-my-conda-environment-is-not-visible-in-vs-code">What if my conda environment is not visible in VS Code?</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-jupyter-variables-and-data-frames-in-your-jupyter-session">Viewing Jupyter Variables and Data Frames in Your Jupyter Session</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-standard-python-py-files-and-jupyter-interactivity">Using standard Python (.py) files and Jupyter Interactivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up">Setting up</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-your-jupyter-variables">Viewing your Jupyter Variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting Help</a></li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/main/source/ai/python/40-vs-code-and-conda-users-guide.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/ai/python/40-vs-code-and-conda-users-guide.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: ai/python/40-vs-code-and-conda-users-guide"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Mar 05, 2026.
+  <br/>
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

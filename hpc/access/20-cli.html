@@ -77,8 +77,8 @@
     <link rel="prev" title="OnDemand - Tufts HPC Cluster Web Interface" href="15-ondemand.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260204" />
-    <meta name="docbuild:last-update" content="Feb 04, 2026"/>
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
   </head>
   
   
@@ -537,31 +537,23 @@
 </div>
 <p>There are two main ways to access the HPC cluster to run software:</p>
 <ol class="arabic simple">
-<li><p>Web browser access via the <a class="reference external" href="https://ondemand.pax.tufts.edu">OnDemand Portal</a></p></li>
+<li><p>Web browser access via the <a class="reference external" href="https://ondemand-prod.pax.tufts.edu">OnDemand Portal</a></p></li>
 <li><p>Command line access via Secure Shell (SSH)</p></li>
 </ol>
 <section id="new-users">
 <h2>New Users<a class="headerlink" href="#new-users" title="Link to this heading">#</a></h2>
-<p>For new users who have not used HPC resources before, we recommend starting with the <strong>OnDemand Portal</strong> via your web browser. OnDemand is useful for running many graphical applications such as MATLAB, Jupyter Notebooks, RStudio, and uploading downloading small files (&lt;900MB) all within your web browser session.</p>
+<p>For new users who have not used HPC resources before, we recommend starting with the <a class="reference internal" href="15-ondemand.html"><span class="std std-doc"><strong>OnDemand Portal</strong></span></a> via your web browser. OnDemand is useful for running many graphical applications such as <a class="reference internal" href="../application/matlab.html"><span class="std std-doc">MATLAB</span></a>, Jupyter Notebooks, <a class="reference internal" href="../application/25-rstudio.html"><span class="std std-doc">RStudio</span></a>, and uploading downloading small files (&lt;900MB) all within your web browser session.</p>
 <p>Users who require command line access, with greater control and longer running times for their research tasks are advised to use <strong>Secure Shell (SSH)</strong>.</p>
 </section>
 <section id="ondemand-portal">
 <h2>1) OnDemand Portal<a class="headerlink" href="#ondemand-portal" title="Link to this heading">#</a></h2>
 <p>To access the OnDemand Portal, open your web browser. Note that for the best user experience we strongly recommended Chrome or Firefox. You cannot use the default MacOS browser, Safari.</p>
-<p>Navigate to the Tufts HPC <a class="reference external" href="https://ondemand.pax.tufts.edu">OnDemand</a>. If you are off-campus, <a class="reference external" href="https://access.tufts.edu/vpn">the Tufts VPN</a> is required.</p>
+<p>Navigate to the Tufts HPC <a class="reference external" href="https://ondemand-prod.pax.tufts.edu">OnDemand</a>. If you are off-campus, <a class="reference external" href="https://access.tufts.edu/vpn">the Tufts VPN</a> is required.</p>
+<p><img alt="ood-login" src="../../_images/newondemand-login.png" /></p>
 <p>You will see a login screen as below, and you should use your Tufts username (lowercase) and password to login:</p>
-<p><img alt="OnDemand Login Screen" src="https://tufts.box.com/shared/static/kwskz4ybo21sq2agcq4e7khmknc99qa0.jpg" /></p>
-<p>You’ll see the OnDemand logo, along with tabs including:</p>
-<ul class="simple">
-<li><p>Files</p></li>
-<li><p>Jobs</p></li>
-<li><p>Clusters</p></li>
-<li><p>Interactive Apps</p></li>
-<li><p>Bioinformatics Apps</p></li>
-<li><p>…</p></li>
-</ul>
+<p><img alt="ood-home" src="../../_images/newondemand-home.png" /></p>
 <p>You can now use the Tufts HPC cluster resources on OnDemand.
-<a class="reference internal" href="15-ondemand.html"><span class="doc std std-doc">Getting Started with OnDemand</span></a></p>
+<a class="reference internal" href="15-ondemand.html"><span class="std std-doc">Getting Started with OnDemand</span></a></p>
 </section>
 <section id="ssh">
 <h2>2) SSH<a class="headerlink" href="#ssh" title="Link to this heading">#</a></h2>
@@ -569,20 +561,20 @@
 <p>SSH is predominantly a text-based login method, but <strong>Graphical User Interface (GUI)</strong> forwarding can be enabled via the X Window System (X11) to access graphical programs running on a cluster node. The X11 window system allows us to forward graphics through a Secure Shell (SSH) session.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>SSH login host is login.pax.tufts.edu (formerly login.cluster.tufts.edu)</p>
+<p>SSH login host is login-prod.pax.tufts.edu</p>
 </div>
 <ul class="simple">
 <li><p>Command for Shell environment (default: bash):</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ssh</span> <span class="pre">your_utln&#64;login.pax.tufts.edu</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ssh</span> <span class="pre">your_utln&#64;login-prod.pax.tufts.edu</span></code></p></li>
 </ul>
 </li>
 <li><p>Explanation of the Command:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">ssh</span></code>: The command to initiate an SSH connection.The SSH protocol aka <strong>Secure Shell</strong> is a method for secure remote login from one computer to another.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">your_utln&#64;login.pax.tufts.edu</span></code>: Replace <code class="docutils literal notranslate"><span class="pre">your_utln</span></code> with your actual Tufts username. This is the address of the remote HPC cluster.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">your_utln&#64;login-prod.pax.tufts.edu</span></code>: Replace <code class="docutils literal notranslate"><span class="pre">your_utln</span></code> with your actual Tufts username. This is the address of the remote HPC cluster.</p></li>
 <li><p>You can add the argument <code class="docutils literal notranslate"><span class="pre">-X</span></code> to your ssh command to enable the X11 graphical forwarding in your SSH connection. X Window System must be installed on your computer. That looks like this:
-<code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span> <span class="pre">your_utln&#64;login.pax.tufts.edu</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span> <span class="pre">your_utln&#64;login-prod.pax.tufts.edu</span></code></p></li>
 </ul>
 </li>
 <li><p>What Happens After Running the Command for Login:</p>
@@ -592,9 +584,9 @@
 </ul>
 </li>
 </ul>
-<p>Now you are on a <strong>Login Node</strong> of the cluster (login-prod-0x) and in your <strong>Home Directory</strong> (~ or <em>/cluster/home/your_utln</em>).</p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">[your_utln&#64;login-prod-02</span> <span class="pre">~]</span></code></p>
-<p>There are 3 login nodes: <code class="docutils literal notranslate"><span class="pre">login-prod-01</span></code>, <code class="docutils literal notranslate"><span class="pre">login-prod-02</span></code>, <code class="docutils literal notranslate"><span class="pre">login-prod-03</span></code></p>
+<p>Now you are on a <strong>Login Node</strong> of the cluster (login-p0x) and in your <strong>Home Directory</strong> (~ or <em>/cluster/home/your_utln</em>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">[your_utln&#64;login-p01</span> <span class="pre">~]</span></code></p>
+<p>There are 3 login nodes: <code class="docutils literal notranslate"><span class="pre">login-p01</span></code>, <code class="docutils literal notranslate"><span class="pre">login-p02</span></code>, <code class="docutils literal notranslate"><span class="pre">login-p03</span></code></p>
 <p><strong><em>Please DO NOT run any software on the login nodes.</em></strong></p>
 <ul>
 <li><p>Recommended SSH Client software (Optional)</p>
@@ -603,6 +595,7 @@
 <li><p>Cross-Platform: <a class="reference external" href="https://access.tufts.edu/securecrt">SecureCRT</a></p></li>
 <li><p>Native: Windows 11, Mac and Linux all include a command line SSH clients in the operating system (OS). Commands such as <code class="docutils literal notranslate"><span class="pre">scp</span></code> can be used for quick connections without installing additional software.</p></li>
 <li><p>Windows: <a class="reference external" href="https://www.putty.org/">PuTTY</a></p></li>
+<li><p><a class="reference external" href="https://ondemand-prod.pax.tufts.edu">OnDemand</a> <code class="docutils literal notranslate"><span class="pre">Tufts</span> <span class="pre">HPC</span> <span class="pre">Shell</span> <span class="pre">Access</span></code> in <code class="docutils literal notranslate"><span class="pre">Clusters</span></code></p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -740,7 +733,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Feb 04, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       
