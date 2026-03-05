@@ -50,13 +50,13 @@
   $ module spider
   ```
 
-#### `module av` vs. `module spider`
+### `module av` vs. `module spider`
 
 | Feature             | `module av`                                                               | `module spider`                                                                  |
 | :------------------ | :------------------------------------------------------------------------ | :------------------------------------------------------------------------------- |
 | **Search Scope**    | Only shows modules currently available to load based on your environment. | Searches the entire software hierarchy, including hidden or nested modules.      |
 | **Hierarchy Aware** | Yes; it only shows what matches your current compiler/MPI stack.          | No; it finds software regardless of whether its dependencies are loaded.         |
-| **Common Use Case** | Checking what you can use *right now*.                                    | Finding *if* a piece of software exists and how to load it.                      |
+| **Common Use Case** | Checking what you can use _right now_.                                    | Finding _if_ a piece of software exists and how to load it.                      |
 | **Output Detail**   | Lists available versions briefly.                                         | Provides detailed instructions on required parent modules for specific versions. |
 
 ### Example: Using `gcc` Compiler

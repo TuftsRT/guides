@@ -73,12 +73,14 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Python with Microsoft VS Code and Conda: Getting the Most Out of Your Setup" href="40-vs-code-and-conda-users-guide.html" />
+    <link rel="prev" title="Google Colab" href="20-google-colab.html" />
 <meta name="robots" content="noindex, nofollow" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260303" />
-    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/> 
   </head>
   
   
@@ -200,7 +202,7 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
+<li class=" current active">
   <a class="nav-link dropdown-item nav-internal" href="../index.html">
     Artificial Intelligence
   </a>
@@ -308,10 +310,8 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -361,7 +361,7 @@
 </li>
 
 
-<li class="nav-item ">
+<li class="nav-item current active">
   <a class="nav-link nav-internal" href="../index.html">
     Artificial Intelligence
   </a>
@@ -431,6 +431,26 @@
     
   </div>
   
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     AI and Data Science 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ai-tools/index.html">Artificial Intelligence Tools</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Python for Research and Data Science</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00-intro-to-python.html">Python for Statistics, Data Analysis, and Data Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10-which-python-setup.html">Which Python Setup is Right for You?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20-google-colab.html">Google Colab</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Installing and Setting Up Python with Microsoft Visual Studio Code and Conda (Miniforge)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="40-vs-code-and-conda-users-guide.html">Python with Microsoft VS Code and Conda: Getting the Most Out of Your Setup</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -466,6 +486,18 @@
       </a>
     </li>
      
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >AI and Data Science</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Python for Research...</a
+      >
+    </li>
+     
     <li class="breadcrumb-item active" aria-current="page">
       Installing and...
     </li>
@@ -487,8 +519,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="installing-and-setting-up-python-with-microsoft-visual-studio-code-and-conda-miniforge">
 <h1>Installing and Setting Up Python with Microsoft Visual Studio Code and Conda (Miniforge)<a class="headerlink" href="#installing-and-setting-up-python-with-microsoft-visual-studio-code-and-conda-miniforge" title="Link to this heading">#</a></h1>
-<p>This guide is for those who have decided to use Microsoft Visual Studio (VS) Code with conda (using the Miniforge distribution) for Python programming and are looking for instructions on how to get started. If you would like to review the strengths and limitations of this setup, or if you remain unsure that this is the best setup for you, please consult the documentation under <a class="reference internal" href="#10_which_python_setup.md"><span class="xref myst">Which Python Setup is Right for You?</span></a></p>
-<p>This page will walk you through the installation and configuration process, up to the point of creating your first Jupyter Notebook file. Once you have completed these steps, we highly recommend continuing on to our <a class="reference internal" href="#40_VS_code_and_conda_users_guide.md"><span class="xref myst">VS Code and Conda: Getting the Most Out of Your Setup</span></a> guide, in order to ensure that you are getting the most out of your setup and using all its features effectively.</p>
+<p>This guide is for those who have decided to use Microsoft Visual Studio (VS) Code with conda (using the Miniforge distribution) for Python programming and are looking for instructions on how to get started. If you would like to review the strengths and limitations of this setup, or if you remain unsure that this is the best setup for you, please consult the documentation under <a class="reference internal" href="10-which-python-setup.html"><span class="std std-doc">Which Python Setup is Right for You?</span></a></p>
+<p>This page will walk you through the installation and configuration process, up to the point of creating your first Jupyter Notebook file. Once you have completed these steps, we highly recommend continuing on to our <a class="reference internal" href="40-vs-code-and-conda-users-guide.html"><span class="std std-doc">VS Code and Conda: Getting the Most Out of Your Setup</span></a> guide, in order to ensure that you are getting the most out of your setup and using all its features effectively.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>This Python setup comes in two parts:</p>
@@ -496,7 +528,7 @@
 <li><p><strong>Miniforge</strong> is a distribution of <strong>conda</strong>, which is an open-source tool for managing Python environments and libraries (sometimes called “packages”).</p></li>
 <li><p><strong>Microsoft Visual Studio Code</strong> (or “VS Code” for short) is an Interactive Development Environment (IDE), or an application that provides a graphical user interface for writing your code and viewing its output.</p></li>
 </ul>
-<p>To use this setup effectively, you will need to learn how to use conda tools to create environments and install libraries. If you are unfamiliar with the concepts behind Python environments, libraries, and the role of an environment/package manager, we recommend returning to our <a class="reference internal" href="#10_which_python_setup.md#what-are-environments-and-libraries"><span class="xref myst">explanation</span></a> on our “Which Python Setup is Right for Me?” page.</p>
+<p>To use this setup effectively, you will need to learn how to use conda tools to create environments and install libraries. If you are unfamiliar with the concepts behind Python environments, libraries, and the role of an environment/package manager, we recommend returning to our <a class="reference internal" href="10-which-python-setup.html#what-are-environments-and-libraries"><span class="std std-ref">explanation</span></a> on our “Which Python Setup is Right for Me?” page.</p>
 </section>
 <section id="installation-and-setup-instructions">
 <h2>Installation and Setup Instructions<a class="headerlink" href="#installation-and-setup-instructions" title="Link to this heading">#</a></h2>
@@ -532,7 +564,7 @@
 </section>
 <section id="id2">
 <h4>MacOS<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
-<p>The installation process for conda should have created a setting that automatically activates conda in any new terminal. To test this, open the Terminal application and look for the word “(base)” in parentheses preceding the command prompt. You can also type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">--version</span></code> into the command prompt and press enter. If you see the word “conda” with a version number, then conda is activated. If not, see the <a class="reference internal" href="#link"><span class="xref myst">Conda is not working from the Terminal application</span></a> section of the troubleshooting guide at the end of this page.</p>
+<p>The installation process for conda should have created a setting that automatically activates conda in any new terminal. To test this, open the Terminal application and look for the word “(base)” in parentheses preceding the command prompt. You can also type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">--version</span></code> into the command prompt and press enter. If you see the word “conda” with a version number, then conda is activated. If not, see the <a class="reference internal" href="#conda-is-not-working-from-the-terminal-application">Conda is not working from the Terminal application</a> section of the troubleshooting guide at the end of this page.</p>
 <p>When you have verified that conda works from your terminal, proceed to Configuration Commands section below.</p>
 </section>
 <section id="configuration-commands">
@@ -559,7 +591,7 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">config</span> <span class="pre">--set</span> <span class="pre">channel_priority</span> <span class="pre">strict</span></code></p>
 <ul>
-<li><p>This command tells conda to use strict channel priority when installing libraries (packages). Conda can download packages from different “channels” (package sources), and sometimes the same package exists in more than one channel. With channel_priority strict, conda will always prefer packages from higher-priority channels (such as conda-forge, which Miniforge uses) and will not mix in lower-priority versions unless absolutely necessary. This helps prevent dependency conflicts and ensures your environments remain consistent and predictable.</p></li>
+<li><p>This command tells conda to use strict channel priority when installing libraries (packages). Conda can download packages from different “channels” (package sources), and sometimes the same package exists in more than one channel. With channel-priority strict, conda will always prefer packages from higher-priority channels (such as conda-forge, which Miniforge uses) and will not mix in lower-priority versions unless absolutely necessary. This helps prevent dependency conflicts and ensures your environments remain consistent and predictable.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">--yes</span> <span class="pre">--name</span> <span class="pre">base</span> <span class="pre">mamba</span></code></p>
@@ -575,7 +607,7 @@
 <blockquote>
 <div><p class="rubric" id="the-base-environment-and-project-environments">The Base Environment and Project Environments</p>
 <p>Before we proceed, it’s important to note that conda comes with a special environment called the <strong>base environment</strong> by default. The base environment contains conda itself and the core tools needed to manage packages and environments. Unlike project-specific environments that you create for your own work, base is intended mainly for managing conda rather than for running your research or projects. Using the base environment for everyday work is discouraged. Installing packages into base can lead to dependency conflicts between projects, make your code harder to reproduce, and in some cases interfere with conda’s own functionality.</p>
-<p>Instead of using base, you will need to create new environments to use for your research projects. In this setup guide we will walk you through creating your first environment. For more advice on creating and managing environments, see our <a class="reference internal" href="#40_VS_code_and_conda_users_guide.md"><span class="xref myst">Getting the Most Out of Your Setup</span></a> guide.</p>
+<p>Instead of using base, you will need to create new environments to use for your research projects. In this setup guide we will walk you through creating your first environment. For more advice on creating and managing environments, see our <a class="reference internal" href="40-vs-code-and-conda-users-guide.html"><span class="std std-doc">Getting the Most Out of Your Setup</span></a> guide.</p>
 </div></blockquote>
 <p>Now let’s create a new environment called “research” that you can use for a generic research project. (If you prefer to give it a different name, feel free to use that instead. Just be sure to substitute your preferred name wherever you see the word “research” in the instructions that follow. Conda environments should contain only letters, numbers, hyphens, underscores, or periods, but no spaces or other special characters.)</p>
 <p>To create an environment, we need to open a terminal. On a Windows machine, you can click the search icon in your system tray and search “terminal”. Mac users can open the search by pressing Command (⌘) + Space and then type “terminal”.</p>
@@ -583,7 +615,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
-<p>If it returns the word “conda” with a version number, then you can continue using conda from this terminal. If not, see the section <a class="reference internal" href="#conda-is-not-working-from-the-terminal-application"><span class="xref myst">Conda is not working from the Terminal application</span></a> in the troubleshooting section at the end of this page. Windows users should remember that they can also use Miniforge Prompt, which can be found in your system search, and is guaranteed to have conda enabled.</p>
+<p>If it returns the word “conda” with a version number, then you can continue using conda from this terminal. If not, see the section <a class="reference internal" href="#conda-is-not-working-from-the-terminal-application">Conda is not working from the Terminal application</a> in the troubleshooting section at the end of this page. Windows users should remember that they can also use Miniforge Prompt, which can be found in your system search, and is guaranteed to have conda enabled.</p>
 <p>In your terminal, type and enter the following to create a new environment with the most recent stable version of Python:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">research</span>
 </pre></div>
@@ -594,8 +626,8 @@
 </pre></div>
 </div>
 <p>When the “research” environment has been activated, the command prompt will be preceded with the word “research” in parentheses: (Windows example shown, MacOS will be similar)</p>
-<p><img alt="Research environment activated" src="ai/python/img/conda_activate_research.png" /></p>
-<p>Because we did not specify a specific version of Python when we created our “research” environment, it will have automatically selected the most recent stable version of Python. (For information on specifying specific Python versions, see the <a class="reference internal" href="#40_VS_code_and_conda_users_guide.md"><span class="xref myst">Getting the Most Out of Your Setup</span></a> guide.) To check the Python version that your “research” environment is using, you can type:</p>
+<p><img alt="Research environment activated" src="../../_images/conda-activate-research.png" /></p>
+<p>Because we did not specify a specific version of Python when we created our “research” environment, it will have automatically selected the most recent stable version of Python. (For information on specifying specific Python versions, see the <a class="reference internal" href="40-vs-code-and-conda-users-guide.html"><span class="std std-doc">Getting the Most Out of Your Setup</span></a> guide.) To check the Python version that your “research” environment is using, you can type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
@@ -631,12 +663,12 @@
 <section id="step-6-install-the-python-and-jupyter-notebook-extensions-in-vs-code">
 <h3>Step 6: Install the Python and Jupyter Notebook Extensions in VS Code<a class="headerlink" href="#step-6-install-the-python-and-jupyter-notebook-extensions-in-vs-code" title="Link to this heading">#</a></h3>
 <p>In order to use VS Code with Python, you will need to install the Python and Jupyter Notebook extensions. With VS Code open, look for the extensions icon on the left side of your screen.</p>
-<p><img alt="Extensions icon" src="ai/python/img/extensions_icon.png" /></p>
+<p><img alt="Extensions icon" src="../../_images/extensions-icon.png" /></p>
 <p>Click on the extension icon to open the Extensions pane. Search for “Python” and select the Python extension from the list. Be sure to select the official extension developed by Microsoft. (When you click on the extension, a page for that extension will open and the developer will be listed right underneath the extension name. You should check that the developer is listed as “Microsoft”.)</p>
-<p><img alt="Python extension" src="ai/python/img/python_extension.png" /></p>
+<p><img alt="Python extension" src="../../_images/python-extension.png" /></p>
 <p>Click “install” to install the extension. (Note this will automatically trigger the installation of several other related extensions as well.)</p>
 <p>Once you have installed the Python extension, you will also need to install the Jupyter extension. Type “Jupyter” in the Extensions search bar and select it from the list, and verify that you have selected the official extension managed by Microsoft.</p>
-<p><img alt="Jupyter extension" src="ai/python/img/jupyter_extension.png" /></p>
+<p><img alt="Jupyter extension" src="../../_images/jupyter-extension.png" /></p>
 <p>Click “install” to install the extension. (Note that once again this will also trigger the installation of related extensions.)</p>
 </section>
 <section id="step-7-opening-a-jupyter-notebook-in-vs-code">
@@ -644,24 +676,25 @@
 <p>With the Python and Jupyter extensions successfully installed, it’s time to open our first Jupyter notebook file!</p>
 <p>From the File menu, select New File. A drop-down menu will appear from the middle-top of the window with several options for different file types. Note that you could create either a Python file (.py) or a Jupyter Notebook (.ipynb) according to your preferences. For this step in our setup tutorial, select Jupyter Notebook.</p>
 <p>A brand new Jupyter Notebook file will open and your screen will look like this:</p>
-<p><img alt="New Jupyter Notebook" src="ai/python/img/new_jupyter_notebook.png" /></p>
+<p><img alt="New Jupyter Notebook" src="../../_images/new-jupyter-notebook.png" /></p>
 <p>Before we can start coding, we have to tell VS Code where to look for the Python Kernel that will be used to run the code that you enter in this notebook. In the top-right corner of your VS Code window, locate the “Select Kernel” button. This will open a menu from the top-middle of your VS Code window. Click on “Python Environments”, and you should see the research environment you created appear in the list:</p>
-<p><img alt="Select python environment" src="ai/python/img/select_conda_environment.png" /></p>
-<p>VS Code automatically detects the environments you created with conda and show you a list to choose the environment you want to use for this notebook. (If not, see the <a class="reference internal" href="#the-newly-created-research-environment-does-not-appear-in-vs-code"><span class="xref myst">troubleshooting section</span></a> at the end of this page.) If you see the base environment on the list, do not select it; you should instead select the “research” environment (or whatever you called it) that we created in step 3. (If a security prompt appears, click “Allow”.) The “Select Kernel” button will now change to show the “research” environment and the version of Python you’re using.</p>
+<p><img alt="Select python environment" src="../../_images/select-conda-environment.png" /></p>
+<p>VS Code automatically detects the environments you created with conda and show you a list to choose the environment you want to use for this notebook. (If not, see the <a class="reference internal" href="#the-newly-created-research-environment-does-not-appear-in-vs-code">troubleshooting section</a> at the end of this page.) If you see the base environment on the list, do not select it; you should instead select the “research” environment (or whatever you called it) that we created in step 3. (If a security prompt appears, click “Allow”.) The “Select Kernel” button will now change to show the “research” environment and the version of Python you’re using.</p>
 <p>If you followed the instructions to this point, you will have already installed the ipykernel package in step 3, and you’ll be ready to start coding in your new Jupyter notebook file. If not, don’t worry; as soon as you try to run some code, a pop-up window will appear alerting you that the ipykernel is missing, and it will give you an option to install it.</p>
 <p>You can now test to see if your setup and installation worked. Type some code into a code cell in your Jupyter notebook and press shift+enter to run it. If you see your expected output appear underneath the cell, then your installation worked.</p>
-<p>Congratulations! You have completed this installation and setup tutorial. We recommend that you now continue to the <a class="reference internal" href="#40_VS_code_and_conda_users_guide.md"><span class="xref myst">Getting the Most Out of Your Setup</span></a> guide for practical information on making the most of your setup.</p>
+<p>Congratulations! You have completed this installation and setup tutorial. We recommend that you now continue to the <a class="reference internal" href="40-vs-code-and-conda-users-guide.html"><span class="std std-doc">Getting the Most Out of Your Setup</span></a> guide for practical information on making the most of your setup.</p>
+</section>
 </section>
 <section id="troubleshooting">
-<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h3>
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
 <section id="conda-is-not-working-from-the-terminal-application">
-<h4>Conda is not working from the Terminal application<a class="headerlink" href="#conda-is-not-working-from-the-terminal-application" title="Link to this heading">#</a></h4>
+<h3>Conda is not working from the Terminal application<a class="headerlink" href="#conda-is-not-working-from-the-terminal-application" title="Link to this heading">#</a></h3>
 <section id="id5">
-<h5>Windows:<a class="headerlink" href="#id5" title="Link to this heading">#</a></h5>
+<h4>Windows<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <p>You can always access conda from the Miniforge Prompt application. To activate conda from other terminals, type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">init</span> <span class="pre">--all</span></code> in Miniforge Prompt and press enter. If this does not work, continue to use Miniforge Prompt to manage conda.</p>
 </section>
 <section id="id6">
-<h5>MacOS<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
+<h4>MacOS<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <p>If conda is not working from a terminal, type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">init</span> <span class="pre">zsh</span></code> in the terminal and press enter. Then restart your terminal.</p>
 <p>If you get a message saying “conda” not found, you will need to locate conda in your file system and manually add the conda binary to your system path. From your terminal, type the following (replacing “username” with your username, or specifying a different path if your conda installation was not installed in the default location):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="s1">&#39;/Users/username/miniforge3/bin:$PATH&#39;</span>
@@ -670,7 +703,7 @@
 </section>
 </section>
 <section id="the-newly-created-research-environment-does-not-appear-in-vs-code">
-<h4>The newly created “research” environment does not appear in VS Code<a class="headerlink" href="#the-newly-created-research-environment-does-not-appear-in-vs-code" title="Link to this heading">#</a></h4>
+<h3>The newly created “research” environment does not appear in VS Code<a class="headerlink" href="#the-newly-created-research-environment-does-not-appear-in-vs-code" title="Link to this heading">#</a></h3>
 <p>If your newly created “research” conda environment is not visible, first confirm that it exists. Open a terminal and type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code>. If you do not see the research environment, return to step three in the tutorial to create it.</p>
 <p>If the environment exists but does not appear in VS Code, you can manually direct VS Code to the place in your file system where the environment is located. Type ctrl+shift+P (Windows) or cmd+shift+P (MacOS) to open a search of VS Code settings, search for Python: Select Interpreter, and select it from the list. Then (if you still don’t see your environment) click on “Enter interpreter path…” and then click “Find…”. This will open a system file search window.</p>
 <p>For Windows users, the path to the Python interpreter should look something like this:</p>
@@ -681,7 +714,6 @@
 <p>Or:
 /Users/YourUserName/miniforge3/envs/research/bin/python</p>
 <p>You must select “python” within the directory corresponding to the “research” environment we created.</p>
-</section>
 </section>
 </section>
 </section>
@@ -696,6 +728,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="20-google-colab.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Google Colab</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="40-vs-code-and-conda-users-guide.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python with Microsoft VS Code and Conda: Getting the Most Out of Your Setup</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -739,15 +789,15 @@
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-install-the-python-and-jupyter-notebook-extensions-in-vs-code">Step 6: Install the Python and Jupyter Notebook Extensions in VS Code</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-opening-a-jupyter-notebook-in-vs-code">Step 7: Opening a Jupyter Notebook in VS Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-is-not-working-from-the-terminal-application">Conda is not working from the Terminal application</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Windows:</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">MacOS</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-newly-created-research-environment-does-not-appear-in-vs-code">The newly created “research” environment does not appear in VS Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-is-not-working-from-the-terminal-application">Conda is not working from the Terminal application</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Windows</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">MacOS</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-newly-created-research-environment-does-not-appear-in-vs-code">The newly created “research” environment does not appear in VS Code</a></li>
 </ul>
 </li>
 </ul>
@@ -815,7 +865,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 03, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       

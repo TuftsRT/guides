@@ -2,14 +2,14 @@
 
 There are many ways to access or install Python, and many users (not just beginners!) may struggle to decide which setup to use and how to implement it. In this guide, we try to make it easier for you by presenting our recommendations for setting up Python if you're planning to use it specifically for statistics, research, data analysis, data visualization, or data science.
 
-Note that this is far from an exhaustive list of possible setups. The options we've selected represent reliable, well-tested options for users with various experience levels and research needs. If you don't see your favorite IDE or package manager here,[^1] don't worry—you can go with what works for you. Just be sure to do the research on your setup for any possible licensing restrictions or security vulnerabilities.
+Note that this is far from an exhaustive list of possible setups. The options we've selected represent reliable, well-tested options for users with various experience levels and research needs. If you don't see your favorite IDE or package manager here[^1], don't worry -- you can go with what works for you. Just be sure to do the research on your setup for any possible licensing restrictions or security vulnerabilities.
 
 ## Our Recommendations
 
 - **First-Time Python Learners and Beginner to Intermediate Users:**
   - [Google Colab](#google-colab-a-solid-option-for-beginner-to-intermediate-users)
 - **Intermediate to Advanced Users, or Users with Sensitive/IRB-Restricted Data:**
-  - [Microsoft Visual Studio Code with Conda (using the Miniforge distribution)](#microsoft-visual-studio-code-and-Miniforge-conda-a-free-versatile-setup-for-intermediate-to-advanced-users)
+  - [Microsoft Visual Studio Code with Conda (using the Miniforge distribution)](#microsoft-visual-studio-code-and-miniforge-conda-a-free-versatile-setup-for-intermediate-to-advanced-users)
 - **Tufts High-Performance Computing (HPC) Users:**
   - Best for new HPC users and general interactive use: [Jupyter Lab Server](#best-for-new-hpc-users-and-general-interactive-use-jupyter-lab-server-app-on-the-hpc) Interactive App on the HPC
   - Recommendation for advanced users and batch jobs: [Microsoft VS Code Server](#recommendation-for-advanced-users-and-batch-jobs-microsoft-vs-code-server-interactive-app-and-conda-on-the-hpc) Interactive App on the HPC, in conjunction with conda on the HPC.
@@ -51,7 +51,7 @@ Colab has its limits, however. First and foremost, it should not be used with se
 - No beginner-friendly way to manage Python environments: old code may become incompatible with newer versions of Python and its libraries
 - (Advanced) Can only use PIP for installing packages, so may not be compatible with C libraries or certain command line tools that are needed for more advanced workflows.
 
-If you think Google Colab is right for you, [click here for instructions on how to get started.](20_google_colab.md)
+If you think Google Colab is right for you, [click here for instructions on how to get started.](20-google-colab.md)
 
 ## Microsoft Visual Studio Code and Miniforge (Conda): A Free, Versatile Setup for Intermediate to Advanced Users
 
@@ -63,7 +63,7 @@ Our recommended local installation comes in two parts:
 
 1. **Miniforge** is a lightweight installer for **conda**, a tool for managing Python environments and libraries.
 
-If you're new to programming, you might be surprised by the second part, and you may be wondering, *why do we need conda?* If so, we recommend that you continue reading for an overview of Python environments and libraries. More advanced users may wish to skip ahead to our reasons for recommending Conda and VS Code, or to our summary of the pros and cons of this setup. Those who are ready may also go directly to our [installation and setup instructions.](30_vs_code_with_miniforge.md)
+If you're new to programming, you might be surprised by the second part, and you may be wondering, _why do we need conda?_ If so, we recommend that you continue reading for an overview of Python environments and libraries. More advanced users may wish to skip ahead to our reasons for recommending Conda and VS Code, or to our summary of the pros and cons of this setup. Those who are ready may also go directly to our [installation and setup instructions.](30-vs-code-with-miniforge.md)
 
 ### What Are Environments and Libraries?
 
@@ -122,7 +122,7 @@ More advanced users may also wish to use VS Code's Remote-SSH extension for acce
 - Initial setup and installation are more complex and can be confusing for beginners
 - Initial learning curve: users must learn to manage environments and libraries through a terminal/command line using conda and access these environments from within VS Code
 
-If you decide a local installation with Microsoft VS Code and Miniforge (Conda) is right for you, [click here for setup instructions.](30_vs_code_with_miniforge.md)
+If you decide a local installation with Microsoft VS Code and Miniforge (Conda) is right for you, [click here for setup instructions.](30-vs-code-with-miniforge.md)
 
 ## Python on the Tufts High-Performance Computing Cluster (HPC)
 
@@ -140,7 +140,7 @@ For those familiar with Jupyter Lab or Jupyter Notebooks, the Jupyter Lab Server
 
 The VS Code and conda set up that we recommend for intermediate/advanced local applications can be replicated on the HPC as well, with some additional steps and some slight differences in the user interface and workflow.
 
-Note that the instructions for using this setup on the HPC are less detailed than the instructions we provide for the local installation version of this setup. If using conda and VS Code are unfamiliar to you and you want more detailed guidance on how to use them effectively, you may wish to follow our guides for [installing](30_vs_code_with_miniforge.md) and [using](40_VS_code_and_conda_users_guide.md) this setup on a local computer first.
+Note that the instructions for using this setup on the HPC are less detailed than the instructions we provide for the local installation version of this setup. If using conda and VS Code are unfamiliar to you and you want more detailed guidance on how to use them effectively, you may wish to follow our guides for [installing](30-vs-code-with-miniforge.md) and [using](40-vs-code-and-conda-users-guide.md) this setup on a local computer first.
 
 #### Conda on the HPC
 

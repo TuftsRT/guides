@@ -73,12 +73,13 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Installing and Setting Up Python with Microsoft Visual Studio Code and Conda (Miniforge)" href="30-vs-code-with-miniforge.html" />
 <meta name="robots" content="noindex, nofollow" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260303" />
-    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/> 
   </head>
   
   
@@ -200,7 +201,7 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
+<li class=" current active">
   <a class="nav-link dropdown-item nav-internal" href="../index.html">
     Artificial Intelligence
   </a>
@@ -308,10 +309,8 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -361,7 +360,7 @@
 </li>
 
 
-<li class="nav-item ">
+<li class="nav-item current active">
   <a class="nav-link nav-internal" href="../index.html">
     Artificial Intelligence
   </a>
@@ -431,6 +430,26 @@
     
   </div>
   
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     AI and Data Science 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ai-tools/index.html">Artificial Intelligence Tools</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Python for Research and Data Science</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00-intro-to-python.html">Python for Statistics, Data Analysis, and Data Science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10-which-python-setup.html">Which Python Setup is Right for You?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20-google-colab.html">Google Colab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="30-vs-code-with-miniforge.html">Installing and Setting Up Python with Microsoft Visual Studio Code and Conda (Miniforge)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Python with Microsoft VS Code and Conda: Getting the Most Out of Your Setup</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -466,6 +485,18 @@
       </a>
     </li>
      
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >AI and Data Science</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Python for Research...</a
+      >
+    </li>
+     
     <li class="breadcrumb-item active" aria-current="page">
       Python with Microsoft...
     </li>
@@ -487,9 +518,9 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python-with-microsoft-vs-code-and-conda-getting-the-most-out-of-your-setup">
 <h1>Python with Microsoft VS Code and Conda: Getting the Most Out of Your Setup<a class="headerlink" href="#python-with-microsoft-vs-code-and-conda-getting-the-most-out-of-your-setup" title="Link to this heading">#</a></h1>
-<p>If you have completed the <a class="reference internal" href="#30_vs_code_with_miniforge.md"><span class="xref myst">installation process for VS Code and conda</span></a>, we highly recommend that you review this page for information on how to use your setup effectively.</p>
+<p>If you have completed the <a class="reference internal" href="30-vs-code-with-miniforge.html"><span class="std std-doc">installation process for VS Code and conda</span></a>, we highly recommend that you review this page for information on how to use your setup effectively.</p>
 <blockquote>
-<div><p>If you would like to use this setup, but have not yet installed and configured it, click <a class="reference internal" href="#30_vs_code_with_miniforge.md"><span class="xref myst">here</span></a>. For help in determining the best Python setup for you, click <a class="reference internal" href="#10_which_python_setup.md"><span class="xref myst">here</span></a>.</p>
+<div><p>If you would like to use this setup, but have not yet installed and configured it, click <a class="reference internal" href="30-vs-code-with-miniforge.html"><span class="std std-doc">here</span></a>. For help in determining the best Python setup for you, click <a class="reference internal" href="10-which-python-setup.html"><span class="std std-doc">here</span></a>.</p>
 </div></blockquote>
 <p>The reference guide below is divided into two sections:</p>
 <ul class="simple">
@@ -504,13 +535,13 @@
 <section id="windows">
 <h4>Windows<a class="headerlink" href="#windows" title="Link to this heading">#</a></h4>
 <p>For Windows users, the Miniforge distribution comes with an installation of Miniforge Prompt, which is a terminal with conda enabled. Miniforge Prompt can be found by searching your system applications. You can always use Miniforge Prompt to manage conda from the command line.</p>
-<p>During our <a class="reference internal" href="#30_vs_code_with_miniforge.md"><span class="xref myst">setup instructions</span></a> we suggested that you run the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">init</span> <span class="pre">--all</span></code> in Miniforge Prompt to permanently activate conda access from other terminals as well, including from the terminal within VS Code. (This may not work on all system setups however, so if you find that you have trouble accessing conda from a different terminal, you can always go back to using Miniforge Prompt.)</p>
+<p>During our <a class="reference internal" href="30-vs-code-with-miniforge.html"><span class="std std-doc">setup instructions</span></a> we suggested that you run the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">init</span> <span class="pre">--all</span></code> in Miniforge Prompt to permanently activate conda access from other terminals as well, including from the terminal within VS Code. (This may not work on all system setups however, so if you find that you have trouble accessing conda from a different terminal, you can always go back to using Miniforge Prompt.)</p>
 <p>To check if conda is enabled in your terminal, you can type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">--version</span></code> on the command line and press enter. If it returns the word “conda” with a version number, you can use conda from that terminal. (Note that you can also activate conda by locating and running the conda executable from a terminal command line on your machine, though this method will be time-consuming and inefficient for most users.)</p>
 <p>If you would like to use the terminal from within VS Code, open VS Code and select “Terminal” from the “View” menu.</p>
 </section>
 <section id="macos">
 <h4>MacOS<a class="headerlink" href="#macos" title="Link to this heading">#</a></h4>
-<p>During the setup process, you should have set conda to automatically activate in the Terminal application. You can search your system for the Terminal application when you need to manage your conda environments or install packages. You can check that conda is activated in your terminal by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">--version</span></code> on the command line and pressing enter. If it returns a version number, then conda is active in that terminal. If not, then you should return to the <a class="reference internal" href="#30_vs_code_with_miniforge.md#conda-is-not-working-from-the-terminal-application"><span class="xref myst">troubleshooting instructions</span></a> on the VS Code and conda setup page.</p>
+<p>During the setup process, you should have set conda to automatically activate in the Terminal application. You can search your system for the Terminal application when you need to manage your conda environments or install packages. You can check that conda is activated in your terminal by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">--version</span></code> on the command line and pressing enter. If it returns a version number, then conda is active in that terminal. If not, then you should return to the <a class="reference internal" href="30-vs-code-with-miniforge.html#conda-is-not-working-from-the-terminal-application"><span class="std std-ref">troubleshooting instructions</span></a> on the VS Code and conda setup page.</p>
 </section>
 </section>
 <section id="creating-environments">
@@ -572,7 +603,7 @@
 <p>Your environment will need the ipykernel package installed to work with Jupyter notebook. If you did not already install it when you created your environment, you will be prompted to install it when you first try to run a code cell.</p>
 <section id="what-if-my-conda-environment-is-not-visible-in-vs-code">
 <h5>What if my conda environment is not visible in VS Code?<a class="headerlink" href="#what-if-my-conda-environment-is-not-visible-in-vs-code" title="Link to this heading">#</a></h5>
-<p>Please see the <a class="reference internal" href="#30_vs_code_with_miniforge.md#the-newly-created-research-environment-does-not-appear-in-vs-code"><span class="xref myst">troubleshooting guide</span></a> in our installation and setup instructions.</p>
+<p>Please see the <a class="reference internal" href="30-vs-code-with-miniforge.html#the-newly-created-research-environment-does-not-appear-in-vs-code"><span class="std std-ref">troubleshooting guide</span></a> in our installation and setup instructions.</p>
 </section>
 </section>
 <section id="viewing-jupyter-variables-and-data-frames-in-your-jupyter-session">
@@ -592,19 +623,19 @@
 <h3>Setting up<a class="headerlink" href="#setting-up" title="Link to this heading">#</a></h3>
 <p>From the File menu, select “New File”. In the dropdown menu that appears at the top of your screen, select “Python File”. This will open a blank .py file.</p>
 <p>To indicate that you are creating a Jupyter cell in your .py file, you will need to use <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">%%</span></code> at the beginning of a new line to indicate the start of the cell. All the code that follows this marker will be part of the cell until a new cell is created with <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">%%</span></code>. See the image below for an example.</p>
-<p><img alt="Creating Jupyter cells in a .py file" src="ai/python/img/jupyter_with_py_cells.png" /></p>
+<p><img alt="Creating Jupyter cells in a .py file" src="../../_images/jupyter-with-py-cells.png" /></p>
 <p>Note that (assuming the Jupyter extension is installed) VS Code will automatically detect that a cell has been created, and options for running and debugging the cell will automatically appear above the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">%%</span></code>. You can also run cells with ctrl+enter (cmd+enter on MacOS), which runs the cell, or shift+enter, which runs the cell and creates a new one.</p>
 <p>When you run a cell, VS Code will create a new Jupyter interactive window in which to perform the operations and display the output. The window should open automatically in a separate tab. We recommend that you click and drag this tab to the right to create a split-screen view, so that you can code and see the interactive window output simultaneously, as shown in the image below.</p>
-<p><img alt="Jupyter interactive window" src="ai/python/img/py_with_new_interactive_window.png" /></p>
-<p>You will need to select a kernel to run the cells in your code. Click “Select Kernel” and select your preferred environment from the drop-down menu. If you do not see your environment, please see the <a class="reference internal" href="#30_vs_code_with_miniforge.md#the-newly-created-research-environment-does-not-appear-in-vs-code"><span class="xref myst">troubleshooting guide</span></a> in our installation and setup instructions.</p>
-<p><img alt="Running code in an interactive window" src="ai/python/img/running_code_in_interactive_window.png" /></p>
+<p><img alt="Jupyter interactive window" src="../../_images/py-with-new-interactive-window.png" /></p>
+<p>You will need to select a kernel to run the cells in your code. Click “Select Kernel” and select your preferred environment from the drop-down menu. If you do not see your environment, please see the <a class="reference internal" href="30-vs-code-with-miniforge.html#the-newly-created-research-environment-does-not-appear-in-vs-code"><span class="std std-ref">troubleshooting guide</span></a> in our installation and setup instructions.</p>
+<p><img alt="Running code in an interactive window" src="../../_images/running-code-in-interactive.png" /></p>
 <p>Once your kernel is connected, you can run the cells in your .py file to see the output in the interactive window.</p>
 <p>Note that you can also enter and run code directly into the interactive window if you do not want to add it to your .py script. To use this option, enter your code in the shaded box at the bottom of the interactive window and press enter.</p>
 </section>
 <section id="viewing-your-jupyter-variables">
 <h3>Viewing your Jupyter Variables<a class="headerlink" href="#viewing-your-jupyter-variables" title="Link to this heading">#</a></h3>
 <p>As with the Jupyter Notebook setup described earlier in this document, you can open a “Jupyter Variables” window to view all Python variables currently stored in memory in your Jupyter session. Look for the “Jupyter Variables” button at the top of your interactive window to access this option. If it’s hidden, click the “…” at the top of the interactive window to see more options.</p>
-<p><img alt="Jupyter panel with .py file" src="ai/python/img/py_with_jupyter_vars_pane.png" /></p>
+<p><img alt="Jupyter panel with .py file" src="../../_images/py-with-jupyter-vars-pane.png" /></p>
 <p>You can now see all your Jupyter variables in a panel at the bottom of the screen. If you have a pandas data frame in memory, you can click on it to view your data (requires installation of the Data Wrangler extension).</p>
 </section>
 </section>
@@ -626,6 +657,15 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="30-vs-code-with-miniforge.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Installing and Setting Up Python with Microsoft Visual Studio Code and Conda (Miniforge)</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -739,7 +779,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 03, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       

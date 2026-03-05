@@ -5,13 +5,13 @@ This guide, intended for beginners and more experienced programmers alike, will 
 For **beginner to intermediate programmers**, this guide will get you started with a powerful but beginner-friendly Python setup that will support both Python learning and many research needs. If you are a beginner, we recommend that you:
 
 1. Read the general information on this page to learn [what Python is](#what-is-python), [who this guide is for](#who-is-this-guide-for), and [whether it is right for you](#is-python-right-for-me).
-1. Continue to the [Which Setup is Right for Me?](10_which_python_setup.md) page to learn more about Google Colab, our recommendation for beginner users.
-1. Proceed to our [guide](20_google_colab.md) for getting set up in Google Colab.
+1. Continue to the [Which Setup is Right for Me?](10-which-python-setup.md) page to learn more about Google Colab, our recommendation for beginner users.
+1. Proceed to our [guide](20-google-colab.md) for getting set up in Google Colab.
 1. (Optional, as needed) See the [additional resources](#additional-resources) section for information on free access (through Tufts) to the online learning platform Udemy for beginner-level tutorials and resources on Python programming. Google Colab can be used for many Jupyter Notebook-based introductory courses/tutorials or as your first setup after completing an introductory course.
 
-For **intermediate to advanced** programmers: if you intend to use Python for statistics, data analysis, or data science (see [Who is this Guide For?](#who-is-this-guide-for) below) and you think you may be ready for a more advanced setup, you can skip directly to our setup guide at [Which Setup is Right for Me?](10_which_python_setup.md) There you can compare our beginner-to-intermediate recommendation (Google Colab) to our more advanced option (Microsoft VS Code with Miniforge) to weigh the pros and cons of each setup, and then follow the links to proceed to the setup instructions for whichever option you choose.
+For **intermediate to advanced** programmers: if you intend to use Python for statistics, data analysis, or data science (see [Who is this Guide For?](#who-is-this-guide-for) below) and you think you may be ready for a more advanced setup, you can skip directly to our setup guide at [Which Setup is Right for Me?](10-which-python-setup.md) There you can compare our beginner-to-intermediate recommendation (Google Colab) to our more advanced option (Microsoft VS Code with Miniforge) to weigh the pros and cons of each setup, and then follow the links to proceed to the setup instructions for whichever option you choose.
 
-For those using the **Tufts High-Performance Computing (HPC) Cluster**, the [Which Setup is Right for Me?](10_which_python_setup.md) page will also provide recommendations and links to information for how to use Python most effectively on the HPC.
+For those using the **Tufts High-Performance Computing (HPC) Cluster**, the [Which Setup is Right for Me?](10-which-python-setup.md) page will also provide recommendations and links to information for how to use Python most effectively on the HPC.
 
 There are many useful textbooks and tutorials on Python, but we find that it can still be daunting to sort through the many setups and find one that works for you and your research. This guide intends to fill that gap.
 
@@ -49,7 +49,7 @@ For those who are ready to learn a programming language and are planning to do s
 
 ## Next Steps
 
-If you are ready to learn Python and want help getting set up to program, continue to [Which Python Setup is Right for Me?](10_which_python_setup.md)
+If you are ready to learn Python and want help getting set up to program, continue to [Which Python Setup is Right for Me?](10-which-python-setup.md)
 
 ## Additional Resources
 

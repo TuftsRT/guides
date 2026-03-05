@@ -73,12 +73,14 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Google Colab" href="20-google-colab.html" />
+    <link rel="prev" title="Python for Statistics, Data Analysis, and Data Science" href="00-intro-to-python.html" />
 <meta name="robots" content="noindex, nofollow" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260303" />
-    <meta name="docbuild:last-update" content="Mar 03, 2026"/> 
+  <meta name="docsearch:version" content="20260305" />
+    <meta name="docbuild:last-update" content="Mar 05, 2026"/> 
   </head>
   
   
@@ -200,7 +202,7 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
+<li class=" current active">
   <a class="nav-link dropdown-item nav-internal" href="../index.html">
     Artificial Intelligence
   </a>
@@ -308,10 +310,8 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -361,7 +361,7 @@
 </li>
 
 
-<li class="nav-item ">
+<li class="nav-item current active">
   <a class="nav-link nav-internal" href="../index.html">
     Artificial Intelligence
   </a>
@@ -431,6 +431,26 @@
     
   </div>
   
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     AI and Data Science 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ai-tools/index.html">Artificial Intelligence Tools</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Python for Research and Data Science</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00-intro-to-python.html">Python for Statistics, Data Analysis, and Data Science</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Which Python Setup is Right for You?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20-google-colab.html">Google Colab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="30-vs-code-with-miniforge.html">Installing and Setting Up Python with Microsoft Visual Studio Code and Conda (Miniforge)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="40-vs-code-and-conda-users-guide.html">Python with Microsoft VS Code and Conda: Getting the Most Out of Your Setup</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -466,6 +486,18 @@
       </a>
     </li>
      
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >AI and Data Science</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Python for Research...</a
+      >
+    </li>
+     
     <li class="breadcrumb-item active" aria-current="page">
       Which Python Setup is...
     </li>
@@ -488,7 +520,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="which-python-setup-is-right-for-you">
 <h1>Which Python Setup is Right for You?<a class="headerlink" href="#which-python-setup-is-right-for-you" title="Link to this heading">#</a></h1>
 <p>There are many ways to access or install Python, and many users (not just beginners!) may struggle to decide which setup to use and how to implement it. In this guide, we try to make it easier for you by presenting our recommendations for setting up Python if you’re planning to use it specifically for statistics, research, data analysis, data visualization, or data science.</p>
-<p>Note that this is far from an exhaustive list of possible setups. The options we’ve selected represent reliable, well-tested options for users with various experience levels and research needs. If you don’t see your favorite IDE or package manager here,<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> don’t worry—you can go with what works for you. Just be sure to do the research on your setup for any possible licensing restrictions or security vulnerabilities.</p>
+<p>Note that this is far from an exhaustive list of possible setups. The options we’ve selected represent reliable, well-tested options for users with various experience levels and research needs. If you don’t see your favorite IDE or package manager here<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, don’t worry – you can go with what works for you. Just be sure to do the research on your setup for any possible licensing restrictions or security vulnerabilities.</p>
 <section id="our-recommendations">
 <h2>Our Recommendations<a class="headerlink" href="#our-recommendations" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -499,13 +531,13 @@
 </li>
 <li><p><strong>Intermediate to Advanced Users, or Users with Sensitive/IRB-Restricted Data:</strong></p>
 <ul>
-<li><p><a class="reference internal" href="#microsoft-visual-studio-code-and-Miniforge-conda-a-free-versatile-setup-for-intermediate-to-advanced-users"><span class="xref myst">Microsoft Visual Studio Code with Conda (using the Miniforge distribution)</span></a></p></li>
+<li><p><a class="reference internal" href="#microsoft-visual-studio-code-and-miniforge-conda-a-free-versatile-setup-for-intermediate-to-advanced-users">Microsoft Visual Studio Code with Conda (using the Miniforge distribution)</a></p></li>
 </ul>
 </li>
 <li><p><strong>Tufts High-Performance Computing (HPC) Users:</strong></p>
 <ul>
-<li><p>Best for new HPC users and general interactive use: <a class="reference internal" href="#best-for-new-hpc-users-and-general-interactive-use-jupyter-lab-server-app-on-the-hpc"><span class="xref myst">Jupyter Lab Server</span></a> Interactive App on the HPC</p></li>
-<li><p>Recommendation for advanced users and batch jobs: <a class="reference internal" href="#recommendation-for-advanced-users-and-batch-jobs-microsoft-vs-code-server-interactive-app-and-conda-on-the-hpc"><span class="xref myst">Microsoft VS Code Server</span></a> Interactive App on the HPC, in conjunction with conda on the HPC.</p></li>
+<li><p>Best for new HPC users and general interactive use: <a class="reference internal" href="#best-for-new-hpc-users-and-general-interactive-use-jupyter-lab-server-app-on-the-hpc">Jupyter Lab Server</a> Interactive App on the HPC</p></li>
+<li><p>Recommendation for advanced users and batch jobs: <a class="reference internal" href="#recommendation-for-advanced-users-and-batch-jobs-microsoft-vs-code-server-interactive-app-and-conda-on-the-hpc">Microsoft VS Code Server</a> Interactive App on the HPC, in conjunction with conda on the HPC.</p></li>
 <li><p>Best for purpose-built Python-based AI tools: see options <a class="reference external" href="https://rtguides.it.tufts.edu/ai/ai-tools/index.html">here</a>.</p></li>
 </ul>
 </li>
@@ -544,7 +576,7 @@
 <li><p>No beginner-friendly way to manage Python environments: old code may become incompatible with newer versions of Python and its libraries</p></li>
 <li><p>(Advanced) Can only use PIP for installing packages, so may not be compatible with C libraries or certain command line tools that are needed for more advanced workflows.</p></li>
 </ul>
-<p>If you think Google Colab is right for you, <a class="reference internal" href="#20_google_colab.md"><span class="xref myst">click here for instructions on how to get started.</span></a></p>
+<p>If you think Google Colab is right for you, <a class="reference internal" href="20-google-colab.html"><span class="std std-doc">click here for instructions on how to get started.</span></a></p>
 </section>
 </section>
 <section id="microsoft-visual-studio-code-and-miniforge-conda-a-free-versatile-setup-for-intermediate-to-advanced-users">
@@ -555,7 +587,7 @@
 <li><p><strong>Microsoft Visual Studio Code</strong> is an IDE, or “Integrated Development Environment”. An IDE provides a user interface where you can type your code, run it, and view its output.</p></li>
 <li><p><strong>Miniforge</strong> is a lightweight installer for <strong>conda</strong>, a tool for managing Python environments and libraries.</p></li>
 </ol>
-<p>If you’re new to programming, you might be surprised by the second part, and you may be wondering, <em>why do we need conda?</em> If so, we recommend that you continue reading for an overview of Python environments and libraries. More advanced users may wish to skip ahead to our reasons for recommending Conda and VS Code, or to our summary of the pros and cons of this setup. Those who are ready may also go directly to our <a class="reference internal" href="#30_vs_code_with_miniforge.md"><span class="xref myst">installation and setup instructions.</span></a></p>
+<p>If you’re new to programming, you might be surprised by the second part, and you may be wondering, <em>why do we need conda?</em> If so, we recommend that you continue reading for an overview of Python environments and libraries. More advanced users may wish to skip ahead to our reasons for recommending Conda and VS Code, or to our summary of the pros and cons of this setup. Those who are ready may also go directly to our <a class="reference internal" href="30-vs-code-with-miniforge.html"><span class="std std-doc">installation and setup instructions.</span></a></p>
 <section id="what-are-environments-and-libraries">
 <h3>What Are Environments and Libraries?<a class="headerlink" href="#what-are-environments-and-libraries" title="Link to this heading">#</a></h3>
 <p>Python is constantly evolving, and new versions are released regularly. If you write code using one version of Python and later upgrade to a newer version, it’s possible that your code may stop working or produce inconsistent results.</p>
@@ -605,7 +637,7 @@
 <li><p>Initial setup and installation are more complex and can be confusing for beginners</p></li>
 <li><p>Initial learning curve: users must learn to manage environments and libraries through a terminal/command line using conda and access these environments from within VS Code</p></li>
 </ul>
-<p>If you decide a local installation with Microsoft VS Code and Miniforge (Conda) is right for you, <a class="reference internal" href="#30_vs_code_with_miniforge.md"><span class="xref myst">click here for setup instructions.</span></a></p>
+<p>If you decide a local installation with Microsoft VS Code and Miniforge (Conda) is right for you, <a class="reference internal" href="30-vs-code-with-miniforge.html"><span class="std std-doc">click here for setup instructions.</span></a></p>
 </section>
 </section>
 <section id="python-on-the-tufts-high-performance-computing-cluster-hpc">
@@ -620,7 +652,7 @@
 <section id="recommendation-for-advanced-users-and-batch-jobs-microsoft-vs-code-server-interactive-app-and-conda-on-the-hpc">
 <h3>Recommendation for advanced users and batch jobs: Microsoft VS Code Server Interactive App and conda on the HPC<a class="headerlink" href="#recommendation-for-advanced-users-and-batch-jobs-microsoft-vs-code-server-interactive-app-and-conda-on-the-hpc" title="Link to this heading">#</a></h3>
 <p>The VS Code and conda set up that we recommend for intermediate/advanced local applications can be replicated on the HPC as well, with some additional steps and some slight differences in the user interface and workflow.</p>
-<p>Note that the instructions for using this setup on the HPC are less detailed than the instructions we provide for the local installation version of this setup. If using conda and VS Code are unfamiliar to you and you want more detailed guidance on how to use them effectively, you may wish to follow our guides for <a class="reference internal" href="#30_vs_code_with_miniforge.md"><span class="xref myst">installing</span></a> and <a class="reference internal" href="#40_VS_code_and_conda_users_guide.md"><span class="xref myst">using</span></a> this setup on a local computer first.</p>
+<p>Note that the instructions for using this setup on the HPC are less detailed than the instructions we provide for the local installation version of this setup. If using conda and VS Code are unfamiliar to you and you want more detailed guidance on how to use them effectively, you may wish to follow our guides for <a class="reference internal" href="30-vs-code-with-miniforge.html"><span class="std std-doc">installing</span></a> and <a class="reference internal" href="40-vs-code-and-conda-users-guide.html"><span class="std std-doc">using</span></a> this setup on a local computer first.</p>
 <section id="conda-on-the-hpc">
 <h4>Conda on the HPC<a class="headerlink" href="#conda-on-the-hpc" title="Link to this heading">#</a></h4>
 <p>To learn how to manage conda environments on the HPC, click <a class="reference external" href="https://rtguides.it.tufts.edu/hpc/application/10-condaenv.html">here</a>.</p>
@@ -655,6 +687,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="00-intro-to-python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python for Statistics, Data Analysis, and Data Science</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="20-google-colab.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Google Colab</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -765,7 +815,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 03, 2026.
+  Last updated on Mar 05, 2026.
   <br/>
 </p></div>
       
