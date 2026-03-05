@@ -22,13 +22,13 @@ In your case, it can be any paths such as `/cluster/home/$USER/folder1/folder2` 
 - Access to the `.snapshot` of that directory.
 
 ```
-[tutln01@login-prod-01 ~]$ cd /cluster/home/tutln01/work
-[tutln01@login-prod-01 work]$ pwd
+[tutln01@login-p01 ~]$ cd /cluster/home/tutln01/work
+[tutln01@login-p01 work]$ pwd
 /cluster/home/tutln01/work
-[tutln01@login-prod-01 work]$ cd .snapshot
-[tutln01@login-prod-01 .snapshot]$ date
+[tutln01@login-p01 work]$ cd .snapshot
+[tutln01@login-p01 .snapshot]$ date
 Mon Apr 24 10:15:59 EDT 2023
-[tutln01@login-prod-01 .snapshot]$ ll
+[tutln01@login-p01 .snapshot]$ ll
 total 0
 drwxrwx--- 2 tutln01 facstaff 4096 Feb 24 12:36 homedir_2023-03-21_14_38_07_UTC
 drwxrwx--- 2 tutln01 facstaff 4096 Feb 24 12:36 homedir_2023-03-22_07_00_00_UTC
@@ -51,10 +51,10 @@ For example, assume I accidentally deleted a file from this directory on 2023-04
 Pick a snapshot date, and list the contents (our target directory is `/cluster/home/tutln01/work` in this case)
 
 ```
-[tutln01@login-prod-01 .snapshot]$ cd homedir_2023-04-20_07_00_00_UTC
-[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ pwd
+[tutln01@login-p01 .snapshot]$ cd homedir_2023-04-20_07_00_00_UTC
+[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ pwd
 /cluster/home/tutln01/work/.snapshot/homedir_2023-04-20_07_00_00_UTC
-[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ ll
+[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ ll
 ```
 
 ### Recovery Files/Directories
@@ -65,22 +65,22 @@ Find and verify the file/directory you are looking for, then **COPY** it back to
 - `-r` (Recursive): Copies directories and their contents recursively.
 
 ```
-[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ pwd
+[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ pwd
 /cluster/home/tutln01/work/.snapshot/homedir_2023-04-20_07_00_00_UTC
-[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ cp -i myfile ~/work/myfile_recovered
+[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ cp -i myfile ~/work/myfile_recovered
 ```
 
 If you are recovering directories, copy the directory recursively.
 
 ```
-[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ cp -i -r mydir ~/work/mydir_recovered
+[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ cp -i -r mydir ~/work/mydir_recovered
 ```
 
 Now you can go back to your target directory and check if the file/directory has been copied over
 
 ```
-[tutln01@login-prod-01 homedir_2023-04-20_07_00_00_UTC]$ cd /cluster/home/tutln01/work
-[tutln01@login-prod-01 work]$ ls -lrt
+[tutln01@login-p01 homedir_2023-04-20_07_00_00_UTC]$ cd /cluster/home/tutln01/work
+[tutln01@login-p01 work]$ ls -lrt
 ```
 
 If you have multiple files/directories need to be recovered, repeat the above steps.

@@ -6,16 +6,38 @@ tags: bioinformatics
 
 Training workshops on bioinformatics provided by TTS Research Technology.
 
+## 2026 Spring
+
+Version Control & Programming:
+
+- Introduction to Git&GitHub - [Register](https://tufts.libcal.com/event/16315143) · [**Slides**](https://tufts.box.com/s/2amh79p12ymzqs7aj0uh9owhhaapf4lm)
+- Introduction to Programming with Python - [Register](https://tufts.libcal.com/event/16321443)
+
+Reproducible environment:
+
+- Reproducible and Portable Scientific Computing on HPC with Containers - [Register](https://tufts.libcal.com/event/16315146) · [**Workshop Materials**](https://tufts.box.com/shared/static/370oj0tcax0vln2cvakgex213m36h7co.pdf)
+- Mastering Conda Environments for Reproducible Research - [Register](https://tufts.libcal.com/event/16315200)
+
+HPC & Workflow Automation
+
+- Scalable and Reproducible Bioinformatics with Nextflow and nf-core (Part I) - [Register](https://tufts.libcal.com/event/16315171) · [**Workshop Materials**](https://tufts.box.com/shared/static/k9mwssgxv319hai4lid3cxt40wesfdbm.pdf) · [**Recording**](https://tufts.box.com/s/o280g9bjc1jokrhas4had9jhmanp1vpg)
+- Scalable and Reproducible Bioinformatics with Nextflow and nf-core (Part II) - [Register](https://tufts.libcal.com/event/16315145) · [**Hands-On**](nfcore-openondemand.md)
+- From Script to Scheduler: Running Bioinformatics Jobs on Tufts HPC - [Register](https://tufts.libcal.com/event/16315206) · [**Slides**](https://tufts.box.com/s/abw6dktmjj0hveecd0iksmll1vb29xsm) · [**Hands-On**](bioinformatics-slurm-job.md)
+
+R & RStudio on HPC:
+
+- From Terminal to Browser: R and RStudio on HPC - [Register](https://tufts.libcal.com/event/16315230)
+
+- From Code to Report: Reproducible Data Analysis with R Markdown - [Register](https://tufts.libcal.com/event/16315217) · [**Slides**](https://tufts.box.com/s/wnpic0yvbts1v1k4sfkjpe25y5toap9i) · [**Workshop Materials**](https://tufts.box.com/s/ti34peq59l9kl01z31xo5s2gta06aibr)
+
+- Building Reproducible Parallel Workflows in RStudio on the HPC - [Register](https://tufts.libcal.com/event/16315026)
+
 ## 2025
 
 ```{gallery-grid}
 ---
 grid-columns: 1
 ---
-- header: "{fas}`dna` Introduction to Git and GitHub - Fall"
-  content: "This workshop is designed to provide participants with a foundational understanding of version control using Git and GitHub Desktop. "
-  link: "intro-to-git-github-fall.html"
-
 - header: "{fas}`dna`Getting started with Bioinformatics on Tufts HPC - Fall"
   content: "User guide to help users get started on running bioinformatics analysis on Tufts HPC."
   link: "https://zhan4429.github.io/Intro_to_bioinfor_2025fall/"

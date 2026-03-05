@@ -72,10 +72,6 @@ subtrees:
               - file: bio/lectures/index
                 subtrees:
                   - entries:
-                      - file: bio/lectures/igdh-1001/index
-                        subtrees:
-                          - entries:
-                              - glob: bio/lectures/igdh-1001/*
                       - file: bio/lectures/introduction-to-alphafold2/index
                         subtrees:
                           - entries:
@@ -125,3 +121,7 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: ai/ai-tools/*
+              - file: ai/python/index
+                subtrees:
+                  - entries:
+                      - glob: ai/python/*

@@ -3,9 +3,9 @@ import re
 import sys
 from datetime import date
 from urllib.parse import ParseResult, urljoin, urlparse
+from warnings import warn
 
 from pygit2 import GitError, Repository
-from sphinx.errors import ConfigError
 
 # needed for Sphinx to load extensions properly
 sys.path.append(os.path.abspath("_ext"))
@@ -18,20 +18,22 @@ email = "tts-research@tufts.edu"
 
 language = "en"
 
+# required for version switcher functionality but not indicative of actual version
+switcher_sematic_version = "1.0.0"
+
+release = f"{switcher_sematic_version}-dev"
+dev = True
+
 try:
     repo = Repository(".")
     repo_url: str = repo.remotes["origin"].url
     match = re.match(r"(?:https://|git@)([^/:]+)[/:]([^/]+)/(.+?)(?:\.git)?$", repo_url)
     github_user, github_repo = match.group(2), match.group(3)
     if repo.head.shorthand == "main":
-        release = "1.0.0"
-    else:
-        release = "1.0.0-dev"
+        release = switcher_sematic_version
+        dev = False
 except (AttributeError, GitError, IndexError):
-    raise ConfigError(
-        "Unable to automatically derive repository information.\n"
-        'Please set "github_user", "github_repo", and "release" manually.'
-    ) from None
+    warn("Unable to detect git repository branch. Defaulting to a development build.")
 
 version = date.today().strftime("%Y%m%d")
 copyright = f"{date.today().year}, {author}"
@@ -96,8 +98,7 @@ icon_links = [
         "name": "Tags",
         "url": urljoin(
             html_baseurl,
-            f"{'dev/' if 'dev' in release and html_baseurl != './' else ''}"
-            "tags/index.html",
+            f"{'dev/' if dev and html_baseurl != './' else ''}tags/index.html",
         ),
         "icon": "fa-solid fa-tags",
         "attributes": {"target": "_self"},
@@ -163,7 +164,7 @@ myst_enable_extensions = [
     "tasklist",
 ]
 
-myst_heading_anchors = 2
+myst_heading_anchors = 3
 myst_linkify_fuzzy_links = False
 
 myst_substitutions = {
@@ -176,10 +177,8 @@ nb_custom_formats = {
 }
 
 baseurl_obj: ParseResult = urlparse(
-    urljoin(
-        html_baseurl, f"{'dev/' if 'dev' in release and html_baseurl != './' else ''}"
-    )
+    urljoin(html_baseurl, f"{'dev/' if dev and html_baseurl != './' else ''}")
 )
 notfound_urls_prefix = baseurl_obj.path.strip(".")
 
-templates_path = ["_templates"]
+templates_path = ["_templates"] + (["_noindex"] if dev else [])

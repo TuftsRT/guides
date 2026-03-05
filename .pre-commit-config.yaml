@@ -33,7 +33,7 @@ repos:
       - id: rstfmt
         name: format rst files
   - repo: https://github.com/PyCQA/isort
-    rev: 7.0.0
+    rev: 8.0.1
     hooks:
       - id: isort
         name: sort python imports
@@ -71,6 +71,6 @@ repos:
           - "--error-limit=256"
           - "--ignore-globs=**/build"
           - "--ignore-globs=**/jupyter_execute"
-          - "--max-length=32"
+          - "--max-length=64"
           - "--num-digits=2"
           - "--warn-limit=128"
