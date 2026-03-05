@@ -12,7 +12,7 @@ Research Lab members may have access to additional resources and different limit
 
 Up-to-date system information, real-time status, and resource availability can be viewed with [OnDemand System Status](https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status) app.
 
-### General limits
+## General limits
 
 In general the HPC resources in the public partitions are available to reseachers on a first come, first serve, basis with jobs submitted first, getting access to the next available resource that matches their request(s). However to fairly balance usage across the community heavy users may see their jobs wait if the cluster is fully utilized, with lower usage users getting priority.
 
