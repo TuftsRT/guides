@@ -164,7 +164,7 @@ myst_enable_extensions = [
     "tasklist",
 ]
 
-myst_heading_anchors = 2
+myst_heading_anchors = 3
 myst_linkify_fuzzy_links = False
 
 myst_substitutions = {
