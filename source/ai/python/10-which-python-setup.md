@@ -140,7 +140,7 @@ For those familiar with Jupyter Lab or Jupyter Notebooks, the Jupyter Lab Server
 
 The VS Code and conda set up that we recommend for intermediate/advanced local applications can be replicated on the HPC as well, with some additional steps and some slight differences in the user interface and workflow.
 
-Note that the instructions for using this setup on the HPC are less detailed than the instructions we provide for the local installation version of this setup. If using conda and VS Code are unfamiliar to you and you want more detailed guidance on how to use them effectively, you may wish to follow our guides for [installing](30-vs-code-with-miniforge.md) and [using](40-VS-code-and-conda-users-guide.md) this setup on a local computer first.
+Note that the instructions for using this setup on the HPC are less detailed than the instructions we provide for the local installation version of this setup. If using conda and VS Code are unfamiliar to you and you want more detailed guidance on how to use them effectively, you may wish to follow our guides for [installing](30-vs-code-with-miniforge.md) and [using](40-vs-code-and-conda-users-guide.md) this setup on a local computer first.
 
 #### Conda on the HPC
 
