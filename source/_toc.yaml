@@ -121,3 +121,7 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: ai/ai-tools/*
+              - file: ai/python/index
+                subtrees:
+                  - entries:
+                      - glob: ai/python/*
