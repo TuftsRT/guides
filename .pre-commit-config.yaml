@@ -38,17 +38,17 @@ repos:
       - id: isort
         name: sort python imports
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 26.1.0
+    rev: 26.3.0
     hooks:
       - id: black-jupyter
         name: apply black style
   - repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3.9020
+    rev: v0.4.3.9021
     hooks:
       - id: style-files
         name: apply tidyverse style
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.4.1
+    rev: v2.4.2
     hooks:
       - id: codespell
         name: fix common spelling errors
