@@ -16,16 +16,16 @@ The tunneling workflow requires a GitHub or Microsoft account. If you do not alr
 
 1. Select **VSCode Server** from the `Interactive Apps` menu.
 
-[vscode-launch](../assets/el9/newondemand-vscode-launch.png)
+![vscode-launch](../assets/el9/newondemand-vscode-launch.png)
 
 1. Fill out the form and click **Launch**.\
    The VSCode Server session will run on a compute node using the resources you requested.
 
-[vscode-form](../assets/el9/newondemand-vscode-form.png)
+![vscode-form](../assets/el9/newondemand-vscode-form.png)
 
 1. Click **Connect to VS Code**.
 
-[vscode-form](../assets/el9/newondemand-vscode-connect.png)
+![vscode-connect](../assets/el9/newondemand-vscode-connect.png)
 
 
 1. Once VSCode Server launches, you can install extensions using the **Extensions** view.
@@ -80,7 +80,7 @@ Allocate the appropriate amount of resources you need for your session with `sru
 
 > e.g. `$ srun -p batch -n 2 --mem=4g -t 4:00:00 --pty bash`
 
-[vscodecli-srun](../assets/el9/newondemand-vscodecli-srun.png)
+![vscodecli-srun](../assets/el9/newondemand-vscodecli-srun.png)
 
 It is important to `exit` the interactive session when finished to free up resources for other users.
 
@@ -88,13 +88,13 @@ It is important to `exit` the interactive session when finished to free up resou
 
 `$ module load vscode-cli/1.107.0`
 
-[vscodecli-module](../assets/el9/newondemand-vscodecli-module.png)
+![vscodecli-module](../assets/el9/newondemand-vscodecli-module.png)
 
 **4. Then Configure and Start Tunnel**
 
 `$ code tunnel`
 
-[vscodecli-tunnel](../assets/el9/newondemand-vscodecli-tunnel.png)
+![vscodecli-tunnel](../assets/el9/newondemand-vscodecli-tunnel.png)
 
 **5. Authentication**
 
@@ -102,7 +102,7 @@ Reminder: You will need a GitHub or Microsoft account to follow these steps.
 
 Follow the onscreen instructions, and any Two Factor Authentication steps from GitHub to proceed.
 
-[vscodecli-browswer](../assets/el9/vscode-tunnel-browser.png)
+![vscodecli-browswer](../assets/el9/vscode-tunnel-browser.png)
 
 Once you complete these steps, you will see a message that says:\
 "Congratulations, you're all set! Your device is now connected."
@@ -124,11 +124,11 @@ You should now see a VSCode window running from the browser. Feel free to connec
 
 On your locally installed VSCode, you can find your active tunnels in "Remote Explorer".
 
-[vscodecli-signin](../assets/el9/vscode-tunnel-signin.png)
+![vscodecli-signin](../assets/el9/vscode-tunnel-signin.png)
 
 Then you can find and connect to the established tunnel to the same cluster compute node where your computing resource is allocated. This requires the [Remote-Tunnels](https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-server) extension to be installed on your VSCode. Note, as above you should confirm this is the extension provided by Microsoft.
 
-[vscodecli-remote-tunnel](../assets/el9/vscode-tunnel-remote-tunnel.png)
+![vscodecli-remote-tunnel](../assets/el9/vscode-tunnel-remote-tunnel.png)
 
 **6. When Done**
 
