@@ -27,7 +27,6 @@ The tunneling workflow requires a GitHub or Microsoft account. If you do not alr
 
 ![vscode-connect](../assets/el9/newondemand-vscode-connect.png)
 
-
 1. Once VSCode Server launches, you can install extensions using the **Extensions** view.
 
 1. When finished, **delete the VSCode Server session** in Open OnDemand to free resources for other users.
