@@ -1,6 +1,6 @@
 # HPC Terminology
 
-## What is a "Cluster"
+## What is a ""
 
 - A computer cluster is a set of loosely or tightly **connected** **computers** **(Nodes)** that work together so that, in many respects, they can be viewed as a single system. Computer clusters have each computing unit set to perform the same/similar tasks, controlled and scheduled by [**software**](../../../hpc/slurm/index).
 
@@ -8,7 +8,7 @@
 
 - A **node** is a single computer in the system, which has a number of computing units, **cores**.
 
-  <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/CoreNode.png" alt="Core-Node" width=70%>
+![core-node](../../../hpc/assets/basic/core-node.png)
 
 - Number of CPU cores must be specified when running programs on Tufts HPC cluster.
 
@@ -30,7 +30,7 @@
 
   - Performing a narrower range of more specialized tasks
 
-    <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/CPUGPU.png" alt="CPU-GPU" width="60%"/>
+![cpu-gpu](../../../hpc/assets/basic/cpugpu.png)
 
 - GPU is like the turbo boost to a car's engine, the CPU.
 
@@ -49,7 +49,7 @@ The central processing unit (CPU) of a computer is what manipulates data by perf
   - Larger, slower, cheaper
   - Non-volatile (retaining data when its power is shut off)
 
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/MemStorage.png" alt="Memory-Storage" width="60%"/>
+![mem-storage](../../../hpc/assets/basic/mem-storage.png)
 
 ## What to Expect on Tufts HPC Cluster?
 
@@ -71,7 +71,7 @@ If you see prompt like this
 **DON'T** run any programs, YET!
 **Get resource allocation first**!
 
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/Cluster_20230516.png" alt="Memory-Storage" width=70%>
+![cluster](../../../hpc/assets/basic/cluster-20230516.png)
 
 # Tufts HPC Partitions
 
@@ -227,7 +227,7 @@ preempt         7-00:00:00
   ```
   [tutln01@login-prod-01 ~]$ module unload gcc
   [tutln01@login-prod-01 ~]$ echo $PATH
-  /usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/cluster/home/tutln01/bin:/cluster/home/tutln01/.local/bin
+  /usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin://home/tutln01/bin://home/tutln01/.local/bin
   ```
 
 - **unload ALL** of the loaded modules:
