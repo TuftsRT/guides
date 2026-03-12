@@ -1,6 +1,6 @@
 # HPC Terminology
 
-## What is a "Cluster"
+## What is a ""
 
 - A computer cluster is a set of loosely or tightly **connected** **computers** **(Nodes)** that work together so that, in many respects, they can be viewed as a single system. Computer clusters have each computing unit set to perform the same/similar tasks, controlled and scheduled by [**software**](../../../hpc/slurm/index).
 
@@ -71,7 +71,7 @@ If you see prompt like this
 **DON'T** run any programs, YET!
 **Get resource allocation first**!
 
-![cluster](../../../hpc/assets/basic/Cluster_20230516.png)
+![cluster](../../../hpc/assets/basic/cluster-20230516.png)
 
 # Tufts HPC Partitions
 
@@ -227,7 +227,7 @@ preempt         7-00:00:00
   ```
   [tutln01@login-prod-01 ~]$ module unload gcc
   [tutln01@login-prod-01 ~]$ echo $PATH
-  /usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/cluster/home/tutln01/bin:/cluster/home/tutln01/.local/bin
+  /usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin://home/tutln01/bin://home/tutln01/.local/bin
   ```
 
 - **unload ALL** of the loaded modules:
