@@ -69,13 +69,6 @@ probably a newer version. All software names have been standardized in lower cas
   work to migrate to more recent versions of your software. To switch back to the current modules, run `module unload modtree/deprecated`. If you need
   assistance with this contact RT.
 
-## Known Issues
-
-The following is a list of known issues that are currently being worked on.
-
-- Broken open ondemand applications
-  - Matlab server
-  - Fiji, and any other VNC based applications
 
 ## Upgraded cluster resources
 
