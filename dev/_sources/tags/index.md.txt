@@ -4,15 +4,16 @@ nosearch:
 html_theme.sidebar_secondary.remove: true
 ---
 # Tags
-- [ai (1)](/tags/ai.md)
+- [ai (2)](/tags/ai.md)
 - [bioinformatics (15)](/tags/bioinformatics.md)
+- [chat (1)](/tags/chat.md)
 - [computational-methods (2)](/tags/computational-methods.md)
 - [conda (1)](/tags/conda.md)
 - [data-management (2)](/tags/data-management.md)
 - [data-science (1)](/tags/data-science.md)
 - [google-colab (1)](/tags/google-colab.md)
 - [gpu (2)](/tags/gpu.md)
-- [hpc (4)](/tags/hpc.md)
+- [hpc (5)](/tags/hpc.md)
 - [introduction (1)](/tags/introduction.md)
 - [jupyter (1)](/tags/jupyter.md)
 - [nlp (5)](/tags/nlp.md)
