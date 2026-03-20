@@ -5,8 +5,7 @@ tags: hpc
 # HPC Cluster Upgrade
 
 ```{attention}
-The upgraded cluster is currently only accessible to approved early adopters.
-You may request to join our early adopter program at https://tufts.qualtrics.com/jfe/form/SV_08IS0n1YSTR6KRU .
+The upgraded cluster is now available to all Tufts HPC users.
 ```
 
 In the summer of 2025 TTS Research Technology launched a new version of the pax cluster with a newer OS version. This system shares a
