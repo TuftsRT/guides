@@ -69,7 +69,6 @@ probably a newer version. All software names have been standardized in lower cas
   work to migrate to more recent versions of your software. To switch back to the current modules, run `module unload modtree/deprecated`. If you need
   assistance with this contact RT.
 
-
 ## Upgraded cluster resources
 
 New GPU resources are available on this cluster.
