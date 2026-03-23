@@ -566,7 +566,7 @@ and determine a timeframe to move their nodes as the labs convenience.</p>
 <p>As part of this upgrade several legacy software and services are being retired. We have identified a modern replacement for each. If you have concerns or questions about the replacements, or timeline please contact us.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Software being retired</p></th>
+<tr class="row-odd"><th class="head"><p>Software Being Retired</p></th>
 <th class="head"><p>Replacement</p></th>
 <th class="head"><p>Retirement Date</p></th>
 </tr>
@@ -592,8 +592,8 @@ and determine a timeframe to move their nodes as the labs convenience.</p>
 <h2>Upgraded cluster access<a class="headerlink" href="#upgraded-cluster-access" title="Link to this heading">#</a></h2>
 <p>To access the upgraded cluster</p>
 <ul class="simple">
-<li><p>SSH: login-prod.pax.tufts.edu</p></li>
-<li><p>Web: <a class="reference external" href="https://ondemand-prod.pax.tufts.edu/">https://ondemand-prod.pax.tufts.edu/</a></p></li>
+<li><p>SSH: <code class="docutils literal notranslate"><span class="pre">login-prod.pax.tufts.edu</span></code></p></li>
+<li><p>Web: <a class="reference external" href="https://ondemand-prod.pax.tufts.edu">https://ondemand-prod.pax.tufts.edu</a></p></li>
 </ul>
 </section>
 <section id="notable-differences">
@@ -610,18 +610,20 @@ and determine a timeframe to move their nodes as the labs convenience.</p>
 <h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">#</a></h2>
 <p>The upgraded cluster continues to use the modules system to load software. However the software available is
 probably a newer version. All software names have been standardized in lower case.</p>
-<ul class="simple">
-<li><p>The old RHEL7 cluster software is available if you need an older version of software. Run the command <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span>&#160; <span class="pre">modtree/deprecated</span></code> to switch to the old modules. These modules may or may not work on the new cluster, and you should
-work to migrate to more recent versions of your software. To switch back to the current modules, run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span> <span class="pre">modtree/deprecated</span></code>. If you need
-assistance with this contact RT.</p></li>
+<ul>
+<li><p>The old RHEL7 cluster software is available if you need an older version of software. Run the following to switch to the old modules. These modules may or may not work on the new cluster, and you should work to migrate to more recent versions of your software. To switch back to the current modules, run the command again. If you need assistance with this contact RT.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w">  </span>modtree/deprecated
+</pre></div>
+</div>
+</li>
 </ul>
 </section>
 <section id="upgraded-cluster-resources">
 <h2>Upgraded cluster resources<a class="headerlink" href="#upgraded-cluster-resources" title="Link to this heading">#</a></h2>
 <p>New GPU resources are available on this cluster.</p>
 <ul class="simple">
-<li><p>H200 GPUs , request using <code class="docutils literal notranslate"><span class="pre">--gres=gpu:h200:1</span></code></p></li>
-<li><p>L40s GPUs , request using <code class="docutils literal notranslate"><span class="pre">--gres=gpu:l40s</span></code></p></li>
+<li><p>H200 GPUs, request using <code class="docutils literal notranslate"><span class="pre">--gres=gpu:h200:1</span></code></p></li>
+<li><p>L40s GPUs, request using <code class="docutils literal notranslate"><span class="pre">--gres=gpu:l40s</span></code></p></li>
 </ul>
 </section>
 </section>
