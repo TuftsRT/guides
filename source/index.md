@@ -32,7 +32,7 @@ grid-columns: 1 1 2 3
   link: "viz/index.html"
 
 - header: "{fas}`server` AI and Data Science"
-  content: "Learn about Artificial Intelligence at Tufts."
+  content: "Learn about Artificial Intelligence and Data Science at Tufts."
   link: "ai/index.html"
 ```
 
