@@ -1,6 +1,6 @@
 # HPC Terminology
 
-## What is a ""
+## What is a "Cluster"
 
 - A computer cluster is a set of loosely or tightly **connected** **computers** **(Nodes)** that work together so that, in many respects, they can be viewed as a single system. Computer clusters have each computing unit set to perform the same/similar tasks, controlled and scheduled by [**software**](../../../hpc/slurm/index).
 
