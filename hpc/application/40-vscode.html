@@ -77,8 +77,8 @@
     <link rel="prev" title="Tmux" href="30-tmux.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260305" />
-    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+  <meta name="docsearch:version" content="20260323" />
+    <meta name="docbuild:last-update" content="Mar 23, 2026"/>
   </head>
   
   
@@ -452,6 +452,7 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples and Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../policy/index.html">HPC Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chat.html">AI Chat Assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help.html">Help with HPC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../storage-request.html">HPC Cluster Storage Request</a></li>
 </ul>
@@ -533,95 +534,107 @@
 <li><p><strong>Local VSCode with a remote tunnel</strong>, which connects your local VSCode installation to the cluster</p></li>
 </ol>
 <p>These approaches are useful when you need to create, edit, and manage sophisticated codebases directly on the cluster. The tunneling method can also be used to run <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> backed by cluster resources.</p>
-<p>The tunneling workflow requires a GitHub or Microsoft account. If you do not already have a GitHub account, you can create one at <a class="github reference external" href="https://github.com/"></a>.</p>
+<p>The tunneling workflow requires a GitHub or Microsoft account. If you do not already have a GitHub account, you can create one at <a class="reference external" href="https://github.com/">GitHub</a>.</p>
 <section id="ondemand-vscode-server">
 <h2>OnDemand VSCode Server<a class="headerlink" href="#ondemand-vscode-server" title="Link to this heading">#</a></h2>
 <ol class="arabic">
-<li><p>Log in to Tufts HPC Open OnDemand:<br />
-<a class="reference external" href="https://ondemand-prod.pax.tufts.edu/">https://ondemand-prod.pax.tufts.edu/</a></p></li>
-<li><p>Select <strong>VSCode Server</strong> from the <code class="docutils literal notranslate"><span class="pre">Interactive</span> <span class="pre">Apps</span></code> menu.</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-launch.png" alt="VSCode Server launch" width="60%"/>
+<li><p>Log in to <a class="reference external" href="https://ondemand-prod.pax.tufts.edu/">Tufts HPC Open OnDemand</a>.</p></li>
+<li><p>Select <strong>VSCode Server</strong> from the <em>Interactive Apps</em> menu.</p>
+<p><img alt="vscode-launch" src="../../_images/newondemand-vscode-launch.png" /></p>
 </li>
-<li><p>Fill out the form and click <strong>Launch</strong>.<br />
-The VSCode Server session will run on a compute node using the resources you requested.</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-form.png" alt="VSCode Server form" width="60%"/>
+<li><p>Fill out the form and click <strong>Launch</strong>. The VSCode Server session will run on a compute node using the resources you requested.</p>
+<p><img alt="vscode-form" src="../../_images/newondemand-vscode-form.png" /></p>
 </li>
 <li><p>Click <strong>Connect to VS Code</strong>.</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscode-connect.png" alt="VSCode Server connect" width="60%"/>
+<p><img alt="vscode-connect" src="../../_images/newondemand-vscode-connect.png" /></p>
 </li>
 <li><p>Once VSCode Server launches, you can install extensions using the <strong>Extensions</strong> view.</p></li>
-<li><p>When finished, <strong>delete the VSCode Server session</strong> in Open OnDemand to free resources for other users.</p></li>
+<li><p>When finished, <strong>delete</strong> the VSCode Server session to free resources for other users.</p></li>
 </ol>
-<p><strong>Tips on using VSCode Server</strong></p>
-<blockquote>
-<div><p>Note:</p>
-<p>If you are using VSCode via the VSCode Server, the File, Edit, Go, Run are not on the top of the screen like you may be used to on your local computer. These are stored in a menu with three lines (the hamburger menu) on the far left of the VSCode window.</p>
-</div></blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are using VSCode via the VSCode Server, the <em>File</em>, <em>Edit</em>, <em>Go</em>, and <em>Run</em> menus are not on the top of the screen like you may be used to on your local computer. These are stored in a menu with three lines (the hamburger menu) on the far left of the VSCode window.</p>
+</div>
 </section>
 <section id="local-vscode-with-tunnel">
 <h2>Local VSCode with Tunnel<a class="headerlink" href="#local-vscode-with-tunnel" title="Link to this heading">#</a></h2>
 <section id="local-extensions">
 <h3>Local Extensions<a class="headerlink" href="#local-extensions" title="Link to this heading">#</a></h3>
-<p>To use extensions, they need to be 1) installed and 2) the system must meet all prerequisites indicated on the official extension page. These are optional, but they add additional functionality which may be important for data science workflows.</p>
-<blockquote>
-<div><p><em>Example extensions</em></p>
+<p>To use extensions, they need to be installed and the system must meet all prerequisites indicated on the official extension page. These are optional, but they add additional functionality which may be important for data science workflows.</p>
 <p>Here are some examples of useful local extensions:</p>
-<p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote-SSH</a>
-<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-explorer">Remote Explorer</a>
-<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-server">Remote-Tunnels</a>
-<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter">Jupyter</a> (optional)
-<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a></p>
-</div></blockquote>
+<ul class="simple">
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote-SSH</a></p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-explorer">Remote Explorer</a></p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-server">Remote-Tunnels</a></p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter">Jupyter</a> (optional)</p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a></p></li>
+</ul>
 <p>Be sure to only install extensions you trust by developers you trust.</p>
 </section>
 <section id="ssh-keyless-access-optional">
 <h3>SSH Keyless Access (Optional)<a class="headerlink" href="#ssh-keyless-access-optional" title="Link to this heading">#</a></h3>
-<p><em>Note: Setting up SSH Keyless Access to the HPC cluster is optional.</em></p>
-<p>You can follow the instructions here to set up your SSH keyless access. This will make your life much easier in the long run: <a class="reference external" href="https://www.tecmint.com/ssh-passwordless-login-using-ssh-keygen-in-5-easy-steps/">SSH Keyless Access</a></p>
+<p>You can follow the instructions <a class="reference external" href="https://www.tecmint.com/ssh-passwordless-login-using-ssh-keygen-in-5-easy-steps/">here</a> to set up your SSH keyless access. This will make your life much easier in the long run.</p>
 </section>
 <section id="tunnel">
 <h3>Tunnel<a class="headerlink" href="#tunnel" title="Link to this heading">#</a></h3>
 <p>To set up a tunnel from the HPC to your local computer, you will first allocate resources, load the VSCode CLI module, configure and start your tunneling session, authenticate and access VSCode, use the software, and then release resources when your work is complete.</p>
-<p>The detailed steps to do this are below:</p>
-<p><strong>1. <a class="reference internal" href="30-tmux.html"><span class="std std-doc">Tmux</span></a> Session (Optional)</strong></p>
+<p>The detailed steps to do this are below.</p>
+<ol class="arabic">
+<li><p><strong><a class="reference internal" href="30-tmux.html"><span class="std std-doc">Tmux</span></a> Session (Optional)</strong></p>
 <p>If you have a spotty internet connection or you are planning to work in the current session for a long time, using tmux can help you keep the session running even if you disconnect from the HPC cluster. Please use tmux responsibly and delete your session when you finish your work to free up resources for other users.</p>
 <p>Start a <a class="reference internal" href="30-tmux.html"><span class="std std-doc">tmux</span></a> session on Tufts HPC cluster in any shell environment on the login node.</p>
-<p><strong>2. Allocate Resources on HPC Cluster</strong></p>
+</li>
+<li><p><strong>Allocate Resources on HPC Cluster</strong></p>
 <p>Allocate the appropriate amount of resources you need for your session with <code class="docutils literal notranslate"><span class="pre">srun</span></code> to start an <a class="reference internal" href="../slurm/interactive.html"><span class="std std-doc">interactive session</span></a> inside the tmux session.</p>
-<blockquote>
-<div><p>e.g. <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">srun</span> <span class="pre">-p</span> <span class="pre">batch</span> <span class="pre">-n</span> <span class="pre">2</span> <span class="pre">--mem=4g</span> <span class="pre">-t</span> <span class="pre">4:00:00</span> <span class="pre">--pty</span> <span class="pre">bash</span></code></p>
-</div></blockquote>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscodecli-srun.png" alt="srun" width="60%"/>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">For example…</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>srun -p batch -n 2 --mem=4g -t 4:00:00 --pty bash
+</pre></div>
+</div>
+</div>
+<p><img alt="vscodecli-srun" src="../../_images/newondemand-vscodecli-srun.png" /></p>
 <p>It is important to <code class="docutils literal notranslate"><span class="pre">exit</span></code> the interactive session when finished to free up resources for other users.</p>
-<p><strong>3. Load Cluster VSCode CLI Module</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">vscode-cli/1.107.0</span></code></p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscodecli-module.png" alt="vscodecli" width="60%"/>
-<p><strong>4. Then Configure and Start Tunnel</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">code</span> <span class="pre">tunnel</span></code></p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/newondemand-vscodecli-tunnel.png" alt="vscodecli-tunnel" width="60%"/>
-<p><strong>5. Authentication</strong></p>
-<p>Reminder: You will need a GitHub or Microsoft account to follow these steps.</p>
+</li>
+<li><p><strong>Load Cluster VSCode CLI Module</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>vscode-cli/1.107.0
+</pre></div>
+</div>
+<p><img alt="vscodecli-module" src="../../_images/newondemand-vscodecli-module.png" /></p>
+</li>
+<li><p><strong>Then Configure and Start Tunnel</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code<span class="w"> </span>tunnel
+</pre></div>
+</div>
+<p><img alt="vscodecli-tunnel" src="../../_images/newondemand-vscodecli-tunnel.png" /></p>
+</li>
+<li><p><strong>Authentication</strong></p>
 <p>Follow the onscreen instructions, and any Two Factor Authentication steps from GitHub to proceed.</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/vscode-tunnel-browser.png" alt="vscodecli-tunnel-browser" width="60%"/>
-<p>Once you complete these steps, you will see a message that says:<br />
-“Congratulations, you’re all set! Your device is now connected.”</p>
+<p><img alt="vscodecli-browser" src="../../_images/vscode-tunnel-browser.png" /></p>
+<p>Once you complete these steps, you will see a message that says:</p>
+<blockquote>
+<div><p><em>“Congratulations, you’re all set! Your device is now connected.”</em></p>
+</div></blockquote>
+</li>
+</ol>
 <p>Go back to your interactive session on the Tufts HPC Cluster. At this point, you can choose between using your browser to access VSCode or your local VSCode instance on your computer.</p>
-<ul class="simple">
-<li><p>Browser Option</p></li>
-</ul>
+</section>
+<section id="browser-option">
+<h3>Browser Option<a class="headerlink" href="#browser-option" title="Link to this heading">#</a></h3>
 <p>Once you have completed the authentication steps, copy the link given from your interactive session window into your local browser.</p>
 <p>The link will have the form:
 <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">this</span> <span class="pre">link</span> <span class="pre">in</span> <span class="pre">your</span> <span class="pre">browser</span> <span class="pre">https://vscode.dev/tunnel/paxXXX</span></code></p>
 <p>The last part of the link will change depending on how you named the machine in the previous steps.</p>
 <p>You should now see a VSCode window running from the browser. Feel free to connect any directory by clicking on the file explorer on the left. Currently, VSCode does not support Python environments to be ported through the remote tunnel. Read more <a class="reference external" href="https://github.com/microsoft/vscode-python/issues/21557">here</a>.</p>
-<ul class="simple">
-<li><p>Local VSCode Option</p></li>
-</ul>
+</section>
+<section id="local-vscode-option">
+<h3>Local VSCode Option<a class="headerlink" href="#local-vscode-option" title="Link to this heading">#</a></h3>
 <p>On your locally installed VSCode, you can find your active tunnels in “Remote Explorer”.</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/vscode-tunnel-signin.png" alt="vscodecli-tunnel-signin" width="60%"/>
+<p><img alt="vscodecli-signin" src="../../_images/vscode-tunnel-signin.png" /></p>
 <p>Then you can find and connect to the established tunnel to the same cluster compute node where your computing resource is allocated. This requires the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-server">Remote-Tunnels</a> extension to be installed on your VSCode. Note, as above you should confirm this is the extension provided by Microsoft.</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/EL9/vscode-tunnel-remote-tunnel.png" alt="vscodecli-tunnel-local" width="60%"/>
-<p><strong>6. When Done</strong></p>
+<p><img alt="vscodecli-remote-tunnel" src="../../_images/vscode-tunnel-remote-tunnel.png" /></p>
+</section>
+<section id="when-done">
+<h3>When Done<a class="headerlink" href="#when-done" title="Link to this heading">#</a></h3>
 <p>As a reminder, when you are done with your session, be sure to be sure to end your VSCode Server session and exit the interactive session on the HPC cluster to release resources for other users.</p>
 </section>
 </section>
@@ -682,6 +695,9 @@ The VSCode Server session will run on a compute node using the resources you req
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-extensions">Local Extensions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-keyless-access-optional">SSH Keyless Access (Optional)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tunnel">Tunnel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#browser-option">Browser Option</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-vscode-option">Local VSCode Option</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-done">When Done</a></li>
 </ul>
 </li>
 </ul>
@@ -749,7 +765,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 05, 2026.
+  Last updated on Mar 23, 2026.
   <br/>
 </p></div>
       

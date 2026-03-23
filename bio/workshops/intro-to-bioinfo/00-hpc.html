@@ -77,8 +77,8 @@
     <link rel="prev" title="Beginner’s guide for conducting bioinformatics analysis on Tufts HPC" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260305" />
-    <meta name="docbuild:last-update" content="Mar 05, 2026"/>
+  <meta name="docsearch:version" content="20260323" />
+    <meta name="docbuild:last-update" content="Mar 23, 2026"/>
   </head>
   
   
@@ -548,10 +548,11 @@
 </section>
 <section id="cores-vs-node">
 <h2>Cores vs Node<a class="headerlink" href="#cores-vs-node" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>A <strong>node</strong> is a single computer in the system, which has a number of computing units, <strong>cores</strong>.</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/CoreNode.png" alt="Core-Node" width=70%>
-</li>
+<ul class="simple">
+<li><p>A <strong>node</strong> is a single computer in the system, which has a number of computing units, <strong>cores</strong>.</p></li>
+</ul>
+<p><img alt="core-node" src="../../../_images/core-node.png" /></p>
+<ul class="simple">
 <li><p>Number of CPU cores must be specified when running programs on Tufts HPC cluster.</p></li>
 <li><p>In the case one job requires multiple CPU cores, it’s recommended to specify if user desire all the required CPU cores to be allocated on a single node or multiple nodes.</p></li>
 <li><p>Not all programs can utilize CPU cores allocated cross nodes. Please check your program’s specifics before submitting jobs.</p></li>
@@ -559,9 +560,9 @@
 </section>
 <section id="cpu-and-gpu">
 <h2>CPU and GPU<a class="headerlink" href="#cpu-and-gpu" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>CPU – <strong>Central Processing Unit</strong></p>
 <ul class="simple">
+<li><p>CPU – <strong>Central Processing Unit</strong></p>
+<ul>
 <li><p>A CPU can never be fully replaced by a GPU</p></li>
 <li><p>Can be thought of as the <strong>taskmaster</strong> of the entire system, coordinating a wide range of general-purpose computing tasks</p></li>
 </ul>
@@ -569,13 +570,14 @@
 <li><p>GPU – <strong>Graphics Processing Unit</strong></p>
 <ul>
 <li><p>GPUs were originally designed to create images for computer graphics and video game consoles</p></li>
-<li><p>Performing a narrower range of more specialized tasks</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/CPUGPU.png" alt="CPU-GPU" width="60%"/>
-</li>
+<li><p>Performing a narrower range of more specialized tasks</p></li>
 </ul>
 </li>
-<li><p>GPU is like the turbo boost to a car’s engine, the CPU.</p>
+</ul>
+<p><img alt="cpu-gpu" src="../../../_images/cpugpu.png" /></p>
 <ul class="simple">
+<li><p>GPU is like the turbo boost to a car’s engine, the CPU.</p>
+<ul>
 <li><p>A computer can’t function without a CPU.</p></li>
 <li><p>Not all computers have GPUs.</p></li>
 </ul>
@@ -600,7 +602,7 @@
 </ul>
 </li>
 </ul>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/MemStorage.png" alt="Memory-Storage" width="60%"/>
+<p><img alt="mem-storage" src="../../../_images/mem-storage.png" /></p>
 </section>
 <section id="what-to-expect-on-tufts-hpc-cluster">
 <h2>What to Expect on Tufts HPC Cluster?<a class="headerlink" href="#what-to-expect-on-tufts-hpc-cluster" title="Link to this heading">#</a></h2>
@@ -622,7 +624,7 @@
 <code class="docutils literal notranslate"><span class="pre">[your_utln&#64;login-prod-03]</span></code>
 <strong>DON’T</strong> run any programs, YET!
 <strong>Get resource allocation first</strong>!</p>
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/Cluster_20230516.png" alt="Memory-Storage" width=70%>
+<p><img alt="cluster" src="../../../_images/cluster-20230516.png" /></p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="tufts-hpc-partitions">
@@ -767,7 +769,7 @@ Currently Loaded Modulefiles:
 <li><p><strong>unload loaded modules</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[tutln01@login-prod-01 ~]$ module unload gcc
 [tutln01@login-prod-01 ~]$ echo $PATH
-/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/cluster/home/tutln01/bin:/cluster/home/tutln01/.local/bin
+/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin://home/tutln01/bin://home/tutln01/.local/bin
 </pre></div>
 </div>
 </li>
@@ -918,7 +920,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Mar 05, 2026.
+  Last updated on Mar 23, 2026.
   <br/>
 </p></div>
       
