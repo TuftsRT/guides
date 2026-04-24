@@ -17,7 +17,7 @@
 There are several methods available to copy your data to and from the HPC cluster. These include SCP/SFTP, OnDemand and Globus.
 
 ```{important}
-   File Transfer Hostname xfer.pax.tufts.edu (formerly xfer.cluster.tufts.edu)
+   File Transfer hosts (xfer) are being retired in favor of using the login nodes directly for SCP/SFTP or rsync.
 ```
 
 - File Transfer Protocol
@@ -33,23 +33,23 @@ There are several methods available to copy your data to and from the HPC cluste
   > - Cross-Platform: **[FileZilla](https://filezilla-project.org/)**
   > - Cross-Platform: **[Cyberduck](https://cyberduck.io/)**
   > - Native: Windows 11, Mac and Linux all include a command line SSH clients in the OS. This `scp` command can be used for quick connections without installing additional software.
-  > - Web Interface:**[OnDemand](https://ondemand.pax.tufts.edu)** (Only for transferring files size **less than 976MB per file.**)
+  > - Web Interface:**[OnDemand](https://ondemand-prod.pax.tufts.edu)** (Only for transferring files size **less than 976MB per file.**)
 
 ## OnDemand
 
 - Go to OnDemand:
 
-  **[https://ondemand.pax.tufts.edu/](https://ondemand.pax.tufts.edu/)**
+  **[https://ondemand-prod.pax.tufts.edu/](https://ondemand-prod.pax.tufts.edu/)**
 
-- Under **`Files`**, using the **`Upload`** or **`Download`** buttons to transfer. Make sure you navigate to the destination/source directory on cluster using the **`Go To`** button before transferring files.
+- **`Home Directory`** Under **`Files`**, using the **`Upload`** or **`Download`** buttons to transfer. Make sure you navigate to the destination/source directory on cluster using the **`Change directory`** button before transferring files.
 
-  <img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/ondemand_homedir.png" alt="Core-Node" width=70%>
+![ood-homedir](../assets/el9/newondemand-homedir.png)
 
-  You may not see your lab folder listed under `/cluster/tufts`, **DO** use `Go To` button and **TYPE** out the **FULL** path.
+You may not see your lab folder listed under `/cluster/tufts`, **DO** use `Change directory` button and **TYPE** out the **FULL** path.
 
 ## Command Line - scp & rsync
 
-> Hostname\*\* for file transfer: xfer.cluster.tufts.edu
+> Hostname for file transfer: **login-prod.pax.tufts.edu**
 >
 > NOTE:
 >
@@ -58,7 +58,7 @@ There are several methods available to copy your data to and from the HPC cluste
 >   - Home Directory: _/cluster/home/your_utln/your_folder_
 >   - Research Project Storage Space Directory: _/cluster/tufts/your_lab_name/your_utln/your_folder_
 
-\*\*_Execute from your local machine terminal._ \*\*
+The following commands are execute from your local machine terminal.
 
 General Format:
 
@@ -74,26 +74,26 @@ Example:
 
 - Download from cluster
 
-`$ scp your_utln@xfer.cluster.tufts.edu:Cluster_Path Local_Path  `
+`$ scp your_utln@login-prod.pax.tufts.edu:Cluster_Path Local_Path  `
 
-`$ rsync your_utln@xfer.cluster.tufts.edu:Cluster_Path Local_Path`
+`$ rsync your_utln@login-prod.pax.tufts.edu:Cluster_Path Local_Path`
 
 - Upload to cluster
 
-`$ scp Local_Path your_utln@xfer.cluster.tufts.edu:Cluster_Path`
+`$ scp Local_Path your_utln@login-prod.pax.tufts.edu:Cluster_Path`
 
-`$ rsync Local_Path your_utln@xfer.cluster.tufts.edu:Cluster_Path`
+`$ rsync Local_Path your_utln@login-prod.pax.tufts.edu:Cluster_Path`
 
 **Directory** Transfer with `scp` or `rsync`:
 
 - Download from cluster
 
-`$ scp -r your_utln@xfer.cluster.tufts.edu:Cluster_Path Local_Path  `
+`$ scp -r your_utln@login-prod.pax.tufts.edu:Cluster_Path Local_Path  `
 
-`$ rsync -azP your_utln@xfer.cluster.tufts.edu:Cluster_Path Local_Path`
+`$ rsync -azP your_utln@login-prod.pax.tufts.edu:Cluster_Path Local_Path`
 
 - Upload to cluster
 
-`$ scp -r Local_Path your_utln@xfer.cluster.tufts.edu:Cluster_Path`
+`$ scp -r Local_Path your_utln@login-prod.pax.tufts.edu:Cluster_Path`
 
-`$ rsync -azP Local_Path your_utln@xfer.cluster.tufts.edu:Cluster_Path`
+`$ rsync -azP Local_Path your_utln@login-prod.pax.tufts.edu:Cluster_Path`

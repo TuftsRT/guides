@@ -1,7 +1,7 @@
 # Slurm Job Scheduler
 
 The HPC cluster uses the Slurm Job Scheduler to assign users jobs to compute nodes. Jobs are allocated based on the
-requested resources and the submitting users priority. We use the FairShare algorithm which adjusts priority to
+requested resources, submission time, and the users previous usage. We use the FairShare algorithm which adjusts priority to
 balance usage across of our users.
 
 Command Quick Reference
@@ -11,7 +11,7 @@ Command Quick Reference
 - **sbatch** submits batch jobs
 - **sprio** Displays the priorities of pending jobs in the queue
 - **scancel** can be used to cancel jobs
-- **salloc** allocates a compute node for interactive use
+- **srun** allocates a compute node for use
 - **sacct** display historical report data for jobs
 - **seff** displays job CPU and Memory efficiency
 
@@ -19,8 +19,8 @@ Command Quick Reference
 ---
 grid-columns: 1
 ---
-- header: "{fas}`book` Partitions"
-  content: "How to select where your jobs and the resources available to them."
+- header: "{fas}`book` Partitions and Limits"
+  content: "How to select where your jobs run and the resources available to them."
   link: "../compute/partition.html"
 
 - header: "{fas}`book` Interactive Sessions"

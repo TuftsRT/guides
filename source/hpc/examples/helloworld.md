@@ -24,7 +24,7 @@ for i in range(10):
 Use `scp`:
 
 ```bash
-scp helloworld.py your_utln@login.pax.tufts.edu:~/
+scp helloworld.py your_utln@login-prod.pax.tufts.edu:~/
 ```
 
 Or upload using **Open OnDemand**, if available.
@@ -34,7 +34,7 @@ Or upload using **Open OnDemand**, if available.
 ## 3. SSH into the cluster
 
 ```bash
-ssh your_utln@login.pax.tufts.edu
+ssh your_utln@login-prod.pax.tufts.edu
 ```
 
 ---

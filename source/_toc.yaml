@@ -72,10 +72,6 @@ subtrees:
               - file: bio/lectures/index
                 subtrees:
                   - entries:
-                      - file: bio/lectures/igdh-1001/index
-                        subtrees:
-                          - entries:
-                              - glob: bio/lectures/igdh-1001/*
                       - file: bio/lectures/introduction-to-alphafold2/index
                         subtrees:
                           - entries:
@@ -117,3 +113,51 @@ subtrees:
         subtrees:
           - entries:
               - glob: viz/*
+      - file: ai/index
+        title: Artificial Intelligence
+        subtrees:
+          - entries:
+              - file: ai/ai-tools/index
+                subtrees:
+                  - entries:
+                      - glob: ai/ai-tools/*
+              - file: ai/python/index
+                subtrees:
+                  - entries:
+                      - glob: ai/python/*
+              - file: ai/r/index
+                subtrees:
+                  - entries:
+                      - glob: ai/r/*
+              - file: ai/parallel/index
+                subtrees:
+                  - entries:
+                      - glob: ai/parallel/*
+              - file: ai/stata/index
+                subtrees:
+                  - entries:
+                      - glob: ai/stata/*
+              - file: ai/sas/index
+                subtrees:
+                  - entries:
+                      - glob: ai/sas/*
+              - file: ai/spss/index
+                subtrees:
+                  - entries:
+                      - glob: ai/spss/*
+              - file: ai/matlab/index
+                subtrees:
+                  - entries:
+                      - glob: ai/matlab/*
+              - file: ai/julia/index
+                subtrees:
+                  - entries:
+                      - glob: ai/julia/*
+              - file: ai/ai-apis/index
+                subtrees:
+                  - entries:
+                      - glob: ai/ai-apis/*
+              - file: ai/ai-agents/index
+                subtrees:
+                  - entries:
+                      - glob: ai/ai-agents/*

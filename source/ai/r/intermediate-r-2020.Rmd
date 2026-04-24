@@ -1,0 +1,586 @@
+
+# Intermediate Stats: From Surveys to Statistics
+- author: "Kyle Monahan"
+- date: "April 2020"
+
+
+## Getting Started
+
+R is a statistical platform similar to Stata, SAS, and SPSS. This software allows you to manipulate data, perform descriptive statistics, recoding variables, and bringing in your own data. If you're reading this, you've opened RStudio (the development environment for R) and you're on the way! We will walk through this document together in the workshop.
+
+If you see code that looks like this: `code`, this refers to code that you could write in the R console.
+
+## What if I want to learn more about RStudio/R?
+
+If you'd like to learn more about RStudio/R in general, beyond this work you can check out these resources:
+
+To access other online resources on statistics, see go.tufts.edu/stats
+
+Although we aren't covering data management in this workshop, it's an important part of any statistical analysis.
+
+In addition, if you would like to learn more about using RStudio on the High-Performance Computing Infrastructure, please see here: https://tufts.box.com/v/HPC-RStudio
+
+
+#Set working directory
+The first thing we need to do is to set a working directory. Go to Session > Set Working Directory > To Source File location. This is always good practice!
+
+# Introductory Materials
+
+We will skip these, but I want you to have these available for later use.
+Please scroll to line 110 in this workshop, titled "Using functions for exploratory data analysis" (for those in the PDF).
+
+
+If you are not comfortable with introductory R, please go through the materials below.
+
+
+## Assigning Variables
+
+The first thing we can do is assign a variable. This looks like an arrow placing a value into a variable. Like this: `n <- 200`. Click the "Run" button below to assign a variable `n` equal to the value two-hundred. The run button looks like a small play button.
+
+The box below is called an **R code chunk**, and it lets us run R code inside this R markdown notebook.
+
+
+```{r}
+n <- 200
+
+# The variable n is set equal to 200.
+
+# You can write a comment in an RScript by writing a "#"
+```
+
+
+This created a variable `n` which we can access in R. The value appears in the Environment tab, on the upper right-hand side of the window.
+
+> Tip: If you can't see the console window, just click on the word "Console" below. The `>` tells you that R is waiting for your input! The engine is running, and we can either control it with the Run button or the Console directly.
+
+Now if you call n, you'll see the console report it's value. Click "Run" below to call n.
+
+```{r}
+n
+```
+
+> [TASK] Try setting `n <- 300` in the Console window. It's just like we did in the code above.
+
+> [TASK] Now try calling `N` at the Console window. What happens? You get an error, since R is case-sensitive. We have to be careful to call the exact variable
+
+When you see a variable in the Environment pane, it is actually being stored in the RAM (memory) of the computer you are using.
+
+## Combining Variables
+
+What if we have a series of numbers to set as a variable? We can store those as a variable as well! To do this, we need to use a **function**.
+
+For example, what if we wanted to store the grades we got on exams. These include 94, 96, 72, and 92 (the third test was harder than the others).
+We use the combine function, which is `c(n, n, n, ... n)`.
+
+**Functions** are special statements that take some inputs, perform a process, and create some outputs. Click the
+
+```{r}
+grades <- c(94, 96, 72, 92) # The function c() takes a list of objects, and concatenates them into a list. This object is then stored as the value "grades.""
+```
+
+This assigns our grades to the variable `grades`. If we call the variable, R should report back the value for grades.
+
+> [TASK] Edit the R code below to call the variable grades, just the same as we typed n to call the variable `n`.
+
+```{r}
+# Insert the name of the variable `grades` below to call the variable
+```
+
+You could also call the variable `grades` from the console, you would obtain the same result!
+
+We see the values are printed when we call or type the variable `grades`. This object in R is called a `vector`. One can access the values within a vector by using the square brackets `[]`. Let's say we wanted to access the second item in the vector. We can do that by placing a "2" next to the item,.
+
+```{r}
+grades[2]
+```
+
+This reports the second value in the vector, or list, object titled grades. Note that the 0 grade is a [1], (e.g. [1] 94 96 72 92) which tells R something about the way the data is stored. This is similar to column and row names in other data processing software, and we will dive into using these in the survey section.
+
+## Using functions for exploratory data analysis
+
+So far, we have used R as a calculator. But we aren't limited to that use! R has lots of **functions** available that make common (and even less common) analyses easier to do.
+
+```{r}
+# We can perform basic analyses by using functions in R:
+
+grades <- c(94, 96, 72, 92)
+mean(grades) # Mean
+median(grades) # Median
+sd(grades) # Standard deviation
+```
+
+And R reports the values for each outcome, both below the R code chunk, and the at the Console output. If we wanted to add more information to the output, we can use the `print()` function. This prints the value inside the parenthesis to the console, and is mostly useful for checking the value of a variable. In this case, we will use the function to `print` a reminder of what values we are calculating.
+
+
+```{r}
+# We can perform basic analyses by using functions in R:
+
+
+print("The mean is...")
+mean(grades) # Mean
+print("The median is...")
+median(grades) # Median
+print("The standard deviation is...")
+sd(grades) # Standard deviation
+```
+
+Congrats! Now we have learned a few new functions in R:
+
+* c() - for combining objects into lists
+
+* mean(), median(), and sd() - for descriptive stats
+
+*print() - for checking the value of a variable or object
+
+Now we know more information about our grades!
+
+
+## Remembering the functions we used with History
+
+Next, take a look at the **History** list, on the tab to the left. This is where we can see the past commands we have run, in case we forget. When you work in R, you will likely start by making an R notebook, which tracks your analysis, but this is a great thing to know about if you have questions.
+
+All of the past commands we ran within this session of R exist in that list. We can double click on one to place that text (code) in the Console and run it.
+
+> [TASK] Try to double click on `sd(grades) #Standard deviation`, navigate to the Console, and press Enter to run the code. What appears?
+
+Now click back to Environment. If we wanted to save out the objects (data) that we have created so far, we can do that by clicking on the `Save` icon in the **Environment** pane. It looks like a blue floppy disk. We don't need to save out the data yet, but we will use this function later.
+
+
+> Tip: This is a great way to compress large data files, as the resulting .Rdata file will commonly have much better compression than an Excel file (.xlsx) or a large database.
+
+## Manipulating variables
+
+Suddenly, we were able to retake a test. Great! Now we have to replace the value of 72 (the lowest grade) with our new grade of 85. We want to assign a value to one of the positions in the vector (list) called `grades`.
+
+We can assign the value of 85 to the specific integer we want to replace. To do this, we select the location that the value sits at with the square brackets `[]` and then assign a new value with the assignment operator `<-`.
+
+```{r}
+grades[3] <- 85 # Replace the third value of grades with 85
+grades # Call grades to check that it worked
+```
+
+It worked! Now we have a correct set of grades. However, at this point we might want to re-calculate our mean values. Additionally, you might note that our values do not appear in the **Environment** pane. Why is that? It's because we didn't **assign** them a value.
+
+> Tip: The values we create will not be saved unless we assign them to a variable, or they are saved as files.
+
+
+```{r}
+# Re-calculate grades given our retake and create new values to store them.
+g_mean <- mean(grades)
+g_median <- median(grades)
+g_sd <- sd(grades)
+# Remember to store the values, we have to assign them.
+```
+
+Let's say now we wanted to summarize our grades, in a nicely formatted **table**. We can do that using the `rbind` function, which binds the values together. However, first, we must convert each values to a numeric.
+
+```{r}
+# Now we can create a table, with a function called rbind and as.numeric:
+
+grades_table <- rbind(Mean = as.numeric(g_mean), Median = as.numeric(g_median), SD = as.numeric(g_sd))
+grades_table
+# Note how we always want to create the table, and save it as an object (grades_table) which we can later call. The same approach as before.
+```
+
+
+
+So, to summarize, what did we learn so far?
+
+* How to use functions in R
+* Accessing key functions of RStudio (Console, Environment, Help files)
+* Using functions to find descriptive statistics of a small grades dataset
+* Saving out datasets through the files pane
+* Searching and using our history
+
+These are the key basic components of data science and reproducible research in R.
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Deep Dive into Surveys in R
+Next, we will take a deeper dive into our example survey in R. We are working with the Demographic and Health Surveys (DHS) Children's Data - Children's Recode (KR) dataset.
+
+## Background on the data
+This dataset has one record for every child of interviewed women, born in the five years preceding the survey. It contains the information related to the child's pregnancy and postnatal care and immunization and health.
+
+The data for the mother of each of these children is included. This file is used to look at child health indicators such as immunization coverage, vitamin A supplementation, and recent occurrences of diarrhea, fever, and cough for young children and treatment of childhood diseases. The unit of analysis (case) in this file is the children of women born in the last 5 years (0-59 months).
+
+Each record is a **row** (observation), each **column** is a variable.
+
+## Applying what we have learned - Explore the Relationship Between Breastfeeding among Children 12-23 Month-Old and Wasting (Weight-for-Height) Status
+## Install and Load Packages
+
+In this part, we will explore the relationship between breastfeeding among children 12-23 months old and wasting (Weight-for-height). We will use a few different packages in this part of the tutorial. Packages add functionality to our R, so we have new functions to access. The general way to denote packages in R is: `package::function()`.
+
+The packages we will install and load are:
+
+* `tidyverse` contains https://cran.r-project.org/web/packages/tidyverse/index.html multiple packages in the tidyverse family, including packages used in this tutorial:
+* `dplyr` for data manipulation/engineering and `ggplot` for data visualization.
+* `haven` is used for importing and exporting data files,
+* `survey` is a package specifically designed for analyzing complex surveys.
+
+Installing packages is an important part of working in R. After install, we then load the package in R with `library(packagenamehere)`.
+
+```{r packages, include=TRUE}
+# Uncomment the line below if you have not installed these.
+# install.packages(c("tidyverse", "haven", "survey"), repos = "https://cloud.r-project.org")
+library("tidyverse")
+library("haven")
+library("survey")
+
+# Note version conflict errors are common here - if you see these, you should use package::filter
+```
+
+## Data science pipelines and data cleaning
+
+The goal for this section is not just to go through an analysis of a survey in R, but rather to prepare you for creating data science "pipelines" to complete an analysis. In general, the workflow for the pipeline is:
+
+Import -> Tidy -> Understand (Transform <-> Visualize <-> Model) -> Communicate
+
+We will next import data, clean (or tidy) those data, understand (analyze the survey), model our results, and leave it to you to communicate our results!
+
+To access these materials please reach out to DataLab-Support@elist.tufts.edu.
+
+## Import Data
+Once we download the DHS Model Dataset "Children's Data - Children's Recode (KR)" from https://dhsprogram.com/data/Download-Model-Datasets.cfm?flag=1, we will import the data into R. This practice data set uses child as the unit of analysis.
+Note: we will download the Stata format (.DTA) from the website, but you can also download the SAS or SPSS formats and then import into R using the loaded package `haven`.
+
+```{r import, include=FALSE}
+# Download the file from Kyle's personal Tufts Box, so we don't have to download the file, using the function download.file()
+# In the future, you should actually download the file from the website above, to learn about how to do this
+dhs_full <- haven::read_dta("ZZKR62FL.DTA") # Read the data in as an R object
+
+# If needed, the data is also available for download here: https://tufts.box.com/v/DataScience101
+```
+
+
+## Data Management
+Here we will create a subset of selected variables and observations suitable for exploring our research question.
+First, we limit the subset to observations of children aged **between 12 and 23 month-old** whose anthropometric measurements were taken in the model dataset based on hw1 (age of child) and hw13 (whether antropometric measurements taken).
+
+Then, we will limit the subset to the selected variable list below:
+  1. `caseid` identification number
+  2. `m4` **Primary Independent Variable**: Breastfeeding (93 Ever breastfed, not currently breastfeeding;94 Never breastfed; 95 Still breastfeeding; 97 Inconsistent; 98 Don't know; 99 Missing) Note that +/- 99 / 999 / 9999 etc. are common missing data values.
+  2. `hw11`  **Outcome of Interest**: Weight/Height standard deviation (based on WHO growth standards). It needs to be divided by 100 to use as Weight-for-Height Z-scores (WHZ); 9998 should be excluded because it is code for "inconsistent". A WHZ score from -2 to -3 is an an indicator of moderate acute malnutrition and if it is below -3 it is an indicator of severe acute malutrition.
+  3. `hw1`    Child's age in months
+  4. `hw13` Result of measurement - Whether height/weight measurements were taken (0 = measured)
+  5. A set of variables will be used to construct a new variable on complementary feeding based on reported consumption of appropriate complementary foods in the 24 hours preceding the interview:
+      `v411` Gave child tinned, powdered or fresh milk
+      `v412` Gave child fresh milk
+      `v411a`Gave child baby formula
+      `v412a`Gave child fortified baby food (cerelac, etc)
+      `v414a`-`v414w`	Gave child complementary foods from a defined range of options including country-specific foods
+  6. `v190` household Wealth index (in quintiles from 1 poorest to 5 richest )
+  7. `v149` Educational attainment of mother (0-5 no education to higher than secondary)
+  8. A set of variables will be used to construct a new variable on child morbidity based on reported cough, fever and diarrhea symptoms:
+      `h31` cough within 2 weeks preceding the survey (0=no, 1=yes within 24 hours, 2= yes within 2 weeks, 8= don't know)
+      `h22` fever within 2 weeks preceding the survey (0=no, 1=yes, 8= don't know)
+      `h11` diarrhea within 2 weeks preceding the survey (1=yes within 24 hours, 2= yes within 2 weeks, 8= don't know)
+  9. `v005` sample weight used for this dataset to make sample data representative of the entire population. Like other variables in DHS datasets, decimal points are not included in the weight variable. We need to divide this variable by 1,000,000 to get the correct sampling weight.
+  10. `V021` primary sampling unit (PSU) for women and children
+  11. `v002` secondary sampling unit (SSU) for women and children
+  12. `v023` stratification variable used to design the sample
+
+
+## Note on pipes and plumbing
+We will also learn how to use pipe operators %>% to do multiple steps of data manipulation in an efficient way! Pipe operators pass the value from one function to another, without having to explicitly call the function!
+
+final_data <- imported_data %>%
+              filter() %>% #Select certain variables
+              mutate() %>% #Create a new variable
+
+```{r}
+dhs_example <- dhs_full %>%
+  filter(
+    between(hw1, 12, 23), hw13 == 0, hw11 != 9998 & !is.na(hw11),
+    m4 %in% c(93, 94, 95)
+  ) %>%
+  mutate(
+    whz = hw11 / 100,
+    sample_weight = v005 / 1000000
+  ) %>%
+  select(caseid,
+    age = hw1, whz, breastfeed = m4, v411, v411a, v412, v412a,
+    starts_with("v414"), wealth_index = v190, mother_edu = v149, h31,
+    h22, h11, sample_weight, psu = v021, ssu = v002, strat = v023
+  )
+```
+
+```{r}
+head(dhs_full)
+```
+
+> [TASK] Question for the class: How many observations are there in the new subset? Hint: Where can you find the number of observations?
+
+
+## Recoding Existing Variables and Creating New Variables
+When working with survey datasets, we commonly would like to create index variables which act as products of multiple variables, or use reasonable cutoffs for previously collected variables. In order to do this, we need to construct additional variables by **recoding existing variables**.
+
+We will construct two new variables based on existing variables:
+
+ 1) a binary variable `mdd` as the WHO Minimum Dietary Diversity indicator for assessing complementary feeding among children 6-23mo, defined as "consuming foods from >= 4 food groups in the 24 hours preceding the interview. (v412a = 1 or v412b = 1 or any of v414a- v414w = 1 or m39a = 1).
+
+ This is based on existing variables using the following rules:
+  A minimum dietary diversity of 4 or more of the following food groups:
+
+          a.Grains, roots and tubers (v412a = 1 or v414e = 1 or v414f = 1)
+
+          b.Legumes and nuts (v414o = 1)
+
+          c.Dairy products (milk, yogurt, cheese) (v411 = 1 or v411a = 1 or or v412=1 or v414v = 1 or v414p = 1)
+
+          d.Flesh foods (meat, fish, poultry and liver/organ meats) (v414h = 1 or v414m = 1 or v414n = 1)
+
+          e.Eggs (v414g = 1)
+
+          f.Vitamin A rich fruits and vegetables (v414i = 1 or v414j = 1 or v414k = 1)
+
+          g. Other fruits and vegetables (v414l = 1)
+
+ >> Note: another WHO indicator for complementary feeding, minimum meal frequency, can also be derived from DHS variables for our sample's age group, and it reflects a different dimension of complementary feeding. However, due to time constraints in this workshop, we will only use Minimum Dietary Diversity in this analysis as a proxy to complementary feeding status.
+
+ 2) a binary variable `morbidty` to classify presence of morbidity within 2 weeks preceding the survey. (h31 or h11= 1 or 2 or h22=1)
+
+
+At this point, we need to start creating each subset of variables that we outlined above. To do this, the general approach is to recode the variables as common names, and then investigate the detail of data that we have to work with.
+
+
+```{r}
+## Factor categorical variables
+cfvarname <- names(select(dhs_full, starts_with("v414")))
+catvar <- c("breastfeed", cfvarname, "v411", "v412", "v411a", "v412a", "wealth_index", "h31", "h22", "h11", "psu", "ssu", "strat")
+dhs_example[catvar] <- lapply(dhs_example[catvar], factor)
+summary(dhs_example)
+```
+
+But look at the number of observations in breastfeed (v411) for `v411 = 94` (never breastfed). This not a large enough sub-group size. However, we can recode breastfeeding into a binary (0/1) variable. This is more useful for our research question of the role of breastfeeding as well.
+
+To do this, we use the `mutate()` function in the package `dplyr`.
+
+
+> [TASK]: Try to go ahead and look up mutate(), using `??dplyr::mutate` on the Console window.
+
+The mutate function adds new variables based on existing variables, and preserves the existing ones. The `case_when()` allows us to use multiple if statements (if this then that AND if this then that OR if this then that AND if that than this...etc). Note that the new symbol, |, is called OR. For more information on the formal logic in R, feel free to reach out to Kyle directly.
+
+
+```{r}
+# As shown in the summary descriptive statstics for breastfeed, there are only 5 observations for code 94 (never breastfed) in the model dataset, which is not sufficient to be analyzed as a subgroup. As a result, we will recode breastfeeding status into a binary variable on current breastfeeding status: 1 breastfeeding 2 not breastfeeding (combining 94 with 93)
+
+dhs_example <- dhs_example %>%
+  mutate(breastfeed = factor(case_when(
+    breastfeed == 93 | breastfeed == 94 ~ 0,
+    TRUE ~ 1
+  )))
+
+## Construct a new variable for Minimum Dietary Diversity (MDD) for complementary feeding based on WHO criteria
+# There are two logical steps involved in the mutate function below: 1) construct new variables for each food group based on existing variables 2) construct MDD based on counts by summing food group variables
+
+dhs_example <- dhs_example %>%
+  mutate(
+    grain = case_when(
+      v412a == 1 | v414e == 1 | v414f == 1 ~ 1,
+      TRUE ~ 0
+    ), # Grains, roots and tubers
+    legume = case_when(
+      v414o == 1 ~ 1,
+      TRUE ~ 0
+    ), # Legumes and nuts
+    dairy = case_when(
+      v411 == 1 | v411a == 1 | v412 == 1 | v414v == 1 | v414p == 1 ~ 1,
+      TRUE ~ 0
+    ), # Dairy products (milk, yogurt, cheese, baby formula)
+    flesh = case_when(
+      v414h == 1 | v414m == 1 | v414n == 1 ~ 1,
+      TRUE ~ 0
+    ), # Flesh foods (meat, fish, poultry and liver/organ meats)
+    egg = case_when(
+      v414g == 1 ~ 1,
+      TRUE ~ 0
+    ), # Eggs
+    vavegfru = case_when(
+      v414i == 1 | v414j == 1 | v414k == 1 ~ 1,
+      TRUE ~ 0
+    ), # Vitamin A rich fruits and vegetables
+    othervegfru = case_when(
+      v414l == 1 ~ 1,
+      TRUE ~ 0
+    ), # Other vegetable and fruits
+
+    mdd = factor(case_when(
+      grain + legume + dairy + flesh + egg + vavegfru + othervegfru >= 4 ~ 1,
+      TRUE ~ 0
+    )) # this is the step to construct mdd based on counts of food groups
+  ) %>% # close mutate
+  select(-starts_with("v414"), -v412a, -v411, -v411a) # we can now remove the DHS existing variables used for constructing complementary feeding status from the dataset
+```
+
+```{r}
+head(dhs_example)
+```
+
+
+Now, will you be able to construct the morbidity variable based on presence of cough, diarhea, and fever (h31, h11, and h22)? Think about which functions you might want to use. You would have to use `mutate()` to create the variable and `case_when()` to select all the disease states that are present when morbidity is present (if cough = 1 (yes) | (or) if fever = 1 | if ...etc.).
+
+A few new things:
+* The `|` symbol means boolean OR, which you can think of as the word OR.
+* We commonly see 1 = yes in datasets, but we can always check the metadata (if it exists)
+
+
+
+
+
+
+
+
+```{r}
+## Construct morbidty variable
+dhs_example <- mutate(dhs_example, morbidity = factor(case_when(
+  h31 == 1 | h31 == 2 | h11 == 1 | h11 == 2 | h22 == 1 ~ 1,
+  TRUE ~ 0
+)))
+```
+
+We also need to create another variable for wasting.
+
+```{r}
+## We can also construct a binary variable on wasting based on WHZ<=-2
+dhs_example <- mutate(dhs_example, wasting = factor(case_when(
+  whz <= -2 ~ 1,
+  TRUE ~ 0
+)))
+```
+
+##Specifying the Survey Design for Descriptive and Inferential Statstics
+
+
+When using the `survey` package, we allow appropriate handling of the DHS survey sample design when analyzing the data.
+Specifically, we set up the survey design object `design` using DHS sampling units(primary and secondary), stratification, and sample weights as specified in the model data set for children. Note that you **must** create the design object before continuing to the analysis.
+
+```{r}
+design <- svydesign(ids = ~ psu + ssu, strata = ~strat, weights = ~sample_weight, data = dhs_example)
+summary(design)
+```
+
+This output tells us the variables we have added, and the general design of the survey instrument. The variables you see at the end allow us to double check if we have any missing values.
+
+
+##Descriptive Statistics
+
+Just as before, we can use functions in R to extract descriptive statistics on this survey. However, as this is a survey, we need to use functions like `svymean()` to do it.
+
+```{r}
+## Report summary statistics on means and SEs
+vars <- c("whz", "age", "mother_edu", "wealth_index", "breastfeed", "mdd", "grain", "legume", "dairy", "flesh", "egg", "vavegfru", "othervegfru", "wasting")
+
+svymean(make.formula(vars), design, na.rm = TRUE)
+
+# Note that for categorical variables, frequency is reported for each category.
+
+## summary statstics by breastfeed status
+svyby(~ whz + age + mother_edu + wealth_index + mdd + wasting, ~breastfeed, design, svymean)
+
+# We can see that some of the covariates vary by breastfeed, further supporting accounting for them in the statstical model.
+```
+
+The last line of code, using the function `svyby()` allows us to stratify (split) the values by our breastfeed variable. We see some differences in mean values among our covariates within an initial look, so we decide to move forward (tentatively) with our model.
+
+We also might find the weak nature of these differences to suggest that a strong effect may not exist in this sample data for breadfeeding, but we need to know more to claim that. Next, we move into looking at correlations within our variables.
+
+Note: we are not diving into the assumptions of linear regression here. If you would like to learn more about why investigating and accounting for colinearity is important, please see here: https://moderndive.com/7-multiple-regression.html
+
+##Correlations and Exploratory Analysis
+
+We need to look at our next outcome: whz and the independent variable: breastfeed and the covariates: age mother_edu wealth_index mdd. These could be correlated, and we must address any potential association.
+
+First, we load the package `jtools` which has a function called `svycor` in it.
+```{r}
+# Uncomment to install jtools if needed
+# install.packages("jtools", repos = "https://cloud.r-project.org")
+library(jtools)
+```
+
+```{r}
+cor_d <- jtools::svycor(~ whz + dairy, design = design) # Find the survey correlations betweehn whz and dairy
+cor_d$cors # Print the cors values
+# cor_d$p.values                               #Print the p-value
+# For more information, see here: https://www.jacob-long.com/post/survey-correlation/
+```
+
+
+
+## Statistical Modeling -Simple Linear Regression
+Typically, `glm` is used in R for generalized linear models. The survey package's `svyglm` functions are written based on `glm`, but are survey-weighted. Remember, everything we do in this analysis has to account for the survey's structure.
+
+
+We will first fit a simple linear regression between breastfeeding and height-for-age z-scores.
+
+```{r}
+slr <- svyglm(whz ~ breastfeed, design)
+summary(slr)
+```
+
+> You might wonder, how should I interpret this? Look at the help file and select a few things to interpret.
+
+??svyglm()
+
+> You can also look at relevant articles: https://www.theanalysisfactor.com/r-glm-model-fit/
+
+For a tip on how to find articles, take a look at the Error Troubleshooting Guide: https://tufts.box.com/v/EffectiveProblemSolving
+
+
+## Regression diagnostics
+Finally, we can do some diagnostics, to see how much we trust this model. We can look as a histogram and Shapiro Test of the residuals to see if they are normally distributed. The right tail is a bit long by visual inspection, and we would not trust this model much.
+
+This is confirmed with the S-W test, and additionally by our initial inspection of the stratified values. This should make sense, as this is a homogeneous model dataset meant for practice.
+
+
+```{r}
+## residual diagnostics
+
+### Check normality of residuals
+svyhist(~ residuals(slr), design) # visually examine the distribution using a histogram
+
+shapiro.test(svytable(~ residuals(slr), design)) # test normality via shapiro
+
+survey::svyqqmath(~ residuals(slr), design)
+# We could also use svyplot() to plot the residuals, investigate normality, etc.
+```
+
+
+## Regression Modeling -Multiple Linear Regression
+We will then fit a multiple linear regression between breastfeeding and height-for-age z-score
+
+```{r}
+mlr <- svyglm(whz ~ breastfeed + age + mother_edu + wealth_index + mdd, design)
+summary(mlr)
+
+## check multicollinearity
+```
+
+The below portion is optional. We may not complete it during our time in the workshop, but it is here to further your knowledge. Thank you very much for attending!
+
+## OPTIONAL: Adding Interaction Terms between Breastfeed and Minimum Dietary Diversity
+It is possible that relationship between breastfeeding and WHZ differs by whether the child also met MDD. We will add an interaction term to explore that. An interaction term, at its core, is the product of two variables.
+
+```{r}
+mlr_int <- svyglm(whz ~ breastfeed * mdd + age + mother_edu + wealth_index, design)
+summary(mlr_int)
+```
+
+
+# Logistical Regression
+We can also use the wasting variable as the outcome instead of WHZ to build a logit model.
+
+Of course, these models are not sufficient and we would need to understand more more about the dataset to create a publishable model, but this is a good start!
+
+```{r}
+logit_bi <- svyglm(wasting ~ breastfeed, design, family = binomial())
+summary(logit_bi)
+logit <- svyglm(wasting ~ breastfeed * mdd + age + mother_edu + wealth_index, design, family = binomial())
+
+summary(logit)
+```
+
+Thank you for attending! I wish you all the best and feel free to reach out to DataLab-Support@elist.tufts.edu with any questions.

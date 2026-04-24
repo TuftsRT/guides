@@ -10,4 +10,4 @@ The central processing unit (CPU) of a computer is what manipulates data by perf
   - Larger, slower, cheaper
   - Non-volatile (retaining data when its power is shut off)
 
-<img src="https://raw.githubusercontent.com/DelilahYM/ImageHost/master/MemStorage.png" alt="Memory-Storage" width="60%"/>
+![mem-storage](../assets/basic/mem-storage.png)

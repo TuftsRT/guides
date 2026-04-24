@@ -20,7 +20,7 @@ This application is best suited for individuals who have a large set of document
 
 ## Getting started
 
-Text Search is an Open OnDemand application on the Cluster, meaning that it can be access from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](ondemand-p01.pax.tufts.edu). Once there, select the "Interactive Apps" drop down and click on "Text Search".
+Text Search is an Open OnDemand application on the Cluster, meaning that it can be access from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](https://ondemand-prod.pax.tufts.edu/). Once there, select the "Interactive Apps" drop down and click on "Text Search".
 
 ![Interactive Apps dropdown](./assets/text-search-dropdown.png)
 
@@ -28,18 +28,18 @@ Text Search is an Open OnDemand application on the Cluster, meaning that it can 
 
 Once you've clicked on "Text Search", you will be able to configure the setting for using the application. Some of these options can be confusing, so we have left an example configuration below. If you are unsure, feel free to use this one. Otherwise, we explore what these parameters mean here:
 
-- *Number of hours*: This parameter controls how long your session will run for. At the conclusion of this time, your session will end. Be sure to choose a time that matches how you expect to need in hours. You can always budget more time than you may need and they end the session early if you need.
-- *Number of cores*: This field controls how many CPU cores are allocated for your session. It is important to pick a value proportional to the size of the LLM you'd like to run. If you are having trouble choosing, you can use the value shown below.
-- *Amount of Memory (GB)*: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose, so I like to use double the amount of CPU cores that I have selected.
-- *Partition*: You should choose the "gpu" option if you plan to use Semantic Search. Generally, we require hardware acceleration to run these kinds of models. You can run just TF_IDF, however, with just CPUs, especially if you adjust the number of cores and amount of memory to be quite high, in which case, you could select "batch" for this option.
-- *GPU architecture*: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the `hpctools` CLI. Learn more [here](https://rtguides.it.tufts.edu/hpc/examples/hpctools.html).
-- *Input texts directory*: This parameter should be the file path to the folder with the documents you'd like to search through. If you are having trouble remembering the file path, you can use the "Select Path" button to navigate your file system and select a path that way.
-- *Queries to search for in the text files*: These are the querues that you want to search in your documents. Ensure that individual queries are separated with a comma.
-- *Result file path*: This is the file name for the result spreadsheet. You can find this file in the same directory as your source documents.
-- *Use Lemmas*: This parameter will convert the text into its lemmas, the base form of the word. For example, the words "ran" and "runs" would be changed to "run". This allows for certain text-based searching to be more robust to natural language. It is recommended to keep this checked on.
-- *Use TF-IDF*: This parameter tells the application to use TF-IDF to conduct its searching. See below for more details.
-- *Use Semantic Search*: The parameter tells the application to Semantic Search to conduct its searching. See below for more details.
-- *Beta parameter for Composite Score*: This parameter is used to weigh the TF-IDF and Semantic scores. See below for more details.
+- _Number of hours_: This parameter controls how long your session will run for. At the conclusion of this time, your session will end. Be sure to choose a time that matches how you expect to need in hours. You can always budget more time than you may need and they end the session early if you need.
+- _Number of cores_: This field controls how many CPU cores are allocated for your session. It is important to pick a value proportional to the size of the LLM you'd like to run. If you are having trouble choosing, you can use the value shown below.
+- _Amount of Memory (GB)_: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose, so I like to use double the amount of CPU cores that I have selected.
+- _Partition_: You should choose the "gpu" option if you plan to use Semantic Search. Generally, we require hardware acceleration to run these kinds of models. You can run just TF_IDF, however, with just CPUs, especially if you adjust the number of cores and amount of memory to be quite high, in which case, you could select "batch" for this option.
+- _GPU architecture_: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the `hpctools` CLI. Learn more [here](https://rtguides.it.tufts.edu/hpc/examples/hpctools.html).
+- _Input texts directory_: This parameter should be the file path to the folder with the documents you'd like to search through. If you are having trouble remembering the file path, you can use the "Select Path" button to navigate your file system and select a path that way.
+- _Queries to search for in the text files_: These are the querues that you want to search in your documents. Ensure that individual queries are separated with a comma.
+- _Result file path_: This is the file name for the result spreadsheet. You can find this file in the same directory as your source documents.
+- _Use Lemmas_: This parameter will convert the text into its lemmas, the base form of the word. For example, the words "ran" and "runs" would be changed to "run". This allows for certain text-based searching to be more robust to natural language. It is recommended to keep this checked on.
+- _Use TF-IDF_: This parameter tells the application to use TF-IDF to conduct its searching. See below for more details.
+- _Use Semantic Search_: The parameter tells the application to Semantic Search to conduct its searching. See below for more details.
+- _Beta parameter for Composite Score_: This parameter is used to weigh the TF-IDF and Semantic scores. See below for more details.
 
 The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
 

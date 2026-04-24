@@ -1,0 +1,392 @@
+
+# Fast for loops and parallel processing
+- author: "Kyle Monahan
+
+You may have had the experience of waiting too long for a process to run during your R session. One way that you might have run into this is in for loop. In this walk-through, we will discuss how to speed up for loops in R.
+
+We will use the following libraries:
+
+* parallel - the base parallel library
+* doParallel - a foreach library
+
+```{r}
+library(parallel) # Base parallel library in R, good for general use but not foreach loops. Must worry about exporting the environment from the parallel function, which can be annoying.
+
+library(doParallel) # External package, good for foreach and complex loops. Don't need to worry about exporting the environment, it does it for you.
+
+library(foreach) # Needed for foreach loops
+
+library(parallelly) # Good for helper functions in parallel work
+```
+
+
+### What is a `for loop`?
+
+First, let's say a look at our first for loop. Let's say we wanted to find the value of the number 1 to 10, and print the results.
+
+We could write a for loop:
+
+
+```{r}
+x <- vector() # Create an empty vector, x, to store our results
+# Note how this is outside the loop
+for (i in 1:10) { # For each value, 1 to 10
+  x[i] <- sqrt(i) # Find the square root, and place inside x
+} # End loop
+x # Call x to see the result
+
+# TODO: Change a more useful example than a square root
+# TODO: Show race conditions as an example
+```
+
+
+Note how this is appending to a list of values in memory, and then storing those values.
+
+Imagine if we had a large number of values, and a large number of loops - this could become quite inefficient.
+
+Additionally, by default, R will use only a **single core**. On my machine, a MacBook Pro 14, let's see how many cores I have:
+
+```{r}
+parallel::detectCores()
+```
+
+Wow, so I have ten cores, but I have been using only one of them. Let's fix this.
+
+What to do about it? Let's start with a new package, `foreach`, to learn more about running things in parallel.
+
+
+### What about `for each`?
+
+We could also implement this loop with `foreach`, to send these individual tasks to separate cores, and then obtain an immediate return of results.
+
+This is easier as we do not have to call `x` at the end, and this package can also parallelize beyond just a single core.
+
+However, to use this we have to use the `%do` operator. This is a binary operator that tells `foreach` what we want to run, and runs this sequentially on a single core. We will get into running this on many cores with another operator.
+
+
+```{r}
+library(foreach)
+library(doParallel)
+
+x <- foreach::foreach(i = 1:10) %do% {
+  sqrt(i)
+}
+x
+```
+You can see that it returns separate objects in a list format. It would be nice if we could combine those into a single list.
+
+Good news, we can.
+
+
+### Combining a `foreach` loop into a single list
+
+Within the `foreach` package, we can use the `.combine` argument to combine them using the `c()` base function.
+
+```{r}
+x <- foreach(
+  i = 1:10,
+  .combine = "c"
+) %do% {
+  sqrt(i)
+}
+x
+```
+
+Great! This is the type of reports we want.
+
+So now we can try to run the same command across many cores. To do this, we can use the `%dopar` operator, which is shorthand for "do parallel."
+
+
+```{r}
+x <- foreach(
+  i = 1:10,
+  .combine = "c"
+) %dopar% {
+  sqrt(i)
+}
+```
+
+Oh no, an error! This is because we need to tell R how many cores we have, and what type of method we want to use to organize and control those control. There are two main types:
+
+* FORK:
+  * Only available via UNIX (Linux and Mac machine), and don't work on the HPC environment due to the shared nature of the . The separate cores (here called workers) do not have to copy the main environment, and can access the environment in a shared way.
+
+* PSOCK:
+  * The parallel socket cluster (PSOCK) is available for UNIX and Windows systems, but the cores have to each have a copy of the main environment, which can reduce the effectiveness of the results (by about 50% in some cases).
+
+Let's register a **PSOCK cluster**, so it will work anywhere you run it.
+
+
+```{r}
+# Register a parallel backend for the cluster
+doParallel::registerDoParallel((parallelly::availableCores() - 1))
+
+parallelly::availableCores()
+```
+
+
+```{r}
+# create the cluster
+
+n.cores <- parallelly::availableCores() - 1
+
+my.cluster <- parallel::makeCluster(
+  n.cores,
+  type = "PSOCK"
+)
+
+print(my.cluster)
+```
+
+
+```{r}
+# Register the cluster to be used
+doParallel::registerDoParallel(cl = my.cluster)
+
+# Check if it is registered
+foreach::getDoParRegistered() # True, means it is registered
+foreach::getDoParWorkers() # Reporting the number of cores that we have
+```
+
+Now we can run the code in parallel, finally! Let's compare the two.
+
+```{r}
+# Start timer
+t1 <- proc.time()
+
+x <- foreach(
+  i = 1:10,
+  .combine = "c"
+) %dopar% {
+  sqrt(i)
+}
+
+x
+# End timer
+proc.time() - t1
+```
+
+
+Let's compare to the single core.
+
+
+```{r}
+# Start timer
+t1 <- proc.time()
+
+x <- foreach(
+  i = 1:10,
+  .combine = "c"
+) %do% {
+  sqrt(i)
+}
+
+x
+# End timer
+proc.time() - t1
+```
+
+It's.... the same time? Or perhaps a little slower! For all that work!
+
+
+Well, yes. It's pretty easy to print 10 square root values, and we don't really need the speed up.
+
+Let's explore why it is slow.
+
+### Profiling in R
+
+Now we can profile in R. Let's take a look.
+
+
+```{r}
+# Start profile
+Rprof(filename = "Profile1.out", line.profiling = TRUE, memory.profiling = TRUE)
+
+x <- foreach(
+  i = 1:10,
+  .combine = "c"
+) %dopar% {
+  sqrt(i)
+}
+
+print(x)
+
+Rprof(NULL)
+```
+
+
+```{r}
+summaryRprof("Profile1.out")
+```
+
+This normally will provide greater information, but for us it tells us this runs very quickly, and calls few functions. There are many libraries that help you profile code. You can even go to Profile > Start profiling to do the same thing.
+
+Let's use another package:
+
+```{r}
+library(profr)
+p <- profr(
+  x <- foreach(
+    i = 1:10,
+    .combine = "c"
+  ) %dopar% {
+    sqrt(i)
+  }
+)
+print(p)
+```
+
+Still, we don't know why this is slower. Let's time and run through approaches 100 times, and then see which is faster after iteration.
+
+#### Comparing approaches
+Let's compare a few approaches:
+
+* **lapply** - to create a vectorized list and loop over it
+* **for loop** - what we saw before, a classic for loop
+* **foreach dopar** - foreach loop, `%dopar%` to run in the parallel cluster
+* **foreach do** - foreach loop with `%do%` to run only on single core
+* **parlapply** - a parallel lapply function
+* **parsapply** - a parallel sapply function
+
+TODO: Let's document and compare the above approaches more.
+
+```{r}
+# Adapted from: https://liuy12.github.io/2015/08/18/Parallel-processing-in-R-benchmarking.html
+# Thanks to Yuanhang Liu!
+
+library(rbenchmark) # We will benchmark with rbenchmark
+library(ggplot2) # plotting with ggplot2
+
+
+set.seed(42)
+
+n.cores <- parallelly::availableCores() - 1
+
+
+cl <- makeCluster(n.cores)
+registerDoParallel(cl)
+
+FUN <- function(x) {
+  round(sqrt(x), 4)
+}
+a <- lapply(1:10, function(i) i)
+
+test1 <- benchmark(
+  "lapply" = lapply(1:10, FUN = FUN),
+  "For loop" = for (i in 1:10) {
+    FUN(i)
+  },
+  "Foreach dopar" = foreach(i = 1:10) %dopar% FUN(i),
+  "Foreach do" = foreach(i = 1:10) %do% FUN(i),
+  "parLapply" = parLapply(cl = cl, X = a, fun = FUN),
+  "parSapply" = parSapply(cl = cl, X = a, FUN = FUN),
+  columns = c("test", "elapsed", "replications"),
+  replications = c(100, 200, 500, 1000)
+)
+
+ggplot() +
+  geom_line(aes(x = replications, y = elapsed, colour = test), data = test1)
+```
+It looks like for loops and lapply calls were the best here.
+
+It really depends on what you are doing, though. Remember, it depends on how fast you can get the data outside of the worker as well. Note how we are using a PSOCK loop as well.
+
+Let's compare this approach to speeding up models.
+
+
+```{r}
+FUN <- function(i) {
+  ind <- sample(100, 100, replace = TRUE)
+  result1 <- glm(Species ~ Sepal.Length, family = binomial(logit), data = iris[ind, ])
+  coefficients(result1)
+}
+
+test5 <- benchmark(
+  "lapply" = lapply(1:10, FUN = FUN),
+  "For loop" = for (i in 1:10) {
+    FUN(i)
+  },
+  "Foreach dopar" = foreach(i = 1:10) %dopar% FUN(i),
+  "Foreach do" = foreach(i = 1:10) %do% FUN(i),
+  "parLapply" = parLapply(cl = cl, X = a, fun = FUN),
+  "parSapply" = parSapply(cl = cl, X = a, FUN = FUN),
+  columns = c("test", "elapsed", "replications"),
+  replications = c(100, 200, 500, 100)
+)
+
+ggplot() +
+  geom_line(aes(x = replications, y = elapsed, colour = test), data = test5)
+```
+
+Now we see that  parLapply and parSapply were best, and foreach do did poorly.
+
+
+### Stop the cluster
+
+Once you're done, we must stop the cluster to release our cores for other users.
+
+
+```{r}
+parallel::stopCluster(cl = my.cluster)
+```
+
+### Testing with models
+
+Another approach to parallelization is for models. Packages such as `lme4` can be challenging to run on a single core due to computational intensity.
+
+```{r}
+# 1 Set seed for reproducible randomness
+set.seed(42)
+
+# Start timer
+ptm <- proc.time()
+cake_model <- lme4::lmer(angle ~ recipe * temperature + (1 | recipe:replicate), data = lme4::cake, REML = FALSE)
+proc.time() - ptm # End timer
+```
+
+
+```{r}
+# 2 Create cluster
+# Register a parallel backend for the cluster
+doParallel::registerDoParallel((parallel::detectCores() - 1))
+
+# Start timer
+ptm <- proc.time()
+# 3 Run the model
+model <- lme4::lmer(formula = cake_model, data = lme4::cake, control = lme4::lmerControl(optimizer = "nloptwrap"))
+proc.time() - ptm # End timer
+```
+
+
+```{r}
+# 4 Once you've moved to lme4, you can pass the model to allFit to check if we really found the most optimal fit
+# This is where the parallel cluster is used
+require(optimx)
+require(dfoptim)
+nCPU <- detectCores() - 1
+ptm <- proc.time()
+
+cake_fit <- lme4::allFit(object = model, data = lme4::cake, verbose = TRUE, parallel = "multicore", ncpus = nCPU)
+proc.time() - ptm # End timer
+```
+
+```{r}
+cake_fit$bobyqa
+```
+
+```{r}
+# Then register a sequential (non-paralell) backend to release the cores
+registerDoSEQ()
+```
+
+
+Great! So we learned the following things:
+
+* What does it mean when we say running something in parallel?
+* Two ways to run in parallel: PSOCK and FORK
+* The foreach loop, and comparing sequential %do% and parallel %dopar%
+* Sometimes parallelizing doesn't help! (e.g. find 10 square roots, I/O bound processes). Other times, it does (e.g. large scale models, slow processes).
+* We can try it out, and learn which method is best for each.
+
+
+Thank you!

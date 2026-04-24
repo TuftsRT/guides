@@ -2,14 +2,14 @@
 
 There are two ways to run software on the HPC Cluster, OnDemand ( Simplest ) and via SSH ( Most flexible ). Both
 utilized the Slurm job scheduler to allocate you resources (CPU, Memory, and GPU if needed) on the compute nodes.
-We will cover both briefly on this page. Each is also covered extensively in their own sections [Slurm Job Scheduler](../slurm/index) and [OnDemand](../access/15-ondemand) .
+We will cover both briefly on this page. Each is also covered extensively in their own sections [Slurm Job Scheduler](../slurm/index.md) and [OnDemand](../access/15-ondemand.md) .
 
 ## OnDemand (Simplest)
 
 OnDemand is a web portal that provides easy access to the HPC environment using a web browser. It provides web
 forms for commonly used applications.
 
-1. Start by going to [**OnDemand**](https://ondemand.pax.tufts.edu), https://ondemand.pax.tufts.edu using **Chrome or FireFox**
+1. Start by going to [**OnDemand**](https://ondemand-prod.pax.tufts.edu), https://ondemand-prod.pax.tufts.edu using **Chrome or FireFox**
 1. Login using your Tufts TTS username (utln) and password
 1. **Interactive Apps** and **Bioinformatics Apps** menus provide a listing of the software available.
 1. Select the applications of interest and fill in the appropriate values for your job.
@@ -18,7 +18,7 @@ forms for commonly used applications.
 
 Under **Jobs** -> **Active Jobs** you can see your running jobs. It also provides a file explorer Under **Files**.
 
-For additional instructions on using it visit [OnDemand](../access/15-ondemand).
+For additional instructions on using it visit [OnDemand](../access/15-ondemand.md).
 
 ## SSH ( Most flexible )
 
@@ -26,7 +26,7 @@ Logging into a cluster login node using SSH and running a Slurm job is the most 
 cluster. This method allows you to run any compatible software on the cluster. This includes custom software that
 you wrote, or third party software you installed.
 
-1. Login to login.pax.tufts.edu using SSH
+1. Login to login-prod.pax.tufts.edu using SSH
 
 1. Create a batch script file to run using Slurm , for example `nano myFirstJob.sh`
 
@@ -53,4 +53,4 @@ you wrote, or third party software you installed.
 
 1. View your job in the queue using `squeue --Your_Tufts_Username`
 
-For an in-depth description of all the Slurm options visit [Slurm Job Scheduler](../slurm/index).
+For an in-depth description of all the Slurm options visit [Slurm Job Scheduler](../slurm/index.md).

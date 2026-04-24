@@ -20,7 +20,7 @@ This application expects a folder of image files uploaded to the Cluster. So lon
 
 ## Getting started
 
-OCR is an Open OnDemand application on the Cluster, meaning that it can be access from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](ondemand-p01.pax.tufts.edu). Once there, select the "Interactive Apps" drop down and click on "Optical Character Recognition".
+OCR is an Open OnDemand application on the Cluster, meaning that it can be access from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](https://ondemand-prod.pax.tufts.edu/). Once there, select the "Interactive Apps" drop down and click on "Optical Character Recognition".
 
 ![Interactive Apps dropdown](./assets/ocr-dropdown.png)
 
@@ -28,13 +28,13 @@ OCR is an Open OnDemand application on the Cluster, meaning that it can be acces
 
 Once you've clicked on "Optical Character Recognition", you will be able to configure the setting for using the application. Some of these options can be confusing, so we have left an example configuration below. If you are unsure, feel free to use this one. Otherwise, we explore what these parameters mean here:
 
-- *Number of hours*: This parameter controls how long your session will run for. At the conclusion of this time, your session will end. Be sure to choose a time that matches how you expect to need in hours. You can always budget more time than you may need and they end the session early if you need.
-- *Number of cores*: This field controls how many CPU cores are allocated for your session. It is important to pick a value proportional to the size of the LLM you'd like to run. If you are having trouble choosing, you can use the value shown below.
-- *Amount of Memory (GB)*: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose, so I like to use double the amount of CPU cores that I have selected.
-- *Partition*: You should choose the "gpu" option. Generally, we require hardware acceleration to run OCR models. You can run some models, however, with just CPUs, especially if you adjust the number of cores and amount of memory to be quite high, in which case, you could select "batch" for this option.
-- *GPU architecture*: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the `hpctools` CLI. Learn more [here](https://rtguides.it.tufts.edu/hpc/examples/hpctools.html).
-- *Input image directory*: This parameter should be the file path to the folder with the image files you'd like to transcribe.
-- *Output Format*: Here you can choose to have the output either in a plain text file (.TXT) or as a PDF file in which the text is lined up to its place on the image, though due to variations in font size, this may not always work as it might with third party applications.
+- _Number of hours_: This parameter controls how long your session will run for. At the conclusion of this time, your session will end. Be sure to choose a time that matches how you expect to need in hours. You can always budget more time than you may need and they end the session early if you need.
+- _Number of cores_: This field controls how many CPU cores are allocated for your session. It is important to pick a value proportional to the size of the LLM you'd like to run. If you are having trouble choosing, you can use the value shown below.
+- _Amount of Memory (GB)_: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose, so I like to use double the amount of CPU cores that I have selected.
+- _Partition_: You should choose the "gpu" option. Generally, we require hardware acceleration to run OCR models. You can run some models, however, with just CPUs, especially if you adjust the number of cores and amount of memory to be quite high, in which case, you could select "batch" for this option.
+- _GPU architecture_: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the `hpctools` CLI. Learn more [here](https://rtguides.it.tufts.edu/hpc/examples/hpctools.html).
+- _Input image directory_: This parameter should be the file path to the folder with the image files you'd like to transcribe.
+- _Output Format_: Here you can choose to have the output either in a plain text file (.TXT) or as a PDF file in which the text is lined up to its place on the image, though due to variations in font size, this may not always work as it might with third party applications.
 
 The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
 
@@ -54,6 +54,6 @@ When the application is complete and the text has been searched, you will see th
 
 ![Complete](./assets/ocr-completed.png)
 
-You can new visit the directory with your source files and the results will be in a new subfolder called "[the name of your original folder]\_output".
+You can new visit the directory with your source files and the results will be in a new subfolder called `\_output`.
 
 For any questions, please reach out to Research Technology at: tts-research@tufts.edu.

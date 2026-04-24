@@ -42,6 +42,10 @@ grid-columns: 1
   content: "Examples and tutorials on getting started on the cluster."
   link: "examples/index.html"
 
+- header: "{fas}`book` AI APIs"
+  content: "Call external AI APIs — such as OpenAI and Anthropic — from the Tufts HPC cluster. Covers job configuration, API key security, rate limit handling, and batch processing workflows."
+  link: "ai-apis/index.html"
+
 ```
 
 > **To Get Support:** - Please email tts-research@tufts.edu for all Tufts HPC cluster questions and requests.

@@ -15,12 +15,12 @@
 
 ## Load tmux module
 
-`[your_utln@login-prod-01 ~]$ module load tmux`
-Make a note of the login node name `login-prod-01` where your tmux session lives.
+`[your_utln@login-p01 ~]$ module load tmux`
+Make a note of the login node name `login-p01` where your tmux session lives.
 
 ## Start your tmux session
 
-`[your_utln@login-prod-01 ~]$ tmux new -s mysession`
+`[your_utln@login-p01 ~]$ tmux new -s mysession`
 
 ## Start your Interactive session inside the tmux session, and run your programs
 
@@ -36,14 +36,14 @@ Log back in to the cluster or start a new terminal.
 
 If you are allocated on a **different** login node than where your tmux session lives.
 
-`[your_utln@login-prod-03 ~]$ ssh login-prod-01`
+`[your_utln@login-p03 ~]$ ssh login-p01`
 
-`[your_utln@login-prod-01 ~]$ module load tmux`
+`[your_utln@login-p01 ~]$ module load tmux`
 
 ## Check tmux sessions
 
-`[your_utln@login-prod-01 ~]$ tmux ls`
+`[your_utln@login-p01 ~]$ tmux ls`
 
 ## Pick your session and reattach it
 
-`[your_utln@login-prod-01 ~]$ tmux a -t mysession`
+`[your_utln@login-p01 ~]$ tmux a -t mysession`
