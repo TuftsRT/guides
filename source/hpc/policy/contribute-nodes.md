@@ -17,11 +17,11 @@ Most current faculty contribute nodes are the **CPU, Standard** or **GPU, Standa
 
 **GPU Nodes:**
 
-| **Name**      | **System Specifications**                          | **GPU Specifications** | **Approximate Cost [^1]** |
-| ------------- | -------------------------------------------------- | ---------------------- | ------------------------- |
-| GPU, Standard | 2x 32 Cores<br/>512GB RAM<br/>                     | 2x RTX Pro 6000 Blackwell 96GB PCIe      | \$67,000                  |
-| GPU, Large    | 2x 64 Cores<br/>1TB RAM<br/>                     | 8x RTX Pro 6000 Blackwell 96GB PCIe      | \$190,000                 |
-| GPU, Ultimate    | 2x 56 Cores<br/>2TB RAM<br/>NVIDIA DGX B200   | 8x H200 SXM 141GB   NVSwitch+NVLinks   | \$360,000                 |
+| **Name**      | **System Specifications**                   | **GPU Specifications**              | **Approximate Cost [^1]** |
+| ------------- | ------------------------------------------- | ----------------------------------- | ------------------------- |
+| GPU, Standard | 2x 32 Cores<br/>512GB RAM<br/>              | 2x RTX Pro 6000 Blackwell 96GB PCIe | \$67,000                  |
+| GPU, Large    | 2x 64 Cores<br/>1TB RAM<br/>                | 8x RTX Pro 6000 Blackwell 96GB PCIe | \$190,000                 |
+| GPU, Ultimate | 2x 56 Cores<br/>2TB RAM<br/>NVIDIA DGX B200 | 8x H200 SXM 141GB NVSwitch+NVLinks  | \$360,000                 |
 
 - TTS provides all the additional infrastructure including data center space, networking, power/cooling and operations.
 - We utilize Intel CPUs and NVIDIA GPUs across the cluster to maintain code portability between nodes.
