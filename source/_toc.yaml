@@ -16,10 +16,6 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: hpc/access/*
-                      - file: hpc/access/globus/index
-                        subtrees:
-                          - entries:
-                              - glob: hpc/access/globus/*
               - file: hpc/compute/index
                 subtrees:
                   - entries:
@@ -41,6 +37,23 @@ subtrees:
                   - entries:
                       - glob: hpc/policy/*
               - glob: hpc/*
+      - file: storage/index
+        title: Research Storage
+        subtrees:
+          - entries:
+              - file: storage/access/index
+                subtrees:
+                  - entries:
+                      - glob: storage/access/*
+              - file: storage/rcrm/index
+                subtrees:
+                  - entries:
+                      - glob: storage/rcrm/*
+              - file: storage/globus/index
+                subtrees:
+                  - entries:
+                      - glob: storage/globus/*
+              - glob: storage/*
       - file: bio/index
         title: Bioinformatics
         subtrees:
@@ -125,3 +138,5 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: ai/python/*
+#              - file: nlp/index
+#                title: Natural Language Processing
