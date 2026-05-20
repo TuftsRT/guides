@@ -18,6 +18,7 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 
 | Detail | Value |
 |--------|-------|
+| Technology | Vast, SSD, Paralell Filesystem |
 | Starting quota | 100 GB minimum |
 | Base allocation | 10 TB at no cost (if eligible faculty member)|
 | Cost beyond base | $85/TB/year (effective July 1, 2026) |

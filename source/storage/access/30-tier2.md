@@ -12,6 +12,7 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 | Detail | Value |
 |--------|-------|
 | Path | `/cluster/tier2/projectname` |
+| Technology | Magnetic Disk |
 | Starting quota | 100 GB minimum |
 | Base allocation | 10 TB at no cost (if eligible faculty member)|
 | Cost beyond base | $35/TB/year (effective July 1, 2026) |
@@ -23,7 +24,7 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 
 ## Access Method — Globus
 
-Tier 2 storage can be accessed through **Globus**. Tufts Research Technology provides a site collection for Tier 2.
+Tier 2 storage can also be accessed through **Globus**. Tufts Research Technology provides a site collection for Tier 2.
 
 1. Log in to [Globus](https://www.globus.org/) with your Tufts credentials
 2. In the **File Manager**, click the **Collection** field and search for **"Tufts"**

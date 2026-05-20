@@ -27,4 +27,4 @@ grid-columns: 1
 
 ```
 
-> **To Get Support:** - Please email tts-research@tufts.edu for all Tufts HPC cluster questions and requests.
+> **To Get Support:** - Please email tts-research@tufts.edu for all research storage questions and requests.

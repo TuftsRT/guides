@@ -11,6 +11,7 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 
 | Detail | Value |
 |--------|-------|
+| Technology | Vast, SSD |
 | Starting quota | 100 GB minimum |
 | Base allocation | 10 TB at no cost (if eligible faculty member)|
 | Cost beyond base | $85/TB/year (effective July 1, 2026) |
@@ -23,19 +24,37 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 
 ## Access Methods
 
-### Globus
-
-Globus is the primary method for transferring data to and from RStore.
-
-See the [Globus guide](../globus/index.md) for account setup and transfer instructions.
-
 ### Network Drive (SMB/NFS)
 
-RStore can be mounted as a network drive on Windows, Mac, or Linux for direct file access over the Tufts network.
+RStore is typically connected directly to end user workstations or laptops. It can be mounted as a network drive on Windows or Mac for direct file access over the Tufts network. Off-campus access requires [Tufts VPN](https://access.tufts.edu/vpn).
 
-```{note}
-Contact [tts-research@tufts.edu](mailto:tts-research@tufts.edu) for mount path and connection instructions specific to your allocation.
-```
+#### Mac
+
+1. Open **Finder** and press **Command+K**.
+2. Enter the path to your RStore share:
+   ```
+   smb://rstore.it.tufts.edu/RStoreDriveName
+   ```
+3. Click **Connect**.
+
+#### Windows
+
+1. Open **File Explorer** and right-click **This PC**.
+2. Select **Map network drive...**.
+3. In the **Drive** dropdown, select a drive letter (R, S, T, etc.).
+4. In the **Folder** text box, enter the path to your RStore share:
+   ```
+   \\rstore.it.tufts.edu\RStoreDriveName
+   ```
+5. For **Tufts-owned computers**, click **Finish**.
+
+   For **personal computers**, check **Connect using different credentials** before clicking Finish, then enter your Tufts credentials at the prompt:
+   - **Username:** `TUFTS\Tufts_Username`
+   - **Password:** `Tufts_Password`
+
+   Confirm the domain shown reads **TUFTS**, then click **OK**.
+
+
 
 ## Requesting Storage
 
