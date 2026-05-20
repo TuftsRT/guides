@@ -15,5 +15,6 @@ grid-columns: 1
 - header: "{fas}`book` File Recovery on RStore"
   content: "How to recover **recently** deleted or modified files on RSTORE."
   link: "../examples/rstore-snapshots.html"
+  
 
 ```

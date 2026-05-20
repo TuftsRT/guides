@@ -28,6 +28,13 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 - Active Tufts HPC cluster account — see [HPC Account Request](../../hpc/access/10-account-request.md)
 - Off-campus access requires [Tufts VPN](https://access.tufts.edu/vpn)
 
+## Requesting Storage
+
+- **New storage share:** Submit a [Cluster Storage Request](https://tufts.qualtrics.com/jfe/form/SV_5bUmpFT0IXeyEfj)
+- **Increase existing quota:** Submit the same form; increases over 1 TB may require a consultation
+- No more than 5 TB increase per 12-month interval per current policy
+
+
 ## Access Methods
 
 ### OnDemand (Web Browser)
@@ -105,8 +112,3 @@ Or check project quota directly:
 df -H /cluster/tufts/your_lab_name
 ```
 
-## Requesting Storage
-
-- **New storage share:** Submit a [Cluster Storage Request](https://tufts.qualtrics.com/jfe/form/SV_5bUmpFT0IXeyEfj)
-- **Increase existing quota:** Submit the same form; increases over 1 TB may require a consultation
-- No more than 5 TB increase per 12-month interval per current policy

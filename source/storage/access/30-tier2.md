@@ -22,6 +22,11 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 - Active Tufts account and research storage allocation
 - A [Globus account](../globus/42-globus-account-setup.md) linked to your Tufts credentials
 
+## Requesting Storage
+
+Submit a [Research Storage Request](https://tufts.qualtrics.com/jfe/form/SV_5bUmpFT0IXeyEfj) to request a new Tier 2 allocation or increase an existing one. Use the [Data Storage Finder](https://access.tufts.edu/data-finder) to confirm Tier 2 is appropriate for your data.
+
+
 ## Access Method — Globus
 
 Tier 2 storage can also be accessed through **Globus**. Tufts Research Technology provides a site collection for Tier 2.
@@ -72,6 +77,3 @@ mv /cluster/tufts/projectname/subdir /cluster/tier2/projectname/subdir
 
 
 
-## Requesting Storage
-
-Submit a [Research Storage Request](https://tufts.qualtrics.com/jfe/form/SV_5bUmpFT0IXeyEfj) to request a new Tier 2 allocation or increase an existing one. Use the [Data Storage Finder](https://access.tufts.edu/data-finder) to confirm Tier 2 is appropriate for your data.

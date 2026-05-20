@@ -22,6 +22,16 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 - Faculty sponsorship for research storage share
 - Off-campus access requires [Tufts VPN](https://access.tufts.edu/vpn)
 
+## Requesting Storage
+
+Submit a [Research Storage Request](https://tufts.qualtrics.com/jfe/form/SV_5bUmpFT0IXeyEfj) to:
+
+- Request a new RStore share
+- Increase an existing quota
+
+Only Tufts University faculty can be the PI of a research storage share. Use the [Data Storage Finder](https://access.tufts.edu/data-finder) to confirm RStore is the right tier for your needs.
+
+
 ## Access Methods
 
 ### Network Drive (SMB/NFS)
@@ -56,11 +66,3 @@ RStore is typically connected directly to end user workstations or laptops. It c
 
 
 
-## Requesting Storage
-
-Submit a [Research Storage Request](https://tufts.qualtrics.com/jfe/form/SV_5bUmpFT0IXeyEfj) to:
-
-- Request a new RStore share
-- Increase an existing quota
-
-Only Tufts University faculty can be the PI of a research storage share. Use the [Data Storage Finder](https://access.tufts.edu/data-finder) to confirm RStore is the right tier for your needs.
