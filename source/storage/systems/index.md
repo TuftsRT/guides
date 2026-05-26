@@ -1,6 +1,6 @@
 # Access
 
-TTS Research Technology offers a variety of storage solutions for researchers based on their research-specific computational and data needs.  Please see [Data Storage Finder](https://access.tufts.edu/data-finder) for detailed features, policies, costs, requirements and storage requests.  
+TTS Research Technology offers a variety of storage solutions for researchers based on their research-specific computational and data needs. Please see [Data Storage Finder](https://access.tufts.edu/data-finder) for detailed features, policies, costs, requirements and storage requests.
 
 \
 Guides for using each tier:
@@ -26,5 +26,3 @@ grid-columns: 1
   link: "40-tier3.html"
 
 ```
-
-

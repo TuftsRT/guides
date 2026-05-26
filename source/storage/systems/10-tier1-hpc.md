@@ -9,19 +9,19 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 
 ## Storage Locations
 
-| Location | Path | Default Quota |
-|----------|------|---------------|
-| Home directory | `/cluster/home/your_utln` | 30 GB (fixed) |
-| Lab/project storage | `/cluster/tufts/your_lab_name/` | 50 GB and up |
+| Location            | Path                            | Default Quota |
+| ------------------- | ------------------------------- | ------------- |
+| Home directory      | `/cluster/home/your_utln`       | 30 GB (fixed) |
+| Lab/project storage | `/cluster/tufts/your_lab_name/` | 50 GB and up  |
 
 ## Storage Details
 
-| Detail | Value |
-|--------|-------|
-| Technology | Vast, SSD, Paralell Filesystem |
-| Starting quota | 100 GB minimum |
-| Base allocation | 10 TB at no cost (if eligible faculty member)|
-| Cost beyond base | $85/TB/year (effective July 1, 2026) |
+| Detail           | Value                                         |
+| ---------------- | --------------------------------------------- |
+| Technology       | Vast, SSD, Parallel Filesystem                |
+| Starting quota   | 100 GB minimum                                |
+| Base allocation  | 10 TB at no cost (if eligible faculty member) |
+| Cost beyond base | \$85/TB/year (effective July 1, 2026)         |
 
 ## Prerequisites
 
@@ -34,7 +34,6 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 - **Increase existing quota:** Submit the same form; increases over 1 TB may require a consultation
 - No more than 5 TB increase per 12-month interval per current policy
 
-
 ## Access Methods
 
 ### OnDemand (Web Browser)
@@ -42,10 +41,10 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 The simplest way to access and manage files without any software installation.
 
 1. Go to [Tufts HPC OnDemand](https://ondemand-prod.pax.tufts.edu/)
-2. Log in with your Tufts credentials
-3. Click **Files** in the top menu to browse your home directory
-4. Use **Change directory** to navigate to your lab folder — type the full path (e.g., `/cluster/tufts/your_lab_name/`)
-5. Use **Upload** / **Download** buttons to transfer files
+1. Log in with your Tufts credentials
+1. Click **Files** in the top menu to browse your home directory
+1. Use **Change directory** to navigate to your lab folder — type the full path (e.g., `/cluster/tufts/your_lab_name/`)
+1. Use **Upload** / **Download** buttons to transfer files
 
 ```{note}
 OnDemand file transfers are limited to files **under 976 MB**. Use SCP, rsync, or Globus for larger files.
@@ -70,12 +69,14 @@ cd /cluster/tufts/your_lab_name/
 Run these commands from your **local machine**. Replace `your_utln` and paths accordingly.
 
 **Upload to cluster:**
+
 ```
 scp local_file your_utln@login-prod.pax.tufts.edu:/cluster/home/your_utln/
 rsync -azP local_dir/ your_utln@login-prod.pax.tufts.edu:/cluster/tufts/your_lab_name/
 ```
 
 **Download from cluster:**
+
 ```
 scp your_utln@login-prod.pax.tufts.edu:/cluster/home/your_utln/file ./
 rsync -azP your_utln@login-prod.pax.tufts.edu:/cluster/tufts/your_lab_name/ local_dir/
@@ -96,9 +97,7 @@ See the [Globus guide](../globus/index.md) for setup and transfer instructions.
 
 ## Checking Storage Usage
 
-
-
-Use `hpctools` on any cluster node via SSH Shell.  Go to [Tufts HPC Cluster OnDemand](https://ondemand-prod.pax.tufts.edu/) click , **Clusters** then **Tufts HPC Shell Access** or log in to the cluster through command line with SSH.
+Use `hpctools` on any cluster node via SSH Shell. Go to [Tufts HPC Cluster OnDemand](https://ondemand-prod.pax.tufts.edu/) click , **Clusters** then **Tufts HPC Shell Access** or log in to the cluster through command line with SSH.
 
 ```
 module load hpctools
@@ -113,4 +112,3 @@ Or check project quota directly:
 ```
 df -H /cluster/tufts/your_lab_name
 ```
-

@@ -57,7 +57,7 @@ subtrees:
               - file: storage/examples/index
                 subtrees:
                   - entries:
-                      - glob: storage/examples/*                      
+                      - glob: storage/examples/*
               - glob: storage/*
       - file: bio/index
         title: Bioinformatics

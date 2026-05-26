@@ -13,12 +13,12 @@ Tier 3 is available for **HPC storage only** and is intended for long-term reten
 
 ## Storage Details
 
-| Detail | Value |
-|--------|-------|
-| Technology | Tape (NESE, hosted at MGHPCC) |
-| Minimum allocation | 5 TB (in 5 TB increments) |
-| Base allocation | None — all storage is charged |
-| Cost | $12/TB/year (effective July 1, 2026) |
+| Detail             | Value                                 |
+| ------------------ | ------------------------------------- |
+| Technology         | Tape (NESE, hosted at MGHPCC)         |
+| Minimum allocation | 5 TB (in 5 TB increments)             |
+| Base allocation    | None — all storage is charged         |
+| Cost               | \$12/TB/year (effective July 1, 2026) |
 
 ## Prerequisites
 
@@ -31,16 +31,15 @@ Submit a [Research Storage Request](https://tufts.qualtrics.com/jfe/form/SV_5bUm
 
 For questions, contact [tts-research@tufts.edu](mailto:tts-research@tufts.edu).
 
-
 ## Access Method — Globus
 
 Tier 3 tape storage is accessed exclusively through **Globus**.
 
 1. Log in to [Globus](https://www.globus.org/) with your Tufts credentials
-2. In the **File Manager**, click the **Collection** field and search for **"Tufts"**
-3. Select the **Tufts Tier 3 Storage** collection
-4. Authenticate with your Tufts credentials when prompted
-5. Transfer files to or from your Tier 3 allocation
+1. In the **File Manager**, click the **Collection** field and search for **"Tufts"**
+1. Select the **Tufts Tier 3 Storage** collection
+1. Authenticate with your Tufts credentials when prompted
+1. Transfer files to or from your Tier 3 allocation
 
 See the full [Globus guide](../globus/index.md) for setup, transferring files, and monitoring transfers.
 
@@ -50,4 +49,4 @@ Tape storage has higher latency than disk-based tiers. Retrieval of data may tak
 
 ## Moving Data to Tier 3
 
-Tier 3 is best suited for data that has already been moved to Tier 2 and is no longer accessed regularly.  Archiving data to Tier 3 is not a self service operation.  If you have data in Tier 2 you would like to move, please open a support ticket with Research Technology and they will assist you.
+Tier 3 is best suited for data that has already been moved to Tier 2 and is no longer accessed regularly. Archiving data to Tier 3 is not a self service operation. If you have data in Tier 2 you would like to move, please open a support ticket with Research Technology and they will assist you.
