@@ -26,5 +26,6 @@ Below are the definitions of some key terms you will see throughout the RCRM sof
 * **Approver:** Delegate of the Owner who can act on their behalf within the project.
 * **Member:**  Person with access to the resource allocated to this project.
 
+* **Cost Center** The DeptID and optional Proj/Grant ID that you would like your storage costs billed to.
 * **Quota** The amount of storage space currently assigned to you to use.  This is the amount that storage charges are based on.
 * **No cost quota** A based allocation of storage available to Tufts Faculty that they can utilize before being charged for additional storage.  Details about amounts and eligibility can be found at https://it.tufts.edu/research-data-storage-faq#eligibilityaccessallocations
