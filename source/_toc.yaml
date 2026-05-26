@@ -41,10 +41,11 @@ subtrees:
         title: Research Storage
         subtrees:
           - entries:
-              - file: storage/access/index
+              - file: storage/systems/index
+                title: Available Storage
                 subtrees:
                   - entries:
-                      - glob: storage/access/*
+                      - glob: storage/systems/*
               - file: storage/rcrm/index
                 subtrees:
                   - entries:

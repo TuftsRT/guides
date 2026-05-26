@@ -96,7 +96,9 @@ See the [Globus guide](../globus/index.md) for setup and transfer instructions.
 
 ## Checking Storage Usage
 
-Use `hpctools` on any cluster node:
+
+
+Use `hpctools` on any cluster node via SSH Shell.  Go to [Tufts HPC Cluster OnDemand](https://ondemand-prod.pax.tufts.edu/) click , **Clusters** then **Tufts HPC Shell Access** or log in to the cluster through command line with SSH.
 
 ```
 module load hpctools
