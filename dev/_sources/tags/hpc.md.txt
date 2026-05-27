@@ -9,3 +9,4 @@ html_theme.sidebar_secondary.remove: true
 - [](/hpc/examples/index.md)
 - [](/hpc/examples/new-cluster.md)
 - [](/hpc/index.md)
+- [](/storage/examples/index.md)
