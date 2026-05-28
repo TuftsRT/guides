@@ -16,7 +16,7 @@
   </svg>`;
 
     var message = "Ask our Tufts Research Technology Guides AI Assistant";
-    
+
     var wrapper = document.createElement("div");
     wrapper.id = "chatbot-bubble-wrap";
 
