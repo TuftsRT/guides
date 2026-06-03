@@ -24,7 +24,6 @@ grid-columns: 1
 - header: "{fas}`book` Storage Usage Examples"
   content: "Examples on how to use research computing tiered storage."
   link: "examples/index.html"
-
 ```
 
 > **To Get Support:** - Please email tts-research@tufts.edu for all research storage questions and requests for assistance.
