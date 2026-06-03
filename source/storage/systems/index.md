@@ -24,5 +24,4 @@ grid-columns: 1
 - header: "{fas}`archive` Tier 3 Research Storage"
   content: "Lower cost tape-based storage for static, rarely accessed research data via the NESE Tape service at MGHPCC. Archive only, not directly accessible."
   link: "40-tier3.html"
-
 ```

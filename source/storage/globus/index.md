@@ -41,7 +41,6 @@ grid-columns: 1
 - header: "{fas}`book` Transfer Files between Two Endpoints"
   content: "How to start and monitory your file transfers."
   link: "45-globus-transfer-files.html"
-
 ```
 
 [Learn More](https://docs.globus.org/guides/tutorials/manage-files/transfer-files/)
