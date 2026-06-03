@@ -42,7 +42,6 @@ subtrees:
         subtrees:
           - entries:
               - file: storage/systems/index
-                title: Available Storage
                 subtrees:
                   - entries:
                       - glob: storage/systems/*
@@ -124,8 +123,6 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: nlp/llms/*
-      - url: https://go.tufts.edu/geospatial
-        title: Geospatial
       - file: viz/index
         title: Data Visualization
         subtrees:
@@ -143,5 +140,5 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: ai/python/*
-#              - file: nlp/index
-#                title: Natural Language Processing
+      - url: https://go.tufts.edu/geospatial
+        title: Geospatial
