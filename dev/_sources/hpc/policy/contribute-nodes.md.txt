@@ -6,26 +6,26 @@ This page lists the nodes types utilized on the cluster available for purchase a
 
 Contribute nodes are available to purchase 4 times per year. This helps us achieve the best price for equipment and allows us to manage the cluster growth in a planned fashion. If you are contemplating purchasing equipment, please reach out to RT early in your planning process. Please review the [access and lifecycle information for faculty purchased nodes](index.md#hpc-researcher-contribution-node) before submitting a purchase request.
 
-Most current faculty contribute nodes are the **CPU, Standard** or **GPU, Standard** nodes.
-
-**CPU Nodes:**
-
-| **Name**      | **System Specifications** | **Approximate Cost [^1]** |
-| ------------- | ------------------------- | ------------------------- |
-| CPU, Standard | 2x 32 Cores<br/>512GB RAM | \$43,000 [^1]             |
-| CPU, Large    | 2x 64 Cores<br/>1TB RAM   | \$73,000                  |
-
-**GPU Nodes:**
-
-| **Name**      | **System Specifications**                   | **GPU Specifications**              | **Approximate Cost [^1]** |
-| ------------- | ------------------------------------------- | ----------------------------------- | ------------------------- |
-| GPU, Standard | 2x 32 Cores<br/>512GB RAM<br/>              | 2x RTX Pro 6000 Blackwell 96GB PCIe | \$67,000                  |
-| GPU, Medium   | 2x 64 Cores<br/>1TB RAM<br/>                | 8x RTX Pro 6000 Blackwell 96GB PCIe | \$190,000                 |
-| GPU, Large    | 2x 56 Cores<br/>2TB RAM<br/>NVIDIA DGX B200 | 8x H200 SXM 141GB NVSwitch+NVLinks  | \$360,000                 |
+Most current faculty contribute nodes are the **_CPU, Standard_** or **_GPU, Standard_** nodes.
 
 - TTS provides all the additional infrastructure including data center space, networking, power/cooling and operations.
 - We utilize Intel CPUs and NVIDIA GPUs across the cluster to maintain code portability between nodes.
-- All nodes are connected at 100 Gbps Ethernet
+- All nodes are connected to 100 Gbps Ethernet.
 - If you have specialized needs such as InfiniBand networking or alternate CPU architecture like ARM please reach out to RT.
+
+## CPU Nodes
+
+| Name          | System Specifications      | Approximate Cost [^1] |
+| ------------- | -------------------------- | --------------------- |
+| CPU, Standard | 2 × 32 Cores<br/>512GB RAM | \$43,000              |
+| CPU, Large    | 2 × 64 Cores<br/>1TB RAM   | \$73,000              |
+
+## GPU Nodes
+
+| Name          | System Specifications                        | GPU Specifications                   | Approximate Cost [^1] |
+| ------------- | -------------------------------------------- | ------------------------------------ | --------------------- |
+| GPU, Standard | 2 × 32 Cores<br/>512GB RAM                   | 2 × RTX Pro 6000 Blackwell 96GB PCIe | \$67,000              |
+| GPU, Medium   | 2 × 64 Cores<br/>1TB RAM                     | 8 × RTX Pro 6000 Blackwell 96GB PCIe | \$190,000             |
+| GPU, Large    | 2 × 56 Cores<br/>2TB RAM<br/>NVIDIA DGX B200 | 8 × H200 SXM 141GB NVSwitch+NVLinks  | \$360,000             |
 
 [^1]: Approximate prices are estimated based on previous orders, server costs are driven by commodity prices and are very volatile. The prices can be expected to remain relatively proportional between the types though.

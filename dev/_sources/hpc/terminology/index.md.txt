@@ -19,7 +19,6 @@ grid-columns: 1
 - header: "{fas}`book;pst-color-primary` Memory vs Storage"
   content: "What is memory or storage? How to request them"
   link: "memory-storage.html"
-
 ```
 
 ## What to Expect on Tufts HPC Cluster?
