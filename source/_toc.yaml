@@ -16,10 +16,6 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: hpc/access/*
-                      - file: hpc/access/globus/index
-                        subtrees:
-                          - entries:
-                              - glob: hpc/access/globus/*
               - file: hpc/compute/index
                 subtrees:
                   - entries:
@@ -41,6 +37,27 @@ subtrees:
                   - entries:
                       - glob: hpc/policy/*
               - glob: hpc/*
+      - file: storage/index
+        title: Research Storage
+        subtrees:
+          - entries:
+              - file: storage/systems/index
+                subtrees:
+                  - entries:
+                      - glob: storage/systems/*
+              - file: storage/rcrm/index
+                subtrees:
+                  - entries:
+                      - glob: storage/rcrm/*
+              - file: storage/globus/index
+                subtrees:
+                  - entries:
+                      - glob: storage/globus/*
+              - file: storage/examples/index
+                subtrees:
+                  - entries:
+                      - glob: storage/examples/*
+              - glob: storage/*
       - file: bio/index
         title: Bioinformatics
         subtrees:
@@ -106,8 +123,6 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: nlp/llms/*
-      - url: https://go.tufts.edu/geospatial
-        title: Geospatial
       - file: viz/index
         title: Data Visualization
         subtrees:
@@ -125,3 +140,5 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: ai/python/*
+      - url: https://go.tufts.edu/geospatial
+        title: Geospatial
