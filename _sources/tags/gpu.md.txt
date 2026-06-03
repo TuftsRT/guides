@@ -6,3 +6,4 @@ html_theme.sidebar_secondary.remove: true
 # gpu
 - [](/hpc/examples/index.md)
 - [](/hpc/index.md)
+- [](/storage/index.md)

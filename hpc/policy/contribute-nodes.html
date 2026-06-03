@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
@@ -43,10 +43,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
 
     <script src="../../_static/documentation_options.js?v=8d563738"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -69,7 +69,7 @@
             </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'hpc/policy/contribute-nodes';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_version = '0.18.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
@@ -85,8 +85,8 @@
     <link rel="prev" title="HPC Policy" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260410" />
-    <meta name="docbuild:last-update" content="Apr 10, 2026"/>
+  <meta name="docsearch:version" content="20260603" />
+    <meta name="docbuild:last-update" content="Jun 03, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -104,7 +104,9 @@
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -180,6 +182,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../storage/index.html">
+    Research Storage
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../bio/index.html">
     Bioinformatics
   </a>
@@ -194,25 +203,35 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
-    Geospatial
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../viz/index.html">
     Data Visualization
   </a>
 </li>
 
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../ai/index.html">
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../ai/index.html">
     Artificial Intelligence
   </a>
 </li>
 
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
   </ul>
 </nav></div>
       
@@ -234,11 +253,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -253,8 +279,7 @@
           
           
           
-          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">Tags</span></a>
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i><span class="visually-hidden">Tags</span></a>
         </li>
         <li class="nav-item">
           
@@ -265,8 +290,7 @@
           
           
           
-          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
         <li class="nav-item">
           
@@ -277,8 +301,7 @@
           
           
           
-          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">Email</span></a>
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i><span class="visually-hidden">Email</span></a>
         </li>
 </ul></div>
       
@@ -336,6 +359,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../storage/index.html">
+    Research Storage
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../bio/index.html">
     Bioinformatics
   </a>
@@ -345,13 +375,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../nlp/index.html">
     Natural Language Processing
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
-    Geospatial
   </a>
 </li>
 
@@ -369,6 +392,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -381,11 +411,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -400,8 +437,7 @@
           
           
           
-          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">Tags</span></a>
+          <a href="https://rtguides.it.tufts.edu/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i><span class="visually-hidden">Tags</span></a>
         </li>
         <li class="nav-item">
           
@@ -412,8 +448,7 @@
           
           
           
-          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
         <li class="nav-item">
           
@@ -424,8 +459,7 @@
           
           
           
-          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">Email</span></a>
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i><span class="visually-hidden">Email</span></a>
         </li>
 </ul></div>
         
@@ -458,7 +492,6 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../chat.html">AI Chat Assistant</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../help.html">Help with HPC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../storage-request.html">HPC Cluster Storage Request</a></li>
 </ul>
 </div>
 </nav></div>
@@ -540,72 +573,72 @@
 <p>Tufts HPC cluster operates under a hybrid model with both public and contribute nodes. The university operates a public partition where the Slurm fair share algorithm is used to balance usage amongst all researchers. Additionally, researchers can purchase contribute nodes to which they get priority access.</p>
 <p>This page lists the nodes types utilized on the cluster available for purchase as contribute nodes. TTS Research Technology works to create a selection of options that match to faculty needs while maintaining a cluster that has enough commonality that the researcher community can utilize free resources and maximize utilization. If all the nodes are unique it does not create a good HPC environment.</p>
 <p>Contribute nodes are available to purchase 4 times per year. This helps us achieve the best price for equipment and allows us to manage the cluster growth in a planned fashion. If you are contemplating purchasing equipment, please reach out to RT early in your planning process. Please review the <a class="reference internal" href="index.html#hpc-researcher-contribution-node"><span class="std std-ref">access and lifecycle information for faculty purchased nodes</span></a> before submitting a purchase request.</p>
-<p>Most current faculty contribute nodes are the <strong>CPU, Standard</strong> or <strong>GPU, Standard</strong> nodes.</p>
-<p><strong>CPU Nodes:</strong></p>
+<p>Most current faculty contribute nodes are the <strong><em>CPU, Standard</em></strong> or <strong><em>GPU, Standard</em></strong> nodes.</p>
+<ul class="simple">
+<li><p>TTS provides all the additional infrastructure including data center space, networking, power/cooling and operations.</p></li>
+<li><p>We utilize Intel CPUs and NVIDIA GPUs across the cluster to maintain code portability between nodes.</p></li>
+<li><p>All nodes are connected to 100 Gbps Ethernet.</p></li>
+<li><p>If you have specialized needs such as InfiniBand networking or alternate CPU architecture like ARM please reach out to RT.</p></li>
+</ul>
+<section id="cpu-nodes">
+<h2>CPU Nodes<a class="headerlink" href="#cpu-nodes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
-<th class="head"><p><strong>System Specifications</strong></p></th>
-<th class="head"><p><strong>Approximate Cost <a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></strong></p></th>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>System Specifications</p></th>
+<th class="head"><p>Approximate Cost <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>CPU, Small</p></td>
-<td><p>2x 32 Cores<br/>256GB RAM</p></td>
-<td><p>$17,000 <a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></td>
+<tr class="row-even"><td><p>CPU, Standard</p></td>
+<td><p>2 × 32 Cores<br/>512GB RAM</p></td>
+<td><p>$43,000</p></td>
 </tr>
-<tr class="row-odd"><td><p>CPU, Standard</p></td>
-<td><p>2x 32 Cores<br/>512GB RAM</p></td>
-<td><p>$21,000 <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></td>
-</tr>
-<tr class="row-even"><td><p>CPU, Large</p></td>
-<td><p>2x 32 Cores<br/>1TB RAM</p></td>
-<td><p>$28,000</p></td>
+<tr class="row-odd"><td><p>CPU, Large</p></td>
+<td><p>2 × 64 Cores<br/>1TB RAM</p></td>
+<td><p>$73,000</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><strong>GPU Nodes:</strong></p>
+</section>
+<section id="gpu-nodes">
+<h2>GPU Nodes<a class="headerlink" href="#gpu-nodes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
-<th class="head"><p><strong>System Specifications</strong></p></th>
-<th class="head"><p><strong>GPU Specifications</strong></p></th>
-<th class="head"><p><strong>Approximate Cost <a class="footnote-reference brackets" href="#id5" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></strong></p></th>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>System Specifications</p></th>
+<th class="head"><p>GPU Specifications</p></th>
+<th class="head"><p>Approximate Cost <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>GPU, Standard</p></td>
-<td><p>2x 32 Cores<br/>512GB RAM<br/></p></td>
-<td><p>4x L40S 48GB PCIe</p></td>
-<td><p>$60,000</p></td>
+<td><p>2 × 32 Cores<br/>512GB RAM</p></td>
+<td><p>2 × RTX Pro 6000 Blackwell 96GB PCIe</p></td>
+<td><p>$67,000</p></td>
 </tr>
-<tr class="row-odd"><td><p>GPU, Large</p></td>
-<td><p>2x 48 Cores<br/>1.5TB RAM<br/>24TB Local NVMe Disk</p></td>
-<td><p>8x H200 SXM 141GB</p></td>
-<td><p>$350,000</p></td>
+<tr class="row-odd"><td><p>GPU, Medium</p></td>
+<td><p>2 × 64 Cores<br/>1TB RAM</p></td>
+<td><p>8 × RTX Pro 6000 Blackwell 96GB PCIe</p></td>
+<td><p>$190,000</p></td>
+</tr>
+<tr class="row-even"><td><p>GPU, Large</p></td>
+<td><p>2 × 56 Cores<br/>2TB RAM<br/>NVIDIA DGX B200</p></td>
+<td><p>8 × H200 SXM 141GB NVSwitch+NVLinks</p></td>
+<td><p>$360,000</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<ul class="simple">
-<li><p>TTS provides all the additional infrastructure including data center space, networking, power/cooling and operations.</p></li>
-<li><p>We utilize Intel CPUs and NVIDIA GPUs across the cluster to maintain code portability between nodes.</p></li>
-<li><p>All nodes are connected at 100 Gbps Ethernet</p></li>
-<li><p>If you have specialized needs such as InfiniBand networking or alternate CPU architecture like ARM please reach out to RT.</p></li>
-</ul>
+</section>
 </section>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id5" role="doc-footnote">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
 <p>Approximate prices are estimated based on previous orders, server costs are driven by commodity prices and are very volatile. The prices can be expected to remain relatively proportional between the types though.</p>
-</aside>
-<aside class="footnote brackets" id="id6" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
-<p>Price based on buying four nodes.</p>
 </aside>
 </aside>
 
@@ -647,6 +680,22 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> HPC Cluster Contribute Nodes
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cpu-nodes">CPU Nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-nodes">GPU Nodes</a></li>
+</ul>
+</nav></div>
 
   <div class="sidebar-secondary-item">
 
@@ -691,8 +740,8 @@ Suggest Edits
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -710,7 +759,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Apr 10, 2026.
+  Last updated on Jun 03, 2026.
   <br/>
 </p></div>
       

@@ -1,7 +1,7 @@
 # File Transfers
 
 ```{important}
-   [Globus](globus/index) is highly recommended for File Transfers on Tufts HPC Cluster.
+   [Globus](/storage/globus/index) is highly recommended for File Transfers on Tufts HPC Cluster.
 ```
 
 ```{important}

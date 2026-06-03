@@ -6,3 +6,5 @@ html_theme.sidebar_secondary.remove: true
 # data-management
 - [](/hpc/examples/index.md)
 - [](/hpc/index.md)
+- [](/storage/examples/index.md)
+- [](/storage/index.md)
