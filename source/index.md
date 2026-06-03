@@ -15,6 +15,10 @@ grid-columns: 1 1 2 3
   content: "Tufts University High-Performance Compute (HPC) Cluster user guide and technical documentation."
   link: "hpc/index.html"
 
+- header: "{fas}`bucket` Research Storage"
+  content: "User guides and technical documentation for research storage."
+  link: "storage/index.html"
+
 - header: "{fas}`dna` Bioinformatics"
   content: "Explore biological data using cutting-edge computational methods and techniques."
   link: "bio/index.html"
@@ -26,10 +30,6 @@ grid-columns: 1 1 2 3
 - header: "{fas}`chart-bar` Data Visualization"
   content: "Create interactive data visualization dashboards using Tableau."
   link: "viz/index.html"
-
-- header: "{fas}`bucket` Research Storage"
-  content: "User guides and technical documentation for research storage."
-  link: "storage/index.html"
 
 - header: "{fas}`server` AI and Data Science"
   content: "Learn about Artificial Intelligence and Data Science at Tufts."
