@@ -12,7 +12,7 @@ Research tiered storage beyond the free tier incurs costs based on the amount of
    - Locate project in list OR
    - Expand on the Filter blue cross to search
      - search for project title
-1. Select ‘show details’ on the project to view Billing Details page
+1. Select ‘show details’ on the project to view Billing Details page...
 
 ## Update Billing Information
 
