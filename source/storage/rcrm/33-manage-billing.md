@@ -6,8 +6,8 @@ Research tiered storage beyond the free tier incurs costs based on the amount of
 
 1. Go to Research Computing Resource Manager
    - Assign DeptIDs and Grant Numbers or Project Numbers to projects for billing.
-1. From the Home page navigate to the **Project** Home>Project
-1. In the dropdown menu select **Billing** Project>Billing
+1. From the Home page navigate to the **Manage** Home>Manage
+1. In the dropdown menu select **Billing** Manage>Billing (screen capture placeholder)
 1. On the **Billing** Page
    - Locate project in list OR
    - Expand on the Filter blue cross to search
@@ -18,8 +18,8 @@ Research tiered storage beyond the free tier incurs costs based on the amount of
 
 1. Go to Research Computing Resource Manager
    - Assign DeptIDs and Grant Numbers or Project Numbers to projects for billing.
-1. From the Home page navigate to the **Project** Home>Project
-1. In the dropdown menu select **Billing** Project>Billing
+1. From the Home page navigate to the **Manage** Home>Manage
+1. In the dropdown menu select **Billing** Manage>Billing
 1. On the **Billing** Page
    1. Locate project in list OR
    1. Expand on the Filter blue cross to search
@@ -32,9 +32,9 @@ Research tiered storage beyond the free tier incurs costs based on the amount of
 
 1. Go to Research Computing Resource Manager
 1. From the Home page navigate to the **Project**
-   - Home>Project
+   - Home>Manage
 1. In the dropdown menu select **No-Cost Quotas**
-   - Project>No-Cost Quotas
+   - Manage>No-Cost Quotas
 1. On the **Manage No-Cost Quotas** Page
 1. Eligible users have No-Cost Quotas which they can apply to resource allocations to reduce costs.
    1. Select a no-cost quota to apply to eligible resource allocations in projects where you are either the owner or have the 'Approver' role by
