@@ -17,15 +17,15 @@ Most current faculty contribute nodes are the **_CPU, Standard_** or **_GPU, Sta
 
 | Name          | System Specifications      | Approximate Cost [^1] |
 | ------------- | -------------------------- | --------------------- |
-| CPU, Standard | 2 × 32 Cores<br/>512GB RAM | \$43,000              |
-| CPU, Large    | 2 × 64 Cores<br/>1TB RAM   | \$73,000              |
+| CPU, Standard | 2 × 32 Cores<br/>512GB RAM | \$62,000              |
+| CPU, Large    | 2 × 64 Cores<br/>1TB RAM   | \$103,000              |
 
 ## GPU Nodes
 
 | Name          | System Specifications                        | GPU Specifications                   | Approximate Cost [^1] |
 | ------------- | -------------------------------------------- | ------------------------------------ | --------------------- |
-| GPU, Standard | 2 × 32 Cores<br/>512GB RAM                   | 2 × RTX Pro 6000 Blackwell 96GB PCIe | \$67,000              |
-| GPU, Medium   | 2 × 64 Cores<br/>1TB RAM                     | 8 × RTX Pro 6000 Blackwell 96GB PCIe | \$190,000             |
-| GPU, Large    | 2 × 56 Cores<br/>2TB RAM<br/>NVIDIA DGX B200 | 8 × H200 SXM 141GB NVSwitch+NVLinks  | \$360,000             |
+| GPU, Standard | 2 × 32 Cores<br/>512GB RAM                   | 2 × RTX Pro 6000 Blackwell 96GB PCIe | \$86,000              |
+| GPU, Medium   | 2 × 64 Cores<br/>1TB RAM                     | 8 × RTX Pro 6000 Blackwell 96GB PCIe | \$202,000             |
+| GPU, Large    | 2 × 56 Cores<br/>2TB RAM<br/>NVIDIA DGX B200 | 8 × B200 192GB NVSwitch+NVLinks  | \$360,000             |
 
 [^1]: Approximate prices are estimated based on previous orders, server costs are driven by commodity prices and are very volatile. The prices can be expected to remain relatively proportional between the types though.
