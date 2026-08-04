@@ -32,15 +32,15 @@ Submit a [Research Storage Request](https://tufts.qualtrics.com/jfe/form/SV_5bUm
 For questions, contact [tts-research@tufts.edu](mailto:tts-research@tufts.edu).
 
 % ## Access Method — Globus
-% 
+%
 % Tier 3 tape storage is accessed exclusively through **Globus**.
-% 
+%
 % 1. Log in to [Globus](https://www.globus.org/) with your Tufts credentials
 % 1. In the **File Manager**, click the **Collection** field and search for **"Tufts"**
 % 1. Select the **Tufts Tier 3 Storage** collection
 % 1. Authenticate with your Tufts credentials when prompted
 % 1. Transfer files to or from your Tier 3 allocation
-% 
+%
 % See the full [Globus guide](../globus/index.md) for setup, transferring files, and monitoring transfers.
 
 ```{note}
