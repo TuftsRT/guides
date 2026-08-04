@@ -7,7 +7,7 @@ Research tiered storage beyond the free tier incurs costs based on the amount of
 1. Go to Research Computing Resource Manager
    - Assign DeptIDs and Grant Numbers or Project Numbers to projects for billing.
 1. From the Home page navigate to the **Manage** Home>Manage
-1. In the dropdown menu select **Billing** Project>Billing (screen capture placeholder)
+1. In the dropdown menu select **Billing** Manage>Billing (screen capture placeholder)
 1. On the **Billing** Page
    - Locate project in list OR
    - Expand on the Filter blue cross to search

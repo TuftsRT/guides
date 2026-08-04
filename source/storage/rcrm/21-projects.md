@@ -6,4 +6,4 @@ All computing and storage resources are mapped to a organizational unit called a
 - All costs are aggregated at the Project level. A projects total cost can be split up to 10 ways.
 - Tufts Faculty can specify which projects and how much of to apply their no cost quota to.
 
-Projects are typically owned by a Principle Investigator. However their are special situations where others are designedated, such as courses where it is the professor of record. Research Technology may also designate staff or students as owners where they deem apprioriate.
+Projects are typically owned by a Principle Investigator. However their are special situations where others are designated, such as courses where it is the professor of record. Research Technology may also designate staff or students as owners where they deem apprioriate.
