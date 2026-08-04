@@ -12,7 +12,7 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 | Location            | Path                            | Default Quota |
 | ------------------- | ------------------------------- | ------------- |
 | Home directory      | `/cluster/home/your_utln`       | 30 GB (fixed) |
-| Lab/project storage | `/cluster/tufts/your_lab_name/` | 50 GB and up  |
+| Lab/project name | `/cluster/tufts/project_name/` | 50 GB and up  |
 
 ## Storage Details
 
@@ -43,7 +43,7 @@ The simplest way to access and manage files without any software installation.
 1. Go to [Tufts HPC OnDemand](https://ondemand-prod.pax.tufts.edu/)
 1. Log in with your Tufts credentials
 1. Click **Files** in the top menu to browse your home directory
-1. Use **Change directory** to navigate to your lab folder — type the full path (e.g., `/cluster/tufts/your_lab_name/`)
+1. Use **Change directory** to navigate to your lab folder — type the full path (e.g., `/cluster/tufts/project_name/`)
 1. Use **Upload** / **Download** buttons to transfer files
 
 ```{note}
@@ -61,7 +61,7 @@ ssh your_utln@login-prod.pax.tufts.edu
 Your home directory is available immediately. Navigate to your lab storage:
 
 ```
-cd /cluster/tufts/your_lab_name/
+cd /cluster/tufts/project_name/
 ```
 
 ### SCP / rsync (File Transfer)
@@ -72,14 +72,14 @@ Run these commands from your **local machine**. Replace `your_utln` and paths ac
 
 ```
 scp local_file your_utln@login-prod.pax.tufts.edu:/cluster/home/your_utln/
-rsync -azP local_dir/ your_utln@login-prod.pax.tufts.edu:/cluster/tufts/your_lab_name/
+rsync -azP local_dir/ your_utln@login-prod.pax.tufts.edu:/cluster/tufts/project_name/
 ```
 
 **Download from cluster:**
 
 ```
 scp your_utln@login-prod.pax.tufts.edu:/cluster/home/your_utln/file ./
-rsync -azP your_utln@login-prod.pax.tufts.edu:/cluster/tufts/your_lab_name/ local_dir/
+rsync -azP your_utln@login-prod.pax.tufts.edu:/cluster/tufts/project_name/ local_dir/
 ```
 
 Use `rsync` for large or long-running transfers — it can resume if interrupted.
@@ -110,5 +110,5 @@ hpctools
 Or check project quota directly:
 
 ```
-df -H /cluster/tufts/your_lab_name
+df -H /cluster/tufts/project_name
 ```

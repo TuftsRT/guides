@@ -11,7 +11,7 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 
 | Detail           | Value                                         |
 | ---------------- | --------------------------------------------- |
-| Path             | `/cluster/tier2/projectname`                  |
+| Path             | `/cluster/tier2/project_name`                  |
 | Technology       | Magnetic Disk                                 |
 | Starting quota   | 100 GB minimum                                |
 | Base allocation  | 10 TB at no cost (if eligible faculty member) |
@@ -34,7 +34,7 @@ Tier 2 storage can also be accessed through **Globus**. Tufts Research Technolog
 1. In the **File Manager**, click the **Collection** field and search for **"Tufts"**
 1. Select the **Tufts Tier 2 Storage** collection
 1. Authenticate with your Tufts credentials when prompted
-1. Your `/cluster/tier2/projectname` directory will be available to browse and transfer
+1. Your `/cluster/tier2/project_name` directory will be available to browse and transfer
 
 See the full [Globus guide](../globus/index.md) for setup, transferring files between endpoints, and monitoring transfers.
 
@@ -62,13 +62,13 @@ ssh your_utln@login-prod.pax.tufts.edu
 2. Move data from Tier 1 to Tier 2:
 
 ```
-mv /cluster/tufts/projectname /cluster/tier2/projectname
+mv /cluster/tufts/project_name /cluster/tier2/project_name
 ```
 
 To move a specific subdirectory or file:
 
 ```
-mv /cluster/tufts/projectname/subdir /cluster/tier2/projectname/subdir
+mv /cluster/tufts/project_name/subdir /cluster/tier2/project_name/subdir
 ```
 
 ```{note}
