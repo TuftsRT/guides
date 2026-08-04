@@ -42,7 +42,7 @@ RStore is typically connected directly to end user workstations or laptops. It c
 1. Open **Finder** and press **Command+K**.
 1. Enter the path to your RStore share:
    ```
-   smb://rstore.it.tufts.edu/RStoreDriveName
+   smb://rstore.it.tufts.edu/project_name$
    ```
 1. Click **Connect**.
 
@@ -57,7 +57,7 @@ RStore is typically connected directly to end user workstations or laptops. It c
 1. In the **Folder** text box, enter the path to your RStore share:
 
    ```
-   \\rstore.it.tufts.edu\RStoreDriveName
+   \\rstore.it.tufts.edu\project_name$
    ```
 
 1. For **Tufts-owned computers**, click **Finish**.

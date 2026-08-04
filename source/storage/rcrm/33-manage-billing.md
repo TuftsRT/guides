@@ -17,35 +17,22 @@ Research tiered storage beyond the free tier incurs costs based on the amount of
 ## Update Billing Information
 
 1. Go to Research Computing Resource Manager
-   - Assign DeptIDs and Grant Numbers or Project Numbers to projects for billing.
-1. From the Home page navigate to the **Manage** Home>Manage
-1. In the dropdown menu select **Billing** Manage>Billing
-1. On the **Billing** Page
-   1. Locate project in list OR
-   1. Expand on the Filter blue cross to search
-      - search for project title
-   1. Select plus icon
-1. Pop-up window to set Billing information (Cost centers)
-   1. Dept ID and Grant ID assigned to the project
+1. Click on “Manage” dropdown and select “No-Cost Quota”
+1. Click on "Filter", to expand.
+1. Under “PI name”, input UTLN and click “Search”
+1. Under “Search”, locate the row for the desired project and click on the “Edit” button near “show details”
+1. For “Department”, input the Dept ID
+1. For “Grant (optional)” input the Grand ID, if provided
+1. For “Percentage (%)”, input integer up to 100.
+1. If “Total Percentage:” is less than 100%, click on “Add cost assignment” and repeat 6, 7 and 8 until total percentage is 100%.
+1. Click “Save changes”
 
 ## Manage No-Cost Quotas
 
 1. Go to Research Computing Resource Manager
-1. From the Home page navigate to the **Project**
-   - Home>Manage
-1. In the dropdown menu select **No-Cost Quotas**
-   - Manage>No-Cost Quotas
-1. On the **Manage No-Cost Quotas** Page
-1. Eligible users have No-Cost Quotas which they can apply to resource allocations to reduce costs.
-   1. Select a no-cost quota to apply to eligible resource allocations in projects where you are either the owner or have the 'Approver' role by
-      1. Locating and select from the list OR
-      1. Expand on the **Filter** blue cross and search for **Owner name**
-      1. Select ‘Next’ to go to the Assign No-Cost Quota page screen
-1. On **Assign No-Cost Quota** page you can
-   1. Assign a portion of your no-cost quota to an allocation.
-   1. Select an allocation to create a new allotment or update/delete an existing one.
-   1. Use the auto-assign button to distribute quota among allocations on projects where you are the PI.
-1. Click the right hand icon to Assign No-Cost Quota
-1. Pop-up window to **Assign No-Cost Quota**
-   1. Enter the quota amount in TB that you would like to allocation to the selected project
-   1. Select ‘Assign’
+1. Click on “Manage” dropdown and select “No-Cost Quota”
+1. Click on "Filter", to expand.
+1. Under “Owner name”, input UTLN of owner and click on “Search”
+1. Under the “No-Cost Quotas” section, locate the desired row you want to update.
+1. Click on the radio button to select the row and click on “Next”
+1. Review available no-cost and adjust accordingly.
