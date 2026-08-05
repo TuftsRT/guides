@@ -10,9 +10,9 @@ Click in the `Collection` field at the top of the File Manager page and type "Tu
 
 ![globus-collections](../assets/tufts-globus/globus-tufts-collections.png)
 
-**Tufts proivdes two site collections:**
+**Tufts provides three site collections:**
 
-- Tufts HPC Cluster Storage - Access to Tufts HPC cluster storage `/cluster/tufts/project` and `/cluster/home/username`
+- The Tufts HPC Cluster Storage - Access to Tufts HPC cluster storage `/cluster/tufts/project` and `/cluster/home/username`
 
 - Tufts Tier 2 Storage `/tier2/project`
 
