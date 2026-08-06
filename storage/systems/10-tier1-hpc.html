@@ -85,8 +85,8 @@
     <link rel="prev" title="Available Storage" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260603" />
-    <meta name="docbuild:last-update" content="Jun 03, 2026"/>
+  <meta name="docsearch:version" content="20260806" />
+    <meta name="docbuild:last-update" content="Aug 06, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -589,8 +589,8 @@ See <a class="reference external" href="https://it.tufts.edu/research-technology
 <td><p><code class="docutils literal notranslate"><span class="pre">/cluster/home/your_utln</span></code></p></td>
 <td><p>30 GB (fixed)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Lab/project storage</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">/cluster/tufts/your_lab_name/</span></code></p></td>
+<tr class="row-odd"><td><p>Lab/project name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/cluster/tufts/project_name/</span></code></p></td>
 <td><p>50 GB and up</p></td>
 </tr>
 </tbody>
@@ -646,7 +646,7 @@ See <a class="reference external" href="https://it.tufts.edu/research-technology
 <li><p>Go to <a class="reference external" href="https://ondemand-prod.pax.tufts.edu/">Tufts HPC OnDemand</a></p></li>
 <li><p>Log in with your Tufts credentials</p></li>
 <li><p>Click <strong>Files</strong> in the top menu to browse your home directory</p></li>
-<li><p>Use <strong>Change directory</strong> to navigate to your lab folder — type the full path (e.g., <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/your_lab_name/</span></code>)</p></li>
+<li><p>Use <strong>Change directory</strong> to navigate to your lab folder — type the full path (e.g., <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/project_name/</span></code>)</p></li>
 <li><p>Use <strong>Upload</strong> / <strong>Download</strong> buttons to transfer files</p></li>
 </ol>
 <div class="admonition note">
@@ -661,7 +661,7 @@ See <a class="reference external" href="https://it.tufts.edu/research-technology
 </pre></div>
 </div>
 <p>Your home directory is available immediately. Navigate to your lab storage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">your_lab_name</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">project_name</span><span class="o">/</span>
 </pre></div>
 </div>
 </section>
@@ -670,12 +670,12 @@ See <a class="reference external" href="https://it.tufts.edu/research-technology
 <p>Run these commands from your <strong>local machine</strong>. Replace <code class="docutils literal notranslate"><span class="pre">your_utln</span></code> and paths accordingly.</p>
 <p><strong>Upload to cluster:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scp</span> <span class="n">local_file</span> <span class="n">your_utln</span><span class="nd">@login</span><span class="o">-</span><span class="n">prod</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">tufts</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">your_utln</span><span class="o">/</span>
-<span class="n">rsync</span> <span class="o">-</span><span class="n">azP</span> <span class="n">local_dir</span><span class="o">/</span> <span class="n">your_utln</span><span class="nd">@login</span><span class="o">-</span><span class="n">prod</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">tufts</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">your_lab_name</span><span class="o">/</span>
+<span class="n">rsync</span> <span class="o">-</span><span class="n">azP</span> <span class="n">local_dir</span><span class="o">/</span> <span class="n">your_utln</span><span class="nd">@login</span><span class="o">-</span><span class="n">prod</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">tufts</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">project_name</span><span class="o">/</span>
 </pre></div>
 </div>
 <p><strong>Download from cluster:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scp</span> <span class="n">your_utln</span><span class="nd">@login</span><span class="o">-</span><span class="n">prod</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">tufts</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">your_utln</span><span class="o">/</span><span class="n">file</span> <span class="o">./</span>
-<span class="n">rsync</span> <span class="o">-</span><span class="n">azP</span> <span class="n">your_utln</span><span class="nd">@login</span><span class="o">-</span><span class="n">prod</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">tufts</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">your_lab_name</span><span class="o">/</span> <span class="n">local_dir</span><span class="o">/</span>
+<span class="n">rsync</span> <span class="o">-</span><span class="n">azP</span> <span class="n">your_utln</span><span class="nd">@login</span><span class="o">-</span><span class="n">prod</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">tufts</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">project_name</span><span class="o">/</span> <span class="n">local_dir</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">rsync</span></code> for large or long-running transfers — it can resume if interrupted.</p>
@@ -703,7 +703,7 @@ See <a class="reference external" href="https://it.tufts.edu/research-technology
 <li><p>Option <strong>7</strong> — check home directory usage</p></li>
 </ul>
 <p>Or check project quota directly:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">-</span><span class="n">H</span> <span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">your_lab_name</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">-</span><span class="n">H</span> <span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/</span><span class="n">project_name</span>
 </pre></div>
 </div>
 </section>
@@ -836,7 +836,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Jun 03, 2026.
+  Last updated on Aug 06, 2026.
   <br/>
 </p></div>
       
