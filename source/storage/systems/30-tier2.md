@@ -12,7 +12,6 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 | Detail           | Value                                         |
 | ---------------- | --------------------------------------------- |
 | HPC Cluster Path | `/cluster/tier2/project_name`                 |
-| Globus Path      | `/tier2/project_name`                         |
 | Technology       | Magnetic Disk                                 |
 | Starting quota   | 100 GB minimum                                |
 | Base allocation  | 10 TB at no cost (if eligible faculty member) |
