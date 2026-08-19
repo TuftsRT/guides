@@ -32,7 +32,7 @@ An Interactive job is one that a user starts and then continues to directly inte
     - Default none
   - QOS `--qos=`
     - Default normal
-    - Common interactive 
+    - Common interactive
 
 ## CPU Job
 
