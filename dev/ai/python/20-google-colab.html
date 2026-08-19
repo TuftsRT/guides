@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -635,7 +635,7 @@
 <h4>Mounting Your Google Drive in Colab<a class="headerlink" href="#mounting-your-google-drive-in-colab" title="Link to this heading">#</a></h4>
 <p>In order to access your files in Google Drive, you will first need to mount the drive. In a new code cell, enter the following code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">'/content/drive'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>When you run the cell (ctrl+enter for Windows or cmd+enter for MacOS), a pop-up window will appear asking for permission for Google Colab to access your Google Drive. (You can either grant all permissions or pick which permissions to give. Note that we have not tested Google Colab with partial permissions and cannot advise which are essential and which can be omitted.)</p>
@@ -654,7 +654,7 @@
 </div>
 <p>Running this cell will now import the pandas library into your notebook and give it the alias “pd” to use whenever you want to access that library.</p>
 <p>Let’s now imagine that you created a folder called “SampleProject” in your Google Drive, and that inside that folder you have a data file called “sample-research-data-file.csv”. In a new code cell, enter:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mydata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/SampleProject/sample-research-data-file.csv&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mydata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"/content/drive/MyDrive/SampleProject/sample-research-data-file.csv"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This will create a pandas data frame called “mydata” with the contents of sample-research-data-file.csv. As long as your files are in Google Drive, the first three parts of the file path above will match the above example (‘/content/drive/MyDrive/’). Beyond that point, you should replace the file path above with your own Google Drive folder structure.</p>
@@ -815,7 +815,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

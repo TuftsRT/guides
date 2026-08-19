@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -601,7 +601,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.gutenberg.org/cache/epub/2600/pg2600.txt&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://www.gutenberg.org/cache/epub/2600/pg2600.txt"</span>
 <span class="n">text</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 </pre></div>
 </div>
@@ -616,7 +616,7 @@
 <span class="c1"># In this case, we found the first line that states the start of the book. We found this by looking at the actual book.</span>
 <span class="c1"># Link to book: https://www.gutenberg.org/cache/epub/2600/pg2600.txt</span>
 
-<span class="n">start</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;BOOK ONE: 1805</span><span class="se">\r\n\r\n\r\n\r\n\r\n\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"BOOK ONE: 1805</span><span class="se">\r\n\r\n\r\n\r\n\r\n\r\n</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">start</span>
 </pre></div>
 </div>
@@ -624,7 +624,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">end</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;END OF THE PROJECT GUTENBERG EBOOK WAR AND PEACE&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">end</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"END OF THE PROJECT GUTENBERG EBOOK WAR AND PEACE"</span><span class="p">)</span>
 <span class="n">end</span>
 </pre></div>
 </div>
@@ -653,12 +653,12 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">ch_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">ch_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(CHAPTER [A-Z]+)&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="n">ch_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(CHAPTER [A-Z]+)"</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ch_list</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ch_list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">ch_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Chapter </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ch_list</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">ch_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">"Chapter </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ch_list</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">ch_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Chapter </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">ch_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">"Chapter </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -668,21 +668,21 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>  <span class="c1">## You will almost always see pandas imported this way.</span>
 
-<span class="c1">## Let&#39;s see what happens when we input the dictionary directly</span>
+<span class="c1">## Let's see what happens when we input the dictionary directly</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ch_dict</span><span class="p">)</span>
-<span class="c1">## it&#39;s close but not quite what we wanted</span>
+<span class="c1">## it's close but not quite what we wanted</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## pandas is programmed to look for numerical indices, which dictionaries (because they&#39;re an unordered data type) do not have</span>
-<span class="c1">## we can coerce it though to accept string values as the index with the &#39;from_dict&#39; method and the &#39;orient&#39; keyword argument</span>
-<span class="c1">## the &#39;reset_index&#39; method will then turn our index into a column and give us an index for the rows</span>
-<span class="n">ch_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">ch_dict</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## pandas is programmed to look for numerical indices, which dictionaries (because they're an unordered data type) do not have</span>
+<span class="c1">## we can coerce it though to accept string values as the index with the 'from_dict' method and the 'orient' keyword argument</span>
+<span class="c1">## the 'reset_index' method will then turn our index into a column and give us an index for the rows</span>
+<span class="n">ch_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">ch_dict</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">"index"</span><span class="p">)</span>
 <span class="n">ch_df</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">ch_df</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;chapter&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;start_idx&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;end_idx&quot;</span><span class="p">})</span>
+<span class="n">ch_df</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"index"</span><span class="p">:</span> <span class="s2">"chapter"</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">"start_idx"</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">"end_idx"</span><span class="p">})</span>
 <span class="n">ch_df</span>
 </pre></div>
 </div>
@@ -691,8 +691,8 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 <p>Now that the dataframe is in the correct orientation, let’s use the indices that we got to select the texts of each chapter. All we need to do is input <code class="docutils literal notranslate"><span class="pre">start_idx:end_idx</span></code> into square brackets next to the <code class="docutils literal notranslate"><span class="pre">text</span></code> object. Below is an example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;start_idx&quot;</span><span class="p">]</span>  <span class="c1">## .iloc[0] gives us the first element of the dataframe</span>
-<span class="n">e</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;end_idx&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"start_idx"</span><span class="p">]</span>  <span class="c1">## .iloc[0] gives us the first element of the dataframe</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"end_idx"</span><span class="p">]</span>
 <span class="n">text</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">e</span><span class="p">]</span>
 <span class="c1">## the first full chapter of War and Peace</span>
 <span class="c1">## you can change the number after iloc to change which chapter you see</span>
@@ -705,13 +705,13 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 <p>For us, we need <code class="docutils literal notranslate"><span class="pre">lambda</span></code> expression that will pull a value for each column and return the text between those two values. Note the <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> keyword parameter. This tells <code class="docutils literal notranslate"><span class="pre">pandas</span></code> that we want to go through the columns not the rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ch_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">text</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;start_idx&quot;</span><span class="p">]</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;end_idx&quot;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ch_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ch_df</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">text</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s2">"start_idx"</span><span class="p">]</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">"end_idx"</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ch_df</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch_df</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"  "</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 <span class="p">)</span>  <span class="c1">## using lambda again for some simple cleaning with the replace and lower methods</span>
 <span class="n">ch_df</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">&quot;start_idx&quot;</span><span class="p">,</span> <span class="s2">&quot;end_idx&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
-<span class="p">)</span>  <span class="c1">## and now we can drop our indices just so they don&#39;t clutter up our dataframe</span>
+    <span class="p">[</span><span class="s2">"start_idx"</span><span class="p">,</span> <span class="s2">"end_idx"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>  <span class="c1">## and now we can drop our indices just so they don't clutter up our dataframe</span>
 </pre></div>
 </div>
 </div>
@@ -735,10 +735,10 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## The Natural Language Toolkit (NLTK) provides a lot of very useful utilities for cleaning and analyzing textual data.</span>
-<span class="c1">## It requires this &#39;punkt&#39; download for us to be able to tokenize</span>
+<span class="c1">## It requires this 'punkt' download for us to be able to tokenize</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
 
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;punkt&quot;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"punkt"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -747,18 +747,18 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 <h4>Sentence-level tokenization<a class="headerlink" href="#sentence-level-tokenization" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ch_df</span><span class="p">[</span><span class="s2">&quot;sents&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ch_df</span><span class="p">[</span><span class="s2">"sents"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span>
-    <span class="n">ch_df</span><span class="p">[</span><span class="s2">&quot;sents&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="p">)</span>  <span class="c1">## each element of the &#39;sents&#39; column is a list of sentences in each chapter</span>
+    <span class="n">ch_df</span><span class="p">[</span><span class="s2">"sents"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>  <span class="c1">## each element of the 'sents' column is a list of sentences in each chapter</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Now we can &#39;explode&#39; these lists, so that each sentence has its own cell in the &#39;sents&#39; column.</span>
-<span class="n">sent_explode</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">&quot;sents&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;text&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Now we can 'explode' these lists, so that each sentence has its own cell in the 'sents' column.</span>
+<span class="n">sent_explode</span> <span class="o">=</span> <span class="n">ch_df</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">"sents"</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">"text"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">sent_explode</span>
 </pre></div>
 </div>
@@ -773,7 +773,7 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">nltk.tokenize</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegexpTokenizer</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">RegexpTokenizer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?x)\w+(?:[-’]\w+)*&quot;</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">RegexpTokenizer</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?x)\w+(?:[-’]\w+)*"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -789,7 +789,7 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sent_explode</span><span class="p">[</span><span class="s2">&quot;word_tokenized&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sent_explode</span><span class="p">[</span><span class="s2">&quot;sents&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sent_explode</span><span class="p">[</span><span class="s2">"word_tokenized"</span><span class="p">]</span> <span class="o">=</span> <span class="n">sent_explode</span><span class="p">[</span><span class="s2">"sents"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">)</span>
 <span class="n">sent_explode</span>
 </pre></div>
 </div>
@@ -806,38 +806,38 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## creating a new dataframe organized by book</span>
 <span class="c1">## this is the same code as above</span>
 <span class="n">book_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">book_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(BOOK [A-Z]+:)&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+<span class="n">book_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(BOOK [A-Z]+:)"</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">book_list</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">book_list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">book_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Book </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">book_list</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">book_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">"Book </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">book_list</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">book_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Book </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">book_dict</span><span class="p">[</span><span class="sa">f</span><span class="s2">"Book </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">book_df</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">book_dict</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">book_dict</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">"index"</span><span class="p">)</span>
     <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;start_idx&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;end_idx&quot;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"index"</span><span class="p">:</span> <span class="s2">"book"</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s2">"start_idx"</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">"end_idx"</span><span class="p">})</span>
 <span class="p">)</span>
 
-<span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">text</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;start_idx&quot;</span><span class="p">]</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;end_idx&quot;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">book_df</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">text</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s2">"start_idx"</span><span class="p">]</span> <span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">"end_idx"</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">book_df</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\r</span><span class="s2">"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"  "</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 <span class="p">)</span>
-<span class="n">book_df</span> <span class="o">=</span> <span class="n">book_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;start_idx&quot;</span><span class="p">,</span> <span class="s2">&quot;end_idx&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">book_df</span> <span class="o">=</span> <span class="n">book_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">"start_idx"</span><span class="p">,</span> <span class="s2">"end_idx"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;word_tokenized&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">)</span>
+<span class="n">book_df</span><span class="p">[</span><span class="s2">"word_tokenized"</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search</span> <span class="o">=</span> <span class="s2">&quot;napoleon&quot;</span>
-<span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;search_count&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="p">[</span><span class="s2">&quot;word_tokenized&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search</span> <span class="o">=</span> <span class="s2">"napoleon"</span>
+<span class="n">book_df</span><span class="p">[</span><span class="s2">"search_count"</span><span class="p">]</span> <span class="o">=</span> <span class="n">book_df</span><span class="p">[</span><span class="s2">"word_tokenized"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
     <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
 <span class="p">)</span>
 
-<span class="n">book_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;search_count&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+<span class="n">book_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"book"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"search_count"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"bar"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -853,16 +853,16 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
     <span class="n">url</span><span class="p">,</span>  <span class="c1"># the Gutenberg URL</span>
     <span class="c1"># you may need more arguments for your function</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Takes in a Gutenberg URL</span>
 <span class="sd">    Returns a DataFrame of relevant information</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1">## GET TEXT FROM URL WITH A REQUEST</span>
 
     <span class="c1">## TRIM YOUR TEXT BASED ON SUBSTRINGS</span>
 
     <span class="n">content_dict</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">content_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;YOUR REGEX HERE!!&quot;</span><span class="p">),</span> <span class="n">text</span><span class="p">)</span>
+    <span class="n">content_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">"YOUR REGEX HERE!!"</span><span class="p">),</span> <span class="n">text</span><span class="p">)</span>
 
     <span class="c1">## CREATE A DICTIONARY FOR THE INDEX POSITIONS YOUR CONTENT</span>
 
@@ -881,7 +881,7 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1">## INPUT SEARCH TERM HERE</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search</span> <span class="o">=</span> <span class="s2">""</span>  <span class="c1">## INPUT SEARCH TERM HERE</span>
 
 <span class="c1">## ADD A COUNTS COLUMN</span>
 
@@ -903,24 +903,24 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># the phrases Clay identifies as relevant</span>
 <span class="n">phrases</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;as people do&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;of one who&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;peculiar to&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;as with everyone&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;as one who&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;only used by persons who&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;of a man who&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;which a man has&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;in the way&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;as is usually the case&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;such as often occurs&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;which usually follows&quot;</span><span class="p">,</span>
+    <span class="s2">"as people do"</span><span class="p">,</span>
+    <span class="s2">"of one who"</span><span class="p">,</span>
+    <span class="s2">"peculiar to"</span><span class="p">,</span>
+    <span class="s2">"as with everyone"</span><span class="p">,</span>
+    <span class="s2">"as one who"</span><span class="p">,</span>
+    <span class="s2">"only used by persons who"</span><span class="p">,</span>
+    <span class="s2">"of a man who"</span><span class="p">,</span>
+    <span class="s2">"which a man has"</span><span class="p">,</span>
+    <span class="s2">"in the way"</span><span class="p">,</span>
+    <span class="s2">"as is usually the case"</span><span class="p">,</span>
+    <span class="s2">"such as often occurs"</span><span class="p">,</span>
+    <span class="s2">"which usually follows"</span><span class="p">,</span>
 <span class="p">]</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">printExcerpt</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;chapter&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;sents&quot;</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"chapter"</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">"sents"</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -929,9 +929,9 @@ This pattern fits the roman numeral counting of the chapters (ex. CHAPTER I or C
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">phrase</span> <span class="ow">in</span> <span class="n">phrases</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">phrase</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
-    <span class="n">sub_df</span> <span class="o">=</span> <span class="n">sent_explode</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sent_explode</span><span class="p">[</span><span class="s2">&quot;sents&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">phrase</span><span class="p">)]</span>
+    <span class="n">sub_df</span> <span class="o">=</span> <span class="n">sent_explode</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sent_explode</span><span class="p">[</span><span class="s2">"sents"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">phrase</span><span class="p">)]</span>
     <span class="n">sub_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">printExcerpt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"-----"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1093,7 +1093,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -603,12 +603,12 @@
 <p>Both <code class="docutils literal notranslate"><span class="pre">spaCy</span></code> and <code class="docutils literal notranslate"><span class="pre">LatinCy</span></code> do not come with this Colab notebook by default, so we’ll need to install them. We will be using <code class="docutils literal notranslate"><span class="pre">pip</span></code>, a command line tool for installing Python packages, to do so.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># installations: recall that we use the &#39;!&#39; to indicate that this is a shell command</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># installations: recall that we use the '!' to indicate that this is a shell command</span>
 <span class="c1"># this cell will take about 5 min to run</span>
 <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">spacy</span> <span class="n">transformers</span>
 <span class="err">!</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spacy</span> <span class="n">download</span> <span class="n">en_core_web_lg</span>
 <span class="err">!</span><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">spacy_lookups_data</span>
-<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="s2">&quot;la-core-web-lg @ https://huggingface.co/latincy/la_core_web_lg/resolve/main/la_core_web_lg-any-py3-none-any.whl&quot;</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="s2">"la-core-web-lg @ https://huggingface.co/latincy/la_core_web_lg/resolve/main/la_core_web_lg-any-py3-none-any.whl"</span>
 </pre></div>
 </div>
 </div>
@@ -624,7 +624,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
 
 <span class="n">english_nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
-    <span class="s2">&quot;en_core_web_lg&quot;</span>
+    <span class="s2">"en_core_web_lg"</span>
 <span class="p">)</span>  <span class="c1"># nlp object takes in the model name and give us back a tool we can work with</span>
 <span class="n">english_nlp</span>
 </pre></div>
@@ -634,9 +634,9 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example from above</span>
-<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">My name is Peter Nadel. I work at Tufts University.</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="s2">"""</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 <span class="n">doc</span> <span class="o">=</span> <span class="n">english_nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>  <span class="c1"># call english_nlp with text to get a doc object</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
 </pre></div>
@@ -659,22 +659,22 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get entities</span>
 <span class="n">entities</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">entities</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entity </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;| Entity Type: &quot;</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">label_</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Entity </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: "</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">"| Entity Type: "</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">label_</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># now let&#39;s try a more complex example: the opening of middlemarch by goerge eliot</span>
-<span class="c1"># Go back and replace this text when you&#39;re ready</span>
-<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># now let's try a more complex example: the opening of middlemarch by goerge eliot</span>
+<span class="c1"># Go back and replace this text when you're ready</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">It was after the Nycene synod, and under the reign of the pious Irene, that the popes consummated the separation of Rome and Italy, by the translation of the empire to the less orthodox Charlemagne. They were compelled to choose between the rival nations: religion was not the sole motive of their choice; and while they dissembled the failings of their friends, they beheld, with reluctance and suspicion, the Catholic virtues of their foes. The difference of language and manners had perpetuated the enmity of the two capitals; and they were alienated from each other by the hostile opposition of seventy years. In that schism the Romans had tasted of freedom, and the popes of sovereignty: their submission would have exposed them to the revenge of a jealous tyrant; and the revolution of Italy had betrayed the impotence, as well as the tyranny, of the Byzantine court. The Greek emperors had restored the images, but they had not restored the Calabrian estates 85 and the Illyrian diocese, 86 which the Iconociasts had torn away from the successors of St. Peter; and Pope Adrian threatens them with a sentence of excommunication unless they speedily abjure this practical heresy. 87 The Greeks were now orthodox; but their religion might be tainted by the breath of the reigning monarch: the Franks were now contumacious; but a discerning eye might discern their approaching conversion, from the use, to the adoration, of images. The name of Charlemagne was stained by the polemic acrimony of his scribes; but the conqueror himself conformed, with the temper of a statesman, to the various practice of France and Italy. In his four pilgrimages or visits to the Vatican, he embraced the popes in the communion of friendship and piety; knelt before the tomb, and consequently before the image, of the apostle; and joined, without scruple, in all the prayers and processions of the Roman liturgy. Would prudence or gratitude allow the pontiffs to renounce their benefactor? Had they a right to alienate his gift of the Exarchate? Had they power to abolish his government of Rome? The title of patrician was below the merit and greatness of Charlemagne; and it was only by reviving the Western empire that they could pay their obligations or secure their establishment. By this decisive measure they would finally eradicate the claims of the Greeks; from the debasement of a provincial town, the majesty of Rome would be restored: the Latin Christians would be united, under a supreme head, in their ancient metropolis; and the conquerors of the West would receive their crown from the successors of St. Peter. The Roman church would acquire a zealous and respectable advocate; and, under the shadow of the Carlovingian power, the bishop might exercise, with honor and safety, the government of the city. 88</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="s2">"""</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">" </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span>
 <span class="n">doc</span> <span class="o">=</span> <span class="n">english_nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="n">entities</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">entities</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entity </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;| Entity Type: &quot;</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">label_</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Entity </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: "</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">"| Entity Type: "</span><span class="p">,</span> <span class="n">entity</span><span class="o">.</span><span class="n">label_</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -715,12 +715,12 @@
 <span class="k">for</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
     <span class="n">entity_type_counts</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)[:</span><span class="mi">3</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">entity_type</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">entity_type</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">entity</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span>
     <span class="p">:</span><span class="mi">3</span>
 <span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">entity</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">entity</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -739,10 +739,10 @@
 
 <span class="c1"># top 3 of each</span>
 <span class="k">for</span> <span class="n">entity_type</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">entity_type_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">entity_type</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">entity_type</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">entity</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">entity_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">entity</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">entity</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -755,15 +755,15 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Entity&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Entity Counts&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Count"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Entity"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Entity Counts"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">entity_type_counts</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">entity_type_counts</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Entity Type&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Entity Type Counts&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Count"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Entity Type"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Entity Type Counts"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -776,7 +776,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
 
-<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;la_core_web_lg&quot;</span><span class="p">)</span>  <span class="c1"># loading the latin model instead of the english one</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"la_core_web_lg"</span><span class="p">)</span>  <span class="c1"># loading the latin model instead of the english one</span>
 </pre></div>
 </div>
 </div>
@@ -785,9 +785,9 @@
 <h4>Data collection and scraping<a class="headerlink" href="#data-collection-and-scraping" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># for this example we&#39;ll use Cicero&#39;s Letter&#39;s to Atticus</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># for this example we'll use Cicero's Letter's to Atticus</span>
 <span class="c1"># here we download it in XML form and parse it with BeautifulSoup4</span>
-<span class="c1"># if you don&#39;t remember this from the intro class, don&#39;t worry we&#39;ll revisit this in week 5</span>
+<span class="c1"># if you don't remember this from the intro class, don't worry we'll revisit this in week 5</span>
 <span class="err">!</span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">perseus</span><span class="o">.</span><span class="n">tufts</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">hopper</span><span class="o">/</span><span class="n">dltext</span><span class="err">?</span><span class="n">doc</span><span class="o">=</span><span class="n">Perseus</span><span class="o">%</span><span class="mi">3</span><span class="n">Atext</span><span class="o">%</span><span class="mi">3</span><span class="n">A1999</span><span class="mf">.02.0008</span> <span class="o">-</span><span class="n">O</span> <span class="n">atticus</span><span class="o">.</span><span class="n">xml</span>
 </pre></div>
 </div>
@@ -797,21 +797,21 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
-<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;atticus.xml&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">features</span><span class="o">=</span><span class="s2">&quot;xml&quot;</span><span class="p">)</span>
-<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;div2&quot;</span><span class="p">)</span>  <span class="c1"># first letter</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">"atticus.xml"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">features</span><span class="o">=</span><span class="s2">"xml"</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"div2"</span><span class="p">)</span>  <span class="c1"># first letter</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>  <span class="c1"># need to use regular expressions to do some cleaning, we&#39;ll revisit this too</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>  <span class="c1"># need to use regular expressions to do some cleaning, we'll revisit this too</span>
 
 <span class="n">letters</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;div2&quot;</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"div2"</span><span class="p">):</span>
     <span class="n">dateline</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">dateline</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="n">salute</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">salute</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\s+"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">""</span><span class="p">))</span>
     <span class="n">letters</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">dateline</span><span class="p">,</span> <span class="n">salute</span><span class="p">,</span> <span class="n">text</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">letters</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -824,7 +824,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># now we can use pandas to store the data for each letter</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dateline&quot;</span><span class="p">,</span> <span class="s2">&quot;salute&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"dateline"</span><span class="p">,</span> <span class="s2">"salute"</span><span class="p">,</span> <span class="s2">"text"</span><span class="p">])</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -844,11 +844,11 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first_letter_entities</span> <span class="o">=</span> <span class="n">first_letter_doc</span><span class="o">.</span><span class="n">ents</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">entity</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">first_letter_entities</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Entity </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">"Entity </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: "</span><span class="p">,</span>
         <span class="n">entity</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
-        <span class="s2">&quot;| Entity Type: &quot;</span><span class="p">,</span>
+        <span class="s2">"| Entity Type: "</span><span class="p">,</span>
         <span class="n">entity</span><span class="o">.</span><span class="n">label_</span><span class="p">,</span>
-        <span class="s2">&quot;| Entity Lemma: &quot;</span><span class="p">,</span>
+        <span class="s2">"| Entity Lemma: "</span><span class="p">,</span>
         <span class="n">entity</span><span class="o">.</span><span class="n">lemma_</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="c1"># here I also print out the words lemma, the base form of the word for counting purposes</span>
@@ -869,11 +869,11 @@
     <span class="k">return</span> <span class="n">entity_counts</span><span class="p">,</span> <span class="n">entity_type_counts</span>
 
 
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;entity_counts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_entity_counts</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;entity_type_counts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"entity_counts"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_entity_counts</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"entity_type_counts"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
     <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="p">)</span>  <span class="c1"># taking the type counts</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;entity_counts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># taking the lemma counts</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"entity_counts"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">entity_counts</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># taking the lemma counts</span>
 </pre></div>
 </div>
 </div>
@@ -888,7 +888,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># limiting the plot below to 15 so that there aren&#39;t too many</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># limiting the plot below to 15 so that there aren't too many</span>
 <span class="n">top_15_entities</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">all_entity_counts</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span>
     <span class="p">:</span><span class="mi">15</span>
 <span class="p">]</span>
@@ -903,15 +903,15 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">top_15_entities</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">top_15_entities</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Entity&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Entity Counts&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Count"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Entity"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Entity Counts"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">all_type_counts</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_type_counts</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Entity Type&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Entity Type Counts&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Count"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Entity Type"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Entity Type Counts"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1054,7 +1054,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

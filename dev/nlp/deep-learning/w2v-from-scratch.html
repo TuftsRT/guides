@@ -89,8 +89,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -582,7 +582,7 @@
   <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">bash</span>
-<span class="n">DATASETS_DIR</span><span class="o">=</span><span class="s2">&quot;utils/datasets&quot;</span>
+<span class="n">DATASETS_DIR</span><span class="o">=</span><span class="s2">"utils/datasets"</span>
 <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="err">$</span><span class="n">DATASETS_DIR</span>
 <span class="n">cd</span> <span class="err">$</span><span class="n">DATASETS_DIR</span>
 
@@ -634,8 +634,8 @@
 <p>For this example, we will be using the Stanford Sentiment Treebank. This dataset has a lot of excerpts from English newspapers. They have been marked for sentiment value by human annotators, but we won’t be using that data for this lesson. Let’s take a look at what some of the data looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;utils/datasets/stanfordSentimentTreebank&quot;</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/datasetSentences.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">"utils/datasets/stanfordSentimentTreebank"</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/datasetSentences.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">sentences</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">[:</span><span class="mi">6</span><span class="p">]:</span>
@@ -651,22 +651,22 @@
 <p>In the data below, we used “whitespace tokenization”, that is, we split the sentence up on the space character (the default value for <code class="docutils literal notranslate"><span class="pre">.split</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code>). This strategy is very easy and works well for English, but may not work as well for other languages. We’ll revisit multi-lingual tokenization later.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before Tokenization: &quot;</span><span class="p">,</span> <span class="n">sentences</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Before Tokenization: "</span><span class="p">,</span> <span class="n">sentences</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;After Tokenization: &quot;</span><span class="p">,</span> <span class="n">sentences</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="p">)</span>  <span class="c1"># &quot;whitespace tokenization&quot;</span>
+    <span class="s2">"After Tokenization: "</span><span class="p">,</span> <span class="n">sentences</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="p">)</span>  <span class="c1"># "whitespace tokenization"</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;utils/datasets/stanfordSentimentTreebank&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">"utils/datasets/stanfordSentimentTreebank"</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_sentences</span><span class="p">():</span>
     <span class="n">sentences</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/datasetSentences.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/datasetSentences.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">first</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">first</span><span class="p">:</span>
@@ -755,9 +755,9 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">tok_freq</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
-    <span class="n">tokens</span><span class="p">[</span><span class="s2">&quot;UNK&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span>
-    <span class="n">rev_tokens</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;UNK&quot;</span><span class="p">]</span>
-    <span class="n">tok_freq</span><span class="p">[</span><span class="s2">&quot;UNK&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">tokens</span><span class="p">[</span><span class="s2">"UNK"</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span>
+    <span class="n">rev_tokens</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">"UNK"</span><span class="p">]</span>
+    <span class="n">tok_freq</span><span class="p">[</span><span class="s2">"UNK"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">word_count</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">tok_freq</span><span class="p">,</span> <span class="n">rev_tokens</span><span class="p">,</span> <span class="n">word_count</span>
 
@@ -770,10 +770,10 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Center word: *&quot;</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="s2">&quot;* Center word token id: &quot;</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="n">center</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Center word: *"</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="s2">"* Center word token id: "</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="n">center</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">context</span><span class="p">)):</span>
     <span class="nb">print</span><span class="p">(</span>
-        <span class="s2">&quot;Context word: *&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;* Context word token id: &quot;</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="n">context</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+        <span class="s2">"Context word: *"</span><span class="p">,</span> <span class="n">context</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">"* Context word token id: "</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="n">context</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
     <span class="p">)</span>
 </pre></div>
 </div>
@@ -789,13 +789,13 @@
 <span class="c1"># we can apply them with this function</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">dataset_split</span><span class="p">():</span>
     <span class="n">split</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/datasetSplit.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/datasetSplit.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">first</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">first</span><span class="p">:</span>
                 <span class="n">first</span> <span class="o">=</span> <span class="kc">False</span>
                 <span class="k">continue</span>
-            <span class="n">split</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+            <span class="n">split</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
             <span class="n">split</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">split</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">split</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">split</span>
 
@@ -869,13 +869,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">StanfordSentiment</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Class for reading and loading Stanford Sentiment Treebank. We ignore the sentiment component of the treebank and extract just the text.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">table_size</span><span class="o">=</span><span class="mi">1000000</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
-            <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;utils/datasets/stanfordSentimentTreebank&quot;</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="s2">"utils/datasets/stanfordSentimentTreebank"</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">table_size</span> <span class="o">=</span> <span class="n">table_size</span>
@@ -887,7 +887,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">sampleTable</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"tokens"</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokens</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokens</span>
 
         <span class="n">tokens</span> <span class="o">=</span> <span class="p">{}</span>
@@ -907,9 +907,9 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">tok_freq</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        <span class="n">tokens</span><span class="p">[</span><span class="s2">&quot;UNK&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span>
-        <span class="n">rev_tokens</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;UNK&quot;</span><span class="p">]</span>
-        <span class="n">tok_freq</span><span class="p">[</span><span class="s2">&quot;UNK&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">tokens</span><span class="p">[</span><span class="s2">"UNK"</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span>
+        <span class="n">rev_tokens</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">"UNK"</span><span class="p">]</span>
+        <span class="n">tok_freq</span><span class="p">[</span><span class="s2">"UNK"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="n">word_count</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">tokens</span> <span class="o">=</span> <span class="n">tokens</span>
@@ -919,11 +919,11 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokens</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_sentences</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;sentences&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sentences</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"sentences"</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sentences</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sentences</span>
 
         <span class="n">sentences</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">/datasetSentences.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">/datasetSentences.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">first</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">first</span><span class="p">:</span>
@@ -940,7 +940,7 @@
         <span class="k">return</span> <span class="n">sentences</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_reject_prob</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;reject_prob&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">reject_prob</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"reject_prob"</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">reject_prob</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">reject_prob</span>
 
         <span class="n">threshold</span> <span class="o">=</span> <span class="mf">1e-5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">word_count</span>
@@ -954,7 +954,7 @@
         <span class="k">return</span> <span class="n">reject_prob</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_all_sentences</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;all_sentences&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_sentences</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"all_sentences"</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_sentences</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_sentences</span>
 
         <span class="n">sentences</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_sentences</span><span class="p">()</span>
@@ -992,23 +992,23 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_random_context</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">dataset_split</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;split&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">split</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"split"</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">split</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">split</span>
 
         <span class="n">split</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">/datasetSplit.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">/datasetSplit.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">first</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">first</span><span class="p">:</span>
                     <span class="n">first</span> <span class="o">=</span> <span class="kc">False</span>
                     <span class="k">continue</span>
-                <span class="n">split</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                <span class="n">split</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
                 <span class="n">split</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">split</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">split</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">split</span> <span class="o">=</span> <span class="n">split</span>
         <span class="k">return</span> <span class="n">split</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">sampleTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;sample_table&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_table</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"sample_table"</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_table</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_table</span>
 
         <span class="n">tokens_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tokens</span><span class="p">)</span>
@@ -1107,7 +1107,7 @@
         <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_words</span><span class="p">,</span> <span class="n">vector_dim</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">vector_dim</span><span class="p">,</span>
         <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
             <span class="p">(</span><span class="n">num_words</span><span class="p">,</span> <span class="n">vector_dim</span><span class="p">)</span>
-        <span class="p">),</span>  <span class="c1"># for simplicity&#39;s sake, we will have a separate set of vectors for each context word as well as for each center word</span>
+        <span class="p">),</span>  <span class="c1"># for simplicity's sake, we will have a separate set of vectors for each context word as well as for each center word</span>
     <span class="p">),</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1185,11 +1185,11 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s see what this dot product produces</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># let's see what this dot product produces</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dot_products</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># it&#39;s all zeros because all of the outside word vectors are zero</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># it's all zeros because all of the outside word vectors are zero</span>
 </pre></div>
 </div>
 </div>
@@ -1239,7 +1239,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s see what this looks like</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># let's see what this looks like</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">softmax_probs</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># probabilities are even, at zero, as you might expect</span>
 </pre></div>
@@ -1269,7 +1269,7 @@
 <p>Once we have the derivative, we can take a small step in that direction by multiplying it by a small number (called a step size or learning rate) and subtract it from our values of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s see an example in code</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># let's see an example in code</span>
 <span class="n">loss</span>  <span class="c1"># need to differential with respect to all of the values of A</span>
 </pre></div>
 </div>
@@ -1311,7 +1311,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># now that we&#39;ve calculated our derivatives we can take a step</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># now that we've calculated our derivatives we can take a step</span>
 <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">center_word_vecs</span> <span class="o">-=</span> <span class="n">step</span> <span class="o">*</span> <span class="n">grad_center_vecs</span>
 <span class="n">outside_word_vecs</span> <span class="o">-=</span> <span class="n">step</span> <span class="o">*</span> <span class="n">grad_outside_vecs</span>
@@ -1360,7 +1360,7 @@
         <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_words</span><span class="p">,</span> <span class="n">vector_dim</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">vector_dim</span><span class="p">,</span>
         <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
             <span class="p">(</span><span class="n">num_words</span><span class="p">,</span> <span class="n">vector_dim</span><span class="p">)</span>
-        <span class="p">),</span>  <span class="c1"># for simplicity&#39;s sake, we will have a separate set of vectors for each context word as well as for each center word</span>
+        <span class="p">),</span>  <span class="c1"># for simplicity's sake, we will have a separate set of vectors for each context word as well as for each center word</span>
     <span class="p">),</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1617,7 +1617,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the softmax function for each row of the input x.</span>
+<span class="w">    </span><span class="sd">"""Compute the softmax function for each row of the input x.</span>
 <span class="sd">    It is crucial that this function is optimized for speed because</span>
 <span class="sd">    it will be used frequently in later code.</span>
 
@@ -1625,7 +1625,7 @@
 <span class="sd">    x -- A D dimensional vector or N x D dimensional numpy matrix.</span>
 <span class="sd">    Return:</span>
 <span class="sd">    x -- You are allowed to modify x in-place</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">orig_shape</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
@@ -1671,7 +1671,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_negative_samples</span><span class="p">(</span><span class="n">outsideWordIdx</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Samples K indexes which are not the outsideWordIdx&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Samples K indexes which are not the outsideWordIdx"""</span>
 
     <span class="n">negSampleWordIndices</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">K</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
@@ -1762,21 +1762,21 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">load_saved_params</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    A helper function that loads previously saved parameters and resets</span>
 <span class="sd">    iteration start.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">st</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;saved_params_*.npy&quot;</span><span class="p">):</span>
-        <span class="nb">iter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"saved_params_*.npy"</span><span class="p">):</span>
+        <span class="nb">iter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"_"</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
         <span class="k">if</span> <span class="nb">iter</span> <span class="o">&gt;</span> <span class="n">st</span><span class="p">:</span>
             <span class="n">st</span> <span class="o">=</span> <span class="nb">iter</span>
 
     <span class="k">if</span> <span class="n">st</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">params_file</span> <span class="o">=</span> <span class="s2">&quot;saved_params_</span><span class="si">%d</span><span class="s2">.npy&quot;</span> <span class="o">%</span> <span class="n">st</span>
-        <span class="n">state_file</span> <span class="o">=</span> <span class="s2">&quot;saved_state_</span><span class="si">%d</span><span class="s2">.pickle&quot;</span> <span class="o">%</span> <span class="n">st</span>
+        <span class="n">params_file</span> <span class="o">=</span> <span class="s2">"saved_params_</span><span class="si">%d</span><span class="s2">.npy"</span> <span class="o">%</span> <span class="n">st</span>
+        <span class="n">state_file</span> <span class="o">=</span> <span class="s2">"saved_state_</span><span class="si">%d</span><span class="s2">.pickle"</span> <span class="o">%</span> <span class="n">st</span>
         <span class="n">params</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">params_file</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">state_file</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">state_file</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">state</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">st</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">state</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1784,9 +1784,9 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">save_params</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="n">params_file</span> <span class="o">=</span> <span class="s2">&quot;saved_params_</span><span class="si">%d</span><span class="s2">.npy&quot;</span> <span class="o">%</span> <span class="nb">iter</span>
+    <span class="n">params_file</span> <span class="o">=</span> <span class="s2">"saved_params_</span><span class="si">%d</span><span class="s2">.npy"</span> <span class="o">%</span> <span class="nb">iter</span>
     <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">params_file</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;saved_state_</span><span class="si">%d</span><span class="s2">.pickle&quot;</span> <span class="o">%</span> <span class="nb">iter</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"saved_state_</span><span class="si">%d</span><span class="s2">.pickle"</span> <span class="o">%</span> <span class="nb">iter</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">getstate</span><span class="p">(),</span> <span class="n">f</span><span class="p">)</span>
 
 
@@ -1823,7 +1823,7 @@
                 <span class="n">exploss</span> <span class="o">=</span> <span class="n">loss</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">exploss</span> <span class="o">=</span> <span class="mf">0.95</span> <span class="o">*</span> <span class="n">exploss</span> <span class="o">+</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="n">loss</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iter </span><span class="si">%d</span><span class="s2">: </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">exploss</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"iter </span><span class="si">%d</span><span class="s2">: </span><span class="si">%f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">exploss</span><span class="p">))</span>
             <span class="n">losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">exploss</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">iter</span> <span class="o">%</span> <span class="n">SAVE_PARAMS_EVERY</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">use_saved</span><span class="p">:</span>
@@ -1875,7 +1875,7 @@
     <span class="n">PRINT_EVERY</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;training took </span><span class="si">%d</span><span class="s2"> seconds&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"training took </span><span class="si">%d</span><span class="s2"> seconds"</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1888,10 +1888,10 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">makeLogRecord</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">losses</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Loss&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Iterations&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Loss&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Loss vs. Iterations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">losses</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Loss"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Iterations"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Loss"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Loss vs. Iterations"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">makeLogRecord</span>
@@ -1911,12 +1911,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualize_words = [</span>
-<span class="c1">#     &quot;great&quot;, &quot;cool&quot;, &quot;brilliant&quot;, &quot;wonderful&quot;, &quot;well&quot;, &quot;amazing&quot;,</span>
-<span class="c1">#     &quot;worth&quot;, &quot;sweet&quot;, &quot;enjoyable&quot;, &quot;boring&quot;, &quot;bad&quot;, &quot;dumb&quot;,</span>
-<span class="c1">#     &quot;annoying&quot;, &quot;female&quot;, &quot;male&quot;, &quot;queen&quot;, &quot;king&quot;, &quot;man&quot;, &quot;woman&quot;, &quot;rain&quot;, &quot;snow&quot;,</span>
-<span class="c1">#     &quot;hail&quot;, &quot;coffee&quot;, &quot;tea&quot;]</span>
+<span class="c1">#     "great", "cool", "brilliant", "wonderful", "well", "amazing",</span>
+<span class="c1">#     "worth", "sweet", "enjoyable", "boring", "bad", "dumb",</span>
+<span class="c1">#     "annoying", "female", "male", "queen", "king", "man", "woman", "rain", "snow",</span>
+<span class="c1">#     "hail", "coffee", "tea"]</span>
 
-<span class="n">visualize_words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Paris&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;England&quot;</span><span class="p">,</span> <span class="s2">&quot;France&quot;</span><span class="p">]</span>  <span class="c1"># analogies</span>
+<span class="n">visualize_words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Paris"</span><span class="p">,</span> <span class="s2">"London"</span><span class="p">,</span> <span class="s2">"England"</span><span class="p">,</span> <span class="s2">"France"</span><span class="p">]</span>  <span class="c1"># analogies</span>
 </pre></div>
 </div>
 </div>
@@ -1950,7 +1950,7 @@
         <span class="n">coord</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
         <span class="n">coord</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
         <span class="n">visualize_words</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-        <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
+        <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
     <span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">coord</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])))</span>
@@ -2104,7 +2104,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

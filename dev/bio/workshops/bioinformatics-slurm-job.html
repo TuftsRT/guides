@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -684,8 +684,8 @@
 #SBATCH --output=logs/fastqc_%j.out
 #SBATCH --error=logs/fastqc_%j.err
 
-echo &quot;Job started on $(date)&quot;
-echo &quot;Running on node: $(hostname)&quot;
+echo "Job started on $(date)"
+echo "Running on node: $(hostname)"
 
 # Load FastQC module (adjust if needed)
 module load fastqc/0.11.9
@@ -701,7 +701,7 @@ fastqc $DIR/raw_data/*.fastq.gz \
        --outdir $DIR/results/fastqc \
        --threads 8
 
-echo &quot;Job finished on $(date)&quot;
+echo "Job finished on $(date)"
 </pre></div>
 </div>
 <p><strong>What This Job Does</strong></p>
@@ -814,12 +814,12 @@ done
 sbatch fastqc.sh
 
 # Submit STAR alignment
-jid1=$(sbatch star.sh | awk &#39;{print $4}&#39;)
-echo &quot;STAR job submitted with Job ID: $jid1&quot;
+jid1=$(sbatch star.sh | awk '{print $4}')
+echo "STAR job submitted with Job ID: $jid1"
 
 # Submit sorting job after STAR completes successfully
-jid2=$(sbatch --dependency=afterok:$jid1 sort.sh | awk &#39;{print $4}&#39;)
-echo &quot;Sorting job submitted with Job ID: $jid2&quot;
+jid2=$(sbatch --dependency=afterok:$jid1 sort.sh | awk '{print $4}')
+echo "Sorting job submitted with Job ID: $jid2"
 
 </pre></div>
 </div>
@@ -1030,7 +1030,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

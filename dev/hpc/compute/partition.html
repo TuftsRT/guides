@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -592,7 +592,7 @@
 <p><strong>Preempt Partition</strong> (preempt)</p>
 <ul class="simple">
 <li><p>CPU: 1000 cores</p></li>
-<li><p>RAM: 8000 GB</p></li>
+<li><p>RAM: 10000 GB</p></li>
 <li><p>GPU: 20</p></li>
 </ul>
 <p>Additionally, each user is allowed to request a single interactive job which will have priority over non interactive jobs.</p>
@@ -605,7 +605,7 @@
 <ul class="simple">
 <li><p><strong>batch</strong>*: The default partition for standard jobs that do not require any special hardware or configurations. CPU only. Provides memory (RAM) up to 500GB.</p></li>
 <li><p><strong>gpu</strong>: Designated for jobs that require GPU resources. No CPU only jobs allowed.</p></li>
-<li><p><strong>preempt</strong>: Contains most resources on HPC cluster (CPU and GPU, public and contrib nodes). Jobs submitted to preempt partition has lower priority and can be preempted by contrib node owners’ higher priority jobs.</p></li>
+<li><p><strong>preempt</strong>: Contains most resources on HPC cluster (CPU and GPU, public and contrib nodes). Jobs submitted to preempt partition has lower priority and can be preempted by contrib node owners’ higher priority jobs. Submit jobs with “–qos=preempt”.</p></li>
 </ul>
 <p>The mpi, largemem, and interactive partitions have been retired. Use the batch or gpu partitions instead.</p>
 <p>To get a full inventory of specific available resources and node specs, go to <a class="reference external" href="https://ondemand-prod.pax.tufts.edu"><strong>OnDemand</strong></a> <code class="docutils literal notranslate"><span class="pre">Cluster</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">System</span> <span class="pre">Status</span></code></p>
@@ -619,7 +619,8 @@
 <p>The cluster utilizes Slurm QOS to manage special cases and exceptions to the default resource and time limits.</p>
 <p>Common QOSs available are</p>
 <ul class="simple">
-<li><p>Interactive - Single Job for up to 4 hours with 1 GPU,</p></li>
+<li><p>interactive - Single Job for up to 4 hours with 1 GPU</p></li>
+<li><p>preempt - To access higher resource limits for jobs submitted to preempt partition</p></li>
 </ul>
 </section>
 <section id="time-limit">
@@ -632,7 +633,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>preempt</strong> - Be aware, <code class="docutils literal notranslate"><span class="pre">preempt</span></code> partition consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs.</p></li>
+<li><p><strong>preempt</strong> - Be aware, <code class="docutils literal notranslate"><span class="pre">preempt</span></code> partition consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs. Submit jobs with “–qos=preempt”.</p></li>
 </ul>
 </section>
 </section>
@@ -771,7 +772,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

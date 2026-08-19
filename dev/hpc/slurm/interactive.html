@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -634,7 +634,7 @@
 <section id="cpu-job">
 <h2>CPU Job<a class="headerlink" href="#cpu-job" title="Link to this heading">#</a></h2>
 <p>Starting an interactive session of bash shell on preempt partition with 2 CPU cores and 2GB of RAM, with X11 forwarding for 1 day, 2 hours, and 30 minutes (use <code class="docutils literal notranslate"><span class="pre">exit</span></code> to end session and release resources).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>tutln01@login-p01<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>-p<span class="w"> </span>preempt<span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>-2:30:00<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>--mem<span class="o">=</span>2g<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span>bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>tutln01@login-p01<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>-p<span class="w"> </span>preempt<span class="w"> </span>--qos<span class="o">=</span>preempt<span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>-2:30:00<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>--mem<span class="o">=</span>2g<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span>bash
 srun:<span class="w"> </span>job<span class="w"> </span><span class="m">296794</span><span class="w"> </span>queued<span class="w"> </span>and<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resources
 srun:<span class="w"> </span>job<span class="w"> </span><span class="m">296794</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>allocated<span class="w"> </span>resources
 <span class="o">[</span>tutln01@pax00#<span class="w"> </span>~<span class="o">]</span>$
@@ -645,7 +645,7 @@ srun:<span class="w"> </span>job<span class="w"> </span><span class="m">296794</
 <section id="gpu-job">
 <h2>GPU Job<a class="headerlink" href="#gpu-job" title="Link to this heading">#</a></h2>
 <p>Starting an interactive session of bash shell on preempt partition with 2 CPU cores and 4GB of RAM, with 1 A100 GPU with 40GB of device memory for 1 day, 2 hours, and 30 minutes (use <code class="docutils literal notranslate"><span class="pre">exit</span></code> to end session and release resources).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>tutln01@login-p01<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>-p<span class="w"> </span>preempt<span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>-2:30:00<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>--mem<span class="o">=</span>4g<span class="w"> </span>--gres<span class="o">=</span>gpu:a100:1<span class="w"> </span>--constraint<span class="o">=</span><span class="s2">&quot;a100-40G&quot;</span><span class="w"> </span>--pty<span class="w"> </span>bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>tutln01@login-p01<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>-p<span class="w"> </span>preempt<span class="w"> </span>--qos<span class="o">=</span>preempt<span class="w">  </span>-t<span class="w"> </span><span class="m">1</span>-2:30:00<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>--mem<span class="o">=</span>4g<span class="w"> </span>--gres<span class="o">=</span>gpu:a100:1<span class="w"> </span>--constraint<span class="o">=</span><span class="s2">"a100-40G"</span><span class="w"> </span>--pty<span class="w"> </span>bash
 </pre></div>
 </div>
 <p>Once your resource is allocated on a compute node, use <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> to check GPU info.</p>
@@ -769,7 +769,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

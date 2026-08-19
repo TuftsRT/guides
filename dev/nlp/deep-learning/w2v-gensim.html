@@ -89,8 +89,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -625,7 +625,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gensim.downloader</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">api</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;glove-wiki-gigaword-300&quot;</span><span class="p">)</span>  <span class="c1"># takes about 3 minutes</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"glove-wiki-gigaword-300"</span><span class="p">)</span>  <span class="c1"># takes about 3 minutes</span>
 </pre></div>
 </div>
 </div>
@@ -633,29 +633,29 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this model takes in a word and gives back a vector (word TO vec)</span>
-<span class="n">model</span><span class="p">[</span><span class="s2">&quot;obama&quot;</span><span class="p">]</span>
+<span class="n">model</span><span class="p">[</span><span class="s2">"obama"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s2">&quot;obama&quot;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s2">"obama"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">[</span><span class="s2">&quot;obama&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">[</span><span class="s2">"obama"</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this model is from about 8 years ago so some things aren&#39;t covered</span>
-<span class="n">model</span><span class="p">[</span><span class="s2">&quot;icespice&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this model is from about 8 years ago so some things aren't covered</span>
+<span class="n">model</span><span class="p">[</span><span class="s2">"icespice"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -675,8 +675,8 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># strong relationship</span>
-<span class="n">obama_vector</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;obama&quot;</span><span class="p">]</span>
-<span class="n">president_vector</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;president&quot;</span><span class="p">]</span>
+<span class="n">obama_vector</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">"obama"</span><span class="p">]</span>
+<span class="n">president_vector</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">"president"</span><span class="p">]</span>
 <span class="n">obama_vector</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">president_vector</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">obama_vector</span><span class="p">,</span> <span class="n">president_vector</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -685,7 +685,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a less strong relationship</span>
-<span class="n">random_vector</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;random&quot;</span><span class="p">]</span>  <span class="c1"># random word</span>
+<span class="n">random_vector</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">"random"</span><span class="p">]</span>  <span class="c1"># random word</span>
 <span class="n">obama_vector</span> <span class="o">@</span> <span class="n">random_vector</span>
 </pre></div>
 </div>
@@ -715,7 +715,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># strongest relationships</span>
 <span class="c1"># gensim docs: https://radimrehurek.com/gensim/models/keyedvectors.html</span>
-<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s2">&quot;obama&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s2">"obama"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -735,10 +735,10 @@
 
 <span class="c1"># putting into a dataframe</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">reduced</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">index_to_key</span><span class="p">)))</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;word&quot;</span><span class="p">})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">"word"</span><span class="p">})</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -748,7 +748,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s2">"word"</span><span class="p">])</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -757,9 +757,9 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># taking a closer look</span>
-<span class="n">captials_countries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;paris&quot;</span><span class="p">,</span> <span class="s2">&quot;france&quot;</span><span class="p">,</span> <span class="s2">&quot;london&quot;</span><span class="p">,</span> <span class="s2">&quot;england&quot;</span><span class="p">,</span> <span class="s2">&quot;rome&quot;</span><span class="p">,</span> <span class="s2">&quot;italy&quot;</span><span class="p">]</span>
+<span class="n">captials_countries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"paris"</span><span class="p">,</span> <span class="s2">"france"</span><span class="p">,</span> <span class="s2">"london"</span><span class="p">,</span> <span class="s2">"england"</span><span class="p">,</span> <span class="s2">"rome"</span><span class="p">,</span> <span class="s2">"italy"</span><span class="p">]</span>
 <span class="n">cc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">word</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">captials_countries</span><span class="p">)]</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cc</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">cc</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s2">"word"</span><span class="p">])</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -773,7 +773,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ex1: what are toes minus feet plus hands?</span>
 <span class="c1"># toes are to feet as hands are to ___</span>
-<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;toes&quot;</span><span class="p">,</span> <span class="s2">&quot;hand&quot;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;feet&quot;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">"toes"</span><span class="p">,</span> <span class="s2">"hand"</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">"feet"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -782,7 +782,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ex2: what is a king minus a man plus a woman?</span>
 <span class="c1"># men are to kings as women are to ___</span>
-<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;king&quot;</span><span class="p">,</span> <span class="s2">&quot;woman&quot;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;man&quot;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">"king"</span><span class="p">,</span> <span class="s2">"woman"</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">"man"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -791,7 +791,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ex3: what is a turtle minus a shell plus teeth?</span>
 <span class="c1"># shells are to turtles as teeth are to ___</span>
-<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;turtle&quot;</span><span class="p">,</span> <span class="s2">&quot;teeth&quot;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">"turtle"</span><span class="p">,</span> <span class="s2">"teeth"</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">"shell"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -799,14 +799,14 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># try a couple out for yourself:</span>
-<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;moat&quot;</span><span class="p">,</span> <span class="s2">&quot;swamp&quot;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;water&quot;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">"moat"</span><span class="p">,</span> <span class="s2">"swamp"</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">"water"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># bonus: try to code this out without the `most similar` function, don&#39;t worry about the similarity score</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># bonus: try to code this out without the `most similar` function, don't worry about the similarity score</span>
 <span class="c1"># hint: if you have an index, you can find the word that goes with it with the model.index_to_key list</span>
 </pre></div>
 </div>
@@ -816,9 +816,9 @@
 <h5>Answer<a class="headerlink" href="#answer" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;king&quot;</span><span class="p">]</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;woman&quot;</span><span class="p">]</span>
-<span class="n">n1</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">&quot;man&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">"king"</span><span class="p">]</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">"woman"</span><span class="p">]</span>
+<span class="n">n1</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s2">"man"</span><span class="p">]</span>
 
 <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
 <span class="n">pos</span><span class="o">.</span><span class="n">shape</span>
@@ -872,7 +872,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_most_similar</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;toes&quot;</span><span class="p">,</span> <span class="s2">&quot;hand&quot;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;feet&quot;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_most_similar</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s2">"toes"</span><span class="p">,</span> <span class="s2">"hand"</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s2">"feet"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -916,7 +916,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embedl</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># random weights of a single &quot;word&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embedl</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># random weights of a single "word"</span>
 </pre></div>
 </div>
 </div>
@@ -936,8 +936,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># loading in our (92k) headlines</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;pnadel/nyt_headlines&quot;</span><span class="p">)</span>
-<span class="n">full</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">"pnadel/nyt_headlines"</span><span class="p">)</span>
+<span class="n">full</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"train"</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
 <span class="n">hls</span> <span class="o">=</span> <span class="n">full</span><span class="o">.</span><span class="n">headline</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
 <span class="n">hls</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">hls</span><span class="p">)</span>
 </pre></div>
@@ -963,7 +963,7 @@
 <p>Before we can turn our words into vectors, we need to <em>tokenize</em> our text. Tokenization is the process of turning our sentences into a list of words. Tokenization can be very complicated (with HuggingFace even providing a <code class="docutils literal notranslate"><span class="pre">tokenizers</span></code> library) but we’ll keep it very simple for this example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gensim.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">simple_preprocess</span>  <span class="c1"># gensim&#39;s native tokenization function</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gensim.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">simple_preprocess</span>  <span class="c1"># gensim's native tokenization function</span>
 
 <span class="n">simple_preprocess</span><span class="p">(</span><span class="n">hls</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
@@ -1002,15 +1002,15 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># vector representing &#39;biden&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># vector representing 'biden'</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># vector representing &#39;president&#39;</span>
-<span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s2">&quot;president&quot;</span><span class="p">],</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s2">&quot;president&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s2">&quot;president&quot;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># vector representing 'president'</span>
+<span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s2">"president"</span><span class="p">],</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s2">"president"</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s2">"president"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1067,7 +1067,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">full_vector</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sent_vectors</span><span class="p">)</span>
-<span class="n">full_vector</span><span class="p">[</span><span class="s2">&quot;section&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span>
+<span class="n">full_vector</span><span class="p">[</span><span class="s2">"section"</span><span class="p">]</span> <span class="o">=</span> <span class="n">full</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span>
 
 <span class="c1"># first split</span>
 <span class="n">df</span><span class="p">,</span> <span class="n">valid</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">full_vector</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1337</span><span class="p">)</span>
@@ -1212,9 +1212,9 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># check where we&#39;re wrong</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># check where we're wrong</span>
 <span class="n">check</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">{</span><span class="s2">&quot;headline&quot;</span><span class="p">:</span> <span class="n">full</span><span class="o">.</span><span class="n">headline</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">y_v</span><span class="o">.</span><span class="n">index</span><span class="p">],</span> <span class="s2">&quot;true&quot;</span><span class="p">:</span> <span class="n">y_v</span><span class="p">,</span> <span class="s2">&quot;pred&quot;</span><span class="p">:</span> <span class="n">v_pred</span><span class="p">}</span>
+    <span class="p">{</span><span class="s2">"headline"</span><span class="p">:</span> <span class="n">full</span><span class="o">.</span><span class="n">headline</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">y_v</span><span class="o">.</span><span class="n">index</span><span class="p">],</span> <span class="s2">"true"</span><span class="p">:</span> <span class="n">y_v</span><span class="p">,</span> <span class="s2">"pred"</span><span class="p">:</span> <span class="n">v_pred</span><span class="p">}</span>
 <span class="p">)</span>
 <span class="n">wrong</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">check</span><span class="o">.</span><span class="n">true</span> <span class="o">!=</span> <span class="n">check</span><span class="o">.</span><span class="n">pred</span><span class="p">]</span>
 </pre></div>
@@ -1225,7 +1225,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">wrong</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
     <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Text: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;headline&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">True Label: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;true&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">Predicted Label: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">---------&quot;</span>
+        <span class="sa">f</span><span class="s2">"Text: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="s1">'headline'</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">True Label: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="s1">'true'</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">Predicted Label: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="s1">'pred'</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">---------"</span>
     <span class="p">),</span>
     <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1406,7 +1406,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

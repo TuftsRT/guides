@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -646,13 +646,13 @@ Date: 2025-12-06</p>
 </section>
 <section id="step-1-load-counts-and-metadata">
 <h3>Step 1. Load counts and metadata<a class="headerlink" href="#step-1-load-counts-and-metadata" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>counts &lt;- read_csv(&quot;cell_by_gene.csv&quot;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>counts &lt;- read_csv("cell_by_gene.csv")
 counts &lt;- as.data.frame(counts)
 rownames(counts) &lt;- counts$cell
 counts$cell &lt;- NULL
 counts &lt;- t(counts)
 
-metadata &lt;- read_csv(&quot;cell_metadata.csv&quot;)
+metadata &lt;- read_csv("cell_metadata.csv")
 rownames(metadata) &lt;- metadata$cell
 
 obj &lt;- CreateSeuratObject(counts = counts, meta.data = metadata)
@@ -661,7 +661,7 @@ obj &lt;- CreateSeuratObject(counts = counts, meta.data = metadata)
 </section>
 <section id="step-2-qc-and-filtering">
 <h3>Step 2. QC and filtering<a class="headerlink" href="#step-2-qc-and-filtering" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">[[</span><span class="s2">&quot;percent.mt&quot;</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">PercentageFeatureSet</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s2">&quot;^mt-&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">[[</span><span class="s2">"percent.mt"</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">PercentageFeatureSet</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s2">"^mt-"</span><span class="p">)</span>
 
 <span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">subset</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">,</span>
@@ -686,7 +686,7 @@ obj &lt;- CreateSeuratObject(counts = counts, meta.data = metadata)
 <span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">FindNeighbors</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">dims</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">FindClusters</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">RunUMAP</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">dims</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">DimPlot</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">reduction</span> <span class="o">=</span> <span class="s2">&quot;umap&quot;</span><span class="p">)</span>
+<span class="n">DimPlot</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">reduction</span> <span class="o">=</span> <span class="s2">"umap"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -710,7 +710,7 @@ obj &lt;- CreateSeuratObject(counts = counts, meta.data = metadata)
 <h3>Step 7. Neighborhood analysis<a class="headerlink" href="#step-7-neighborhood-analysis" title="Link to this heading">#</a></h3>
 <p>Example using nearest neighbors.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">FNN</span><span class="p">)</span>
-<span class="n">coords</span> <span class="o">&lt;-</span> <span class="n">obj</span><span class="nd">@meta</span><span class="o">.</span><span class="n">data</span><span class="p">[,</span> <span class="n">c</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">)]</span>
+<span class="n">coords</span> <span class="o">&lt;-</span> <span class="n">obj</span><span class="nd">@meta</span><span class="o">.</span><span class="n">data</span><span class="p">[,</span> <span class="n">c</span><span class="p">(</span><span class="s2">"x"</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">)]</span>
 <span class="n">nn</span> <span class="o">&lt;-</span> <span class="n">get</span><span class="o">.</span><span class="n">knn</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -752,13 +752,13 @@ obj &lt;- CreateSeuratObject(counts = counts, meta.data = metadata)
 <h3>Step 1. Load data<a class="headerlink" href="#step-1-load-data" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">Seurat</span><span class="p">)</span>
 
-<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">Load10X_Spatial</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="s2">&quot;path/to/visium_folder&quot;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">Load10X_Spatial</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="s2">"path/to/visium_folder"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="step-2-qc">
 <h3>Step 2. QC<a class="headerlink" href="#step-2-qc" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">[[</span><span class="s2">&quot;percent.mt&quot;</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">PercentageFeatureSet</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s2">&quot;^MT-&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">[[</span><span class="s2">"percent.mt"</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="n">PercentageFeatureSet</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s2">"^MT-"</span><span class="p">)</span>
 
 <span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">subset</span><span class="p">(</span>
     <span class="n">obj</span><span class="p">,</span>
@@ -771,7 +771,7 @@ obj &lt;- CreateSeuratObject(counts = counts, meta.data = metadata)
 </section>
 <section id="step-3-normalization-and-clustering">
 <h3>Step 3. Normalization and clustering<a class="headerlink" href="#step-3-normalization-and-clustering" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">SCTransform</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">assay</span> <span class="o">=</span> <span class="s2">&quot;Spatial&quot;</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">SCTransform</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">assay</span> <span class="o">=</span> <span class="s2">"Spatial"</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">RunPCA</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">FindNeighbors</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">dims</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">FindClusters</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
@@ -789,7 +789,7 @@ obj &lt;- CreateSeuratObject(counts = counts, meta.data = metadata)
 </section>
 <section id="step-5-spatially-variable-features">
 <h3>Step 5. Spatially variable features<a class="headerlink" href="#step-5-spatially-variable-features" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">svg</span> <span class="o">&lt;-</span> <span class="n">FindSpatiallyVariableFeatures</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">assay</span> <span class="o">=</span> <span class="s2">&quot;SCT&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">svg</span> <span class="o">&lt;-</span> <span class="n">FindSpatiallyVariableFeatures</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">assay</span> <span class="o">=</span> <span class="s2">"SCT"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -807,12 +807,12 @@ obj &lt;- CreateSeuratObject(counts = counts, meta.data = metadata)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>library(clusterProfiler)
 library(org.Hs.eg.db)
 
-genes &lt;- markers$gene[markers$cluster == &quot;0&quot;]
+genes &lt;- markers$gene[markers$cluster == "0"]
 
 enrich &lt;- enrichGO(
     gene = genes,
     OrgDb = org.Hs.eg.db,
-    keyType = &quot;SYMBOL&quot;
+    keyType = "SYMBOL"
 )
 </pre></div>
 </div>
@@ -849,10 +849,10 @@ enrich &lt;- enrichGO(
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GeoMxTools</span><span class="p">)</span>
 
 <span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">readNanoStringGeoMxSet</span><span class="p">(</span>
-    <span class="n">dccFiles</span> <span class="o">=</span> <span class="s2">&quot;path/to/dcc/&quot;</span><span class="p">,</span>
-    <span class="n">pkcFiles</span> <span class="o">=</span> <span class="s2">&quot;path/to/pkc/&quot;</span><span class="p">,</span>
-    <span class="n">phenoDataFile</span> <span class="o">=</span> <span class="s2">&quot;metadata.txt&quot;</span><span class="p">,</span>
-    <span class="n">exprsFile</span> <span class="o">=</span> <span class="s2">&quot;exprMat.txt&quot;</span>
+    <span class="n">dccFiles</span> <span class="o">=</span> <span class="s2">"path/to/dcc/"</span><span class="p">,</span>
+    <span class="n">pkcFiles</span> <span class="o">=</span> <span class="s2">"path/to/pkc/"</span><span class="p">,</span>
+    <span class="n">phenoDataFile</span> <span class="o">=</span> <span class="s2">"metadata.txt"</span><span class="p">,</span>
+    <span class="n">exprsFile</span> <span class="o">=</span> <span class="s2">"exprMat.txt"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -863,13 +863,13 @@ enrich &lt;- enrichGO(
 obj &lt;- setSegmentQCFlags(obj)
 obj &lt;- setGeneQCFlags(obj)
 
-obj &lt;- obj[, obj$SegmentQC == &quot;PASS&quot;]
+obj &lt;- obj[, obj$SegmentQC == "PASS"]
 </pre></div>
 </div>
 </section>
 <section id="step-3-normalization">
 <h3>Step 3. Normalization<a class="headerlink" href="#step-3-normalization" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">normalize</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">norm_method</span> <span class="o">=</span> <span class="s2">&quot;quant&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">&lt;-</span> <span class="n">normalize</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">norm_method</span> <span class="o">=</span> <span class="s2">"quant"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -900,7 +900,7 @@ obj &lt;- obj[, obj$SegmentQC == &quot;PASS&quot;]
 <span class="n">enrichGO</span><span class="p">(</span>
     <span class="n">gene</span> <span class="o">=</span> <span class="n">genes</span><span class="p">,</span>
     <span class="n">OrgDb</span> <span class="o">=</span> <span class="n">org</span><span class="o">.</span><span class="n">Hs</span><span class="o">.</span><span class="n">eg</span><span class="o">.</span><span class="n">db</span><span class="p">,</span>
-    <span class="n">keyType</span> <span class="o">=</span> <span class="s2">&quot;SYMBOL&quot;</span>
+    <span class="n">keyType</span> <span class="o">=</span> <span class="s2">"SYMBOL"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1115,7 +1115,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

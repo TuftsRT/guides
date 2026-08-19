@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -590,7 +590,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">IFrame</span>
 
 <span class="n">IFrame</span><span class="p">(</span>
-    <span class="s2">&quot;https://en.wikipedia.org/wiki/List_of_Roman_emperors#Principate_(27_BC_–_AD_284)&quot;</span><span class="p">,</span>
+    <span class="s2">"https://en.wikipedia.org/wiki/List_of_Roman_emperors#Principate_(27_BC_–_AD_284)"</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
 <span class="p">)</span>
@@ -621,9 +621,9 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## using the .get method we can access any webpage</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://en.wikipedia.org/wiki/List_of_Roman_emperors&quot;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://en.wikipedia.org/wiki/List_of_Roman_emperors"</span><span class="p">)</span>
 
-<span class="c1">## let&#39;s see what r is</span>
+<span class="c1">## let's see what r is</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -658,7 +658,7 @@ Just because you can access and scrape a website doesn’t always mean you shoul
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## the BeautifulSoup parser takes in any string and attempts to parse it as HTML (or XML)</span>
-<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html"</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">soup</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -676,7 +676,7 @@ Just because you can access and scrape a website doesn’t always mean you shoul
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;tbody&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"tbody"</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -684,9 +684,9 @@ Just because you can access and scrape a website doesn’t always mean you shoul
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## now we have a iterable of each tbody object</span>
-<span class="k">for</span> <span class="n">tbody</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;tbody&quot;</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">tbody</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"tbody"</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">tbody</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -694,24 +694,24 @@ Just because you can access and scrape a website doesn’t always mean you shoul
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## importantly each element of this iterable can be navigated like the whole tree did</span>
-<span class="n">tbody</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;tbody&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">tbody</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;tr&quot;</span><span class="p">)[</span>
+<span class="n">tbody</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"tbody"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">tbody</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"tr"</span><span class="p">)[</span>
     <span class="mi">1</span><span class="p">:</span>
 <span class="p">]:</span>  <span class="c1">## the first element (0th in the list) is the columns names, so I have gotten rid of it</span>
     <span class="c1"># print(tr)</span>
-    <span class="c1"># print(&#39;_________&#39;)</span>
-    <span class="n">row</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">find_all</span><span class="p">([</span><span class="s2">&quot;td&quot;</span><span class="p">,</span> <span class="s2">&quot;th&quot;</span><span class="p">])</span>
+    <span class="c1"># print('_________')</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">find_all</span><span class="p">([</span><span class="s2">"td"</span><span class="p">,</span> <span class="s2">"th"</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span>
-        <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;href&quot;</span><span class="p">],</span>
+        <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">],</span>
         <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">get_text</span><span class="p">(),</span>
         <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">small</span><span class="o">.</span><span class="n">get_text</span><span class="p">(),</span>
         <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">(),</span>
         <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">(),</span>
         <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">(),</span>
-        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;_________&quot;</span><span class="p">)</span>
-<span class="c1">## now we&#39;re getting somewhere</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"_________"</span><span class="p">)</span>
+<span class="c1">## now we're getting somewhere</span>
 </pre></div>
 </div>
 </div>
@@ -725,31 +725,31 @@ Just because you can access and scrape a website doesn’t always mean you shoul
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">emp_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">tbody</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;tbody&quot;</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">tbody</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;tr&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]:</span>
-        <span class="n">row</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">find_all</span><span class="p">([</span><span class="s2">&quot;td&quot;</span><span class="p">,</span> <span class="s2">&quot;th&quot;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">tbody</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"tbody"</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">tbody</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"tr"</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">find_all</span><span class="p">([</span><span class="s2">"td"</span><span class="p">,</span> <span class="s2">"th"</span><span class="p">])</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>  <span class="c1">## check if each row is of the correct length</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)):</span>  <span class="c1">## check if each row has an image</span>
-                <span class="n">img_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;en.wikipedia.org</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">img_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"en.wikipedia.org</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">a</span><span class="p">[</span><span class="s1">'href'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
 
                 <span class="n">life_details</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span>
-                    <span class="s2">&quot;(?&lt;=\))&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
-                <span class="p">)</span>  <span class="c1">## here I am using regex to search for the place between an end parenthesis &#39;)&#39; and the rest of the string</span>
+                    <span class="s2">"(?&lt;=\))"</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+                <span class="p">)</span>  <span class="c1">## here I am using regex to search for the place between an end parenthesis ')' and the rest of the string</span>
                 <span class="k">if</span> <span class="p">(</span>
                     <span class="nb">len</span><span class="p">(</span><span class="n">life_details</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
-                <span class="p">):</span>  <span class="c1">## checking if there is a parenthesis, if there isn&#39;t then the cause of death recorded</span>
+                <span class="p">):</span>  <span class="c1">## checking if there is a parenthesis, if there isn't then the cause of death recorded</span>
                     <span class="n">life_date</span> <span class="o">=</span> <span class="n">life_details</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
                     <span class="n">cod</span> <span class="o">=</span> <span class="n">life_details</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">life_date</span> <span class="o">=</span> <span class="n">life_details</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                    <span class="n">cod</span> <span class="o">=</span> <span class="s2">&quot;None found.&quot;</span>
+                    <span class="n">cod</span> <span class="o">=</span> <span class="s2">"None found."</span>
 
                 <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
                     <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">small</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
                 <span class="p">):</span>  <span class="c1">## checking if there is a full name associated with an emperor</span>
                     <span class="n">full_name</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">small</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">full_name</span> <span class="o">=</span> <span class="s2">&quot;None found.&quot;</span>
+                    <span class="n">full_name</span> <span class="o">=</span> <span class="s2">"None found."</span>
 
                 <span class="n">emp_dict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">get_text</span><span class="p">()]</span> <span class="o">=</span> <span class="p">[</span>
                     <span class="n">img_url</span><span class="p">,</span>
@@ -774,7 +774,7 @@ Just because you can access and scrape a website doesn’t always mean you shoul
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;emp_dict.pickle&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"emp_dict.pickle"</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
     <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">emp_dict</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -785,30 +785,30 @@ Just because you can access and scrape a website doesn’t always mean you shoul
 A dictionary is useful, but with more and more data, you’ll find that a dictionary is to simple of a data structure for most webscraped data. A <code class="docutils literal notranslate"><span class="pre">pandas</span></code> dataframe is much more scalable and makes tabular data much easier to work with. That being said, one is NEVER supposed to fill a dataframe with a loop, as we filled the dictionary above. Instead, we can use the dictionary we created above and turn it into a dataframe. This way we can keep both forms of the data in case we need dictionary representation later.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>  <span class="c1">## you will almost always see pandas imported like this, the &#39;pd&#39; alias is a very useful shorthand</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>  <span class="c1">## you will almost always see pandas imported like this, the 'pd' alias is a very useful shorthand</span>
 
-<span class="c1">## Let&#39;s see what happens when we input the dictionary directly</span>
+<span class="c1">## Let's see what happens when we input the dictionary directly</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">emp_dict</span><span class="p">)</span>
-<span class="c1">## it&#39;s close but not quite what we wanted</span>
+<span class="c1">## it's close but not quite what we wanted</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## pandas is programmed to look for numerical indices, which dictionaries (because they&#39;re an unordered data type) do not have</span>
-<span class="c1">## we can coerce it though to accept string values as the index with the &#39;from_dict&#39; method and the &#39;orient&#39; keyword argument</span>
-<span class="c1">## the &#39;reset_index&#39; method will then turn our index into a column and give us an index for the rows</span>
-<span class="n">emp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">emp_dict</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## pandas is programmed to look for numerical indices, which dictionaries (because they're an unordered data type) do not have</span>
+<span class="c1">## we can coerce it though to accept string values as the index with the 'from_dict' method and the 'orient' keyword argument</span>
+<span class="c1">## the 'reset_index' method will then turn our index into a column and give us an index for the rows</span>
+<span class="n">emp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">emp_dict</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">"index"</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">emp_df</span> <span class="o">=</span> <span class="n">emp_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
-        <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;img&quot;</span><span class="p">,</span>
-        <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;full_name&quot;</span><span class="p">,</span>
-        <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;reign&quot;</span><span class="p">,</span>
-        <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;succession&quot;</span><span class="p">,</span>
-        <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;life_dates&quot;</span><span class="p">,</span>
-        <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;cause_of_death&quot;</span><span class="p">,</span>
+        <span class="s2">"index"</span><span class="p">:</span> <span class="s2">"name"</span><span class="p">,</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="s2">"img"</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="s2">"full_name"</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="s2">"reign"</span><span class="p">,</span>
+        <span class="mi">3</span><span class="p">:</span> <span class="s2">"succession"</span><span class="p">,</span>
+        <span class="mi">4</span><span class="p">:</span> <span class="s2">"life_dates"</span><span class="p">,</span>
+        <span class="mi">5</span><span class="p">:</span> <span class="s2">"cause_of_death"</span><span class="p">,</span>
     <span class="p">}</span>
 <span class="p">)</span>  <span class="c1">## last, this is one way to rename columns</span>
 <span class="n">emp_df</span>
@@ -823,8 +823,8 @@ A dictionary is useful, but with more and more data, you’ll find that a dictio
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## we have a slight problem though...</span>
-<span class="c1">## Take Trajan&#39;s row for instance</span>
-<span class="n">string</span> <span class="o">=</span> <span class="n">emp_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">emp_df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Trajan&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">life_dates</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span>
+<span class="c1">## Take Trajan's row for instance</span>
+<span class="n">string</span> <span class="o">=</span> <span class="n">emp_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">emp_df</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"Trajan"</span><span class="p">]</span><span class="o">.</span><span class="n">life_dates</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span>
     <span class="mi">0</span>
 <span class="p">]</span>  <span class="c1">## gets a contents of the life_dates cell in the Trajan row</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
@@ -853,7 +853,7 @@ A dictionary is useful, but with more and more data, you’ll find that a dictio
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">getAges</span><span class="p">(</span><span class="n">life_dates</span><span class="p">):</span>
     <span class="n">ld</span> <span class="o">=</span> <span class="n">unidecode</span><span class="o">.</span><span class="n">unidecode</span><span class="p">(</span><span class="n">life_dates</span><span class="p">)</span>
     <span class="n">age</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-        <span class="s2">&quot;(?&lt;=aged )([0-9]+)|(?&lt;=aged approx. )([0-9]+)&quot;</span><span class="p">,</span> <span class="n">ld</span>
+        <span class="s2">"(?&lt;=aged )([0-9]+)|(?&lt;=aged approx. )([0-9]+)"</span><span class="p">,</span> <span class="n">ld</span>
     <span class="p">)</span>  <span class="c1">## more regex to extract the age</span>
     <span class="k">if</span> <span class="n">age</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">age</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
@@ -873,8 +873,8 @@ A dictionary is useful, but with more and more data, you’ll find that a dictio
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## apply takes in a function and applies it to all of the members of a column</span>
-<span class="n">emp_df</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">emp_df</span><span class="p">[</span><span class="s2">&quot;life_dates&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">getAges</span><span class="p">)</span>
-<span class="n">emp_df</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span>
+<span class="n">emp_df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">=</span> <span class="n">emp_df</span><span class="p">[</span><span class="s2">"life_dates"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">getAges</span><span class="p">)</span>
+<span class="n">emp_df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -883,7 +883,7 @@ A dictionary is useful, but with more and more data, you’ll find that a dictio
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">emp_df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">emp_df</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">emp_df</span><span class="p">[</span><span class="s2">"name"</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">emp_df</span><span class="p">[</span><span class="s2">"age"</span><span class="p">])</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1031,7 +1031,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

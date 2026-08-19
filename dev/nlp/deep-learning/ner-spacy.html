@@ -89,8 +89,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -598,11 +598,11 @@
 <p>As a result, NER can be using in a wide variety of fields and applications.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The example we&#39;ll be looking at today comes from these maps that I made</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The example we'll be looking at today comes from these maps that I made</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">IFrame</span>
 
 <span class="n">IFrame</span><span class="p">(</span>
-    <span class="s2">&quot;https://tuftsgis.maps.arcgis.com/apps/webappviewer/index.html?id=576ff8f0e3954ad781916e94dfb34f7e&quot;</span><span class="p">,</span>
+    <span class="s2">"https://tuftsgis.maps.arcgis.com/apps/webappviewer/index.html?id=576ff8f0e3954ad781916e94dfb34f7e"</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="mi">1400</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
 <span class="p">)</span>
@@ -630,7 +630,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res_html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="s2">&quot;https://topostext.org/work/148&quot;</span>
+    <span class="s2">"https://topostext.org/work/148"</span>
 <span class="p">)</span><span class="o">.</span><span class="n">text</span>  <span class="c1"># The Natural Histories, Plinius Senior</span>
 </pre></div>
 </div>
@@ -638,14 +638,14 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">topos_test</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">res_html</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">topos_test</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">res_html</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p_tags</span> <span class="o">=</span> <span class="n">topos_test</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p_tags</span> <span class="o">=</span> <span class="n">topos_test</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"p"</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
 <span class="n">p_tags</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">a</span>  <span class="c1"># first a tag in the third p tag</span>
 </pre></div>
 </div>
@@ -661,25 +661,25 @@
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">p_tags</span><span class="p">):</span>
     <span class="n">document</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">p_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;(§\s\d\.\d+)|(§\s\d+)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">document</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\xa0\xa0</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+    <span class="n">p_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">"(§\s\d\.\d+)|(§\s\d+)"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">document</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\xa0\xa0</span><span class="s2">"</span><span class="p">,</span> <span class="s2">""</span><span class="p">))</span>
 
     <span class="n">ent_dict</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"a"</span><span class="p">):</span>
         <span class="n">span_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">istitle</span><span class="p">():</span>
-            <span class="k">if</span> <span class="s2">&quot;href&quot;</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">"href"</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
                 <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                    <span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
+                    <span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
                 <span class="p">)</span>
-                <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;href&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                    <span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
+                    <span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
                 <span class="p">)</span>
-                <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s2">"class"</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">span_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">ent_dict</span><span class="p">[</span><span class="s2">&quot;entities&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">span_list</span><span class="p">)</span>
+            <span class="n">ent_dict</span><span class="p">[</span><span class="s2">"entities"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">span_list</span><span class="p">)</span>
     <span class="n">document</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">ent_dict</span><span class="p">))</span>
     <span class="n">TRAIN_DATA</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
 </pre></div>
@@ -722,7 +722,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Muses&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"Muses"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -736,28 +736,28 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -765,21 +765,21 @@
 <p>My Solution</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Muses&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"Muses"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -789,14 +789,14 @@
 <p><code class="docutils literal notranslate"><span class="pre">TRAIN_DATA</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">List[String,</span> <span class="pre">Dict[List[String,</span> <span class="pre">String]]]</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Muses&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"Muses"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -804,7 +804,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># using find method</span>
-<span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -812,8 +812,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add length of the original string</span>
-<span class="n">start</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">start</span><span class="p">,</span> <span class="n">end</span>
 </pre></div>
 </div>
@@ -831,7 +831,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># turn this into a function we can use for each string</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">names2indices</span><span class="p">(</span><span class="n">train_data_instance</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_data_instance</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_data_instance</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">]):</span>
         <span class="c1"># get indices</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">train_data_instance</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">start</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
@@ -841,9 +841,9 @@
             <span class="k">pass</span>
 
         <span class="c1"># update dict</span>
-        <span class="n">train_data_instance</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># remove string name</span>
-        <span class="n">train_data_instance</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>  <span class="c1"># add end</span>
-        <span class="n">train_data_instance</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>  <span class="c1"># add start</span>
+        <span class="n">train_data_instance</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># remove string name</span>
+        <span class="n">train_data_instance</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>  <span class="c1"># add end</span>
+        <span class="n">train_data_instance</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>  <span class="c1"># add start</span>
 </pre></div>
 </div>
 </div>
@@ -852,7 +852,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># do it to all of them in our training data</span>
 <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">TRAIN_DATA</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s2">&quot;entities&quot;</span> <span class="ow">in</span> <span class="n">instance</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s2">"entities"</span> <span class="ow">in</span> <span class="n">instance</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="n">names2indices</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -874,45 +874,45 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># can make this into a single function</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">create_TRAIN_DATA</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Takes in a ToposText URL and creates spaCy training data.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="c1"># scraping</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
         <span class="n">res_html</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span>
 
-        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">res_html</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">res_html</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s2">"html"</span><span class="p">)</span>
         <span class="n">TRAIN_DATA</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="n">p_tags</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">p_tags</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"p"</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">p_tags</span><span class="p">):</span>
             <span class="n">document</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">p_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;(§\s\d\.\d+)|(§\s\d+)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-            <span class="n">document</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\xa0\xa0</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+            <span class="n">p_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">"(§\s\d\.\d+)|(§\s\d+)"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="n">document</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\xa0\xa0</span><span class="s2">"</span><span class="p">,</span> <span class="s2">""</span><span class="p">))</span>
 
             <span class="n">ent_dict</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">"a"</span><span class="p">):</span>
                 <span class="n">span_list</span> <span class="o">=</span> <span class="p">[]</span>
                 <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">istitle</span><span class="p">():</span>
-                    <span class="k">if</span> <span class="s2">&quot;href&quot;</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="s2">"href"</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
                         <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-                        <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;href&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+                        <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="k">try</span><span class="p">:</span>
                             <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-                            <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                            <span class="n">span_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s2">"class"</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
                         <span class="k">except</span><span class="p">:</span>
                             <span class="k">continue</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">span_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">ent_dict</span><span class="p">[</span><span class="s2">&quot;entities&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">span_list</span><span class="p">)</span>
+                    <span class="n">ent_dict</span><span class="p">[</span><span class="s2">"entities"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">span_list</span><span class="p">)</span>
             <span class="n">document</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">ent_dict</span><span class="p">))</span>
             <span class="n">TRAIN_DATA</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
 
         <span class="c1"># reformatting</span>
         <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">TRAIN_DATA</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s2">&quot;entities&quot;</span> <span class="ow">in</span> <span class="n">instance</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="s2">"entities"</span> <span class="ow">in</span> <span class="n">instance</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                 <span class="n">names2indices</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">TRAIN_DATA</span>
@@ -922,7 +922,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_TRAIN_DATA</span><span class="p">(</span><span class="s2">&quot;https://topostext.org/work/148&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_TRAIN_DATA</span><span class="p">(</span><span class="s2">"https://topostext.org/work/148"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -932,7 +932,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TRAIN_DATA</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="c1"># Max of 901</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">901</span><span class="p">)):</span>
-    <span class="n">train</span> <span class="o">=</span> <span class="n">create_TRAIN_DATA</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://topostext.org/work/</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">train</span> <span class="o">=</span> <span class="n">create_TRAIN_DATA</span><span class="p">(</span><span class="sa">f</span><span class="s2">"https://topostext.org/work/</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">train</span><span class="p">:</span>
         <span class="n">TRAIN_DATA</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </pre></div>
@@ -955,16 +955,16 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pickling let&#39;s us save this work so we don&#39;t have to do it again</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pickling let's us save this work so we don't have to do it again</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 
-<span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;topostext_training_data.pkl&quot;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s2">"topostext_training_data.pkl"</span>
 
 <span class="c1"># pickle and save the data</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
     <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">TRAIN_DATA</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training data saved to </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Training data saved to </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -986,10 +986,10 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/content/topostext_training_data.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"/content/topostext_training_data.pkl"</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
     <span class="n">loaded_training_data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loaded training data length:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">loaded_training_data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Loaded training data length:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">loaded_training_data</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1025,11 +1025,11 @@
     <span class="k">for</span> <span class="n">text</span><span class="p">,</span> <span class="n">annot</span> <span class="ow">in</span> <span class="n">TRAIN_DATA</span><span class="p">:</span>
         <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">make_doc</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
         <span class="n">ents</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="s2">&quot;entities&quot;</span> <span class="ow">in</span> <span class="n">annot</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">annot</span><span class="p">[</span><span class="s2">&quot;entities&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="s2">"entities"</span> <span class="ow">in</span> <span class="n">annot</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">annot</span><span class="p">[</span><span class="s2">"entities"</span><span class="p">]:</span>
                 <span class="n">span</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">char_span</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">span</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Skipping entity [</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">] in the following text because the character span &#39;</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; does not align with token boundaries:</span><span class="se">\n\n</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Skipping entity [</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">] in the following text because the character span '</span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span><span class="si">}</span><span class="s2">' does not align with token boundaries:</span><span class="se">\n\n</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
                     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">ents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">span</span><span class="p">)</span>
@@ -1068,10 +1068,10 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">)</span>
 
-<span class="n">convert</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="s2">&quot;/content/data/train.spacy&quot;</span><span class="p">)</span>
-<span class="n">convert</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">valid</span><span class="p">,</span> <span class="s2">&quot;/content/data/valid.spacy&quot;</span><span class="p">)</span>
+<span class="n">convert</span><span class="p">(</span><span class="s2">"en"</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="s2">"/content/data/train.spacy"</span><span class="p">)</span>
+<span class="n">convert</span><span class="p">(</span><span class="s2">"en"</span><span class="p">,</span> <span class="n">valid</span><span class="p">,</span> <span class="s2">"/content/data/valid.spacy"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1080,7 +1080,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/content/data&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">"/content/data"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1123,7 +1123,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
 
-<span class="n">files</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;topostext_ner_model_full.zip&quot;</span><span class="p">)</span>
+<span class="n">files</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"topostext_ner_model_full.zip"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1149,17 +1149,17 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inf_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">An upper vest, once Helen&#39;s rich attire,</span>
-<span class="s2">From Argos by the fam&#39;d adultress brought,</span>
-<span class="s2">With golden flow&#39;rs and winding foliage wrought,</span>
-<span class="s2">Her mother Leda&#39;s present, when she came</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inf_text</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">An upper vest, once Helen's rich attire,</span>
+<span class="s2">From Argos by the fam'd adultress brought,</span>
+<span class="s2">With golden flow'rs and winding foliage wrought,</span>
+<span class="s2">Her mother Leda's present, when she came</span>
 <span class="s2">To ruin Troy and set the world on flame;</span>
-<span class="s2">The scepter Priam&#39;s eldest daughter bore,</span>
+<span class="s2">The scepter Priam's eldest daughter bore,</span>
 <span class="s2">Her orient necklace, and the crown she wore</span>
 <span class="s2">Of double texture, glorious to behold,</span>
 <span class="s2">One order set with gems, and one with gold.</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
 <span class="c1"># Vergil Aenid 1.643</span>
 <span class="c1"># perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0052%3Abook%3D1%3Acard%3D643</span>
@@ -1171,7 +1171,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
 
-<span class="n">trained_nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;models/model-best&quot;</span><span class="p">)</span>
+<span class="n">trained_nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"models/model-best"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1194,7 +1194,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">people</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;people&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">"people"</span><span class="p">:</span>
         <span class="n">people</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ent</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1218,7 +1218,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
 
-<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"en_core_web_sm"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1265,7 +1265,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
 
-<span class="n">trained_nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;models/model-best&quot;</span><span class="p">)</span>
+<span class="n">trained_nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"models/model-best"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1281,7 +1281,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">true_ents_raw</span> <span class="o">=</span> <span class="n">valid_post_training</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">true_ents_raw</span> <span class="o">=</span> <span class="n">valid_post_training</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">]</span>
 <span class="n">true_ents</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">t_e</span> <span class="ow">in</span> <span class="n">true_ents_raw</span><span class="p">:</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">valid_post_training</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="n">t_e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">t_e</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
@@ -1331,7 +1331,7 @@
     <span class="n">doc</span> <span class="o">=</span> <span class="n">trained_nlp</span><span class="p">(</span><span class="n">valid_post_training</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">predicted_ents</span> <span class="o">=</span> <span class="p">[(</span><span class="n">d</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">label_</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">]</span>
 
-    <span class="n">true_ents_raw</span> <span class="o">=</span> <span class="n">valid_post_training</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;entities&quot;</span><span class="p">]</span>
+    <span class="n">true_ents_raw</span> <span class="o">=</span> <span class="n">valid_post_training</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s2">"entities"</span><span class="p">]</span>
     <span class="n">true_ents</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">t_e</span> <span class="ow">in</span> <span class="n">true_ents_raw</span><span class="p">:</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">valid_post_training</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="n">t_e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">t_e</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
@@ -1358,7 +1358,7 @@
 <span class="n">all_false_negatives</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_post_training</span><span class="p">))):</span>
-    <span class="k">if</span> <span class="s2">&quot;entities&quot;</span> <span class="ow">in</span> <span class="n">valid_post_training</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="s2">"entities"</span> <span class="ow">in</span> <span class="n">valid_post_training</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span>
         <span class="n">tp</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span> <span class="o">=</span> <span class="n">eval_one</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="n">all_true_positives</span> <span class="o">+=</span> <span class="n">tp</span>
         <span class="n">all_false_positives</span> <span class="o">+=</span> <span class="n">fp</span>
@@ -1515,7 +1515,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

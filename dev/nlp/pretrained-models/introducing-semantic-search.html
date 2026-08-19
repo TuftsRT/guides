@@ -89,8 +89,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -612,7 +612,7 @@ Once we have generated embeddings for our source documents and our query string,
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
 
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;punkt_tab&quot;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"punkt_tab"</span><span class="p">)</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">llama_cpp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Llama</span>
@@ -624,14 +624,14 @@ Once we have generated embeddings for our source documents and our query string,
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># loading our embedding model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="s2">&quot;BAAI/bge-m3&quot;</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="s2">"BAAI/bge-m3"</span><span class="p">,</span> <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;daf.csv&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"daf.csv"</span><span class="p">)</span>
 <span class="n">df</span>  <span class="c1"># our data</span>
 </pre></div>
 </div>
@@ -639,10 +639,10 @@ Once we have generated embeddings for our source documents and our query string,
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;footnotes&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;sentences&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">)</span>
-<span class="n">sentences</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">sentences</span><span class="p">[</span><span class="s2">&quot;sentences&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">"footnotes"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"sentences"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">)</span>
+<span class="n">sentences</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">"sentences"</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">sentences</span><span class="p">[</span><span class="s2">"sentences"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
     <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">25</span>
 <span class="p">)</span>  <span class="c1"># removing all short sentences</span>
 <span class="n">sentences</span> <span class="o">=</span> <span class="n">sentences</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span>
@@ -664,7 +664,7 @@ Once we have generated embeddings for our source documents and our query string,
     <span class="n">sentences</span><span class="o">.</span><span class="n">sentences</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span>  <span class="c1"># our sentences</span>
     <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>  <span class="c1"># high batch size = faster embedding, more VRAM</span>
     <span class="n">show_progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">,</span>
     <span class="n">normalize_embeddings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># divides embeddings by their norm, centering the distribution at zero with a variance close to one</span>
 <span class="p">)</span>
 </pre></div>
@@ -673,7 +673,7 @@ Once we have generated embeddings for our source documents and our query string,
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embeddings</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># number of documents x the model&#39;s hidden state dimension.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embeddings</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># number of documents x the model's hidden state dimension.</span>
 </pre></div>
 </div>
 </div>
@@ -689,7 +689,7 @@ Once we have generated embeddings for our source documents and our query string,
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">embeddings</span><span class="p">[</span>
     <span class="mi">0</span>
-<span class="p">]</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># an embedding is a single vector of the size of the model&#39;s hidden state</span>
+<span class="p">]</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># an embedding is a single vector of the size of the model's hidden state</span>
 </pre></div>
 </div>
 </div>
@@ -714,14 +714,14 @@ Once we have generated embeddings for our source documents and our query string,
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># making a dataframe to visualize the embeddings with the original sentences</span>
 <span class="n">plotting</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">{</span>
-        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
-        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
-        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">sentences</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
-        <span class="s2">&quot;sentence&quot;</span><span class="p">:</span> <span class="n">sentences</span><span class="o">.</span><span class="n">sentences</span><span class="p">,</span>
+        <span class="s2">"x"</span><span class="p">:</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="s2">"y"</span><span class="p">:</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s2">"title"</span><span class="p">:</span> <span class="n">sentences</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+        <span class="s2">"sentence"</span><span class="p">:</span> <span class="n">sentences</span><span class="o">.</span><span class="n">sentences</span><span class="p">,</span>
     <span class="p">}</span>
 <span class="p">)</span>
-<span class="n">plotting</span><span class="p">[</span><span class="s2">&quot;sentence&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">plotting</span><span class="p">[</span><span class="s2">&quot;sentence&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">))</span>
+<span class="n">plotting</span><span class="p">[</span><span class="s2">"sentence"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">plotting</span><span class="p">[</span><span class="s2">"sentence"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"&lt;br&gt;"</span><span class="p">))</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -729,7 +729,7 @@ Once we have generated embeddings for our source documents and our query string,
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plotting</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="s2">&quot;sentence&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plotting</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="s2">"sentence"</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -743,10 +743,10 @@ Once we have generated embeddings for our source documents and our query string,
 <p>Below we will use an extra string called <code class="docutils literal notranslate"><span class="pre">retrieval_instruction</span></code>. Often when we are taking in a query from the user, it will be mmuch shorted than the typical length of the documents in our sentence list. This extra string that we prepend to the user query makes the user query more comparable to the documents in our embeddings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">retrieval_instruction</span> <span class="o">=</span> <span class="s2">&quot;Represent this sentence for searching relevant passages: &quot;</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;Who were the Goths&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">retrieval_instruction</span> <span class="o">=</span> <span class="s2">"Represent this sentence for searching relevant passages: "</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">"Who were the Goths"</span>
 <span class="n">query_embedding</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
-    <span class="n">retrieval_instruction</span> <span class="o">+</span> <span class="n">query</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">normalize_embeddings</span><span class="o">=</span><span class="kc">True</span>
+    <span class="n">retrieval_instruction</span> <span class="o">+</span> <span class="n">query</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">,</span> <span class="n">normalize_embeddings</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -799,7 +799,7 @@ Once we have generated embeddings for our source documents and our query string,
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rel_chunks</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">sentences</span><span class="o">.</span><span class="n">sentences</span><span class="o">.</span><span class="n">to_list</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rel_idx</span>
 <span class="p">]</span>  <span class="c1"># get back our sentences</span>
-<span class="n">rel_chunks</span>  <span class="c1"># read through these to verify that we&#39;re on the right track</span>
+<span class="n">rel_chunks</span>  <span class="c1"># read through these to verify that we're on the right track</span>
 </pre></div>
 </div>
 </div>
@@ -812,8 +812,8 @@ Once we have generated embeddings for our source documents and our query string,
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># loading our LLM</span>
 <span class="n">llm</span> <span class="o">=</span> <span class="n">Llama</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-    <span class="n">repo_id</span><span class="o">=</span><span class="s2">&quot;Qwen/Qwen2-7B-Instruct-GGUF&quot;</span><span class="p">,</span>
-    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;*q4_0.gguf&quot;</span><span class="p">,</span>
+    <span class="n">repo_id</span><span class="o">=</span><span class="s2">"Qwen/Qwen2-7B-Instruct-GGUF"</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">"*q4_0.gguf"</span><span class="p">,</span>
     <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">n_gpu</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">n_ctx</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span>
@@ -825,7 +825,7 @@ Once we have generated embeddings for our source documents and our query string,
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># RAG prompt, feel free to change and see the differences</span>
-<span class="n">base_prompt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">base_prompt</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2"># Question answering task</span>
 <span class="s2">You are a helpful AI assistant that is skilled at answering user questions based on a given context.</span>
 
@@ -834,14 +834,14 @@ Once we have generated embeddings for our source documents and our query string,
 
 <span class="s2">## Context</span>
 <span class="si">{context}</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="s2">"""</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
 <span class="n">message</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">base_prompt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span>
+        <span class="s2">"content"</span><span class="p">:</span> <span class="n">base_prompt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">question</span><span class="o">=</span><span class="n">query</span><span class="p">,</span>  <span class="c1"># our query from above</span>
-            <span class="n">context</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rel_chunks</span><span class="p">),</span>  <span class="c1"># relevant chunks</span>
+            <span class="n">context</span><span class="o">=</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rel_chunks</span><span class="p">),</span>  <span class="c1"># relevant chunks</span>
         <span class="p">),</span>
     <span class="p">}</span>
 <span class="p">]</span>
@@ -859,7 +859,7 @@ Once we have generated embeddings for our source documents and our query string,
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pprint</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="s2">&quot;choices&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;message&quot;</span><span class="p">][</span><span class="s2">&quot;content&quot;</span><span class="p">])</span>  <span class="c1"># output</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pprint</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="s2">"choices"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"message"</span><span class="p">][</span><span class="s2">"content"</span><span class="p">])</span>  <span class="c1"># output</span>
 </pre></div>
 </div>
 </div>
@@ -992,7 +992,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

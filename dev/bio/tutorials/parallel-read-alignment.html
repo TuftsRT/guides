@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -634,9 +634,9 @@ module<span class="w"> </span>load<span class="w"> </span>samtools/1.9
 <span class="nv">READ2</span><span class="o">=</span><span class="nv">$2</span>
 
 <span class="c1"># Define directories</span>
-<span class="nv">DATA_DIR</span><span class="o">=</span><span class="s2">&quot;/path/to/data&quot;</span>
-<span class="nv">REF_GENOME</span><span class="o">=</span><span class="s2">&quot;/path/to/reference/genome.fa&quot;</span>
-<span class="nv">OUTPUT_DIR</span><span class="o">=</span><span class="s2">&quot;/path/to/output&quot;</span>
+<span class="nv">DATA_DIR</span><span class="o">=</span><span class="s2">"/path/to/data"</span>
+<span class="nv">REF_GENOME</span><span class="o">=</span><span class="s2">"/path/to/reference/genome.fa"</span>
+<span class="nv">OUTPUT_DIR</span><span class="o">=</span><span class="s2">"/path/to/output"</span>
 
 <span class="c1"># Define input files</span>
 <span class="nv">READ1</span><span class="o">=</span><span class="si">${</span><span class="nv">DATA_DIR</span><span class="si">}</span>/<span class="si">${</span><span class="nv">READ1</span><span class="si">}</span>
@@ -653,7 +653,7 @@ bwa<span class="w"> </span>mem<span class="w"> </span>-t<span class="w"> </span>
 samtools<span class="w"> </span>sort<span class="w"> </span>-o<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT_DIR</span><span class="si">}</span>/sample.<span class="si">${</span><span class="nv">READ1</span><span class="si">}</span>.<span class="si">${</span><span class="nv">READ2</span><span class="si">}</span>_sorted.bam<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT_BAM</span><span class="si">}</span>
 samtools<span class="w"> </span>index<span class="w"> </span><span class="si">${</span><span class="nv">OUTPUT_DIR</span><span class="si">}</span>/sample.<span class="si">${</span><span class="nv">READ1</span><span class="si">}</span>.<span class="si">${</span><span class="nv">READ2</span><span class="si">}</span>_sorted.bam
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Alignment for sample </span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="s2"> completed&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Alignment for sample </span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="s2"> completed"</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
@@ -663,8 +663,8 @@ Create a wrapper script to read the sample list and submit jobs to SLURM.</p></l
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
 
 <span class="c1"># Define variables</span>
-<span class="nv">SAMPLES_FILE</span><span class="o">=</span><span class="s2">&quot;samples.txt&quot;</span>
-<span class="nv">SCRIPT</span><span class="o">=</span><span class="s2">&quot;alignment_script.sh&quot;</span>
+<span class="nv">SAMPLES_FILE</span><span class="o">=</span><span class="s2">"samples.txt"</span>
+<span class="nv">SCRIPT</span><span class="o">=</span><span class="s2">"alignment_script.sh"</span>
 
 <span class="c1"># Submit the job for each sample</span>
 <span class="c1"># The while loop will read each line to find READ1 and READ2</span>
@@ -822,7 +822,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

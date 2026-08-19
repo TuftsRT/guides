@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -586,7 +586,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
 <span class="c1">#SBATCH -J My_Job_Name   #job name</span>
 <span class="c1">#SBATCH --time=00-01:20:00  #requested time (DD-HH:MM:SS)</span>
-<span class="c1">#SBATCH -p batch,preempt    #running on &quot;batch&quot; or &quot;preempt&quot; partition, wherever resource is available first</span>
+<span class="c1">#SBATCH -p batch,preempt    #running on "batch" or "preempt" partition, wherever resource is available first</span>
 <span class="c1">#SBATCH -N 1    #1 nodes #for many shared-memory programs,please leave -N as 1.</span>
 <span class="c1">#SBATCH -n 2   #2 tasks total and 1 cpu per task, that gives you 2 cpu cores for this job</span>
 <span class="c1">#SBATCH --mem=2g  #requesting 2GB of RAM total for the number of cpus you requested</span>
@@ -606,7 +606,7 @@ module<span class="w"> </span>load<span class="w"> </span>miniforge/25.3.0
 <span class="c1"># run python script</span>
 python<span class="w"> </span>myscript.py<span class="w"> </span><span class="c1">#make sure myscript.py exists in the current directory</span>
 <span class="c1"># make sure you save all plots, data, outputs generated to files in your script</span>
-<span class="c1"># Don&#39;t forget to deactivate your conda env if you are using one</span>
+<span class="c1"># Don't forget to deactivate your conda env if you are using one</span>
 conda<span class="w"> </span>deactivate
 </pre></div>
 </div>
@@ -620,12 +620,12 @@ conda<span class="w"> </span>deactivate
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
 <span class="c1">#SBATCH -J My_Job_Name   #job name</span>
 <span class="c1">#SBATCH --time=00-00:20:00  #requested time (DD-HH:MM:SS)</span>
-<span class="c1">#SBATCH -p gpu,preempt    #running on &quot;batch&quot; or &quot;preempt&quot; partition, wherever resource is available first</span>
+<span class="c1">#SBATCH -p gpu,preempt    #running on "batch" or "preempt" partition, wherever resource is available first</span>
 <span class="c1">#SBATCH -N 1    #1 nodes #for many shared-memory programs,please leave -N as 1.</span>
 <span class="c1">#SBATCH -n 2   #2 tasks total and 1 cpu per task, that gives you 2 cpu cores for this job</span>
 <span class="c1">#SBATCH --mem=2g  #requesting 2GB of RAM total for the number of cpus you requested</span>
 <span class="c1">#SBATCH --gres=gpu:a100:1	#requesting 1 A100 GPU</span>
-<span class="c1">#SBATCH --constraint=&quot;a100-80G&quot; #only requesting the A100 GPU with 80GB memory</span>
+<span class="c1">#SBATCH --constraint="a100-80G" #only requesting the A100 GPU with 80GB memory</span>
 <span class="c1">#SBATCH --output=MyJob.%j.%N.out  #saving standard output to file, %j=JOBID, %N=NodeName</span>
 <span class="c1">#SBATCH --error=MyJob.%j.%N.err   #saving standard error to file, %j=JOBID, %N=NodeName</span>
 <span class="c1">#SBATCH --mail-type=ALL    #email optitions</span>
@@ -644,7 +644,7 @@ module<span class="w"> </span>load<span class="w"> </span>cuda/12.9.0
 <span class="c1"># run python script</span>
 python<span class="w"> </span>myscript.py<span class="w"> </span><span class="c1">#make sure myscript.py exists in the current directory</span>
 <span class="c1"># make sure you save all plots, data, outputs generated to files in your script</span>
-<span class="c1"># Don&#39;t forget to deactivate your conda env if you are using one</span>
+<span class="c1"># Don't forget to deactivate your conda env if you are using one</span>
 conda<span class="w"> </span>deactivate
 </pre></div>
 </div>
@@ -771,7 +771,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

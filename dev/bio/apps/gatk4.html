@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -730,7 +730,7 @@ primary focus on variant discovery.</p>
 <h2>Example job<a class="headerlink" href="#example-job" title="Link to this heading">#</a></h2>
 <p>Adjust slurm options based on job requirements (<a class="reference external" href="https://slurm.schedmd.com/pdfs/summary.pdf">slurm cheat sheet</a>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
-#SBATCH -p partitionName  # batch, gpu, preempt, mpi or your group&#39;s own partition
+#SBATCH -p partitionName  # batch, gpu, preempt, mpi or your group's own partition
 #SBATCH -t 1:00:00  # Runtime limit (D-HH:MM:SS)
 #SBATCH -N 1   # Number of nodes
 #SBATCH -n 1   # Number of tasks per node
@@ -747,9 +747,9 @@ module load gatk4/XXXX ### Latest version is recommended.
 
 
 # Define input and output files
-REF_GENOME=&quot;reference.fasta&quot;
-INPUT_BAM=&quot;sample.bam&quot;
-OUTPUT_VCF=&quot;sample.vcf&quot;
+REF_GENOME="reference.fasta"
+INPUT_BAM="sample.bam"
+OUTPUT_VCF="sample.vcf"
 
 # Run GATK HaplotypeCaller
 gatk HaplotypeCaller \
@@ -896,7 +896,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

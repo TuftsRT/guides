@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -697,9 +697,9 @@
 #SBATCH --output=rnaseq_%j.log
 #SBATCH --error=rnaseq_%j.err
 
-echo &quot;Starting job at $(date)&quot;
-echo &quot;Running on node: $(hostname)&quot;
-echo &quot;Job ID: $SLURM_JOB_ID&quot;
+echo "Starting job at $(date)"
+echo "Running on node: $(hostname)"
+echo "Job ID: $SLURM_JOB_ID"
 
 module load nextflow
 module load singularity/4.3.4
@@ -722,7 +722,7 @@ nextflow run nf-core/rnaseq \
 # --star_index is provided for the workshop to avoid rebuilding the index and save time.
 # You do not need this flag when running the pipeline independently.
 
-echo &quot;Finished at $(date)&quot;
+echo "Finished at $(date)"
 </pre></div>
 </div>
 <p>Submit job:</p>
@@ -990,7 +990,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

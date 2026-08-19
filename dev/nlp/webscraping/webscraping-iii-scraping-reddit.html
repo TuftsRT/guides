@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -591,7 +591,7 @@
 <p>Because pullpush is an API service. We will ask for data using an URL. This URL will include information like what subreddit we want to search through, the dates we want to search in, and how the results should be ordered. Se below for an example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ex_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.pullpush.io/reddit/search/submission/?subreddit=latin&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ex_url</span> <span class="o">=</span> <span class="s2">"https://api.pullpush.io/reddit/search/submission/?subreddit=latin"</span>
 </pre></div>
 </div>
 </div>
@@ -615,7 +615,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 100 dictionary responses</span>
 </pre></div>
 </div>
@@ -656,12 +656,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">convert_utc_to_date</span><span class="p">(</span><span class="n">ts</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Converts a UTC timestamp to a local datetime object.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">utc_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcfromtimestamp</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
     <span class="n">local_datetime</span> <span class="o">=</span> <span class="n">utc_datetime</span><span class="o">.</span><span class="n">astimezone</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">local_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">local_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -669,9 +669,9 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">convert_date_to_utc</span><span class="p">(</span><span class="n">dt</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Converts a local datetime object to a UTC timestamp.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">dt_with_timezone</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">dt_with_timezone</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
 </pre></div>
@@ -693,7 +693,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
 <span class="n">utc_ts</span> <span class="o">=</span> <span class="n">convert_date_to_utc</span><span class="p">(</span><span class="n">start_date</span><span class="p">)</span>
 
-<span class="n">url_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/search/submission/?after=</span><span class="si">{</span><span class="n">utc_ts</span><span class="si">}</span><span class="s2">&amp;before=</span><span class="si">{</span><span class="n">utc_ts</span><span class="o">+</span><span class="mi">86400</span><span class="si">}</span><span class="s2">&amp;subreddit=latin&quot;</span>  <span class="c1"># can use &amp; to join modifiers</span>
+<span class="n">url_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.pullpush.io/reddit/search/submission/?after=</span><span class="si">{</span><span class="n">utc_ts</span><span class="si">}</span><span class="s2">&amp;before=</span><span class="si">{</span><span class="n">utc_ts</span><span class="o">+</span><span class="mi">86400</span><span class="si">}</span><span class="s2">&amp;subreddit=latin"</span>  <span class="c1"># can use &amp; to join modifiers</span>
 <span class="n">url_query</span>
 </pre></div>
 </div>
@@ -703,13 +703,13 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_query</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of posts: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of posts: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Most recent post: </span><span class="si">{</span><span class="n">convert_utc_to_date</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;created_utc&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">"Most recent post: </span><span class="si">{</span><span class="n">convert_utc_to_date</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'created_utc'</span><span class="p">])</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
     <span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Least recent post: </span><span class="si">{</span><span class="n">convert_utc_to_date</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;created_utc&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">"Least recent post: </span><span class="si">{</span><span class="n">convert_utc_to_date</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">'created_utc'</span><span class="p">])</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
     <span class="p">)</span>
 </pre></div>
 </div>
@@ -722,7 +722,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># generating squares</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">gen_squares</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c1"># loop through each number in range 0 to n</span>
-        <span class="k">yield</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>  <span class="c1"># return the number and the number&#39;s square</span>
+        <span class="k">yield</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>  <span class="c1"># return the number and the number's square</span>
 
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">gen_squares</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>  <span class="c1"># computation only occurs here</span>
@@ -762,7 +762,7 @@
     <span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># defines the amount of days we want to loop through</span>
 
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span>
-        <span class="nb">range</span><span class="p">(</span><span class="n">total_days</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Processing Days&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;day&quot;</span>
+        <span class="nb">range</span><span class="p">(</span><span class="n">total_days</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Processing Days"</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">"day"</span>
     <span class="p">):</span>  <span class="c1"># for each day, now with a progress bar</span>
         <span class="k">yield</span> <span class="n">current</span>  <span class="c1"># give back the current date</span>
         <span class="n">current</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span>
@@ -781,10 +781,10 @@
 <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">date_range_generator</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
     <span class="n">utc_ts</span> <span class="o">=</span> <span class="n">convert_date_to_utc</span><span class="p">(</span><span class="n">day</span><span class="p">)</span>
-    <span class="n">url_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/search/submission/?after=</span><span class="si">{</span><span class="n">utc_ts</span><span class="si">}</span><span class="s2">&amp;before=</span><span class="si">{</span><span class="n">utc_ts</span><span class="o">+</span><span class="mi">86400</span><span class="si">}</span><span class="s2">&amp;subreddit=latin&quot;</span>
+    <span class="n">url_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.pullpush.io/reddit/search/submission/?after=</span><span class="si">{</span><span class="n">utc_ts</span><span class="si">}</span><span class="s2">&amp;before=</span><span class="si">{</span><span class="n">utc_ts</span><span class="o">+</span><span class="mi">86400</span><span class="si">}</span><span class="s2">&amp;subreddit=latin"</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_query</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]:</span>  <span class="c1"># loop through each post and...</span>
+        <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]:</span>  <span class="c1"># loop through each post and...</span>
             <span class="k">if</span> <span class="n">post</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>  <span class="c1"># checking if it is already in our data list</span>
                 <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>  <span class="c1"># if not, then we can add it</span>
 </pre></div>
@@ -804,23 +804,23 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">cols_of_interest</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;author&quot;</span><span class="p">,</span>  <span class="c1"># username</span>
-    <span class="s2">&quot;created_utc&quot;</span><span class="p">,</span>  <span class="c1"># when it was posted</span>
-    <span class="s2">&quot;id&quot;</span><span class="p">,</span>  <span class="c1"># id of thread, useful for comments</span>
-    <span class="s2">&quot;num_comments&quot;</span><span class="p">,</span>  <span class="c1"># number of comments</span>
-    <span class="s2">&quot;score&quot;</span><span class="p">,</span>  <span class="c1"># upvotes - downvotes</span>
-    <span class="s2">&quot;selftext&quot;</span><span class="p">,</span>  <span class="c1"># text of the post</span>
-    <span class="s2">&quot;title&quot;</span><span class="p">,</span>  <span class="c1"># title of the post</span>
-    <span class="s2">&quot;url&quot;</span><span class="p">,</span>  <span class="c1"># url to the thread</span>
+    <span class="s2">"author"</span><span class="p">,</span>  <span class="c1"># username</span>
+    <span class="s2">"created_utc"</span><span class="p">,</span>  <span class="c1"># when it was posted</span>
+    <span class="s2">"id"</span><span class="p">,</span>  <span class="c1"># id of thread, useful for comments</span>
+    <span class="s2">"num_comments"</span><span class="p">,</span>  <span class="c1"># number of comments</span>
+    <span class="s2">"score"</span><span class="p">,</span>  <span class="c1"># upvotes - downvotes</span>
+    <span class="s2">"selftext"</span><span class="p">,</span>  <span class="c1"># text of the post</span>
+    <span class="s2">"title"</span><span class="p">,</span>  <span class="c1"># title of the post</span>
+    <span class="s2">"url"</span><span class="p">,</span>  <span class="c1"># url to the thread</span>
 <span class="p">]</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_of_interest</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"created_utc"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"created_utc"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"created_utc"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
     <span class="n">convert_utc_to_date</span>
 <span class="p">)</span>  <span class="c1"># convert utc to normal date format</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;r_latin20240501to20240507.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"r_latin20240501to20240507.csv"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -851,8 +851,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we&#39;ll need the value at the id column</span>
-<span class="n">ex_id</span> <span class="o">=</span> <span class="n">ex_post</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we'll need the value at the id column</span>
+<span class="n">ex_id</span> <span class="o">=</span> <span class="n">ex_post</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
 <span class="n">ex_id</span>
 </pre></div>
 </div>
@@ -861,8 +861,8 @@
 <p>Instead of using “submission” in our query url, we will use “comment”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">comments_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/comment/search?link_id=</span><span class="si">{</span><span class="n">ex_id</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">comments_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">comments_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.pullpush.io/reddit/comment/search?link_id=</span><span class="si">{</span><span class="n">ex_id</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">comments_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]</span>
 <span class="nb">len</span><span class="p">(</span>
     <span class="n">data</span>
 <span class="p">)</span>  <span class="c1"># there will be a mismatch between this number and the num_comments column as this includes responses to existing comments</span>
@@ -874,8 +874,8 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a function</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_comments</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
-    <span class="n">comments_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/comment/search?link_id=</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">comments_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+    <span class="n">comments_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.pullpush.io/reddit/comment/search?link_id=</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">comments_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -884,15 +884,15 @@
 <p>We can coerce is into a CSV but JSON format would suit this data much better, so we’ll compose a JSON file which has the unique IDs from our DataFrame of posts so that they can be link together.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># filtering by the data we&#39;re interested in</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># filtering by the data we're interested in</span>
 <span class="n">fields_of_interest</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;score&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;replies&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;id&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;author&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;parent_id&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;body&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;created&quot;</span><span class="p">,</span>
+    <span class="s2">"score"</span><span class="p">,</span>
+    <span class="s2">"replies"</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">,</span>
+    <span class="s2">"author"</span><span class="p">,</span>
+    <span class="s2">"parent_id"</span><span class="p">,</span>
+    <span class="s2">"body"</span><span class="p">,</span>
+    <span class="s2">"created"</span><span class="p">,</span>
 <span class="p">]</span>
 
 <span class="n">to_json</span> <span class="o">=</span> <span class="p">{}</span>
@@ -914,7 +914,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>  <span class="c1"># python json library</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;r_latin20240501to20240507_comments.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"r_latin20240501to20240507_comments.json"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">to_json</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>  <span class="c1"># saves dictionary as json</span>
 </pre></div>
 </div>
@@ -931,92 +931,92 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">start_date</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span> <span class="o">=</span> <span class="n">end_date</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">subreddit</span> <span class="o">=</span> <span class="n">subreddit</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">output_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;r_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subreddit</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">end_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"r_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subreddit</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">start_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">end_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1">'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">cols_of_interest</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s2">&quot;author&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;created_utc&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;num_comments&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;score&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;selftext&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;title&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;url&quot;</span><span class="p">,</span>
+            <span class="s2">"author"</span><span class="p">,</span>
+            <span class="s2">"created_utc"</span><span class="p">,</span>
+            <span class="s2">"id"</span><span class="p">,</span>
+            <span class="s2">"num_comments"</span><span class="p">,</span>
+            <span class="s2">"score"</span><span class="p">,</span>
+            <span class="s2">"selftext"</span><span class="p">,</span>
+            <span class="s2">"title"</span><span class="p">,</span>
+            <span class="s2">"url"</span><span class="p">,</span>
         <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fields_of_interest</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s2">&quot;score&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;replies&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;author&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;parent_id&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;body&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;created&quot;</span><span class="p">,</span>
+            <span class="s2">"score"</span><span class="p">,</span>
+            <span class="s2">"replies"</span><span class="p">,</span>
+            <span class="s2">"id"</span><span class="p">,</span>
+            <span class="s2">"author"</span><span class="p">,</span>
+            <span class="s2">"parent_id"</span><span class="p">,</span>
+            <span class="s2">"body"</span><span class="p">,</span>
+            <span class="s2">"created"</span><span class="p">,</span>
         <span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">convert_utc_to_date</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Converts a UTC timestamp to a local datetime object.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">utc_datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcfromtimestamp</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
         <span class="n">local_datetime</span> <span class="o">=</span> <span class="n">utc_datetime</span><span class="o">.</span><span class="n">astimezone</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">local_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">local_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">convert_date_to_utc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Converts a local datetime object to a UTC timestamp.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">dt_with_timezone</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">dt_with_timezone</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">date_range_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Yields next day between start_date and end_date.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">current</span> <span class="o">=</span> <span class="n">start_date</span>
         <span class="n">total_days</span> <span class="o">=</span> <span class="p">(</span><span class="n">end_date</span> <span class="o">-</span> <span class="n">start_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span>
 
-        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">total_days</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Processing Days&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">total_days</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Processing Days"</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">"day"</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">current</span>
             <span class="n">current</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">scrape_posts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Scrapes posts from Reddit and dumps output in a DataFrame.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">start_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span>
         <span class="n">end_date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_date</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">date_range_generator</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
             <span class="n">utc_ts</span> <span class="o">=</span> <span class="n">convert_date_to_utc</span><span class="p">(</span><span class="n">day</span><span class="p">)</span>
-            <span class="n">url_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/search/submission/?after=</span><span class="si">{</span><span class="n">utc_ts</span><span class="si">}</span><span class="s2">&amp;before=</span><span class="si">{</span><span class="n">utc_ts</span><span class="o">+</span><span class="mi">86400</span><span class="si">}</span><span class="s2">&amp;subreddit=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subreddit</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">url_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.pullpush.io/reddit/search/submission/?after=</span><span class="si">{</span><span class="n">utc_ts</span><span class="si">}</span><span class="s2">&amp;before=</span><span class="si">{</span><span class="n">utc_ts</span><span class="o">+</span><span class="mi">86400</span><span class="si">}</span><span class="s2">&amp;subreddit=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subreddit</span><span class="si">}</span><span class="s2">"</span>
             <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_query</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]:</span>  <span class="c1"># loop through each post and...</span>
+                <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]:</span>  <span class="c1"># loop through each post and...</span>
                     <span class="k">if</span> <span class="n">post</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>  <span class="c1"># checking if it is already in our data list</span>
                         <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>  <span class="c1"># if not, then we can add it</span>
 
         <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cols_of_interest</span><span class="p">]</span>
-        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;created_utc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_utc_to_date</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">"created_utc"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"created_utc"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">"date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"created_utc"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convert_utc_to_date</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">save_post_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Saves DataFrame to CSV.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output_file</span><span class="si">}</span><span class="s2">_posts.csv&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output_file</span><span class="si">}</span><span class="s2">_posts.csv"</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_comments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-        <span class="n">comments_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.pullpush.io/reddit/comment/search?link_id=</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">comments_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+        <span class="n">comments_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://api.pullpush.io/reddit/comment/search?link_id=</span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">comments_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"data"</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">scrape_comments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Scrapes comments from Reddit given the ids from self.df.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">to_json</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">id</span><span class="p">):</span>
             <span class="n">comments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_comments</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
@@ -1030,10 +1030,10 @@
         <span class="k">return</span> <span class="n">to_json</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">save_comment_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Saves comments to JSON.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output_file</span><span class="si">}</span><span class="s2">_comments.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="sd">        """</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">output_file</span><span class="si">}</span><span class="s2">_comments.json"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_json</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_json</span>
 
@@ -1049,7 +1049,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">latin_scraper</span> <span class="o">=</span> <span class="n">RedditScraper</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;latin&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">latin_scraper</span> <span class="o">=</span> <span class="n">RedditScraper</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"latin"</span><span class="p">)</span>
 <span class="n">latin_scraper</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1176,7 +1176,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

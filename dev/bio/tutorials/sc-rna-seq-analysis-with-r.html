@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -615,7 +615,7 @@
 <span class="nf">library</span><span class="p">(</span><span class="n">scater</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">scran</span><span class="p">)</span>
 <span class="c1"># code to install scRNAseq</span>
-<span class="c1"># BiocManager::install(&quot;scRNAseq&quot;)</span>
+<span class="c1"># BiocManager::install("scRNAseq")</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">scRNAseq</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">monocle</span><span class="p">)</span>
 </pre></div>
@@ -682,8 +682,8 @@
 <span class="nf">library</span><span class="p">(</span><span class="n">SeuratData</span><span class="p">)</span>
 
 <span class="c1"># Load the pbmc3k dataset (replace with your dataset if needed)</span>
-<span class="n">SeuratData</span><span class="o">::</span><span class="nf">InstallData</span><span class="p">(</span><span class="s">&quot;pbmc3k&quot;</span><span class="p">)</span>
-<span class="nf">data</span><span class="p">(</span><span class="s">&quot;pbmc3k&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Replace with your dataset</span>
+<span class="n">SeuratData</span><span class="o">::</span><span class="nf">InstallData</span><span class="p">(</span><span class="s">"pbmc3k"</span><span class="p">)</span>
+<span class="nf">data</span><span class="p">(</span><span class="s">"pbmc3k"</span><span class="p">)</span><span class="w"> </span><span class="c1"># Replace with your dataset</span>
 
 <span class="c1"># Create a Seurat object</span>
 <span class="n">pbmc_counts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">pbmc3k</span><span class="o">@</span><span class="n">assays</span><span class="o">$</span><span class="n">RNA</span><span class="o">@</span><span class="n">counts</span><span class="p">)</span>
@@ -727,7 +727,7 @@
 
 <span class="c1"># Step 8: Plot the UMAP results</span>
 <span class="c1"># This visualization shows the clusters identified by Seurat, each in a different color.</span>
-<span class="nf">DimPlot</span><span class="p">(</span><span class="n">pbmc</span><span class="p">,</span><span class="w"> </span><span class="n">reduction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;umap&quot;</span><span class="p">)</span>
+<span class="nf">DimPlot</span><span class="p">(</span><span class="n">pbmc</span><span class="p">,</span><span class="w"> </span><span class="n">reduction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"umap"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This annotated code provides a guide for basic steps of single-cell RNA-seq analysis in Seurat, from data normalization to visualization.</p>
@@ -902,7 +902,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -657,7 +657,7 @@ Date: 2026-02-26</p>
 <p>The version of DESeq2 currently pre-installed in R is <strong>1.44.0</strong>.</p>
 <p>Verify it using the following commands in R:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">DESeq2</span><span class="p">)</span>
-<span class="n">packageVersion</span><span class="p">(</span><span class="s2">&quot;DESeq2&quot;</span><span class="p">)</span>
+<span class="n">packageVersion</span><span class="p">(</span><span class="s2">"DESeq2"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>If you need a newer version of DESeq2 (e.g., 1.46.0), you may need to update the package manually or request installation by the system administrator.</p>
@@ -734,10 +734,10 @@ Date: 2026-02-26</p>
 <section id="load-data">
 <h4>Load Data:<a class="headerlink" href="#load-data" title="Link to this heading">#</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load count matrix</span>
-<span class="n">counts</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;counts_matrix.csv&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">"counts_matrix.csv"</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Load metadata</span>
-<span class="n">metadata</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;metadata.csv&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">metadata</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">"metadata.csv"</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Ensure row names of metadata match column names of counts</span>
 <span class="n">metadata</span> <span class="o">&lt;-</span> <span class="n">metadata</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">colnames</span><span class="p">(</span><span class="n">counts</span><span class="p">),</span> <span class="n">rownames</span><span class="p">(</span><span class="n">metadata</span><span class="p">)),</span> <span class="p">]</span>
@@ -772,12 +772,12 @@ head(results)
 <h3>3.4 Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># PCA plot</span>
 <span class="n">vsd</span> <span class="o">&lt;-</span> <span class="n">vst</span><span class="p">(</span><span class="n">dds</span><span class="p">,</span> <span class="n">blind</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>  <span class="c1"># Variance-stabilizing transformation</span>
-<span class="n">plotPCA</span><span class="p">(</span><span class="n">vsd</span><span class="p">,</span> <span class="n">intgroup</span> <span class="o">=</span> <span class="s2">&quot;Condition&quot;</span><span class="p">)</span>
+<span class="n">plotPCA</span><span class="p">(</span><span class="n">vsd</span><span class="p">,</span> <span class="n">intgroup</span> <span class="o">=</span> <span class="s2">"Condition"</span><span class="p">)</span>
 
 <span class="c1"># Heatmap of Sample Distances</span>
 <span class="n">sampleDists</span> <span class="o">&lt;-</span> <span class="n">dist</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">assay</span><span class="p">(</span><span class="n">vsd</span><span class="p">)))</span>
 <span class="n">sampleDistMatrix</span> <span class="o">&lt;-</span> <span class="k">as</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">sampleDists</span><span class="p">)</span>
-<span class="n">pheatmap</span><span class="p">(</span><span class="n">sampleDistMatrix</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">&quot;Sample Distance Heatmap&quot;</span><span class="p">)</span>
+<span class="n">pheatmap</span><span class="p">(</span><span class="n">sampleDistMatrix</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">"Sample Distance Heatmap"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -790,17 +790,17 @@ results$significant &lt;- results$padj &lt; 0.05 &amp; abs(results$log2FoldChang
 ggplot(results, aes(x = log2FoldChange, y = -log10(pvalue), color = significant)) +
   geom_point() +
   theme_minimal() +
-  labs(x = &quot;Log2 Fold Change&quot;, y = &quot;-Log10 P-value&quot;)
+  labs(x = "Log2 Fold Change", y = "-Log10 P-value")
 </pre></div>
 </div>
 </section>
 <section id="annotating-results">
 <h3>3.6 Annotating Results<a class="headerlink" href="#annotating-results" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add gene symbols or annotations to results (if available):</span>
-<span class="n">annotated_results</span> <span class="o">&lt;-</span> <span class="n">merge</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">gene_annotations</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;GeneID&quot;</span><span class="p">,</span> <span class="nb">all</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+<span class="n">annotated_results</span> <span class="o">&lt;-</span> <span class="n">merge</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">gene_annotations</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s2">"GeneID"</span><span class="p">,</span> <span class="nb">all</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
 
 <span class="c1"># Save results to a CSV file:</span>
-<span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">annotated_results</span><span class="p">,</span> <span class="s2">&quot;DESeq2_results.csv&quot;</span><span class="p">)</span>
+<span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">annotated_results</span><span class="p">,</span> <span class="s2">"DESeq2_results.csv"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -940,7 +940,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

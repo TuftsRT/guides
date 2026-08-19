@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -604,7 +604,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">IFrame</span>
 
-<span class="n">phi_url</span> <span class="o">=</span> <span class="s2">&quot;https://latin.packhum.org/&quot;</span>
+<span class="n">phi_url</span> <span class="o">=</span> <span class="s2">"https://latin.packhum.org/"</span>
 <span class="n">IFrame</span><span class="p">(</span><span class="n">phi_url</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -644,7 +644,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver.common.by</span><span class="w"> </span><span class="kn">import</span> <span class="n">By</span>  <span class="c1"># allows us to select by different things</span>
 
-<span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;lic&quot;</span><span class="p">)</span>  <span class="c1"># selecting by class name</span>
+<span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">"lic"</span><span class="p">)</span>  <span class="c1"># selecting by class name</span>
 <span class="n">enter</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>  <span class="c1"># selenium allows us to click!</span>
 </pre></div>
 </div>
@@ -665,23 +665,23 @@ so we will give in a search query and scrape the resulting data to a <code class
     <span class="k">return</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
 
 
-<span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">&quot;enter_button.png&quot;</span><span class="p">)</span>
+<span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">"enter_button.png"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">"li"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_elements</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Element number:&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;; Text: &quot;</span><span class="p">,</span> <span class="n">element</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Element number:"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">"; Text: "</span><span class="p">,</span> <span class="n">element</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># second element is &quot;Word Search&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># second element is "Word Search"</span>
 <span class="n">list_elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>  <span class="c1"># click on it</span>
 </pre></div>
 </div>
@@ -689,30 +689,30 @@ so we will give in a search query and scrape the resulting data to a <code class
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">&quot;word_search.png&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">"word_search.png"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_term</span> <span class="o">=</span> <span class="s2">&quot;artifex&quot;</span>  <span class="c1"># &quot;artist&quot; in latin</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_term</span> <span class="o">=</span> <span class="s2">"artifex"</span>  <span class="c1"># "artist" in latin</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">"input"</span><span class="p">)</span>
 <span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">search_term</span><span class="p">)</span>  <span class="c1"># send keys inputs the characters into a web element</span>
-<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># equal to hitting enter</span>
+<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># equal to hitting enter</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">&quot;search_results.png&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">"search_results.png"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -733,7 +733,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <p>To learn more visit <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/XPath">this page</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matches</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matches</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='results']/ul/li"</span><span class="p">)</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -745,7 +745,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this code scrolls to the bottom of the page</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span>
-    <span class="s2">&quot;window.scrollTo(0, document.body.scrollHeight);&quot;</span>
+    <span class="s2">"window.scrollTo(0, document.body.scrollHeight);"</span>
 <span class="p">)</span>  <span class="c1"># this is running a JavaScript snippet, not Python code</span>
 </pre></div>
 </div>
@@ -754,7 +754,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">take_and_show_screenshot</span><span class="p">(</span>
-    <span class="n">driver</span><span class="p">,</span> <span class="s2">&quot;scroll_down.png&quot;</span>
+    <span class="n">driver</span><span class="p">,</span> <span class="s2">"scroll_down.png"</span>
 <span class="p">)</span>  <span class="c1"># nice we scrolled, now we need to click</span>
 </pre></div>
 </div>
@@ -763,7 +763,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">next_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
-    <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[@class=&#39;plink pg_n&#39;]&quot;</span>
+    <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//a[@class='plink pg_n']"</span>
 <span class="p">)</span>  <span class="c1"># find the next button</span>
 <span class="n">next_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>  <span class="c1"># click!</span>
 </pre></div>
@@ -772,7 +772,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">&quot;next_page.png&quot;</span><span class="p">)</span>  <span class="c1"># and now were on the next page</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">take_and_show_screenshot</span><span class="p">(</span><span class="n">driver</span><span class="p">,</span> <span class="s2">"next_page.png"</span><span class="p">)</span>  <span class="c1"># and now were on the next page</span>
 </pre></div>
 </div>
 </div>
@@ -780,7 +780,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matches</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
-    <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">)</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='results']/ul/li"</span><span class="p">)</span>
 <span class="p">)</span>  <span class="c1"># lets do the same as above, get the matches and add them to our list</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span>
 </pre></div>
@@ -789,7 +789,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>  <span class="c1"># huh? why&#39;s it not working</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>  <span class="c1"># huh? why's it not working</span>
 </pre></div>
 </div>
 </div>
@@ -801,7 +801,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a function that strips all of the relevant info</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_relevant_info</span><span class="p">(</span><span class="n">one_match</span><span class="p">):</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">one_match</span><span class="o">.</span><span class="n">text</span>
-    <span class="n">cite_link</span> <span class="o">=</span> <span class="n">one_match</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">)</span>
+    <span class="n">cite_link</span> <span class="o">=</span> <span class="n">one_match</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">)</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s2">"href"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">text</span><span class="p">,</span> <span class="n">cite_link</span>
 </pre></div>
 </div>
@@ -809,7 +809,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matches</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matches</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='results']/ul/li"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">one_match</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">get_relevant_info</span><span class="p">(</span><span class="n">one_match</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">()</span>
@@ -826,10 +826,10 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="c1"># last thing: there&#39;s a tracker at the top of the page that tells us how many results to expect</span>
+<span class="c1"># last thing: there's a tracker at the top of the page that tells us how many results to expect</span>
 <span class="c1"># we can get the text there to make sure we have everything</span>
-<span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
-<span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+) results&quot;</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='stats']"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\d+) results"</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">num_matches</span>
 </pre></div>
 </div>
@@ -839,47 +839,47 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">selenium.common.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">NoSuchElementException</span><span class="p">,</span>
-<span class="p">)</span>  <span class="c1"># the error when the search bar isn&#39;t there</span>
+<span class="p">)</span>  <span class="c1"># the error when the search bar isn't there</span>
 
 <span class="c1"># reinitializing the driver</span>
 <span class="n">driver</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">Chrome</span><span class="p">()</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">phi_url</span><span class="p">)</span>
 
 <span class="c1"># click on enter button</span>
-<span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;lic&quot;</span><span class="p">)</span>
+<span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">"lic"</span><span class="p">)</span>
 <span class="n">enter</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
-<span class="c1"># click on &quot;Word Search&quot;</span>
-<span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span><span class="p">)</span>
+<span class="c1"># click on "Word Search"</span>
+<span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">"li"</span><span class="p">)</span>
 <span class="n">list_elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
 <span class="c1"># submit search term</span>
-<span class="n">search_term</span> <span class="o">=</span> <span class="s2">&quot;artifex&quot;</span>  <span class="c1"># feel free to change</span>
-<span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">)</span>
+<span class="n">search_term</span> <span class="o">=</span> <span class="s2">"artifex"</span>  <span class="c1"># feel free to change</span>
+<span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">"input"</span><span class="p">)</span>
 <span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">search_term</span><span class="p">)</span>
-<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># get number of matches</span>
-<span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
-<span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+) results&quot;</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of expected results: &quot;</span><span class="p">,</span> <span class="n">num_matches</span><span class="p">)</span>
+<span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='stats']"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\d+) results"</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of expected results: "</span><span class="p">,</span> <span class="n">num_matches</span><span class="p">)</span>
 
 <span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">page_matches</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='results']/ul/li"</span><span class="p">):</span>
         <span class="n">page_matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_relevant_info</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
     <span class="n">matches</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">page_matches</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
-    <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;window.scrollTo(0, document.body.scrollHeight);&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Current length: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Current length: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">"window.scrollTo(0, document.body.scrollHeight);"</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">next_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[@class=&#39;plink pg_n&#39;]&quot;</span><span class="p">)</span>
+        <span class="n">next_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//a[@class='plink pg_n']"</span><span class="p">)</span>
         <span class="n">next_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
     <span class="k">except</span> <span class="n">NoSuchElementException</span><span class="p">:</span>
         <span class="k">break</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Final length: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -896,51 +896,51 @@ so we will give in a search query and scrape the resulting data to a <code class
 <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">phi_url</span><span class="p">)</span>
 
 <span class="c1"># click on enter button</span>
-<span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;lic&quot;</span><span class="p">)</span>
+<span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">"lic"</span><span class="p">)</span>
 <span class="n">enter</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
-<span class="c1"># click on &quot;Word Search&quot;</span>
-<span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span><span class="p">)</span>
+<span class="c1"># click on "Word Search"</span>
+<span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">"li"</span><span class="p">)</span>
 <span class="n">list_elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
 <span class="c1"># submit search term</span>
-<span class="n">search_term</span> <span class="o">=</span> <span class="s2">&quot;artifex&quot;</span>  <span class="c1"># feel free to change</span>
-<span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">)</span>
+<span class="n">search_term</span> <span class="o">=</span> <span class="s2">"artifex"</span>  <span class="c1"># feel free to change</span>
+<span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">"input"</span><span class="p">)</span>
 <span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">search_term</span><span class="p">)</span>
-<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># wait for the search to load</span>
 
 <span class="c1"># get number of matches</span>
-<span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
-<span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+) results&quot;</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of expected results: &quot;</span><span class="p">,</span> <span class="n">num_matches</span><span class="p">)</span>
+<span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='stats']"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\d+) results"</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of expected results: "</span><span class="p">,</span> <span class="n">num_matches</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 
 <span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">current_page</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='stats']"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
     <span class="n">page_matches</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='results']/ul/li"</span><span class="p">):</span>
         <span class="n">page_matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_relevant_info</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
     <span class="n">matches</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">page_matches</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current page: &quot;</span><span class="p">,</span> <span class="n">current_page</span><span class="p">)</span>
-    <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;window.scrollTo(0, document.body.scrollHeight);&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Current length: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Current page: "</span><span class="p">,</span> <span class="n">current_page</span><span class="p">)</span>
+    <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">"window.scrollTo(0, document.body.scrollHeight);"</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># wait for the scroll to load</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">next_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[@class=&#39;plink pg_n&#39;]&quot;</span><span class="p">)</span>
+        <span class="n">next_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//a[@class='plink pg_n']"</span><span class="p">)</span>
         <span class="n">next_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
         <span class="n">current_page</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># wait for the next page to load</span>
     <span class="k">except</span> <span class="n">NoSuchElementException</span><span class="p">:</span>
-        <span class="k">break</span>  <span class="c1"># break out of loop if the next button isn&#39;t there</span>
+        <span class="k">break</span>  <span class="c1"># break out of loop if the next button isn't there</span>
     <span class="nb">print</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>  <span class="c1"># takes about a minute to run</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Final length: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>  <span class="c1"># takes about a minute to run</span>
 </pre></div>
 </div>
 </div>
@@ -967,7 +967,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">splits</span> <span class="o">=</span> <span class="n">matches</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># \n is a helpful delimiter</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">splits</span> <span class="o">=</span> <span class="n">matches</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># \n is a helpful delimiter</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -982,10 +982,10 @@ so we will give in a search query and scrape the resulting data to a <code class
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">citations</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s]+ (.*)&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">citations</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[A-z\s]+, [A-z\s]+ (.*)"</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span>
     <span class="mi">1</span>
 <span class="p">)</span>  <span class="c1"># regex to separate the numbers</span>
-<span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>  <span class="c1"># split on the comma</span>
+<span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)</span>  <span class="c1"># split on the comma</span>
 </pre></div>
 </div>
 </div>
@@ -1028,7 +1028,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">passages</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">3</span><span class="p">)</span>
 <span class="p">]</span>  <span class="c1"># joining lists into a single passage</span>
 <span class="n">passages</span>
 </pre></div>
@@ -1037,7 +1037,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">citations</span> <span class="o">=</span> <span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">citations</span> <span class="o">=</span> <span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1054,17 +1054,17 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># full code for formatting all of the info</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">one_match</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
-    <span class="n">splits</span> <span class="o">=</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">author_title</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s]+&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">author</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">splits</span> <span class="o">=</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">author_title</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[A-z\s]+, [A-z\s]+"</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># the case where we have more than one passage per result</span>
         <span class="c1"># same code as above</span>
-        <span class="n">citations</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s]+ (.*)&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">citations</span> <span class="o">=</span> <span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+        <span class="n">citations</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[A-z\s]+, [A-z\s]+ (.*)"</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">citations</span> <span class="o">=</span> <span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)</span>
         <span class="n">passages</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">3</span><span class="p">)</span>
         <span class="p">]</span>
         <span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
             <span class="p">[</span>
@@ -1074,10 +1074,10 @@ so we will give in a search query and scrape the resulting data to a <code class
         <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>  <span class="c1"># the case were one result has one match</span>
         <span class="c1"># this is new</span>
-        <span class="n">citation</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s\.]+ (.*)&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span>
+        <span class="n">citation</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[A-z\s]+, [A-z\s\.]+ (.*)"</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span>
             <span class="mi">1</span>
         <span class="p">)</span>  <span class="c1"># gets citation the same way</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># collects and joins text</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># collects and joins text</span>
         <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">citation</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 </pre></div>
 </div>
@@ -1088,7 +1088,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="c1"># putting it in a dataframe</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="s2">&quot;citation&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;cite_link&quot;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"title"</span><span class="p">,</span> <span class="s2">"author"</span><span class="p">,</span> <span class="s2">"citation"</span><span class="p">,</span> <span class="s2">"text"</span><span class="p">,</span> <span class="s2">"cite_link"</span><span class="p">])</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -1106,66 +1106,66 @@ so we will give in a search query and scrape the resulting data to a <code class
     <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">phi_url</span><span class="p">)</span>
 
     <span class="c1"># click on enter button</span>
-    <span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;lic&quot;</span><span class="p">)</span>
+    <span class="n">enter</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">"lic"</span><span class="p">)</span>
     <span class="n">enter</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
-    <span class="c1"># click on &quot;Word Search&quot;</span>
-    <span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span><span class="p">)</span>
+    <span class="c1"># click on "Word Search"</span>
+    <span class="n">list_elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">"li"</span><span class="p">)</span>
     <span class="n">list_elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 
     <span class="c1"># submit search term</span>
     <span class="n">search_term</span> <span class="o">=</span> <span class="n">query</span>
-    <span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">)</span>
+    <span class="n">search_bar</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">TAG_NAME</span><span class="p">,</span> <span class="s2">"input"</span><span class="p">)</span>
     <span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">search_term</span><span class="p">)</span>
-    <span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># wait for the search to load</span>
 
     <span class="c1"># get number of matches</span>
-    <span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
-    <span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+) results&quot;</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of expected results: &quot;</span><span class="p">,</span> <span class="n">num_matches</span><span class="p">)</span>
+    <span class="n">num_matches_raw</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='stats']"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">num_matches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\d+) results"</span><span class="p">,</span> <span class="n">num_matches_raw</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Number of expected results: "</span><span class="p">,</span> <span class="n">num_matches</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">()</span>
 
     <span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">current_page</span> <span class="o">=</span> <span class="mi">1</span>
 
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;stats&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='stats']"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
         <span class="n">page_matches</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//div[@id=&#39;results&#39;]/ul/li&quot;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//div[@id='results']/ul/li"</span><span class="p">):</span>
             <span class="n">page_matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_relevant_info</span><span class="p">(</span><span class="n">element</span><span class="p">))</span>
         <span class="n">matches</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">page_matches</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current page: &quot;</span><span class="p">,</span> <span class="n">current_page</span><span class="p">)</span>
-        <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">&quot;window.scrollTo(0, document.body.scrollHeight);&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Current length: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Current page: "</span><span class="p">,</span> <span class="n">current_page</span><span class="p">)</span>
+        <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s2">"window.scrollTo(0, document.body.scrollHeight);"</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># wait for the scroll to load</span>
 
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">next_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//a[@class=&#39;plink pg_n&#39;]&quot;</span><span class="p">)</span>
+            <span class="n">next_button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">"//a[@class='plink pg_n']"</span><span class="p">)</span>
             <span class="n">next_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
             <span class="n">current_page</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># wait for the next page to load</span>
         <span class="k">except</span> <span class="n">NoSuchElementException</span><span class="p">:</span>
-            <span class="k">break</span>  <span class="c1"># break out of loop if the next button isn&#39;t there</span>
+            <span class="k">break</span>  <span class="c1"># break out of loop if the next button isn't there</span>
         <span class="nb">print</span><span class="p">()</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final length: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>  <span class="c1"># takes about a minute to run</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Final length: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span>  <span class="c1"># takes about a minute to run</span>
 
     <span class="c1"># format data</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">one_match</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
-        <span class="n">splits</span> <span class="o">=</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">author_title</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s]+&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">author</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">splits</span> <span class="o">=</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">author_title</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[A-z\s]+, [A-z\s]+"</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">author</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">author_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># the case where we have more than one passage per result</span>
             <span class="c1"># same code as above</span>
-            <span class="n">citations</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s]+ (.*)&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-            <span class="n">citations</span> <span class="o">=</span> <span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+            <span class="n">citations</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[A-z\s]+, [A-z\s]+ (.*)"</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">citations</span> <span class="o">=</span> <span class="n">citations</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">", "</span><span class="p">)</span>
             <span class="n">passages</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">3</span><span class="p">)</span>
+                <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="mi">3</span><span class="p">)</span>
             <span class="p">]</span>
             <span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
                 <span class="p">[</span>
@@ -1175,14 +1175,14 @@ so we will give in a search query and scrape the resulting data to a <code class
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># the case were one result has one match</span>
             <span class="c1"># this is new</span>
-            <span class="n">citation</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-z\s]+, [A-z\s\.]+ (.*)&quot;</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span>
+            <span class="n">citation</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[A-z\s]+, [A-z\s\.]+ (.*)"</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">group</span><span class="p">(</span>
                 <span class="mi">1</span>
             <span class="p">)</span>  <span class="c1"># gets citation the same way</span>
-            <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># collects and joins text</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># collects and joins text</span>
             <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">citation</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">one_match</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="s2">&quot;citation&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;cite_link&quot;</span><span class="p">]</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"title"</span><span class="p">,</span> <span class="s2">"author"</span><span class="p">,</span> <span class="s2">"citation"</span><span class="p">,</span> <span class="s2">"text"</span><span class="p">,</span> <span class="s2">"cite_link"</span><span class="p">]</span>
     <span class="p">)</span>
 </pre></div>
 </div>
@@ -1190,7 +1190,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">instar_df</span> <span class="o">=</span> <span class="n">search_phi</span><span class="p">(</span><span class="s2">&quot;instar&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">instar_df</span> <span class="o">=</span> <span class="n">search_phi</span><span class="p">(</span><span class="s2">"instar"</span><span class="p">)</span>
 <span class="n">instar_df</span>
 </pre></div>
 </div>
@@ -1199,7 +1199,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualize titles</span>
-<span class="n">instar_df</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">)</span>
+<span class="n">instar_df</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"barh"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1207,7 +1207,7 @@ so we will give in a search query and scrape the resulting data to a <code class
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualize authors</span>
-<span class="n">instar_df</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">)</span>
+<span class="n">instar_df</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"barh"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1342,7 +1342,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../../_static/searchtools.js"></script>
@@ -818,7 +818,7 @@
 <p>Example script: <code class="docutils literal notranslate"><span class="pre">align.sh</span></code> using parabricks to do the alignment.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 #SBATCH -J fq2bam_alignment          # Job name
-#SBATCH -p preempt                   # Submit to the &#39;preempt&#39; partition (modify based on your cluster setup)
+#SBATCH -p preempt                   # Submit to the 'preempt' partition (modify based on your cluster setup)
 #SBATCH --gres=gpu:1                 # Request 1 GPU for accelerated processing
 #SBATCH -n 2                         # Number of tasks (2 in this case)
 #SBATCH --mem=60g                    # Memory allocation (60GB)
@@ -834,14 +834,14 @@ nvidia-smi                              # Show GPU information (optional for log
 module load parabricks/4.0.0-1          # Load Parabricks module for GPU-accelerated alignment
 
 # Define variables
-genome_reference=&quot;/path/to/reference_genome&quot;      # Path to the reference genome (.fasta)
-input_fastq1=&quot;/path/to/input_read1.fastq&quot;         # Path to the first paired-end FASTQ file
-input_fastq2=&quot;/path/to/input_read2.fastq&quot;         # Path to the second paired-end FASTQ file
-sample_name=&quot;sample_identifier&quot;                  # Sample identifier
-known_sites_vcf=&quot;/path/to/known_sites.vcf&quot;        # Known sites VCF file for BQSR (optional, if available)
-output_directory=&quot;/path/to/output_directory&quot;      # Directory for the output BAM file and reports
-output_bam=&quot;${output_directory}/${sample_name}.bam&quot;            # Output BAM file path
-output_bqsr_report=&quot;${output_directory}/${sample_name}.BQSR-report.txt&quot;  # Output BQSR report path
+genome_reference="/path/to/reference_genome"      # Path to the reference genome (.fasta)
+input_fastq1="/path/to/input_read1.fastq"         # Path to the first paired-end FASTQ file
+input_fastq2="/path/to/input_read2.fastq"         # Path to the second paired-end FASTQ file
+sample_name="sample_identifier"                  # Sample identifier
+known_sites_vcf="/path/to/known_sites.vcf"        # Known sites VCF file for BQSR (optional, if available)
+output_directory="/path/to/output_directory"      # Directory for the output BAM file and reports
+output_bam="${output_directory}/${sample_name}.bam"            # Output BAM file path
+output_bqsr_report="${output_directory}/${sample_name}.BQSR-report.txt"  # Output BQSR report path
 
 # Run the Parabricks fq2bam alignment pipeline
 pbrun fq2bam \
@@ -1043,7 +1043,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       

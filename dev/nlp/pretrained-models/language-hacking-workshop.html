@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260812" />
-    <meta name="docbuild:last-update" content="Aug 12, 2026"/>
+  <meta name="docsearch:version" content="20260819" />
+    <meta name="docbuild:last-update" content="Aug 19, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -593,8 +593,8 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dataset</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;pnadel/les_trois_mousquetaires&quot;</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">"pnadel/les_trois_mousquetaires"</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">"train"</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
 <span class="n">data</span>
 </pre></div>
 </div>
@@ -602,7 +602,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">][:</span><span class="mi">1000</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"text"</span><span class="p">][:</span><span class="mi">1000</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -620,7 +620,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># loading the model</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
 
-<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;fr_core_news_md&quot;</span><span class="p">)</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"fr_core_news_md"</span><span class="p">)</span>
 <span class="n">nlp</span>  <span class="c1"># working!</span>
 </pre></div>
 </div>
@@ -636,8 +636,8 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is spacy `Doc` object</span>
 <span class="n">example</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span>
-    <span class="s2">&quot;Je m&#39;appelle Peter. J&#39;aime les jeux vidéos.&quot;</span>
-<span class="p">)</span>  <span class="c1"># &quot;My name is Peter. I like video games&quot;</span>
+    <span class="s2">"Je m'appelle Peter. J'aime les jeux vidéos."</span>
+<span class="p">)</span>  <span class="c1"># "My name is Peter. I like video games"</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -682,7 +682,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># iterating through each token</span>
 <span class="c1"># AND getting some morphosyntactic information</span>
 <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">example</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">lemma_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">lemma_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t\t</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -704,7 +704,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">spacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">displacy</span>
 
-<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">sents</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dep&quot;</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">sents</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="s2">"dep"</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -714,8 +714,8 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># copulative example</span>
 <span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
-    <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;Je suis fatigué&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dep&quot;</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span>  <span class="c1"># &quot;I am tired&quot; in English</span>
+    <span class="n">nlp</span><span class="p">(</span><span class="s2">"Je suis fatigué"</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">"dep"</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>  <span class="c1"># "I am tired" in English</span>
 </pre></div>
 </div>
 </div>
@@ -727,7 +727,7 @@
 <p>Now that we have a grasp on the core vocabulary, we can begin to delve into real French literature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first_chapter</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first_chapter</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"text"</span><span class="p">]</span>
 <span class="n">first_chapter_doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">first_chapter</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -744,7 +744,7 @@
 <p>In English: A short time ago, while making researches in the Royal Library for my History of Louis XIV., I stumbled by chance upon the Memoirs of M. d’Artagnan, printed—as were most of the works of that period, in which authors could not tell the truth without the risk of a residence, more or less long, in the Bastille—at Amsterdam, by Pierre Rogue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">first_sentence</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dep&quot;</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">first_sentence</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"dep"</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -752,7 +752,7 @@
 <p>This tree is very complex, so let’s break it down using <code class="docutils literal notranslate"><span class="pre">spaCy</span></code>’s <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">rights</span></code>, <code class="docutils literal notranslate"><span class="pre">lefts</span></code> and <code class="docutils literal notranslate"><span class="pre">children</span></code> functionalities.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># each token has a &quot;head&quot; word</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># each token has a "head" word</span>
 <span class="c1"># this is the word that it depends on</span>
 <span class="n">first_sentence</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">first_sentence</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">head</span>
 <span class="c1"># the head word of faisant is tombai</span>
@@ -774,16 +774,16 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># `lefts` returns a generator of all words to the left of a given token</span>
 <span class="c1"># which have that given token as their head</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LEFTS&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"LEFTS"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">lefts</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t\t</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">()</span>
 <span class="c1"># `rights` returns a generator of all words to the right of a given token</span>
 <span class="c1"># which have that given token as their head</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RIGHTS&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"RIGHTS"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">rights</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t\t</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -792,7 +792,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># `children` returns a generator of all of the descendants of a given word</span>
 <span class="k">for</span> <span class="n">descendant</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">descendant</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">descendant</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">descendant</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">descendant</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t\t</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -803,12 +803,12 @@
 <p>We can now move on to using these morphosyntactic annotations to read text in a language we don’t know.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># first let&#39;s apply the model to the whole text</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># first let's apply the model to the whole text</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="n">tqdm</span><span class="o">.</span><span class="n">pandas</span><span class="p">()</span>  <span class="c1"># for a progress bar</span>
 
-<span class="n">data</span><span class="p">[</span><span class="s2">&quot;spacy_docs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="n">nlp</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">"spacy_docs"</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span><span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="n">nlp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -819,8 +819,8 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">wiktionaryparser</span><span class="w"> </span><span class="kn">import</span> <span class="n">WiktionaryParser</span>
 
 <span class="n">parser</span> <span class="o">=</span> <span class="n">WiktionaryParser</span><span class="p">()</span>
-<span class="n">word</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s2">&quot;hasard&quot;</span><span class="p">,</span> <span class="s2">&quot;french&quot;</span><span class="p">)</span>
-<span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;definitions&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">word</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s2">"hasard"</span><span class="p">,</span> <span class="s2">"french"</span><span class="p">)</span>
+<span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"definitions"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"text"</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -829,11 +829,11 @@
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">look_up_definition</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">WiktionaryParser</span><span class="p">()</span>
-    <span class="n">word</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s2">&quot;french&quot;</span><span class="p">)</span>
+    <span class="n">word</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s2">"french"</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;definitions&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"definitions"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"text"</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;No definition for this word. It is likely a proper noun.&quot;</span>
+        <span class="k">return</span> <span class="s2">"No definition for this word. It is likely a proper noun."</span>
 </pre></div>
 </div>
 </div>
@@ -855,7 +855,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># treebank</span>
-<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">example_sentence</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dep&quot;</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">example_sentence</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"dep"</span><span class="p">,</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -879,7 +879,7 @@
 <p>From this information, we can see that the root of tis sentences is “entra”, that it means “enter” and that it is a 3rd person singular, indictative, past tense verb, which would translate to “entered” in English. Now we can look at the <code class="docutils literal notranslate"><span class="pre">lefts</span></code> and <code class="docutils literal notranslate"><span class="pre">rights</span></code> to find what depends on the root.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LEFTS: </span><span class="si">{</span><span class="p">[</span><span class="n">r</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">root</span><span class="o">.</span><span class="n">lefts</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"LEFTS: </span><span class="si">{</span><span class="p">[</span><span class="n">r</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">root</span><span class="o">.</span><span class="n">lefts</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">first_dep</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">lefts</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">first_dep</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">first_dep</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">first_dep</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">first_dep</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">look_up_definition</span><span class="p">(</span>
     <span class="n">first_dep</span><span class="o">.</span><span class="n">lemma_</span>
@@ -891,7 +891,7 @@
 <p>From the ‘nsubj’ tag, we can tell that this word is the subject of the verb “entra” and it means “he”. In the context of the story, this “he” refers to King Louis XIII.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RIGHTS: </span><span class="si">{</span><span class="p">[</span><span class="n">r</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">root</span><span class="o">.</span><span class="n">rights</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"RIGHTS: </span><span class="si">{</span><span class="p">[</span><span class="n">r</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">root</span><span class="o">.</span><span class="n">rights</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">next_dep</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">rights</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">next_dep</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">next_dep</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span> <span class="n">next_dep</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span> <span class="n">next_dep</span><span class="o">.</span><span class="n">morph</span><span class="p">,</span> <span class="n">look_up_definition</span><span class="p">(</span>
     <span class="n">next_dep</span><span class="o">.</span><span class="n">lemma_</span>
@@ -904,13 +904,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">descendant</span> <span class="ow">in</span> <span class="n">next_dep</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span> <span class="o">!=</span> <span class="s2">&quot;dep&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span> <span class="o">!=</span> <span class="s2">"dep"</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span>
             <span class="n">descendant</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
             <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span>
             <span class="n">descendant</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span>
             <span class="n">look_up_definition</span><span class="p">(</span><span class="n">descendant</span><span class="o">.</span><span class="n">lemma_</span><span class="p">),</span>
-            <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t\t</span><span class="s2">"</span><span class="p">,</span>
         <span class="p">)</span>
 </pre></div>
 </div>
@@ -930,13 +930,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">descendant</span> <span class="ow">in</span> <span class="n">last_dep</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span> <span class="o">!=</span> <span class="s2">&quot;dep&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span> <span class="o">!=</span> <span class="s2">"dep"</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span>
             <span class="n">descendant</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
             <span class="n">descendant</span><span class="o">.</span><span class="n">dep_</span><span class="p">,</span>
             <span class="n">descendant</span><span class="o">.</span><span class="n">pos_</span><span class="p">,</span>
             <span class="n">look_up_definition</span><span class="p">(</span><span class="n">descendant</span><span class="o">.</span><span class="n">lemma_</span><span class="p">),</span>
-            <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t\t</span><span class="s2">"</span><span class="p">,</span>
         <span class="p">)</span>
 </pre></div>
 </div>
@@ -1089,7 +1089,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Aug 12, 2026.
+  Last updated on Aug 19, 2026.
   <br/>
 </p></div>
       
