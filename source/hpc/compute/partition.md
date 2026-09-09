@@ -27,7 +27,7 @@ A limit is placed on the total resources a single user can have allocated at any
 **Preempt Partition** (preempt)
 
 - CPU: 1000 cores
-- RAM: 8000 GB
+- RAM: 10000 GB
 - GPU: 20
 
 Additionally, each user is allowed to request a single interactive job which will have priority over non interactive jobs.
@@ -42,7 +42,7 @@ All users have equal access to the following public partitions. Job priorities a
 
 - **batch**\*: The default partition for standard jobs that do not require any special hardware or configurations. CPU only. Provides memory (RAM) up to 500GB.
 - **gpu**: Designated for jobs that require GPU resources. No CPU only jobs allowed.
-- **preempt**: Contains most resources on HPC cluster (CPU and GPU, public and contrib nodes). Jobs submitted to preempt partition has lower priority and can be preempted by contrib node owners' higher priority jobs.
+- **preempt**: Contains most resources on HPC cluster (CPU and GPU, public and contrib nodes). Jobs submitted to preempt partition has lower priority and can be preempted by contrib node owners' higher priority jobs. Submit jobs with "--qos=preempt".
 
 The mpi, largemem, and interactive partitions have been retired. Use the batch or gpu partitions instead.
 
@@ -60,7 +60,8 @@ The cluster utilizes Slurm QOS to manage special cases and exceptions to the def
 
 Common QOSs available are
 
-- Interactive - Single Job for up to 4 hours with 1 GPU,
+- interactive - Single Job for up to 4 hours with 1 GPU
+- preempt - To access higher resource limits for jobs submitted to preempt partition
 
 ## Time limit
 
@@ -73,7 +74,7 @@ gpu             2-00:00:00
 preempt         2-00:00:00
 ```
 
-- **preempt** - Be aware, `preempt` partition consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs.
+- **preempt** - Be aware, `preempt` partition consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs. Submit jobs with "--qos=preempt".
 
 # Lab Partitions
 
