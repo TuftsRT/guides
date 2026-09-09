@@ -12,7 +12,7 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 | Location         | Path                           | Default Quota |
 | ---------------- | ------------------------------ | ------------- |
 | Home directory   | `/cluster/home/your_utln`      | 30 GB (fixed) |
-| Lab/project name | `/cluster/tufts/project_name/` | 100 GB and up  |
+| Lab/project name | `/cluster/tufts/project_name/` | 100 GB and up |
 
 ## Storage Details
 
