@@ -16,26 +16,26 @@ This application is best suited for individuals who require audio transcriptions
 
 ## ASR details
 
-This application expects a folder of audio files uploaded to the Cluster. So long as you have that you are able to use this application. If you only have one file, simply uploaded it in a folder by itself. The application requires .wav files, but all other audio formats will be automatically converted.
+This application expects a folder of audio files uploaded to the Cluster. You will not be able to upload individual files by themselves. If you only have one audio file, simply upload it in a folder by itself and use that folder to run the application. The application requires .wav files, but all other audio formats will be automatically converted.
 
 ## Getting started
 
-ASR is an Open OnDemand application on the Cluster, meaning that it can be access from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](https://ondemand-prod.pax.tufts.edu/). Once there, select the "Interactive Apps" drop down and click on "Automated Speech Recognition".
+ASR is an Open OnDemand application on the Cluster, meaning that it can be accessed from the Interactive Apps drop-down menu in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](https://ondemand-prod.pax.tufts.edu/). Once there, select the "Interactive Apps" drop-down menu and click on "Automated Speech Recognition".
 
 ![Interactive Apps dropdown](./assets/asr-dropdown.png)
 
-## Configuring you session
+## Configuring your session
 
-Once you've clicked on "Automated Speech Recognition", you will be able to configure the setting for using the application. Some of these options can be confusing, so we have left an example configuration below. If you are unsure, feel free to use this one. Otherwise, we explore what these parameters mean here:
+Once you've clicked on "Automated Speech Recognition", you will be able to configure the settings for using the application. Some of these options can be confusing, so we have left an example configuration below. If you are unsure, feel free to use this one. Otherwise, we explore what these parameters mean here:
 
-- _Number of hours_: This parameter controls how long your session will run for. At the conclusion of this time, your session will end. Be sure to choose a time that matches how you expect to need in hours. You can always budget more time than you may need and they end the session early if you need.
+- _Number of hours_: This parameter controls how long your session will run for. At the conclusion of this time, your session will end. Be sure to choose a duration that matches how many hours you expect to need. You can always budget more time than you may need and then end the session early if necessary.
 - _Number of cores_: This field controls how many CPU cores are allocated for your session. It is important to pick a value proportional to the size of the LLM you'd like to run. If you are having trouble choosing, you can use the value shown below.
-- _Amount of Memory (GB)_: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose, so I like to use double the amount of CPU cores that I have selected.
+- _Amount of Memory (GB)_: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose, so I like to allocate twice as much memory (in GB) as the number of CPU cores selected.
 - _Partition_: You should choose the "gpu" option. Generally, we require hardware acceleration to run ASR models. You can run some models, however, with just CPUs, especially if you adjust the number of cores and amount of memory to be quite high, in which case, you could select "batch" for this option.
-- _GPU architecture_: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the `hpctools` CLI. Learn more [here](https://rtguides.it.tufts.edu/hpc/examples/hpctools.html).
-- _Input audio directory_: This parameter should be the file path to the folder with the audio files you'd like to transcribe. To upload files use the file explorer as explained [here](https://rtguides.it.tufts.edu/hpc/access/40-xfer.html#ondemand)
+- _GPU architecture_: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is in high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the `hpctools` CLI. Learn more [here](https://rtguides.it.tufts.edu/hpc/examples/hpctools.html).
+- _Input audio directory_: This parameter should be the file path to the folder containing the audio files you'd like to transcribe. To upload files use the file explorer as explained [here](https://rtguides.it.tufts.edu/hpc/access/40-xfer.html#ondemand)
 
-The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
+The rest of the fields should remain in their default configuration. When you are ready, click "Launch".
 
 ![Demo Config](./assets/on-demand-asr-config.png)
 
@@ -49,10 +49,10 @@ When the application starts running, you'll see the message below:
 
 ![Running](./assets/asr-running.png)
 
-When the application is complete and the text has been searched, you will see the message below:
+When the application is complete and the audio has been transcribed, you will see the message below:
 
 ![Complete](./assets/asr-completed.png)
 
-You can new visit the directory with your source files and the results will be in a new subfolder called "asr_output".
+You can now visit the directory with your source files and the results will be in a new subfolder called "asr_output".
 
 For any questions, please reach out to Research Technology at: tts-research@tufts.edu.
