@@ -131,4 +131,35 @@ Then you can find and connect to the established tunnel to the same cluster comp
 
 ### When Done
 
-As a reminder, when you are done with your session, be sure to be sure to end your VSCode Server session and exit the interactive session on the HPC cluster to release resources for other users.
+As a reminder, when you are done with your session, be sure to end your VSCode Server session and exit the interactive session on the HPC cluster to release resources for other users.
+
+## Using Claude Code with VSCode
+
+Claude Code, a command line agentic AI tool, can be integrated with VSCode running on the HPC via the [OnDemand VSCode Server](#ondemand-vscode-server) or [Local VSCode with Tunnel](#local-vscode-with-tunnel) workflows described above.
+
+```{warning}
+{{ ai_disclaimer }}
+```
+
+1. Launch a VSCode Server session using either method described above, then open the **Extensions** view.
+
+1. Install Claude Code via the Extensions view. Ensure the extension is the one published by Anthropic.
+
+1. Alternatively, Claude Code can be installed and run from the integrated terminal:
+
+   1. Open a new terminal via the hamburger menu (three lines, top left) > _View_ > _Terminal_.
+
+   1. Install Claude Code.
+
+      ```bash
+      curl -fsSL https://claude.ai/install.sh | bash
+      ```
+
+   1. Create and enter a single dedicated folder to store project files. Claude Code requests permission to edit all files in the current working directory, so this should be limited to a single folder to start.
+
+      ```bash
+      mkdir claude
+      cd claude
+      ```
+
+   1. Type `claude` and press Enter to run Claude Code. Follow the prompt to authenticate via a browser, then copy and paste the authentication string into the VSCode terminal.

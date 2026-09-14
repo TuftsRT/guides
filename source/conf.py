@@ -170,6 +170,17 @@ myst_linkify_fuzzy_links = False
 myst_substitutions = {
     "email": f"<{email}>",
     "mailto:": f"mailto:{email}",
+    "ai_disclaimer": (
+        "**AI Usage Disclaimer:** AI-generated content may be incorrect, biased, "
+        "incomplete, or misleading. Always review, verify, and edit AI output before "
+        "use. Before uploading data to any AI tool, please review the Tufts "
+        "Information Classification and Handling Policy and the "
+        "[Data Storage Finder](https://access.tufts.edu/data-finder). Do not enter "
+        "any restricted data into the tool without formal TTS review. For "
+        "requirements and best practices, please refer to Tufts' "
+        "[Guidelines for Use of Generative AI Tools]"
+        "(https://it.tufts.edu/ai/guidance-using-ai-tufts)."
+    ),
 }
 
 nb_custom_formats = {

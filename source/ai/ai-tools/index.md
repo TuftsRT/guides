@@ -18,6 +18,10 @@ grid-columns: 1
   content: "Employ AI in a Jupyter notebook to allow for advanced text and image processing"
   link: "ollama-jupyter.html"
 
+- header: "{fas}`book` LLM API (LLaMA CPP Server)"
+  content: "Launch a private, OpenAI-API-compatible LLM server for coding assistants, scripts, and notebooks."
+  link: "llm-api.html"
+
 - header: "{fas}`book` Research Application: Optical Character Recognition (OCR)"
   content: "Convert images to text for your research projects."
   link: "ra-ocr.html"
@@ -29,4 +33,8 @@ grid-columns: 1
 - header: "{fas}`book` Research Application: Text Search"
   content: "Search through a large corpus of documents quickly."
   link: "ra-text-search.html"
+```
+
+```{warning}
+{{ ai_disclaimer }}
 ```
