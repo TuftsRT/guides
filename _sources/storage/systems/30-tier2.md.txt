@@ -11,7 +11,8 @@ See [RT Announcements](https://it.tufts.edu/research-technology/announcements) f
 
 | Detail           | Value                                         |
 | ---------------- | --------------------------------------------- |
-| Path             | `/cluster/tier2/project_name`                 |
+| HPC Cluster Path | `/cluster/tier2/project_name`                 |
+| Globus Path      | `/tier2/project_name`                         |
 | Technology       | Magnetic Disk                                 |
 | Starting quota   | 100 GB minimum                                |
 | Base allocation  | 10 TB at no cost (if eligible faculty member) |
@@ -34,7 +35,7 @@ Tier 2 storage can also be accessed through **Globus**. Tufts Research Technolog
 1. In the **File Manager**, click the **Collection** field and search for **"Tufts"**
 1. Select the **Tufts Tier 2 Storage** collection
 1. Authenticate with your Tufts credentials when prompted
-1. Your `/cluster/tier2/project_name` directory will be available to browse and transfer
+1. Your `/tier2/project_name` directory will be available to browse and transfer
 
 See the full [Globus guide](../globus/index.md) for setup, transferring files between endpoints, and monitoring transfers.
 
