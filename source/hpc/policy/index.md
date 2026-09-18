@@ -37,7 +37,8 @@ Scratch disk space is a commonly implemented feature in high performance computi
 * Data is automatically deleted if not accessed in 21 days 
 * There are no backups or snapshots of data stored in scratch 
 * A total of 300 TB of Tier 1 storage has been designated for use as scratch space. In the event this fills up we may revisit the amount of space provided via this policy. 
-* In the unlikely event any single user needs a scratch space over 15TB the additional storage allocated will be charged at the Tier 1 storage rate. 
+* In the unlikely event any single user needs a scratch space over 15TB the additional storage allocated will be charged at the Tier 1 storage rate.
+* Running `touch` commands or similar operations to modify timestamps and bypass this cleanup policy is prohibited. Users who engage in this behavior will lose the privilege of using scratch storage.
 
 ## HPC Researcher Contribution Node
 
