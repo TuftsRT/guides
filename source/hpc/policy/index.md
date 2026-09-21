@@ -7,7 +7,7 @@ Faculty with a Tufts University appointment can request additional storage for u
 
 ## Acceptable Use Policy
 
-Tufts HPC cluster is an "institutional systems" and its acceptable use is governed by the university wide ["Use of Information Systems Policy"](https://it.tufts.edu/sites/default/files/uploaded-files/2018-09/use-institutional_systems_2018-06-18_0.pdf) policy. The Tufts HPC Cluster is available to all members of the Tufts community.  Its usage is intended for computational work in support of research, teaching and learning.  
+Tufts HPC cluster is an "institutional systems" and its acceptable use is governed by the university wide ["Use of Information Systems Policy"](https://it.tufts.edu/sites/default/files/uploaded-files/2018-09/use-institutional_systems_2018-06-18_0.pdf) policy. The Tufts HPC Cluster is available to all members of the Tufts community. Its usage is intended for computational work in support of research, teaching and learning.
 
 ## Data
 
@@ -15,30 +15,35 @@ Tufts HPC cluster is an "institutional systems" and its acceptable use is govern
 - No restricted data is allowed on Tufts HPC cluster.
 
 ### Scratch Space
-Scratch disk space is a commonly implemented feature in high performance computing environments. This temporary space allows users the freedom needed to work with large spikes in data usage typical of HPC. It promotes storing temporary and transient data such as check points, uncompressed copies of data sets, and caches in a space specifically designed for it. Data on scratch is automatically deleted if not accessed in the last 21 days.  
+
+Scratch disk space is a commonly implemented feature in high performance computing environments. This temporary space allows users the freedom needed to work with large spikes in data usage typical of HPC. It promotes storing temporary and transient data such as check points, uncompressed copies of data sets, and caches in a space specifically designed for it. Data on scratch is automatically deleted if not accessed in the last 21 days.
 
 **Benefits of Scratch Space**
-* Promotes good data management practices by providing a place that "temporary" data should go that is separate and can be managed differently. 
-* Allows uniform documentation and configuration of applications and workflows to utilize this temporary space for transient files. 
-* Promotes users keeping transient, and non-important data separate from other data. This allows the scratch space to not have snapshots, backups, or indexing, providing significant costs saving. 
-* Allows users without a designated project folder, such as undergraduate students, to complete homework or projects on the HPC system that would otherwise require too much disk space.
+
+- Promotes good data management practices by providing a place that "temporary" data should go that is separate and can be managed differently.
+- Allows uniform documentation and configuration of applications and workflows to utilize this temporary space for transient files.
+- Promotes users keeping transient, and non-important data separate from other data. This allows the scratch space to not have snapshots, backups, or indexing, providing significant costs saving.
+- Allows users without a designated project folder, such as undergraduate students, to complete homework or projects on the HPC system that would otherwise require too much disk space.
 
 **HPC Users**
-* Each HPC user has a personal scratch folder available to use
-* It is mounted at /cluster/scratch/utln
-* The quota is 100GB
-* Files in scratch are automatically deleted if not accessed in the last 21 days 
+
+- Each HPC user has a personal scratch folder available to use
+- It is mounted at /cluster/scratch/utln
+- The quota is 100GB
+- Files in scratch are automatically deleted if not accessed in the last 21 days
 
 **Researchers**
-* Tufts-employed faculty members can request the scratch quota of a given lab member be raised up to 15TB. 
-* The allocation of this extra space is subject to review and approval by Research Technology. 
 
-**Implementation Details** 
-* Data is automatically deleted if not accessed in 21 days 
-* There are no backups or snapshots of data stored in scratch 
-* A total of 300 TB of Tier 1 storage has been designated for use as scratch space. In the event this fills up we may revisit the amount of space provided via this policy. 
-* In the unlikely event any single user needs a scratch space over 15TB the additional storage allocated will be charged at the Tier 1 storage rate.
-* Running `touch` commands or similar operations to modify timestamps and bypass this cleanup policy is prohibited. Users who engage in this behavior will lose the privilege of using scratch storage.
+- Tufts-employed faculty members can request the scratch quota of a given lab member be raised up to 15TB.
+- The allocation of this extra space is subject to review and approval by Research Technology.
+
+**Implementation Details**
+
+- Data is automatically deleted if not accessed in 21 days
+- There are no backups or snapshots of data stored in scratch
+- A total of 300 TB of Tier 1 storage has been designated for use as scratch space. In the event this fills up we may revisit the amount of space provided via this policy.
+- In the unlikely event any single user needs a scratch space over 15TB the additional storage allocated will be charged at the Tier 1 storage rate.
+- Running `touch` commands or similar operations to modify timestamps and bypass this cleanup policy is prohibited. Users who engage in this behavior will lose the privilege of using scratch storage.
 
 ## HPC Researcher Contribution Node
 
