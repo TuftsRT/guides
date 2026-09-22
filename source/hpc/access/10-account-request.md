@@ -12,6 +12,7 @@ home folder with 30GB of storage space and access to run compute jobs on the pub
 ## HPC Account Request
 
 To verify and request access to the Tufts HPC cluster, please go to [https://rcrm.it.tufts.edu/](https://rcrm.it.tufts.edu/)
+
 - Click on `Request and Verify Access to HPC Cluster`
 - Login with Tufts SSO (Tufts username and password)
 - Follow on-screen instructions
