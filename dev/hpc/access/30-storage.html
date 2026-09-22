@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260921" />
-    <meta name="docbuild:last-update" content="Sep 21, 2026"/>
+  <meta name="docsearch:version" content="20260922" />
+    <meta name="docbuild:last-update" content="Sep 22, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -600,6 +600,16 @@ announcement at <a class="reference external" href="https://it.tufts.edu/researc
 <p>Be aware! Your Home Directory (<strong>30GB</strong>, fixed) should be <code class="docutils literal notranslate"><span class="pre">/cluster/home/your_utln</span></code></p>
 <p>If you are not sure how much storage you have used in your home directory, you can find out the information with <a class="reference internal" href="../examples/hpctools.html"><span class="doc std std-doc">hpctools - Tufts HPC Helper Tool</span></a> option <code class="docutils literal notranslate"><span class="pre">7</span></code> from command line interface.</p>
 </section>
+<section id="scratch-space">
+<h3>Scratch Space<a class="headerlink" href="#scratch-space" title="Link to this heading">#</a></h3>
+<p><strong>Temporary</strong> space <code class="docutils literal notranslate"><span class="pre">/cluster/scratch/your_utln</span></code> allows users the freedom needed to work with large spikes in data usage typical of HPC. Each user gets a <strong>100GB</strong> quota.</p>
+<p>Files in scratch are automatically deleted if not accessed in the last <strong>21 days</strong>.</p>
+<p>There are <strong>no backups or snapshots</strong> of data stored in scratch.</p>
+<p>Faculty members can request the scratch quota of a given lab member be raised up to 15TB.</p>
+<blockquote>
+<div><p>Running <code class="docutils literal notranslate"><span class="pre">touch</span></code> commands or similar operations to modify timestamps and bypass this cleanup policy is prohibited. Users who engage in this behavior will lose the privilege of using scratch storage.</p>
+</div></blockquote>
+</section>
 <section id="lab-research-project-storage">
 <h3>Lab Research Project Storage<a class="headerlink" href="#lab-research-project-storage" title="Link to this heading">#</a></h3>
 <p>Your research project storage (from <strong>50GB and up</strong>) path should be <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/your_lab_name/</span></code>, and each member of the lab group has a dedicated directory <code class="docutils literal notranslate"><span class="pre">/cluster/tufts/your_lab_name/your_utln</span></code>.</p>
@@ -700,6 +710,7 @@ announcement at <a class="reference external" href="https://it.tufts.edu/researc
   <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-usage-limits-aka-quotas">Storage Usage Limits aka Quotas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home-directory">Home Directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scratch-space">Scratch Space</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-research-project-storage">Lab Research Project Storage</a></li>
 </ul>
 </li>
@@ -768,7 +779,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Sep 21, 2026.
+  Last updated on Sep 22, 2026.
   <br/>
 </p></div>
       
