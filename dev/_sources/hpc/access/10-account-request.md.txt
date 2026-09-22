@@ -11,10 +11,9 @@ home folder with 30GB of storage space and access to run compute jobs on the pub
 
 ## HPC Account Request
 
-**Check if you already have an account:**
+To verify and request access to the Tufts HPC cluster, please go to [https://rcrm.it.tufts.edu/](https://rcrm.it.tufts.edu/)
 
-- Connect your computer to Tufts network or [Tufts VPN](https://access.tufts.edu/vpn)
-- Go to [Tufts HPC Cluster OnDemand](https://ondemand-prod.pax.tufts.edu/)
-- Cluster account is the same as your username (all lower-case) and password in SIS or for your Tufts email.
-- If you can login, you already have a cluster account.
-- If not, submit a [Cluster Account Request](https://tufts.qualtrics.com/jfe/form/SV_5bUmpFT0IXeyEfj)
+- Click on `Request and Verify Access to HPC Cluster`
+- Login with Tufts SSO (Tufts username and password)
+- Follow on-screen instructions
+- It may take up to 24 hours for the new HPC cluster access request to be processed
