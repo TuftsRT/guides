@@ -27,6 +27,18 @@ Be aware! Your Home Directory (**30GB**, fixed) should be `/cluster/home/your_ut
 
 If you are not sure how much storage you have used in your home directory, you can find out the information with [hpctools - Tufts HPC Helper Tool](../examples/hpctools) option `7` from command line interface.
 
+### Scratch Space
+
+**Temporary** space `/cluster/scratch/your_utln` allows users the freedom needed to work with large spikes in data usage typical of HPC. Each user gets a **100GB** quota. 
+
+Files in scratch are automatically deleted if not accessed in the last **21 days**
+
+There are **no backups or snapshots** of data stored in scratch
+
+Faculty members can request the scratch quota of a given lab member be raised up to 15TB
+
+>  Running `touch` commands or similar operations to modify timestamps and bypass this cleanup policy is prohibited. Users who engage in this behavior will lose the privilege of using scratch storage.
+
 ### Lab Research Project Storage
 
 Your research project storage (from **50GB and up**) path should be `/cluster/tufts/your_lab_name/`, and each member of the lab group has a dedicated directory `/cluster/tufts/your_lab_name/your_utln`.
