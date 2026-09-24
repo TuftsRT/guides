@@ -14,21 +14,25 @@ Up-to-date system information, real-time status, and resource availability can b
 
 ## General limits
 
-In general the HPC resources in the public partitions are available to reseachers on a first come, first serve, basis with jobs submitted first, getting access to the next available resource that matches their request(s). However to fairly balance usage across the community heavy users may see their jobs wait if the cluster is fully utilized, with lower usage users getting priority.
+In general the HPC resources in the public partitions are available to reseachers on a "first come, first serve" basis with jobs submitted first, getting access to the next available resource that matches their request(s). However to fairly balance usage across the community heavy users may see their jobs wait if the cluster is fully utilized, with lower usage users getting priority.
 
 A limit is placed on the total resources a single user can have allocated at any one time. The current limits are shown here.
 
-**Public Partitions** (batch + gpu)
+**Public Partitions** (batch + gpu, --qos=normal)
 
 - CPU: 250 cores
 - RAM: 5000 GB
-- GPU: 10
+- GPU: 12
+- Jobs: 250
+- Max Time: 2-00:00:00
 
-**Preempt Partition** (preempt)
+**Preempt Partition** (preempt, --qos=preempt)
 
 - CPU: 1000 cores
 - RAM: 10000 GB
 - GPU: 20
+- Jobs: 1000
+- Max Time: 2-00:00:00
 
 Additionally, each user is allowed to request a single interactive job which will have priority over non interactive jobs.
 
@@ -42,9 +46,9 @@ All users have equal access to the following public partitions. Job priorities a
 
 - **batch**\*: The default partition for standard jobs that do not require any special hardware or configurations. CPU only. Provides memory (RAM) up to 500GB.
 - **gpu**: Designated for jobs that require GPU resources. No CPU only jobs allowed.
-- **preempt**: Contains most resources on HPC cluster (CPU and GPU, public and contrib nodes). Jobs submitted to preempt partition has lower priority and can be preempted by contrib node owners' higher priority jobs. Submit jobs with "--qos=preempt".
+- **preempt** - Consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs. Submit jobs with `--qos=preempt`.
 
-The mpi, largemem, and interactive partitions have been retired. Use the batch or gpu partitions instead.
+> The `mpi`, `largemem`, and `interactive` partitions have been retired. Use the `batch` or `gpu` partitions instead.
 
 To get a full inventory of specific available resources and node specs, go to [**OnDemand**](https://ondemand-prod.pax.tufts.edu) `Cluster` --> `System Status`
 
@@ -58,31 +62,50 @@ $ sinfo
 
 The cluster utilizes Slurm QOS to manage special cases and exceptions to the default resource and time limits.
 
-Common QOSs available are
+Common QoS available on Tufts HPC Cluster:
 
-- interactive - Single Job for up to 4 hours with 1 GPU
-- preempt - To access higher resource limits for jobs submitted to preempt partition
+> \*Subject to change based on cluster resource utilization
 
-## Time limit
+- `--qos=normal` (default)
+  - Max Job: 250
+  - CPU: 250
+  - CPU Memory: 5000GB
+  - GPU: 12
+  - Maximum Job Timelimit: 48 hours
+- `--qos=interactive` (high priority in queue)
+  - Max Job: 1
+  - CPU: 16
+  - CPU Memory: 64GB
+  - GPU: 1
+  - Maximum Job Timelimit: 4 hours
+- `--qos=preempt` (for preempt partition only)
+  - Max Job: 1000
+  - CPU: 1000
+  - CPU Memory: 10000GB
+  - GPU: 20
+  - Maximum Job Timelimit: 48 hours
+- `--qos=normal-contrib` (for contrib/lab partitions only)
+  - Max Job: No Limit
+  - CPU: No Limit
+  - CPU Memory: No Limit
+  - GPU: No Limit
+  - Maximum Job Timelimit: 7 days
+- `--qos=normal-7days` (Ad hoc, request through tts-research@tufts.edu)
+  - Max Job: 250
+  - CPU: 250
+  - CPU Memory: 5000GB
+  - GPU: 0
+  - Maximum Job Timelimit: 7 days
+- `--qos=expanded` (Ad hoc, request through tts-research@tufts.edu)
+  - Max Job: 500
+  - CPU: 512
+  - CPU Memory: 5600GB
+  - GPU: 32
+  - Maximum Job Timelimit: 48 hours
 
-Each partition has a time limit that a jobs runtime cannot exceed. Most use cases should be able to complete within these time ranges, but we understand their are exception. Please contact us if you need access to longer runtimes.
-
-```
-PARTITION       TIMELIMIT
-batch*          2-00:00:00
-gpu             2-00:00:00
-preempt         2-00:00:00
-```
-
-- **preempt** - Be aware, `preempt` partition consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs. Submit jobs with "--qos=preempt".
-
-# Lab Partitions
+## Lab Partitions
 
 Some research labs have dedicated nodes available in the HPC Cluster through our [contrib node](../policy/contribute-nodes) program. These are accessed using a partition name for each lab. You can see this name by running the `sinfo` command.
-
-We always recommend also selecting a public partition in case your lab resources are fully utilized. Multiple partitions can be specified as a comma separated list.
-
-`sbatch -p labpartition,batch` or `sbatch -p labpartition,gpu`
 
 ```{warning}
 Lab partitions may have different resource limits that are more or less restrictive than the defaults above.
