@@ -107,10 +107,6 @@ Common QoS available on Tufts HPC Cluster:
 
 Some research labs have dedicated nodes available in the HPC Cluster through our [contrib node](../policy/contribute-nodes) program. These are accessed using a partition name for each lab. You can see this name by running the `sinfo` command.
 
-We always recommend also selecting a public partition in case your lab resources are fully utilized. 
-
-`sbatch -p lab_partition --qos=normal-contrib` or `sbatch -p lab_partition --qos=normal-contrib`
-
 ```{warning}
 Lab partitions may have different resource limits that are more or less restrictive than the defaults above.
 ```
