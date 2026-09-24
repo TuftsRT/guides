@@ -46,11 +46,11 @@ All users have equal access to the following public partitions. Job priorities a
 
 - **batch**\*: The default partition for standard jobs that do not require any special hardware or configurations. CPU only. Provides memory (RAM) up to 500GB.
 - **gpu**: Designated for jobs that require GPU resources. No CPU only jobs allowed.
-- **preempt** - Consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs. Submit jobs with "--qos=preempt".
+- **preempt** - Consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs. Submit jobs with `--qos=preempt`.
 
-> The mpi, largemem, and interactive partitions have been retired. Use the batch or gpu partitions instead.
+> The `mpi`, `largemem`, and `interactive` partitions have been retired. Use the `batch` or `gpu` partitions instead.
 
-To get a full inventory of specific available resources and node specs, go to [**OnDemand**](https://ondemand-prod.pax.tufts.edu) `Cluster` --> `System Status`
+To get a full inventory of specific available resources and node specs, go to [**OnDemand**](https://ondemand-prod.pax.tufts.edu)  `Cluster` --> `System Status`
 
 From command line, use the following command to check what partitions you have access to:
 
@@ -62,54 +62,54 @@ $ sinfo
 
 The cluster utilizes Slurm QOS to manage special cases and exceptions to the default resource and time limits.
 
-Common QOSs available are
+Common QoS available on Tufts HPC Cluster:
 > *Subject to change based on cluster resource utilization
 
   - `--qos=normal` (default)
     - Max Job: 250
-      CPU: 250
-      CPU Memory: 5000GB
-      GPU: 12  
-      Maximum Job Timelimit: 48 hours 
+    - CPU: 250
+    - CPU Memory: 5000GB
+    - GPU: 12  
+    - Maximum Job Timelimit: 48 hours 
   - `--qos=interactive` (high priority in queue)
     - Max Job: 1
-      CPU: 16
-      CPU Memory: 64GB
-      GPU: 1  
-      Maximum Job Timelimit: 4 hours 
+    - CPU: 16
+    - CPU Memory: 64GB
+    - GPU: 1  
+    - Maximum Job Timelimit: 4 hours 
   - `--qos=preempt` (for preempt partition only)
     - Max Job: 1000
-      CPU: 1000
-      CPU Memory: 10000GB
-      GPU: 20  
-      Maximum Job Timelimit: 48 hours 
-  - `--qos=normal-contrib` (for contrib partitions only)
+    - CPU: 1000
+    - CPU Memory: 10000GB
+    - GPU: 20  
+    - Maximum Job Timelimit: 48 hours 
+  - `--qos=normal-contrib` (for contrib/lab partitions only)
     - Max Job: No Limit
-      CPU: No Limit
-      CPU Memory: No Limit
-      GPU: No Limit  
-      Maximum Job Timelimit: 7 days
+    - CPU: No Limit
+    - CPU Memory: No Limit
+    - GPU: No Limit  
+    - Maximum Job Timelimit: 7 days
   - `--qos=normal-7days` (Ad hoc, request through tts-research@tufts.edu)
     - Max Job: 250
-      CPU: 250
-      CPU Memory: 5000GB
-      GPU: 0 
-      Maximum Job Timelimit: 7 days
+    - CPU: 250
+    - CPU Memory: 5000GB
+    - GPU: 0 
+    - Maximum Job Timelimit: 7 days
   - `--qos=expanded` (Ad hoc, request through tts-research@tufts.edu)
     - Max Job: 500
-      CPU: 512
-      CPU Memory: 5600GB
-      GPU: 32
-      Maximum Job Timelimit: 48 hours
+    - CPU: 512
+    - CPU Memory: 5600GB
+    - GPU: 32
+    - Maximum Job Timelimit: 48 hours
 
 
-# Lab Partitions
+## Lab Partitions
 
 Some research labs have dedicated nodes available in the HPC Cluster through our [contrib node](../policy/contribute-nodes) program. These are accessed using a partition name for each lab. You can see this name by running the `sinfo` command.
 
-We always recommend also selecting a public partition in case your lab resources are fully utilized. Multiple partitions can be specified as a comma separated list.
+We always recommend also selecting a public partition in case your lab resources are fully utilized. 
 
-`sbatch -p labpartition,batch` or `sbatch -p labpartition,gpu`
+`sbatch -p lab_partition --qos=normal-contrib` or `sbatch -p lab_partition --qos=normal-contrib`
 
 ```{warning}
 Lab partitions may have different resource limits that are more or less restrictive than the defaults above.
