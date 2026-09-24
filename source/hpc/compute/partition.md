@@ -50,7 +50,7 @@ All users have equal access to the following public partitions. Job priorities a
 
 > The `mpi`, `largemem`, and `interactive` partitions have been retired. Use the `batch` or `gpu` partitions instead.
 
-To get a full inventory of specific available resources and node specs, go to [**OnDemand**](https://ondemand-prod.pax.tufts.edu)  `Cluster` --> `System Status`
+To get a full inventory of specific available resources and node specs, go to [**OnDemand**](https://ondemand-prod.pax.tufts.edu) `Cluster` --> `System Status`
 
 From command line, use the following command to check what partitions you have access to:
 
@@ -63,45 +63,45 @@ $ sinfo
 The cluster utilizes Slurm QOS to manage special cases and exceptions to the default resource and time limits.
 
 Common QoS available on Tufts HPC Cluster:
-> *Subject to change based on cluster resource utilization
 
-  - `--qos=normal` (default)
-    - Max Job: 250
-    - CPU: 250
-    - CPU Memory: 5000GB
-    - GPU: 12  
-    - Maximum Job Timelimit: 48 hours 
-  - `--qos=interactive` (high priority in queue)
-    - Max Job: 1
-    - CPU: 16
-    - CPU Memory: 64GB
-    - GPU: 1  
-    - Maximum Job Timelimit: 4 hours 
-  - `--qos=preempt` (for preempt partition only)
-    - Max Job: 1000
-    - CPU: 1000
-    - CPU Memory: 10000GB
-    - GPU: 20  
-    - Maximum Job Timelimit: 48 hours 
-  - `--qos=normal-contrib` (for contrib/lab partitions only)
-    - Max Job: No Limit
-    - CPU: No Limit
-    - CPU Memory: No Limit
-    - GPU: No Limit  
-    - Maximum Job Timelimit: 7 days
-  - `--qos=normal-7days` (Ad hoc, request through tts-research@tufts.edu)
-    - Max Job: 250
-    - CPU: 250
-    - CPU Memory: 5000GB
-    - GPU: 0 
-    - Maximum Job Timelimit: 7 days
-  - `--qos=expanded` (Ad hoc, request through tts-research@tufts.edu)
-    - Max Job: 500
-    - CPU: 512
-    - CPU Memory: 5600GB
-    - GPU: 32
-    - Maximum Job Timelimit: 48 hours
+> \*Subject to change based on cluster resource utilization
 
+- `--qos=normal` (default)
+  - Max Job: 250
+  - CPU: 250
+  - CPU Memory: 5000GB
+  - GPU: 12
+  - Maximum Job Timelimit: 48 hours
+- `--qos=interactive` (high priority in queue)
+  - Max Job: 1
+  - CPU: 16
+  - CPU Memory: 64GB
+  - GPU: 1
+  - Maximum Job Timelimit: 4 hours
+- `--qos=preempt` (for preempt partition only)
+  - Max Job: 1000
+  - CPU: 1000
+  - CPU Memory: 10000GB
+  - GPU: 20
+  - Maximum Job Timelimit: 48 hours
+- `--qos=normal-contrib` (for contrib/lab partitions only)
+  - Max Job: No Limit
+  - CPU: No Limit
+  - CPU Memory: No Limit
+  - GPU: No Limit
+  - Maximum Job Timelimit: 7 days
+- `--qos=normal-7days` (Ad hoc, request through tts-research@tufts.edu)
+  - Max Job: 250
+  - CPU: 250
+  - CPU Memory: 5000GB
+  - GPU: 0
+  - Maximum Job Timelimit: 7 days
+- `--qos=expanded` (Ad hoc, request through tts-research@tufts.edu)
+  - Max Job: 500
+  - CPU: 512
+  - CPU Memory: 5600GB
+  - GPU: 32
+  - Maximum Job Timelimit: 48 hours
 
 ## Lab Partitions
 
