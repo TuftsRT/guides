@@ -87,8 +87,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20260922" />
-    <meta name="docbuild:last-update" content="Sep 22, 2026"/>
+  <meta name="docsearch:version" content="20260924" />
+    <meta name="docbuild:last-update" content="Sep 24, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -486,7 +486,6 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Computing Resources</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="gpu.html">GPU Resources</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Tufts HPC Partitions and Limits</a></li>
-
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../slurm/index.html">Slurm Job Scheduler</a></li>
@@ -581,19 +580,23 @@
 <p>Up-to-date system information, real-time status, and resource availability can be viewed with <a class="reference external" href="https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status">OnDemand System Status</a> app.</p>
 <section id="general-limits">
 <h2>General limits<a class="headerlink" href="#general-limits" title="Link to this heading">#</a></h2>
-<p>In general the HPC resources in the public partitions are available to reseachers on a first come, first serve, basis with jobs submitted first, getting access to the next available resource that matches their request(s). However to fairly balance usage across the community heavy users may see their jobs wait if the cluster is fully utilized, with lower usage users getting priority.</p>
+<p>In general the HPC resources in the public partitions are available to reseachers on a “first come, first serve” basis with jobs submitted first, getting access to the next available resource that matches their request(s). However to fairly balance usage across the community heavy users may see their jobs wait if the cluster is fully utilized, with lower usage users getting priority.</p>
 <p>A limit is placed on the total resources a single user can have allocated at any one time. The current limits are shown here.</p>
-<p><strong>Public Partitions</strong> (batch + gpu)</p>
+<p><strong>Public Partitions</strong> (batch + gpu, –qos=normal)</p>
 <ul class="simple">
 <li><p>CPU: 250 cores</p></li>
 <li><p>RAM: 5000 GB</p></li>
-<li><p>GPU: 10</p></li>
+<li><p>GPU: 12</p></li>
+<li><p>Jobs: 250</p></li>
+<li><p>Max Time: 2-00:00:00</p></li>
 </ul>
-<p><strong>Preempt Partition</strong> (preempt)</p>
+<p><strong>Preempt Partition</strong> (preempt, –qos=preempt)</p>
 <ul class="simple">
 <li><p>CPU: 1000 cores</p></li>
 <li><p>RAM: 10000 GB</p></li>
 <li><p>GPU: 20</p></li>
+<li><p>Jobs: 1000</p></li>
+<li><p>Max Time: 2-00:00:00</p></li>
 </ul>
 <p>Additionally, each user is allowed to request a single interactive job which will have priority over non interactive jobs.</p>
 <p><small>These limits are subject to change to best optimize the utilization of the cluster resources.</small></p>
@@ -605,9 +608,11 @@
 <ul class="simple">
 <li><p><strong>batch</strong>*: The default partition for standard jobs that do not require any special hardware or configurations. CPU only. Provides memory (RAM) up to 500GB.</p></li>
 <li><p><strong>gpu</strong>: Designated for jobs that require GPU resources. No CPU only jobs allowed.</p></li>
-<li><p><strong>preempt</strong>: Contains most resources on HPC cluster (CPU and GPU, public and contrib nodes). Jobs submitted to preempt partition has lower priority and can be preempted by contrib node owners’ higher priority jobs. Submit jobs with “–qos=preempt”.</p></li>
+<li><p><strong>preempt</strong> - Consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs. Submit jobs with <code class="docutils literal notranslate"><span class="pre">--qos=preempt</span></code>.</p></li>
 </ul>
-<p>The mpi, largemem, and interactive partitions have been retired. Use the batch or gpu partitions instead.</p>
+<blockquote>
+<div><p>The <code class="docutils literal notranslate"><span class="pre">mpi</span></code>, <code class="docutils literal notranslate"><span class="pre">largemem</span></code>, and <code class="docutils literal notranslate"><span class="pre">interactive</span></code> partitions have been retired. Use the <code class="docutils literal notranslate"><span class="pre">batch</span></code> or <code class="docutils literal notranslate"><span class="pre">gpu</span></code> partitions instead.</p>
+</div></blockquote>
 <p>To get a full inventory of specific available resources and node specs, go to <a class="reference external" href="https://ondemand-prod.pax.tufts.edu"><strong>OnDemand</strong></a> <code class="docutils literal notranslate"><span class="pre">Cluster</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">System</span> <span class="pre">Status</span></code></p>
 <p>From command line, use the following command to check what partitions you have access to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sinfo
@@ -617,35 +622,75 @@
 <section id="quality-of-service-qos">
 <h2>Quality of Service (QOS)<a class="headerlink" href="#quality-of-service-qos" title="Link to this heading">#</a></h2>
 <p>The cluster utilizes Slurm QOS to manage special cases and exceptions to the default resource and time limits.</p>
-<p>Common QOSs available are</p>
+<p>Common QoS available on Tufts HPC Cluster:</p>
+<blockquote>
+<div><p>*Subject to change based on cluster resource utilization</p>
+</div></blockquote>
 <ul class="simple">
-<li><p>interactive - Single Job for up to 4 hours with 1 GPU</p></li>
-<li><p>preempt - To access higher resource limits for jobs submitted to preempt partition</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--qos=normal</span></code> (default)</p>
+<ul>
+<li><p>Max Job: 250</p></li>
+<li><p>CPU: 250</p></li>
+<li><p>CPU Memory: 5000GB</p></li>
+<li><p>GPU: 12</p></li>
+<li><p>Maximum Job Timelimit: 48 hours</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--qos=interactive</span></code> (high priority in queue)</p>
+<ul>
+<li><p>Max Job: 1</p></li>
+<li><p>CPU: 16</p></li>
+<li><p>CPU Memory: 64GB</p></li>
+<li><p>GPU: 1</p></li>
+<li><p>Maximum Job Timelimit: 4 hours</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--qos=preempt</span></code> (for preempt partition only)</p>
+<ul>
+<li><p>Max Job: 1000</p></li>
+<li><p>CPU: 1000</p></li>
+<li><p>CPU Memory: 10000GB</p></li>
+<li><p>GPU: 20</p></li>
+<li><p>Maximum Job Timelimit: 48 hours</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--qos=normal-contrib</span></code> (for contrib/lab partitions only)</p>
+<ul>
+<li><p>Max Job: No Limit</p></li>
+<li><p>CPU: No Limit</p></li>
+<li><p>CPU Memory: No Limit</p></li>
+<li><p>GPU: No Limit</p></li>
+<li><p>Maximum Job Timelimit: 7 days</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--qos=normal-7days</span></code> (Ad hoc, request through <a class="reference external" href="mailto:tts-research&#37;&#52;&#48;tufts&#46;edu">tts-research<span>&#64;</span>tufts<span>&#46;</span>edu</a>)</p>
+<ul>
+<li><p>Max Job: 250</p></li>
+<li><p>CPU: 250</p></li>
+<li><p>CPU Memory: 5000GB</p></li>
+<li><p>GPU: 0</p></li>
+<li><p>Maximum Job Timelimit: 7 days</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--qos=expanded</span></code> (Ad hoc, request through <a class="reference external" href="mailto:tts-research&#37;&#52;&#48;tufts&#46;edu">tts-research<span>&#64;</span>tufts<span>&#46;</span>edu</a>)</p>
+<ul>
+<li><p>Max Job: 500</p></li>
+<li><p>CPU: 512</p></li>
+<li><p>CPU Memory: 5600GB</p></li>
+<li><p>GPU: 32</p></li>
+<li><p>Maximum Job Timelimit: 48 hours</p></li>
+</ul>
+</li>
 </ul>
 </section>
-<section id="time-limit">
-<h2>Time limit<a class="headerlink" href="#time-limit" title="Link to this heading">#</a></h2>
-<p>Each partition has a time limit that a jobs runtime cannot exceed. Most use cases should be able to complete within these time ranges, but we understand their are exception. Please contact us if you need access to longer runtimes.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PARTITION</span>       <span class="n">TIMELIMIT</span>
-<span class="n">batch</span><span class="o">*</span>          <span class="mi">2</span><span class="o">-</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="n">gpu</span>             <span class="mi">2</span><span class="o">-</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="n">preempt</span>         <span class="mi">2</span><span class="o">-</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p><strong>preempt</strong> - Be aware, <code class="docutils literal notranslate"><span class="pre">preempt</span></code> partition consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs. Submit jobs with “–qos=preempt”.</p></li>
-</ul>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="lab-partitions">
-<h1>Lab Partitions<a class="headerlink" href="#lab-partitions" title="Link to this heading">#</a></h1>
+<section id="lab-partitions">
+<h2>Lab Partitions<a class="headerlink" href="#lab-partitions" title="Link to this heading">#</a></h2>
 <p>Some research labs have dedicated nodes available in the HPC Cluster through our <a class="reference internal" href="../policy/contribute-nodes.html"><span class="doc std std-doc">contrib node</span></a> program. These are accessed using a partition name for each lab. You can see this name by running the <code class="docutils literal notranslate"><span class="pre">sinfo</span></code> command.</p>
-<p>We always recommend also selecting a public partition in case your lab resources are fully utilized. Multiple partitions can be specified as a comma separated list.</p>
-<p><code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">-p</span> <span class="pre">labpartition,batch</span></code> or <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">-p</span> <span class="pre">labpartition,gpu</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Lab partitions may have different resource limits that are more or less restrictive than the defaults above.</p>
 </div>
+</section>
 </section>
 
 
@@ -698,16 +743,11 @@
   aria-labelledby="pst-page-navigation-heading-2"
 >
   <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tufts HPC Partitions and Limits</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-limits">General limits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partitions">Partitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-of-service-qos">Quality of Service (QOS)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-limit">Time limit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-partitions">Lab Partitions</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-partitions">Lab Partitions</a></li>
-</ul>
-
 </nav></div>
 
   <div class="sidebar-secondary-item">
@@ -772,7 +812,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Sep 22, 2026.
+  Last updated on Sep 24, 2026.
   <br/>
 </p></div>
       
