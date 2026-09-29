@@ -32,8 +32,7 @@ Once you've clicked on "Automated Speech Recognition", you will be able to confi
 - _Number of cores_: This field controls how many CPU cores are allocated for your session. It is important to pick a value proportional to the size of the LLM you'd like to run. If you are having trouble choosing, you can use the value shown below.
 - _Amount of Memory (GB)_: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose, so I like to use double the amount of CPU cores that I have selected.
 - _Partition_: You should choose the "gpu" option. Generally, we require hardware acceleration to run ASR models. You can run some models, however, with just CPUs, especially if you adjust the number of cores and amount of memory to be quite high, in which case, you could select "batch" for this option.
-- _GPU architecture_: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the `hpctools` CLI. Learn more [here](https://rtguides.it.tufts.edu/hpc/examples/hpctools.html).
-- _Input audio directory_: This parameter should be the file path to the folder with the audio files you'd like to transcribe. To upload files use the file explorer as explained [here](https://rtguides.it.tufts.edu/hpc/access/40-xfer.html#ondemand)
+- _GPU Type_: This parameter controls which kind of GPU to use for ASR. For these applications, we recommend that you choose "A100-40G" or "A100-80G".
 
 The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
 
@@ -43,16 +42,24 @@ The rest of the the fields should remain in their default configuration. When yo
 
 Once you've launched your session, you will see the loading message below. It is very normal to see this for a couple minutes.
 
-![Starting](./assets/asr-starting.png)
+![Starting](./assets/on-demand-asr-starting.png)
 
 When the application starts running, you'll see the message below:
 
-![Running](./assets/asr-running.png)
+![Running](./assets/on-demand-asr-running.png)
 
-When the application is complete and the text has been searched, you will see the message below:
+Click on "Connect to ASR" to proceed. After some time (around 30 seconds to a minute), the application should finish loading. To get started, choose the language for your audio files.
 
-![Complete](./assets/asr-completed.png)
+![Choose](./assets/on-demand-asr-lang.png)
 
-You can new visit the directory with your source files and the results will be in a new subfolder called "asr_output".
+After you choose your language, you can now upload the audio file that you'd like to transcribe.
+
+![Upload](./assets/on-demand-asr-upload.png)
+
+Click on "Start transcription" to start the transcription. When it is complete, you will see the screen below.
+
+![Complete](./assets/on-demand-asr-complete.png)
+
+Click on "Download text" to download a text file with your transcription.
 
 For any questions, please reach out to Research Technology at: tts-research@tufts.edu.

@@ -22,7 +22,7 @@ This application expects a folder of image files uploaded to the Cluster. So lon
 
 OCR is an Open OnDemand application on the Cluster, meaning that it can be access from the Interactive Apps drop down in the Open OnDemand website. To get started, visit and log into the [Open OnDemand website for the Tufts Cluster](https://ondemand-prod.pax.tufts.edu/). Once there, select the "Interactive Apps" drop down and click on "Optical Character Recognition".
 
-![Interactive Apps dropdown](./assets/ocr-dropdown.png)
+![Interactive Apps dropdown](./assets/on-demand-ocr-dropdown.png)
 
 ## Configuring you session
 
@@ -32,9 +32,7 @@ Once you've clicked on "Optical Character Recognition", you will be able to conf
 - _Number of cores_: This field controls how many CPU cores are allocated for your session. It is important to pick a value proportional to the size of the LLM you'd like to run. If you are having trouble choosing, you can use the value shown below.
 - _Amount of Memory (GB)_: This setting controls how many gigabytes of RAM are allocated to your session. This value can also be difficult to choose, so I like to use double the amount of CPU cores that I have selected.
 - _Partition_: You should choose the "gpu" option. Generally, we require hardware acceleration to run OCR models. You can run some models, however, with just CPUs, especially if you adjust the number of cores and amount of memory to be quite high, in which case, you could select "batch" for this option.
-- _GPU architecture_: This parameter controls the type of GPU that is allocated for your session. For the most part, it may not matter, however, if you pick a GPU type that is high demand, it may take longer for your session to get allocated. For more information on how to check demand for GPUs, use the `hpctools` CLI. Learn more [here](https://rtguides.it.tufts.edu/hpc/examples/hpctools.html).
-- _Input image directory_: This parameter should be the file path to the folder with the image files you'd like to transcribe.
-- _Output Format_: Here you can choose to have the output either in a plain text file (.TXT) or as a PDF file in which the text is lined up to its place on the image, though due to variations in font size, this may not always work as it might with third party applications.
+- _GPU Type_: This parameter controls which kind of GPU to use for OCR. For these applications, we recommend that you choose "A100-40G" or "A100-80G".
 
 The rest of the the fields should remain in their default configuration. When you are ready, click "Launch".
 
@@ -44,16 +42,24 @@ The rest of the the fields should remain in their default configuration. When yo
 
 Once you've launched your session, you will see the loading message below. It is very normal to see this for a couple minutes.
 
-![Starting](./assets/ocr-starting.png)
+![Starting](./assets/on-demand-ocr-starting.png)
 
 When the application starts running, you'll see the message below:
 
-![Running](./assets/ocr-running.png)
+![Running](./assets/on-demand-ocr-running.png)
 
-When the application is complete and the text has been searched, you will see the message below:
+Click on "Connect to OCR" to proceed. After some time (around a minute or two), the application should finish loading. You can start uploading your images whenever you are ready.
 
-![Complete](./assets/ocr-completed.png)
+![Upload](./assets/on-demand-ocr-upload.png)
 
-You can new visit the directory with your source files and the results will be in a new subfolder called `\_output`.
+While the OCR is processing, you should see a something similar to the image below:
+
+![Processing](./assets/on-demand-ocr-processing.png)
+
+When the application is complete, you will have the opportunity to make any edits you need to the output.
+
+![Editing](./assets/on-demand-ocr-editing.png)
+
+When you are done, you can click on "Editing completed." Then you can download the output.
 
 For any questions, please reach out to Research Technology at: tts-research@tufts.edu.
