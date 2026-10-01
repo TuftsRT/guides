@@ -85,7 +85,7 @@ Common QoS available on Tufts HPC Cluster:
 
 ## Partitions
 
-### **Public Partitions:**
+### Public Partitions
 
 All users have equal access to the following public partitions. Job priorities are under the governance of Slurm Fairshare algorithm.
 
@@ -103,7 +103,7 @@ From command line, use the following command to check what partitions you have a
 $ sinfo
 ```
 
-### **Restricted Partition**
+### Restricted Partition
 The Tufts HPC Cluster contains a wide range of different GPUs. In order to make sure that the most modern GPUs are fully utilized some are placed into their own partitions. These are available to all researchers at Tufts, but they must demonstrate a need for these resources before being being granted access. To request access please open a support ticket by emailing <tts-research@tufts.edu>. 
 
 - **blackwell**:  Contains Tufts B200 GPUs.  Users requesting access should currently be using all VRAM and running near 100% utilization of H200 GPUs. Jobs submitted to this partition will be monitored to ensure sufficient use of the requested resources. 
