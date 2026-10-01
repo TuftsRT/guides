@@ -114,6 +114,6 @@ Only "--qos=normal" is allowed in this partition. Usage of the B200 GPUs counts 
 Some research labs have dedicated nodes available in the HPC Cluster through our [contrib node](../policy/contribute-nodes) program. These are accessed using a partition name for each lab. You can see this name by running the `sinfo` command.
 
 ```{warning}
-Lab partitions may have different resource limits that are more or less restrictive than the defaults above.
+Lab partitions may have different resource limits that are more or less restrictive than the defaults above. To access higher resource limits in lab partitions, submit jobs with `"--qos=normal-contrib"`.
 ```
 
