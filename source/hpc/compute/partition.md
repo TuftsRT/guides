@@ -14,7 +14,7 @@ Up-to-date system information, real-time status, and resource availability can b
 
 ## General limits
 
-In general the HPC resources in the public partitions are available to reseachers on a "first come, first serve" basis with jobs submitted first, getting access to the next available resource that matches their request(s). However to fairly balance usage across the community heavy users may see their jobs wait if the cluster is fully utilized, with lower usage users getting priority.
+In general the HPC resources in the public partitions are available to researchers on a "first come, first serve" basis with jobs submitted first, getting access to the next available resource that matches their request(s). However to fairly balance usage across the community heavy users may see their jobs wait if the cluster is fully utilized, with lower usage users getting priority.
 
 A limit is placed on the total resources a single user can have allocated at any one time. The current limits are shown here.
 
