@@ -1,0 +1,7 @@
+---
+orphan:
+nosearch:
+html_theme.sidebar_secondary.remove: true
+---
+# administration
+- [](/ai/getting-started/20-securing-claude-team.md)

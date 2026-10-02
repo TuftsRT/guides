@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Using and Installing OpenAI’s ChatGPT Locally for Research at Tufts &#8212; TTS Research Technology Guides</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=64cc4de3f052d77215f0" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/bugfix.css?v=45022c51" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/footer.css?v=5f497d55" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/gallery.css?v=c2bd73dd" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/navbar.css?v=147f7454" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/sidebar.css?v=ff9f960e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style/switcher.css?v=3e40d84b" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=64cc4de3f052d77215f0"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0" />
+
+    <script src="../../_static/documentation_options.js?v=8313637b"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
+            </script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZJ5LXFRJ2G"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-ZJ5LXFRJ2G');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ai/getting-started/10-chatgpt-for-research';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.22.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/switcher/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.0.0-dev';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../_static/script/dynamic-nav-dropdown.js?v=5e71fbcf"></script>
+    <link rel="canonical" href="https://rtguides.it.tufts.edu/ai/getting-started/10-chatgpt-for-research.html" />
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Securing Claude Team for Use at Tufts" href="20-securing-claude-team.html" />
+    <link rel="prev" title="Using and Installing Anthropic’s Claude Locally for Research at Tufts" href="00-claude-for-research.html" />
+<meta name="robots" content="noindex, nofollow" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="20261002" />
+    <meta name="docbuild:last-update" content="Oct 02, 2026"/>
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+   
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder=""
+         aria-label=""
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside class="bd-header-announcement d-print-none d-none" aria-label="Announcement" data-pst-announcement-url="https://raw.githubusercontent.com/TuftsRT/guides/refs/heads/announcement/announcement.html"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">     
+<a class="navbar-brand logo" href="../../index.html">
+           
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-light"
+    alt=""
+  />
+  <img
+    src="../../_static/jumbo.png"
+    class="logo__image only-dark pst-js-only"
+    alt=""
+  />
+   
+  <p class="title logo__title" id="long_title">
+    TTS Research Technology Guides
+  </p>
+  
+  <p class="title logo__title" id="short_title">TTS RT Guides</p>
+   
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../storage/index.html">
+    Research Storage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nlp/index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i><span class="visually-hidden">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i><span class="visually-hidden">Email</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../hpc/index.html">
+    High-Performance Computing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../storage/index.html">
+    Research Storage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../bio/index.html">
+    Bioinformatics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../nlp/index.html">
+    Natural Language Processing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../viz/index.html">
+    Data Visualization
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Artificial Intelligence
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://go.tufts.edu/geospatial">
+    Geospatial
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://rtguides.it.tufts.edu/dev/tags/index.html" title="Tags" class="nav-link pst-navbar-icon" rel="noopener" target="_self" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-tags fa-lg" aria-hidden="true"></i><span class="visually-hidden">Tags</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/TuftsRT/guides" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="mailto:tts-research@tufts.edu" title="Email" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i><span class="visually-hidden">Email</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+     AI and Data Science 
+  </p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Getting Started with AI</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00-claude-for-research.html">Using and Installing Anthropic’s Claude Locally for Research at Tufts</a></li>
+<li class="toctree-l2 current active"><a aria-current="page" class="current reference internal" href="#">Using and Installing OpenAI’s ChatGPT Locally for Research at Tufts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="20-securing-claude-team.html">Securing Claude Team for Use at Tufts</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai-tools/index.html">Artificial Intelligence Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python for Research and Data Science</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"> 
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a
+        href="../../index.html"
+        class="nav-link"
+        aria-label="Home"
+      >
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="../index.html" class="nav-link"
+        >AI and Data Science</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item">
+      <a href="index.html" class="nav-link"
+        >Getting Started with AI</a
+      >
+    </li>
+     
+    <li class="breadcrumb-item active" aria-current="page">
+      Using and Installing...
+    </li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="using-and-installing-openai-s-chatgpt-locally-for-research-at-tufts">
+<h1>Using and Installing OpenAI’s ChatGPT Locally for Research at Tufts<a class="headerlink" href="#using-and-installing-openai-s-chatgpt-locally-for-research-at-tufts" title="Link to this heading">#</a></h1>
+<p>ChatGPT software, including ChatGPT Work and Codex, can accelerate research and improve productivity. This document provides guidance for Tufts faculty, staff, and students on how to install and use ChatGPT Work (Desktop) and Codex, what data is appropriate for each, and how to protect that data.</p>
+<p>For guidance on data classification and when a Tufts Technology Services (TTS) AI review is required, see Using Generative AI and Agentic AI in Research. For how your data moves through OpenAI’s systems, see How Generative AI Processes Your Data. See also <a class="reference external" href="https://it.tufts.edu/ai/generative-ai-tools">Generative AI tools at Tufts</a>.</p>
+<section id="choosing-the-right-tool">
+<h2>Choosing the Right Tool<a class="headerlink" href="#choosing-the-right-tool" title="Link to this heading">#</a></h2>
+<p>Use the ChatGPT Work app for everyday questions, drafting, literature reviews, or working interactively with one prompt at a time. Use ChatGPT Codex, or application programming interface (API) access, when you are automating work such as batch processing, data pipelines, or repeatable programmatic workflows that go beyond a single chat session.</p>
+</section>
+<section id="which-data-to-use">
+<h2>Which Data to Use<a class="headerlink" href="#which-data-to-use" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You cannot use confidential or regulated data (Institutional Data Level 3) with ChatGPT Work (Desktop) or Codex.</p>
+</div>
+<p>If you’re not sure which level your data falls under, check the <a class="reference external" href="https://access.tufts.edu/data-finder">Data Finder</a> before you start.</p>
+<p>For your research data, you may want to use these products for general writing and coding assistance, literature reviews, or datasets you expect to publish online. For any questions on using ChatGPT products with research data, contact <a class="reference external" href="mailto:tts-research&#37;&#52;&#48;tufts&#46;edu">tts-research<span>&#64;</span>tufts<span>&#46;</span>edu</a>.</p>
+</section>
+<section id="using-chatgpt-work-desktop">
+<h2>Using ChatGPT Work (Desktop)<a class="headerlink" href="#using-chatgpt-work-desktop" title="Link to this heading">#</a></h2>
+<p>ChatGPT Work is the autonomous agent mode built into the ChatGPT Desktop app. It runs tasks on your machine (or in the cloud, if you choose a remote session) while you do other work, rather than requiring you to sit in a chat window. It is an autonomous agentic tool, and has the potential to read, modify, and share all files or folders on your computer.</p>
+<section id="how-to-install">
+<h3>How to Install<a class="headerlink" href="#how-to-install" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Download the ChatGPT Work app from <a class="reference external" href="https://openai.com/chatgpt-work/">openai.com/chatgpt-work</a> for Mac or Windows.</p></li>
+<li><p>Sign in with your ChatGPT account. Work’s autonomous task features require a paid plan (Standard or Pro). A free, Plus, or personal Pro plan allows OpenAI to train on your data by default (via the “Improve the model for everyone” setting) and is not recommended for Tufts research use.</p></li>
+<li><p>Once signed in, switch to Work mode to move out of Chat mode and into agentic Work mode. See Protecting Your Data below for how to use it safely.</p></li>
+</ul>
+</section>
+<section id="protecting-your-data">
+<h3>Protecting Your Data<a class="headerlink" href="#protecting-your-data" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>If you pay for a Business plan, OpenAI does not train on your prompts, files, or ChatGPT’s replies by default. The exception is if you submit feedback, a bug report, or trigger a sensitive content warning, which sends your current chats and any files within the model context to OpenAI.</p></li>
+<li><p>Use Incognito chats for one-off sensitive queries you don’t want kept in your regular history.</p></li>
+<li><p>Work gives ChatGPT access to a specific folder on your computer. Point it at a scoped working directory rather than your whole file system, and check what it touched when a task finishes. By default, Work will request access to your user folder containing your Documents, Desktop, Downloads, and similar directories. Do not allow this.</p></li>
+<li><p>If you connect Work to Google Drive, Slack, or similar, remember that this provides live access to the data in those accounts going forward. You should instead provide limited access to where your public data are stored.</p></li>
+</ul>
+</section>
+</section>
+<section id="using-codex">
+<h2>Using Codex<a class="headerlink" href="#using-codex" title="Link to this heading">#</a></h2>
+<p>Codex is the agentic coding tool, available as a terminal command-line interface (CLI), inside the ChatGPT Desktop app’s Codex mode, or as an extension in Visual Studio Code and JetBrains.</p>
+<section id="id1">
+<h3>How to Install<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Follow the instructions on <a class="reference external" href="https://chatgpt.com/codex/">OpenAI’s website</a> for your operating system of interest.</p></li>
+<li><p>After installation, you can confirm the software has installed with <code class="docutils literal notranslate"><span class="pre">codex</span> <span class="pre">--version</span></code>.</p></li>
+<li><p>Your project directory should only include files you wish to send to Codex.</p></li>
+<li><p>You can run <code class="docutils literal notranslate"><span class="pre">codex</span></code> inside a project directory to start your first session.</p></li>
+<li><p>Codex requires a paid ChatGPT plan for Tufts research use. A limited free trial exists, but doesn’t include the no-training data terms described above.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Protecting Your Data<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Protecting your data in Codex is more technical.</p>
+<p>Add explicit deny rules in <code class="docutils literal notranslate"><span class="pre">config.toml</span></code> so Codex can’t read sensitive paths, regardless of what you or Codex ask for. To do this, open <code class="docutils literal notranslate"><span class="pre">config.toml</span></code> in the hidden <code class="docutils literal notranslate"><span class="pre">~/.codex/</span></code> directory and add the following TOML:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">approval_policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"on-request"</span>
+<span class="n">default_permissions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"safe-workspace"</span>
+
+<span class="c1"># Stop Codex writing session transcripts to disk</span>
+<span class="n">history</span><span class="p">.</span><span class="n">persistence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"none"</span>
+
+<span class="c1"># Disable /feedback submission and usage analytics</span>
+<span class="n">feedback</span><span class="p">.</span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">analytics</span><span class="p">.</span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+
+<span class="k">[permissions.safe-workspace.filesystem]</span>
+<span class="s2">"/Users/&lt;your-username&gt;/.ssh"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deny"</span>
+<span class="s2">"/Users/&lt;your-username&gt;/.aws"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deny"</span>
+
+<span class="k">[permissions.safe-workspace.filesystem.</span><span class="s2">":workspace_roots"</span><span class="k">]</span>
+<span class="s2">"."</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"write"</span>
+<span class="s2">".env"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deny"</span>
+<span class="s2">".env.*"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deny"</span>
+<span class="s2">"secrets/**"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deny"</span>
+<span class="s2">"**/*.pem"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"deny"</span>
+</pre></div>
+</div>
+<p>Do not add <code class="docutils literal notranslate"><span class="pre">sandbox_mode</span></code> to this configuration. OpenAI’s reference states that <code class="docutils literal notranslate"><span class="pre">default_permissions</span></code> must not be combined with <code class="docutils literal notranslate"><span class="pre">sandbox_mode</span></code> or <code class="docutils literal notranslate"><span class="pre">[sandbox_workspace_write]</span></code>, because the named permission profile replaces them. Filesystem keys take an absolute path or a special token such as <code class="docutils literal notranslate"><span class="pre">:workspace_roots</span></code>, so spell out your home directory rather than using <code class="docutils literal notranslate"><span class="pre">~</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Named permission profiles require Codex 0.138.0 or later. Version 0.137.0 and earlier <strong>ignore</strong> <code class="docutils literal notranslate"><span class="pre">allowed_permission_profiles</span></code> and managed <code class="docutils literal notranslate"><span class="pre">default_permissions</span></code> rather than reporting an error, so an older client silently runs without the restrictions above. Check <code class="docutils literal notranslate"><span class="pre">codex</span> <span class="pre">--version</span></code> before relying on this configuration.</p>
+</div>
+<ul class="simple">
+<li><p>Session transcripts are saved locally in plaintext. Set <code class="docutils literal notranslate"><span class="pre">history.persistence</span> <span class="pre">=</span> <span class="pre">&quot;none&quot;</span></code> to stop Codex writing them to <code class="docutils literal notranslate"><span class="pre">history.jsonl</span></code> at all. Server-side retention is governed by your plan’s data terms rather than by any client setting.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/feedback</span></code> sends your conversation history, including code, to OpenAI as a diagnostic report. Codex’s documentation does not state whether API keys and tokens are redacted first, so treat anything sent this way as unredacted. Set <code class="docutils literal notranslate"><span class="pre">feedback.enabled</span> <span class="pre">=</span> <span class="pre">false</span></code> to disable submission across local Codex clients if you’re working on anything you wouldn’t want leaving your machine.</p></li>
+<li><p>Analytics send operational health and usage metrics, not code or file paths. Set <code class="docutils literal notranslate"><span class="pre">analytics.enabled</span> <span class="pre">=</span> <span class="pre">false</span></code> to turn them off. Raw prompts are never exported with OpenTelemetry logs unless you explicitly opt in via <code class="docutils literal notranslate"><span class="pre">otel.log_user_prompt</span></code>.</p></li>
+<li><p>Codex defaults to an approval policy that can auto-approve routine actions without prompting you. For research data we recommend switching to a stricter approval policy by setting <code class="docutils literal notranslate"><span class="pre">approval_policy</span> <span class="pre">=</span> <span class="pre">&quot;on-request&quot;</span></code> in <code class="docutils literal notranslate"><span class="pre">config.toml</span></code>, so you review each action yourself.</p></li>
+</ul>
+</section>
+<section id="protecting-your-api-key">
+<h3>Protecting Your API Key<a class="headerlink" href="#protecting-your-api-key" title="Link to this heading">#</a></h3>
+<p>If you authenticate Codex with an API key instead of a ChatGPT login, protect that key like a password.</p>
+<ul class="simple">
+<li><p>Never commit keys to a repository. Keep them out of source control. Use a config file like <code class="docutils literal notranslate"><span class="pre">config.toml</span></code>, environment variables, or a secrets manager.</p></li>
+<li><p>Never share your key or paste it into tickets, shared documents, or chat.</p></li>
+<li><p>Rotate your key periodically, and immediately if you suspect it has been exposed.</p></li>
+<li><p>Use one key per person or service where possible, so usage is attributable and a single key can be revoked without disrupting everyone else.</p></li>
+<li><p>Scrub keys from logs and screenshots before sharing them for troubleshooting. This matters especially given the session transcript caching and <code class="docutils literal notranslate"><span class="pre">/feedback</span></code> behavior described above.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="00-claude-for-research.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using and Installing Anthropic’s Claude Locally for Research at Tufts</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="20-securing-claude-team.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Securing Claude Team for Use at Tufts</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+  id="pst-page-navigation-heading-2"
+  class="page-toc tocsection onthispage"
+>
+  <i class="fa-solid fa-list"></i> Using and Installing OpenAI’s ChatGPT Locally for Research at Tufts
+</div>
+<nav
+  class="bd-toc-nav page-toc"
+  aria-labelledby="pst-page-navigation-heading-2"
+>
+  <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-tool">Choosing the Right Tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-data-to-use">Which Data to Use</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-chatgpt-work-desktop">Using ChatGPT Work (Desktop)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install">How to Install</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protecting-your-data">Protecting Your Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-codex">Using Codex</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">How to Install</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Protecting Your Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protecting-your-api-key">Protecting Your API Key</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+
+  <div class="sidebar-secondary-item"> 
+<div class="tocsection tags-label">
+  <i class="fa-solid fa-tags"></i> Tags
+</div>
+<ul class="tocsection tags-list">
+  <li class="tag-item">
+    <a href="../../tags/ai.html" class="tag-link">ai</a>
+  </li>
+  <li class="tag-item">
+    <a href="../../tags/chatgpt.html" class="tag-link">chatgpt</a>
+  </li>
+  <li class="tag-item">
+    <a href="../../tags/codex.html" class="tag-link">codex</a>
+  </li>
+  <li class="tag-item">
+    <a href="../../tags/data-privacy.html" class="tag-link">data-privacy</a>
+  </li>
+  <li class="tag-item">
+    <a href="../../tags/generative-ai.html" class="tag-link">generative-ai</a>
+  </li>
+</ul>
+ </div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/TuftsRT/guides/edit/develop/source/ai/getting-started/10-chatgpt-for-research.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+Suggest Edits 
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/ai/getting-started/10-chatgpt-for-research.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item"><div class="tocsection report-error">
+  <a
+    href="https://github.com/TuftsRT/guides/issues/new?title=Error Report: ai/getting-started/10-chatgpt-for-research"
+    class="report-error-link"
+    ><i class="fa-solid fa-triangle-exclamation"></i> Report Error
+  </a>
+</div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=64cc4de3f052d77215f0"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=64cc4de3f052d77215f0"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Tufts University.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Oct 02, 2026.
+</p></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item"><p class="disclaimer">
+  Linked external resources not affiliated with or endorsed by Tufts University.
+  <br />
+</p></div>
+      
+        <div class="footer-item"><div class="footer-links">
+  <ul>
+    
+    <li><a href="https://access.tufts.edu/digital-accessibility-policy">Accessibility</a></li>
+    
+    <li><a href="https://oeo.tufts.edu/policies-procedures/non-discrimination-statement/">Non-Discrimination</a></li>
+    
+    <li><a href="https://www.tufts.edu/about/privacy">Privacy</a></li>
+    
+  </ul>
+</div></div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><div class="switcher-with-label">
+  <div class="switcher-label">
+    <p>Version:</p>
+  </div>
+  
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div>
+</div></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

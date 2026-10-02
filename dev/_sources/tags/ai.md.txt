@@ -4,5 +4,9 @@ nosearch:
 html_theme.sidebar_secondary.remove: true
 ---
 # ai
+- [](/ai/getting-started/00-claude-for-research.md)
+- [](/ai/getting-started/10-chatgpt-for-research.md)
+- [](/ai/getting-started/20-securing-claude-team.md)
+- [](/ai/getting-started/index.md)
 - [](/ai/index.md)
 - [](/hpc/chat.md)

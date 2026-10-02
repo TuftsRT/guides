@@ -1,0 +1,8 @@
+---
+orphan:
+nosearch:
+html_theme.sidebar_secondary.remove: true
+---
+# claude-code
+- [](/ai/getting-started/00-claude-for-research.md)
+- [](/ai/getting-started/20-securing-claude-team.md)
