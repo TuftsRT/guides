@@ -132,6 +132,10 @@ subtrees:
         title: Artificial Intelligence
         subtrees:
           - entries:
+              - file: ai/getting-started/index
+                subtrees:
+                  - entries:
+                      - glob: ai/getting-started/*
               - file: ai/ai-tools/index
                 subtrees:
                   - entries:

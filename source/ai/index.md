@@ -4,12 +4,20 @@ tags: data-science ai
 
 # AI and Data Science
 
-This page holds information on artificial intelligence (AI) and data science, including (1) data science tools such as Python, and (2) new AI tools deployed to the Tufts HPC cluster. These include access to generative AI chatbots and research specific applications.
+This section covers artificial intelligence (AI) and data science at Tufts: generative AI tools that run on your own computer, data science environments such as Python, and AI applications hosted on the Tufts HPC cluster.
+
+```{note}
+AI, and generative AI especially, changes fast. Plans, settings, and university guidance may shift, and these pages are continuously updated. If something is missing, contributions and feedback are welcome.
+```
 
 ```{gallery-grid}
 ---
 grid-columns: 1
 ---
+- header: "{fas}`book` Getting Started with AI"
+  content: "Install and configure Claude and ChatGPT on your own computer, and learn which research data is appropriate for each."
+  link: "getting-started/index.html"
+
 - header: "{fas}`book` Python"
   content: "Learn how to create a Python setup and build a workflow that works for your research."
   link: "python/index.html"
