@@ -104,10 +104,11 @@ $ sinfo
 ```
 
 ### Restricted Partition
-The Tufts HPC Cluster contains a wide range of different GPUs. In order to make sure that the most modern GPUs are fully utilized some are placed into their own partitions. These are available to all researchers at Tufts, but they must demonstrate a need for these resources before being being granted access. To request access please open a support ticket by emailing <tts-research@tufts.edu>. 
 
-- **blackwell**:  Contains Tufts B200 GPUs.  Users requesting access should currently be using all VRAM and running near 100% utilization of H200 GPUs. Jobs submitted to this partition will be monitored to ensure sufficient use of the requested resources. 
-Only `--qos=normal` is allowed in this partition. Usage of the B200 GPUs counts towards user's general public partition resource limits.
+The Tufts HPC Cluster contains a wide range of different GPUs. In order to make sure that the most modern GPUs are fully utilized some are placed into their own partitions. These are available to all researchers at Tufts, but they must demonstrate a need for these resources before being being granted access. To request access please open a support ticket by emailing <tts-research@tufts.edu>.
+
+- **blackwell**: Contains Tufts B200 GPUs. Users requesting access should currently be using all VRAM and running near 100% utilization of H200 GPUs. Jobs submitted to this partition will be monitored to ensure sufficient use of the requested resources.
+  Only `--qos=normal` is allowed in this partition. Usage of the B200 GPUs counts towards user's general public partition resource limits.
 
 ## Lab Partitions
 
@@ -116,4 +117,3 @@ Some research labs have dedicated nodes available in the HPC Cluster through our
 ```{warning}
 Lab partitions may have different resource limits that are more or less restrictive than the defaults above. To access higher resource limits in lab partitions, submit jobs with `"--qos=normal-contrib"`.
 ```
-
