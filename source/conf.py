@@ -66,10 +66,11 @@ html_css_files = [
     "style/navbar.css",
     "style/sidebar.css",
     "style/switcher.css",
+    "style/chatbot-bubble.css",
 ]
 html_favicon = "_static/favicon.ico"
 html_last_updated_fmt = ""
-html_js_files = ["script/dynamic-nav-dropdown.js"]
+html_js_files = ["script/dynamic-nav-dropdown.js", "script/chatbot-bubble.js"]
 html_logo = "_static/jumbo.png"
 html_static_path = ["_static"]
 html_theme = "pydata_sphinx_theme"

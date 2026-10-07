@@ -1,0 +1,116 @@
+#chatbot-bubble-wrap {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+#chatbot-bubble {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+#chatbot-bubble-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5ec4f0 0%, #4AABE3 100%);
+  box-shadow: 0 4px 14px rgba(74, 171, 227, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+#chatbot-bubble:hover #chatbot-bubble-btn,
+#chatbot-bubble:focus-visible #chatbot-bubble-btn {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(74, 171, 227, 0.55);
+}
+
+#chatbot-bubble:focus-visible {
+  outline: none;
+}
+
+#chatbot-bubble:focus-visible #chatbot-bubble-btn {
+  outline: 3px solid #4AABE3;
+  outline-offset: 3px;
+}
+
+#chatbot-bubble-label {
+  background: #fff;
+  color: #333;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+#chatbot-bubble:hover #chatbot-bubble-label,
+#chatbot-bubble:focus-visible #chatbot-bubble-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Mobile popup */
+#chatbot-bubble-popup {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  max-width: 220px;
+  text-align: center;
+}
+
+#chatbot-bubble-popup p {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+#chatbot-popup-link {
+  display: inline-block;
+  background: #4AABE3;
+  color: #fff;
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background 0.2s ease;
+}
+
+#chatbot-popup-link:hover,
+#chatbot-popup-link:focus-visible {
+  background: #3596cc;
+  outline: 2px solid #4AABE3;
+  outline-offset: 2px;
+}
+
+/* Hide hover label on touch devices — popup handles the interaction instead */
+@media (hover: none) and (pointer: coarse) {
+  #chatbot-bubble-label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #chatbot-bubble-btn,
+  #chatbot-bubble-label {
+    transition: none;
+  }
+}
