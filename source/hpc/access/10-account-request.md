@@ -10,6 +10,7 @@ home folder with 30GB of storage space and access to run compute jobs on the pub
 - Visible in [Tufts Directory](https://directory.tufts.edu/)
 
 ## HPC Account Request
+> Network Requirement: Tufts_Secure, Tufts_Wireless, Tufts Ethernet, Tufts VPN
 
 To verify and request access to the Tufts HPC cluster, please go to [https://rcrm.it.tufts.edu/](https://rcrm.it.tufts.edu/)
 
