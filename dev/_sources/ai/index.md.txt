@@ -4,7 +4,7 @@ tags: data-science ai
 
 # AI and Data Science
 
-This section covers artificial intelligence (AI) and data science at Tufts: generative AI tools that run on your own computer, data science environments such as Python, and AI applications hosted on the Tufts HPC cluster.
+This section covers artificial intelligence (AI) and data science at Tufts: generative AI tools that run on your own computer, data science environments such as Python and R, and AI applications hosted on the Tufts HPC cluster.
 
 ```{note}
 AI, and generative AI especially, changes fast. Plans, settings, and university guidance may shift, and these pages are continuously updated. If something is missing, contributions and feedback are welcome.
@@ -21,6 +21,10 @@ grid-columns: 1
 - header: "{fas}`book` Python"
   content: "Learn how to create a Python setup and build a workflow that works for your research."
   link: "python/index.html"
+
+- header: "{fas}`book` R"
+  content: "Learn how to install R and RStudio and get started with R for statistics and data analysis."
+  link: "r/index.html"
 
 - header: "{fas}`book` HPC AI Tools"
   content: "Learn how to use AI tools on the HPC Cluster to enable your research."

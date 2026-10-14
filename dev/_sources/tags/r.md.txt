@@ -1,0 +1,8 @@
+---
+orphan:
+nosearch:
+html_theme.sidebar_secondary.remove: true
+---
+# r
+- [](/ai/r/00-installing-r-and-rstudio.md)
+- [](/ai/r/index.md)
