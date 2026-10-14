@@ -144,5 +144,9 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: ai/python/*
+              - file: ai/r/index
+                subtrees:
+                  - entries:
+                      - glob: ai/r/*
       - url: https://go.tufts.edu/geospatial
         title: Geospatial

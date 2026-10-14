@@ -69,6 +69,7 @@ repos:
         name: convert file and directory names to url slugs
         args:
           - "--error-limit=256"
+          - "--ignore-globs=**/.claude"
           - "--ignore-globs=**/build"
           - "--ignore-globs=**/jupyter_execute"
           - "--max-length=64"
