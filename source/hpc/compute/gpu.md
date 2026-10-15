@@ -41,7 +41,7 @@ include the output in the log for troubleshooting purposes.
 | a100        | 40G or 80G | 8            | gpu, preempt           | a100 <br/>a100-40G<br/>a100-80G |                          |
 | p100        | 16GB       | 6            | gpu, preempt           | p100                            |                          |
 | v100        | 16GB       | 4            | preempt                | v100                            |                          |
-| t4          | 16GB       | 4            | preempt                | t4                              | Max CUDA version is 10.2 |
+| t4          | 16GB       | 4            | preempt                | t4                              |                          |
 | rtx_6000    | 24GB       | 8            | preempt                | rtx_6000                        |                          |
 | rtx_a6000   | 48GB       | 8            | preempt                | rtx_a6000                       |                          |
 | rtx_6000ada | 48GB       | 4            | preempt                | rtx_6000ada                     |                          |
@@ -49,9 +49,10 @@ include the output in the log for troubleshooting purposes.
 | rtx_a5000   | 24GB       | 8            | preempt                | rtx_a5000                       |                          |
 | l40         | 48GB       | 4            | preempt                | l40                             |                          |
 | l40s        | 48GB       | 4            | gpu, preempt           | l40s                            |                          |
-| h100        | 80GB       | 3            | preempt                | h100                            |                          |
-| h200        | 141GB      | 8            | gpu, preempt           | h200                            | SXM                      |
+| h100        | 80GB       | 3            | gpu                    | h100                            |                          |
+| h200        | 141GB      | 8            | gpu                    | h200                            | SXM                      |
+| rtx_pro_6000| 96GB       | 8            | gpu                    | rtx_pro_6000                    |                          |
+| b200        | 180GB      | 8            | blackwell              | b200                            | DGX                      |
 
-> All GPU cards drivers except t4 support CUDA 12.9
 
 Up-to-date system information, real-time status, and resource availability can be viewed with [OnDemand System Status](https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status) app.
