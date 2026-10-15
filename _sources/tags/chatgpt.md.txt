@@ -1,0 +1,7 @@
+---
+orphan:
+nosearch:
+html_theme.sidebar_secondary.remove: true
+---
+# chatgpt
+- [](/ai/getting-started/10-chatgpt-for-research.md)
