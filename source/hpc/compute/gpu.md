@@ -49,7 +49,7 @@ include the output in the log for troubleshooting purposes.
 | rtx_a5000   | 24GB       | 8            | preempt                | rtx_a5000                       |                          |
 | l40         | 48GB       | 4            | preempt                | l40                             |                          |
 | l40s        | 48GB       | 4            | gpu, preempt           | l40s                            |                          |
-| h100        | 80GB       | 3            | gpu                    | h100                            |                          |
+| h100        | 80GB       | 3            | gpu, preempt           | h100                            |                          |
 | h200        | 141GB      | 8            | gpu                    | h200                            | SXM                      |
 | rtx_pro_6000| 96GB       | 8            | gpu                    | rtx_pro_6000                    |                          |
 | b200        | 180GB      | 8            | blackwell              | b200                            | DGX                      |
