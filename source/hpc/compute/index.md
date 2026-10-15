@@ -22,7 +22,7 @@ general idea of what is currently available for use.
 
 Some systems are only available to all users on the preempt partition.
 
-Mixed systems include a limited number of various GPUs including V100, A100, H100 and GH200.
+Mixed systems include a limited number of various GPUs including V100, A100, H100, H200, RTX Pro 6000, and B200.
 
 Up-to-date system information, real-time status, and resource availability can be viewed with [OnDemand System Status](https://ondemand-p01.pax.tufts.edu/pun/sys/dashboard/system-status) app.
 
