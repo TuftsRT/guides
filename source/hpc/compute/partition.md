@@ -14,7 +14,7 @@ Up-to-date system information, real-time status, and resource availability can b
 
 ## General limits
 
-In general the HPC resources in the public partitions are available to reseachers on a "first come, first serve" basis with jobs submitted first, getting access to the next available resource that matches their request(s). However to fairly balance usage across the community heavy users may see their jobs wait if the cluster is fully utilized, with lower usage users getting priority.
+In general the HPC resources in the public partitions are available to researchers on a "first come, first serve" basis with jobs submitted first, getting access to the next available resource that matches their request(s). However to fairly balance usage across the community heavy users may see their jobs wait if the cluster is fully utilized, with lower usage users getting priority.
 
 A limit is placed on the total resources a single user can have allocated at any one time. The current limits are shown here.
 
@@ -37,26 +37,6 @@ A limit is placed on the total resources a single user can have allocated at any
 Additionally, each user is allowed to request a single interactive job which will have priority over non interactive jobs.
 
 <small>These limits are subject to change to best optimize the utilization of the cluster resources.</small>
-
-## Partitions
-
-**Public Partitions:**
-
-All users have equal access to the following public partitions. Job priorities are under the governance of Slurm Fairshare algorithm.
-
-- **batch**\*: The default partition for standard jobs that do not require any special hardware or configurations. CPU only. Provides memory (RAM) up to 500GB.
-- **gpu**: Designated for jobs that require GPU resources. No CPU only jobs allowed.
-- **preempt** - Consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs. Submit jobs with `--qos=preempt`.
-
-> The `mpi`, `largemem`, and `interactive` partitions have been retired. Use the `batch` or `gpu` partitions instead.
-
-To get a full inventory of specific available resources and node specs, go to [**OnDemand**](https://ondemand-prod.pax.tufts.edu) `Cluster` --> `System Status`
-
-From command line, use the following command to check what partitions you have access to:
-
-```
-$ sinfo
-```
 
 ## Quality of Service (QOS)
 
@@ -103,10 +83,37 @@ Common QoS available on Tufts HPC Cluster:
   - GPU: 32
   - Maximum Job Timelimit: 48 hours
 
+## Partitions
+
+### Public Partitions
+
+All users have equal access to the following public partitions. Job priorities are under the governance of Slurm Fairshare algorithm.
+
+- **batch**\*: The default partition for standard jobs that do not require any special hardware or configurations. CPU only. Provides memory (RAM) up to 500GB.
+- **gpu**: Designated for jobs that require GPU resources. No CPU only jobs allowed.
+- **preempt** - Consists of most of the nodes on the cluster, including contrib nodes from different research labs. When submitting jobs to preempt partition, you acknowledge that your jobs are taking the risk of being preempted by higher priority jobs. In that case, you will simply have to resubmit your jobs. Submit jobs with `--qos=preempt`.
+
+> The `mpi`, `largemem`, and `interactive` partitions have been retired. Use the `batch` or `gpu` partitions instead.
+
+To get a full inventory of specific available resources and node specs, go to [**OnDemand**](https://ondemand-prod.pax.tufts.edu) `Cluster` --> `System Status`
+
+From command line, use the following command to check what partitions you have access to:
+
+```
+$ sinfo
+```
+
+### Restricted Partition
+
+The Tufts HPC Cluster contains a wide range of different GPUs. In order to make sure that the most modern GPUs are fully utilized some are placed into their own partitions. These are available to all researchers at Tufts, but they must demonstrate a need for these resources before being being granted access. To request access please open a support ticket by emailing <tts-research@tufts.edu>.
+
+- **blackwell**: Contains Tufts B200 GPUs. Users requesting access should currently be using all VRAM and running near 100% utilization of H200 GPUs. Jobs submitted to this partition will be monitored to ensure sufficient use of the requested resources.
+  Only `--qos=normal` is allowed in this partition. Usage of the B200 GPUs counts towards user's general public partition resource limits.
+
 ## Lab Partitions
 
 Some research labs have dedicated nodes available in the HPC Cluster through our [contrib node](../policy/contribute-nodes) program. These are accessed using a partition name for each lab. You can see this name by running the `sinfo` command.
 
 ```{warning}
-Lab partitions may have different resource limits that are more or less restrictive than the defaults above.
+Lab partitions may have different resource limits that are more or less restrictive than the defaults above. To access higher resource limits in lab partitions, submit jobs with `"--qos=normal-contrib"`.
 ```

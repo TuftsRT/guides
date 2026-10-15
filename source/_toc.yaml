@@ -132,6 +132,10 @@ subtrees:
         title: Artificial Intelligence
         subtrees:
           - entries:
+              - file: ai/getting-started/index
+                subtrees:
+                  - entries:
+                      - glob: ai/getting-started/*
               - file: ai/ai-tools/index
                 subtrees:
                   - entries:
@@ -140,5 +144,9 @@ subtrees:
                 subtrees:
                   - entries:
                       - glob: ai/python/*
+              - file: ai/r/index
+                subtrees:
+                  - entries:
+                      - glob: ai/r/*
       - url: https://go.tufts.edu/geospatial
         title: Geospatial

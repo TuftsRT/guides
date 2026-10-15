@@ -11,6 +11,10 @@ home folder with 30GB of storage space and access to run compute jobs on the pub
 
 ## HPC Account Request
 
+> Network Requirement: Tufts_Secure, Tufts_Wireless, Tufts Ethernet, Tufts VPN
+>
+> RCRM is **NOT** accessible on Tufts_Guest network
+
 To verify and request access to the Tufts HPC cluster, please go to [https://rcrm.it.tufts.edu/](https://rcrm.it.tufts.edu/)
 
 - Click on `Request and Verify Access to HPC Cluster`
