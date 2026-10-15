@@ -6,7 +6,7 @@ tags: hpc ai chat
 
 <iframe
   class="sd-mb-4 sd-mt-1 sd-rounded-2 sd-shadow-lg"
-  src="https://copilotstudio.microsoft.com/environments/Default-fbbf6c60-0344-4c29-9459-725685739b19/bots/ca_agentZWy_17/webchat?__version__=2"
+  src="https://copilotstudio.microsoft.com/environments/47df638c-557a-e8f4-880a-c76df9221107/bots/ca_agentZWy_17/webchat?__version__=2"
   style="width: 100%; height: 55vh">
 </iframe>
 
