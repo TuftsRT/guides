@@ -4,4 +4,4 @@ nosearch:
 html_theme.sidebar_secondary.remove: true
 ---
 # tableau
-- [](/viz/index.md)
+- [](/viz/tableau/index.md)

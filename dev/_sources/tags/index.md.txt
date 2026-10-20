@@ -32,5 +32,5 @@ html_theme.sidebar_secondary.remove: true
 - [rstudio (2)](/tags/rstudio.md)
 - [software-installation-cluster (3)](/tags/software-installation-cluster.md)
 - [tableau (1)](/tags/tableau.md)
-- [visualization (1)](/tags/visualization.md)
+- [visualization (2)](/tags/visualization.md)
 - [vs-code (1)](/tags/vs-code.md)

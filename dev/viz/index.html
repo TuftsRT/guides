@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction to Visualization with Tableau &#8212; TTS Research Technology Guides</title>
+    <title>Data Visualization &#8212; TTS Research Technology Guides</title>
   
   
   
@@ -84,14 +84,14 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Tableau" href="10-intro-to-tableau.html" />
+    <link rel="next" title="Introduction to Visualization with Tableau" href="tableau/index.html" />
     <link rel="prev" title="Pretraining vs. Finetuning" href="../nlp/llms/pretraining-vs-finetuning.html" />
 <meta name="robots" content="noindex, nofollow" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20261015" />
-    <meta name="docbuild:last-update" content="Oct 15, 2026"/>
+  <meta name="docsearch:version" content="20261020" />
+    <meta name="docbuild:last-update" content="Oct 20, 2026"/>
   
     
     <script src="../_static/searchtools.js"></script>
@@ -482,17 +482,10 @@
 </button></div>
         <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links" aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">
-     Introduction to Visualization with Tableau 
+     Data Visualization 
   </p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="10-intro-to-tableau.html">Introduction to Tableau</a></li>
-<li class="toctree-l1"><a class="reference internal" href="20-accessing-tableau-at-tufts.html">Accessing Tableau at Tufts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="30-loading-and-viewing-your-data.html">Loading and Viewing Your Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="40-creating-tables-in-a-tableau.html">Creating a Table in a Tableau Worksheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="50-creating-more-complex-tables.html">Creating More Complex Tables (Optional Lesson)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="60-creating-your-first-data.html">Creating Your First Data Visualizations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="70-introduction-to-dashboards.html">Introduction to Dashboards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="80-sharing-tableau.html">Sharing and Presenting Tableau Visualizations and Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tableau/index.html">Introduction to Visualization with Tableau</a></li>
 </ul>
 </div>
 </nav></div>
@@ -539,7 +532,7 @@
     </li>
      
     <li class="breadcrumb-item active" aria-current="page">
-      Introduction to...
+      Data Visualization
     </li>
   </ul>
 </nav>
@@ -557,96 +550,38 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-visualization-with-tableau">
-<h1>Introduction to Visualization with Tableau<a class="headerlink" href="#introduction-to-visualization-with-tableau" title="Link to this heading">#</a></h1>
-<p>Tableau is a powerful data visualization tool that helps users explore, analyze, and present data through interactive and shareable dashboards. It connects easily to a variety of data sources and allows for drag-and-drop simplicity in creating visual insights.</p>
-<section id="for-more-information">
-<h2>For more information<a class="headerlink" href="#for-more-information" title="Link to this heading">#</a></h2>
-<p>Please visit <a class="reference external" href="https://access.tufts.edu/tableau">Access Tufts</a> if you would like to learn more about how to access Tableau at Tufts.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-visualization">
+<h1>Data Visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h1>
+<p>Data visualization turns data into charts, maps, and dashboards so you can explore patterns, check your analysis, and share results with others. This section introduces common data visualization tools and links to tutorials for using them at Tufts.</p>
+<section id="choosing-a-tool">
+<h2>Choosing a Tool<a class="headerlink" href="#choosing-a-tool" title="Link to this heading">#</a></h2>
+<p>The right tool depends on your data, your experience with programming, and how you plan to share your work.</p>
+<ul class="simple">
+<li><p><strong>Point-and-click tools</strong> such as Tableau let you build charts and interactive dashboards without writing code. They are a good fit for exploring a new dataset quickly and for publishing dashboards that others can interact with.</p></li>
+<li><p><strong>Programming languages</strong> such as Python (with libraries like Matplotlib, seaborn, and Plotly) and R (with ggplot2) give you full control over every detail of a figure. Because your figures are generated by code, they are easy to reproduce and update when your data changes. See the <a class="reference internal" href="../ai/python/index.html"><span class="std std-doc">Python</span></a> and <a class="reference internal" href="../ai/r/index.html"><span class="std std-doc">R</span></a> guides to get set up.</p></li>
+<li><p><strong>Spreadsheet software</strong> such as Microsoft Excel and Google Sheets works well for quick, simple charts from small tables.</p></li>
+<li><p><strong>Geospatial tools</strong> such as ArcGIS and QGIS are designed for maps and spatial data. See the <a class="reference external" href="https://go.tufts.edu/geospatial">Tufts Geospatial</a> resources for more information.</p></li>
+</ul>
+</section>
+<section id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">#</a></h2>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 gallery-directive docutils">
 <div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Introduction to Tableau</p>
+<p class="sd-card-text"><span class="fas fa-book"></span> Introduction to Visualization with Tableau</p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">Brief primer on what Tableau is and how it’s used.</p>
+<p class="sd-card-text">Learn how to access Tableau at Tufts, load your data, build tables and charts, and combine them into shareable dashboards.</p>
 </div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="10-intro-to-tableau.html"><span>10-intro-to-tableau.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Accessing Tableau at Tufts</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">How to access Tableau Desktop on your home computer or through the Tufts remote computing infrastructure.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="20-accessing-tableau-at-tufts.html"><span>20-accessing-tableau-at-tufts.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Loading and Viewing Your Data</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Bringing your data into Tableau.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="30-loading-and-viewing-your-data.html"><span>30-loading-and-viewing-your-data.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span>  Creating a Table in a Tableau Worksheet</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Opening a Tableau Worksheet and creating a table to summarize your data.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="40-creating-tables-in-a-tableau.html"><span>40-creating-tables-in-a-tableau.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Creating More Complex Tables</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Creating more complex tables with multiple unnested columns or table calculations.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="50-creating-more-complex-tables.html"><span>50-creating-more-complex-tables.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Creating Your First Data Visualization</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Creating a simple bar chart.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="60-creating-your-first-data.html"><span>60-creating-your-first-data.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Introduction to Dashboards</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Putting multiple visualizations, tables, and design elements into one attractive dashboard.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="70-introduction-to-dashboards.html"><span>70-introduction-to-dashboards.html</span></a></div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><span class="fas fa-book"></span> Sharing Tableau Visualizations and Dashboards</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Sharing your files with collaborators, using your visualizations in presentations and dashboards.</p>
-</div>
-<a class="sd-stretched-link sd-hide-link-text reference external" href="80-sharing-tableau.html"><span>80-sharing-tableau.html</span></a></div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="tableau/index.html"><span>tableau/index.html</span></a></div>
 </div>
 </div>
 </div>
+<blockquote>
+<div><p><strong>To Get Support:</strong> - Please email <a class="reference external" href="mailto:datalab-support&#37;&#52;&#48;elist&#46;tufts&#46;edu">datalab-support<span>&#64;</span>elist<span>&#46;</span>tufts<span>&#46;</span>edu</a> for data visualization support at Tufts.</p>
+</div></blockquote>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -672,11 +607,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="10-intro-to-tableau.html"
+       href="tableau/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Tableau</p>
+        <p class="prev-next-title">Introduction to Visualization with Tableau</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -695,14 +630,15 @@
   id="pst-page-navigation-heading-2"
   class="page-toc tocsection onthispage"
 >
-  <i class="fa-solid fa-list"></i> Introduction to Visualization with Tableau
+  <i class="fa-solid fa-list"></i> Data Visualization
 </div>
 <nav
   class="bd-toc-nav page-toc"
   aria-labelledby="pst-page-navigation-heading-2"
 >
   <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-more-information">For more information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-tool">Choosing a Tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials">Tutorials</a></li>
 </ul>
 </nav></div>
 
@@ -711,9 +647,6 @@
   <i class="fa-solid fa-tags"></i> Tags
 </div>
 <ul class="tocsection tags-list">
-  <li class="tag-item">
-    <a href="../tags/tableau.html" class="tag-link">tableau</a>
-  </li>
   <li class="tag-item">
     <a href="../tags/visualization.html" class="tag-link">visualization</a>
   </li>
@@ -782,7 +715,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Oct 15, 2026.
+  Last updated on Oct 20, 2026.
 </p></div>
       
     </div>
