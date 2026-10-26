@@ -7,7 +7,7 @@ ci:
 
 repos:
   - repo: https://github.com/srstevenson/nb-clean
-    rev: 4.0.1
+    rev: v5.0.0
     hooks:
       - id: nb-clean
         name: clean notebooks
@@ -33,7 +33,7 @@ repos:
       - id: rstfmt
         name: format rst files
   - repo: https://github.com/PyCQA/isort
-    rev: 9.0.2
+    rev: 10.0.0b1
     hooks:
       - id: isort
         name: sort python imports
@@ -43,7 +43,7 @@ repos:
       - id: black-jupyter
         name: apply black style
   - repo: https://github.com/lorenzwalthert/precommit
-    rev: v0.4.3.9030
+    rev: v0.4.3.9032
     hooks:
       - id: style-files
         name: apply tidyverse style
