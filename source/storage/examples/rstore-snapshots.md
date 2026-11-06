@@ -9,6 +9,8 @@
 
 ## Recovery via Windows
 
+Windows virtual desktops can be accessed through the [Tufts Remote Computing Infrastructure](https://access.tufts.edu/remote-computing-infrastructure).
+
 1. Open **File Explorer**.
 1. Click **This PC**.
 1. Click the **...** button and select **Map network drive...**.
