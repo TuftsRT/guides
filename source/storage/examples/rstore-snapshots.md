@@ -9,7 +9,7 @@
 
 ## Recovery via Windows
 
-```[Tip]
+```{tip}
 Windows virtual desktops can be accessed through the [Tufts Remote Computing Infrastructure](https://access.tufts.edu/remote-computing-infrastructure).
 ```
 
