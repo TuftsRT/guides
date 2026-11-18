@@ -14,8 +14,8 @@ Only storage owners and approvers may add users to a project's storage allocatio
 1. Select “Manage” dropdown and select “Projects”
 1. Scroll down to "Users" section and select "Add Users"
 1. In the “Search String\*“ input file, copy and paste usernames separated by space or newline for multiple Tufts account searches.
-2. For “Search by\*”, leave “Exact Username Only“ selected
-2. To search by email select 'All Fields This option will be ignored if multiple usernames are entered in the search user text area.'
+1. For “Search by\*”, leave “Exact Username Only“ selected
+1. To search by email select 'All Fields This option will be ignored if multiple usernames are entered in the search user text area.'
 1. Select “Search“
 1. Under the “Search” button, review Tufts accounts, update “Role” (if necessary), and select “Add Selected Users to Project“
 
