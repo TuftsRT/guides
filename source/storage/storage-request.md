@@ -20,10 +20,10 @@
 
 ## Existing Storage Quota changes
 
-- Submit a Research Storage Quota Change Request on the Research Computing Resource Manager [RCRM Manage Storage]([https://rtguides.it.tufts.edu/storage/rcrm/35-manage-storage.html](https://rtguides.it.tufts.edu/storage/rcrm/31-manage-project.html)) for an increase or decrease.
+- Submit a Research Storage Quota Change Request on the Research Computing Resource Manager [RCRM Manage Storage](https://rtguides.it.tufts.edu/storage/rcrm/35-manage-storage.html) for an increase or decrease.
 - No more than 5TB shall be granted within a 12-month interval per updated policy.
 - Increase over 1TB may require a consultation.
 
 ## Add / Remove user access
 
-- Add or Remove user access on the Research Computing Resource Manager [RCRM Manage Project](https://rtguides.it.tufts.edu/storage/rcrm/35-manage-storage.html).
+- Add or Remove user access on the Research Computing Resource Manager [RCRM Manage Project](https://rtguides.it.tufts.edu/storage/rcrm/31-manage-project.html).
