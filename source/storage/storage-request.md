@@ -2,7 +2,7 @@
 
 ## Prerequisites:
 
-- Typically this request shouled be made by a **Tufts University faculty**
+- Typically this request should be made by a **Tufts University faculty**
 - Please review the updated storage policy changes regarding fees on [Research Technology (RT) Website HPC page](https://it.tufts.edu/high-performance-computing) and [RT Announcements](https://it.tufts.edu/research-technology/announcements) before submitting the storage request.
 
 %% ## Check if you already access to a research storage share
@@ -20,10 +20,10 @@
 
 ## Existing Storage Quota changes
 
-- Submit a [Research Storage Request](https://tufts.qualtrics.com/jfe/form/SV_5bUmpFT0IXeyEfj) for an increase or decrease.
+- Submit a Research Storage Quota Change Request on the Research Computing Resource Manager [RCRM Manage Storage](https://rtguides.it.tufts.edu/storage/rcrm/35-manage-storage.html) for an increase or decrease.
 - No more than 5TB shall be granted within a 12-month interval per updated policy.
 - Increase over 1TB may require a consultation.
 
 ## Add / Remove user access
 
-- To make changes to which users can access your research storage share, submit a [Research Storage Request](https://tufts.qualtrics.com/jfe/form/SV_5bUmpFT0IXeyEfj).
+- Add or Remove user access on the Research Computing Resource Manager [RCRM Manage Project](https://rtguides.it.tufts.edu/storage/rcrm/31-manage-project.html).
