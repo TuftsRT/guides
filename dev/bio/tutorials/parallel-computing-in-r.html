@@ -90,8 +90,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20261020" />
-    <meta name="docbuild:last-update" content="Oct 20, 2026"/>
+  <meta name="docsearch:version" content="20261118" />
+    <meta name="docbuild:last-update" content="Nov 18, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -628,7 +628,7 @@
 <h2>Setting Up Parallel Processing in R<a class="headerlink" href="#setting-up-parallel-processing-in-r" title="Link to this heading">#</a></h2>
 <p>Here, we’ll demonstrate setting up parallel processing using each of these packages.</p>
 <section id="using-the-parallel-package">
-<h3>1. Using the <code class="docutils literal notranslate"><span class="pre">parallel</span></code> Package<a class="headerlink" href="#using-the-parallel-package" title="Link to this heading">#</a></h3>
+<span id="1-using-the-parallel-package"></span><h3>1. Using the <code class="docutils literal notranslate"><span class="pre">parallel</span></code> Package<a class="headerlink" href="#using-the-parallel-package" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">parallel</span></code> package is ideal for simple tasks that can be distributed across multiple cores. Here’s an example of using <code class="docutils literal notranslate"><span class="pre">parLapply</span></code> to run a task in parallel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the parallel library</span>
 <span class="n">library</span><span class="p">(</span><span class="n">parallel</span><span class="p">)</span>
@@ -645,7 +645,7 @@
 </div>
 </section>
 <section id="using-foreach-and-doparallel">
-<h3>2. Using <code class="docutils literal notranslate"><span class="pre">foreach</span></code> and <code class="docutils literal notranslate"><span class="pre">doParallel</span></code><a class="headerlink" href="#using-foreach-and-doparallel" title="Link to this heading">#</a></h3>
+<span id="2-using-foreach-and-doparallel"></span><h3>2. Using <code class="docutils literal notranslate"><span class="pre">foreach</span></code> and <code class="docutils literal notranslate"><span class="pre">doParallel</span></code><a class="headerlink" href="#using-foreach-and-doparallel" title="Link to this heading">#</a></h3>
 <p>For more complex workflows where each iteration can be customized, <code class="docutils literal notranslate"><span class="pre">foreach</span></code> with <code class="docutils literal notranslate"><span class="pre">doParallel</span></code> offers flexibility in combining results and managing multiple loops.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load necessary libraries</span>
 <span class="n">library</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
@@ -665,7 +665,7 @@
 </div>
 </section>
 <section id="using-biocparallel-for-bioinformatics-workflows">
-<h3>3. Using <code class="docutils literal notranslate"><span class="pre">BiocParallel</span></code> for Bioinformatics Workflows<a class="headerlink" href="#using-biocparallel-for-bioinformatics-workflows" title="Link to this heading">#</a></h3>
+<span id="3-using-biocparallel-for-bioinformatics-workflows"></span><h3>3. Using <code class="docutils literal notranslate"><span class="pre">BiocParallel</span></code> for Bioinformatics Workflows<a class="headerlink" href="#using-biocparallel-for-bioinformatics-workflows" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">BiocParallel</span></code> is optimized for bioinformatics applications, with backends like <code class="docutils literal notranslate"><span class="pre">MulticoreParam</span></code> for multi-core processing on a single machine.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load BiocParallel library</span>
 <span class="n">library</span><span class="p">(</span><span class="n">BiocParallel</span><span class="p">)</span>
@@ -981,7 +981,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Oct 20, 2026.
+  Last updated on Nov 18, 2026.
 </p></div>
       
     </div>

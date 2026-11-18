@@ -90,8 +90,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20261020" />
-    <meta name="docbuild:last-update" content="Oct 20, 2026"/>
+  <meta name="docsearch:version" content="20261118" />
+    <meta name="docbuild:last-update" content="Nov 18, 2026"/>
   
     
     <script src="../../../_static/searchtools.js"></script>
@@ -656,20 +656,20 @@ $ singularity pull samtools_1.21.sif docker://quay.io/biocontainers/samtools:1.2
 <h2>singularity exec<a class="headerlink" href="#singularity-exec" title="Link to this heading">#</a></h2>
 <p>Singularity has a <code class="docutils literal notranslate"><span class="pre">run</span></code> subcommand. This can be used to run the user-defined default command within a container. However, it is recommended to use another subcommand <code class="docutils literal notranslate"><span class="pre">exec</span></code> instead of <code class="docutils literal notranslate"><span class="pre">run</span></code>. If you’re interested in <code class="docutils literal notranslate"><span class="pre">run</span></code>, please check the <a class="reference external" href="https://docs.sylabs.io/guides/3.8/user-guide/cli/singularity_run.html#singularity-run">singularity user guide</a>.</p>
 <section id="id1">
-<h3>Syntax<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<span id="syntax-1"></span><h3>Syntax<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Download or build a container from a given URI.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">singularity</span> <span class="n">exec</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">image</span> <span class="n">command</span>
 </pre></div>
 </div>
 </section>
 <section id="id2">
-<h3>samtools<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<span id="samtools-1"></span><h3>samtools<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ singularity exec samtools_1.21--h96c455f_1.sif samtools
 </pre></div>
 </div>
 </section>
 <section id="id3">
-<h3>pytorch<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<span id="pytorch-1"></span><h3>pytorch<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ singularity exec pytorch_2.5.1-cuda12.1-cudnn9-runtime-jupyter.sif python
 Python 3.11.10 | packaged by conda-forge | (main, Oct 16 2024, 01:27:36) [GCC 13.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
@@ -683,7 +683,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 <section id="container-mod">
 <h2>container-mod<a class="headerlink" href="#container-mod" title="Link to this heading">#</a></h2>
 <section id="id4">
-<h3>samtools<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<span id="samtools-2"></span><h3>samtools<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load container-mod
 $ container-mod pipe docker://quay.io/biocontainers/samtools:1.21--h96c455f_1
 $ module load use.own
@@ -692,7 +692,7 @@ $ module load samtools/1.21
 </div>
 </section>
 <section id="id5">
-<h3>pytorch<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<span id="pytorch-2"></span><h3>pytorch<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load container-mod
 $ container-mod pipe -j docker://tuftsttsrt/pytorch:2.5.1-cuda12.1-cudnn9-runtime-jupyter
 $ module load use.own
@@ -840,7 +840,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Oct 20, 2026.
+  Last updated on Nov 18, 2026.
 </p></div>
       
     </div>

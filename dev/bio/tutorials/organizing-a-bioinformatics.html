@@ -90,8 +90,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20261020" />
-    <meta name="docbuild:last-update" content="Oct 20, 2026"/>
+  <meta name="docsearch:version" content="20261118" />
+    <meta name="docbuild:last-update" content="Nov 18, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -602,7 +602,7 @@ Date: 2026-02-26</p>
 <li><p>This structure works for SLURM-based workflows, R/Python pipelines, and multi-analysis projects.</p></li>
 </ul>
 <section id="where-to-work-on-tufts-hpc">
-<h2>1. Where to Work on Tufts HPC<a class="headerlink" href="#where-to-work-on-tufts-hpc" title="Link to this heading">#</a></h2>
+<span id="1-where-to-work-on-tufts-hpc"></span><h2>1. Where to Work on Tufts HPC<a class="headerlink" href="#where-to-work-on-tufts-hpc" title="Link to this heading">#</a></h2>
 <p>Each user works under:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">tufts</span><span class="o">/&lt;</span><span class="n">labname</span><span class="o">&gt;/&lt;</span><span class="n">utln</span><span class="o">&gt;/</span>
 </pre></div>
@@ -614,7 +614,7 @@ Date: 2026-02-26</p>
 <p>Use the shared folder for reference genomes, indexes, annotation files, or datasets reused across the lab.</p>
 </section>
 <section id="recommended-project-structure">
-<h2>2. Recommended Project Structure<a class="headerlink" href="#recommended-project-structure" title="Link to this heading">#</a></h2>
+<span id="2-recommended-project-structure"></span><h2>2. Recommended Project Structure<a class="headerlink" href="#recommended-project-structure" title="Link to this heading">#</a></h2>
 <p>Use this structure <strong>inside your project</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">project_name</span><span class="o">/</span>
     <span class="n">data_raw</span><span class="o">/</span>
@@ -641,23 +641,23 @@ Date: 2026-02-26</p>
 Reusable code lives in <code class="docutils literal notranslate"><span class="pre">scripts_global/</span></code>; analysis-specific code stays inside each <code class="docutils literal notranslate"><span class="pre">analysis*/scripts/</span></code>.</p>
 </section>
 <section id="what-goes-in-each-folder">
-<h2>3. What Goes in Each Folder<a class="headerlink" href="#what-goes-in-each-folder" title="Link to this heading">#</a></h2>
+<span id="3-what-goes-in-each-folder"></span><h2>3. What Goes in Each Folder<a class="headerlink" href="#what-goes-in-each-folder" title="Link to this heading">#</a></h2>
 <section id="data-raw">
-<h3><strong>data_raw/</strong><a class="headerlink" href="#data-raw" title="Link to this heading">#</a></h3>
+<span id="data_raw"></span><h3><strong>data_raw/</strong><a class="headerlink" href="#data-raw" title="Link to this heading">#</a></h3>
 <p>Untouched input files (FASTQ, BAM, MERFISH CSV, Visium outputs).
 Should never be modified.</p>
 </section>
 <section id="data-processed">
-<h3><strong>data_processed/</strong><a class="headerlink" href="#data-processed" title="Link to this heading">#</a></h3>
+<span id="data_processed"></span><h3><strong>data_processed/</strong><a class="headerlink" href="#data-processed" title="Link to this heading">#</a></h3>
 <p>Filtered matrices, Seurat objects (<code class="docutils literal notranslate"><span class="pre">.rds</span></code>), processed tables.
 Time-consuming results that you want to reuse.</p>
 </section>
 <section id="scripts-global">
-<h3><strong>scripts_global/</strong><a class="headerlink" href="#scripts-global" title="Link to this heading">#</a></h3>
+<span id="scripts_global"></span><h3><strong>scripts_global/</strong><a class="headerlink" href="#scripts-global" title="Link to this heading">#</a></h3>
 <p>Shared utilities, helper functions, custom plotting, reusable QC code.</p>
 </section>
 <section id="analysis-scripts">
-<h3><strong>analysis*/scripts/</strong><a class="headerlink" href="#analysis-scripts" title="Link to this heading">#</a></h3>
+<span id="analysisscripts"></span><h3><strong>analysis*/scripts/</strong><a class="headerlink" href="#analysis-scripts" title="Link to this heading">#</a></h3>
 <p>Analysis-specific R/Python scripts, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="n">_qc</span><span class="o">.</span><span class="n">R</span>
 <span class="mi">02</span><span class="n">_clustering</span><span class="o">.</span><span class="n">R</span>
@@ -666,12 +666,12 @@ Time-consuming results that you want to reuse.</p>
 </div>
 </section>
 <section id="analysis-notebooks">
-<h3><strong>analysis*/notebooks/</strong><a class="headerlink" href="#analysis-notebooks" title="Link to this heading">#</a></h3>
+<span id="analysisnotebooks"></span><h3><strong>analysis*/notebooks/</strong><a class="headerlink" href="#analysis-notebooks" title="Link to this heading">#</a></h3>
 <p>Exploratory notebooks (Rmd/Jupyter).
 Not part of the formal pipeline.</p>
 </section>
 <section id="analysis-slurm">
-<h3><strong>analysis*/slurm/</strong><a class="headerlink" href="#analysis-slurm" title="Link to this heading">#</a></h3>
+<span id="analysisslurm"></span><h3><strong>analysis*/slurm/</strong><a class="headerlink" href="#analysis-slurm" title="Link to this heading">#</a></h3>
 <p>Job submission files (<code class="docutils literal notranslate"><span class="pre">.sbatch</span></code>).
 Match names to scripts, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scripts</span><span class="o">/</span><span class="mi">01</span><span class="n">_qc</span><span class="o">.</span><span class="n">R</span>
@@ -680,11 +680,11 @@ Match names to scripts, e.g.:</p>
 </div>
 </section>
 <section id="analysis-results">
-<h3><strong>analysis*/results/</strong><a class="headerlink" href="#analysis-results" title="Link to this heading">#</a></h3>
+<span id="analysisresults"></span><h3><strong>analysis*/results/</strong><a class="headerlink" href="#analysis-results" title="Link to this heading">#</a></h3>
 <p>Figures, tables, intermediate outputs.</p>
 </section>
 <section id="analysis-logs">
-<h3><strong>analysis*/logs/</strong><a class="headerlink" href="#analysis-logs" title="Link to this heading">#</a></h3>
+<span id="analysislogs"></span><h3><strong>analysis*/logs/</strong><a class="headerlink" href="#analysis-logs" title="Link to this heading">#</a></h3>
 <p>SLURM <code class="docutils literal notranslate"><span class="pre">.out</span></code>/<code class="docutils literal notranslate"><span class="pre">.err</span></code> logs and analysis logs.</p>
 </section>
 <section id="envs">
@@ -697,7 +697,7 @@ Match names to scripts, e.g.:</p>
 </section>
 </section>
 <section id="version-control-use-git-github">
-<h2>4. Version Control: Use Git + GitHub<a class="headerlink" href="#version-control-use-git-github" title="Link to this heading">#</a></h2>
+<span id="4-version-control-use-git--github"></span><h2>4. Version Control: Use Git + GitHub<a class="headerlink" href="#version-control-use-git-github" title="Link to this heading">#</a></h2>
 <p>Track <strong>only code and documents</strong>, not large data.</p>
 <p>Put these under Git:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scripts_global</span><span class="o">/</span>
@@ -721,9 +721,9 @@ Match names to scripts, e.g.:</p>
 <p>Create a GitHub repo for tracking scripts + documentation.</p>
 </section>
 <section id="essential-best-practices-for-hpc-projects">
-<h2>5. Essential Best Practices for HPC Projects<a class="headerlink" href="#essential-best-practices-for-hpc-projects" title="Link to this heading">#</a></h2>
+<span id="5-essential-best-practices-for-hpc-projects"></span><h2>5. Essential Best Practices for HPC Projects<a class="headerlink" href="#essential-best-practices-for-hpc-projects" title="Link to this heading">#</a></h2>
 <section id="separate-raw-and-processed-data">
-<h3>5.1. Separate Raw and Processed Data<a class="headerlink" href="#separate-raw-and-processed-data" title="Link to this heading">#</a></h3>
+<span id="51-separate-raw-and-processed-data"></span><h3>5.1. Separate Raw and Processed Data<a class="headerlink" href="#separate-raw-and-processed-data" title="Link to this heading">#</a></h3>
 <p>Raw data:</p>
 <ul class="simple">
 <li><p>Never modified</p></li>
@@ -735,7 +735,7 @@ Public raw datasets:</p></li>
 </ul>
 </section>
 <section id="document-software-versions">
-<h3>5.2. Document Software Versions<a class="headerlink" href="#document-software-versions" title="Link to this heading">#</a></h3>
+<span id="52-document-software-versions"></span><h3>5.2. Document Software Versions<a class="headerlink" href="#document-software-versions" title="Link to this heading">#</a></h3>
 <p>Record:</p>
 <ul class="simple">
 <li><p>Tool versions</p></li>
@@ -745,12 +745,12 @@ Write analysis notes in a methods-style format while working.</p></li>
 </ul>
 </section>
 <section id="keep-folder-sizes-reasonable">
-<h3>5.3. Keep Folder Sizes Reasonable<a class="headerlink" href="#keep-folder-sizes-reasonable" title="Link to this heading">#</a></h3>
+<span id="53-keep-folder-sizes-reasonable"></span><h3>5.3. Keep Folder Sizes Reasonable<a class="headerlink" href="#keep-folder-sizes-reasonable" title="Link to this heading">#</a></h3>
 <p>A typical manuscript project (excluding raw/intermediate data) should only be a few GB.
 Regular cleanup is much easier than emergency cleanup.</p>
 </section>
 <section id="use-consistent-naming-conventions">
-<h3>5.4. Use Consistent Naming Conventions<a class="headerlink" href="#use-consistent-naming-conventions" title="Link to this heading">#</a></h3>
+<span id="54-use-consistent-naming-conventions"></span><h3>5.4. Use Consistent Naming Conventions<a class="headerlink" href="#use-consistent-naming-conventions" title="Link to this heading">#</a></h3>
 <p>Match:
 <code class="docutils literal notranslate"><span class="pre">01_qc.R</span>&#160; <span class="pre">↔</span>&#160; <span class="pre">01_qc.sbatch</span></code></p>
 <p>Use logical numbering.
@@ -758,7 +758,7 @@ Avoid ambiguous names like:
 <code class="docutils literal notranslate"><span class="pre">final_new_v2_fixed.R</span></code></p>
 </section>
 <section id="save-intermediate-objects">
-<h3>5.5. Save Intermediate Objects<a class="headerlink" href="#save-intermediate-objects" title="Link to this heading">#</a></h3>
+<span id="55-save-intermediate-objects"></span><h3>5.5. Save Intermediate Objects<a class="headerlink" href="#save-intermediate-objects" title="Link to this heading">#</a></h3>
 <p>For large omics analyses:</p>
 <ul class="simple">
 <li><p>Save Seurat .rds</p></li>
@@ -767,7 +767,7 @@ Preprocessing can take hours. Avoid repeating it.</p></li>
 </ul>
 </section>
 <section id="track-everything-with-git">
-<h3>5.6. Track Everything with Git<a class="headerlink" href="#track-everything-with-git" title="Link to this heading">#</a></h3>
+<span id="56-track-everything-with-git"></span><h3>5.6. Track Everything with Git<a class="headerlink" href="#track-everything-with-git" title="Link to this heading">#</a></h3>
 <p>Track:</p>
 <ul class="simple">
 <li><p>Code</p></li>
@@ -1081,7 +1081,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Oct 20, 2026.
+  Last updated on Nov 18, 2026.
 </p></div>
       
     </div>

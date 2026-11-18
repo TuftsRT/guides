@@ -90,8 +90,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20261020" />
-    <meta name="docbuild:last-update" content="Oct 20, 2026"/>
+  <meta name="docsearch:version" content="20261118" />
+    <meta name="docbuild:last-update" content="Nov 18, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -696,10 +696,10 @@ Another commonly used option is <code class="docutils literal notranslate"><span
 </section>
 </section>
 <section id="profile-mode-for-the-lab-group">
-<h2>Profile mode for the lab/group<a class="headerlink" href="#profile-mode-for-the-lab-group" title="Link to this heading">#</a></h2>
+<span id="profile-mode-for-the-labgroup"></span><h2>Profile mode for the lab/group<a class="headerlink" href="#profile-mode-for-the-lab-group" title="Link to this heading">#</a></h2>
 <p><strong>container-mod</strong> allows users to create containerized modules for shared use within their group. The PI or lab/group manager can create a group profile, which can then be used by specifying the <code class="docutils literal notranslate"><span class="pre">--profile</span></code> option on the command line.</p>
 <section id="generate-a-lab-group-profile">
-<h3>Generate a lab/group profile<a class="headerlink" href="#generate-a-lab-group-profile" title="Link to this heading">#</a></h3>
+<span id="generate-a-labgroup-profile"></span><h3>Generate a lab/group profile<a class="headerlink" href="#generate-a-lab-group-profile" title="Link to this heading">#</a></h3>
 <p>Users need to store the profile in <code class="docutils literal notranslate"><span class="pre">$HOME/container-apps/profiles</span></code>.</p>
 <p>The following profile <code class="docutils literal notranslate"><span class="pre">$HOME/container-apps/profiles/rt</span></code> for my <code class="docutils literal notranslate"><span class="pre">rt</span></code> group will illustrate the required environment variables.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MOD_EXISTING_DIR_DEF="/cluster/tufts/biocontainers/modules"
@@ -729,7 +729,7 @@ ngc
 </div>
 </section>
 <section id="run-container-mod-with-lab-group-profile">
-<h3>Run container-mod with lab/group profile<a class="headerlink" href="#run-container-mod-with-lab-group-profile" title="Link to this heading">#</a></h3>
+<span id="run-container-mod-with-labgroup-profile"></span><h3>Run container-mod with lab/group profile<a class="headerlink" href="#run-container-mod-with-lab-group-profile" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ container-mod pipe --profile rt docker://staphb/samtools:1.21
 </pre></div>
 </div>
@@ -746,7 +746,7 @@ ngc
 </div>
 </section>
 <section id="run-the-lab-group-shared-module">
-<h3>Run the lab/group shared module<a class="headerlink" href="#run-the-lab-group-shared-module" title="Link to this heading">#</a></h3>
+<span id="run-the-labgroup-shared-module"></span><h3>Run the lab/group shared module<a class="headerlink" href="#run-the-lab-group-shared-module" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module use /cluster/tufts/rt/shared/container-modules/modules
 $ module load samtools/1.21
 $ samtools view -S -b input.sam &gt; output.bam
@@ -908,7 +908,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Oct 20, 2026.
+  Last updated on Nov 18, 2026.
 </p></div>
       
     </div>

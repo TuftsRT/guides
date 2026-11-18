@@ -90,8 +90,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20261020" />
-    <meta name="docbuild:last-update" content="Oct 20, 2026"/>
+  <meta name="docsearch:version" content="20261118" />
+    <meta name="docbuild:last-update" content="Nov 18, 2026"/>
   
     
     <script src="../../../_static/searchtools.js"></script>
@@ -697,7 +697,7 @@
 <h2>Writing Bioinformatics job script<a class="headerlink" href="#writing-bioinformatics-job-script" title="Link to this heading">#</a></h2>
 <p>Let’s explore how to write a SLURM script, using STAR alignment as an example.</p>
 <section id="prepare-the-slurm-script">
-<h3>1. Prepare the SLURM Script<a class="headerlink" href="#prepare-the-slurm-script" title="Link to this heading">#</a></h3>
+<span id="1-prepare-the-slurm-script"></span><h3>1. Prepare the SLURM Script<a class="headerlink" href="#prepare-the-slurm-script" title="Link to this heading">#</a></h3>
 <p>Create a file named <code class="docutils literal notranslate"><span class="pre">run_star.sh</span></code> and add the following content:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J STAR_JOB             # Job name</span>
@@ -726,7 +726,7 @@
 </div>
 </section>
 <section id="submit-the-job-script">
-<h3>2. Submit the Job Script<a class="headerlink" href="#submit-the-job-script" title="Link to this heading">#</a></h3>
+<span id="2-submit-the-job-script"></span><h3>2. Submit the Job Script<a class="headerlink" href="#submit-the-job-script" title="Link to this heading">#</a></h3>
 <p>If you’re running the script <strong>directly in the terminal</strong>, you need to make it executable first:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">run_star</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
@@ -737,7 +737,7 @@
 </div>
 </section>
 <section id="monitor-job-status">
-<h3>3. Monitor Job Status<a class="headerlink" href="#monitor-job-status" title="Link to this heading">#</a></h3>
+<span id="3-monitor-job-status"></span><h3>3. Monitor Job Status<a class="headerlink" href="#monitor-job-status" title="Link to this heading">#</a></h3>
 <p>Use the following command to check the job status:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">squeue</span> <span class="o">-</span><span class="n">u</span> <span class="n">yourusername</span>
 </pre></div>
@@ -1047,7 +1047,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Oct 20, 2026.
+  Last updated on Nov 18, 2026.
 </p></div>
       
     </div>

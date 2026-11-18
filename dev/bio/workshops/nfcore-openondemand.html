@@ -90,8 +90,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20261020" />
-    <meta name="docbuild:last-update" content="Oct 20, 2026"/>
+  <meta name="docsearch:version" content="20261118" />
+    <meta name="docbuild:last-update" content="Nov 18, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -598,9 +598,9 @@
 <p>This workshop focuses on practical execution and reproducibility rather than RNA-seq theory.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="prepare-input-files">
-<h1>1. Prepare Input Files<a class="headerlink" href="#prepare-input-files" title="Link to this heading">#</a></h1>
+<span id="1-prepare-input-files"></span><h1>1. Prepare Input Files<a class="headerlink" href="#prepare-input-files" title="Link to this heading">#</a></h1>
 <section id="fastq-files">
-<h2>1.1 FASTQ Files<a class="headerlink" href="#fastq-files" title="Link to this heading">#</a></h2>
+<span id="11-fastq-files"></span><h2>1.1 FASTQ Files<a class="headerlink" href="#fastq-files" title="Link to this heading">#</a></h2>
 <p>Place all FASTQ files in your working directory.</p>
 <p>Example (paired-end):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SRX1693951_SRR3362661_1_sub</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
@@ -615,7 +615,7 @@
 </div>
 </section>
 <section id="sample-sheet-samplesheet-csv">
-<h2>1.2 Sample Sheet (<code class="docutils literal notranslate"><span class="pre">samplesheet.csv</span></code>)<a class="headerlink" href="#sample-sheet-samplesheet-csv" title="Link to this heading">#</a></h2>
+<span id="12-sample-sheet-samplesheetcsv"></span><h2>1.2 Sample Sheet (<code class="docutils literal notranslate"><span class="pre">samplesheet.csv</span></code>)<a class="headerlink" href="#sample-sheet-samplesheet-csv" title="Link to this heading">#</a></h2>
 <p>Required format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span><span class="p">,</span><span class="n">fastq_1</span><span class="p">,</span><span class="n">fastq_2</span><span class="p">,</span><span class="n">strandedness</span>
 <span class="n">GFPkd_1</span><span class="p">,</span><span class="n">SRX1693951_SRR3362661_1_sub</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span><span class="p">,</span><span class="n">SRX1693951_SRR3362661_2_sub</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span><span class="p">,</span><span class="n">auto</span>
@@ -637,7 +637,7 @@
 </div>
 </section>
 <section id="reference-files">
-<h2>1.3 Reference Files<a class="headerlink" href="#reference-files" title="Link to this heading">#</a></h2>
+<span id="13-reference-files"></span><h2>1.3 Reference Files<a class="headerlink" href="#reference-files" title="Link to this heading">#</a></h2>
 <p>You must provide:</p>
 <ul class="simple">
 <li><p>Genome FASTA file</p></li>
@@ -671,7 +671,7 @@
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="running-via-open-ondemand">
-<h1>2. Running via Open OnDemand<a class="headerlink" href="#running-via-open-ondemand" title="Link to this heading">#</a></h1>
+<span id="2-running-via-open-ondemand"></span><h1>2. Running via Open OnDemand<a class="headerlink" href="#running-via-open-ondemand" title="Link to this heading">#</a></h1>
 <p>Log in to:</p>
 <p>Open OnDemand → nf-core pipelines → rnaseq (version 3.22.2)</p>
 <p>Configure:</p>
@@ -690,7 +690,7 @@
 <p>Submit job.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="running-via-cli-slurm">
-<h1>3. Running via CLI (SLURM)<a class="headerlink" href="#running-via-cli-slurm" title="Link to this heading">#</a></h1>
+<span id="3-running-via-cli-slurm"></span><h1>3. Running via CLI (SLURM)<a class="headerlink" href="#running-via-cli-slurm" title="Link to this heading">#</a></h1>
 <p>Create a SLURM script (example: <code class="docutils literal notranslate"><span class="pre">run_rnaseq.slurm</span></code>)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 #SBATCH --job-name=rnaseq_nfcore
@@ -735,7 +735,7 @@ echo "Finished at $(date)"
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="key-results">
-<h1>4. Key Results<a class="headerlink" href="#key-results" title="Link to this heading">#</a></h1>
+<span id="4-key-results"></span><h1>4. Key Results<a class="headerlink" href="#key-results" title="Link to this heading">#</a></h1>
 <p>If you define your output directory as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">outdir</span> <span class="n">rnaseq</span>
 </pre></div>
@@ -755,7 +755,7 @@ echo "Finished at $(date)"
 </pre></div>
 </div>
 <section id="summary-report-most-important">
-<h2>4.1 Summary Report (Most Important)<a class="headerlink" href="#summary-report-most-important" title="Link to this heading">#</a></h2>
+<span id="41-summary-report-most-important"></span><h2>4.1 Summary Report (Most Important)<a class="headerlink" href="#summary-report-most-important" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">multiqc</span><span class="o">/</span>
 <span class="n">multiqc</span><span class="o">/</span><span class="n">star_salmon</span><span class="o">/</span><span class="n">multiqc_report</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
@@ -763,7 +763,7 @@ echo "Finished at $(date)"
 <p>Open this first.</p>
 </section>
 <section id="gene-level-counts">
-<h2>4.2 Gene-Level Counts<a class="headerlink" href="#gene-level-counts" title="Link to this heading">#</a></h2>
+<span id="42-gene-level-counts"></span><h2>4.2 Gene-Level Counts<a class="headerlink" href="#gene-level-counts" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>salmon.merged.gene_counts.tsv   → gene-level counts (used for differential expression)
 </pre></div>
 </div>
@@ -772,7 +772,7 @@ echo "Finished at $(date)"
 </div>
 </section>
 <section id="pipeline-metadata-reproducibility">
-<h2>4.3 Pipeline Metadata (Reproducibility)<a class="headerlink" href="#pipeline-metadata-reproducibility" title="Link to this heading">#</a></h2>
+<span id="43-pipeline-metadata-reproducibility"></span><h2>4.3 Pipeline Metadata (Reproducibility)<a class="headerlink" href="#pipeline-metadata-reproducibility" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline_info</span><span class="o">/</span><span class="n">nf_core_rnaseq_software_mqc_versions</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
 </div>
@@ -787,9 +787,9 @@ echo "Finished at $(date)"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="logs-and-troubleshooting">
-<h1>5. Logs and Troubleshooting<a class="headerlink" href="#logs-and-troubleshooting" title="Link to this heading">#</a></h1>
+<span id="5-logs-and-troubleshooting"></span><h1>5. Logs and Troubleshooting<a class="headerlink" href="#logs-and-troubleshooting" title="Link to this heading">#</a></h1>
 <section id="main-nextflow-log">
-<h2>5.1 Main Nextflow Log<a class="headerlink" href="#main-nextflow-log" title="Link to this heading">#</a></h2>
+<span id="51-main-nextflow-log"></span><h2>5.1 Main Nextflow Log<a class="headerlink" href="#main-nextflow-log" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">nextflow</span><span class="o">.</span><span class="n">log</span>
 </pre></div>
 </div>
@@ -800,13 +800,13 @@ echo "Finished at $(date)"
 <p>It locates in the workding dir, not the outdir.</p>
 </section>
 <section id="slurm-log-files">
-<h2>5.2 SLURM Log Files<a class="headerlink" href="#slurm-log-files" title="Link to this heading">#</a></h2>
+<span id="52-slurm-log-files"></span><h2>5.2 SLURM Log Files<a class="headerlink" href="#slurm-log-files" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rnaseq_</span><span class="o">&lt;</span><span class="n">jobid</span><span class="o">&gt;.</span><span class="n">log</span>   <span class="c1"># check progress</span>
 <span class="n">rnaseq_</span><span class="o">&lt;</span><span class="n">jobid</span><span class="o">&gt;.</span><span class="n">err</span>   <span class="c1"># check errors</span>
 </pre></div>
 </div>
 <section id="id1">
-<h3>Open OnDemand App<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<span id="open-ondemand-app-1"></span><h3>Open OnDemand App<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>In session ID folder:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">output</span><span class="o">.</span><span class="n">log</span>  <span class="c1"># check progress</span>
 </pre></div>
@@ -814,7 +814,7 @@ echo "Finished at $(date)"
 </section>
 </section>
 <section id="per-process-logs-advanced">
-<h2>5.3 Per-Process Logs (Advanced)<a class="headerlink" href="#per-process-logs-advanced" title="Link to this heading">#</a></h2>
+<span id="53-per-process-logs-advanced"></span><h2>5.3 Per-Process Logs (Advanced)<a class="headerlink" href="#per-process-logs-advanced" title="Link to this heading">#</a></h2>
 <p>Located inside:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">work</span><span class="o">/&lt;</span><span class="nb">hash</span><span class="o">&gt;/</span>
 </pre></div>
@@ -828,7 +828,7 @@ echo "Finished at $(date)"
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="running-with-your-own-data">
-<h1>6. Running With Your Own Data<a class="headerlink" href="#running-with-your-own-data" title="Link to this heading">#</a></h1>
+<span id="6-running-with-your-own-data"></span><h1>6. Running With Your Own Data<a class="headerlink" href="#running-with-your-own-data" title="Link to this heading">#</a></h1>
 <p>To run your own dataset, you need:</p>
 <ul class="simple">
 <li><p>FASTQ files</p></li>
@@ -994,7 +994,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Oct 20, 2026.
+  Last updated on Nov 18, 2026.
 </p></div>
       
     </div>

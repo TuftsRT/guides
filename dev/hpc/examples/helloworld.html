@@ -90,8 +90,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="20261020" />
-    <meta name="docbuild:last-update" content="Oct 20, 2026"/>
+  <meta name="docsearch:version" content="20261118" />
+    <meta name="docbuild:last-update" content="Nov 18, 2026"/>
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -586,7 +586,7 @@
 <p>This simple tutorial will walk you through running your first HPC job using SSH and SLURM job scheduler.</p>
 <hr class="docutils" />
 <section id="create-helloworld-py-on-your-local-computer-using-your-favorite-text-editor-textedit-and-notepad-are-two-good-options">
-<h2>1. Create <code class="docutils literal notranslate"><span class="pre">helloworld.py</span></code> on your <strong>local computer</strong> using your favorite text editor. TextEdit and Notepad are two good options.<a class="headerlink" href="#create-helloworld-py-on-your-local-computer-using-your-favorite-text-editor-textedit-and-notepad-are-two-good-options" title="Link to this heading">#</a></h2>
+<span id="1-create-helloworldpy-on-your-local-computer-using-your-favorite-text-editor-textedit-and-notepad-are-two-good-options"></span><h2>1. Create <code class="docutils literal notranslate"><span class="pre">helloworld.py</span></code> on your <strong>local computer</strong> using your favorite text editor. TextEdit and Notepad are two good options.<a class="headerlink" href="#create-helloworld-py-on-your-local-computer-using-your-favorite-text-editor-textedit-and-notepad-are-two-good-options" title="Link to this heading">#</a></h2>
 <p>Create a Python script named <code class="docutils literal notranslate"><span class="pre">helloworld.py</span></code> with the following contents:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># helloworld.py</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
@@ -599,7 +599,7 @@
 </section>
 <hr class="docutils" />
 <section id="upload-helloworld-py-to-the-cluster">
-<h2>2. Upload <code class="docutils literal notranslate"><span class="pre">helloworld.py</span></code> to the cluster<a class="headerlink" href="#upload-helloworld-py-to-the-cluster" title="Link to this heading">#</a></h2>
+<span id="2-upload-helloworldpy-to-the-cluster"></span><h2>2. Upload <code class="docutils literal notranslate"><span class="pre">helloworld.py</span></code> to the cluster<a class="headerlink" href="#upload-helloworld-py-to-the-cluster" title="Link to this heading">#</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">scp</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>helloworld.py<span class="w"> </span>your_utln@login-prod.pax.tufts.edu:~/
 </pre></div>
@@ -608,14 +608,14 @@
 </section>
 <hr class="docutils" />
 <section id="ssh-into-the-cluster">
-<h2>3. SSH into the cluster<a class="headerlink" href="#ssh-into-the-cluster" title="Link to this heading">#</a></h2>
+<span id="3-ssh-into-the-cluster"></span><h2>3. SSH into the cluster<a class="headerlink" href="#ssh-into-the-cluster" title="Link to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>your_utln@login-prod.pax.tufts.edu
 </pre></div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="create-a-slurm-batch-file-using-nano-or-vi">
-<h2>4. Create a SLURM batch file using <code class="docutils literal notranslate"><span class="pre">nano</span></code> or <code class="docutils literal notranslate"><span class="pre">vi</span></code><a class="headerlink" href="#create-a-slurm-batch-file-using-nano-or-vi" title="Link to this heading">#</a></h2>
+<span id="4-create-a-slurm-batch-file-using-nano-or-vi"></span><h2>4. Create a SLURM batch file using <code class="docutils literal notranslate"><span class="pre">nano</span></code> or <code class="docutils literal notranslate"><span class="pre">vi</span></code><a class="headerlink" href="#create-a-slurm-batch-file-using-nano-or-vi" title="Link to this heading">#</a></h2>
 <p>Run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>helloworld_job.sh
 </pre></div>
@@ -637,21 +637,21 @@ python<span class="w"> </span>helloworld.py
 </section>
 <hr class="docutils" />
 <section id="submit-your-batch-job">
-<h2>5. Submit your batch job<a class="headerlink" href="#submit-your-batch-job" title="Link to this heading">#</a></h2>
+<span id="5-submit-your-batch-job"></span><h2>5. Submit your batch job<a class="headerlink" href="#submit-your-batch-job" title="Link to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>helloworld_job.sh
 </pre></div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="check-job-status">
-<h2>6. Check job status<a class="headerlink" href="#check-job-status" title="Link to this heading">#</a></h2>
+<span id="6-check-job-status"></span><h2>6. Check job status<a class="headerlink" href="#check-job-status" title="Link to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue<span class="w"> </span>--me
 </pre></div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="check-output-and-error-logs">
-<h2>7. Check output and error logs<a class="headerlink" href="#check-output-and-error-logs" title="Link to this heading">#</a></h2>
+<span id="7-check-output-and-error-logs"></span><h2>7. Check output and error logs<a class="headerlink" href="#check-output-and-error-logs" title="Link to this heading">#</a></h2>
 <p>After the job completes, view logs:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>hello_output.log
 cat<span class="w"> </span>hello_error.log
@@ -660,7 +660,7 @@ cat<span class="w"> </span>hello_error.log
 </section>
 <hr class="docutils" />
 <section id="check-job-efficiency-with-seff">
-<h2>8. Check job efficiency with <code class="docutils literal notranslate"><span class="pre">seff</span></code><a class="headerlink" href="#check-job-efficiency-with-seff" title="Link to this heading">#</a></h2>
+<span id="8-check-job-efficiency-with-seff"></span><h2>8. Check job efficiency with <code class="docutils literal notranslate"><span class="pre">seff</span></code><a class="headerlink" href="#check-job-efficiency-with-seff" title="Link to this heading">#</a></h2>
 <p>Find your job ID and run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>seff<span class="w"> </span>JOB_ID
 </pre></div>
@@ -797,7 +797,7 @@ Suggest Edits
 </div>
       
         <div class="footer-item"><p class="last-updated">
-  Last updated on Oct 20, 2026.
+  Last updated on Nov 18, 2026.
 </p></div>
       
     </div>
