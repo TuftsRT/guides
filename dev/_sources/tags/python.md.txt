@@ -4,5 +4,6 @@ nosearch:
 html_theme.sidebar_secondary.remove: true
 ---
 # python
+- [](/ai/ai-tools/serve-llm-api.md)
 - [](/ai/python/index.md)
 - [](/nlp/index.md)

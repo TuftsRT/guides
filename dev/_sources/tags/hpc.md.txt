@@ -4,6 +4,7 @@ nosearch:
 html_theme.sidebar_secondary.remove: true
 ---
 # hpc
+- [](/ai/ai-tools/serve-llm-api.md)
 - [](/ai/python/index.md)
 - [](/hpc/chat.md)
 - [](/hpc/examples/index.md)

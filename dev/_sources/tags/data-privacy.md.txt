@@ -4,6 +4,7 @@ nosearch:
 html_theme.sidebar_secondary.remove: true
 ---
 # data-privacy
+- [](/ai/ai-tools/serve-llm-api.md)
 - [](/ai/getting-started/00-claude-for-research.md)
 - [](/ai/getting-started/10-chatgpt-for-research.md)
 - [](/ai/getting-started/20-securing-claude-team.md)

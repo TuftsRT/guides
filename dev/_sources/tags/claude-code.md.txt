@@ -4,5 +4,6 @@ nosearch:
 html_theme.sidebar_secondary.remove: true
 ---
 # claude-code
+- [](/ai/ai-tools/serve-llm-api.md)
 - [](/ai/getting-started/00-claude-for-research.md)
 - [](/ai/getting-started/20-securing-claude-team.md)
