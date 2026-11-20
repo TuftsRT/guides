@@ -32,7 +32,7 @@ grid-columns: 1
 
 - header: "{fas}`book` Microsoft Visual Studio Code with Conda (Miniforge): Getting the Most Out of Your Setup"
   content: "When you've finished installing and configuring Microsoft Visual Studio Code with Conda, click here to learn how to use your setup effectively."
-  link: "40-VS-code-and-conda-users-guide.html"
+  link: "40-vs-code-and-conda-users-guide.html"
 
 
 ```

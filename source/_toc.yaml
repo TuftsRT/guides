@@ -127,7 +127,10 @@ subtrees:
         title: Data Visualization
         subtrees:
           - entries:
-              - glob: viz/*
+              - file: viz/tableau/index
+                subtrees:
+                  - entries:
+                      - glob: viz/tableau/*
       - file: ai/index
         title: Artificial Intelligence
         subtrees:

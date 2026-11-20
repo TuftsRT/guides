@@ -10,7 +10,7 @@ This tool is intended for educators or researchers who want to experiment with c
 
 ## Who is the Research Chatbot for?
 
-The Research Chatbot is best suited for individuals who are **new** to working with AI for research and would like a secure, conversational experience that mimics web-based services like ChatGPT, Google Gemini, Microsoft Copilot, or Anthropic's Claude. This tool can give you a sense of how to use AI for research, but may not be suited for large data sets or complex or advanced requests.
+The Research Chatbot is best suited for individuals who are **new** to working with AI for research and would like a secure, conversational experience that mimics web-based services like ChatGPT, Google Gemini, Microsoft Copilot, or Anthropic's Claude. This tool can give you a sense of how to use AI for research, but may not be suited for large data sets or complex or advanced requests. To query models programmatically from scripts, notebooks, or applications instead, see the [LLM API](./serve-llm-api.md).
 
 ## What is the Research Chatbot?
 
